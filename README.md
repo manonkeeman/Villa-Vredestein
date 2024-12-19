@@ -25,10 +25,10 @@ Deze website is gebouwd met:
       
 FEATURES
       
-RESPONSIVE DESIGN: Werkt op desktop, tablet en mobiel 
-GASTENPAGINA: Informatie over het verblijf, faciliteiten en beschikbaarheid 
-STUDENTENTOEGANG: Praktische informatie en updates GALERIJ: Foto's van de kamers en gemeenschappelijke ruimtes 
-AIRBNB-INTEGRATIE (toekomst): Mogelijkheid om direct te boeken via een externe link.
+- RESPONSIVE DESIGN: Werkt op desktop, tablet en mobiel 
+- GASTENPAGINA: Informatie over het verblijf, faciliteiten en beschikbaarheid 
+- STUDENTENTOEGANG: Praktische informatie en updates GALERIJ: Foto's van de kamers en gemeenschappelijke ruimtes 
+- AIRBNB-INTEGRATIE (toekomst): Mogelijkheid om direct te boeken via een externe link.
       
 SCHERMAFBEELDINGEN
       
