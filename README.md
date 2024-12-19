@@ -17,17 +17,18 @@ De website biedt:
 
 De website is ontworpen met oog voor functionaliteit, design en gebruikerservaring.
 Deze website is gebouwd met:
-    * HTML5: voor de structuur
-    * CSS3 voor styling en een moderne look
-    * JavaScript voor interactieve elementen
-    * React,Vue, Bootstrap: voor extra functionaliteiten
-    * Node.js, JAVA, PHP
+* HTML5: voor de structuur
+* CSS3 voor styling en een moderne look
+* JavaScript voor interactieve elementen
+* React,Vue, Bootstrap: voor extra functionaliteiten
+* Node.js, JAVA, PHP
       
 FEATURES
       
 - RESPONSIVE DESIGN: Werkt op desktop, tablet en mobiel 
 - GASTENPAGINA: Informatie over het verblijf, faciliteiten en beschikbaarheid 
-- STUDENTENTOEGANG: Praktische informatie en updates GALERIJ: Foto's van de kamers en gemeenschappelijke ruimtes 
+- STUDENTENTOEGANG: Praktische informatie en updates 
+- GALERIJ: Foto's van de kamers en gemeenschappelijke ruimtes 
 - AIRBNB-INTEGRATIE (toekomst): Mogelijkheid om direct te boeken via een externe link.
       
 SCHERMAFBEELDINGEN
@@ -48,6 +49,6 @@ Bijdragen zijn altijd welkom! Wil je een bug melden, een feature voorstellen of 
 CONTACT 
 Heb je vragen of feedback?
 Neem gerust contact op!
-    * WEBSITE: https://www.villavredestein.com
-    * EMAIL:  manonkeeman@gmail.com
+* WEBSITE: https://www.villavredestein.com
+* EMAIL:  manonkeeman@gmail.com
 
