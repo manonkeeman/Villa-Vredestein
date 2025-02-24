@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-=======
 Villa-Vredestein
 
 Villa Vredestein is een stijlvolle en moderne website ontworpen voor een studentenhuis met Airbnb functionaliteit in de toekomst. 
@@ -15,9 +5,10 @@ Het combineert gebruiksvriendelijke navigatie met een aantrekkelijke uitstraling
 
 OVER HET PROJECT
 
-Villa Vredstein is meer dan alleen een studentenhuis. 
+Villa Vredestein is meer dan alleen een studentenhuis. 
 De website biedt:
-* een login voor studenten
+* een login voor studenten 
+* een dashboard voor studenten met oa een receptenzoeker
 * beknopte informatie over Villa Vredestein
 * contactinformatie
 
@@ -27,7 +18,7 @@ Deze website is gebouwd met:
     * CSS3 voor styling en een moderne look
     * JavaScript voor interactieve elementen
     * React: voor extra functionaliteiten
-    * Edamam API voor een receptenzoeker voor studenten
+    * Edamam API - receptenzoeker voor studenten
     
 FEATURES
 
@@ -57,4 +48,3 @@ Bijdragen zijn altijd welkom! Wil je een bug melden, een feature voorstellen of 
 8. Neem gerust contact op!
     * WEBSITE: https://www.villavredestein.com
     * EMAIL: manonkeeman@gmail.com
->>>>>>> 25ce8c60160dbe70b981d540d10aa1719398a906
