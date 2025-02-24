@@ -1,9 +1,11 @@
-import React from "react";
-
-export default function Login() { // ✅ Default export toegevoegd
+import React from 'react';
+function LogIn() {
     return (
         <div>
-            <h1>Login Pagina</h1>
+            <h1>Inloggen</h1>
+            <p>Voer uw gegevens in om in te loggen.</p>
         </div>
     );
 }
+
+export default LogIn;

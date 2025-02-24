@@ -5,4 +5,17 @@
   text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference)
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    animation: fadeIn 1s ease-in-out;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
