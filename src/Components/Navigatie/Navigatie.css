@@ -1,0 +1,56 @@
+/* Zorg dat de navigatie horizontaal bovenaan de pagina staat */
+.navigatie-container {
+    display: flex;           /* Zet items naast elkaar */
+    justify-content: flex-start; /* Zet items aan de linkerkant */
+    align-items: center;      /* Centreer verticaal */
+    background-color: #222;   /* Donkere achtergrondkleur */
+    height: 50px;              /*maak de balk smaller */
+    width: 100%;             /* balk over volledig scherm */
+    position: fixed;            /* balk blijft bovenaan met scrollen */
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 5px 20px;       /* Ruimte rond de navigatie */
+    color: white;             /* Witte tekstkleur */
+}
+
+/* Zorg dat de links horizontaal blijven staan */
+.nav-links {
+    display: flex;            /* Zet de lijst items naast elkaar */
+    list-style: none;         /* Verwijder de bullets */
+    padding: 0;
+    margin: 40px;
+}
+
+/*geef ruimte tussen de items */
+.nav-links li {
+    margin: 0 15px
+}
+
+/* stijl voor de links */
+.default-link {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3 ease;
+}
+
+/* Hover effect */
+.default-link:hover {
+    color: #F8C93C;          /* Geel effect bij hover */
+}
+
+/* Stijl voor de titel "Villa Vredestein" */
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/*om de navigatiebalk te laten staan op elke page */
+.navigatie-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
