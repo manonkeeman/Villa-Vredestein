@@ -1,4 +1,4 @@
-Villa-Vredestein
+*****   VILLA VREDESTEIN *****
 
 Villa Vredestein is een stijlvolle en moderne website ontworpen voor een studentenhuis met Airbnb functionaliteit in de toekomst. 
 Het combineert gebruiksvriendelijke navigatie met een aantrekkelijke uitstraling om studenten en bezoekers te informeren en te verwelkomen.
@@ -9,8 +9,8 @@ Villa Vredestein is meer dan alleen een studentenhuis.
 De website biedt:
 * een login voor studenten 
 * een dashboard voor studenten met oa een receptenzoeker
-* beknopte informatie over Villa Vredestein
-* contactinformatie
+* beknopte informatie over Villa Vredestein voor bezoekers
+* contactinformatie vor bezoekers
 
 De website is ontworpen met oog voor functionaliteit, design en gebruikerservaring. 
 Deze website is gebouwd met:
