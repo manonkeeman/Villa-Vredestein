@@ -1,49 +1,84 @@
-/* Zorg dat de navigatie horizontaal bovenaan de pagina staat */
+/* Algemene navigatie-styling */
 .navigatie-container {
-  display: flex; /* Zet items naast elkaar */
-  justify-content: flex-start; /* Zet items aan de linkerkant */
-  align-items: center; /* Centreer verticaal */
-  background-color: #222; /* Donkere achtergrondkleur */
-  height: 50px; /*maak de balk smaller */
-  width: 100%; /* balk over volledig scherm */
-  position: fixed; /* balk blijft bovenaan met scrollen */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #222;
+  height: 50px;
+  width: 100%;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
-  padding: 5px 20px; /* Ruimte rond de navigatie */
-  color: white; /* Witte tekstkleur */
+  padding: 10px 20px;
+  color: white;
 }
 
-/* Zorg dat de links horizontaal blijven staan */
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Navigatielinks standaardstijl */
 .nav-links {
-  display: flex; /* Zet de lijst items naast elkaar */
-  list-style: none; /* Verwijder de bullets */
+  display: flex;
+  list-style: none;
   padding: 0;
-  margin: 40px;
+  margin: 0;
 }
 
-/*geef ruimte tussen de items */
 .nav-links li {
   margin: 0 15px;
 }
 
-/* stijl voor de links */
 .default-link {
   color: white;
   text-decoration: none;
   font-size: 16px;
-  transition:
-    background-color 0.3s ease-in-out,
-    transform 0.3s ease-in-out;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-/* Hover effect */
 .default-link:hover {
-  color: #f8c93c; /* Geel effect bij hover */
+  color: #f8c93c;
 }
 
-/* Stijl voor de titel "Villa Vredestein" */
-.logo {
-  font-size: 20px;
-  font-weight: bold;
+/* Hamburger-menu-stijl */
+.hamburger {
+  display: none;
+  cursor: pointer;
+}
+
+.hamburger .bar {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 4px;
+  transition: all 0.3s ease;
+}
+
+/* Mobiele weergave */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #222;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+    z-index: 1001;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links li {
+    margin: 10px 0;
+  }
 }
