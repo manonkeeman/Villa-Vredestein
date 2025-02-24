@@ -1,5 +1,5 @@
 import React from 'react';
-function LogIn() {
+function Login() {
     return (
         <div>
             <h1>Inloggen</h1>
