@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "./navigatie.css"; // Zorg dat je CSS-bestand is gekoppeld
+import "./Navigatie.css"; // Zorg dat je CSS-bestand is gekoppeld
 
 export default function Navigatie() {
   return (
