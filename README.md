@@ -1,32 +1,31 @@
 Villa-Vredestein
 
-Villa Vredestein is een stijlvolle en moderne website ontworpen voor een studentenhuis met Airbnb functionaliteit. 
-Het combineert gebruiksvriendelijke navigatie met een aantrekkelijke uitstraling om studenten, 
-gasten en bezoekers te informeren en te verwelkomen.
+Villa Vredestein is een stijlvolle en moderne website ontworpen voor een studentenhuis met Airbnb functionaliteit in de toekomst. 
+Het combineert gebruiksvriendelijke navigatie met een aantrekkelijke uitstraling om studenten en bezoekers te informeren en te verwelkomen.
 
 OVER HET PROJECT
 
 Villa Vredstein is meer dan alleen een studentenhuis. 
 De website biedt:
-* studentenblog
-* informatie voor studenten en gasten
-* mogelijkheid om kamers en faciliteiten te bekijken
-* toekomstige Airbnb-opties met beschikbaarheid en boekingsinformatie
+* een login voor studenten
+* beknopte informatie over Villa Vredestein
+* contactinformatie
 
 De website is ontworpen met oog voor functionaliteit, design en gebruikerservaring. 
 Deze website is gebouwd met:
     * HTML5: voor de structuur
     * CSS3 voor styling en een moderne look
     * JavaScript voor interactieve elementen
-    * React,Vue, Bootstrap: voor extra functionaliteiten
-    * Node.js, JAVA, PHP
+    * React: voor extra functionaliteiten
+    * Edamam API voor een receptenzoeker voor studenten
     
 FEATURES
 
 RESPONSIVE DESIGN: Werkt op desktop, tablet en mobiel 
-GASTENPAGINA: Informatie over het verblijf, faciliteiten en beschikbaarheid 
-STUDENTENTOEGANG: Praktische informatie en updates 
-GALERIJ: Foto's van de kamers en gemeenschappelijke ruimtes 
+INFORMATIE & "OVER ONS" PAGINA: Informatie over de villa en de bewoners
+CONTACT PAGINA: voor contact met de bewoners
+STUDENTENINLOG: Praktische informatie en updates 
+DASHBOARD: Foto's van de kamers en gemeenschappelijke ruimtes 
 AIRBNB-INTEGRATIE (toekomst): Mogelijkheid om direct te boeken via een externe link.
 
 SCHERMAFBEELDINGEN
