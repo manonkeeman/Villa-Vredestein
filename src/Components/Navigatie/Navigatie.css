@@ -75,7 +75,7 @@
 @media (max-width: 768px) {
   .hamburger {
     display: block;
-    margin-left: -10px ;
+    margin-left: -5px ;
   }
 
   .nav-links {
@@ -85,9 +85,10 @@
     position: absolute;
     top: 50px;
     left: 0;
-    width: 100%;
+    width: 70%;
     padding: 10px 0;
     z-index: 1001;
+    border-radius: 0 0 10px 10px;
   }
 
   .nav-links.show {
@@ -96,16 +97,6 @@
 
   .nav-links li {
     margin: 10px 0;
-  }
-}
-
-/* Voorkom dat content buiten het scherm valt */
-@media (min-width: 769px) {
-  .navigatie-container {
-    padding-right: 10px;
-  }
-
-  .nav-links {
-    overflow-x: auto;
+    text-align: center;
   }
 }
