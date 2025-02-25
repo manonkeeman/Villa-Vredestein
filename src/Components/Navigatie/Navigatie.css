@@ -82,3 +82,15 @@
     margin: 10px 0;
   }
 }
+
+/* Icon styling */
+.icon-link {
+  color: white;
+  font-size: 1.5rem; /* Grootte van de iconen */
+  margin-left: 10px;
+  transition: color 0.3s ease;
+}
+
+.icon-link:hover {
+  color: #f8c93c; /* Geel hover effect */
+}
