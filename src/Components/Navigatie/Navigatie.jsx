@@ -7,14 +7,15 @@ import "./Navigatie.css";
 export default function Navigatie() {
     const [menuOpen, setMenuOpen] = useState(false);
     const { isLoggedIn, logout } = useAuth();
+    const location = useLocation();
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
     };
     // Sluit menu bij klik op een link
-    const closeMenu = () => {
+    useEffect(() => {
         setMenuOpen(false);
-    };
+    }, [location]);
 
     return (
         <nav className="navigatie-container">
