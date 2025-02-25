@@ -12,6 +12,7 @@
   z-index: 1000;
   padding: 10px 20px;
   color: white;
+  box-sizing: border-box;
 }
 
 .logo {
@@ -25,10 +26,11 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  flex-direction: nowrap;
 }
 
 .nav-links li {
-  margin: 0 15px;
+  margin: 0 10px;
 }
 
 .default-link {
@@ -42,10 +44,23 @@
   color: #f8c93c;
 }
 
+/* Icon styling */
+.icon-link {
+  color: white;
+  font-size: 1.5rem; /* Grootte van de iconen */
+  margin-left: 10px;
+  transition: color 0.3s ease;
+}
+
+.icon-link:hover {
+  color: #f8c93c; /* Geel hover effect */
+}
+
 /* Hamburger-menu-stijl */
 .hamburger {
   display: none;
   cursor: pointer;
+  margin-left: 10px;
 }
 
 .hamburger .bar {
@@ -60,6 +75,7 @@
 @media (max-width: 768px) {
   .hamburger {
     display: block;
+    margin-left: -10px ;
   }
 
   .nav-links {
@@ -83,14 +99,13 @@
   }
 }
 
-/* Icon styling */
-.icon-link {
-  color: white;
-  font-size: 1.5rem; /* Grootte van de iconen */
-  margin-left: 10px;
-  transition: color 0.3s ease;
-}
+/* Voorkom dat content buiten het scherm valt */
+@media (min-width: 769px) {
+  .navigatie-container {
+    padding-right: 10px;
+  }
 
-.icon-link:hover {
-  color: #f8c93c; /* Geel hover effect */
+  .nav-links {
+    overflow-x: auto;
+  }
 }
