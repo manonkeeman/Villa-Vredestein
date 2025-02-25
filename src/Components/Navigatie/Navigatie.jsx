@@ -12,7 +12,7 @@ export default function Navigatie() {
         setMenuOpen(!menuOpen);
     };
     // Sluit menu bij klik op een link
-    const handleLinkClick = () => {
+    const closeMenu = () => {
         setMenuOpen(false);
     };
 
