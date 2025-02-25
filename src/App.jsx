@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import { AuthProvider, useAuth } from "./Context/AuthContext";
+import { AuthProvider, useAuth } from "./context/AuthContext";
 import axios from "axios";
 import Navigatie from "./Components/Navigatie/Navigatie.jsx";
 import Home from "./Pages/Home.jsx";
