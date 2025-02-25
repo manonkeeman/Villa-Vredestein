@@ -11,6 +11,10 @@ export default function Navigatie() {
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
     };
+    // Sluit menu bij klik op een link
+    const handleLinkClick = () => {
+        setMenuOpen(false);
+    };
 
     return (
         <nav className="navigatie-container">
