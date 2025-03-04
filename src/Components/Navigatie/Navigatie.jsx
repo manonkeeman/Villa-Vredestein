@@ -19,7 +19,7 @@ export default function Navigatie() {
 
     return (
         <nav className="navigatie-container">
-            <h3 className="logo">Villa Vredestein</h3>
+            <h1 className="logo">Villa Vredestein</h1>
 
             {/* Hamburger-menu icoon zichtbaar op mobiel */}
             <div className={`hamburger ${menuOpen ? "open" : ""}`} onClick={toggleMenu}>
