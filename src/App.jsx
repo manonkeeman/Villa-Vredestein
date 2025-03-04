@@ -3,12 +3,41 @@ import { Routes, Route } from "react-router-dom";
 import { AuthProvider, useAuth } from "./context/AuthContext";
 import axios from "axios";
 import Navigatie from "./Components/Navigatie/Navigatie.jsx";
+import FontLoader from "./Components/FontLoader/Fonts.jsx";
 import Home from "./Pages/Home.jsx";
 import About from "./Pages/About.jsx";
 import Contact from "./Pages/Contact.jsx";
 import Login from "./Pages/Login.jsx";
 import Register from "./Pages/Register.jsx";
 import NotFound from "./Pages/NotFound.jsx";
+
+export default function App() {
+    useEffect(() => {
+        fetchRecipes("pasta");
+    }, []);
+
+    return (
+        <AuthProvider>
+            <FontLoader />
+            <Navigatie />
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/login" element={<Login />} />
+                <Route
+                    path="/register"
+                    element={
+                        <PrivateRoute>
+                            <Register />
+                        </PrivateRoute>
+                    }
+                />
+                <Route path="*" element={<NotFound />} />
+            </Routes>
+        </AuthProvider>
+    );
+}
 
 // Routebescherming voor ingelogde gebruikers
 function PrivateRoute({ children }) {
@@ -42,33 +71,3 @@ async function fetchRecipes(query) {
         console.error("Fout bij het ophalen van recepten:", e);
     }
 }
-
-// Hoofdcomponent van de app
-function App() {
-    useEffect(() => {
-        fetchRecipes("pasta");
-    }, []);
-
-    return (
-        <AuthProvider>
-            <Navigatie />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/login" element={<Login />} />
-                <Route
-                    path="/register"
-                    element={
-                        <PrivateRoute>
-                            <Register />
-                        </PrivateRoute>
-                    }
-                />
-                <Route path="*" element={<NotFound />} />
-            </Routes>
-        </AuthProvider>
-    );
-}
-
-export default App;

@@ -1,22 +1,39 @@
+
 /* Algemene navigatie-styling */
 .navigatie-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #222;
+  background-color: black;
   height: 50px;
   width: 100%;
-  position: fixed;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
   top: 0;
   left: 0;
   z-index: 1000;
   padding: 10px 20px;
   color: white;
   box-sizing: border-box;
+  z-index: 1000;
+}
+
+.h1, .title {
+  font-family: "Aubrey", serif;
+}
+
+h1, h2, h3 {
+  font-family: "Aubrey", serif;
+  font-weight: 400;
+}
+
+p, span, div {
+  font-family: "Nunito Sans", sans-serif;
 }
 
 .logo {
-  font-size: 20px;
+  font-size: 30px;
   font-weight: bold;
 }
 
@@ -36,7 +53,7 @@
 .default-link {
   color: white;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 12px;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
