@@ -1,6 +1,13 @@
 import React from "react";
+import BentoBox from "../Components/BentoBox/BentoBox.jsx";
+import "./Contact.css";
 
-function Contact() {
-  return <h1>Wil je meer weten?</h1>;
-}
+const Contact = () => {
+  return (
+      <div>
+        <BentoBox/>
+      </div>
+  );
+};
+
 export default Contact;
