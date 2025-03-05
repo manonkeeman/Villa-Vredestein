@@ -1,0 +1,65 @@
+body {
+    margin: 0;
+    background-color: black;
+    color: white;
+    font-family: "Nunito Sans", sans-serif;
+}
+
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Bovenste rij: 2 kolommen */
+    grid-template-rows: 450px;
+    gap: 10px;
+    padding: 10px;
+    margin-top: 0px; /* Voorkomt overlap met navbar */
+}
+
+
+/* Algemene styling voor de boxen */
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* **Bovenste rij: Box 1 en 2 even breed over de 2 kolommen** */
+.box1 {
+    grid-column: span 1;
+}
+
+.box2 {
+    grid-column: span 1;
+}
+
+/* **Onderste rij: Box 3, 4 en 5 netjes naast elkaar in 3 kolommen** */
+.bento-grid-onderste {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Drie gelijke kolommen */
+    grid-template-rows: 250px;
+    gap: 10px;
+    padding-top: 0px;
+    margin-top: 0px;
+}
+
+.bento-grid, .bento-grid-onderste {
+    width: 100%; /* Beide exact even breed */
+    max-width: 1200px; /* Optioneel: Maximale breedte instellen */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Responsive aanpassing voor kleinere schermen */
+@media (max-width: 768px) {
+    .bento-grid {
+        grid-template-columns: 1fr; /* Op mobiel 1 kolom */
+        grid-template-rows: auto;
+    }
+
+    .bento-grid-onderste {
+        grid-template-columns: 1fr;
+    }
+}
