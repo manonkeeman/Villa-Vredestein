@@ -44,31 +44,6 @@ body {
     margin: 0 auto;
 }
 
-/* ✅ Mobiele versie: Alle boxen netjes onder elkaar en gecentreerd */
-@media (max-width: 768px) {
-    .bento-grid {
-        display: flex;
-        flex-direction: column; /* ✅ Zet alle boxen onder elkaar */
-        align-items: center; /* ✅ Zorgt dat ze exact gecentreerd staan */
-        width: 100%;
-    }
-
-    .bento-grid-onderste {
-        display: flex;
-        flex-direction: column; /* ✅ Zet ook Box 3, 4 en 5 onder elkaar */
-        align-items: center; /* ✅ Zorgt dat ze precies gecentreerd staan */
-        width: 100%;
-    }
-
-    .box {
-        width: 90%; /* ✅ Zorgt dat alle boxen dezelfde breedte hebben */
-        height: 250px; /* ✅ Alle boxen krijgen een gelijke hoogte */
-        max-width: 400px; /* ✅ Voorkomt dat de boxen te breed worden */
-        margin: 5px auto; /* ✅ Zorgt dat ze exact in het midden staan */
-    }
-}
-
-
 @media (max-width: 768px) {
     .bento-grid, .bento-grid-onderste {
         display: flex;
