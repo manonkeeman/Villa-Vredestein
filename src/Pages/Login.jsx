@@ -1,12 +1,13 @@
-import React from 'react';
+import React from "react";
+import BentoBox from "../Components/BentoBox/BentoBox.jsx";
+import "./Login.css";
 
-function Login() {
+const Login = () => {
     return (
         <div>
-            <h1>Inloggen</h1>
-            <p>Voer uw gegevens in om in te loggen.</p>
+            <BentoBox/>
         </div>
     );
-}
+};
 
 export default Login;
