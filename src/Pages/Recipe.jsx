@@ -1,20 +1,19 @@
-import { useEffect } from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
+import {Link} from "react-router-dom";
 
-export default function Register() {
+export default function Recipe() {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
     async function fetchRecipes() {
-      const appId = "6497d4b5";
-      const appKey = "030438b0ae6eccd53c24c5040dc23cfc";
-      const userId = "manonkeeman";
+
 
       try {
-        const response = await axios.get(`https://api.edamam.com/api/recipes/v2?type=public&q=pasta&app_id=${appId}&app_key=${appKey}`, {
+        const response = await axios.get(`https://api.edamam.com/api/recipes/v2?type=public&q=pasta&app_id=${import.meta.env.VITE_APP_ID}&app_key=${import.meta.env.VITE_APP_KEY}`, {
           headers: {
             Accept: "application/json",
-            "Edamam-Account-User": userId,
+            "Edamam-Account-User": import.meta.env.VITE_APP_ID,
           }
         });
         setRecipes(response.data.hits);
@@ -28,14 +27,12 @@ export default function Register() {
 
   return (
       <div>
-        <h1>Student Dashboard</h1>
-        <h2>Recepten</h2>
         <ul>
           {recipes.map((recipe, index) => (
-              <li key={index}>
+              <li key={index} >
                 <h3>{recipe.recipe.label}</h3>
                 <img src={recipe.recipe.image} alt={recipe.recipe.label} />
-                <a href={recipe.recipe.url} target="_blank" rel="noopener noreferrer">Bekijk recept</a>
+                <Link to={recipe.recipe.url} target="_blank" rel="noopener noreferrer">Bekijk recept</Link>
               </li>
           ))}
         </ul>
