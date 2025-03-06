@@ -1,15 +1,5 @@
 import React, { useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
-import { AuthProvider, useAuth } from "./context/AuthContext";
 import axios from "axios";
-import Navigatie from "./Components/Navigatie/Navigatie.jsx";
-import FontLoader from "./Components/FontLoader/Fonts.jsx";
-import Home from "./Pages/Home.jsx";
-import About from "./Pages/About.jsx";
-import Contact from "./Pages/Contact.jsx";
-import Login from "./Pages/Login.jsx";
-import Register from "./Pages/Register.jsx";
-import NotFound from "./Pages/NotFound.jsx";
 
 export default function App() {
     useEffect(() => {
@@ -17,35 +7,13 @@ export default function App() {
     }, []);
 
     return (
-        <AuthProvider>
-            <FontLoader />
-            <Navigatie />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/login" element={<Login />} />
-                <Route
-                    path="/register"
-                    element={
-                        <PrivateRoute>
-                            <Register />
-                        </PrivateRoute>
-                    }
-                />
-                <Route path="*" element={<NotFound />} />
-            </Routes>
-        </AuthProvider>
+        <div>
+            <h1>Welkom bij Villa Vredestein! 🏡</h1>
+            <p>Hier komt je app-content.</p>
+        </div>
     );
 }
 
-// Routebescherming voor ingelogde gebruikers
-function PrivateRoute({ children }) {
-    const { isLoggedIn } = useAuth();
-    return isLoggedIn ? children : <Login />;
-}
-
-// Edamam API ophalen
 async function fetchRecipes(query) {
     try {
         const appId = "6497d4b5";
