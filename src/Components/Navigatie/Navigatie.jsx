@@ -3,7 +3,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import { FaInstagram, FaWhatsapp, FaUser } from "react-icons/fa";
 import "./Navigatie.css";
 
-export default function Navigatie() {
+const Navigatie = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const location = useLocation();
 
@@ -18,15 +18,11 @@ export default function Navigatie() {
     return (
         <nav className="navigatie-container">
             <h1 className="logo">Villa Vredestein</h1>
-
-            {/* Hamburger-menu icoon zichtbaar op mobiel */}
             <div className={`hamburger ${menuOpen ? "open" : ""}`} onClick={toggleMenu}>
                 <div className="bar"></div>
                 <div className="bar"></div>
                 <div className="bar"></div>
             </div>
-
-            {/* Navigatielinks met iconen */}
             <ul className={`nav-links ${menuOpen ? "show" : ""}`}>
                 <li><NavLink to="/" className="default-link">Home</NavLink></li>
                 <li><NavLink to="/about" className="default-link">About</NavLink></li>
@@ -54,3 +50,4 @@ export default function Navigatie() {
         </nav>
     );
 }
+export default Navigatie;
