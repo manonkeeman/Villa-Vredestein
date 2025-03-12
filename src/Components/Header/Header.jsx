@@ -1,6 +1,6 @@
 import React from "react";
-import Navigatie from "./Navigatie/Navigatie.jsx";
-import "./Navigatie/Navigatie.css";
+import Navigatie from "../Navigatie/Navigatie.jsx";
+import "../Navigatie/Navigatie.css";
 import "./Header.css";
 
 const Header = () => {
