@@ -1,79 +1,88 @@
 body {
+    font-family: "Nunito Sans", sans-serif;
     margin: 0;
+    padding: 0;
     background-color: black;
     color: white;
-    font-family: "Nunito Sans", sans-serif;
 }
-
-.bento-wrapper {
+.wrapper {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    justify-content: flex-start;
-    height: 100vh;
+    width: 100%;
+    max-width: 85vw;
+    margin: 0;
+    padding: 2rem;
 }
-
 .bento-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Bovenste rij: 2 kolommen */
-    grid-template-rows: 450px;
-    gap: 10px;
-    padding: 10px;
-    max-width: 1170px;
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
+    grid-template-rows: auto auto;
+    gap: 1rem;
+    width: 85vw;
+    max-width: 100%;
     width: 100%;
-    margin: 0 auto;
+    padding: 1rem;
 }
-
 .box {
+    height: 250px;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #1a1a1a;
     border-radius: 10px;
-    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    transition: transform 1s ease-in-out;
 }
-
-.box2 {
-    grid-column: 2 /3;
-    grid-row: 1;
+.box:hover {
+    transform: scale(1.1);
+}
+.box1, .box4 {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    padding: 1rem;
+}
+.box1, .box4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    padding: 1rem;
+}
+.btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: white;
+    background-color: #ff6b6b;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
 }
 
-.villa-image {
+.btn:hover {
+    background-color: #FCBC2D;
+}
+.box1 {
+    grid-column: span 2;
+}
+.box2 {
+    grid-column: span 1;
+}
+.box3, .box4, .box5 {
+    grid-column: span 1;
+}
+.box img {
+    border-radius: 10px;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Zorgt ervoor dat de afbeelding netjes binnen de box blijft */
-    border-radius: 10px;
+    max-height: 250px;
+    object-fit: cover;
 }
-
-.bento-grid-onderste {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* ✅ FIX: Box 3, 4 en 5 naast elkaar */
-    grid-template-rows: 250px; /* ✅ Ze blijven 250px hoog */
-    gap: 10px;
-    max-width: 1170px;
-    width: 100%;
-    margin: 0 auto;
-}
-
 @media (max-width: 768px) {
-    .bento-grid, .bento-grid-onderste {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        max-width: 400px;
-        margin: 0 auto;
-    }
-
-    .box {
-        width: 100%;
-        height: 250px;
-        max-width: 400px;
-        margin: 0px auto;
-        text-align: center;
+    .bento-grid {
+        grid-template-columns: 1fr;
     }
 }
