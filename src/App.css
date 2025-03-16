@@ -1,7 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 #root {
-  max-width: 1280px;
+  width: 100%;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Aubrey','Nunito Sans', sans-serif;
+  background-color: black;
+  color: white;
+  margin: 0;
+  padding: 0;
 }
