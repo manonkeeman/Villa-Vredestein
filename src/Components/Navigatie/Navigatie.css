@@ -14,70 +14,57 @@
   padding: 10px 20px;
   color: white;
   box-sizing: border-box;
-  z-index: 1000;
+  transform: translateX(40px);
 }
-
 .h1, .title {
   font-family: "Aubrey", serif;
 }
-
 h1, h2, h3 {
   font-family: "Aubrey", serif;
   font-weight: 400;
 }
-
 p, span, div {
   font-family: "Nunito Sans", sans-serif;
 }
-
 .logo {
   font-size: 30px;
   font-weight: bold;
 }
-
-/* Navigatielinks standaardstijl */
 .nav-links {
   display: flex;
   list-style: none;
   padding: 0;
   margin: 0;
   flex-direction: nowrap;
+  justify-content: flex-end;
+  flex-grow: 1;
 }
-
 .nav-links li {
   margin: 0 10px;
 }
-
 .default-link {
   color: white;
   text-decoration: none;
   font-size: 12px;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
-
 .default-link:hover {
   color: #f8c93c;
 }
-
-/* Icon styling */
 .icon-link {
   color: white;
-  font-size: 1.5rem; /* Grootte van de iconen */
+  font-size: 1.5rem;
   margin-left: 10px;
   transition: color 0.3s ease;
 }
-
 .icon-link:hover {
-  color: #f8c93c; /* Geel hover effect */
+  color: #f8c93c;
 }
-
-/* Hamburger-menu-stijl */
 .hamburger {
   display: none;
   cursor: pointer;
   margin-left: 10px;
 }
-
 .hamburger .bar {
   width: 25px;
   height: 3px;
@@ -86,13 +73,12 @@ p, span, div {
   transition: all 0.3s ease;
 }
 
-/* Mobiele weergave */
+
 @media (max-width: 768px) {
   .hamburger {
     display: block;
     margin-left: -5px ;
   }
-
   .nav-links {
     display: none;
     flex-direction: column;
@@ -105,11 +91,9 @@ p, span, div {
     z-index: 1001;
     border-radius: 0 0 10px 10px;
   }
-
   .nav-links.show {
     display: flex;
   }
-
   .nav-links li {
     margin: 10px 0;
     text-align: center;
