@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
 #root {
   width: 100%;
   max-width: 1000px;
@@ -6,7 +8,7 @@
   box-sizing: border-box;
 }
 body {
-  font-family: 'Aubrey','Nunito Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
   background-color: black;
   color: white;
   margin: 0;

@@ -11,14 +11,18 @@ const Home = () => {
                 content={
                     <div className="bento-wrapper">
                         <div className="box box1">
-                            <h2>Welkom bij Villa Vredestein</h2>
-                            <p>Een unieke plek waar karakter, rust en avontuur samenkomen.</p>
+                            <h4>Welkom bij Villa Vredestein</h4>
+                            <p>Een unieke plek waar karakter,
+                                rust en avontuur samenkomen.
+                                Ontsnap aan de drukte,
+                                geniet van de sfeer en ontdek
+                                een wereld vol mogelijkheden. </p>
                         </div>
-                        <div className="box box2-5"
-                             style={{ backgroundImage: `url(${VillaVredestein})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
-                        </div>
-                        <div className="box box3">
-                            <p>Hier komt een korte tekst.</p>
+                        <div className="box box2-5">
+                        <img src={VillaVredestein} alt="Villa Vredestein" />
+                    </div>
+                    <div className="box box3">
+                    <p>Hier komt een korte tekst.</p>
                         </div>
                     </div>
                 }
