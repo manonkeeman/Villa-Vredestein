@@ -1,26 +1,62 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuth } from "../context/AuthContext.jsx";
 import { useNavigate } from "react-router-dom";
+import BentoBox from "../Components/BentoBox/BentoBox.jsx";  // ✅ BentoBox importeren
 import "./Login.css";
-import {jwtDecode} from "jwt-decode";
 
 const Login = () => {
     const { login } = useAuth();
     const navigate = useNavigate();
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
-    const decoded = jwtDecode(token);
-    console.log("Decoded token:", decoded);
+    const [formData, setFormData] = useState({
+        email: "",
+        password: "",
+    });
 
-    const handleLogin = () => {
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
         login();
-        navigate("/recepten");
+        navigate("/recipe");
     };
 
     return (
-        <div>
-            <h2>Inloggen</h2>
-            <p>Welkom, {decoded.name}!</p> {/* ✅ Laat de naam uit de token zien */}
-            <button onClick={handleLogin}>Log in</button>
+        <div className="login-page">
+            <BentoBox
+                title="Welkom bij de Loginpagina"
+                content={
+                    <div className="bento-wrapper">
+                        <div className="box box1">
+                            <h2>Log in bij jouw account</h2>
+                            <form onSubmit={handleSubmit} className="login-form">
+                                <div className="input-group">
+                                    <label>Emailadres</label>
+                                    <input type="email" name="email" value={formData.email} onChange={handleChange}
+                                           required/>
+                                </div>
+                                <div className="input-group">
+                                    <label>Wachtwoord</label>
+                                    <input type="password" name="password" value={formData.password}
+                                           onChange={handleChange} required/>
+                                    <a href="/forgot-password" className="forgot-password">Wachtwoord vergeten?</a>
+                                </div>
+                        <button type="submit" className="login-button">Log in</button>
+                    </form>
+                        </div>
+                        <div className="box box2">
+                            <iframe
+                                src="https://www.youtube.com/embed/PoQdedhOXwI?autoplay=1&mute=1&controls=0&loop=1&playlist=PoQdedhOXwI"
+                                title="YouTube video"
+                                frameBorder="0"
+                                allow="autoplay; encrypted-media; fullscreen"
+                                allowFullScreen
+                            ></iframe>
+                        </div>
+                    </div>
+                }
+            />
         </div>
     );
 };
