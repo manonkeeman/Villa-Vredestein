@@ -93,3 +93,37 @@
     padding: 1rem;
     font-size: 12px;
 }
+@media (max-width: 768px) {  /* 📌 Voor schermen kleiner dan 768px */
+    .bento-grid {
+        display: flex;  /* ✅ Verander de grid naar een flexbox */
+        flex-direction: column;  /* ✅ Zet alle boxen onder elkaar */
+        align-items: center; /* ✅ Zorgt dat alles mooi gecentreerd blijft */
+        justify-content: center;
+        width: 100%;
+        padding: 0;
+    }
+
+    .bento-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%; /* ✅ Zorg dat alle boxen de volledige breedte gebruiken */
+        gap: 10px;
+    }
+
+    .box {
+        width: 90%; /* ✅ Alle boxen nemen de volledige breedte in */
+        max-width: 400px;
+        height: auto; /* ✅ Hoogte wordt automatisch aangepast */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .box2-5 {
+        width: 90%; /* ✅ Zorg dat de afbeelding ook volledig onder box 1 komt */
+        max-width: 400px;
+    }
+
+}

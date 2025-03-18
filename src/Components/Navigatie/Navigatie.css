@@ -99,3 +99,25 @@ p, span, div {
     text-align: center;
   }
 }
+@media (max-width: 768px) {
+  .navigatie-container {
+    display: flex;
+    flex-direction: column; /* ✅ Stapelt de navigatie-items onder elkaar */
+    justify-content: center; /* ✅ Centreert het logo en de links */
+    align-items: center;
+    padding: 10px 0;
+    width: 100%;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* ✅ Ruimte tussen links */
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .logo {
+    margin-bottom: 10px; /* ✅ Ruimte onder het logo */
+  }
+}
