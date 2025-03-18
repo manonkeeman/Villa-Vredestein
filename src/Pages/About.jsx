@@ -1,5 +1,6 @@
 import React from "react";
-import "../Styles/BentoGrid.css"; // ✅ Import de gedeelde grid-stijlen
+import "../Styles/BentoGrid.css";
+import MaximManonChevroletSuburban from "../Assets/Images/Maxim_Manon_ChevroletSuburban.jpg";
 
 const About = () => {
     return (
@@ -10,7 +11,7 @@ const About = () => {
             </div>
 
             <div className="box box2">
-                <img src="/images/about.jpg" alt="Over Ons"/>
+                <img src={MaximManonChevroletSuburban} alt="Maxim Manon Chevrolet Suburban"/>
             </div>
 
             <div className="box box3">
@@ -22,10 +23,7 @@ const About = () => {
             </div>
 
             <div className="box box5">
-                <video autoPlay loop muted playsInline width="100%">
-                    <source src="/videos/AboutVilla.mp4" type="video/mp4"/>
-                    Your browser does not support the video tag.
-                </video>
+                <p>De Vredesteiners</p>
             </div>
         </div>
     );
