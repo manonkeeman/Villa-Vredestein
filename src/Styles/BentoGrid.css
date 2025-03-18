@@ -4,7 +4,8 @@
     grid-template-rows: repeat(2, auto);
     gap: 10px;
     width: 85vw;
-    max-width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 10px;
 }
 .bento-wrapper {
@@ -15,13 +16,14 @@
     width: 900px;
     height: 600px;
     max-width: 100%;
+    margin: 0 auto;
 }
 .box {
     display: flex;
     height: 250px;
     border-radius: 10px;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     transition: transform 1s ease-in-out;
     overflow: hidden;
 }
@@ -93,11 +95,11 @@
     padding: 1rem;
     font-size: 12px;
 }
-@media (max-width: 768px) {  /* 📌 Voor schermen kleiner dan 768px */
+@media (max-width: 768px) {
     .bento-grid {
-        display: flex;  /* ✅ Verander de grid naar een flexbox */
-        flex-direction: column;  /* ✅ Zet alle boxen onder elkaar */
-        align-items: center; /* ✅ Zorgt dat alles mooi gecentreerd blijft */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         justify-content: center;
         width: 100%;
         padding: 0;
@@ -108,21 +110,21 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        width: 100%; /* ✅ Zorg dat alle boxen de volledige breedte gebruiken */
+        width: 100%;
         gap: 10px;
     }
 
     .box {
-        width: 90%; /* ✅ Alle boxen nemen de volledige breedte in */
+        width: 90%;
         max-width: 400px;
-        height: auto; /* ✅ Hoogte wordt automatisch aangepast */
+        height: auto;
         display: flex;
         justify-content: center;
         align-items: center;
         text-align: center;
     }
     .box2-5 {
-        width: 90%; /* ✅ Zorg dat de afbeelding ook volledig onder box 1 komt */
+        width: 90%;
         max-width: 400px;
     }
 
