@@ -74,7 +74,6 @@ const Login = () => {
                             <iframe
                                 src="https://www.youtube.com/embed/PoQdedhOXwI?autoplay=1&mute=1&controls=0&loop=1&playlist=PoQdedhOXwI"
                                 title="YouTube video"
-                                frameBorder="0"
                                 allow="autoplay; encrypted-media; fullscreen"
                                 allowFullScreen
                             ></iframe>

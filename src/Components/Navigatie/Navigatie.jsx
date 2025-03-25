@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { FaInstagram, FaWhatsapp, FaUser } from "react-icons/fa";
 import "./Navigatie.css";
-import Logo from "./VVLogo.png";
+import Logo from "./VV Logo.png";
 
 const Navigatie = () => {
     const [menuOpen, setMenuOpen] = useState(false);

@@ -1,40 +1,51 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  padding-top: 80px;
+  overflow-x: hidden;
+}
 .navigatie-container {
+  position: fixed;
   display: flex;
   justify-content: space-between;
+  box-sizing: border-box;
   align-items: center;
-  background-color: black;
-  height: 50px;
+  padding: 0 20px;
+  height: 80px;
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
   top: 0;
   left: 0;
-  z-index: 1000;
-  padding-top: 20px;
-  padding: 10px 20px;
-  color: white;
-  box-sizing: border-box;
-  transform: translateX(-20px);
+  overflow: hidden;
+  background-color: black;
 }
-.h1, .title {
-  font-family: "Poppins", serif;
+h1, .title {
+  font-family: "Poppins", sans-serif;
 }
 h1, h2, h3 {
-  font-family: "Poppins", serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
 }
 p, span, div {
   font-family: "Poppins", sans-serif;
 }
+.logo {
+  padding-top: 5px;
+}
 .logo-link {
-  text-decoration: none;
-  color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
 }
 .logo-img {
-  width: 150px;
-  height: auto;
-  margin-top: 20px;
+  width: auto;
+  height: 75px;
+  margin: 0;
+  padding: 0;
+  display: block;
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
 }
@@ -43,10 +54,10 @@ p, span, div {
 }
 .nav-links {
   display: flex;
+  flex-direction: row;
   list-style: none;
   padding: 0;
   margin: 0;
-  flex-direction: row;
   justify-content: flex-end;
   flex-grow: 1;
 }
@@ -57,7 +68,7 @@ p, span, div {
   color: white;
   text-decoration: none;
   font-size: 12px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 .default-link:hover {
   color: #f8c93c;
@@ -71,19 +82,6 @@ p, span, div {
 .icon-link:hover {
   color: #f8c93c;
 }
-.hamburger {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  z-index: 1001;
-}
-.hamburger .bar {
-  width: 25px;
-  height: 3px;
-  background-color: white;
-  margin: 4px;
-  transition: all 0.3s ease;
-}
 
 @media (max-width: 768px) {
   .hamburger {
@@ -93,7 +91,6 @@ p, span, div {
     z-index: 1001;
     padding: 10px;
   }
-
   .hamburger .bar {
     width: 30px;
     height: 3px;
@@ -101,8 +98,6 @@ p, span, div {
     margin: 5px;
     transition: all 0.3s ease-in-out;
   }
-
-  /* ✅ Hamburger-animatie bij openen */
   .hamburger.open .bar:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
   }
@@ -112,14 +107,12 @@ p, span, div {
   .hamburger.open .bar:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
   }
-
-  /* ✅ Verberg menu standaard */
   .nav-links {
     display: none;
     flex-direction: column;
     background-color: #222;
     position: absolute;
-    top: 50px;
+    top: 80px;
     left: 0;
     width: 100%;
     padding: 10px 0;
@@ -127,50 +120,12 @@ p, span, div {
     border-radius: 0 0 10px 10px;
     text-align: center;
   }
-
-  @media (max-width: 768px) {
-    .hamburger {
-      display: flex;
-      flex-direction: column;
-      cursor: pointer;
-      z-index: 1001;
-      padding: 10px;
-    }
-    .hamburger .bar {
-      width: 30px;
-      height: 3px;
-      background-color: white;
-      margin: 5px;
-      transition: all 0.3s ease-in-out;
-    }
-    .hamburger.open .bar:nth-child(1) {
-      transform: translateY(8px) rotate(45deg);
-    }
-    .hamburger.open .bar:nth-child(2) {
-      opacity: 0;
-    }
-    .hamburger.open .bar:nth-child(3) {
-      transform: translateY(-8px) rotate(-45deg);
-    }
-    .nav-links {
-      display: none;
-      flex-direction: column;
-      background-color: #222;
-      position: absolute;
-      top: 50px;
-      left: 0;
-      width: 100%;
-      padding: 10px 0;
-      z-index: 1000;
-      border-radius: 0 0 10px 10px;
-      text-align: center;
-    }
-    .nav-links.show {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .nav-links li {
-      margin: 10px 0;
-    }
+  .nav-links.show {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
+  .nav-links li {
+    margin: 10px 0;
+  }
+}

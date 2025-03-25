@@ -1,0 +1,29 @@
+.contact-button {
+    background-color: #D8D6D3;
+    color: black;
+    border: none;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: "Poppins", sans-serif;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+.contact-button:hover {
+    background-color: #FCBC2D;
+    color: black;
+}
+.contact-images {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 600px;
+    gap: 50px;
+    overflow: hidden;
+}
+.contact-image {
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+    border-radius: 10px;
+}
