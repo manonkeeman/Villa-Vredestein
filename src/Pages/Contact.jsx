@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "../Styles/BentoGrid.css";
 import "./Contact.css";
-import "../Styles/BentoGrid.css"; // ✅ Import de gedeelde grid-stijlen
+import "../Styles/BentoGrid.css";
+import InkijkjeVredestein from "../Assets/Images/InkijkjeinVredestein.jpeg";
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -69,6 +70,10 @@ const Contact = () => {
 
                         <button type="submit" className="contact-button">Verstuur</button>
                     </form>
+                </div>
+                <div className="contact-images">
+                    <img src={InkijkjeVredestein} alt="InkijkjeVredestein" className="Inkijkje in Vredestein" />
+                    <img src={InkijkjeVredestein} alt="InkijkjeVredestein" className="Inkijkje in Vredestein" />
                 </div>
             </div>
         </div>
