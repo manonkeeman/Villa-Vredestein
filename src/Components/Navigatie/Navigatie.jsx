@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { FaInstagram, FaWhatsapp, FaUser } from "react-icons/fa";
 import "./Navigatie.css";
-import Logo from "./VV Logo.png";
+import Logo from "../../Assets/Images/VVLogo.png";
 
 const Navigatie = () => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -15,7 +15,7 @@ const Navigatie = () => {
         if (menuOpen) {
             setMenuOpen(false);
         }
-    }, [location]);
+    }, [location.pathname]);
 
     return (
         <nav className="navigatie-container">
@@ -25,7 +25,7 @@ const Navigatie = () => {
                 </NavLink>
             </div>
 
-            <ul className={`nav-links ${menuOpen ? "show" : ""}`}>
+            <ul className={`nav-links ${menuOpen ? "show" : ""}`} >
                 <li><NavLink to="/" className="default-link" onClick={() => setMenuOpen(false)}>Home</NavLink></li>
                 <li><NavLink to="/about" className="default-link" onClick={() => setMenuOpen(false)}>About</NavLink>
                 </li>
