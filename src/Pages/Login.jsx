@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useAuth } from "../context/AuthContext.jsx";
 import { useNavigate } from "react-router-dom";
-import BentoBox from "../Components/BentoBox/BentoBox.jsx";  // ✅ BentoBox importeren
+import ReactPlayer from 'react-player/youtube';
+import BentoBox from "../Components/BentoBox/BentoBox.jsx";
+import Button from "../Components/Buttons/Button.jsx";
 import "./Login.css";
 
 const Login = () => {
@@ -40,43 +42,58 @@ const Login = () => {
                             <form onSubmit={handleSubmit} className="login-form">
                                 <div className="input-group">
                                     <label>Emailadres</label>
-                                    <input type="email" name="email" value={formData.email} onChange={handleChange}
-                                           required
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        required
                                     />
                                 </div>
+
                                 <div className="input-group">
                                     <label>Wachtwoord</label>
-                                    <input type="password"
-                                           name="password"
-                                           value={formData.password}
-                                           onChange={handleChange}
-                                           required
+                                    <input
+                                        type="password"
+                                        name="password"
+                                        value={formData.password}
+                                        onChange={handleChange}
+                                        required
                                     />
                                 </div>
-                                    <div className="login-options">
-                                        <label>
-                                            <input
-                                                type="checkbox"
-                                                name="rememberMe"
-                                                checked={formData.rememberMe}
-                                                onChange={handleChange}
-                                            />
-                                            Onthoud mij
-                                        </label>
-                                        <a href="/forgot-password" className="forgot-password">
-                                            Wachtwoord vergeten?</a>
-                                    </div>
-                                    <button type="submit" className="login-button">Log in</button>
+
+                                <div className="login-options">
+                                    <label className="remember-me">
+                                        <input
+                                            type="checkbox"
+                                            name="rememberMe"
+                                            checked={formData.rememberMe}
+                                            onChange={handleChange}
+                                        />
+                                        <span>Onthoud mij</span>
+                                    </label>
+                                    <a href="/forgot-password" className="forgot-password">
+                                        Wachtwoord vergeten?
+                                    </a>
+                                </div>
+
+                                <Button type="submit" text="Log in" />
                             </form>
                         </div>
                         <div className="box box2">
-                            <div className="video-container"></div>
-                            <iframe
-                                src="https://www.youtube.com/embed/PoQdedhOXwI?autoplay=1&mute=1&controls=0&loop=1&playlist=PoQdedhOXwI"
-                                title="YouTube video"
-                                allow="autoplay; encrypted-media; fullscreen"
-                                allowFullScreen
-                            ></iframe>
+                            <div className="video-wrapper">
+                                <ReactPlayer
+                                    className="react-player"
+                                    url="https://www.youtube.com/watch?v=PoQdedhOXwI"
+                                    width="100%"
+                                    height="100%"
+                                    playing
+                                    loop
+                                    muted
+                                    controls={false}
+                                    style={{ borderRadius: '10px', overflow: 'hidden' }}
+                                />
+                            </div>
                         </div>
                     </div>
                 }

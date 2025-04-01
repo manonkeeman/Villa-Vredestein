@@ -9,6 +9,7 @@
     transition: all 0.3s ease-in-out;
     text-transform: uppercase;
     letter-spacing: 1px;
+    margin-top: 1rem;
 }
 .custom-button:hover {
     background-color: #FCBC2D;
