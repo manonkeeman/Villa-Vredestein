@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "../Styles/BentoGrid.css";
 import "./Contact.css";
-import "../Styles/BentoGrid.css";
-import InkijkjeVredestein from "../Assets/Images/InkijkjeinVredestein.jpeg";
+import Button from "../Components/Buttons/Button.jsx";
+import Modal from "../Components/Modal/Modal.jsx";
 
 const Contact = () => {
+    const [showModal, setShowModal] = useState(false);
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
@@ -18,64 +19,87 @@ const Contact = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        const response = await fetch("https://your-api-endpoint.com/send-email", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(formData),
+        setShowModal(true);
+        setFormData({
+            firstName: "",
+            lastName: "",
+            email: "",
+            message: "",
         });
-
-        if (response.ok) {
-            alert("Je bericht is succesvol verzonden!");
-            setFormData({
-                firstName: "",
-                lastName: "",
-                email: "",
-                message: "",
-            });
-        } else {
-            alert("Er ging iets mis. Probeer het opnieuw.");
-        }
     };
 
     return (
         <div className="contact-page">
             <div className="bento-grid">
                 <div className="box box1">
-                    <h2>Neem contact met ons op</h2>
-                    <p>Laat hieronder je bericht achter, dan nemen we zo snel mogelijk contact met je op.</p>
+                    <h1>Neem contact met ons op</h1>
+                    <p>Heb je vragen, wil je meer informatie over Villa Vredestein, of ben je benieuwd naar onze missie en visie?
+                        <br/>Vul het contactformulier hieronder in en we nemen zo snel mogelijk contact met je op.
+                    </p>
 
                     <form onSubmit={handleSubmit} className="contact-form">
-                        <div className="input-group">
-                            <label>Voornaam</label>
-                            <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} required />
-                        </div>
+                        <div className="name-fields">
+                            <div className="input-group">
+                                <label>Voornaam</label>
+                                <input
+                                    type="text"
+                                    name="firstName"
+                                    value={formData.firstName}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
 
-                        <div className="input-group">
-                            <label>Achternaam</label>
-                            <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} required />
+                            <div className="input-group">
+                                <label>Achternaam</label>
+                                <input
+                                    type="text"
+                                    name="lastName"
+                                    value={formData.lastName}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
                         </div>
 
                         <div className="input-group">
                             <label>Emailadres</label>
-                            <input type="email" name="email" value={formData.email} onChange={handleChange} required />
+                            <input
+                                type="email"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                required
+                            />
                         </div>
 
                         <div className="input-group">
                             <label>Bericht</label>
-                            <textarea name="message" value={formData.message} onChange={handleChange} rows="4" required />
+                            <textarea
+                                name="message"
+                                value={formData.message}
+                                onChange={handleChange}
+                                rows="4"
+                                required
+                            />
                         </div>
 
-                        <button type="submit" className="contact-button">Verstuur</button>
+                        <Button type="submit" text="verstuur" />
                     </form>
                 </div>
-                <div className="contact-images">
-                    <img src={InkijkjeVredestein} alt="InkijkjeVredestein" className="Inkijkje in Vredestein" />
-                    <img src={InkijkjeVredestein} alt="InkijkjeVredestein" className="Inkijkje in Vredestein" />
+
+                <div className="location">
+                    <iframe
+                        src="https://storage.googleapis.com/maps-solutions-sw132nzda1/commutes/e0od/commutes.html"
+                        className="location-map"
+                        loading="lazy"
+                        allowFullScreen
+                        title="Locatie Villa Vredestein"
+                    />
                 </div>
             </div>
+
+            <Modal show={showModal} onClose={() => setShowModal(false)} />
         </div>
     );
 };

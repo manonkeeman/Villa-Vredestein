@@ -1,3 +1,27 @@
+.bento-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: stretch;
+    box-sizing: border-box;
+}
+.contact-form input,
+.contact-form textarea {
+    width: 110%;
+    font-size: 12px;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+.name-fields {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    flex-wrap: wrap;
+}
+.name-fields .input-group {
+    flex: 1;
+    min-width: 200px;
+}
 .contact-button {
     background-color: #D8D6D3;
     color: black;
@@ -8,22 +32,41 @@
     font-size: 12px;
     font-family: "Poppins", sans-serif;
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    margin-top: 1rem;
 }
 .contact-button:hover {
     background-color: #FCBC2D;
     color: black;
 }
-.contact-images {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-height: 600px;
-    gap: 50px;
-    overflow: hidden;
-}
-.contact-image {
+.location {
     width: 100%;
-    height: 50%;
-    object-fit: cover;
+    height: 100%;
+    overflow: hidden;
     border-radius: 10px;
+}
+.location-map {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+@media (max-width: 768px) {
+    .bento-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+    .contact-page {
+        padding-top: 120px;
+    }
+    .name-fields {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .custom-button {
+        margin-top: 1rem;
+        margin-bottom: 4rem;
+    }
+    .box {
+        padding: 1rem;
+    }
 }

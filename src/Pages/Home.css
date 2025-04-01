@@ -1,13 +1,18 @@
+.home .box p {
+    line-height: 2;
+    margin-bottom: 1rem;
+
+}
 .home .box2-5 {
     grid-column: span 2;
     grid-row: 1 / 3;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
     width: 100%;
-    height: 100%;
+    height: 500px;
     border-radius: 10px;
+
 }
 .home .box2-5 img {
     width: 100%;
@@ -19,4 +24,21 @@
 .home .box2-5:hover img {
     filter: grayscale(0%);
     transform: scale(1.1);
+}
+@media (max-width: 768px) {
+    .home .box2-5 {
+        width: 90vw;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 1rem;
+        box-sizing: border-box;
+        text-align: center;
+        flex-direction: column;
+    }
+    .home .box2-5 img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 10px;
+    }
 }
