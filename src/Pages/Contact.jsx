@@ -84,10 +84,11 @@ const Contact = () => {
                             />
                         </div>
 
-                        <Button type="submit" text="verstuur" />
+                        <Button type="submit" text="verstuur" classname="custom-button" />
                     </form>
                 </div>
 
+                <div className="box box2">
                 <div className="location">
                     <iframe
                         src="https://storage.googleapis.com/maps-solutions-sw132nzda1/commutes/e0od/commutes.html"
@@ -96,6 +97,7 @@ const Contact = () => {
                         allowFullScreen
                         title="Locatie Villa Vredestein"
                     />
+                </div>
                 </div>
             </div>
 
