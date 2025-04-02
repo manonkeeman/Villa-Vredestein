@@ -10,6 +10,7 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-top: 1rem;
+    margin-bottom: 3rem;
 }
 .custom-button:hover {
     background-color: #FCBC2D;
