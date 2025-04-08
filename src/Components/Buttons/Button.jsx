@@ -1,25 +1,33 @@
 import React from "react";
 import "./Button.css";
 import PropTypes from "prop-types";
+import { ArrowRight } from "lucide-react";
 
 const Button = ({ text, onClick, type = "button", variant = "primary" }) => {
     const getClassName = () => {
         switch (variant) {
             case "link":
                 return "btn-link";
-            case "round":
-                return "btn-round";
+            case "secundary":
+                return "btn-secundary";
             default:
-                return "custom-button";
+                return "btn-primary";
         }
     };
 
     return (
         <button className={getClassName()} onClick={onClick} type={type}>
-            {variant === "round" ? "→" : text}
+            {variant === "secundary" ? (
+                <>
+                    {text} <ArrowRight size={16} style={{ marginLeft: "8px" }} />
+                </>
+            ) : (
+                text
+            )}
         </button>
     );
 };
+
 export default Button;
 
 Button.propTypes = {

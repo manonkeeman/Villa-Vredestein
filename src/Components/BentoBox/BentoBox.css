@@ -12,11 +12,10 @@
     gap: 10px;
     width: 100%;
     max-width: 1200px;
-    margin: 0 auto;
     box-sizing: border-box;
 }
 .box {
-    height: 250px;
+    heightx: 250px;
     display: flex;
     border-radius: 10px;
     justify-content: center;

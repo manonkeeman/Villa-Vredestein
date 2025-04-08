@@ -2,7 +2,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2rem 0;
 }
 .bento-wrapper {
     display: grid;
@@ -11,12 +10,16 @@
     width: 900px;
     max-width: 100%;
 }
-.box1 {
+.box1, .box2 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    width: 100%;
     border-radius: 10px;
+    box-sizing: border-box;
+}
+.box1 {
+    align-items: flex-start;
 }
 .box1 h2 {
     font-size: 24px;
@@ -55,7 +58,7 @@
 .remember-me {
     display: flex;
     align-items: center;
-    gap: 0.2rem;
+    gap: 0.5rem;
 }
 .forgot-password {
     font-size: 12px;
@@ -66,15 +69,6 @@
     text-decoration: underline;
     color: #f8a51a;
 }
-.box2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 400px;
-    position: relative;
-    border-radius: 10px;
-    overflow: hidden;
-}
 .video-wrapper {
     position: relative;
     padding-top: 56.25%;
@@ -83,7 +77,6 @@
     overflow: hidden;
     margin-top: 2rem;
 }
-
 .video-wrapper > div {
     position: absolute !important;
     top: 0;
@@ -93,58 +86,43 @@
     border-radius: 10px !important;
     overflow: hidden;
 }
-.react-player {
-    border-radius: 10px;
-    overflow: hidden;
-}
 .react-player iframe {
-    width: 100%; !important;
-    height: 100%; !important;
-    border-radius: 10px; !important;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
     filter: grayscale(100%);
     transition: filter 0.5s ease;
 }
 .video-wrapper:hover .react-player iframe {
     filter: grayscale(0%);
 }
+
 @media (max-width: 768px) {
     .bento-wrapper {
-        flex-direction: column;
         display: flex;
-        width: 100%;
-        padding: 0 1rem;
-        box-sizing: border-box;
+        flex-direction: column;
+        gap: 2rem;
     }
-    .login-page {
-        padding-top: 110px;
+    .box1 {
+        align-items: center;
+        text-align: center;
     }
-    .box1, .box2 {
-        width: 100%;
-        margin-top: 2rem;
+    .box1 h2,
+    .box1 p {
+        text-align: center;
+    }
+    .login-form {
+        max-width: 400px;
+        align-items: center;
     }
     .video-wrapper {
         width: 100%;
         padding-top: 56.25%;
-        position: relative;
-        margin-top: 2rem;
     }
     .video-wrapper > div {
-        position: absolute !important;
         top: 0;
         left: 0;
         width: 100% !important;
         height: 100% !important;
-        max-width: 100%;
-        border-radius: 10px !important;
-        overflow: hidden;
-        max-width: 100%;
-    }
-    .react-player iframe {
-        width: 100%;
-        height: 100%;
-        border-radius: 10px;
-    }
-    .login-form {
-        margin-bottom: 2rem;
     }
 }

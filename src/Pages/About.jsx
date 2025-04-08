@@ -9,8 +9,7 @@ const About = () => {
             <div className="bento-grid">
                 <div className="box box1">
                     <h1>Een huis met een verhaal</h1>
-                    <p>Gebouwd op historie, gevuld met dromen. Elke kamer fluistert een stukje verleden. Meer verhalen ->
-                    </p>
+                    <p>Gebouwd op historie, gevuld met dromen. Elke kamer fluistert een stukje verleden.</p>
                 </div>
 
                 <div className="box box2">
@@ -19,12 +18,12 @@ const About = () => {
 
                 <div className="box box3">
                     <h1>Ruimte voor verbinding</h1>
-                    <p>Samen tafelen, verhalen delen, elkaar vinden. Hier ontstaat echte ontmoeting. Klik hier om in te loggen -></p>
+                    <p>Samen tafelen, verhalen delen, elkaar vinden. Hier ontstaat echte ontmoeting.</p>
                 </div>
 
                 <div className="box box4">
                     <h1>Carpe Diem</h1>
-                    <p>Niets is standaard in Vredestein. Elk hoekje, elk detail vertelt een verhaal. Soms een beetje gek, soms briljant. Maar altijd authentiek. Lees meer over de modernisering -></p>
+                    <p>Niets is standaard in Vredestein. Elk hoekje, elk detail vertelt een verhaal. Soms een beetje gek, soms briljant. Maar altijd authentiek.</p>
                 </div>
 
                 <div className="box box5">
