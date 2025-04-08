@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 .btn-primary {
     background-color: black;
     color: white;
     border: 0.5px solid #FCBC2D;
+=======
+.custom-button {
+    background-color: black;
+    color: #FCBC2D;
+    border: 1px solid #FCBC2D;
+>>>>>>> bd7a647afdf0b6d1d6d7f93d53e07b011ae3e781
     padding: 0.5rem 1.5rem;
     font-size: 14px;
     border-radius: 8px;
@@ -11,6 +18,7 @@
     letter-spacing: 1px;
     margin-top: 1rem;
     margin-bottom: 3rem;
+<<<<<<< HEAD
     width: 150px;
     text-align: center;
 }
@@ -19,6 +27,13 @@
     color: black;
     box-shadow: 0 0 10px rgba(252, 188, 45, 0.5);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s, color 0.3s;
+=======
+}
+.custom-button:hover {
+    background-color: #FCBC2D;
+    color: black;
+    box-shadow: 0 0 10px rgba(252, 188, 45, 0.5);
+>>>>>>> bd7a647afdf0b6d1d6d7f93d53e07b011ae3e781
 }
 
 /* LINK BUTTON */
@@ -27,12 +42,17 @@
   background: transparent;
   color: #FCBC2D;
   border: none;
+<<<<<<< HEAD
   font-size: 1rem;
+=======
+  font-size: 12px;
+>>>>>>> bd7a647afdf0b6d1d6d7f93d53e07b011ae3e781
   cursor: pointer;
   padding: 0.5rem;
   text-decoration: underline;
   transition: color 0.3s ease;
 }
+<<<<<<< HEAD
 .btn-link:hover {
   color: #f8c93c;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s, color 0.3s;
@@ -49,14 +69,38 @@
     font-size: 12px;
     font-family: "Poppins", sans-serif;
     display: inline-flex;
+=======
+
+.btn-link:hover {
+  color: #f8c93c;
+}
+
+/* RONDE BUTTON */
+.btn-round {
+    background-color: #FCBC2D;
+    color: black;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    display: flex;
+>>>>>>> bd7a647afdf0b6d1d6d7f93d53e07b011ae3e781
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
 }
+<<<<<<< HEAD
 .btn-secundary:hover {
     background-color: #FCBC2D;
     color: black;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s, color 0.3s;
 
+=======
+
+.btn-round:hover {
+    background-color: #f8c93c;
+    box-shadow: 0 0 10px rgba(252, 188, 45, 0.6);
+>>>>>>> bd7a647afdf0b6d1d6d7f93d53e07b011ae3e781
 }
