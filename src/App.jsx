@@ -1,25 +1,48 @@
 import React from "react";
+import { Routes, Route } from "react-router-dom";
 import Header from "./Components/Header/Header.jsx";
 import "./App.css";
-import {Route, Routes} from "react-router-dom";
+
 import Home from "./Pages/Home.jsx";
 import About from "./Pages/About.jsx";
 import Contact from "./Pages/Contact.jsx";
 import Login from "./Pages/Login.jsx";
-import Recipe from "./Pages/Recipe.jsx";
+import StudentDashboard from "./Pages/StudentDashboard.jsx";
+import Receptenzoeker from "./Pages/Receptenzoeker.jsx";
 import NotFound from "./Pages/NotFound.jsx";
+import ProtectedRoute from "./Components/Auth/ProtectedRoute.jsx";
 
 function App() {
     return (
         <>
-            <Header/>
+            <Header />
             <Routes>
-                <Route index element={<Home/>}/>
-                <Route path="/about" element={<About/>}/>
-                <Route path="/contact" element={<Contact/>}/>
-                <Route path="/login" element={<Login/>}/>
-                <Route path="/recipe" element={<Recipe/>}/>
-                <Route path="*" element={<NotFound/>}/>
+                {/* Publieke routes */}
+                <Route index element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/login" element={<Login />} />
+
+                {/* Beveiligde routes */}
+                <Route
+                    path="/dashboard"
+                    element={
+                        <ProtectedRoute>
+                            <StudentDashboard />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/dashboard/receptenzoeker"
+                    element={
+                        <ProtectedRoute>
+                            <Receptenzoeker />
+                        </ProtectedRoute>
+                    }
+                />
+
+                {/* 404 */}
+                <Route path="*" element={<NotFound />} />
             </Routes>
         </>
     );

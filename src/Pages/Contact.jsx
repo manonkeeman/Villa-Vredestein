@@ -17,7 +17,7 @@ const Contact = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         setShowModal(true);
         setFormData({
@@ -33,8 +33,11 @@ const Contact = () => {
             <div className="bento-grid">
                 <div className="box box1">
                     <h1>Neem contact met ons op</h1>
-                    <p>Heb je vragen, wil je meer informatie over Villa Vredestein, of ben je benieuwd naar onze missie en visie?
-                        <br/>Vul het contactformulier hieronder in en we nemen zo snel mogelijk contact met je op.
+                    <p>
+                        Heb je vragen, wil je meer informatie over Villa Vredestein, of ben
+                        je benieuwd naar onze missie en visie? <br />
+                        Vul het contactformulier hieronder in en we nemen zo snel mogelijk
+                        contact met je op.
                     </p>
 
                     <form onSubmit={handleSubmit} className="contact-form">
@@ -49,7 +52,6 @@ const Contact = () => {
                                     required
                                 />
                             </div>
-
                             <div className="input-group">
                                 <label>Achternaam</label>
                                 <input
@@ -83,21 +85,20 @@ const Contact = () => {
                                 required
                             />
                         </div>
-
-                        <Button type="submit" text="verstuur" classname="custom-button" />
+                        <Button type="submit" text="Verstuur" variant="primary" />
                     </form>
                 </div>
 
-                <div className="box box2">
-                <div className="location">
-                    <iframe
-                        src="https://storage.googleapis.com/maps-solutions-sw132nzda1/commutes/e0od/commutes.html"
-                        className="location-map"
-                        loading="lazy"
-                        allowFullScreen
-                        title="Locatie Villa Vredestein"
-                    />
-                </div>
+                <div className="box box2 location-box">
+                    <div className="location">
+                        <iframe
+                            src="https://storage.googleapis.com/maps-solutions-sw132nzda1/commutes/e0od/commutes.html"
+                            className="location-map"
+                            loading="lazy"
+                            allowFullScreen
+                            title="Locatie Villa Vredestein"
+                        />
+                    </div>
                 </div>
             </div>
 
