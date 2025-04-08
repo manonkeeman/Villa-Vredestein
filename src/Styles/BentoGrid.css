@@ -1,6 +1,9 @@
 body {
-    padding-top: 110px;
+    background-color: black;
+    color: white;
     box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    padding-top: 110px;
 }
 .bento-grid {
     display: grid;
