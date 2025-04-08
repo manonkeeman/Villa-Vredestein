@@ -4,8 +4,14 @@ import PropTypes from "prop-types";
 const AuthContext = createContext();
 
 const approvedUsers = [
-    { email: "student@villavredestein.com", password: "welkom123" },
-    { email: "manon@villavredestein.com", password: "secure456" },
+    {
+        email: import.meta.env.VITE_USER1_EMAIL,
+        password: import.meta.env.VITE_USER1_PASSWORD,
+    },
+    {
+        email: import.meta.env.VITE_USER2_EMAIL,
+        password: import.meta.env.VITE_USER2_PASSWORD,
+    },
 ];
 
 export const AuthProvider = ({ children }) => {
