@@ -8,10 +8,8 @@ body {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, auto);
     gap: 2rem;
-    max-width: 12400px;
+    max-width: 1240px;
     width: 100%;
-    margin: 0 auto;
-    padding: 10px;
 }
 .bento-wrapper {
     display: flex;
@@ -19,8 +17,6 @@ body {
     align-items: center;
     gap: 2rem;
     width: 100%;
-    margin: 0 auto;
-    padding: 0 1rem;
     box-sizing: border-box;
 }
 .box1,
@@ -35,7 +31,6 @@ body {
     font-size: 12px;
     width: 100%;
     text-align: center;
-    padding: 1rem;
     box-sizing: border-box;
 }
 .box1 { grid-column: span 1; grid-row: 1 / 2; text-align: left; }
@@ -51,8 +46,6 @@ body {
         align-items: center;
         width: 100%;
         max-width: 100%;
-        margin: 0 auto;
-        padding: 0 1rem;
         box-sizing: border-box;
     }
     .bento-grid {
@@ -61,8 +54,6 @@ body {
         align-items: center;
         width: 100%;
         max-width: 100%;
-        margin: 0 auto;
-        padding: 0;
         box-sizing: border-box;
     }
     .box1,
@@ -72,8 +63,6 @@ body {
     .box5 {
         width: 100%;
         max-width: 100%;
-        padding: 1rem;
-        margin: 0 auto;
         text-align: center;
         display: flex;
         flex-direction: column;
