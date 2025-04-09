@@ -1,3 +1,9 @@
+.btn-primary {
+    background-color: black;
+    color: white;
+    border: 0.5px solid #FCBC2D;
+}
+
 .custom-button {
     background-color: black;
     color: #FCBC2D;
@@ -11,28 +17,51 @@
     letter-spacing: 1px;
     margin-top: 1rem;
     margin-bottom: 3rem;
+    width: 150px;
+    text-align: center;
 }
+
+.btn-primary:hover,
 .custom-button:hover {
     background-color: #FCBC2D;
     color: black;
     box-shadow: 0 0 10px rgba(252, 188, 45, 0.5);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s, color 0.3s;
 }
 
 /* LINK BUTTON */
-
 .btn-link {
-  background: transparent;
-  color: #FCBC2D;
-  border: none;
-  font-size: 12px;
-  cursor: pointer;
-  padding: 0.5rem;
-  text-decoration: underline;
-  transition: color 0.3s ease;
+    background: transparent;
+    color: #FCBC2D;
+    border: none;
+    font-size: 12px;
+    cursor: pointer;
+    padding: 0.5rem;
+    text-decoration: underline;
+    transition: color 0.3s ease;
 }
 
 .btn-link:hover {
-  color: #f8c93c;
+    color: #f8c93c;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s, color 0.3s;
+}
+
+/* SECUNDAIRE BUTTON */
+.btn-secundary {
+    background-color: transparent;
+    color: white;
+    border: 0.5px solid #FCBC2D;
+    border-radius: 10px;
+    padding: 0.5rem 1.5rem;
+    font-size: 12px;
+    font-family: "Poppins", sans-serif;
+    display: inline-flex;
+}
+
+.btn-secundary:hover {
+    background-color: #FCBC2D;
+    color: black;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s, color 0.3s;
 }
 
 /* RONDE BUTTON */

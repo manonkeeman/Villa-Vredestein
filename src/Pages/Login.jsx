@@ -1,103 +1,63 @@
 import React, { useState } from "react";
-import { useAuth } from "../context/AuthContext.jsx";
 import { useNavigate } from "react-router-dom";
-import ReactPlayer from 'react-player/youtube';
-import BentoBox from "../Components/BentoBox/BentoBox.jsx";
-import Button from "../Components/Buttons/Button.jsx";
+import { useAuth } from "../Components/Auth/AuthContext";
 import "./Login.css";
+import Button from "../Components/Buttons/Button";
 
 const Login = () => {
-    const { login } = useAuth();
     const navigate = useNavigate();
-    const [formData, setFormData] = useState({
-        email: "",
-        password: "",
-        rememberMe: false,
-    });
+    const { login } = useAuth();
 
-    const handleChange = (e) => {
-        const { name, type, checked, value } = e.target;
-        setFormData((prevData) => ({
-            ...prevData,
-            [name]: type === "checkbox" ? checked : value,
-        }));
-    };
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("formData:", formData);
-        login();
-        navigate("/recipe");
+        const success = login(email, password);
+        if (success) {
+            navigate("/studentdashboard");
+        } else {
+            setError("Ongeldige login. Probeer opnieuw.");
+        }
     };
 
     return (
-        <div className="login-page">
-            <BentoBox
-                title="Welkom bij de Loginpagina"
-                content={
-                    <div className="bento-wrapper">
-                        <div className="box box1">
-                            <h2>Log in bij jouw account</h2>
-                            <p>Welkom! Vul hier je gegevens in.</p>
-                            <form onSubmit={handleSubmit} className="login-form">
-                                <div className="input-group">
-                                    <label>Emailadres</label>
-                                    <input
-                                        type="email"
-                                        name="email"
-                                        value={formData.email}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                </div>
+        <div className="login-wrapper">
+            <div className="login-box login-video-box">
+                <iframe
+                    className="login-video"
+                    width="560"
+                    height="315"
+                    src="https://www.youtube.com/embed/PoQdedhOXwI?autoplay=1&mute=1&loop=1&playlist=PoQdedhOXwI"
+                    title="IVA en Villa Vredestein video"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allow="autoplay; encrypted-media"
+                    allowFullScreen
+                ></iframe>
+            </div>
 
-                                <div className="input-group">
-                                    <label>Wachtwoord</label>
-                                    <input
-                                        type="password"
-                                        name="password"
-                                        value={formData.password}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                </div>
-
-                                <div className="login-options">
-                                    <label className="remember-me">
-                                        <input
-                                            type="checkbox"
-                                            name="rememberMe"
-                                            checked={formData.rememberMe}
-                                            onChange={handleChange}
-                                        />
-                                        <span>Onthoud mij</span>
-                                    </label>
-                                    <a href="/forgot-password" className="forgot-password">
-                                        Wachtwoord vergeten?
-                                    </a>
-                                </div>
-
-                                <Button type="submit" text="Log in" />
-                            </form>
-                        </div>
-                        <div className="box box2">
-                            <div className="video-wrapper">
-                                <ReactPlayer
-                                    className="react-player"
-                                    url="https://www.youtube.com/watch?v=PoQdedhOXwI"
-                                    width="100%"
-                                    height="100%"
-                                    playing
-                                    loop
-                                    muted
-                                    controls={false}
-                                    style={{ borderRadius: '10px', overflow: 'hidden' }}
-                                />
-                            </div>
-                        </div>
-                    </div>
-                }
-            />
+            <div className="login-box login-form-box">
+                <h1>Log hier in</h1>
+                <form onSubmit={handleSubmit}>
+                    <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="E-mailadres"
+                        required
+                    />
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="Wachtwoord"
+                        required
+                    />
+                    <Button type="submit" text="Login" variant="primary" />
+                    {error && <p className="error">{error}</p>}
+                </form>
+            </div>
         </div>
     );
 };
