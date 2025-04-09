@@ -1,10 +1,10 @@
 .login-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    height: 100vh;
+    height: 600px;
     background-color: black;
     color: white;
-    padding: 14rem;
+    padding: 6rem;
     align-items: start;
     box-sizing: border-box;
 }
