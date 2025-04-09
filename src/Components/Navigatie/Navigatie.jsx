@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { FaInstagram, FaWhatsapp, FaUser } from "react-icons/fa";
 import { useAuth } from "../Auth/AuthContext";
 import "./Navigatie.css";
@@ -12,6 +11,8 @@ const Navigatie = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const location = useLocation();
     const isLoginPage = location.pathname === "/login";
+    const ALLOW_LOGOUT_MENU = ["/studentdashboard", "/receptenzoeker"];
+    const showLogoutDropdown = isLoggedIn && ALLOW_LOGOUT_MENU.includes(location.pathname);
     const handleLogout = () => {
         logout();
         navigate("/login");
@@ -39,7 +40,7 @@ const Navigatie = () => {
                         <FaWhatsapp />
                     </a>
                 </li>
-                {isLoggedIn && !isLoginPage ? (
+                {showLogoutDropdown ? (
                 <li className="user-icon-wrapper">
                     <FaUser className="user-icon" onClick={() => setDropdownOpen(!dropdownOpen)} />
                     {dropdownOpen &&  (
