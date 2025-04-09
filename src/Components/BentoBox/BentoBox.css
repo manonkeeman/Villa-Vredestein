@@ -12,11 +12,18 @@
     gap: 10px;
     width: 100%;
     max-width: 1200px;
+<<<<<<< HEAD
+    box-sizing: border-box;
+}
+.box {
+    heightx: 250px;
+=======
     margin: 0 auto;
     box-sizing: border-box;
 }
 .box {
     height: 250px;
+>>>>>>> bd7a647afdf0b6d1d6d7f93d53e07b011ae3e781
     display: flex;
     border-radius: 10px;
     justify-content: center;

@@ -27,4 +27,4 @@ dist-ssr
 ./.idea
 >>>>>>> 25ce8c60160dbe70b981d540d10aa1719398a906
 
-.env
+.env.env
