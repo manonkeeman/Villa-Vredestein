@@ -3,6 +3,7 @@ import { Navigate, Link } from "react-router-dom";
 import { useAuth } from "../Components/Auth/AuthContext";
 import "../Styles/BentoGrid.css";
 import "./StudentDashboard.css";
+import Watetenwevandaag from "../Assets/Images/Watetenwevandaag.jpg";
 
 const StudentDashboard = () => {
     const { isLoggedIn } = useAuth();
@@ -15,20 +16,23 @@ const StudentDashboard = () => {
         <div className="StudentDashboard">
             <div className="bento-grid">
                 <div className="box box1">
-                    <h1>Welkom Vredesteiner</h1>
+                    <h3>Welkom Vredesteiner</h3>
+                    <p>Informatie gegevens</p>
+                    <p>Schoonmaaktaken</p>
+                    <p>Heb ik mijn huur betaald?</p>
                 </div>
-                <div className="box box2">
-                    <h1>Wat eten we vandaag</h1>
-                    <Link to="/dashboard/receptenzoeker">→ Naar receptenzoeker</Link>
-                </div>
-                <div className="box box3">
-                    <h1>Informatie gegevens</h1>
-                </div>
-                <div className="box box4">
-                    <h1>Schoonmaaktaken</h1>
-                </div>
-                <div className="box box5">
-                    <h1>Heb ik mijn huur betaald?</h1>
+
+                <div className="image-box">
+                    <img
+                        src={Watetenwevandaag}
+                        alt="Wat eten we vandaag?"
+                        className="box-image"
+                    />
+                    <div className="search-overlay">
+                        <Link to="/dashboard/receptenzoeker" className="search-link">
+                            Wat eten we vandaag? →
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>
