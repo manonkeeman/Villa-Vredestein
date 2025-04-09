@@ -1,17 +1,11 @@
 import React from "react";
-import { Navigate, Link, useNavigate } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 import { useAuth } from "../Components/Auth/AuthContext";
 import "../Styles/BentoGrid.css";
 import "./StudentDashboard.css";
 
 const StudentDashboard = () => {
-    const { isLoggedIn, logout } = useAuth();
-    const navigate = useNavigate();
-
-    const handleLogout = () => {
-        logout();
-        navigate("/login");
-    };
+    const { isLoggedIn } = useAuth();
 
     if (!isLoggedIn) {
         return <Navigate to="/login" replace />;
@@ -35,10 +29,6 @@ const StudentDashboard = () => {
                 </div>
                 <div className="box box5">
                     <h1>Heb ik mijn huur betaald?</h1>
-                </div>
-                {/* Logout knop eventueel als test */}
-                <div className="box box6">
-                    <button onClick={handleLogout}>Uitloggen</button>
                 </div>
             </div>
         </div>
