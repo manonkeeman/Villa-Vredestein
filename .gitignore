@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-# Logs
 logs
 *.log
 npm-debug.log*
@@ -13,7 +11,6 @@ dist
 dist-ssr
 *.local
 
-# Editor directories and files
 .vscode/*
 !.vscode/extensions.json
 .idea
@@ -23,8 +20,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-=======
-./.idea
->>>>>>> 25ce8c60160dbe70b981d540d10aa1719398a906
 
 .env
