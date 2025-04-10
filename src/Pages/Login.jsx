@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../Components/Auth/AuthContext";
 import "./Login.css";
 import Button from "../Components/Buttons/Button";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 
 const Login = () => {
     const navigate = useNavigate();
@@ -10,6 +11,7 @@ const Login = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState("");
 
     const handleSubmit = (e) => {
@@ -47,13 +49,23 @@ const Login = () => {
                         placeholder="E-mailadres"
                         required
                     />
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        placeholder="Wachtwoord"
-                        required
-                    />
+
+                    <div className="password-field">
+                        <input
+                            type={showPassword ? "text" : "password"}
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            placeholder="Wachtwoord"
+                            required
+                        />
+                        <span
+                            className="toggle-password"
+                            onClick={() => setShowPassword(!showPassword)}
+                        >
+                            {showPassword ? <FiEyeOff /> : <FiEye />}
+                        </span>
+                    </div>
+
                     <Button type="submit" text="Login" variant="primary" />
                     {error && <p className="error">{error}</p>}
                 </form>
