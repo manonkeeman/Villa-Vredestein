@@ -1,0 +1,147 @@
+.zoekbalk-hero {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+.zoekbalk-achtergrond {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7);
+    display: block;
+}
+.zoekbalk-overlay {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    width: 90%;
+    max-width: 600px;
+    background: white;
+    border-radius: 3rem;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+    padding: 0.5rem;
+}
+.zoekbalk-input {
+    flex: 1;
+    padding: 0.85rem 1.5rem;
+    border: none;
+    outline: none;
+    font-size: 12px;
+    border-radius: 0;
+}
+.zoekbalk-input::placeholder {
+    color: #777;
+    font-size: 1rem;
+    font-style: italic;
+}
+.zoekbalk-button {
+    background-color: #FCBC2D;
+    border: none;
+    color: white;
+    font-size: 12px;
+    padding: 0.85rem 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.zoekbalk-button:hover {
+    background-color: #FCBC2D;
+}
+.receptenzoeker {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+}
+.receptenzoeker h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+.receptenzoeker form {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+.zoekbalk-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+    border-radius: 3rem;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+}
+.zoekbalk-input {
+    flex: 1;
+    padding: 0.85rem 1.5rem;
+    outline: none;
+    font-size: 1rem;
+    border-radius: 0;
+    border: 1px solid #FCBC2D;
+}
+.fout {
+    color: #FCBC2D;
+    margin-bottom: 1rem;
+}
+.receptenlijst {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+.recept-card {
+    width: 280px;
+    background-color: #ffffff;
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.recept-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.recept-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.recept-card h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 1rem 1rem 0.5rem 1rem;
+    color: #333;
+}
+
+.recept-card a {
+    margin: 0.5rem 1rem 1rem 1rem;
+    font-size: 0.95rem;
+    color: #0077cc;
+    font-weight: 500;
+    text-decoration: none;
+    align-self: flex-start;
+}
+
+.recept-card a:hover {
+    text-decoration: underline;
+}
