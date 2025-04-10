@@ -9,27 +9,43 @@ const Navigatie = () => {
     const { isLoggedIn, logout } = useAuth();
     const navigate = useNavigate();
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
     const location = useLocation();
+
     const isLoginPage = location.pathname === "/login";
     const ALLOW_LOGOUT_MENU = ["/studentdashboard", "/receptenzoeker"];
     const showLogoutDropdown = isLoggedIn && ALLOW_LOGOUT_MENU.includes(location.pathname);
+
     const handleLogout = () => {
         logout();
         navigate("/login");
     };
 
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
+    };
+
     return (
         <nav className="navigatie-container">
+            {/* Logo */}
             <div className="logo">
                 <NavLink to="/contact" className="logo-link">
                     <img src={Logo} alt="Villa Vredestein Logo" className="logo-img" />
                 </NavLink>
             </div>
 
-            <ul className="nav-links">
-                <li><NavLink to="/" className="default-link">Home</NavLink></li>
-                <li><NavLink to="/about" className="default-link">About</NavLink></li>
-                <li><NavLink to="/contact" className="default-link">Contact</NavLink></li>
+            {/* Hamburger button (alleen zichtbaar op mobiel) */}
+            <div className={`hamburger ${menuOpen ? "open" : ""}`} onClick={toggleMenu}>
+                <div className="bar"></div>
+                <div className="bar"></div>
+                <div className="bar"></div>
+            </div>
+
+            {/* Navigatielinks */}
+            <ul className={`nav-links ${menuOpen ? "show" : ""}`}>
+                <li><NavLink to="/" className="default-link" onClick={() => setMenuOpen(false)}>Home</NavLink></li>
+                <li><NavLink to="/about" className="default-link" onClick={() => setMenuOpen(false)}>About</NavLink></li>
+                <li><NavLink to="/contact" className="default-link" onClick={() => setMenuOpen(false)}>Contact</NavLink></li>
                 <li>
                     <a href="https://www.instagram.com/villa.vredestein" target="_blank" rel="noreferrer" className="icon-link">
                         <FaInstagram />
@@ -41,17 +57,17 @@ const Navigatie = () => {
                     </a>
                 </li>
                 {showLogoutDropdown ? (
-                <li className="user-icon-wrapper">
-                    <FaUser className="user-icon" onClick={() => setDropdownOpen(!dropdownOpen)} />
-                    {dropdownOpen &&  (
-                        <div className="dropdown-menu">
-                            <button className="logout-button" onClick={handleLogout}>Uitloggen</button>
-                        </div>
-                    )}
-                </li>
-                    ) : (
+                    <li className="user-icon-wrapper">
+                        <FaUser className="user-icon" onClick={() => setDropdownOpen(!dropdownOpen)} />
+                        {dropdownOpen && (
+                            <div className="dropdown-menu">
+                                <button className="logout-button" onClick={handleLogout}>Uitloggen</button>
+                            </div>
+                        )}
+                    </li>
+                ) : (
                     <li>
-                        <NavLink to="/login" className="icon-link">
+                        <NavLink to="/login" className="icon-link" onClick={() => setMenuOpen(false)}>
                             <FaUser />
                         </NavLink>
                     </li>
