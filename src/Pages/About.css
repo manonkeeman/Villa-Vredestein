@@ -30,7 +30,7 @@
     object-fit: cover;
     border-radius: 10px;
 }
-.about .box1 {
+.about .article1 {
     grid-column: span 1;
     grid-row: 1 / 2;
 }

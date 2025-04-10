@@ -15,7 +15,7 @@ const StudentDashboard = () => {
     return (
         <div className="StudentDashboard">
             <div className="bento-grid">
-                <div className="box box1">
+                <div className="box dashboard-sidebar">
                     <h3>Welkom Vredesteiner</h3>
                     <p>Informatie gegevens</p>
                     <p>Schoonmaaktaken</p>
