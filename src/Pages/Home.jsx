@@ -25,7 +25,7 @@ const Home = () => {
             <BentoBox
                 content={
                     <div className="bento-wrapper">
-                        <div className="box box1">
+                        <div className="box home-text">
                             <h1>Welkom bij Villa Vredestein</h1>
                             <p>
                                 Gebouwd in 1906, ademt Villa Vredestein de charme van weleer. Hoge plafonds, oude details en een ziel die je voelt zodra je binnenstapt. Maar achter die nostalgische gevel schuilt een frisse wind.
@@ -41,7 +41,7 @@ const Home = () => {
                             />
                         </div>
 
-                        <div className="box box2-5">
+                        <div className="box home-image">
                             <img src={VillaVredestein} alt="Villa Vredestein" />
                         </div>
                     </div>
