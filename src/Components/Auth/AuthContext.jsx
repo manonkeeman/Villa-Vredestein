@@ -9,8 +9,8 @@ const approvedUsers = [
         password: import.meta.env.VITE_USER1_PASSWORD,
     },
     {
-        email: import.meta.env.VITE_USER2_EMAIL,
-        password: import.meta.env.VITE_USER2_PASSWORD,
+        email: import.meta.env.VITE_ADMIN_EMAIL,
+        password: import.meta.env.VITE_ADMIN_PASSWORD,
     },
 ];
 
