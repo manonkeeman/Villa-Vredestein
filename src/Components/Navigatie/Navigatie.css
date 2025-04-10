@@ -28,7 +28,7 @@ html, body {
 }
 .logo-img {
   max-height: 100px;
-  padding-left: 10px;
+  padding-left: 1rem;
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
 }
@@ -40,8 +40,6 @@ html, body {
   align-items: center;
   gap: 1rem;
   list-style: none;
-  margin: 0;
-  padding: 0;
 }
 .nav-links li {
   margin: 0 5px;
@@ -78,8 +76,6 @@ html, body {
   background-color: #fcbc2d;
   color: black;
 }
-/* Bestaande code bovenaan blijft hetzelfde... */
-
 .user-icon-wrapper {
   position: relative;
   display: flex;
@@ -119,6 +115,8 @@ html, body {
 .dropdown-menu button:hover {
   color: #fcbc2d;
 }
+
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -129,7 +127,11 @@ html, body {
     transform: translateY(0);
   }
 }
+.hamburger {
+  display: none;
+}
 
+/* ==================== RESPONSIVE ==================== */
 @media (max-width: 768px) {
   .hamburger {
     display: flex;
@@ -161,16 +163,15 @@ html, body {
     display: none;
     flex-direction: column;
     align-items: center;
-    background-color: #222;
-    position: fixed;
+    background-color: #111;
+    position: absolute;
     top: 110px;
     left: 0;
     right: 0;
-    width: 100%;
     padding: 1rem 0;
+    border-bottom: 1px solid #333;
     border-radius: 0 0 10px 10px;
     text-align: center;
-    z-index: 999;
     transition: all 0.3s ease-in-out;
   }
   .nav-links.show {
@@ -178,10 +179,10 @@ html, body {
   }
   .nav-links li {
     margin: 10px 0;
-    font-size: 12px;
+    font-size: 14px;
   }
   .logout-button {
-    font-size: 11px;
-    padding: 0.4rem 0.8rem;
+    font-size: 12px;
+    padding: 0.5rem 1rem;
   }
 }
