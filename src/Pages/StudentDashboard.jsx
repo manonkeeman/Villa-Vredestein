@@ -29,7 +29,7 @@ const StudentDashboard = () => {
                         className="box-image"
                     />
                     <div className="search-overlay">
-                        <Link to="/dashboard/receptenzoeker" className="search-link">
+                        <Link to="/receptenzoeker" className="search-link">
                             Wat eten we vandaag? →
                         </Link>
                     </div>
