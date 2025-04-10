@@ -7,6 +7,23 @@ body {
   margin: 0;
   padding: 0;
 }
+
+h1 {
+  font-size: 14px;
+}
+
+h2 {
+  font-size: 12px;
+}
+
+h3 {
+  font-size: 11px;
+}
+
+p {
+  font-size: 10px;
+}
+
 #root {
   width: 100%;
   max-width: none;
@@ -14,6 +31,7 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
+
 @media (max-width: 768px) {
   #root {
     max-width: 100vw;
