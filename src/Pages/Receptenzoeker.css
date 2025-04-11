@@ -26,32 +26,39 @@
     overflow: hidden;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     z-index: 2;
-    padding: 0.5rem;
+    border: 1px solid #FCBC2D;
 }
 .zoekbalk-input {
     flex: 1;
-    padding: 0.85rem 1.5rem;
+    padding: 1rem 1.5rem;
     border: none;
     outline: none;
     font-size: 12px;
     border-radius: 0;
 }
 .zoekbalk-input::placeholder {
-    color: #777;
+    color: #999;
     font-size: 1rem;
     font-style: italic;
+    transition: opacity 0.5s;
 }
 .zoekbalk-button {
     background-color: #FCBC2D;
     border: none;
     color: white;
-    font-size: 12px;
-    padding: 0.85rem 1.5rem;
+    font-size: 20px;
+    padding: 0rem 1.5rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s, color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .zoekbalk-button:hover {
     background-color: #FCBC2D;
+    color: #333;
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 .receptenzoeker {
     max-width: 900px;
