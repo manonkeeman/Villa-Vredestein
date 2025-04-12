@@ -3,7 +3,7 @@
     margin-bottom: 1rem;
 }
 .modal-box p {
-    font-size: 10px;
+    font-size: 12px;
     line-height: 1.5;
     margin: 0;
 }
@@ -25,7 +25,7 @@
 .modal-box {
     background-color: black;
     color: white;
-    border: 2px solid #FCBC2D;
+    border: 1px solid #FCBC2D;
     padding: 2rem;
     border-radius: 10px;
     max-width: 400px;
