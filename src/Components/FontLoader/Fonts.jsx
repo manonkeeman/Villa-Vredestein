@@ -1,12 +1,12 @@
-import { useEffect } from "react";
+import React from 'react';
 
-export default function FontLoader() {
-    useEffect(() => {
-        const link = document.createElement("link");
-        link.href = "https://fonts.googleapis.com/css2?family=Aubrey&family=Nunito+Sans:wght@300;400;700&display=swap";
-        link.rel = "stylesheet";
-        document.head.appendChild(link);
-    }, []);
+const Fonts = () => (
+    <>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+            rel="stylesheet"
+        />
+    </>
+);
 
-    return null;
-}
+export default Fonts;
