@@ -17,7 +17,7 @@ const Contact = () => {
         setFormData({
             ...formData,
             [name]: value
-        });
+        })
     };
 
     const handleSubmit = (e) => {
@@ -98,7 +98,6 @@ const Contact = () => {
                     </div>
                 </div>
 
-                {/* Modal that is displayed after submitting the form */}
                 {showModal && <Modal show={showModal} onClose={closeModal} />}
             </div>
         </>
