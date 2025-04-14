@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./ReceptenZoeker.css";
+import ModalQRcode from "../Components/Modal/ModalQRcode";
 import Watetenwevandaag from "../Assets/Images/Watetenwevandaag.jpg";
-import { FiSearch } from "react-icons/fi";
+import { FiSearch, FiShoppingCart } from "react-icons/fi";
+import "./ReceptenZoeker.css";
 
 const maaltijdOpties = [
     { label: "Ontbijt", value: "breakfast" },
@@ -35,21 +36,28 @@ const ReceptenZoeker = () => {
     const [recepten, setRecepten] = useState([]);
     const [laden, setLaden] = useState(false);
     const [fout, setFout] = useState(null);
+    const [showModal, setShowModal] = useState(false);
+    const [ingredientsList, setIngredientsList] = useState("");
     const [geselecteerdeMaaltijden, setGeselecteerdeMaaltijden] = useState([]);
     const [geselecteerdeDieet, setGeselecteerdeDieet] = useState([]);
     const [geselecteerdeKeukens, setGeselecteerdeKeukens] = useState([]);
+    const [toonFilters, setToonFilters] = useState(window.innerWidth >= 768);
+
+    useEffect(() => {
+        const handleResize = () => setToonFilters(window.innerWidth >= 768);
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
     const fetchRecepten = async () => {
         setLaden(true);
         setFout(null);
 
         const params = {
-            q: zoekwoord || "dinner",
+            q: zoekwoord || "recipe",
             type: "public",
             app_id: import.meta.env.VITE_APP_ID,
             app_key: import.meta.env.VITE_APP_KEY,
-            from: 0,
-            to: 6,
         };
 
         if (geselecteerdeMaaltijden.length > 0) {
@@ -70,36 +78,44 @@ const ReceptenZoeker = () => {
                 },
             });
 
-            setRecepten(response.data.hits.map(hit => hit.recipe));
+            setRecepten(response.data.hits.map((hit) => hit.recipe));
         } catch (error) {
-            console.error("API error:", error);
-            setFout("Fout bij het ophalen van recepten.");
+            const apiErrors = error.response?.data?.errors;
+            if (apiErrors && apiErrors.length > 0) {
+                setFout(apiErrors.map((e) => e.error).join(" | "));
+            } else {
+                const message = error.response?.data?.message || "Onbekende fout";
+                setFout(`Error ${error.response?.status || ""}: ${message}`);
+            }
         } finally {
             setLaden(false);
         }
     };
-
-    useEffect(() => {
-        fetchRecepten();
-    }, [zoekwoord, geselecteerdeMaaltijden, geselecteerdeDieet, geselecteerdeKeukens]);
 
     const handleZoek = (e) => {
         e.preventDefault();
         fetchRecepten();
     };
 
+    const generateShoppingList = (ingredients) => {
+        const ingredientsString = ingredients.join(", ");
+        setIngredientsList(ingredientsString);
+        setShowModal(true);
+    };
+
+    const closeModal = () => setShowModal(false);
+
     const toggleCheckbox = (value, selectedValues, setSelected) => {
         const updated = selectedValues.includes(value)
-            ? selectedValues.filter(v => v !== value)
+            ? selectedValues.filter((v) => v !== value)
             : [...selectedValues, value];
         setSelected(updated);
     };
 
     return (
         <div className="receptenzoeker">
-            <div className="receptencontent">
-                {/* Sidebar met filters */}
-                <div className="filtersidebar">
+            {toonFilters && (
+                <aside className="filtersidebar">
                     <h4>Menugang</h4>
                     {maaltijdOpties.map(({ label, value }) => (
                         <label key={value} className="filter-label">
@@ -113,7 +129,7 @@ const ReceptenZoeker = () => {
                         </label>
                     ))}
 
-                    <h4>Dieetsoorten</h4>
+                    <h4>Dieet</h4>
                     {dieetOpties.map(({ label, value }) => (
                         <label key={value} className="filter-label">
                             <input
@@ -138,46 +154,74 @@ const ReceptenZoeker = () => {
                             {label}
                         </label>
                     ))}
+                </aside>
+            )}
+
+            <main className="receptencontent">
+                <div className="zoekbalk-hero">
+                    <img src={Watetenwevandaag} alt="Wat eten we vandaag?" className="zoekbalk-achtergrond" />
+                    <form onSubmit={handleZoek} className="zoekbalk-overlay">
+                        <input
+                            type="text"
+                            placeholder="Wat eten we vandaag? Typ een ingrediënt..."
+                            value={zoekwoord}
+                            onChange={(e) => setZoekwoord(e.target.value)}
+                            className="zoekbalk-input"
+                        />
+                        <button type="submit" className="zoekbalk-button">
+                            <FiSearch />
+                        </button>
+                    </form>
+                    <button
+                        className="toggle-filters-btn"
+                        onClick={() => setToonFilters((prev) => !prev)}
+                    >
+                        {toonFilters ? "Verberg filters" : "Toon filters"}
+                    </button>
                 </div>
 
-                {/* Zoekbalk en recepten */}
-                <div className="receptengedeelte">
-                    <div className="zoekbalk-hero">
-                        <img src={Watetenwevandaag} alt="Wat eten we vandaag?" className="zoekbalk-achtergrond" />
-                        <form onSubmit={handleZoek} className="zoekbalk-overlay">
-                            <input
-                                type="text"
-                                placeholder="Wat eten we vandaag? Typ een ingrediënt..."
-                                value={zoekwoord}
-                                onChange={(e) => setZoekwoord(e.target.value)}
-                                className="zoekbalk-input"
-                            />
-                            <button type="submit" className="zoekbalk-button">
-                                <FiSearch />
-                            </button>
-                        </form>
-                    </div>
+                {laden && <p>Even geduld... recepten worden geladen.</p>}
+                {fout && <p className="fout">{fout}</p>}
+                {!laden && recepten.length === 0 && !fout && (
+                    <p>Geen recepten gevonden. Probeer een ander ingrediënt of filter.</p>
+                )}
 
-                    {/* Laad indicator */}
-                    {laden && <p>Even geduld... recepten worden geladen.</p>}
-                    {fout && <p className="fout">{fout}</p>}
-                    {!laden && recepten.length === 0 && !fout && <p>Geen recepten gevonden. Probeer een ander ingrediënt.</p>}
-
-                    {/* Receptenlijst */}
-                    <div className="receptenlijst">
-                        {recepten.map((item, index) => (
+                <div className="receptenlijst">
+                    {recepten.map((item, index) => (
+                        <div key={index} className="recept-card">
                             <div
-                                key={index}
-                                className="recept-card"
-                                onClick={() => window.open(item.url, "_blank")}
+                                className="recept-kop"
+                                onClick={() => window.open(item.url, "_blank", "noopener,noreferrer")}
+                                role="button"
+                                tabIndex={0}
+                                onKeyPress={(e) => {
+                                    if (e.key === "Enter") window.open(item.url, "_blank", "noopener,noreferrer");
+                                }}
                             >
-                                <img src={item.image} alt={item.label} />
-                                <h3>{item.label}</h3>
+                                <img src={item.image} alt={item.label} className="recept-image" />
+                                <div className="recept-title-overlay">
+                                    <h3>{item.label}</h3>
+                                </div>
                             </div>
-                        ))}
-                    </div>
+                            <button
+                                onClick={() => generateShoppingList(item.ingredients)}
+                                className="btn-primary"
+                            >
+                                <FiShoppingCart style={{ marginRight: "0.5rem" }} />
+                                Boodschappenlijst
+                            </button>
+                        </div>
+                    ))}
                 </div>
-            </div>
+
+                {showModal && (
+                    <ModalQRcode
+                        show={showModal}
+                        onClose={closeModal}
+                        ingredientsList={ingredientsList}
+                    />
+                )}
+            </main>
         </div>
     );
 };

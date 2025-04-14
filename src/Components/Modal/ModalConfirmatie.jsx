@@ -1,15 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./Modal.css";
+import "./ModalConfirmatie.css";
 
-const Modal = ({ show, onClose }) => {
+const ModalConfirmatie = ({ show, onClose }) => {
     if (!show) return null;
 
     return (
         <div className="modal-overlay" onClick={onClose}>
-            <div className="modal-box">
+            <div className="modal-box" onClick={(e) => e.stopPropagation()}>
                 <h3>Bedankt voor uw bericht!</h3>
-                <p>Wij zullen zo spoedig mogelijk reageren.<br /><br />Tot ziens!</p>
+                <p>
+                    Wij zullen zo spoedig mogelijk reageren.
+                    <br /><br />
+                    Tot ziens!
+                </p>
                 <p className="modal-groet">Manon en Maxim</p>
 
                 <button className="modal-button" onClick={onClose}>Sluiten</button>
@@ -18,9 +22,9 @@ const Modal = ({ show, onClose }) => {
     );
 };
 
-Modal.propTypes = {
+ModalConfirmatie.propTypes = {
     show: PropTypes.bool.isRequired,
-    onClose: PropTypes.func.isRequired
+    onClose: PropTypes.func.isRequired,
 };
 
-export default Modal;
+export default ModalConfirmatie;
