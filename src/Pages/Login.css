@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 .login-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -27,8 +29,7 @@
     max-width: 400px;
     width: 100%;
     margin-left: 3rem;
-
-    background-color: black;
+    background-color: #111;
     border: 1px solid #fcbc2d;
     font-size: 12px;
 }
@@ -47,7 +48,7 @@
     border: 1px solid #fcbc2d;
     border-radius: 10px;
     color: white;
-    background-color: black;
+    background-color: #111;
     width: 100%;
 }
 .login-form-box button {
@@ -57,7 +58,6 @@
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: 0.3s ease;
@@ -69,6 +69,7 @@
 .login-video {
     border: 1px solid #FCBC2D;
     border-radius: 10px;
+    background-color: #111;
 }
 .login-video-box iframe {
     border-radius: 10px;
@@ -93,7 +94,7 @@
     border: 1px solid #fcbc2d;
     border-radius: 10px;
     color: white;
-    background-color: black;
+    background-color: #111;
 }
 .toggle-password {
     position: absolute;

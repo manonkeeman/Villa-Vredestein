@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "../Styles/BentoGrid.css";
 import Button from "../Components/Buttons/Button.jsx";
+import "../Styles/global.css";
 import "./Home.css";
 import VillaVredestein from "../Assets/Images/VillaVredestein.jpeg";
 
@@ -18,8 +18,8 @@ const Home = () => {
 
     return (
         <div className="home">
-            <div className="bento-wrapper">
-                <div className="home-text">
+            <div className="card-wrapper">
+                <div className="card bordered home-text">
                     <h1>Welkom bij Villa Vredestein</h1>
                     <p>
                         Gebouwd in 1906, ademt Villa Vredestein de charme van weleer.
@@ -41,7 +41,7 @@ const Home = () => {
                     <Button text="Lees meer" variant="secundary" onClick={() => navigate("/about")} />
                 </div>
 
-                <div className="home-image">
+                <div className="card bordered home-image">
                     <img src={VillaVredestein} alt="Villa Vredestein" />
                 </div>
             </div>
