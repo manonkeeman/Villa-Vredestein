@@ -27,8 +27,6 @@ const Contact = () => {
     };
 
     return (
-        <>
-            <Fonts />
             <div className="contact-page">
                 <div className="contact-container">
                     <div className="contact-form-section">
@@ -97,7 +95,6 @@ const Contact = () => {
 
                 {showModal && <ModalContact show={showModal} onClose={closeModal} />}
             </div>
-        </>
     );
 };
 
