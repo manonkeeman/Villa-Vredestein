@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../Components/Buttons/Button.jsx";
-import "../Styles/global.css";
+import "../Styles/Global.css";
 import "./Home.css";
 import VillaVredestein from "../Assets/Images/VillaVredestein.jpeg";
 
