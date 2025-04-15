@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./Modal.css";
+import "./ModalContact.css";
 
-const Modal = ({ show, onClose }) => {
+const ModalContact = ({ show, onClose }) => {
     if (!show) return null;
 
     return (
@@ -18,9 +18,9 @@ const Modal = ({ show, onClose }) => {
     );
 };
 
-Modal.propTypes = {
+ModalContact.propTypes = {
     show: PropTypes.bool.isRequired,
     onClose: PropTypes.func.isRequired
 };
 
-export default Modal;
+export default ModalContact;
