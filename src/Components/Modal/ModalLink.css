@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    font-family: 'Poppins', sans-serif;
+}
+
+.modal-content {
+    background: #000;
+    border: 1px solid #fcbc2d;
+    border-radius: 10px;
+    padding: 2rem;
+    color: white;
+    max-width: 500px;
+    width: 90%;
+}
+
+.modal-title {
+    color: #fcbc2d;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.ingredienten-lijst {
+    list-style: none;
+    padding-left: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.ingredienten-lijst li::before {
+    content: "• ";
+    color: #fcbc2d;
+    margin-right: 0.3rem;
+}
+
+.share-icons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 2rem;
+    transition: transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.icon-button:hover {
+    transform: scale(1.2);
+}
+
+.icon-button.whatsapp {
+    color: #25D366;
+}
+
+.icon-button.share {
+    color: #fcbc2d;
+}
+
+.icon-button.clipboard {
+    color: #ffffff;
+}
+
+.btn-close {
+    font-family: 'Poppins', sans-serif;
+    padding: 0.6rem 1.2rem;
+    border-radius: 10px;
+    font-weight: 500;
+    border: 1px solid #fcbc2d;
+    cursor: pointer;
+    font-size: 1rem;
+    background: transparent;
+    color: white;
+    transition: all 0.2s ease;
+}
+
+.btn-close:hover {
+    color: #fcbc2d;
+    background-color: #111;
+}
