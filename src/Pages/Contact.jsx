@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ModalContact from "../Components/Modal/ModalContact.jsx";
 import "./Contact.css";
-import "../Styles/global.css";
+import "../Styles/Global.css";
 
 const Contact = () => {
     const [formData, setFormData] = useState({
