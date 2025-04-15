@@ -1,33 +1,28 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import "./ReceptenZoeker.css";
 import Watetenwevandaag from "../Assets/Images/Watetenwevandaag.jpg";
-import { FiSearch } from "react-icons/fi";
+import { FiSearch, FiShoppingCart } from "react-icons/fi";
+import ModalQR from "../Components/Modal/ModalQR";
+import { fetchRecipes, buildIngredientsList } from "../Helpers/ApiHelper";
+import { handleResponsiveToggle, toggleCheckbox } from "../Helpers/UIHelper";
+import "./ReceptenZoeker.css";
 
-const maaltijdOpties = [
-    { label: "Ontbijt", value: "breakfast" },
-    { label: "Lunch", value: "lunch" },
-    { label: "Brunch", value: "brunch" },
-    { label: "Diner", value: "dinner" },
-];
-
+const maaltijdOpties = ["breakfast", "lunch", "brunch", "dinner"];
 const dieetOpties = [
-    { label: "Vegetarisch", value: "vegetarian" },
-    { label: "Veganistisch", value: "vegan" },
-    { label: "Lactosevrij", value: "dairy-free" },
-    { label: "Glutenvrij", value: "gluten-free" },
-    { label: "Suikervrij", value: "sugar-conscious" },
-    { label: "Pindavrij", value: "peanut-free" },
-    { label: "Notenvrij", value: "tree-nut-free" },
+    "vegetarian",
+    "vegan",
+    "dairy-free",
+    "gluten-free",
+    "sugar-conscious",
+    "peanut-free",
+    "tree-nut-free",
 ];
-
 const wereldkeukenOpties = [
-    { label: "Italiaans", value: "Italian" },
-    { label: "Grieks", value: "Greek" },
-    { label: "Thais", value: "South East Asian" },
-    { label: "Japans", value: "Japanese" },
-    { label: "Amerikaans", value: "American" },
-    { label: "Mexicaans", value: "Mexican" },
+    "Italian",
+    "Greek",
+    "South East Asian",
+    "Japanese",
+    "American",
+    "Mexican",
 ];
 
 const ReceptenZoeker = () => {
@@ -35,115 +30,101 @@ const ReceptenZoeker = () => {
     const [recepten, setRecepten] = useState([]);
     const [laden, setLaden] = useState(false);
     const [fout, setFout] = useState(null);
+    const [showModal, setShowModal] = useState(false);
+    const [ingredientsList, setIngredientsList] = useState("");
     const [geselecteerdeMaaltijden, setGeselecteerdeMaaltijden] = useState([]);
     const [geselecteerdeDieet, setGeselecteerdeDieet] = useState([]);
     const [geselecteerdeKeukens, setGeselecteerdeKeukens] = useState([]);
+    const [toonFilters, setToonFilters] = useState(window.innerWidth >= 768);
 
-    const fetchRecepten = async () => {
+    useEffect(() => {
+        const handleResize = () => handleResponsiveToggle(setToonFilters);
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
+    const handleZoek = async (e) => {
+        e.preventDefault();
         setLaden(true);
         setFout(null);
-
-        const params = {
-            q: zoekwoord || "dinner",
-            type: "public",
-            app_id: import.meta.env.VITE_APP_ID,
-            app_key: import.meta.env.VITE_APP_KEY,
-            from: 0,
-            to: 6,
-        };
-
-        if (geselecteerdeMaaltijden.length > 0) {
-            params.mealType = geselecteerdeMaaltijden.join(",");
-        }
-        if (geselecteerdeDieet.length > 0) {
-            params.health = geselecteerdeDieet.join(",");
-        }
-        if (geselecteerdeKeukens.length > 0) {
-            params.cuisineType = geselecteerdeKeukens.join(",");
-        }
-
         try {
-            const response = await axios.get("https://api.edamam.com/api/recipes/v2", {
-                params,
-                headers: {
-                    "Edamam-Account-User": import.meta.env.VITE_USER_ID,
-                },
-            });
-
-            setRecepten(response.data.hits.map(hit => hit.recipe));
-        } catch (error) {
-            console.error("API error:", error);
-            setFout("Fout bij het ophalen van recepten.");
+            const data = await fetchRecipes(
+                zoekwoord,
+                geselecteerdeMaaltijden,
+                geselecteerdeDieet,
+                geselecteerdeKeukens
+            );
+            setRecepten(data);
+        } catch (err) {
+            setFout(err.message || "Fout bij het ophalen van recepten.");
         } finally {
             setLaden(false);
         }
     };
 
-    useEffect(() => {
-        fetchRecepten();
-    }, [zoekwoord, geselecteerdeMaaltijden, geselecteerdeDieet, geselecteerdeKeukens]);
-
-    const handleZoek = (e) => {
-        e.preventDefault();
-        fetchRecepten();
-    };
-
-    const toggleCheckbox = (value, selectedValues, setSelected) => {
-        const updated = selectedValues.includes(value)
-            ? selectedValues.filter(v => v !== value)
-            : [...selectedValues, value];
-        setSelected(updated);
+    const generateShoppingList = (ingredients) => {
+        const ingredientsString = buildIngredientsList(ingredients);
+        setIngredientsList(ingredientsString);
+        setShowModal(true);
     };
 
     return (
         <div className="receptenzoeker">
-            <div className="receptencontent">
-                {/* Sidebar met filters */}
-                <div className="filtersidebar">
-                    <h4>Menugang</h4>
-                    {maaltijdOpties.map(({ label, value }) => (
-                        <label key={value} className="filter-label">
-                            <input
-                                type="checkbox"
-                                value={value}
-                                checked={geselecteerdeMaaltijden.includes(value)}
-                                onChange={() => toggleCheckbox(value, geselecteerdeMaaltijden, setGeselecteerdeMaaltijden)}
-                            />
-                            {label}
-                        </label>
-                    ))}
+            <button
+                className="toggle-filters-btn"
+                onClick={() => setToonFilters((prev) => !prev)}
+            >
+                {toonFilters ? "Verberg filters" : "Toon filters"}
+            </button>
 
-                    <h4>Dieetsoorten</h4>
-                    {dieetOpties.map(({ label, value }) => (
-                        <label key={value} className="filter-label">
-                            <input
-                                type="checkbox"
-                                value={value}
-                                checked={geselecteerdeDieet.includes(value)}
-                                onChange={() => toggleCheckbox(value, geselecteerdeDieet, setGeselecteerdeDieet)}
-                            />
-                            {label}
-                        </label>
-                    ))}
+            <div className="zoekcontent">
+                {toonFilters && (
+                    <aside className="filtersidebar">
+                        <h4>Menugang</h4>
+                        {maaltijdOpties.map((type) => (
+                            <label key={type} className="filter-label">
+                                <input
+                                    type="checkbox"
+                                    checked={geselecteerdeMaaltijden.includes(type)}
+                                    onChange={() => toggleCheckbox(type, geselecteerdeMaaltijden, setGeselecteerdeMaaltijden)}
+                                />
+                                {type}
+                            </label>
+                        ))}
 
-                    <h4>Wereldkeuken</h4>
-                    {wereldkeukenOpties.map(({ label, value }) => (
-                        <label key={value} className="filter-label">
-                            <input
-                                type="checkbox"
-                                value={value}
-                                checked={geselecteerdeKeukens.includes(value)}
-                                onChange={() => toggleCheckbox(value, geselecteerdeKeukens, setGeselecteerdeKeukens)}
-                            />
-                            {label}
-                        </label>
-                    ))}
-                </div>
+                        <h4>Dieet</h4>
+                        {dieetOpties.map((type) => (
+                            <label key={type} className="filter-label">
+                                <input
+                                    type="checkbox"
+                                    checked={geselecteerdeDieet.includes(type)}
+                                    onChange={() => toggleCheckbox(type, geselecteerdeDieet, setGeselecteerdeDieet)}
+                                />
+                                {type}
+                            </label>
+                        ))}
 
-                {/* Zoekbalk en recepten */}
-                <div className="receptengedeelte">
+                        <h4>Wereldkeuken</h4>
+                        {wereldkeukenOpties.map((type) => (
+                            <label key={type} className="filter-label">
+                                <input
+                                    type="checkbox"
+                                    checked={geselecteerdeKeukens.includes(type)}
+                                    onChange={() => toggleCheckbox(type, geselecteerdeKeukens, setGeselecteerdeKeukens)}
+                                />
+                                {type}
+                            </label>
+                        ))}
+                    </aside>
+                )}
+
+                <div className="zoekresultaatkolom">
                     <div className="zoekbalk-hero">
-                        <img src={Watetenwevandaag} alt="Wat eten we vandaag?" className="zoekbalk-achtergrond" />
+                        <img
+                            src={Watetenwevandaag}
+                            alt="Wat eten we vandaag?"
+                            className="zoekbalk-achtergrond"
+                        />
                         <form onSubmit={handleZoek} className="zoekbalk-overlay">
                             <input
                                 type="text"
@@ -158,26 +139,46 @@ const ReceptenZoeker = () => {
                         </form>
                     </div>
 
-                    {/* Laad indicator */}
-                    {laden && <p>Even geduld... recepten worden geladen.</p>}
-                    {fout && <p className="fout">{fout}</p>}
-                    {!laden && recepten.length === 0 && !fout && <p>Geen recepten gevonden. Probeer een ander ingrediënt.</p>}
+                    <div className="resultaten-wrapper">
+                        {laden && <p>Even geduld... recepten worden geladen.</p>}
+                        {fout && <p className="fout">{fout}</p>}
+                        {!laden && recepten.length === 0 && !fout && (
+                            <p>Geen recepten gevonden. Probeer een ander ingrediënt of filter.</p>
+                        )}
 
-                    {/* Receptenlijst */}
-                    <div className="receptenlijst">
-                        {recepten.map((item, index) => (
-                            <div
-                                key={index}
-                                className="recept-card"
-                                onClick={() => window.open(item.url, "_blank")}
-                            >
-                                <img src={item.image} alt={item.label} />
-                                <h3>{item.label}</h3>
-                            </div>
-                        ))}
+                        <div className="receptenlijst">
+                            {recepten.map((item, index) => (
+                                <div key={index} className="recept-card">
+                                    <div
+                                        className="recept-kop"
+                                        onClick={() => window.open(item.url, "_blank", "noopener,noreferrer")}
+                                    >
+                                        <img src={item.image} alt={item.label} />
+                                        <div className="recept-title-overlay">
+                                            <h3>{item.label}</h3>
+                                        </div>
+                                    </div>
+                                    <button
+                                        onClick={() => generateShoppingList(item.ingredients)}
+                                        className="btn-primary"
+                                    >
+                                        <FiShoppingCart style={{ marginRight: "0.5rem" }} />
+                                        Boodschappenlijst
+                                    </button>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
+
+            {showModal && (
+                <ModalQR
+                    show={showModal}
+                    onClose={() => setShowModal(false)}
+                    ingredientsList={ingredientsList}
+                />
+            )}
         </div>
     );
 };

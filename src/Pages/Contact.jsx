@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Modal from "../components/Modal/Modal";
+import ModalContact from "../Components/Modal/ModalContact.jsx";
 import Fonts from "../Components/Fontloader/Fonts";
 import "./contact.css";
 
@@ -98,7 +98,7 @@ const Contact = () => {
                     </div>
                 </div>
 
-                {showModal && <Modal show={showModal} onClose={closeModal} />}
+                {showModal && <ModalContact show={showModal} onClose={closeModal} />}
             </div>
         </>
     );
