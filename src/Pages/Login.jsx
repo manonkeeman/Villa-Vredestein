@@ -17,7 +17,7 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const success = login(email, password);
+        const success = login(email.trim(), password.trim());
         if (success) {
             navigate("/studentdashboard");
         } else {
