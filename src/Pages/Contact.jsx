@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import ModalContact from "../Components/Modal/ModalContact.jsx";
-import Fonts from "../Components/Fontloader/Fonts";
 import "./Contact.css";
 import "../Styles/global.css";
 

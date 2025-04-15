@@ -35,7 +35,6 @@ const Login = () => {
                     src="https://www.youtube.com/embed/PoQdedhOXwI?autoplay=1&mute=1&loop=1&playlist=PoQdedhOXwI"
                     title="IVA en Villa Vredestein video"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allow="autoplay; encrypted-media"
                     allowFullScreen
                 ></iframe>
             </div>
