@@ -5,7 +5,7 @@ import { fetchRecipes, buildIngredientsList } from "../Helpers/ApiHelper";
 import { toggleCheckbox } from "../Helpers/UIHelper";
 import ModalLink from "../Components/Modal/ModalLink";
 import "./ReceptenZoeker.css";
-import "../Styles/global.css";
+import "../Styles/Global.css";
 
 const maaltijdOpties = ["Breakfast", "Lunch", "Brunch", "Dinner"];
 const dieetOpties = [

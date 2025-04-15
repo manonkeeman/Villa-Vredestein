@@ -1,6 +1,6 @@
 import React from "react";
 import "./About.css";
-import "../Styles/global.css";
+import "../Styles/Global.css";
 import MaximManon from "../Assets/Images/Maxim_Manon_ChevroletSuburban.jpg";
 
 const About = () => {
