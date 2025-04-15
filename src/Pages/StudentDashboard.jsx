@@ -1,8 +1,8 @@
 import React from "react";
 import { Navigate, Link } from "react-router-dom";
 import { useAuth } from "../Components/Auth/AuthContext";
-import "../Styles/BentoGrid.css";
 import "./StudentDashboard.css";
+import "../Styles/global.css";
 import Watetenwevandaag from "../Assets/Images/Watetenwevandaag.jpg";
 
 const StudentDashboard = () => {
