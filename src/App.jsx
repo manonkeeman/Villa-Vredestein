@@ -10,7 +10,7 @@ import Receptenzoeker from "./Pages/Receptenzoeker.jsx";
 import NotFound from "./Pages/NotFound.jsx";
 import { AuthProvider } from "./Components/Auth/AuthContext";
 import ProtectedRoute from "./Components/Auth/ProtectedRoute";
-import "./Styles/global.css";
+import "./Styles/Global.css";
 
 function App() {
     return (
