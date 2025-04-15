@@ -4,6 +4,7 @@ import { useAuth } from "../Components/Auth/AuthContext";
 import "./Login.css";
 import Button from "../Components/Buttons/Button";
 import { FiEye, FiEyeOff } from "react-icons/fi";
+import "../Styles/global.css";
 
 const Login = () => {
     const navigate = useNavigate();

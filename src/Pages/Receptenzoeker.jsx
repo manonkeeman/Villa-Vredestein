@@ -1,20 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Watetenwevandaag from "../Assets/Images/Watetenwevandaag.jpg";
 import { FiSearch, FiShoppingCart } from "react-icons/fi";
-import ModalQR from "../Components/Modal/ModalQR";
 import { fetchRecipes, buildIngredientsList } from "../Helpers/ApiHelper";
-import { handleResponsiveToggle, toggleCheckbox } from "../Helpers/UIHelper";
+import { toggleCheckbox } from "../Helpers/UIHelper";
+import ModalLink from "../Components/Modal/ModalLink";
 import "./ReceptenZoeker.css";
+import "../Styles/global.css";
 
-const maaltijdOpties = ["breakfast", "lunch", "brunch", "dinner"];
+const maaltijdOpties = ["Breakfast", "Lunch", "Brunch", "Dinner"];
 const dieetOpties = [
-    "vegetarian",
-    "vegan",
-    "dairy-free",
-    "gluten-free",
-    "sugar-conscious",
-    "peanut-free",
-    "tree-nut-free",
+    "Vegetarian",
+    "Vegan",
+    "Dairy-free",
+    "Gluten-free",
+    "Sugar-conscious",
+    "Peanut-free",
+    "Tree-nut-free",
 ];
 const wereldkeukenOpties = [
     "Italian",
@@ -32,16 +33,10 @@ const ReceptenZoeker = () => {
     const [fout, setFout] = useState(null);
     const [showModal, setShowModal] = useState(false);
     const [ingredientsList, setIngredientsList] = useState("");
+    const [selectedRecipeTitle, setSelectedRecipeTitle] = useState("");
     const [geselecteerdeMaaltijden, setGeselecteerdeMaaltijden] = useState([]);
     const [geselecteerdeDieet, setGeselecteerdeDieet] = useState([]);
     const [geselecteerdeKeukens, setGeselecteerdeKeukens] = useState([]);
-    const [toonFilters, setToonFilters] = useState(window.innerWidth >= 768);
-
-    useEffect(() => {
-        const handleResize = () => handleResponsiveToggle(setToonFilters);
-        window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
-    }, []);
 
     const handleZoek = async (e) => {
         e.preventDefault();
@@ -62,69 +57,75 @@ const ReceptenZoeker = () => {
         }
     };
 
-    const generateShoppingList = (ingredients) => {
+    const generateShoppingList = (ingredients, title) => {
         const ingredientsString = buildIngredientsList(ingredients);
         setIngredientsList(ingredientsString);
+        setSelectedRecipeTitle(title);
         setShowModal(true);
     };
 
     return (
         <div className="receptenzoeker">
-            <button
-                className="toggle-filters-btn"
-                onClick={() => setToonFilters((prev) => !prev)}
-            >
-                {toonFilters ? "Verberg filters" : "Toon filters"}
-            </button>
-
-            <div className="zoekcontent">
-                {toonFilters && (
-                    <aside className="filtersidebar">
-                        <h4>Menugang</h4>
+            <div className="responsive-filter-knoppen">
+                <details className="filter-dropdown">
+                    <summary>Menugang</summary>
+                    <div className="dropdown-content">
                         {maaltijdOpties.map((type) => (
                             <label key={type} className="filter-label">
                                 <input
                                     type="checkbox"
                                     checked={geselecteerdeMaaltijden.includes(type)}
-                                    onChange={() => toggleCheckbox(type, geselecteerdeMaaltijden, setGeselecteerdeMaaltijden)}
+                                    onChange={() =>
+                                        toggleCheckbox(type, geselecteerdeMaaltijden, setGeselecteerdeMaaltijden)
+                                    }
                                 />
                                 {type}
                             </label>
                         ))}
+                    </div>
+                </details>
 
-                        <h4>Dieet</h4>
+                <details className="filter-dropdown">
+                    <summary>Dieet</summary>
+                    <div className="dropdown-content">
                         {dieetOpties.map((type) => (
                             <label key={type} className="filter-label">
                                 <input
                                     type="checkbox"
                                     checked={geselecteerdeDieet.includes(type)}
-                                    onChange={() => toggleCheckbox(type, geselecteerdeDieet, setGeselecteerdeDieet)}
+                                    onChange={() =>
+                                        toggleCheckbox(type, geselecteerdeDieet, setGeselecteerdeDieet)
+                                    }
                                 />
                                 {type}
                             </label>
                         ))}
+                    </div>
+                </details>
 
-                        <h4>Wereldkeuken</h4>
+                <details className="filter-dropdown">
+                    <summary>Wereldkeuken</summary>
+                    <div className="dropdown-content">
                         {wereldkeukenOpties.map((type) => (
                             <label key={type} className="filter-label">
                                 <input
                                     type="checkbox"
                                     checked={geselecteerdeKeukens.includes(type)}
-                                    onChange={() => toggleCheckbox(type, geselecteerdeKeukens, setGeselecteerdeKeukens)}
+                                    onChange={() =>
+                                        toggleCheckbox(type, geselecteerdeKeukens, setGeselecteerdeKeukens)
+                                    }
                                 />
                                 {type}
                             </label>
                         ))}
-                    </aside>
-                )}
+                    </div>
+                </details>
+            </div>
 
+            <div className="receptencontent">
                 <div className="zoekresultaatkolom">
                     <div className="zoekbalk-hero">
-                        <img
-                            src={Watetenwevandaag}
-                            alt="Wat eten we vandaag?"
-                            className="zoekbalk-achtergrond"
-                        />
+                        <img src={Watetenwevandaag} alt="Wat eten we vandaag?" className="zoekbalk-achtergrond" />
                         <form onSubmit={handleZoek} className="zoekbalk-overlay">
                             <input
                                 type="text"
@@ -159,7 +160,7 @@ const ReceptenZoeker = () => {
                                         </div>
                                     </div>
                                     <button
-                                        onClick={() => generateShoppingList(item.ingredients)}
+                                        onClick={() => generateShoppingList(item.ingredients, item.label)}
                                         className="btn-primary"
                                     >
                                         <FiShoppingCart style={{ marginRight: "0.5rem" }} />
@@ -173,10 +174,11 @@ const ReceptenZoeker = () => {
             </div>
 
             {showModal && (
-                <ModalQR
+                <ModalLink
                     show={showModal}
                     onClose={() => setShowModal(false)}
                     ingredientsList={ingredientsList}
+                    recipeTitle={selectedRecipeTitle}
                 />
             )}
         </div>

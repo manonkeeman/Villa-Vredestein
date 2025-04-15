@@ -10,47 +10,38 @@ import Receptenzoeker from "./Pages/Receptenzoeker.jsx";
 import NotFound from "./Pages/NotFound.jsx";
 import { AuthProvider } from "./Components/Auth/AuthContext";
 import ProtectedRoute from "./Components/Auth/ProtectedRoute";
+import "./Styles/global.css";
 
 function App() {
     return (
-        <>
+        <AuthProvider>
             <Navigatie />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/contact" element={<Contact />} />
-
-                <Route
-                    path="/login"
-                    element={
-                        <AuthProvider>
-                            <Login />
-                        </AuthProvider>
-                    }
-                />
-                <Route
-                    path="/studentdashboard"
-                    element={
-                        <AuthProvider>
+            <main className="main-content">
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route
+                        path="/studentdashboard"
+                        element={
                             <ProtectedRoute>
                                 <StudentDashboard />
                             </ProtectedRoute>
-                        </AuthProvider>
-                    }
-                />
-                <Route
-                    path="/receptenzoeker"
-                    element={
-                        <AuthProvider>
+                        }
+                    />
+                    <Route
+                        path="/receptenzoeker"
+                        element={
                             <ProtectedRoute>
                                 <Receptenzoeker />
                             </ProtectedRoute>
-                        </AuthProvider>
-                    }
-                />
-                <Route path="*" element={<NotFound />} />
-            </Routes>
-        </>
+                        }
+                    />
+                    <Route path="*" element={<NotFound />} />
+                </Routes>
+            </main>
+        </AuthProvider>
     );
 }
 

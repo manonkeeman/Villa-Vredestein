@@ -1,6 +1,7 @@
 import React from "react";
-import "../Styles/BentoGrid.css";
 import "./About.css";
+import "../Styles/global.css";
+import MaximManon from "../Assets/Images/Maxim_Manon_ChevroletSuburban.jpg";
 
 const About = () => {
     return (
@@ -35,18 +36,24 @@ const About = () => {
                 <div className="about-card">
                     <h2>De omgeving</h2>
                     <p>
-                        Villa Vredestein ligt in het groene hart van Driebergen, aan de rand van de Utrechtse Heuvelrug. Een omgeving waar rust, natuur en historie samenkomen. Ontdek sfeervolle landgoederen, wandelroutes en een dorpskern met karakter.                    </p>
+                        Villa Vredestein ligt in het groene hart van Driebergen, aan de rand van de Utrechtse Heuvelrug. Een omgeving waar rust, natuur en historie samenkomen.              </p>
                 </div>
                 <div className="about-card">
                     <h2>Toekomstplannen</h2>
                     <p>
                         Ontdek hoe Villa Vredestein zich blijft ontwikkelen. Van woonhuis tot creatieve broedplaats of AirBnB — de mogelijkheden groeien mee.                </p>
                 </div>
-                <div className="about-card">
+                <div className="about-card with-hover-image">
                     <h2>Over ons</h2>
                     <p>
-                        Wij zijn Manon en Maxim, samen bouwen we aan een plek die rust, creativiteit en avontuur biedt. Een thuis én een basis.                    </p>
+                        Wij zijn Manon en Maxim, samen bouwen we aan een plek die rust, creativiteit en avontuur biedt. Een thuis én een basis.
+                    </p>
+                    <div
+                        className="hover-image"
+                        style={{ backgroundImage: `url(${MaximManon})` }}
+                    ></div>
                 </div>
+
                 <div className="about-card">
                     <h2>Bezoek & Inspiratie</h2>
                     <p>

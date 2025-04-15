@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import ModalContact from "../Components/Modal/ModalContact.jsx";
 import Fonts from "../Components/Fontloader/Fonts";
-import "./contact.css";
+import "./Contact.css";
+import "../Styles/global.css";
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -14,15 +15,12 @@ const Contact = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        })
+        setFormData({ ...formData, [name]: value });
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setShowModal(true);  // Show modal after submission
+        setShowModal(true);
     };
 
     const closeModal = () => {
@@ -32,7 +30,6 @@ const Contact = () => {
     return (
         <>
             <Fonts />
-
             <div className="contact-page">
                 <div className="contact-container">
                     <div className="contact-form-section">
@@ -93,6 +90,7 @@ const Contact = () => {
                                 style={{ border: 0 }}
                                 allowFullScreen=""
                                 loading="lazy"
+                                title="Google Maps locatie"
                             ></iframe>
                         </div>
                     </div>

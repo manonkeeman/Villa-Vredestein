@@ -1,9 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 .about-page {
-    padding: 2rem 2rem 2rem 2rem;
+    padding: 2rem;
     font-family: 'Poppins', sans-serif;
     min-height: 100vh;
     box-sizing: border-box;
+    background-color: #000;
+    color: white;
 }
+
 .about-title {
     text-align: center;
     font-size: 18px;
@@ -12,6 +17,7 @@
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+
 .about-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -19,23 +25,66 @@
     max-width: 1200px;
     margin: 0 auto;
 }
+
 .about-card {
-    background-color: black;
+    position: relative;
+    background-color: #111;
     border: 1px solid #fcbc2d;
     padding: 2rem;
-    border-radius: 10px;
+    border-radius: 12px;
     transition: transform 0.3s ease;
     box-shadow: 0 0 10px rgba(252, 188, 45, 0.2);
+    overflow: hidden;
+    min-height: 250px;
 }
+
 .about-card:hover {
     transform: translateY(-5px);
 }
+
 .about-card h2 {
     font-size: 14px;
     margin-bottom: 1rem;
     color: #fcbc2d;
+    z-index: 2;
+    position: relative;
+    transition: color 0.3s ease;
 }
+
 .about-card p {
-    font-size: 10px;
+    font-size: 12px;
     line-height: 1.5;
+    z-index: 2;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.about-card.with-hover-image h2,
+.about-card.with-hover-image p {
+    color: #fcbc2d;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+}
+
+.about-card.with-hover-image p {
+    color: white; /* tekst blijft wit */
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+}
+
+.hover-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center top;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    z-index: 1;
+    border-radius: 10px;
+}
+
+.about-card.with-hover-image:hover .hover-image {
+    opacity: 1;
+    transform: scale(1.05);
 }
