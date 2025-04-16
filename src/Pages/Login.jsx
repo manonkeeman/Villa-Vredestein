@@ -41,6 +41,12 @@ const Login = () => {
 
             <div className="login-box login-form-box">
                 <h1>Log hier in</h1>
+                <p className="login-subtext">
+                    Welkom terug, Vredesteiner.<br/>
+                    Log in om je dashboard te bekijken.
+                    Voor alles wat je moet weten over wonen in Villa Vredestein —
+                    handig, helder en actueel.
+                </p>
                 <form onSubmit={handleSubmit}>
                     <input
                         type="email"
