@@ -19,7 +19,7 @@ const Home = () => {
     return (
         <div className="home">
             <div className="card-wrapper">
-                <div className="card bordered home-text">
+                <div className="card text-card home-text">
                     <h1>Welkom bij Villa Vredestein</h1>
                     <p>
                         Gebouwd in 1906, ademt Villa Vredestein de charme van weleer.
@@ -41,7 +41,7 @@ const Home = () => {
                     <Button text="Lees meer" variant="secundary" onClick={() => navigate("/about")} />
                 </div>
 
-                <div className="card bordered home-image">
+                <div className="card image-card home-image">
                     <img src={VillaVredestein} alt="Villa Vredestein" />
                 </div>
             </div>
