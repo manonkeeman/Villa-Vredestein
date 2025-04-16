@@ -1,25 +1,13 @@
 import React, { useState } from "react";
 import { Navigate, Link } from "react-router-dom";
 import { useAuth } from "../Components/Auth/AuthContext";
-import {
-    FiLogOut,
-    FiHome,
-    FiAlertCircle,
-    FiFileText,
-    FiCalendar,
-    FiUser,
-    FiUsers,
-    FiDollarSign,
-    FiClipboard,
-    FiBookOpen,
-    FiChevronDown
-} from "react-icons/fi";
+import {FiLogOut, FiHome, FiAlertCircle, FiFileText, FiCalendar, FiUser, FiUsers, FiDollarSign, FiClipboard, FiBookOpen } from "react-icons/fi";
 import "./StudentDashboard.css";
 import "../Styles/Global.css";
 
 const StudentDashboard = () => {
     const { isLoggedIn, logout } = useAuth();
-    const [openMenu, setOpenMenu] = useState(false);
+    const [openMenu] = useState(false);
 
     if (!isLoggedIn) {
         return <Navigate to="/login" replace />;

@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Navigatie from "./Components/Navigatie/Navigatie.jsx";
+import Footer from "./Components/Footer/Footer.jsx";
 import Home from "./Pages/Home.jsx";
 import About from "./Pages/About.jsx";
 import Contact from "./Pages/Contact.jsx";
@@ -41,6 +42,7 @@ function App() {
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </main>
+            <Footer />
         </AuthProvider>
     );
 }
