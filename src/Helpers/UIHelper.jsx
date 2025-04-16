@@ -6,15 +6,6 @@ export const handleOutsideClick = (e, onClose) => {
     }
 };
 
-/* Toggle een waarde in een checkbox-lijst (zoals filters).*/
-
-export const toggleCheckbox = (value, selectedValues, setSelected) => {
-    const updated = selectedValues.includes(value)
-        ? selectedValues.filter((v) => v !== value)
-        : [...selectedValues, value];
-    setSelected(updated);
-};
-
 /* Resize observer die toggles aanpast op basis van schermgrootte.*/
 
 export const handleResponsiveToggle = (setToonFilters) => {
