@@ -191,14 +191,24 @@ body {
 
 .recept-titel-onder {
     padding: 1rem;
-    background-color: #111;
-}
-
-.recept-titel-onder h3 {
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
     color: #FCBC2D;
     margin: 0;
+    text-align: center;
+}
+
+.recept-titel-onder h3 a {
+    font-size: 14px;
+    font-weight: 500;
+    color: #FCBC2D;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.recept-titel-onder h3 a:hover {
+    transform: scale(1.05);
+    color: #fff;
 }
 
 .fout {
