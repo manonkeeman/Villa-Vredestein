@@ -1,32 +1,30 @@
 import React from "react";
-import { FiArrowUpCircle, FiGlobe } from "react-icons/fi";
+import { FiArrowUpCircle } from "react-icons/fi";
 import "./Footer.css";
 
 const Footer = () => {
+    const currentYear = new Date().getFullYear();
+
     return (
         <footer className="footer">
             <div className="footer-content">
-                <p>
-                    © {new Date().getFullYear()} Villa Vredestein | Alle rechten voorbehouden
+                <p className="footer-copy">
+                    © {currentYear} Villa Vredestein | Alle rechten voorbehouden{" "}
+                    <a href="#top" className="scroll-up-inline" aria-label="Scroll naar boven">
+                        <FiArrowUpCircle className="arrow-icon-inline" />
+                    </a>
                 </p>
-                <p>Design & Code | Manon Keeman</p>
-                <div className="footer-icons">
+                <p className="footer-design">
+                    Design & Code |{" "}
                     <a
                         href="https://manonkeeman.nl"
                         target="_blank"
                         rel="noopener noreferrer"
-                        aria-label="Website"
+                        className="footer-link"
                     >
-                        <FiGlobe />
+                        Manon Keeman
                     </a>
-                    <a
-                        href="#top"
-                        className="scroll-top"
-                        aria-label="Scroll to top"
-                    >
-                        <FiArrowUpCircle />
-                    </a>
-                </div>
+                </p>
             </div>
         </footer>
     );
