@@ -1,51 +1,60 @@
-**\*** VILLA VREDESTEIN **\***
+**\*** Installatie handleiding – Villa Vredestein - React Applicatie **\***
 
-Villa Vredestein is een stijlvolle en moderne website ontworpen voor een studentenhuis, met Airbnb functionaliteit in de toekomst.
-Het combineert gebruiksvriendelijke navigatie met een aantrekkelijke uitstraling om studenten en bezoekers te informeren en te verwelkomen.
+VOORVEREISTEN
 
-OVER HET PROJECT
+Zorg dat de volgende software op je computer is geïnstalleerd:
 
-Villa Vredestein is meer dan alleen een studentenhuis.
-De website biedt:
+ • Node.js (v16 of hoger): https://nodejs.org/en/download
+ • Git: https://desktop.github.com/download/
+ • Code editor Webstorm: https://www.jetbrains.com/webstorm/download
 
-- een login voor studenten
-- een dashboard voor studenten met onder andere een receptenzoeker
-- beknopte informatie over Villa Vredestein voor bezoekers
-- contactinformatie voor bezoekers
 
-De website is ontworpen met oog voor functionaliteit, design en gebruikerservaring. 
-Deze website is gebouwd met:
-_ HTML5: voor de structuur
-_ CSS3 voor styling en een moderne look
-_ JavaScript voor interactieve elementen
-_ React: voor extra functionaliteiten \* Edamam API - receptenzoeker voor studenten
+Stap 1: Project clonen
 
-FEATURES
+Open een terminal of Git Bash en voer het volgende commando uit:
 
-RESPONSIVE DESIGN: Werkt op desktop, tablet en mobiel
-INFORMATIE & "OVER ONS" PAGINA: Informatie over de villa en de bewoners
-CONTACT PAGINA: voor contact met de bewoners
-STUDENTENINLOG: Praktische informatie en updates
-DASHBOARD: Foto's van de kamers en gemeenschappelijke ruimtes
-AIRBNB-INTEGRATIE (toekomst): Mogelijkheid om direct te boeken via een externe link.
+git clone https://github.com/manonkeeman/villa-vredestein.git
 
-SCHERMAFBEELDINGEN
+Ga daarna naar de map van het project:
 
-LICENTIE
+cd villa-vredestein
 
-Dit project is gelicenseerd onder de MIT-licentie. Zie het bestand LICENSE voor meer details.
 
-BIJDRAGEN
 
-Bijdragen zijn altijd welkom! Wil je een bug melden, een feature voorstellen of zelf iets toevoegen?
+Stap 2: Dependencies installeren
 
-1. Fork de repository
-2. Maak een nieuwe branch: git checkout -b mijn-feature
-3. commit je wijzigingen: git commit -m ": Beschrijving van mijn aanpassing"
-4. Push naar de branch: git push origin mijn-feature
-5. Maak een pull request
-6. CONTACT
-7. heb je vragen of feedback?
-8. Neem gerust contact op!
-   - WEBSITE: https://www.villavredestein.com
-   - EMAIL: manonkeeman@gmail.com
+Installeer de benodigde pakketten:
+
+npm install
+
+
+Stap 3: API-keys toevoegen 
+
+voeg het .ENV bestand toe in de root van het project met daarin:
+
+VITE_APP_ID=6497d4b5
+VITE_APP_KEY=e91c571eeff4f52de58c80b420451144
+VITE_USER_ID=manonkeeman
+
+VITE_USER1_EMAIL=student@villavredestein.com
+VITE_USER1_PASSWORD=welkomenvoeljethuis
+VITE_ADMIN_EMAIL=manon@villavredestein.com
+VITE_ADMIN_PASSWORD=veiligheidbovenalles
+
+
+Stap 4: Start de applicatie
+
+Start de development server:
+
+npm run dev
+
+De applicatie draait nu op:
+
+http://localhost:5173
+
+
+Optioneel: productie
+
+De productieversie staat online alleen zonder de inlog-mogelijkheid: 
+
+https://villavredestein.com/
