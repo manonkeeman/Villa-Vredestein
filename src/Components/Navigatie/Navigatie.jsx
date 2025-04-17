@@ -3,7 +3,7 @@ import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { FaInstagram, FaWhatsapp, FaUser } from "react-icons/fa";
 import { useAuth } from "../Auth/AuthContext";
 import "./Navigatie.css";
-import Logo from "../../Assets/Images/VVLogo.png";
+import Logo from "../../../public/VVLogo.png";
 
 const Navigatie = () => {
     const { isLoggedIn, logout } = useAuth();

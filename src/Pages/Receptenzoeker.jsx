@@ -7,11 +7,21 @@ import "./ReceptenZoeker.css";
 
 const maaltijdOpties = ["Breakfast", "Lunch", "Brunch", "Dinner"];
 const dieetOpties = [
-    "Vegetarian", "Vegan", "Dairy-free", "Gluten-free",
-    "Sugar-conscious", "Peanut-free", "Tree-nut-free",
+    { label: "Vegetarisch", value: "vegetarian" },
+    { label: "Veganistisch", value: "vegan" },
+    { label: "Lactosevrij", value: "dairy-free" },
+    { label: "Glutenvrij", value: "gluten-free" },
+    { label: "Zonder suiker", value: "sugar-conscious" },
+    { label: "Pindavrij", value: "peanut-free" },
+    { label: "Notenvrij", value: "tree-nut-free" },
 ];
 const wereldkeukenOpties = [
-    "Italian", "Greek", "South East Asian", "Japanese", "American", "Mexican",
+    { label: "Italiaans", value: "italian" },
+    { label: "Grieks", value: "greek" },
+    { label: "Zuid-Oost Aziatisch", value: "south-east-asian" },
+    { label: "Japans", value: "japanese" },
+    { label: "Amerikaans", value: "american" },
+    { label: "Mexicaans", value: "mexican" },
 ];
 
 const ReceptenZoeker = () => {
@@ -57,7 +67,6 @@ const ReceptenZoeker = () => {
             <div className="receptencontent">
                 <div className="zoekresultaatkolom">
 
-                    {/* Hero met image en overlays */}
                     <div className="zoekbalk-hero">
                         <img
                             src={Watetenwevandaag}
@@ -65,7 +74,6 @@ const ReceptenZoeker = () => {
                             className="zoekbalk-achtergrond"
                         />
 
-                        {/* Dropdown buttons */}
                         <div className="filter-button-overlay">
                             <div className="filter-dropdown">
                                 <select
@@ -85,7 +93,7 @@ const ReceptenZoeker = () => {
                                 >
                                     <option value="">Dieet ▾</option>
                                     {dieetOpties.map((optie) => (
-                                        <option key={optie} value={optie}>{optie}</option>
+                                        <option key={optie.value} value={optie.value}>{optie.label}</option>
                                     ))}
                                 </select>
                             </div>
@@ -96,13 +104,12 @@ const ReceptenZoeker = () => {
                                 >
                                     <option value="">Keuken ▾</option>
                                     {wereldkeukenOpties.map((optie) => (
-                                        <option key={optie} value={optie}>{optie}</option>
+                                        <option key={optie.value} value={optie.value}>{optie.label}</option>
                                     ))}
                                 </select>
                             </div>
                         </div>
 
-                        {/* Zoekbalk */}
                         <form onSubmit={handleZoek} className="zoekbalk-overlay">
                             <input
                                 type="text"
@@ -117,7 +124,6 @@ const ReceptenZoeker = () => {
                         </form>
                     </div>
 
-                    {/* Resultaten */}
                     <div className="resultaten-wrapper">
                         {laden && <p>Even geduld... recepten worden geladen.</p>}
                         {fout && <p className="fout">{fout}</p>}
@@ -139,7 +145,11 @@ const ReceptenZoeker = () => {
                                         </button>
                                     </div>
                                     <div className="recept-titel-onder">
-                                        <h3>{item.label}</h3>
+                                        <h3>
+                                          <a href={item.url} target="_blank" rel="noopener noreferrer">
+                                            {item.label}
+                                          </a>
+                                        </h3>
                                     </div>
                                 </div>
                             ))}
@@ -148,7 +158,6 @@ const ReceptenZoeker = () => {
                 </div>
             </div>
 
-            {/* Modal */}
             {showModal && (
                 <ModalLink
                     show={showModal}

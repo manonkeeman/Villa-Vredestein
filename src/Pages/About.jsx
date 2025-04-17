@@ -10,7 +10,6 @@ import Villa5 from "../Assets/Images/VillaVredestein2024.jpg";
 import Villa6 from "../Assets/Images/VillaVredesteinRestauratie.jpg";
 import Villa7 from "../Assets/Images/Maxim_Manon_ChevroletSuburban.jpg";
 import Villa8 from "../Assets/Images/InkijkjeinVredestein.jpg";
-import WonenWerkenVideo from "/WonenWerkenVillaVredestein.mp4"; // vanaf public
 
 const aboutData = [
     {
@@ -31,7 +30,6 @@ const aboutData = [
     {
         title: "Wonen & Werken",
         text: "Villa Vredestein biedt ruimte aan mensen met uiteenlopende passies. Er wordt gewoond, gestudeerd én gewerkt.",
-        video: WonenWerkenVideo,
     },
     {
         title: "Duurzaam verbouwen",
@@ -71,7 +69,6 @@ const About = () => {
                         title={item.title}
                         text={item.text}
                         image={item.image}
-                        video={item.video}
                     />
                 ))}
             </div>
