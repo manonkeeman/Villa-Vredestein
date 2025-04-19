@@ -1,0 +1,121 @@
+.card-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: stretch;
+}
+
+.card.text-card {
+    flex: 1;
+    max-width: 33.33%;
+    background-color: #111;
+    border: 1px solid #fcbc2d;
+    padding: 2rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: auto;
+}
+
+.card.image-card {
+    flex: 2;
+    max-height: 600px;
+    max-width: 66.66%;
+    background-color: #000;
+    border: 1px solid #fcbc2d;
+    border-radius: 10px;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.home-text h1 {
+    font-size: 1.2rem;
+    color: #fcbc2d;
+    margin-bottom: 1rem;
+}
+
+.home-text p {
+    font-size: 12px;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+}
+
+.home-text button {
+    padding: 0.4rem 1.2rem;
+    font-size: 12px;
+    border-radius: 10px;
+    border: 1px solid #fcbc2d;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    width: fit-content;
+    max-width: 200px;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+.home-text button:hover {
+    background-color: #fcbc2d;
+    color: black;
+}
+
+.home-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: filter 0.6s ease-in-out, transform 0.6s ease-in-out;
+}
+
+.home-image:hover img {
+    filter: grayscale(0%);
+    transform: scale(1.03);
+}
+
+@media (max-width: 768px) {
+    .card-wrapper {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        gap: 1rem;
+    }
+
+    .card.image-card {
+        order: 2;
+    }
+
+    .card.text-card {
+        order: 1;
+    }
+
+    .card.text-card,
+    .card.image-card {
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+        max-height: none;
+    }
+
+    .card.text-card {
+        padding: 1.5rem;
+        overflow-y: visible;
+    }
+
+    .home-text {
+        text-align: center;
+    }
+
+    .home-image {
+        margin-top: 1rem;
+    }
+
+    .home-image {
+        height: auto;
+        min-height: 250px;
+        object-fit: cover;
+    }
+}
