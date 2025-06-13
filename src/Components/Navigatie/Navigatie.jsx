@@ -3,7 +3,6 @@ import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { FaInstagram, FaWhatsapp, FaUser } from "react-icons/fa";
 import { useAuth } from "../Auth/AuthContext";
 import "./Navigatie.css";
-import Logo from "../../../public/VVLogo.png";
 
 const Navigatie = () => {
     const { isLoggedIn, logout } = useAuth();
@@ -30,7 +29,7 @@ const Navigatie = () => {
             {/* Logo */}
             <div className="logo">
                 <NavLink to="/contact" className="logo-link">
-                    <img src={Logo} alt="Villa Vredestein Logo" className="logo-img" />
+                    <img src="/VVLogo.png" alt="Villa Vredestein Logo" className="logo-img" />
                 </NavLink>
             </div>
 
