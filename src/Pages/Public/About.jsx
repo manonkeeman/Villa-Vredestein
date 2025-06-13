@@ -1,16 +1,16 @@
 import React from "react";
 import "./About.css";
-import AboutHover from "../Components/AboutHover/AboutHover";
+import AboutHover from "../../Components/AboutHover/AboutHover";
 
-import Villa1 from "../Assets/Images/VillaVredestein2024.jpg";
-import Villa2 from "../Assets/Images/VillaVredestein1910.jpg";
-import Villa3 from "../Assets/Images/VillaVredesteinRestauratie.jpg";
-import Villa4 from "../Assets/Images/WonenenWerkeninVredestein.jpg";
-import Villa5 from "../Assets/Images/DuurzaamVillaVredestein.jpg";
-import Villa6 from "../Assets/Images/DeOmgevingVillaVredestein.jpg";
-import Villa7 from "../Assets/Images/VillaVredeseteinGlazenBol.jpg";
-import Villa8 from "../Assets/Images/Maxim_Manon_ChevroletSuburban.jpg";
-import Villa9 from "../Assets/Images/BezoekOnsVillaVredestein.jpg";
+import Villa1 from "../../Assets/Images/VillaVredestein2024.jpg";
+import Villa2 from "../../Assets/Images/VillaVredestein1910.jpg";
+import Villa3 from "../../Assets/Images/VillaVredesteinRestauratie.jpg";
+import Villa4 from "../../Assets/Images/WonenenWerkeninVredestein.jpg";
+import Villa5 from "../../Assets/Images/DuurzaamVillaVredestein.jpg";
+import Villa6 from "../../Assets/Images/DeOmgevingVillaVredestein.jpg";
+import Villa7 from "../../Assets/Images/VillaVredesteinGlazenBol.jpg";
+import Villa8 from "../../Assets/Images/Maxim_Manon_ChevroletSuburban.jpg";
+import Villa9 from "../../Assets/Images/BezoekOnsVillaVredestein.jpg";
 
 
 

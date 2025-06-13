@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Watetenwevandaag from "../Assets/Images/Watetenwevandaag.jpg";
+import Watetenwevandaag from "../../Assets/Images/Watetenwevandaag.jpg";
 import { FiSearch, FiShoppingCart } from "react-icons/fi";
-import { fetchRecipes, buildIngredientsList } from "../Helpers/ApiHelper";
-import ModalLink from "../Components/Modal/ModalLink";
-import "./ReceptenZoeker.css";
+import { fetchRecipes, buildIngredientsList } from "../../Helpers/ApiHelper";
+import ModalLink from "../../Components/Modal/ModalLink";
+import "./RecipeSearch.css";
 
 const maaltijdOpties = ["Breakfast", "Lunch", "Brunch", "Dinner"];
 const dieetOpties = [
@@ -24,7 +24,7 @@ const wereldkeukenOpties = [
     { label: "Mexicaans", value: "mexican" },
 ];
 
-const ReceptenZoeker = () => {
+const RecipeSearch = () => {
     const [zoekwoord, setZoekwoord] = useState("");
     const [recepten, setRecepten] = useState([]);
     const [laden, setLaden] = useState(false);
@@ -170,4 +170,4 @@ const ReceptenZoeker = () => {
     );
 };
 
-export default ReceptenZoeker;
+export default RecipeSearch;

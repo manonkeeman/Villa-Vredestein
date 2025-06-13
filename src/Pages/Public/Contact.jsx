@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import ModalContact from "../Components/Modal/ModalContact.jsx";
-import "../Styles/Global.css";
+import ModalContact from "../../Components/Modal/ModalContact.jsx";
+import "../../Styles/Global.css";
 import "./Contact.css";
 
 const Contact = () => {

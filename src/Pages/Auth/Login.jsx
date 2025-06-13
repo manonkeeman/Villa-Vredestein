@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../Components/Auth/AuthContext";
+import { useAuth } from "./AuthContext.jsx";
 import "./Login.css";
-import Button from "../Components/Buttons/Button";
+import Button from "../../Components/Buttons/Button";
 import { FiEye, FiEyeOff } from "react-icons/fi";
-import "../Styles/Global.css";
+import "../../Styles/Global.css";
 
 const Login = () => {
     const navigate = useNavigate();

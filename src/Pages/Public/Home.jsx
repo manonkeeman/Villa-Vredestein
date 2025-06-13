@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Button from "../Components/Buttons/Button.jsx";
-import "../Styles/Global.css";
+import Button from "../../Components/Buttons/Button.jsx";
+import "../../Styles/Global.css";
 import "./Home.css";
-import VillaVredestein from "../Assets/Images/VillaVredestein.jpeg";
+import VillaVredestein from "../../Assets/Images/VillaVredestein.jpg";
 
 const Home = () => {
     const navigate = useNavigate();
@@ -19,7 +19,6 @@ const Home = () => {
     return (
         <div className="home">
             <div className="card-wrapper">
-                {/* IMAGE COMES SECOND ON MOBILE, FIRST ON DESKTOP */}
                 <div className="card image-card home-image">
                     <img src={VillaVredestein} alt="Villa Vredestein" />
                 </div>

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Navigate, Link } from "react-router-dom";
-import { useAuth } from "../Components/Auth/AuthContext";
+import { useAuth } from "../Auth/AuthContext.jsx";
 import {FiLogOut, FiHome, FiAlertCircle, FiFileText, FiCalendar, FiUser, FiUsers, FiDollarSign, FiClipboard, FiBookOpen } from "react-icons/fi";
 import "./StudentDashboard.css";
-import "../Styles/Global.css";
+import "../../Styles/Global.css";
 
 const StudentDashboard = () => {
     const { isLoggedIn, logout } = useAuth();
