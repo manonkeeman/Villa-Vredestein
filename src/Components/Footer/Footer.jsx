@@ -17,7 +17,7 @@ const Footer = () => {
                 <p className="footer-design">
                     Design & Code |{" "}
                     <a
-                        href="https://manonkeeman.nl"
+                        href="https://manonkeeman.com"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="footer-link"
