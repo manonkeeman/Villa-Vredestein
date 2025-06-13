@@ -1,0 +1,134 @@
+.card-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: stretch;
+    height: 600px;
+}
+
+.card.text-card,
+.card.image-card {
+    height: 100%;
+}
+
+.card.text-card {
+    flex: 1;
+    max-width: 33.33%;
+    background-color: #111;
+    border: 1px solid #fcbc2d;
+    padding: 2rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.card.image-card {
+    flex: 2;
+    max-width: 66.66%;
+    background-color: #000;
+    border: 1px solid #fcbc2d;
+    border-radius: 10px;
+    overflow: hidden;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.card.image-card iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    display: block;filter: grayscale(100%);
+    transition: filter 0.6s ease-in-out, transform 0.6s ease-in-out;
+}
+
+.card.image-card:hover iframe {
+    filter: grayscale(0%);
+    transform: scale(1.03);
+}
+
+.contact-title {
+    font-size: 18px;
+    color: #fcbc2d;
+}
+
+.card.text-card p {
+    font-size: 12px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 12px;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+.btn-primary {
+    padding: 0.4rem 1.2rem;
+    font-size: 12px;
+    border-radius: 10px;
+    border: 1px solid #fcbc2d;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    width: fit-content;
+    max-width: 200px;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+}
+
+.btn-primary:hover {
+    background-color: #fcbc2d;
+    color: black;
+}
+
+@media (max-width: 768px) {
+    .card-wrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 30px;
+        height: auto;
+    }
+
+    .card.text-card,
+    .card.image-card {
+        max-width: 100%;
+        width: 90%;
+        height: auto;
+    }
+
+    .card.image-card {
+        min-height: 300px;
+    }
+
+    .card.image-card iframe {
+        height: 100%;
+        min-height: 300px;
+    }
+
+    .card.text-card {
+        text-align: center;
+        padding: 1.5rem;
+    }
+}
