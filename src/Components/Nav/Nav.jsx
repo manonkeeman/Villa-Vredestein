@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { FaInstagram, FaWhatsapp, FaUser } from "react-icons/fa";
-import { useAuth } from "../Auth/AuthContext";
-import "./Navigatie.css";
+import { useAuth } from "../../Pages/Auth/AuthContext.jsx";
+import "./Nav.css";
 
-const Navigatie = () => {
+const Nav = () => {
     const { isLoggedIn, logout } = useAuth();
     const navigate = useNavigate();
     const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -76,4 +76,4 @@ const Navigatie = () => {
     );
 };
 
-export default Navigatie;
+export default Nav;
