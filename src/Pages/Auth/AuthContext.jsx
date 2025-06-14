@@ -3,54 +3,76 @@ import PropTypes from "prop-types";
 
 const AuthContext = createContext();
 
-const approvedUsers = [
-    {
-        email: import.meta.env.VITE_USER1_EMAIL,
-        password: import.meta.env.VITE_USER1_PASSWORD,
-    },
-    {
-        email: import.meta.env.VITE_ADMIN_EMAIL,
-        password: import.meta.env.VITE_ADMIN_PASSWORD,
-    },
-];
-
 export const AuthProvider = ({ children }) => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
+    const isLoggedIn = !!user;
+
     useEffect(() => {
-        const storedLogin = localStorage.getItem("isLoggedIn") === "true";
+        const token = localStorage.getItem("token");
         const storedUser = localStorage.getItem("user");
 
-        if (storedLogin && storedUser) {
-            setIsLoggedIn(true);
-            setUser(JSON.parse(storedUser));
+        if (token && storedUser) {
+            try {
+                setUser(JSON.parse(storedUser));
+            } catch (error) {
+                console.warn("❌ Ongeldige user-data in localStorage:", error);
+                localStorage.removeItem("token");
+                localStorage.removeItem("user");
+            }
         }
+
         setLoading(false);
     }, []);
 
-    const login = (email, password) => {
-        const match = approvedUsers.find(
-            (u) => u.email === email && u.password === password
-        );
+    const login = async (email, password) => {
+        try {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/login`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                credentials: "include", // voor refreshToken cookie
+                body: JSON.stringify({ email, password }),
+            });
 
-        if (match) {
-            setIsLoggedIn(true);
-            setUser({ email });
-            localStorage.setItem("isLoggedIn", "true");
+            if (!response.ok) {
+                const errorText = await response.text();
+                console.warn("❌ Login response niet OK:", errorText);
+                return false;
+            }
+
+            const data = await response.json();
+
+            if (!data.accessToken) {
+                console.error("❌ accessToken ontbreekt in login response");
+                return false;
+            }
+
+            localStorage.setItem("token", data.accessToken);
             localStorage.setItem("user", JSON.stringify({ email }));
+            setUser({ email });
             return true;
-        } else {
+        } catch (err) {
+            console.error("❌ Login fout:", err.message);
             return false;
         }
     };
 
-    const logout = () => {
-        setIsLoggedIn(false);
-        setUser(null);
-        localStorage.removeItem("isLoggedIn");
+    const logout = async () => {
+        try {
+            await fetch(`${import.meta.env.VITE_API_URL}/api/logout`, {
+                method: "POST",
+                credentials: "include", // om de cookie weg te halen
+            });
+        } catch (err) {
+            console.warn("⚠️ Logout fout, doorgaan met lokaal verwijderen.");
+        }
+
+        localStorage.removeItem("token");
         localStorage.removeItem("user");
+        setUser(null);
     };
 
     return (
