@@ -39,3 +39,26 @@ export const fetchRecipes = async (zoekwoord, maaltijden, dieet, keukens) => {
 
 export const buildIngredientsList = (ingredients = []) =>
     ingredients.map(i => i.food).join(", ");
+
+export const fetchProtectedData = async () => {
+    const token = localStorage.getItem("token");
+
+    try {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/protected`, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error("Toegang geweigerd");
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (err) {
+        console.error("Fout bij ophalen beveiligde data:", err.message);
+        return null;
+    }
+};

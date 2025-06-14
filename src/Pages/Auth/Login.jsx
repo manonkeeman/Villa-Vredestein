@@ -15,9 +15,9 @@ const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState("");
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const success = login(email.trim(), password.trim());
+        const success = await login(email.trim(), password.trim());
         if (success) {
             navigate("/studentdashboard");
         } else {
