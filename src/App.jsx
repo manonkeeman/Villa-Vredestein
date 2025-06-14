@@ -1,22 +1,22 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Navigatie from "./Components/Navigatie/Navigatie.jsx";
+import Nav from "./Components/Nav/Nav.jsx";
 import Footer from "./Components/Footer/Footer.jsx";
-import Home from "./Pages/Home.jsx";
-import About from "./Pages/About.jsx";
-import Contact from "./Pages/Contact.jsx";
-import Login from "./Pages/Login.jsx";
-import StudentDashboard from "./Pages/StudentDashboard.jsx";
-import Receptenzoeker from "./Pages/Receptenzoeker.jsx";
-import NotFound from "./Pages/NotFound.jsx";
-import { AuthProvider } from "./Components/Auth/AuthContext";
-import ProtectedRoute from "./Components/Auth/ProtectedRoute";
+import Home from "./Pages/Public/Home.jsx";
+import About from "./Pages/Public/About.jsx";
+import Contact from "./Pages/Public/Contact.jsx";
+import Login from "./Pages/Auth/Login.jsx";
+import StudentDashboard from "./Pages/Dashboard/StudentDashboard.jsx";
+import Receptenzoeker from "./Pages/Dashboard/RecipeSearch.jsx";
+import NotFound from "./Pages/Public/NotFound.jsx";
+import { AuthProvider } from "./Pages/Auth/AuthContext";
+import ProtectedRoute from "./Pages/Auth/ProtectedRoute";
 import "./Styles/Global.css";
 
 function App() {
     return (
         <AuthProvider>
-            <Navigatie />
+            <Nav />
             <main className="main-content">
                 <Routes>
                     <Route path="/" element={<Home />} />
