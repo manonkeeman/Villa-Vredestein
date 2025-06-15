@@ -10,6 +10,7 @@ const Contact = () => {
         email: "",
         message: "",
     });
+
     const [showModal, setShowModal] = useState(false);
 
     const handleChange = (e) => {
@@ -25,19 +26,26 @@ const Contact = () => {
     const closeModal = () => setShowModal(false);
 
     return (
-        <div className="contact-page">
-            <div className="card-wrapper">
-                <div className="card text-card">
-                    <h1 className="contact-title">Wij vinden het leuk van je te horen!</h1>
+        <main className="contact-page">
+            <section className="card-wrapper">
+                <article className="card text-card">
+                    <header>
+                        <h1 className="contact-title">Wij vinden het leuk van je te horen!</h1>
+                    </header>
                     <p>Heb je vragen, zoek je contact of wil je samenwerken?</p>
-                    <p>Laat je gegevens achter en wij nemen zo snel mogelijk contact met je op.
-                        Of je nu nieuwsgierig bent naar de geschiedenis van de villa, interesse hebt in een samenwerking, een idee wilt delen of gewoon even hallo wilt zeggen — we horen graag van je.
-                        Villa Vredestein is een plek van verbinding, inspiratie en gastvrijheid. Jouw verhaal hoort daar misschien wel bij.</p>
+                    <p>
+                        Laat je gegevens achter en wij nemen zo snel mogelijk contact met je op.
+                        Of je nu nieuwsgierig bent naar de geschiedenis van de villa, interesse hebt in een samenwerking,
+                        een idee wilt delen of gewoon even hallo wilt zeggen — we horen graag van je.
+                        Villa Vredestein is een plek van verbinding, inspiratie en gastvrijheid. Jouw verhaal hoort daar misschien wel bij.
+                    </p>
 
-                    <form onSubmit={handleSubmit} className="contact-form">
+                    <form onSubmit={handleSubmit} className="contact-form" aria-label="Contactformulier">
                         <div className="form-group">
+                            <label htmlFor="firstName" className="visually-hidden">Voornaam</label>
                             <input
                                 type="text"
+                                id="firstName"
                                 name="firstName"
                                 placeholder="Voornaam"
                                 value={formData.firstName}
@@ -45,9 +53,12 @@ const Contact = () => {
                                 required
                             />
                         </div>
+
                         <div className="form-group">
+                            <label htmlFor="lastName" className="visually-hidden">Achternaam</label>
                             <input
                                 type="text"
+                                id="lastName"
                                 name="lastName"
                                 placeholder="Achternaam"
                                 value={formData.lastName}
@@ -55,9 +66,12 @@ const Contact = () => {
                                 required
                             />
                         </div>
+
                         <div className="form-group">
+                            <label htmlFor="email" className="visually-hidden">Emailadres</label>
                             <input
                                 type="email"
+                                id="email"
                                 name="email"
                                 placeholder="Emailadres"
                                 value={formData.email}
@@ -65,8 +79,11 @@ const Contact = () => {
                                 required
                             />
                         </div>
+
                         <div className="form-group">
+                            <label htmlFor="message" className="visually-hidden">Bericht</label>
                             <textarea
+                                id="message"
                                 name="message"
                                 placeholder="Bericht"
                                 value={formData.message}
@@ -74,24 +91,27 @@ const Contact = () => {
                                 required
                             ></textarea>
                         </div>
+
                         <button type="submit" className="btn-primary">Verstuur</button>
                     </form>
-                </div>
+                </article>
 
-                <div className="card image-card">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2453.571372380421!2d5.2805443904470115!3d52.051119099596725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c65decd0beb145%3A0x91a0779ee9a6307f!2sVilla%20Vredestein!5e0!3m2!1snl!2snl!4v1744454158527!5m2!1snl!2snl"
-                        width="100%"
-                        height="100%"
-                        allowFullScreen=""
-                        loading="lazy"
-                        title="Villa Vredestein locatie"
-                    ></iframe>
-                </div>
-            </div>
+                <aside className="card image-card" aria-label="Kaart van locatie Villa Vredestein">
+                    <address>
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2453.571372380421!2d5.2805443904470115!3d52.051119099596725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c65decd0beb145%3A0x91a0779ee9a6307f!2sVilla%20Vredestein!5e0!3m2!1snl!2snl!4v1744454158527!5m2!1snl!2snl"
+                            width="100%"
+                            height="100%"
+                            allowFullScreen
+                            loading="lazy"
+                            title="Villa Vredestein locatie"
+                        ></iframe>
+                    </address>
+                </aside>
+            </section>
 
             {showModal && <ModalContact show={showModal} onClose={closeModal} />}
-        </div>
+        </main>
     );
 };
 
