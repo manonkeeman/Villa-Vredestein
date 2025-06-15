@@ -12,9 +12,6 @@ import Villa7 from "../../Assets/Images/VillaVredesteinGlazenBol.jpg";
 import Villa8 from "../../Assets/Images/Maxim_Manon_ChevroletSuburban.jpg";
 import Villa9 from "../../Assets/Images/BezoekOnsVillaVredestein.jpg";
 
-
-
-
 const aboutData = [
     {
         title: "Over Villa Vredestein",
@@ -65,19 +62,22 @@ const aboutData = [
 
 const About = () => {
     return (
-        <div className="about-page">
-            <h1 className="about-title">Over Villa Vredestein</h1>
-            <div className="about-grid">
+        <main className="about-page">
+            <header>
+                <h1 className="about-title">Over Villa Vredestein</h1>
+            </header>
+            <section className="about-grid" aria-label="Overzicht van thema's over Villa Vredestein">
                 {aboutData.map((item, index) => (
-                    <AboutHover
-                        key={index}
-                        title={item.title}
-                        text={item.text}
-                        image={item.image}
-                    />
+                    <article key={index}>
+                        <AboutHover
+                            title={item.title}
+                            text={item.text}
+                            image={item.image}
+                        />
+                    </article>
                 ))}
-            </div>
-        </div>
+            </section>
+        </main>
     );
 };
 
