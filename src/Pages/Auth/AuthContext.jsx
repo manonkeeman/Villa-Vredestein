@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import axios from "axios";
 
 const AuthContext = createContext();
 
@@ -11,13 +12,13 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const token = localStorage.getItem("token");
-        const storedUser = localStorage.getItem("user");
+        const userData = localStorage.getItem("user");
 
-        if (token && storedUser) {
+        if (token && userData) {
             try {
-                setUser(JSON.parse(storedUser));
-            } catch (error) {
-                console.warn("❌ Ongeldige user-data in localStorage:", error);
+                setUser(JSON.parse(userData));
+            } catch (err) {
+                console.warn("❌ Ongeldige user-data in localStorage:", err);
                 localStorage.removeItem("token");
                 localStorage.removeItem("user");
             }
@@ -28,46 +29,38 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (email, password) => {
         try {
-            const response = await fetch('/api/login', {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                credentials: "include", // voor refreshToken cookie
-                body: JSON.stringify({ email, password }),
-            });
+            const response = await axios.post(
+                "http://localhost:5000/api/login",
+                { email, password },
+                { withCredentials: true }
+            );
 
-            if (!response.ok) {
-                const errorText = await response.text();
-                console.warn("❌ Login response niet OK:", errorText);
-                return false;
-            }
+            const accessToken = response.data.accessToken || response.data.token;
 
-            const data = await response.json();
-
-            if (!data.accessToken) {
+            if (!accessToken) {
                 console.error("❌ accessToken ontbreekt in login response");
                 return false;
             }
 
-            localStorage.setItem("token", data.accessToken);
+            localStorage.setItem("token", accessToken);
             localStorage.setItem("user", JSON.stringify({ email }));
             setUser({ email });
             return true;
-        } catch (err) {
-            console.error("❌ Login fout:", err.message);
+        } catch (error) {
+            console.error("❌ Login fout:", error.response?.data || error.message);
             return false;
         }
     };
 
     const logout = async () => {
         try {
-            await fetch(`${import.meta.env.VITE_API_URL}/api/logout`, {
-                method: "POST",
-                credentials: "include", // om de cookie weg te halen
-            });
-        } catch (err) {
-            console.warn("⚠️ Logout fout, doorgaan met lokaal verwijderen.");
+            await axios.post(
+                "http://localhost:5000/api/logout",
+                {},
+                { withCredentials: true }
+            );
+        } catch (error) {
+            console.warn("⚠️ Logout fout:", error.message);
         }
 
         localStorage.removeItem("token");
