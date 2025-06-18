@@ -3,54 +3,62 @@ import PropTypes from "prop-types";
 
 const AuthContext = createContext();
 
-const approvedUsers = [
-    {
-        email: import.meta.env.VITE_USER1_EMAIL,
-        password: import.meta.env.VITE_USER1_PASSWORD,
-    },
-    {
-        email: import.meta.env.VITE_ADMIN_EMAIL,
-        password: import.meta.env.VITE_ADMIN_PASSWORD,
-    },
-];
-
 export const AuthProvider = ({ children }) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const storedLogin = localStorage.getItem("isLoggedIn") === "true";
-        const storedUser = localStorage.getItem("user");
+        const token = localStorage.getItem("token");
+        const userData = localStorage.getItem("user");
 
-        if (storedLogin && storedUser) {
+        if (token && userData) {
             setIsLoggedIn(true);
-            setUser(JSON.parse(storedUser));
+            setUser(JSON.parse(userData));
         }
         setLoading(false);
     }, []);
 
-    const login = (email, password) => {
-        const match = approvedUsers.find(
-            (u) => u.email === email && u.password === password
-        );
+    const login = async (email, password) => {
+        try {
+            const response = await fetch("http://localhost:5000/api/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ email, password }),
+                credentials: "include"
+            });
 
-        if (match) {
+            if (!response.ok) {
+                throw new Error("Login mislukt");
+            }
+
+            const data = await response.json();
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("user", JSON.stringify({ email }));
             setIsLoggedIn(true);
             setUser({ email });
-            localStorage.setItem("isLoggedIn", "true");
-            localStorage.setItem("user", JSON.stringify({ email }));
             return true;
-        } else {
+        } catch (error) {
+            console.error("Login error:", error);
             return false;
         }
     };
 
-    const logout = () => {
+    const logout = async () => {
+        try {
+            await fetch("http://localhost:5000/api/logout", {
+                method: "POST",
+                credentials: "include"
+            });
+        } catch (error) {
+            console.error("Logout error:", error);
+        }
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
         setIsLoggedIn(false);
         setUser(null);
-        localStorage.removeItem("isLoggedIn");
-        localStorage.removeItem("user");
     };
 
     return (

@@ -8,20 +8,37 @@ import "../../Styles/Global.css";
 
 const Login = () => {
     const navigate = useNavigate();
-    const { login } = useAuth();
-
+    const { setUser, setIsLoggedIn } = useAuth(); // Zorg dat je deze setters expose't in AuthContext
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState("");
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const success = login(email.trim(), password.trim());
-        if (success) {
+        try {
+            const response = await fetch("http://localhost:5000/api/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ email, password }),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.message || "Login mislukt");
+            }
+
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("user", JSON.stringify({ email }));
+            setUser({ email });
+            setIsLoggedIn(true);
             navigate("/studentdashboard");
-        } else {
-            setError("Ongeldige login. Probeer opnieuw.");
+        } catch (err) {
+            console.error("Login fout:", err);
+            setError("Ongeldige inloggegevens of serverprobleem.");
         }
     };
 
@@ -42,10 +59,8 @@ const Login = () => {
             <div className="login-box login-form-box">
                 <h1>Log hier in</h1>
                 <p className="login-subtext">
-                    Welkom terug, Vredesteiner.<br/>
+                    Welkom terug, Vredesteiner.<br />
                     Log in om je dashboard te bekijken.
-                    Voor alles wat je moet weten over wonen in Villa Vredestein —
-                    handig, helder en actueel.
                 </p>
                 <form onSubmit={handleSubmit}>
                     <input

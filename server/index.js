@@ -1,6 +1,6 @@
+import dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
-import dotenv from "dotenv";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import cookieParser from "cookie-parser";
@@ -19,12 +19,12 @@ app.use(cookieParser());
 const users = [
     {
         email: "student@villavredestein.com",
-        password: "$2b$10$Qwzgk8S55IrjVSw4P7gcreQagUVfK/FSqBr8q1jVs905dtn4PioK6", // welkomenvoeljethuis
+        password: "$2b$10$Qwzgk8S55IrjVSw4P7gcreQagUVfK/FSqBr8q1jVs905dtn4PioK6" // welkomenvoeljethuis
     },
     {
         email: "manon@villavredestein.com",
-        password: "$2a$10$P5NsyNMB02LDXLcv.yx5AuRMYJ3jxV2OnkSghzzDChePgnRDuR7mS", // veiligheidbovenalles
-    },
+        password: "$2a$10$P5NsyNMB02LDXLcv.yx5AuRMYJ3jxV2OnkSghzzDChePgnRDuR7mS" // veiligheidbovenalles
+    }
 ];
 
 function generateAccessToken(user) {
@@ -61,10 +61,10 @@ app.post("/api/login", (req, res) => {
 
     res.cookie("refreshToken", refreshToken, {
         httpOnly: true,
-        secure: false, // Zet op true in productie met HTTPS
-        sameSite: "Strict",
+        secure: true,
+        sameSite: "None",
         path: "/api/refresh-token",
-        maxAge: 7 * 24 * 60 * 60 * 1000, // 7 dagen
+        maxAge: 7 * 24 * 60 * 60 * 1000
     });
 
     res.json({ token: accessToken });
@@ -86,7 +86,7 @@ app.post("/api/refresh-token", (req, res) => {
 app.get("/api/protected", authenticateToken, (req, res) => {
     res.json({
         message: "Welkom op de beveiligde route",
-        user: req.user.email,
+        user: req.user.email
     });
 });
 
