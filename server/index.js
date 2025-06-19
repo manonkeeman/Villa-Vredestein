@@ -1,48 +1,27 @@
-import React, { useEffect, useState } from "react";
-import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
-import App from "./App";
-import { AuthProvider } from "./Pages/Auth/AuthContext.jsx";
-import axios from "./Helpers/AxiosHelper.jsx";
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
 
-const AppInitializer = () => {
-    const [ready, setReady] = useState(false);
+dotenv.config();
+const app = express();
+const PORT = process.env.PORT || 5000;
 
-    useEffect(() => {
-        const refreshToken = async () => {
-            try {
-                const storedToken = localStorage.getItem("token");
-                if (!storedToken) {
-                    const res = await axios.post("/refresh-token");
-                    if (res.data.token) {
-                        localStorage.setItem("token", res.data.token);
-                    }
-                }
-            } catch (err) {
-                console.warn("⚠️ Kan accessToken niet verversen:", err.message);
-                localStorage.removeItem("token");
-                localStorage.removeItem("user");
-            } finally {
-                setReady(true);
-            }
-        };
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-        refreshToken();
-    }, []);
-
-    if (!ready) {
-        return <div style={{ padding: "120px", textAlign: "center" }}>Opstarten...</div>;
+app.get("/api/protected", (req, res) => {
+    const authHeader = req.headers["authorization"];
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+        return res.status(401).json({ message: "Toegang geweigerd" });
     }
+    return res.status(200).json({ message: "Beveiligde data opgehaald", user: "student" });
+});
 
-    return <App />;
-};
+app.get("/", (req, res) => {
+    res.send("Villa Vredestein backend draait ✅");
+});
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-    <React.StrictMode>
-        <BrowserRouter>
-            <AuthProvider>
-                <AppInitializer />
-            </AuthProvider>
-        </BrowserRouter>
-    </React.StrictMode>
-);
+app.listen(PORT, () => {
+    console.log(`🚀 Server draait op http://localhost:${PORT}`);
+});
