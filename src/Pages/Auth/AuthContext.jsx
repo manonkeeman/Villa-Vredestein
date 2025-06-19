@@ -1,34 +1,103 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import axios from "../../Helpers/AxiosHelper.jsx"; // eigen helper met baseURL
+import { jwtDecode } from "jwt-decode";
+import axios from "../../Helpers/AxiosHelper.jsx";
 
-// ✅ Expliciet null zodat Vite's Fast Refresh werkt
 const AuthContext = createContext(null);
 
-// ✅ Altijd eerst de custom hook exporteren
 export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const isLoggedIn = Boolean(user);
+    const parseToken = (token) => {
+        try {
+            const decoded = jwtDecode(token);
+            return decoded;
+        } catch (e) {
+            console.error("❌ Kan token niet decoderen:", e);
+            return null;
+        }
+    };
 
-    const isLoggedIn = !!user;
+    const isTokenExpired = (token) => {
+        const decoded = parseToken(token);
+        if (!decoded?.exp) return true;
+        return decoded.exp * 1000 < Date.now();
+    };
+
+    const handleLogout = () => {
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("user");
+        setUser(null);
+    };
+
+    const refreshToken = async () => {
+        try {
+            const response = await axios.post("/api/refresh", {}, { withCredentials: true });
+            const newToken = response.data.accessToken;
+            const userData = response.data.user;
+
+            if (newToken && userData) {
+                localStorage.setItem("accessToken", newToken);
+                localStorage.setItem("user", JSON.stringify(userData));
+                setUser(userData);
+                return newToken;
+            }
+
+            throw new Error("❌ Geen nieuwe token ontvangen bij refresh");
+        } catch (err) {
+            console.warn("⚠️ Refresh token mislukt:", err.message);
+            handleLogout();
+            return null;
+        }
+    };
 
     useEffect(() => {
-        const accessToken = localStorage.getItem("accessToken");
-        const userData = localStorage.getItem("user");
+        const interceptor = axios.interceptors.request.use(
+            async (config) => {
+                const accessToken = localStorage.getItem("accessToken");
 
-        if (accessToken && userData) {
-            try {
-                setUser(JSON.parse(userData));
-            } catch (err) {
-                console.warn("❌ Ongeldige user-data in localStorage:", err);
-                localStorage.removeItem("accessToken");
-                localStorage.removeItem("user");
+                if (accessToken && isTokenExpired(accessToken)) {
+                    const newToken = await refreshToken();
+                    if (!newToken) throw new Error("Token refresh faalt");
+                    config.headers.Authorization = `Bearer ${newToken}`;
+                } else if (accessToken) {
+                    config.headers.Authorization = `Bearer ${accessToken}`;
+                }
+
+                return config;
+            },
+            (error) => Promise.reject(error)
+        );
+
+        return () => axios.interceptors.request.eject(interceptor);
+    }, []);
+
+    useEffect(() => {
+        const init = async () => {
+            const accessToken = localStorage.getItem("accessToken");
+            const userData = localStorage.getItem("user");
+
+            if (accessToken && userData) {
+                if (isTokenExpired(accessToken)) {
+                    await refreshToken();
+                } else {
+                    try {
+                        const parsed = JSON.parse(userData);
+                        setUser(parsed);
+                    } catch (e) {
+                        console.warn("❌ Corrupt user object:", e);
+                        handleLogout();
+                    }
+                }
             }
-        }
 
-        setLoading(false);
+            setLoading(false);
+        };
+
+        init();
     }, []);
 
     const login = async (email, password) => {
@@ -36,15 +105,16 @@ export const AuthProvider = ({ children }) => {
             const response = await axios.post("/api/login", { email, password }, { withCredentials: true });
 
             const accessToken = response.data.accessToken || response.data.token;
+            const userData = response.data.user;
 
-            if (!accessToken) {
-                console.error("❌ accessToken ontbreekt in login response");
+            if (!accessToken || !userData) {
+                console.error("❌ Login response mist token of user");
                 return false;
             }
 
             localStorage.setItem("accessToken", accessToken);
-            localStorage.setItem("user", JSON.stringify({ email }));
-            setUser({ email });
+            localStorage.setItem("user", JSON.stringify(userData));
+            setUser(userData);
             return true;
         } catch (error) {
             console.error("❌ Login fout:", error.response?.data || error.message);
@@ -57,11 +127,9 @@ export const AuthProvider = ({ children }) => {
             await axios.post("/api/logout", {}, { withCredentials: true });
         } catch (error) {
             console.warn("⚠️ Logout fout:", error.message);
+        } finally {
+            handleLogout();
         }
-
-        localStorage.removeItem("accessToken");
-        localStorage.removeItem("user");
-        setUser(null);
     };
 
     return (
