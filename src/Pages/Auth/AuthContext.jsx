@@ -1,8 +1,12 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import axios from "../../Helpers/AxiosHelper.jsx"; // gebruik eigen helper met baseURL
+import axios from "../../Helpers/AxiosHelper.jsx"; // eigen helper met baseURL
 
-const AuthContext = createContext();
+// ✅ Expliciet null zodat Vite's Fast Refresh werkt
+const AuthContext = createContext(null);
+
+// ✅ Altijd eerst de custom hook exporteren
+export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
@@ -70,5 +74,3 @@ export const AuthProvider = ({ children }) => {
 AuthProvider.propTypes = {
     children: PropTypes.node.isRequired,
 };
-
-export const useAuth = () => useContext(AuthContext);
