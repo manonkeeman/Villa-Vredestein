@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import axios from "axios";
+import axios from "../../Helpers/AxiosHelper.jsx"; // gebruik eigen helper met baseURL
 
 const AuthContext = createContext();
 
@@ -11,15 +11,15 @@ export const AuthProvider = ({ children }) => {
     const isLoggedIn = !!user;
 
     useEffect(() => {
-        const token = localStorage.getItem("token");
+        const accessToken = localStorage.getItem("accessToken");
         const userData = localStorage.getItem("user");
 
-        if (token && userData) {
+        if (accessToken && userData) {
             try {
                 setUser(JSON.parse(userData));
             } catch (err) {
                 console.warn("❌ Ongeldige user-data in localStorage:", err);
-                localStorage.removeItem("token");
+                localStorage.removeItem("accessToken");
                 localStorage.removeItem("user");
             }
         }
@@ -29,11 +29,7 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (email, password) => {
         try {
-            const response = await axios.post(
-                "http://localhost:5000/api/login",
-                { email, password },
-                { withCredentials: true }
-            );
+            const response = await axios.post("/api/login", { email, password }, { withCredentials: true });
 
             const accessToken = response.data.accessToken || response.data.token;
 
@@ -42,7 +38,7 @@ export const AuthProvider = ({ children }) => {
                 return false;
             }
 
-            localStorage.setItem("token", accessToken);
+            localStorage.setItem("accessToken", accessToken);
             localStorage.setItem("user", JSON.stringify({ email }));
             setUser({ email });
             return true;
@@ -54,16 +50,12 @@ export const AuthProvider = ({ children }) => {
 
     const logout = async () => {
         try {
-            await axios.post(
-                "http://localhost:5000/api/logout",
-                {},
-                { withCredentials: true }
-            );
+            await axios.post("/api/logout", {}, { withCredentials: true });
         } catch (error) {
             console.warn("⚠️ Logout fout:", error.message);
         }
 
-        localStorage.removeItem("token");
+        localStorage.removeItem("accessToken");
         localStorage.removeItem("user");
         setUser(null);
     };
