@@ -1,116 +1,79 @@
 import React, { useState } from "react";
-import ModalContact from "../../Components/Modal/ModalContact.jsx";
-import "../../Styles/Global.css";
-import "./Contact.css";
 
 const Contact = () => {
-    const [formData, setFormData] = useState({
-        firstName: "",
-        lastName: "",
-        email: "",
-        message: "",
-    });
+    const [status, setStatus] = useState("");
 
-    const [showModal, setShowModal] = useState(false);
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prev) => ({ ...prev, [name]: value }));
-    };
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        setShowModal(true);
-    };
+        const form = e.target;
+        const data = new FormData(form);
 
-    const closeModal = () => setShowModal(false);
+        try {
+            await fetch("/", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams(data).toString(),
+            });
+            form.reset();
+            setStatus("✅ Bericht succesvol verzonden!");
+        } catch (error) {
+            console.error("Fout:", error);
+            setStatus("❌ Er ging iets mis. Probeer het later opnieuw.");
+        }
+    };
 
     return (
-        <main className="contact-page">
-            <section className="card-wrapper">
-                <article className="card text-card">
-                    <header>
-                        <h1 className="contact-title">Wij vinden het leuk van je te horen!</h1>
-                    </header>
-                    <p>Heb je vragen, zoek je contact of wil je samenwerken?</p>
-                    <p>
-                        Laat je gegevens achter en wij nemen zo snel mogelijk contact met je op.
-                        Of je nu nieuwsgierig bent naar de geschiedenis van de villa, interesse hebt in een samenwerking,
-                        een idee wilt delen of gewoon even hallo wilt zeggen — we horen graag van je.
-                        Villa Vredestein is een plek van verbinding, inspiratie en gastvrijheid. Jouw verhaal hoort daar misschien wel bij.
+        <main className="page-container">
+            <form name="contact" netlify hidden>
+                <input type="text" name="naam" />
+                <input type="email" name="email" />
+                <textarea name="bericht" />
+            </form>
+
+            <div className="card-wrapper">
+                <div className="card text-card">
+                    <h2 className="contact-title">Neem contact op</h2>
+                    <p style={{ fontSize: "12px", marginBottom: "1rem" }}>
+                        Heb je vragen over de woning, een studentenplek of schoonmaak? Stuur ons een berichtje via onderstaand formulier.
                     </p>
 
-                    <form onSubmit={handleSubmit} className="contact-form" aria-label="Contactformulier">
-                        <div className="form-group">
-                            <label htmlFor="firstName" className="visually-hidden">Voornaam</label>
-                            <input
-                                type="text"
-                                id="firstName"
-                                name="firstName"
-                                placeholder="Voornaam"
-                                value={formData.firstName}
-                                onChange={handleChange}
-                                required
-                            />
-                        </div>
+                    <form
+                        className="contact-form"
+                        name="contact"
+                        method="POST"
+                        data-netlify="true"
+                        data-netlify-honeypot="bot-field"
+                        onSubmit={handleSubmit}
+                    >
+                        <input type="hidden" name="form-name" value="contact" />
+                        <input type="hidden" name="bot-field" />
 
                         <div className="form-group">
-                            <label htmlFor="lastName" className="visually-hidden">Achternaam</label>
-                            <input
-                                type="text"
-                                id="lastName"
-                                name="lastName"
-                                placeholder="Achternaam"
-                                value={formData.lastName}
-                                onChange={handleChange}
-                                required
-                            />
+                            <input type="text" name="naam" placeholder="Je naam" required />
                         </div>
-
                         <div className="form-group">
-                            <label htmlFor="email" className="visually-hidden">Emailadres</label>
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                placeholder="Emailadres"
-                                value={formData.email}
-                                onChange={handleChange}
-                                required
-                            />
+                            <input type="email" name="email" placeholder="Je e-mailadres" required />
                         </div>
-
                         <div className="form-group">
-                            <label htmlFor="message" className="visually-hidden">Bericht</label>
-                            <textarea
-                                id="message"
-                                name="message"
-                                placeholder="Bericht"
-                                value={formData.message}
-                                onChange={handleChange}
-                                required
-                            ></textarea>
+                            <textarea name="bericht" rows="4" placeholder="Je bericht..." required />
                         </div>
-
-                        <button type="submit" className="btn-primary">Verstuur</button>
+                        <button type="submit" className="btn-primary">Versturen</button>
+                        {status && <p style={{ fontSize: "12px", marginTop: "0.5rem" }}>{status}</p>}
                     </form>
-                </article>
+                </div>
 
-                <aside className="card image-card" aria-label="Kaart van locatie Villa Vredestein">
+                <div className="card image-card">
                     <address>
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2453.571372380421!2d5.2805443904470115!3d52.051119099596725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c65decd0beb145%3A0x91a0779ee9a6307f!2sVilla%20Vredestein!5e0!3m2!1snl!2snl!4v1744454158527!5m2!1snl!2snl"
-                            width="100%"
-                            height="100%"
-                            allowFullScreen
-                            loading="lazy"
                             title="Villa Vredestein locatie"
-                        ></iframe>
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2464.1955117746076!2d5.281023676560384!3d52.04548317193883!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c663f87aa77a45%3A0x1c8d3b3ff7bb27f2!2sVilla%20Vredestein!5e0!3m2!1snl!2snl!4v1718711342657!5m2!1snl!2snl"
+                            loading="lazy"
+                            allowFullScreen
+                            referrerPolicy="no-referrer-when-downgrade"
+                        />
                     </address>
-                </aside>
-            </section>
-
-            {showModal && <ModalContact show={showModal} onClose={closeModal} />}
+                </div>
+            </div>
         </main>
     );
 };
