@@ -1,6 +1,8 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
-import Nav from "./Components/Nav/Nav.jsx"; // Houd consistent: gebruik 'Nav' overal
+import { Routes, Route, useLocation } from "react-router-dom";
+import { useEffect } from "react";
+
+import Nav from "./Components/Nav/Nav.jsx";
 import Footer from "./Components/Footer/Footer.jsx";
 
 import Home from "./Pages/Public/Home.jsx";
@@ -17,9 +19,20 @@ import ProtectedRoute from "./Pages/Auth/ProtectedRoute.jsx";
 
 import "./Styles/Global.css";
 
+const ScrollToTop = () => {
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
+
+    return null;
+};
+
 function App() {
     return (
         <AuthProvider>
+            <ScrollToTop />
             <Nav />
             <main className="main-content">
                 <Routes>

@@ -1,11 +1,18 @@
 import axios from "axios";
 
-const buildParams = ({ zoekwoord = "recipe", maaltijden = [], dieet = [], keukens = [] }) => {
+const buildRecipeSearchParams = ({ zoekwoord = "recipe", maaltijden = [], dieet = [], keukens = [] }) => {
+    const app_id = import.meta.env.VITE_APP_ID;
+    const app_key = import.meta.env.VITE_APP_KEY;
+
+    if (!app_id || !app_key) {
+        throw new Error("API keys niet gevonden. Voeg VITE_APP_ID en VITE_APP_KEY toe aan je .env bestand.");
+    }
+
     const params = {
         q: zoekwoord,
         type: "public",
-        app_id: import.meta.env.VITE_APP_ID,
-        app_key: import.meta.env.VITE_APP_KEY,
+        app_id,
+        app_key,
     };
 
     if (maaltijden.length > 0) params.mealType = maaltijden.join(",");
@@ -16,7 +23,7 @@ const buildParams = ({ zoekwoord = "recipe", maaltijden = [], dieet = [], keuken
 };
 
 export const fetchRecipes = async (zoekwoord, maaltijden, dieet, keukens) => {
-    const params = buildParams({ zoekwoord, maaltijden, dieet, keukens });
+    const params = buildRecipeSearchParams({ zoekwoord, maaltijden, dieet, keukens });
 
     try {
         const response = await axios.get("https://api.edamam.com/api/recipes/v2", {
@@ -43,22 +50,20 @@ export const buildIngredientsList = (ingredients = []) =>
 export const fetchProtectedData = async () => {
     const token = localStorage.getItem("token");
 
+    if (!token) {
+        throw new Error("Geen token gevonden.");
+    }
+
     try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/protected`, {
-            method: "GET",
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/protected`, {
             headers: {
-                "Authorization": `Bearer ${token}`
-            }
+                Authorization: `Bearer ${token}`,
+            },
         });
 
-        if (!response.ok) {
-            throw new Error("Toegang geweigerd");
-        }
-
-        const data = await response.json();
-        return data;
-    } catch (err) {
-        console.error("Fout bij ophalen beveiligde data:", err.message);
+        return response.data;
+    } catch (error) {
+        console.error("Fout bij ophalen beveiligde data:", error.message);
         return null;
     }
 };
