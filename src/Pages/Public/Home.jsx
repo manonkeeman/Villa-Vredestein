@@ -17,35 +17,48 @@ const Home = () => {
     }, []);
 
     return (
-        <div className="home">
-            <div className="card-wrapper">
-                <div className="card image-card home-image">
-                    <img src={VillaVredestein} alt="Villa Vredestein" />
-                </div>
+        <main className="home" role="main" aria-labelledby="home-title">
+            <section className="card-wrapper">
+                <figure className="card image-card home-image">
+                    <img
+                        src={VillaVredestein}
+                        alt="Voorgevel van Villa Vredestein"
+                        className="home-image-full"
+                    />
+                </figure>
 
-                <div className="card text-card home-text">
-                    <h1>Welkom bij Villa Vredestein</h1>
+                <section className="card text-card home-text">
+                    <header>
+                        <h1 id="home-title">Welkom bij Villa Vredestein</h1>
+                    </header>
                     <p>
                         Gebouwd in 1906, ademt Villa Vredestein de charme van weleer.
                         Hoge plafonds, oude details en een ziel die je voelt zodra je binnenstapt.
-                        <br /><br />
+                    </p>
+                    <p>
                         Toch is dit geen huis dat stilstaat in de tijd.
                         Achter de nostalgische gevel schuilt een frisse wind.
                         We moderniseren met respect voor het verleden,
                         zodat dit huis niet alleen herinneringen bewaart,
                         maar ook ruimte biedt aan nieuwe verhalen.
-                        <br /><br />
+                    </p>
+                    <p>
                         De originele elementen blijven behouden waar mogelijk —
                         niet uit nostalgie, maar uit liefde voor vakmanschap.
                         Zo ontstaat een harmonie tussen oud en nieuw.
-                        <br /><br />
+                    </p>
+                    <p>
                         Villa Vredestein draagt het verleden met trots en kijkt vooruit.
                         Ontdek wat deze unieke plek zo bijzonder maakt.
                     </p>
-                    <Button text="Lees meer" variant="secundary" onClick={() => navigate("/about")} />
-                </div>
-            </div>
-        </div>
+                    <Button
+                        text="Lees meer"
+                        variant="secundary"
+                        onClick={() => navigate("/about")}
+                    />
+                </section>
+            </section>
+        </main>
     );
 };
 
