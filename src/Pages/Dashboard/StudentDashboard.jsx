@@ -17,7 +17,7 @@ const StudentDashboard = () => {
 
     useEffect(() => {
         const fetchSecureData = async () => {
-            const token = localStorage.getItem("token");
+            const token = localStorage.getItem("accessToken");
 
             try {
                 const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/protected`, {
@@ -41,10 +41,10 @@ const StudentDashboard = () => {
 
     return (
         <div className="StudentDashboard">
-            <div className="dashboard-sidebar">
-                <div className="sidebar-profile">
+            <aside className="dashboard-sidebar" aria-label="Navigatie zijbalk">
+                <header className="sidebar-profile">
                     <FiUser className="profile-icon" />
-                </div>
+                </header>
                 <h3 className="sidebar-title">Welkom Vredesteiner</h3>
 
                 <nav className={`sidebar-nav ${openMenu ? "open" : ""}`}>
@@ -58,13 +58,17 @@ const StudentDashboard = () => {
                         <li><Link to="/receptenzoeker"><FiBookOpen /> Recepten</Link></li>
                         <li><Link to="#"><FiUsers /> Samen eten?</Link></li>
                         <li><Link to="#"><FiCalendar /> Events</Link></li>
-                        <li><button onClick={logout} className="logout-button"><FiLogOut /> Log uit</button></li>
+                        <li>
+                            <button onClick={logout} type="button" className="logout-button">
+                                <FiLogOut /> Log uit
+                            </button>
+                        </li>
                     </ul>
                 </nav>
-            </div>
+            </aside>
 
-            <div className="dashboard-main">
-                <div className="image-box">
+            <main className="dashboard-main">
+                <section className="image-box" aria-label="Introductievideo">
                     <iframe
                         className="dashboard-video"
                         src="https://www.youtube.com/embed/B7UmUX68KtE?autoplay=1&mute=1&loop=1&playlist=B7UmUX68KtE"
@@ -72,16 +76,17 @@ const StudentDashboard = () => {
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
                     ></iframe>
-                </div>
+                </section>
 
-                <div className="secure-data">
+                <section className="secure-data" aria-label="Beveiligde gegevens">
+                    <h2>Beveiligde Data</h2>
                     {secureData ? (
                         <pre>{JSON.stringify(secureData, null, 2)}</pre>
                     ) : (
                         <p>Beveiligde data wordt geladen...</p>
                     )}
-                </div>
-            </div>
+                </section>
+            </main>
         </div>
     );
 };

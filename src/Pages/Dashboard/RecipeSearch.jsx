@@ -63,11 +63,11 @@ const RecipeSearch = () => {
     };
 
     return (
-        <div className="receptenzoeker">
-            <div className="receptencontent">
-                <div className="zoekresultaatkolom">
+        <main className="receptenzoeker">
+            <section className="receptencontent">
+                <article className="zoekresultaatkolom">
 
-                    <div className="zoekbalk-hero">
+                    <header className="zoekbalk-hero">
                         <img
                             src={Watetenwevandaag}
                             alt="Wat eten we vandaag?"
@@ -122,9 +122,9 @@ const RecipeSearch = () => {
                                 <FiSearch />
                             </button>
                         </form>
-                    </div>
+                    </header>
 
-                    <div className="resultaten-wrapper">
+                    <section className="resultaten-wrapper">
                         {laden && <p>Even geduld... recepten worden geladen.</p>}
                         {fout && <p className="fout">{fout}</p>}
                         {!laden && recepten.length === 0 && !fout && (
@@ -133,7 +133,7 @@ const RecipeSearch = () => {
 
                         <div className="receptenlijst">
                             {recepten.map((item, index) => (
-                                <div key={index} className="recept-card">
+                                <article key={index} className="recept-card">
                                     <div className="recept-kop">
                                         <img src={item.image} alt={item.label} />
                                         <button
@@ -144,19 +144,19 @@ const RecipeSearch = () => {
                                             <FiShoppingCart />
                                         </button>
                                     </div>
-                                    <div className="recept-titel-onder">
+                                    <footer className="recept-titel-onder">
                                         <h3>
-                                          <a href={item.url} target="_blank" rel="noopener noreferrer">
-                                            {item.label}
-                                          </a>
+                                            <a href={item.url} target="_blank" rel="noopener noreferrer">
+                                                {item.label}
+                                            </a>
                                         </h3>
-                                    </div>
-                                </div>
+                                    </footer>
+                                </article>
                             ))}
                         </div>
-                    </div>
-                </div>
-            </div>
+                    </section>
+                </article>
+            </section>
 
             {showModal && (
                 <ModalLink
@@ -166,7 +166,7 @@ const RecipeSearch = () => {
                     recipeTitle={selectedRecipeTitle}
                 />
             )}
-        </div>
+        </main>
     );
 };
 
