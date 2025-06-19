@@ -7,9 +7,11 @@ import "./Nav.css";
 const Nav = () => {
     const { isLoggedIn, logout } = useAuth();
     const navigate = useNavigate();
+    const location = useLocation();
+
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
-    const location = useLocation();
+    const [logoClicked, setLogoClicked] = useState(false); // ← Toegevoegde useState
 
     const isLoginPage = location.pathname === "/login";
     const ALLOW_LOGOUT_MENU = ["/studentdashboard", "/receptenzoeker"];
@@ -24,12 +26,21 @@ const Nav = () => {
         setMenuOpen(!menuOpen);
     };
 
+    const handleLogoClick = () => {
+        setLogoClicked(true);
+        setTimeout(() => setLogoClicked(false), 1000); // tijdelijk feedback-effect
+    };
+
     return (
         <nav className="navigatie-container">
             {/* Logo */}
             <div className="logo">
-                <NavLink to="/contact" className="logo-link">
-                    <img src="/VVLogo.png" alt="Villa Vredestein Logo" className="logo-img" />
+                <NavLink to="/contact" className="logo-link" onClick={handleLogoClick}>
+                    <img
+                        src="/VVLogo.png"
+                        alt="Villa Vredestein Logo"
+                        className={`logo-img ${logoClicked ? "clicked" : ""}`} // optioneel visueel effect
+                    />
                 </NavLink>
             </div>
 
