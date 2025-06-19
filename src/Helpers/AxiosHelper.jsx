@@ -1,20 +1,18 @@
 import axios from "axios";
 
-// Maak een instance met basisconfiguratie
 const axiosInstance = axios.create({
     baseURL: import.meta.env.VITE_API_URL || "http://localhost:5000/api",
-    withCredentials: true, // voor cookies zoals refreshToken
+    withCredentials: true,
     headers: {
         "Content-Type": "application/json",
     },
 });
 
-// Voeg Authorization header toe aan elke request als er een token is
 axiosInstance.interceptors.request.use(
     (config) => {
-        const token = localStorage.getItem("token");
-        if (token) {
-            config.headers.Authorization = `Bearer ${token}`;
+        const accessToken = localStorage.getItem("accessToken");
+        if (accessToken) {
+            config.headers.Authorization = `Bearer ${accessToken}`;
         }
         return config;
     },
