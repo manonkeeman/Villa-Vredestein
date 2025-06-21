@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { FiMail, FiUser, FiMessageCircle } from "react-icons/fi";
+import Button from "../../Components/Buttons/Button.jsx";
 import "./Contact.css";
+
+
 
 const Contact = () => {
     const [submitted, setSubmitted] = useState(false);
@@ -73,9 +76,11 @@ const Contact = () => {
                             <FiMessageCircle className="input-icon textarea-icon" />
                         </div>
 
-                        <button type="submit" className="btn-primary">
-                            Verstuur bericht
-                        </button>
+                        <Button
+                            type="submit"
+                            text="Verstuur bericht"
+                            variant="primary"
+                        />
                     </form>
                 )}
             </section>
@@ -91,7 +96,7 @@ const Contact = () => {
             </section>
 
             <noscript>
-                <form name="contact" netlify hidden>
+                    <form name="contact" data-netlify="true" hidden>
                     <input type="text" name="naam" />
                     <input type="email" name="email" />
                     <textarea name="bericht" />
