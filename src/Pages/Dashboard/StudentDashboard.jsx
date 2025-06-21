@@ -17,12 +17,11 @@ const StudentDashboard = () => {
 
     useEffect(() => {
         const fetchSecureData = async () => {
-            const token = localStorage.getItem("accessToken");
-
             try {
-                const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/protected`, {
+                const response = await axios.get("https://api.datavortex.nl/VillaVredesteinLogin", {
                     headers: {
-                        Authorization: `Bearer ${token}`,
+                        "Content-Type": "application/json",
+                        "X-Api-Key": "villavredesteinlogin:2NkpAp3ZiXKfSlM4fwxW"
                     },
                 });
                 setSecureData(response.data);

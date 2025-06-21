@@ -1,79 +1,92 @@
 import React, { useState } from "react";
+import { FiMail, FiUser, FiMessageCircle } from "react-icons/fi";
+import "./Contact.css";
 
 const Contact = () => {
-    const [status, setStatus] = useState("");
+    const [submitted, setSubmitted] = useState(false);
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
         const data = new FormData(form);
 
-        try {
-            await fetch("/", {
-                method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: new URLSearchParams(data).toString(),
-            });
-            form.reset();
-            setStatus("✅ Bericht succesvol verzonden!");
-        } catch (error) {
-            console.error("Fout:", error);
-            setStatus("❌ Er ging iets mis. Probeer het later opnieuw.");
-        }
+        fetch("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(data).toString(),
+        })
+            .then(() => setSubmitted(true))
+            .catch((error) => alert("Fout bij verzenden: " + error));
     };
 
     return (
-        <main className="page-container">
-            <form name="contact" netlify hidden>
-                <input type="text" name="naam" />
-                <input type="email" name="email" />
-                <textarea name="bericht" />
-            </form>
+        <main className="contact-wrapper">
+            <section className="contact-box">
+                <h1>Neem contact op</h1>
+                <p className="notice">
+                Wil je meer weten over Villa Vredestein, of heb je een specifiek vraag of zoek je contact? Laat een bericht achter, wij nemen zo spoedig mogelijk contact met je op.
+                </p>
 
-            <div className="card-wrapper">
-                <div className="card text-card">
-                    <h2 className="contact-title">Neem contact op</h2>
-                    <p style={{ fontSize: "12px", marginBottom: "1rem" }}>
-                        Heb je vragen over de woning, een studentenplek of schoonmaak? Stuur ons een berichtje via onderstaand formulier.
-                    </p>
-
+                {submitted ? (
+                    <p className="success-message">✅ Je bericht is succesvol verstuurd. We nemen snel contact met je op. met vriendelijke groet, Manon & Maxim</p>
+                ) : (
                     <form
-                        className="contact-form"
                         name="contact"
                         method="POST"
                         data-netlify="true"
                         data-netlify-honeypot="bot-field"
                         onSubmit={handleSubmit}
+                        className="contact-form"
                     >
                         <input type="hidden" name="form-name" value="contact" />
                         <input type="hidden" name="bot-field" />
 
-                        <div className="form-group">
-                            <input type="text" name="naam" placeholder="Je naam" required />
+                        <div className="input-icon-wrapper">
+                            <input
+                                type="text"
+                                name="naam"
+                                placeholder="Je naam"
+                                required
+                            />
+                            <FiUser className="input-icon" />
                         </div>
-                        <div className="form-group">
-                            <input type="email" name="email" placeholder="Je e-mailadres" required />
-                        </div>
-                        <div className="form-group">
-                            <textarea name="bericht" rows="4" placeholder="Je bericht..." required />
-                        </div>
-                        <button type="submit" className="btn-primary">Versturen</button>
-                        {status && <p style={{ fontSize: "12px", marginTop: "0.5rem" }}>{status}</p>}
-                    </form>
-                </div>
 
-                <div className="card image-card">
-                    <address>
-                        <iframe
-                            title="Villa Vredestein locatie"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2464.1955117746076!2d5.281023676560384!3d52.04548317193883!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c663f87aa77a45%3A0x1c8d3b3ff7bb27f2!2sVilla%20Vredestein!5e0!3m2!1snl!2snl!4v1718711342657!5m2!1snl!2snl"
-                            loading="lazy"
-                            allowFullScreen
-                            referrerPolicy="no-referrer-when-downgrade"
-                        />
-                    </address>
-                </div>
-            </div>
+                        <div className="input-icon-wrapper">
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="Je e-mailadres"
+                                required
+                            />
+                            <FiMail className="input-icon" />
+                        </div>
+
+                        <div className="textarea-icon-wrapper">
+                            <textarea
+                                name="bericht"
+                                rows="4"
+                                placeholder="Je bericht..."
+                                required
+                            />
+                            <FiMessageCircle className="input-icon textarea-icon" />
+                        </div>
+
+                        <button type="submit" className="btn-primary">
+                            Verstuur bericht
+                        </button>
+                    </form>
+                )}
+            </section>
+
+            <section className="map-box">
+                <iframe
+                    title="Locatie Villa Vredestein"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4907.142736815647!2d5.282840376689255!3d52.05111917194189!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c65d1f8db89b0f%3A0x1c73aae8f1ad085e!2sHoofdstraat%20147%2C%203971%20KJ%20Driebergen-Rijsenburg!5e0!3m2!1snl!2snl!4v1750363544454!5m2!1snl!2snl"
+                    loading="lazy"
+                    allowFullScreen
+                    referrerPolicy="no-referrer-when-downgrade"
+                />
+            </section>
         </main>
     );
 };
