@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosInstance from "./AxiosHelper";
 
 const buildRecipeSearchParams = ({ zoekwoord = "recipe", maaltijden = [], dieet = [], keukens = [] }) => {
     const app_id = import.meta.env.VITE_APP_ID;
@@ -26,7 +26,7 @@ export const fetchRecipes = async (zoekwoord, maaltijden, dieet, keukens) => {
     const params = buildRecipeSearchParams({ zoekwoord, maaltijden, dieet, keukens });
 
     try {
-        const response = await axios.get("https://api.edamam.com/api/recipes/v2", {
+        const response = await axiosInstance.get("https://api.edamam.com/api/recipes/v2", {
             params,
             headers: {
                 "Edamam-Account-User": import.meta.env.VITE_USER_ID,
@@ -48,14 +48,14 @@ export const buildIngredientsList = (ingredients = []) =>
     ingredients.map(i => i.food).join(", ");
 
 export const fetchProtectedData = async () => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("accessToken");
 
     if (!token) {
         throw new Error("Geen token gevonden.");
     }
 
     try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/protected`, {
+        const response = await axiosInstance.get("/api/protected", {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
