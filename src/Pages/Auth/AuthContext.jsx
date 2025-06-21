@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { jwtDecode } from "jwt-decode";
-import axiosInstance from "../../Helpers/axiosHelper";
+import axiosInstance from "../../Helpers/AxiosHelper.jsx";
 
 const AuthContext = createContext(null);
 export const useAuth = () => useContext(AuthContext);
