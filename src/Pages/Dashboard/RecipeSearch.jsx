@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Watetenwevandaag from "../../Assets/Images/Watetenwevandaag.jpg";
 import { FiSearch, FiShoppingCart } from "react-icons/fi";
-import { fetchRecipes, buildIngredientsList } from "../../Helpers/ApiHelper";
+import { fetchRecipes, buildIngredientsList } from "../../Helpers/ApiHelper.js";
 import ModalLink from "../../Components/Modal/ModalLink";
 import "./RecipeSearch.css";
 

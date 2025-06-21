@@ -1,4 +1,4 @@
-import axiosInstance from "./AxiosHelper";
+import axiosInstance from "./AxiosHelper.js";
 
 const buildRecipeSearchParams = ({ zoekwoord = "recipe", maaltijden = [], dieet = [], keukens = [] }) => {
     const app_id = import.meta.env.VITE_APP_ID;
