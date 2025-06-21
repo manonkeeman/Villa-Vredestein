@@ -24,11 +24,13 @@ const Contact = () => {
             <section className="contact-box">
                 <h1>Neem contact op</h1>
                 <p className="notice">
-                Wil je meer weten over Villa Vredestein, of heb je een specifiek vraag of zoek je contact? Laat een bericht achter, wij nemen zo spoedig mogelijk contact met je op.
+                    Heb je vragen over Villa Vredestein of wil je iets bespreken met het beheer? Laat gerust een bericht achter, we nemen spoedig contact met je op.
                 </p>
 
                 {submitted ? (
-                    <p className="success-message">✅ Je bericht is succesvol verstuurd. We nemen snel contact met je op. met vriendelijke groet, Manon & Maxim</p>
+                    <p className="success-message">
+                        ✅ Je bericht is succesvol verstuurd. We nemen snel contact met je op. <br /> Met vriendelijke groet, Manon & Maxim
+                    </p>
                 ) : (
                     <form
                         name="contact"
@@ -87,6 +89,14 @@ const Contact = () => {
                     referrerPolicy="no-referrer-when-downgrade"
                 />
             </section>
+
+            <noscript>
+                <form name="contact" netlify hidden>
+                    <input type="text" name="naam" />
+                    <input type="email" name="email" />
+                    <textarea name="bericht" />
+                </form>
+            </noscript>
         </main>
     );
 };
