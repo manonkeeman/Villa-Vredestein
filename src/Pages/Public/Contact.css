@@ -7,7 +7,6 @@
     min-height: 100vh;
     padding: 2rem;
     gap: 2rem;
-    font-family: 'Poppins', sans-serif;
     flex-wrap: wrap;
 }
 
@@ -57,7 +56,6 @@
     background-color: #1a1a1a;
     color: white;
     font-size: 13px;
-    font-family: 'Poppins', sans-serif;
 }
 
 .input-icon-wrapper input::placeholder,
@@ -82,24 +80,6 @@
 .contact-form textarea {
     resize: vertical;
     min-height: 100px;
-}
-
-.btn-primary {
-    align-self: center;
-    padding: 0.6rem 1.5rem;
-    font-size: 14px;
-    border-radius: 10px;
-    border: 1px solid #fcbc2d;
-    background-color: transparent;
-    color: white;
-    cursor: pointer;
-    width: fit-content;
-    transition: all 0.3s ease;
-}
-
-.btn-primary:hover {
-    background-color: #fcbc2d;
-    color: black;
 }
 
 .map-box {
@@ -140,9 +120,31 @@
     .contact-wrapper {
         flex-direction: column;
         align-items: center;
+        padding: 1.5rem;
     }
 
     .map-box iframe {
-        min-height: 300px;
+        min-height: 350px;
+    }
+}
+
+@media (max-width: 600px) {
+    .contact-box,
+    .map-box {
+        width: 100%;
+        max-width: 90%;
+    }
+
+    .contact-wrapper {
+        padding: 1rem;
+        gap: 1.5rem;
+    }
+
+    .contact-box h1 {
+        font-size: 20px;
+    }
+
+    .notice {
+        font-size: 12px;
     }
 }
