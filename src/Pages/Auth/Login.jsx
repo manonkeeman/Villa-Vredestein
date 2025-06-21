@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "./AuthContext.jsx";
 import "./Login.css";
 import Button from "../../Components/Buttons/Button";
@@ -17,12 +17,21 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const success = await login(email.trim(), password.trim());
+        setError("");
 
-        if (success) {
-            navigate("/studentdashboard");
-        } else {
-            setError("Ongeldige inloggegevens of serverprobleem.");
+        try {
+            const success = await login(email.trim(), password.trim());
+
+            if (success) {
+                console.log("✅ Login succesvol, redirect naar dashboard");
+                navigate("/studentdashboard");
+            } else {
+                console.warn("❌ Login mislukt: Ongeldige gegevens");
+                setError("❌ Ongeldige inloggegevens.");
+            }
+        } catch (err) {
+            console.error("❌ Interne fout tijdens inloggen:", err);
+            setError("❌ Er is een fout opgetreden. Probeer het later opnieuw.");
         }
     };
 
@@ -46,6 +55,7 @@ const Login = () => {
                     Welkom terug, Vredesteiner.<br />
                     Log in om je dashboard te bekijken.
                 </p>
+
                 <form onSubmit={handleSubmit}>
                     <input
                         type="email"
@@ -73,6 +83,10 @@ const Login = () => {
 
                     <Button type="submit" text="Login" variant="primary" />
                     {error && <p className="error">{error}</p>}
+
+                    <p className="register-link">
+                        Nog geen account? <Link to="/register">Registreer hier</Link>
+                    </p>
                 </form>
             </div>
         </div>

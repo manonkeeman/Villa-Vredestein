@@ -1,30 +1,33 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { jwtDecode } from "jwt-decode";
-import axios from "../../Helpers/AxiosHelper.jsx";
+import axiosInstance from "../../Helpers/axiosHelper";
 
 const AuthContext = createContext(null);
-
 export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const isLoggedIn = Boolean(user);
+
+    const allowedEmails = [
+        "student@villavredestein.com",
+        "manon@villavredestein.com"
+    ];
+
     const parseToken = (token) => {
         try {
-            const decoded = jwtDecode(token);
-            return decoded;
+            return jwtDecode(token);
         } catch (e) {
-            console.error("❌ Kan token niet decoderen:", e);
+            console.error("❌ Token decoding mislukt:", e);
             return null;
         }
     };
 
     const isTokenExpired = (token) => {
         const decoded = parseToken(token);
-        if (!decoded?.exp) return true;
-        return decoded.exp * 1000 < Date.now();
+        return !decoded?.exp || decoded.exp * 1000 < Date.now();
     };
 
     const handleLogout = () => {
@@ -33,82 +36,25 @@ export const AuthProvider = ({ children }) => {
         setUser(null);
     };
 
-    const refreshToken = async () => {
-        try {
-            const response = await axios.post("/api/refresh", {}, { withCredentials: true });
-            const newToken = response.data.accessToken;
-            const userData = response.data.user;
-
-            if (newToken && userData) {
-                localStorage.setItem("accessToken", newToken);
-                localStorage.setItem("user", JSON.stringify(userData));
-                setUser(userData);
-                return newToken;
-            }
-
-            throw new Error("❌ Geen nieuwe token ontvangen bij refresh");
-        } catch (err) {
-            console.warn("⚠️ Refresh token mislukt:", err.message);
-            handleLogout();
-            return null;
-        }
-    };
-
-    useEffect(() => {
-        const interceptor = axios.interceptors.request.use(
-            async (config) => {
-                const accessToken = localStorage.getItem("accessToken");
-
-                if (accessToken && isTokenExpired(accessToken)) {
-                    const newToken = await refreshToken();
-                    if (!newToken) throw new Error("Token refresh faalt");
-                    config.headers.Authorization = `Bearer ${newToken}`;
-                } else if (accessToken) {
-                    config.headers.Authorization = `Bearer ${accessToken}`;
-                }
-
-                return config;
-            },
-            (error) => Promise.reject(error)
-        );
-
-        return () => axios.interceptors.request.eject(interceptor);
-    }, []);
-
-    useEffect(() => {
-        const init = async () => {
-            const accessToken = localStorage.getItem("accessToken");
-            const userData = localStorage.getItem("user");
-
-            if (accessToken && userData) {
-                if (isTokenExpired(accessToken)) {
-                    await refreshToken();
-                } else {
-                    try {
-                        const parsed = JSON.parse(userData);
-                        setUser(parsed);
-                    } catch (e) {
-                        console.warn("❌ Corrupt user object:", e);
-                        handleLogout();
-                    }
-                }
-            }
-
-            setLoading(false);
-        };
-
-        init();
-    }, []);
-
     const login = async (email, password) => {
+        const cleanEmail = email.trim().toLowerCase();
+
+        if (!allowedEmails.includes(cleanEmail)) {
+            console.error("❌ Ongeautoriseerd e-mailadres bij login:", cleanEmail);
+            return false;
+        }
+
         try {
-            const response = await axios.post("/api/login", { email, password }, { withCredentials: true });
+            const response = await axiosInstance.post("/users/authenticate", {
+                username: cleanEmail,
+                password: password,
+            });
 
-            const accessToken = response.data.accessToken || response.data.token;
-            const userData = response.data.user;
+            const accessToken = response.data?.token;
+            const userData = parseToken(accessToken);
 
-            if (!accessToken || !userData) {
-                console.error("❌ Login response mist token of user");
+            if (!accessToken) {
+                console.error("❌ Geen token ontvangen bij login");
                 return false;
             }
 
@@ -122,18 +68,63 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
-    const logout = async () => {
+    const register = async (data) => {
+        const cleanUsername = data.username.trim().toLowerCase();
+
+        if (!allowedEmails.includes(cleanUsername)) {
+            console.error("❌ Ongeautoriseerd e-mailadres bij registratie:", cleanUsername);
+            return false;
+        }
+
         try {
-            await axios.post("/api/logout", {}, { withCredentials: true });
+            const response = await axiosInstance.post("/users", {
+                ...data,
+                username: cleanUsername,
+                email: data.email.trim().toLowerCase(),
+            });
+            return response.status === 201 || response.status === 200;
         } catch (error) {
-            console.warn("⚠️ Logout fout:", error.message);
-        } finally {
-            handleLogout();
+            if (error.response?.status === 409) {
+                console.error("❌ Gebruiker bestaat al.");
+            } else {
+                console.error("❌ Registratie fout:", error.response?.data || error.message);
+            }
+            return false;
         }
     };
 
+    useEffect(() => {
+        const accessToken = localStorage.getItem("accessToken");
+        const userData = localStorage.getItem("user");
+
+        if (accessToken && userData) {
+            if (isTokenExpired(accessToken)) {
+                console.warn("⏰ Token verlopen bij app start. Automatisch uitloggen.");
+                handleLogout();
+            } else {
+                try {
+                    setUser(JSON.parse(userData));
+                } catch (e) {
+                    console.error("❌ Kon userData niet parsen:", e);
+                    handleLogout();
+                }
+            }
+        }
+
+        setLoading(false);
+    }, []);
+
     return (
-        <AuthContext.Provider value={{ isLoggedIn, user, login, logout, loading }}>
+        <AuthContext.Provider
+            value={{
+                isLoggedIn,
+                user,
+                login,
+                logout: handleLogout,
+                register,
+                loading,
+            }}
+        >
             {children}
         </AuthContext.Provider>
     );
