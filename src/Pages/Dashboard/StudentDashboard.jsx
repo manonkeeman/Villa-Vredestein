@@ -76,15 +76,6 @@ const StudentDashboard = () => {
                         allowFullScreen
                     ></iframe>
                 </section>
-
-                <section className="secure-data" aria-label="Beveiligde gegevens">
-                    <h2>Beveiligde Data</h2>
-                    {secureData ? (
-                        <pre>{JSON.stringify(secureData, null, 2)}</pre>
-                    ) : (
-                        <p>Beveiligde data wordt geladen...</p>
-                    )}
-                </section>
             </main>
         </div>
     );
