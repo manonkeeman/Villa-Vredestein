@@ -11,7 +11,8 @@ const RoleProtectedRoute = ({ children, allowedRoles }) => {
         return <Navigate to="/login" replace />;
     }
 
-    const userRoles = user?.authorities?.map(role => role.authority) || [];
+    //const userRoles = user?.role?.map(role => role) || [];//
+    const userRoles = user?.role
 
     const isAuthorized = allowedRoles.some(role => userRoles.includes(role));
 
