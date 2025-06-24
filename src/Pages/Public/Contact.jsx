@@ -3,23 +3,27 @@ import { FiMail, FiUser, FiMessageCircle } from "react-icons/fi";
 import Button from "../../Components/Buttons/Button.jsx";
 import "./Contact.css";
 
-
-
 const Contact = () => {
     const [submitted, setSubmitted] = useState(false);
+    const [error, setError] = useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setError("");
+
         const form = e.target;
-        const data = new FormData(form);
+        const formData = new FormData(form);
 
         fetch("/", {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams(data).toString(),
+            body: new URLSearchParams(formData).toString(),
         })
             .then(() => setSubmitted(true))
-            .catch((error) => alert("Fout bij verzenden: " + error));
+            .catch((err) => {
+                console.error("❌ Fout bij verzenden:", err);
+                setError("Er ging iets mis bij het versturen. Probeer het later opnieuw.");
+            });
     };
 
     return (
@@ -27,12 +31,14 @@ const Contact = () => {
             <section className="contact-box">
                 <h1>Neem contact op</h1>
                 <p className="notice">
-                    Heb je vragen over Villa Vredestein of wil je iets bespreken met het beheer? Laat gerust een bericht achter, we nemen spoedig contact met je op.
+                    Heb je vragen over Villa Vredestein of wil je iets bespreken met het beheer? Laat gerust een bericht achter – we nemen spoedig contact met je op.
                 </p>
 
                 {submitted ? (
                     <p className="success-message">
-                        ✅ Je bericht is succesvol verstuurd. We nemen snel contact met je op. <br /> Met vriendelijke groet, Manon & Maxim
+                        ✅ Je bericht is succesvol verstuurd! <br />
+                        We nemen zo snel mogelijk contact met je op. <br />
+                        Met vriendelijke groet, Manon & Maxim
                     </p>
                 ) : (
                     <form
@@ -52,6 +58,7 @@ const Contact = () => {
                                 name="naam"
                                 placeholder="Je naam"
                                 required
+                                aria-label="Naam"
                             />
                             <FiUser className="input-icon" />
                         </div>
@@ -62,6 +69,7 @@ const Contact = () => {
                                 name="email"
                                 placeholder="Je e-mailadres"
                                 required
+                                aria-label="E-mailadres"
                             />
                             <FiMail className="input-icon" />
                         </div>
@@ -72,6 +80,7 @@ const Contact = () => {
                                 rows="4"
                                 placeholder="Je bericht..."
                                 required
+                                aria-label="Bericht"
                             />
                             <FiMessageCircle className="input-icon textarea-icon" />
                         </div>
@@ -81,6 +90,8 @@ const Contact = () => {
                             text="Verstuur bericht"
                             variant="primary"
                         />
+
+                        {error && <p className="error-message">❌ {error}</p>}
                     </form>
                 )}
             </section>
@@ -96,7 +107,7 @@ const Contact = () => {
             </section>
 
             <noscript>
-                    <form name="contact" data-netlify="true" hidden>
+                <form name="contact" data-netlify="true" hidden>
                     <input type="text" name="naam" />
                     <input type="email" name="email" />
                     <textarea name="bericht" />

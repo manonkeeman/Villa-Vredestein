@@ -14,7 +14,7 @@ const RegisterUser = () => {
         password: "",
         confirmPassword: "",
         room: "",
-        authorities: [{ authority: "STUDENT" }],
+        authorities: [{ authority: "USER" }],
     });
 
     const [showPassword, setShowPassword] = useState(false);
@@ -44,7 +44,7 @@ const RegisterUser = () => {
 
         const result = await register({
             username: formData.username,
-            email: formData.username, // gebruik username als email
+            email: formData.username,
             password: formData.password,
             info: formData.room,
             authorities: formData.authorities,
@@ -139,8 +139,7 @@ const RegisterUser = () => {
                         onChange={handleChange}
                         required
                     >
-                        <option value="BEWONER">Bewoner</option>
-                        <option value="BEHEERDER">Beheerder</option>
+                        <option value="USER">Bewoner</option>
                     </select>
 
                     <Button

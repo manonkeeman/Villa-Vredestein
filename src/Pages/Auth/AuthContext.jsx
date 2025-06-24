@@ -10,12 +10,6 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const isLoggedIn = Boolean(user);
-
-    const allowedEmails = [
-        "student@villavredestein.com",
-        "manon@villavredestein.com"
-    ];
-
     const parseToken = (token) => {
         try {
             return jwtDecode(token);
@@ -39,18 +33,13 @@ export const AuthProvider = ({ children }) => {
     const login = async (email, password) => {
         const cleanEmail = email.trim().toLowerCase();
 
-        if (!allowedEmails.includes(cleanEmail)) {
-            console.error("❌ Ongeautoriseerd e-mailadres bij login:", cleanEmail);
-            return false;
-        }
-
         try {
             const response = await axiosInstance.post("/users/authenticate", {
                 username: cleanEmail,
                 password: password,
             });
 
-            const accessToken = response.data?.token;
+            const accessToken = response.data?.jwt;
             const userData = parseToken(accessToken);
 
             if (!accessToken) {
@@ -70,11 +59,6 @@ export const AuthProvider = ({ children }) => {
 
     const register = async (data) => {
         const cleanUsername = data.username.trim().toLowerCase();
-
-        if (!allowedEmails.includes(cleanUsername)) {
-            console.error("❌ Ongeautoriseerd e-mailadres bij registratie:", cleanUsername);
-            return false;
-        }
 
         try {
             const response = await axiosInstance.post("/users", {
