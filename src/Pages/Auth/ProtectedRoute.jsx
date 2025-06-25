@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import { useAuth } from "./AuthContext.jsx";
 import PropTypes from "prop-types";
 
-const RoleProtectedRoute = ({ children, allowedRoles }) => {
+const ProtectedRoute = ({ children, allowedRoles }) => {
     const { user } = useAuth();
     const accessToken = localStorage.getItem("accessToken");
 
@@ -11,10 +11,7 @@ const RoleProtectedRoute = ({ children, allowedRoles }) => {
         return <Navigate to="/login" replace />;
     }
 
-    //const userRoles = user?.role?.map(role => role) || [];//
-    const userRoles = user?.role
-
-    const isAuthorized = allowedRoles.some(role => userRoles.includes(role));
+    const isAuthorized = allowedRoles.includes(user.role);
 
     if (!isAuthorized) {
         return <Navigate to="/unauthorized" replace />;
@@ -23,9 +20,9 @@ const RoleProtectedRoute = ({ children, allowedRoles }) => {
     return children;
 };
 
-RoleProtectedRoute.propTypes = {
+ProtectedRoute.propTypes = {
     children: PropTypes.node.isRequired,
     allowedRoles: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
-export default RoleProtectedRoute;
+export default ProtectedRoute;

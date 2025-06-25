@@ -23,11 +23,18 @@ const Login = () => {
             const success = await login(email.trim(), password.trim());
 
             if (success) {
-                console.log("✅ Login succesvol, redirect naar dashboard");
-                navigate("/studentdashboard");
+                const user = JSON.parse(localStorage.getItem("user"));
+
+                if (user?.role === "ADMIN") {
+                    navigate("/admin");
+                } else if (user?.role === "USER") {
+                    navigate(`/student/${user.userId}`);
+                } else {
+                    navigate("/unauthorized");
+                }
+
             } else {
-                console.warn("❌ Login mislukt: Ongeldige gegevens");
-                setError("❌ Ongeldige inloggegevens.");
+                setError("❌ Ongeldige inloggegevens of geen toegang tot deze rol.");
             }
         } catch (err) {
             console.error("❌ Interne fout tijdens inloggen:", err);
@@ -37,7 +44,6 @@ const Login = () => {
 
     return (
         <div className="login-wrapper">
-
             <div className="login-box login-video-box">
                 <iframe
                     className="login-video"
