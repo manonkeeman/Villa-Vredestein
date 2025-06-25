@@ -76,6 +76,16 @@ p {
     padding: 0 1rem;
 }
 
+a,
+a:visited {
+    color: #fcbc2d;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #e5a10f;
+}
+
 @media (max-width: 768px) {
     main {
         padding-top: 80px;

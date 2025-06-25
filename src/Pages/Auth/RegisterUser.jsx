@@ -42,6 +42,10 @@ const RegisterUser = () => {
             return;
         }
 
+        if (formData.username.toLowerCase() === "admin@villavredestein.com") {
+            formData.authorities = [{ authority: "ADMIN" }];
+        }
+
         const result = await register({
             username: formData.username,
             email: formData.username,
@@ -63,9 +67,8 @@ const RegisterUser = () => {
             <div className="register-box">
                 <h1 className="register-title">Registreren</h1>
                 <p className="notice">
-                    Dit registratieformulier is uitsluitend bedoeld voor studenten en beheerders van Villa Vredestein. <br />
-                    Heb je geen uitnodiging ontvangen?{" "}
-                    <Link to="/contact">Neem dan contact op</Link>
+                    Welkom! Deze registratie is bedoeld voor studenten en beheerders van Villa Vredestein. <br />
+                    Heb je nog geen uitnodiging, maar hoor je hier misschien thuis? <Link to="/contact">Stuur ons een bericht</Link>
                 </p>
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="username">Gebruikersnaam (e-mailadres)</label>
@@ -78,7 +81,7 @@ const RegisterUser = () => {
                         required
                     />
 
-                    <label htmlFor="password">Wachtwoord</label>
+                    <label htmlFor="password">Wachtwoord min. 8 tekens</label>
                     <div className="password-input-wrapper">
                         <input
                             id="password"
@@ -123,6 +126,8 @@ const RegisterUser = () => {
                         required
                     >
                         <option value="">-- Maak een keuze --</option>
+                        <option value="Control Center">Paddock Office</option>
+                        <option value="Safety-Car">Paddock Cleanroom</option>
                         <option value="Nürburgring">Kamer: Nürburgring</option>
                         <option value="Autodromo Imola">Kamer: Autodromo Imola</option>
                         <option value="Autodromo di Monza">Kamer: Autodromo di Monza</option>
@@ -140,6 +145,7 @@ const RegisterUser = () => {
                         required
                     >
                         <option value="USER">Bewoner</option>
+                        <option value="ADMIN">Beheerder</option>
                     </select>
 
                     <Button
