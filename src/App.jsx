@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-import { useEffect } from "react";
 
 import Nav from "./Components/Nav/Nav.jsx";
 import Footer from "./Components/Footer/Footer.jsx";
@@ -12,11 +11,12 @@ import NotFound from "./Pages/Public/NotFound.jsx";
 
 import RegisterUser from "./Pages/Auth/RegisterUser.jsx";
 import Login from "./Pages/Auth/Login.jsx";
-import StudentDashboard from "./Pages/Dashboard/StudentDashboard.jsx";
-import Receptenzoeker from "./Pages/Dashboard/RecipeSearch.jsx";
 
 import { AuthProvider } from "./Pages/Auth/AuthContext.jsx";
 import ProtectedRoute from "./Pages/Auth/ProtectedRoute.jsx";
+
+import StudentDashboard from "./Pages/Dashboard/StudentDashboard.jsx";
+import RecipeSearch from "./Pages/Dashboard/RecipeSearch.jsx";
 
 import "./Styles/Global.css";
 
@@ -38,26 +38,33 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/contact" element={<Contact />} />
-                    <Route path="/register" element={<RegisterUser />} />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<RegisterUser />} />
 
                     <Route
-                        path="/studentdashboard"
+                        path="/student/:id"
                         element={
-                            <ProtectedRoute allowedRoles={["USER", "BEHEERDER"]}>
+                            <ProtectedRoute allowedRoles={["USER", "ADMIN"]}>
                                 <StudentDashboard />
                             </ProtectedRoute>
                         }
                     />
                     <Route
-                        path="/receptenzoeker"
+                        path="/admin"
                         element={
-                            <ProtectedRoute allowedRoles={["USER", "BEHEERDER"]}>
-                                <Receptenzoeker />
+                            <ProtectedRoute allowedRoles={["ADMIN"]}>
+                                <StudentDashboard />
                             </ProtectedRoute>
                         }
                     />
-
+                    <Route
+                        path="/recipes"
+                        element={
+                            <ProtectedRoute allowedRoles={["USER", "ADMIN"]}>
+                                <RecipeSearch />
+                            </ProtectedRoute>
+                        }
+                    />
                     <Route
                         path="/unauthorized"
                         element={
@@ -67,7 +74,6 @@ function App() {
                             </div>
                         }
                     />
-
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </main>

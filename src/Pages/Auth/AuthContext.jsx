@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, {createContext, useContext, useState, useEffect, useCallback,} from "react";
 import PropTypes from "prop-types";
 import { jwtDecode } from "jwt-decode";
 import axiosInstance from "../../Helpers/AxiosHelper.js";
@@ -6,97 +6,116 @@ import axiosInstance from "../../Helpers/AxiosHelper.js";
 const AuthContext = createContext(null);
 export const useAuth = () => useContext(AuthContext);
 
+const ADMIN_EMAILS = ["admin@villavredestein.com"];
+
+const decodeToken = (token) => {
+    try {
+        return jwtDecode(token);
+    } catch (error) {
+        console.error("❌ Token decoding failed:", error);
+        return null;
+    }
+};
+
+const isTokenExpired = (token) => {
+    const decoded = decodeToken(token);
+    return !decoded?.exp || decoded.exp * 1000 < Date.now();
+};
+
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const isLoggedIn = Boolean(user);
-    const parseToken = (token) => {
-        try {
-            return jwtDecode(token);
-        } catch (e) {
-            console.error("❌ Token decoding mislukt:", e);
-            return null;
-        }
-    };
-
-    const isTokenExpired = (token) => {
-        const decoded = parseToken(token);
-        return !decoded?.exp || decoded.exp * 1000 < Date.now();
-    };
-
-    const handleLogout = () => {
-        localStorage.removeItem("accessToken");
-        localStorage.removeItem("user");
-        setUser(null);
-    };
 
     const login = async (email, password) => {
         const cleanEmail = email.trim().toLowerCase();
 
         try {
-            const response = await axiosInstance.post("/users/authenticate", {
+            const res = await axiosInstance.post("/users/authenticate", {
                 username: cleanEmail,
-                password: password,
+                password,
             });
 
-            const accessToken = response.data?.jwt;
-            const userData = parseToken(accessToken);
-
-            if (!accessToken) {
-                console.error("❌ Geen token ontvangen bij login");
+            const token = res.data?.jwt;
+            if (!token) {
+                console.error("❌ Geen JWT ontvangen bij login.");
                 return false;
             }
 
-            localStorage.setItem("accessToken", accessToken);
-            localStorage.setItem("user", JSON.stringify(userData));
-            setUser(userData);
+            const userData = decodeToken(token);
+            if (!userData) {
+                console.error("❌ JWT kon niet worden gedecodeerd.");
+                return false;
+            }
+
+            // ✅ Bepaal rol op basis van email
+            const role = ADMIN_EMAILS.includes(cleanEmail) ? "ADMIN" : "USER";
+
+            const parsedUser = {
+                ...userData,
+                role,
+            };
+
+            localStorage.setItem("accessToken", token);
+            localStorage.setItem("user", JSON.stringify(parsedUser));
+            setUser(parsedUser);
             return true;
         } catch (error) {
-            console.error("❌ Login fout:", error.response?.data || error.message);
+            console.error("❌ Login error:", error.response?.data || error.message);
             return false;
         }
     };
 
-    const register = async (data) => {
-        const cleanUsername = data.username.trim().toLowerCase();
+    const logout = useCallback(() => {
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("user");
+        setUser(null);
+    }, []);
 
+    const register = async (data) => {
         try {
-            const response = await axiosInstance.post("/users", {
+            const cleanData = {
                 ...data,
-                username: cleanUsername,
+                username: data.username.trim().toLowerCase(),
                 email: data.email.trim().toLowerCase(),
-            });
+            };
+
+            const response = await axiosInstance.post("/users", cleanData);
             return response.status === 201 || response.status === 200;
         } catch (error) {
-            if (error.response?.status === 409) {
+            const status = error.response?.status;
+            if (status === 409) {
                 console.error("❌ Gebruiker bestaat al.");
             } else {
-                console.error("❌ Registratie fout:", error.response?.data || error.message);
+                console.error(
+                    "❌ Registratiefout:",
+                    error.response?.data || error.message
+                );
             }
             return false;
         }
     };
 
     useEffect(() => {
-        const accessToken = localStorage.getItem("accessToken");
-        const userData = localStorage.getItem("user");
+        const storedToken = localStorage.getItem("accessToken");
+        const storedUser = localStorage.getItem("user");
 
-        if (accessToken && userData) {
-            if (isTokenExpired(accessToken)) {
-                console.warn("⏰ Token verlopen bij app start. Automatisch uitloggen.");
-                handleLogout();
+        if (storedToken && storedUser) {
+            if (isTokenExpired(storedToken)) {
+                console.warn("⏰ Token verlopen bij app-start. Uitloggen...");
+                logout();
             } else {
                 try {
-                    setUser(JSON.parse(userData));
+                    setUser(JSON.parse(storedUser));
                 } catch (e) {
-                    console.error("❌ Kon userData niet parsen:", e);
-                    handleLogout();
+                    console.error("❌ User kon niet geladen worden:", e);
+                    logout();
                 }
             }
         }
 
         setLoading(false);
-    }, []);
+    }, [logout]);
 
     return (
         <AuthContext.Provider
@@ -104,7 +123,7 @@ export const AuthProvider = ({ children }) => {
                 isLoggedIn,
                 user,
                 login,
-                logout: handleLogout,
+                logout,
                 register,
                 loading,
             }}
