@@ -1,4 +1,4 @@
-import axiosInstance from "./AxiosHelper.js";
+import axios from "./AxiosHelper.js";
 
 const buildRecipeSearchParams = ({ zoekwoord = "recipe", maaltijden = [], dieet = [], keukens = [] }) => {
     const app_id = import.meta.env.VITE_APP_ID;
@@ -26,7 +26,7 @@ export const fetchRecipes = async (zoekwoord, maaltijden, dieet, keukens) => {
     const params = buildRecipeSearchParams({ zoekwoord, maaltijden, dieet, keukens });
 
     try {
-        const response = await axiosInstance.get("https://api.edamam.com/api/recipes/v2", {
+        const response = await axios.get("https://api.edamam.com/api/recipes/v2", {
             params,
             headers: {
                 "Edamam-Account-User": import.meta.env.VITE_USER_ID,
@@ -55,7 +55,7 @@ export const fetchProtectedData = async () => {
     }
 
     try {
-        const response = await axiosInstance.get("/api/protected", {
+        const response = await axios.get("/api/protected", {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
