@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "./AuthContext.jsx";
-import "./Login.css";
 import Button from "../../Components/Buttons/Button";
 import { FiEye, FiEyeOff } from "react-icons/fi";
-import "../../Styles/Global.css";
+import "./Login.css";
 
 const Login = () => {
     const navigate = useNavigate();
@@ -19,26 +18,19 @@ const Login = () => {
         e.preventDefault();
         setError("");
 
-        try {
-            const success = await login(email.trim(), password.trim());
+        const success = await login(email.trim(), password.trim());
 
-            if (success) {
-                const user = JSON.parse(localStorage.getItem("user"));
-
-                if (user?.role === "ADMIN") {
-                    navigate("/admin");
-                } else if (user?.role === "USER") {
-                    navigate(`/student/${user.userId}`);
-                } else {
-                    navigate("/unauthorized");
-                }
-
+        if (success) {
+            const user = JSON.parse(localStorage.getItem("user"));
+            if (user?.role === "ADMIN") {
+                navigate("/admin");
+            } else if (user?.role === "USER") {
+                navigate(`/student/${user.userId}`);
             } else {
-                setError("❌ Ongeldige inloggegevens of geen toegang tot deze rol.");
+                navigate("/unauthorized");
             }
-        } catch (err) {
-            console.error("❌ Interne fout tijdens inloggen:", err);
-            setError("❌ Er is een fout opgetreden. Probeer het later opnieuw.");
+        } else {
+            setError("❌ Ongeldige gegevens of geen toegang.");
         }
     };
 
@@ -50,17 +42,16 @@ const Login = () => {
                     width="560"
                     height="315"
                     src="https://www.youtube.com/embed/PoQdedhOXwI?autoplay=1&mute=1&loop=1&playlist=PoQdedhOXwI"
-                    title="IVA en Villa Vredestein video"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    title="Villa Vredestein sfeer"
+                    allow="autoplay; encrypted-media"
                     allowFullScreen
                 ></iframe>
             </div>
 
             <div className="login-box login-form-box">
-                <h1>Log hier in</h1>
+                <h1>Log in</h1>
                 <p className="login-subtext">
-                    Welkom terug, Vredesteiner.<br />
-                    Log in om je dashboard te bekijken.
+                    Welkom terug! Log in om je dashboard te bekijken.
                 </p>
 
                 <form onSubmit={handleSubmit}>
@@ -80,10 +71,7 @@ const Login = () => {
                             placeholder="Wachtwoord"
                             required
                         />
-                        <span
-                            className="toggle-password"
-                            onClick={() => setShowPassword(!showPassword)}
-                        >
+                        <span onClick={() => setShowPassword(!showPassword)} className="toggle-password">
                             {showPassword ? <FiEyeOff /> : <FiEye />}
                         </span>
                     </div>

@@ -37,28 +37,40 @@ const RegisterUser = () => {
         setError("");
         setSuccess("");
 
-        if (formData.password !== formData.confirmPassword) {
+        const { username, password, confirmPassword, room } = formData;
+
+        if (!username || !password || !confirmPassword || !room) {
+            setError("❌ Vul alle verplichte velden in.");
+            return;
+        }
+
+        if (password.length < 8) {
+            setError("❌ Wachtwoord moet minimaal 8 tekens bevatten.");
+            return;
+        }
+
+        if (password !== confirmPassword) {
             setError("❌ Wachtwoorden komen niet overeen.");
             return;
         }
 
-        if (formData.username.toLowerCase() === "admin@villavredestein.com") {
+        if (username.toLowerCase() === "admin@villavredestein.com") {
             formData.authorities = [{ authority: "ADMIN" }];
         }
 
-        const result = await register({
-            username: formData.username,
-            email: formData.username,
-            password: formData.password,
-            info: formData.room,
+        const success = await register({
+            username,
+            email: username,
+            password,
+            info: room,
             authorities: formData.authorities,
         });
 
-        if (result) {
+        if (success) {
             setSuccess("✅ Account succesvol aangemaakt!");
             setTimeout(() => navigate("/login"), 2000);
         } else {
-            setError("❌ Registratie mislukt of e-mail niet geautoriseerd.");
+            setError("❌ Registratie mislukt. Probeer een ander e-mailadres.");
         }
     };
 
@@ -67,13 +79,12 @@ const RegisterUser = () => {
             <div className="register-box">
                 <h1 className="register-title">Registreren</h1>
                 <p className="notice">
-                    Welkom! Deze registratie is bedoeld voor studenten en beheerders van Villa Vredestein. <br />
-                    Heb je nog geen uitnodiging, maar hoor je hier misschien thuis? <Link to="/contact">Stuur ons een bericht</Link>
+                    Deze registratie is bedoeld voor bewoners en beheerders van Villa Vredestein.<br />
+                    <Link to="/contact">Nog geen uitnodiging? Neem contact op.</Link>
                 </p>
                 <form onSubmit={handleSubmit}>
-                    <label htmlFor="username">Gebruikersnaam (e-mailadres)</label>
+                    <label htmlFor="username">E-mailadres</label>
                     <input
-                        id="username"
                         type="email"
                         name="username"
                         value={formData.username}
@@ -81,20 +92,16 @@ const RegisterUser = () => {
                         required
                     />
 
-                    <label htmlFor="password">Wachtwoord min. 8 tekens</label>
+                    <label htmlFor="password">Wachtwoord (min. 8 tekens)</label>
                     <div className="password-input-wrapper">
                         <input
-                            id="password"
                             type={showPassword ? "text" : "password"}
                             name="password"
                             value={formData.password}
                             onChange={handleChange}
                             required
                         />
-                        <span
-                            className="toggle-password"
-                            onClick={() => setShowPassword(!showPassword)}
-                        >
+                        <span onClick={() => setShowPassword(!showPassword)} className="toggle-password">
                             {showPassword ? <FiEyeOff /> : <FiEye />}
                         </span>
                     </div>
@@ -102,24 +109,19 @@ const RegisterUser = () => {
                     <label htmlFor="confirmPassword">Bevestig wachtwoord</label>
                     <div className="password-input-wrapper">
                         <input
-                            id="confirmPassword"
                             type={showConfirmPassword ? "text" : "password"}
                             name="confirmPassword"
                             value={formData.confirmPassword}
                             onChange={handleChange}
                             required
                         />
-                        <span
-                            className="toggle-password"
-                            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                        >
+                        <span onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="toggle-password">
                             {showConfirmPassword ? <FiEyeOff /> : <FiEye />}
                         </span>
                     </div>
 
-                    <label htmlFor="room">Selecteer kamer</label>
+                    <label htmlFor="room">Kamerselectie</label>
                     <select
-                        id="room"
                         name="room"
                         value={formData.room}
                         onChange={handleChange}
@@ -138,7 +140,6 @@ const RegisterUser = () => {
 
                     <label htmlFor="authority">Bevoegdheid</label>
                     <select
-                        id="authority"
                         name="authority"
                         value={formData.authorities[0].authority}
                         onChange={handleChange}
@@ -148,12 +149,7 @@ const RegisterUser = () => {
                         <option value="ADMIN">Beheerder</option>
                     </select>
 
-                    <Button
-                        type="submit"
-                        text="Maak account aan"
-                        variant="primary"
-                    />
-
+                    <Button type="submit" text="Maak account aan" variant="primary" />
                     {success && <p className="success">{success}</p>}
                     {error && <p className="error">{error}</p>}
                 </form>
