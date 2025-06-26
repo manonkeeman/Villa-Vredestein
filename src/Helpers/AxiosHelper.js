@@ -1,27 +1,22 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-    baseURL: import.meta.env.VITE_API_URL,
+    baseURL: "https://api.datavortex.nl/villavredesteinlogin",
     headers: {
         "Content-Type": "application/json",
-        "X-Api-Key": import.meta.env.VITE_API_KEY,
+        "X-Api-Key": "villavredesteinlogin:2NkpAp3ZiXKfSlM4fwxW",
     },
-    withCredentials: false,
 });
 
 axiosInstance.interceptors.request.use(
     (config) => {
         const token = localStorage.getItem("accessToken");
-
         if (token) {
             config.headers["Authorization"] = `Bearer ${token}`;
         }
-
         return config;
     },
-    (error) => {
-        return Promise.reject(error);
-    }
+    (error) => Promise.reject(error)
 );
 
 export default axiosInstance;

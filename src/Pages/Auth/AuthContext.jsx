@@ -1,7 +1,7 @@
-import React, {createContext, useContext, useState, useEffect, useCallback,} from "react";
+import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
 import { jwtDecode } from "jwt-decode";
-import axiosInstance from "../../Helpers/AxiosHelper.js";
+import axios from "../../Helpers/AxiosHelper.js";
 
 const AuthContext = createContext(null);
 export const useAuth = () => useContext(AuthContext);
@@ -31,24 +31,17 @@ export const AuthProvider = ({ children }) => {
         const cleanEmail = email.trim().toLowerCase();
 
         try {
-            const res = await axiosInstance.post("/users/authenticate", {
+            const res = await axios.post("/users/authenticate", {
                 username: cleanEmail,
                 password,
             });
 
             const token = res.data?.jwt;
-            if (!token) {
-                console.error("❌ Geen JWT ontvangen bij login.");
-                return false;
-            }
+            if (!token) return false;
 
             const userData = decodeToken(token);
-            if (!userData) {
-                console.error("❌ JWT kon niet worden gedecodeerd.");
-                return false;
-            }
+            if (!userData) return false;
 
-            // ✅ Bepaal rol op basis van email
             const role = ADMIN_EMAILS.includes(cleanEmail) ? "ADMIN" : "USER";
 
             const parsedUser = {
@@ -80,35 +73,26 @@ export const AuthProvider = ({ children }) => {
                 email: data.email.trim().toLowerCase(),
             };
 
-            const response = await axiosInstance.post("/users", cleanData);
-            return response.status === 201 || response.status === 200;
+            const res = await axios.post("/users", cleanData);
+            return res.status === 201 || res.status === 200;
         } catch (error) {
-            const status = error.response?.status;
-            if (status === 409) {
-                console.error("❌ Gebruiker bestaat al.");
-            } else {
-                console.error(
-                    "❌ Registratiefout:",
-                    error.response?.data || error.message
-                );
-            }
+            console.error("❌ Register error:", error.response?.data || error.message);
             return false;
         }
     };
 
     useEffect(() => {
-        const storedToken = localStorage.getItem("accessToken");
+        const token = localStorage.getItem("accessToken");
         const storedUser = localStorage.getItem("user");
 
-        if (storedToken && storedUser) {
-            if (isTokenExpired(storedToken)) {
-                console.warn("⏰ Token verlopen bij app-start. Uitloggen...");
+        if (token && storedUser) {
+            if (isTokenExpired(token)) {
                 logout();
             } else {
                 try {
                     setUser(JSON.parse(storedUser));
                 } catch (e) {
-                    console.error("❌ User kon niet geladen worden:", e);
+                    console.error("❌ Error loading user from localStorage:", e);
                     logout();
                 }
             }
@@ -118,16 +102,7 @@ export const AuthProvider = ({ children }) => {
     }, [logout]);
 
     return (
-        <AuthContext.Provider
-            value={{
-                isLoggedIn,
-                user,
-                login,
-                logout,
-                register,
-                loading,
-            }}
-        >
+        <AuthContext.Provider value={{ isLoggedIn, user, login, logout, register, loading }}>
             {children}
         </AuthContext.Provider>
     );
