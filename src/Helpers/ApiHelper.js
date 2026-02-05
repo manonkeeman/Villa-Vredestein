@@ -1,69 +1,116 @@
 import axios from "./AxiosHelper.js";
 
-const buildRecipeSearchParams = ({ zoekwoord = "recipe", maaltijden = [], dieet = [], keukens = [] }) => {
-    const app_id = import.meta.env.VITE_APP_ID;
-    const app_key = import.meta.env.VITE_APP_KEY;
+/**
+ * ============================
+ *  AUTH
+ * ============================
+ */
 
-    if (!app_id || !app_key) {
-        throw new Error("API keys niet gevonden. Voeg VITE_APP_ID en VITE_APP_KEY toe aan je .env bestand.");
-    }
-
-    const params = {
-        q: zoekwoord,
-        type: "public",
-        app_id,
-        app_key,
-    };
-
-    if (maaltijden.length > 0) params.mealType = maaltijden.join(",");
-    if (dieet.length > 0) params.health = dieet.join(",");
-    if (keukens.length > 0) params.cuisineType = keukens.join(",");
-
-    return params;
-};
-
-export const fetchRecipes = async (zoekwoord, maaltijden, dieet, keukens) => {
-    const params = buildRecipeSearchParams({ zoekwoord, maaltijden, dieet, keukens });
-
+export const login = async (email, password) => {
     try {
-        const response = await axios.get("https://api.edamam.com/api/recipes/v2", {
-            params,
-            headers: {
-                "Edamam-Account-User": import.meta.env.VITE_USER_ID,
-            },
+        const response = await axios.post("/api/auth/login", {
+            email,
+            password,
         });
 
-        return response.data.hits.map(hit => hit.recipe);
+        const { token } = response.data;
+
+        if (!token) {
+            throw new Error("Geen token ontvangen van de server.");
+        }
+
+        localStorage.setItem("accessToken", token);
+        return token;
     } catch (error) {
-        const message =
-            error.response?.data?.errors?.map(e => e.error).join(" | ") ||
-            error.response?.data?.message ||
-            "Onbekende fout";
-
-        throw new Error(`Error ${error.response?.status || ""}: ${message}`);
+        throw formatApiError(error, "Inloggen mislukt");
     }
 };
 
-export const buildIngredientsList = (ingredients = []) =>
-    ingredients.map(i => i.food).join(", ");
+export const logout = () => {
+    localStorage.removeItem("accessToken");
+};
 
-export const fetchProtectedData = async () => {
-    const token = localStorage.getItem("accessToken");
+/**
+ * ============================
+ *  USER / PROFILE
+ * ============================
+ */
 
-    if (!token) {
-        throw new Error("Geen token gevonden.");
-    }
-
+export const fetchCurrentUser = async () => {
     try {
-        const response = await axios.get("/api/protected", {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        });
-
+        const response = await axios.get("/api/users/me");
         return response.data;
     } catch (error) {
-        console.error("Fout bij ophalen beveiligde data:", error.message);
-        return null;
+        throw formatApiError(error, "Gebruiker ophalen mislukt");
     }
+};
+
+export const updateProfile = async (profileData) => {
+    try {
+        const response = await axios.put("/api/users/me/profile", profileData);
+        return response.data;
+    } catch (error) {
+        throw formatApiError(error, "Profiel bijwerken mislukt");
+    }
+};
+
+export const changePassword = async (oldPassword, newPassword) => {
+    try {
+        await axios.patch("/api/users/me/password", {
+            oldPassword,
+            newPassword,
+        });
+        return true;
+    } catch (error) {
+        throw formatApiError(error, "Wachtwoord wijzigen mislukt");
+    }
+};
+
+/**
+ * ============================
+ *  ADMIN (voorbeeld)
+ * ============================
+ */
+
+export const fetchAllUsers = async () => {
+    try {
+        const response = await axios.get("/api/users");
+        return response.data;
+    } catch (error) {
+        throw formatApiError(error, "Gebruikers ophalen mislukt");
+    }
+};
+
+/**
+ * ============================
+ *  GENERIC PROTECTED FETCH
+ * ============================
+ */
+
+export const fetchProtectedData = async (endpoint) => {
+    try {
+        const response = await axios.get(endpoint);
+        return response.data;
+    } catch (error) {
+        throw formatApiError(error, "Beveiligde data ophalen mislukt");
+    }
+};
+
+/**
+ * ============================
+ *  ERROR HANDLING
+ * ============================
+ */
+
+const formatApiError = (error, fallbackMessage) => {
+    const status = error.response?.status;
+    const message =
+        error.response?.data?.message ||
+        error.response?.data?.error ||
+        error.message ||
+        fallbackMessage;
+
+    return new Error(
+        status ? `Error ${status}: ${message}` : message
+    );
 };
