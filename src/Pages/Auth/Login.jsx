@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "./AuthContext.jsx";
-import Button from "../../Components/Buttons/Button";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import "./Login.css";
+
+const hasRole = (user, role) => {
+    const roles = user?.roles || [];
+    const normalized = role.startsWith("ROLE_") ? role : `ROLE_${role}`;
+    return roles.includes(normalized);
+};
 
 const Login = () => {
     const navigate = useNavigate();
@@ -18,20 +23,37 @@ const Login = () => {
         e.preventDefault();
         setError("");
 
-        const success = await login(email.trim(), password.trim());
+        const success = await login(email.trim(), password);
 
-        if (success) {
-            const user = JSON.parse(localStorage.getItem("user"));
-            if (user?.role === "ADMIN") {
-                navigate("/admin");
-            } else if (user?.role === "USER") {
-                navigate(`/student/${user.userId}`);
-            } else {
-                navigate("/unauthorized");
-            }
-        } else {
+        if (!success) {
             setError("❌ Ongeldige gegevens of geen toegang.");
+            return;
         }
+
+        const user = JSON.parse(localStorage.getItem("user") || "null");
+
+        // Prefer role-based routing
+        if (hasRole(user, "ADMIN")) {
+            navigate("/admin", { replace: true });
+            return;
+        }
+
+        if (hasRole(user, "CLEANER")) {
+            navigate("/cleaning", { replace: true });
+            return;
+        }
+
+        if (hasRole(user, "STUDENT")) {
+            const id = user?.id ?? user?.userId;
+            if (id) {
+                navigate(`/student/${id}`, { replace: true });
+            } else {
+                navigate("/student", { replace: true });
+            }
+            return;
+        }
+
+        navigate("/unauthorized", { replace: true });
     };
 
     return (
@@ -50,9 +72,7 @@ const Login = () => {
 
             <div className="login-box login-form-box">
                 <h1>Log in</h1>
-                <p className="login-subtext">
-                    Welkom terug! Log in om je dashboard te bekijken.
-                </p>
+                <p className="login-subtext">Welkom terug! Log in om je dashboard te bekijken.</p>
 
                 <form onSubmit={handleSubmit}>
                     <input
@@ -60,6 +80,7 @@ const Login = () => {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="E-mailadres"
+                        autoComplete="email"
                         required
                     />
 
@@ -69,14 +90,25 @@ const Login = () => {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             placeholder="Wachtwoord"
+                            autoComplete="current-password"
                             required
                         />
-                        <span onClick={() => setShowPassword(!showPassword)} className="toggle-password">
+                        <span
+                            onClick={() => setShowPassword(!showPassword)}
+                            className="toggle-password"
+                            role="button"
+                            tabIndex={0}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter" || e.key === " ") setShowPassword(!showPassword);
+                            }}
+                        >
                             {showPassword ? <FiEyeOff /> : <FiEye />}
                         </span>
                     </div>
 
-                    <Button type="submit" text="Login" variant="primary" />
+                    <button type="submit" className="login-submit">
+                      Login
+                    </button>
                     {error && <p className="error">{error}</p>}
 
                     <p className="register-link">
