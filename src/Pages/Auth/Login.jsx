@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "./AuthContext.jsx";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import "./Login.css";
+import Button from "../../Components/Buttons/Button.jsx";
 
 const hasRole = (user, role) => {
     const roles = user?.roles || [];
@@ -32,7 +33,6 @@ const Login = () => {
 
         const user = JSON.parse(localStorage.getItem("user") || "null");
 
-        // Prefer role-based routing
         if (hasRole(user, "ADMIN")) {
             navigate("/admin", { replace: true });
             return;
@@ -106,9 +106,7 @@ const Login = () => {
                         </span>
                     </div>
 
-                    <button type="submit" className="login-submit">
-                      Login
-                    </button>
+                    <Button text="Login" type="submit" variant="primary" className="login-submit" />
                     {error && <p className="error">{error}</p>}
 
                     <p className="register-link">

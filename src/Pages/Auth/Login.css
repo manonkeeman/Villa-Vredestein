@@ -118,23 +118,9 @@
     font-size: 1.2rem;
 }
 
-.btn-primary {
-    padding: 0.4rem 1.2rem;
-    font-size: 12px;
-    border-radius: 10px;
-    border: 1px solid #fcbc2d;
-    background-color: transparent;
-    color: white;
-    cursor: pointer;
-    width: fit-content;
-    max-width: 200px;
-    white-space: nowrap;
-    transition: all 0.3s ease;
-}
-
-.btn-primary:hover {
-    background-color: #fcbc2d;
-    color: black;
+/* Only layout spacing for the login button; styling comes from Button.css */
+.login-submit {
+    margin-top: 0.5rem;
 }
 
 .error {

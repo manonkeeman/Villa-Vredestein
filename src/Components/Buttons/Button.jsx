@@ -3,12 +3,20 @@ import "./Button.css";
 import PropTypes from "prop-types";
 import { FaArrowRight } from "react-icons/fa";
 
-const Button = ({ text, onClick, type = "button", variant = "primary" }) => {
+const Button = ({
+                    text,
+                    onClick,
+                    type = "button",
+                    variant = "primary",
+                    className = "",
+                    disabled = false,
+                }) => {
     const getClassName = () => {
         switch (variant) {
             case "link":
                 return "btn-link";
             case "secundary":
+            case "secondary":
                 return "btn-secundary";
             case "round":
                 return "btn-round";
@@ -19,8 +27,13 @@ const Button = ({ text, onClick, type = "button", variant = "primary" }) => {
     };
 
     return (
-        <button className={getClassName()} onClick={onClick} type={type}>
-            {variant === "secundary" ? (
+        <button
+            className={`${getClassName()} ${className}`.trim()}
+            onClick={onClick}
+            type={type}
+            disabled={disabled}
+        >
+            {variant === "secundary" || variant === "secondary" ? (
                 <>
                     {text} <FaArrowRight size={16} style={{ marginLeft: "8px" }} />
                 </>
@@ -38,6 +51,8 @@ Button.propTypes = {
     onClick: PropTypes.func,
     type: PropTypes.string,
     variant: PropTypes.string,
+    className: PropTypes.string,
+    disabled: PropTypes.bool,
 };
 
 export default Button;
