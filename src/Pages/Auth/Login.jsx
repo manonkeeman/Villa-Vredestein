@@ -20,9 +20,31 @@ const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState("");
 
+    const [loginMode, setLoginMode] = useState("STUDENT"); // STUDENT | CLEANER | ADMIN
+    const [room, setRoom] = useState("");
+
+    const ROOM_OPTIONS = ["Japan", "Argentinië", "Thailand", "Italië", "Frankrijk", "Oekraïne"];
+
+    const getUserRoomName = (u) => {
+        // Try a few likely shapes; adjust backend mapping later if needed
+        return (
+            u?.room?.name ||
+            u?.roomName ||
+            u?.room ||
+            u?.assignedRoom ||
+            u?.assignedRoomName ||
+            ""
+        );
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError("");
+
+        if (loginMode === "STUDENT" && !room) {
+            setError("❌ Kies eerst je kamer.");
+            return;
+        }
 
         const success = await login(email.trim(), password);
 
@@ -33,17 +55,44 @@ const Login = () => {
 
         const user = JSON.parse(localStorage.getItem("user") || "null");
 
-        if (hasRole(user, "ADMIN")) {
+        // Extra check: chosen login mode must match the account role
+        if (loginMode === "ADMIN" && !hasRole(user, "ADMIN")) {
+            setError("❌ Dit account is geen beheerder.");
+            return;
+        }
+        if (loginMode === "CLEANER" && !hasRole(user, "CLEANER")) {
+            setError("❌ Dit account heeft geen schoonmaak-toegang.");
+            return;
+        }
+        if (loginMode === "STUDENT" && !hasRole(user, "STUDENT")) {
+            setError("❌ Dit account is geen student.");
+            return;
+        }
+
+        // Extra check: student must match their assigned room
+        if (loginMode === "STUDENT") {
+            const assignedRoom = getUserRoomName(user);
+            if (!assignedRoom) {
+                setError("❌ Voor dit account is nog geen kamer gekoppeld. Neem contact op met beheer.");
+                return;
+            }
+            if (assignedRoom !== room) {
+                setError(`❌ Verkeerde kamer gekozen. Dit account hoort bij: ${assignedRoom}.`);
+                return;
+            }
+        }
+
+        if (loginMode === "ADMIN") {
             navigate("/admin", { replace: true });
             return;
         }
 
-        if (hasRole(user, "CLEANER")) {
+        if (loginMode === "CLEANER") {
             navigate("/cleaning", { replace: true });
             return;
         }
 
-        if (hasRole(user, "STUDENT")) {
+        if (loginMode === "STUDENT") {
             const id = user?.id ?? user?.userId;
             if (id) {
                 navigate(`/student/${id}`, { replace: true });
@@ -72,9 +121,45 @@ const Login = () => {
 
             <div className="login-box login-form-box">
                 <h1>Log in</h1>
-                <p className="login-subtext">Welkom terug! Log in om je dashboard te bekijken.</p>
+                <p className="login-subtext">Welkom terug! Deze inlog is bestemd voor bewoners van Villa Vredestein.</p>
 
                 <form onSubmit={handleSubmit}>
+                    <div className="login-mode-row">
+                        <label className="login-label" htmlFor="loginMode"></label>
+                        <select
+                            id="loginMode"
+                            value={loginMode}
+                            onChange={(e) => {
+                                const next = e.target.value;
+                                setLoginMode(next);
+                                if (next !== "STUDENT") setRoom("");
+                            }}
+                        >
+                            <option value="STUDENT">Student (bewoner)</option>
+                            <option value="CLEANER">Schoonmaak</option>
+                            <option value="ADMIN">Beheerder</option>
+                        </select>
+                    </div>
+
+                    {loginMode === "STUDENT" && (
+                        <div className="login-mode-row">
+                            <label className="login-label" htmlFor="roomSelect"></label>
+                            <select
+                                id="roomSelect"
+                                value={room}
+                                onChange={(e) => setRoom(e.target.value)}
+                                required
+                            >
+                                <option value="">Kies je kamer…</option>
+                                {ROOM_OPTIONS.map((r) => (
+                                    <option key={r} value={r}>
+                                        {r}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                    )}
+
                     <input
                         type="email"
                         value={email}
@@ -110,7 +195,7 @@ const Login = () => {
                     {error && <p className="error">{error}</p>}
 
                     <p className="register-link">
-                        Nog geen account? <Link to="/register">Registreer hier</Link>
+                        Nog geen account? <Link to="/register">Nieuwe bewoner? Registreer hier.</Link>
                     </p>
                 </form>
             </div>
