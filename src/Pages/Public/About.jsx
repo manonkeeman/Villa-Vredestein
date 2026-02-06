@@ -6,9 +6,7 @@ import Villa1 from "../../Assets/Images/VillaVredestein2024.jpg";
 import Villa2 from "../../Assets/Images/VillaVredestein1910.jpg";
 import Villa3 from "../../Assets/Images/VillaVredesteinRestauratie.jpg";
 import Villa4 from "../../Assets/Images/WonenenWerkeninVredestein.jpg";
-import Villa5 from "../../Assets/Images/DuurzaamVillaVredestein.jpg";
 import Villa6 from "../../Assets/Images/DeOmgevingVillaVredestein.jpg";
-import Villa7 from "../../Assets/Images/VillaVredesteinGlazenBol.jpg";
 import Villa8 from "../../Assets/Images/Maxim_Manon_ChevroletSuburban.jpg";
 import Villa9 from "../../Assets/Images/BezoekOnsVillaVredestein.jpg";
 
@@ -34,19 +32,9 @@ const aboutData = [
         image: Villa4,
     },
     {
-        title: "Duurzaam verbouwen",
-        text: "Bij elke verbouwing houden we duurzaamheid in gedachten. Energiezuinige oplossingen en hergebruik van materialen staan centraal.",
-        image: Villa5,
-    },
-    {
         title: "De omgeving",
         text: "Villa Vredestein ligt in het groene hart van Driebergen, aan de rand van de Utrechtse Heuvelrug. Een omgeving waar rust, natuur en historie samenkomen.",
         image: Villa6,
-    },
-    {
-        title: "Toekomstplannen",
-        text: "Ontdek hoe Villa Vredestein zich blijft ontwikkelen. Van woonhuis tot creatieve broedplaats of AirBnB — de mogelijkheden groeien mee.",
-        image: Villa7,
     },
     {
         title: "Over ons",

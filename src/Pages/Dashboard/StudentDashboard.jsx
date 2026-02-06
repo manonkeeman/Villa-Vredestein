@@ -1,48 +1,28 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 import { Navigate, Link, useParams } from "react-router-dom";
 import { useAuth } from "../Auth/AuthContext.jsx";
 import {
     FiLogOut, FiHome, FiAlertCircle, FiFileText, FiCalendar,
     FiUser, FiUsers, FiDollarSign, FiClipboard, FiBookOpen, FiShield,
 } from "react-icons/fi";
-import Watetenwevandaag from "../../Assets/Images/Watetenwevandaag.jpg";
 import WonenenWerkeninVredestein from "../../Assets/Images/WonenenWerkeninVredestein.jpg";
 import PannenkoekenAvondVillaVredestein from "../../Assets/Images/PannenkoekenAvondVillaVredestein.jpg";
 import "./StudentDashboard.css";
 import "../../Styles/Global.css";
 
+const hasRole = (user, role) => {
+    const roles = user?.roles || [];
+    const normalized = role.startsWith("ROLE_") ? role : `ROLE_${role}`;
+    return roles.includes(normalized);
+};
+
 const StudentDashboard = () => {
     const { isLoggedIn, logout, user } = useAuth();
     const { id } = useParams();
-    const [secureData, setSecureData] = useState(null);
 
-    useEffect(() => {
-        const fetchAdminData = async () => {
-            const token = localStorage.getItem("accessToken");
-
-            try {
-                const response = await axios.get("https://api.datavortex.nl/VillaVredesteinLogin", {
-                    headers: {
-                        "Content-Type": "application/json",
-                        "X-Api-Key": "villavredesteinlogin:2NkpAp3ZiXKfSlM4fwxW",
-                        "Authorization": `Bearer ${token}`,
-                    },
-                });
-
-                setSecureData(response.data);
-            } catch (err) {
-                console.warn("Admin data ophalen mislukt:", err?.response?.status);
-            }
-        };
-
-        if (user?.sub === "admin@villavredestein.com") {
-            fetchAdminData();
-        }
-    }, [user]);
-
+    const currentId = user?.id ?? user?.userId;
     if (!isLoggedIn) return <Navigate to="/login" replace />;
-    if (id && parseInt(id) !== user?.userId) return <Navigate to="/unauthorized" replace />;
+    if (id && currentId && String(id) !== String(currentId)) return <Navigate to="/unauthorized" replace />;
 
     return (
         <div className="StudentDashboard">
@@ -60,11 +40,10 @@ const StudentDashboard = () => {
                         <li><Link to="#"><FiClipboard /> Schoonmaakschema</Link></li>
                         <li><Link to="#"><FiDollarSign /> Betalingen</Link></li>
                         <li><Link to="#"><FiFileText /> Huurcontract</Link></li>
-                        <li><Link to="/recipes"><FiBookOpen /> Recepten</Link></li>
                         <li><Link to="#"><FiUsers /> Samen eten?</Link></li>
                         <li><Link to="#"><FiCalendar /> Events</Link></li>
 
-                        {user?.sub === "admin@villavredestein.com" && (
+                        {hasRole(user, "ADMIN") && (
                             <li>
                                 <Link to="/admin" className="admin-link">
                                     <FiShield /> Admin Dashboard
@@ -83,15 +62,13 @@ const StudentDashboard = () => {
 
             <main className="dashboard-main">
                 <section className="dashboard-news">
-                    <img src={Watetenwevandaag} alt="Wat eten we vandaag?" />
                     <div className="dashboard-news-content">
-                        <h2><FiBookOpen /> Nieuw: Receptenzoeker</h2>
+                        <h2><FiBookOpen /> Welkom in Villa Vredestein</h2>
                         <p>
-                            We hebben iets nieuws! Met de <Link to="/recipes">Receptenzoeker</Link> kun je nu eenvoudig filteren op maaltijdtype, dieet en wereldkeuken.
+                            Je dashboard wordt stap voor stap uitgebreider: huisregels, schoonmaak, betalingen en documenten.
                         </p>
                         <p>
-                            Ideaal om inspiratie op te doen met je huisgenoten of iets lekkers voor jezelf te maken.
-                            Ingrediëntenlijst klaar? Deel het recept direct via WhatsApp.
+                            Mis je iets? Laat het ons weten via <Link to="/contact">Contact</Link>.
                         </p>
                     </div>
                 </section>
@@ -120,13 +97,6 @@ const StudentDashboard = () => {
                         </a>.</p>
                     </div>
                 </section>
-
-                {user?.sub === "admin@villavredestein.com" && secureData && (
-                    <section className="dashboard-data">
-                        <h4>Ingelogde gegevens:</h4>
-                        <pre>{JSON.stringify(secureData, null, 2)}</pre>
-                    </section>
-                )}
             </main>
         </div>
     );
