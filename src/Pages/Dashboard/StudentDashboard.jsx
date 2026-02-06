@@ -5,7 +5,7 @@ import {
     FiLogOut, FiHome, FiAlertCircle, FiFileText, FiCalendar,
     FiUser, FiUsers, FiDollarSign, FiClipboard, FiBookOpen, FiShield,
 } from "react-icons/fi";
-import WonenenWerkeninVredestein from "../../Assets/Images/WonenenWerkeninVredestein.jpg";
+import Maxim_Manon_ChevroletSuburban from "../../Assets/Images/Maxim_Manon_ChevroletSuburban.jpg";
 import PannenkoekenAvondVillaVredestein from "../../Assets/Images/PannenkoekenAvondVillaVredestein.jpg";
 import "./StudentDashboard.css";
 import "../../Styles/Global.css";
@@ -74,7 +74,7 @@ const StudentDashboard = () => {
                 </section>
 
                 <section className="dashboard-news">
-                    <img src={WonenenWerkeninVredestein} alt="Dashboard komt eraan!" />
+                    <img src={Maxim_Manon_ChevroletSuburban} alt="Dashboard komt eraan!" />
                     <div className="dashboard-news-content">
                         <h2><FiClipboard /> Dashboard komt eraan!</h2>
                         <p>
