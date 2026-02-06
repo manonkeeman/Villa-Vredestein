@@ -37,7 +37,7 @@ const aboutData = [
     },
     {
         title: "Bezoek & Inspiratie",
-        text: "Ontdek de verhalen, charme en ambities van Villa Vredestein via deze website — en laat je inspireren door het proces.",
+        text: "Ontdek de verhalen, charme en ambities van Villa Vredestein via deze website, en laat je inspireren door het proces.",
         image: Villa9,
     },
 ];

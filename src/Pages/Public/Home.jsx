@@ -43,7 +43,7 @@ const Home = () => {
                         maar ook ruimte biedt aan nieuwe verhalen.
                     </p>
                     <p>
-                        De originele elementen blijven behouden waar mogelijk —
+                        De originele elementen blijven behouden waar mogelijk,
                         niet uit nostalgie, maar uit liefde voor vakmanschap.
                         Zo ontstaat een harmonie tussen oud en nieuw.
                     </p>
