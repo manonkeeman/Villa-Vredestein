@@ -5,7 +5,6 @@ import AboutHover from "../../Components/AboutHover/AboutHover";
 import Villa1 from "../../Assets/Images/VillaVredestein2024.jpg";
 import Villa2 from "../../Assets/Images/VillaVredestein1910.jpg";
 import Villa3 from "../../Assets/Images/VillaVredesteinRestauratie.jpg";
-import Villa4 from "../../Assets/Images/WonenenWerkeninVredestein.jpg";
 import Villa6 from "../../Assets/Images/DeOmgevingVillaVredestein.jpg";
 import Villa8 from "../../Assets/Images/Maxim_Manon_ChevroletSuburban.jpg";
 import Villa9 from "../../Assets/Images/BezoekOnsVillaVredestein.jpg";
@@ -25,11 +24,6 @@ const aboutData = [
         title: "De Restauratie",
         text: "Met aandacht voor originele details is de villa gerenoveerd. Zo blijven authentieke elementen behouden in een eigentijdse setting.",
         image: Villa3,
-    },
-    {
-        title: "Wonen & Werken",
-        text: "Villa Vredestein biedt ruimte aan mensen met uiteenlopende passies. Er wordt gewoond, gestudeerd én gewerkt.",
-        image: Villa4,
     },
     {
         title: "De omgeving",
