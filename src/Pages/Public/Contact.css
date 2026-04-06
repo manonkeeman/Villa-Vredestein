@@ -46,6 +46,28 @@
     filter: grayscale(0%);
 }
 
+/* Tablet: stack vertically */
+@media (max-width: 768px) {
+    .contact-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .map-panel {
+        min-height: 0;
+    }
+
+    .map-frame {
+        aspect-ratio: 16 / 9;
+        height: auto;
+    }
+
+    .map-iframe {
+        min-height: 0;
+        height: 100%;
+        aspect-ratio: 16 / 9;
+    }
+}
+
 .contact-box {
     width: 100%;
     background-color: #111;
@@ -123,18 +145,6 @@
     color: #e05050;
 }
 
-/* Tablet: stapelen */
-@media (max-width: 900px) {
-    .contact-layout {
-        grid-template-columns: 1fr;
-        max-width: 580px;
-    }
-
-    .map-frame {
-        aspect-ratio: 16 / 7;
-    }
-}
-
 /* Mobile */
 @media (max-width: 600px) {
     .contact-wrapper {
@@ -152,9 +162,5 @@
     .notice {
         font-size: 0.74rem;
         margin-bottom: 1rem;
-    }
-
-    .map-frame {
-        aspect-ratio: 4 / 3;
     }
 }
