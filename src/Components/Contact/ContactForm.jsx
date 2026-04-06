@@ -5,11 +5,13 @@ import Button from "../Buttons/Button.jsx";
 
 const ContactForm = ({ onSuccess }) => {
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
     const { t } = useTranslation();
 
     const handleSubmit = (e) => {
         e.preventDefault();
         setError("");
+        setLoading(true);
         const form = e.target;
         const data = new FormData(form);
 
@@ -18,13 +20,15 @@ const ContactForm = ({ onSuccess }) => {
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: new URLSearchParams(data).toString(),
         })
-            .then(() => {
+            .then((res) => {
+                if (!res.ok && res.status !== 200) throw new Error("network");
                 form.reset();
                 onSuccess();
             })
             .catch(() => {
                 setError(t("contact.form.error"));
-            });
+            })
+            .finally(() => setLoading(false));
     };
 
     return (
@@ -36,7 +40,9 @@ const ContactForm = ({ onSuccess }) => {
             className="contact-form"
             onSubmit={handleSubmit}
         >
+            {/* Netlify vereiste velden */}
             <input type="hidden" name="form-name" value="contact" />
+            <input type="hidden" name="subject" value={t("footer.subject")} />
             <input type="hidden" name="bot-field" />
 
             <div className="input-icon-wrapper">
@@ -70,14 +76,19 @@ const ContactForm = ({ onSuccess }) => {
                 <textarea
                     id="cf-bericht"
                     name="bericht"
-                    rows="4"
+                    rows="5"
                     placeholder={t("contact.form.message")}
                     required
                 />
                 <FiMessageCircle className="input-icon textarea-icon" aria-hidden="true" />
             </div>
 
-            <Button type="submit" text={t("contact.form.submit")} variant="primary" />
+            <Button
+                type="submit"
+                text={loading ? "..." : t("contact.form.submit")}
+                variant="primary"
+                disabled={loading}
+            />
 
             {error && <p className="error-message" role="alert">❌ {error}</p>}
         </form>
