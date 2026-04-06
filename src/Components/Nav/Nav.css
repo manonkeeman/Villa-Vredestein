@@ -21,6 +21,9 @@
 
 .logo-img {
   height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  object-fit: cover;
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
@@ -263,5 +266,6 @@
 
   .logo-img {
     height: 55px;
+    width: 55px;
   }
 }

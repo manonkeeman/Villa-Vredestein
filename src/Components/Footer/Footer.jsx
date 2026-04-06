@@ -94,15 +94,6 @@ const Footer = () => {
                             </span>
                         </span>
                         <a
-                            href="https://wa.me/31625015299"
-                            target="_blank"
-                            rel="noreferrer"
-                            className="footer-address-row"
-                        >
-                            <FaWhatsapp aria-hidden="true" />
-                            <span>+31 6 25 01 52 99</span>
-                        </a>
-                        <a
                             href="https://www.instagram.com/villa.vredestein"
                             target="_blank"
                             rel="noreferrer"
@@ -121,7 +112,7 @@ const Footer = () => {
                 <p>© {year} Villa Vredestein — {t("footer.copyright")}</p>
                 <p>
                     {t("footer.madeBy")}{" "}
-                    <a href="https://manonkeeman.com" target="_blank" rel="noreferrer">
+                    <a href="https://www.manonkeeman.com" target="_blank" rel="noreferrer">
                         Manon Keeman
                     </a>
                 </p>
