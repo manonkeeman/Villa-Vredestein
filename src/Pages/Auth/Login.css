@@ -37,7 +37,7 @@
 .login-form-wrap {
     flex: 1;
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
     min-width: 0;
 }
@@ -47,10 +47,10 @@
     background-color: #111;
     border: 1px solid #fcbc2d;
     border-radius: 12px;
-    padding: 2rem 1.75rem;
+    padding: 2.5rem 2rem;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.35rem;
     box-shadow: 0 0 24px rgba(252, 188, 45, 0.08);
 }
 
