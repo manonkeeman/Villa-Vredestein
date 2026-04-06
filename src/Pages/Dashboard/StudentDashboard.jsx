@@ -1,12 +1,11 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import { Navigate, Link, useParams } from "react-router-dom";
 import { useAuth } from "../Auth/AuthContext.jsx";
 import {
     FiLogOut, FiHome, FiAlertCircle, FiFileText, FiCalendar,
     FiUser, FiUsers, FiDollarSign, FiClipboard, FiBookOpen, FiShield,
 } from "react-icons/fi";
-import Maxim_Manon_ChevroletSuburban from "../../Assets/Images/Maxim_Manon_ChevroletSuburban.jpg";
-import PannenkoekenAvondVillaVredestein from "../../Assets/Images/PannenkoekenAvondVillaVredestein.jpg";
 import "./StudentDashboard.css";
 import "../../Styles/Global.css";
 
@@ -26,6 +25,11 @@ const StudentDashboard = () => {
 
     return (
         <div className="StudentDashboard">
+            <Helmet>
+                <title>Mijn Dashboard — Villa Vredestein</title>
+                <meta name="robots" content="noindex, nofollow" />
+            </Helmet>
+
             <aside className="dashboard-sidebar" aria-label="Navigatie zijbalk">
                 <header className="sidebar-profile">
                     <FiUser className="profile-icon" />
@@ -65,36 +69,35 @@ const StudentDashboard = () => {
                     <div className="dashboard-news-content">
                         <h2><FiBookOpen /> Welkom in Villa Vredestein</h2>
                         <p>
-                            Je dashboard wordt stap voor stap uitgebreider: huisregels, schoonmaak, betalingen en documenten.
+                            Dit is jouw persoonlijke omgeving. Hier vind je alles wat je nodig hebt als bewoner van Villa Vredestein.
                         </p>
                         <p>
-                            Mis je iets? Laat het ons weten via <Link to="/contact">Contact</Link>.
+                            Mis je iets of heb je een vraag? Neem contact op via <Link to="/contact">Contact</Link>.
                         </p>
                     </div>
                 </section>
 
                 <section className="dashboard-news">
-                    <img src={Maxim_Manon_ChevroletSuburban} alt="Dashboard komt eraan!" />
                     <div className="dashboard-news-content">
-                        <h2><FiClipboard /> Dashboard komt eraan!</h2>
-                        <p>
-                            We zijn druk bezig met de ontwikkeling van een gloednieuwe Dashboard online en App voor Villa Vredestein.
-                            Denk aan huurbetalingen, schoonmaakschema’s en contractbeheer – allemaal op één plek.
-                        </p>
-                        <p>
-                            Naar verwachting gaan we in november live. Tot die tijd kun je alvast de receptenfunctie gebruiken.
-                        </p>
+                        <h2><FiDollarSign /> Betalingen</h2>
+                        <p>Bekijk je openstaande en voldane huurbetalingen en ontvang een herinnering wanneer iets afloopt.</p>
+                        <p>Alle facturen staan overzichtelijk voor je klaar.</p>
                     </div>
                 </section>
 
                 <section className="dashboard-news">
-                    <img src={PannenkoekenAvondVillaVredestein} alt="Pannenkoekenavond sfeerbeeld" />
                     <div className="dashboard-news-content">
-                        <h2><FiCalendar /> Pannenkoekenavond 20 mei</h2>
-                        <p>Wat een heerlijke avond vol pannenkoeken, muziek en goed gezelschap</p>
-                        <p>Bekijk de foto’s en sfeerbeelden in de groepsapp of op <a href="https://www.instagram.com/villa.vredestein" target="_blank" rel="noopener noreferrer" style={{ color: "#fcbc2d", textDecoration: "underline", fontWeight: "bold" }}>
-                            Instagram
-                        </a>.</p>
+                        <h2><FiClipboard /> Schoonmaakschema</h2>
+                        <p>Bekijk jouw taken voor deze week en vink ze af zodra ze gedaan zijn.</p>
+                        <p>Het rooster wisselt wekelijks zodat iedereen gelijk bijdraagt.</p>
+                    </div>
+                </section>
+
+                <section className="dashboard-news">
+                    <div className="dashboard-news-content">
+                        <h2><FiCalendar /> Events & nieuws</h2>
+                        <p>Blijf op de hoogte van activiteiten, etentjes en andere momenten in en rondom de villa.</p>
+                        <p>Volg ook <a href="https://www.instagram.com/villa.vredestein" target="_blank" rel="noopener noreferrer">@villa.vredestein</a> op Instagram.</p>
                     </div>
                 </section>
             </main>
