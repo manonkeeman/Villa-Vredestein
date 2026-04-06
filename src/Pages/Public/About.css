@@ -1,15 +1,13 @@
 .about-page {
-    padding: 2rem;
+    padding: 2rem 2rem 4rem;
     min-height: 100vh;
     background-color: #000;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-    color: white;
 }
 
 .about-title {
     text-align: center;
-    font-size: 18px;
+    font-size: 1rem;
     margin-bottom: 2rem;
     color: #fcbc2d;
     text-transform: uppercase;
@@ -19,68 +17,113 @@
 .about-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    gap: 1.5rem;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1rem 4rem;
 }
 
-.about-card {
+/* Blog card */
+.blog-card {
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     background-color: #111;
     border: 1px solid #fcbc2d;
-    padding: 2rem;
     border-radius: 12px;
-    box-shadow: 0 0 10px rgba(252, 188, 45, 0.2);
+    box-shadow: 0 0 10px rgba(252, 188, 45, 0.15);
     overflow: hidden;
-    min-height: 250px;
-    transition: transform 0.3s ease;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
-.about-card h2 {
-    font-size: 18px;
-    color: #fcbc2d;
-    margin-bottom: 1rem;
-    z-index: 2;
-    position: relative;
-    transition: opacity 0.3s ease;
+.blog-card:hover,
+.blog-card:focus-visible {
+    transform: translateY(-4px);
+    box-shadow: 0 0 20px rgba(252, 188, 45, 0.35);
 }
 
-.about-card p {
-    font-size: 12px;
-    line-height: 1.5;
-    color: white;
-    z-index: 2;
-    position: relative;
-    transition: opacity 0.3s ease;
+.blog-card:focus-visible {
+    outline: 2px solid #fcbc2d;
+    outline-offset: 2px;
 }
 
-.about-card:hover {
-    transform: translateY(-5px);
-}
-
-.about-card:hover h2,
-.about-card:hover p {
-    opacity: 0;
-}
-
-.hover-image {
-    position: absolute;
-    inset: 0;
+.blog-card-image {
     width: 100%;
-    height: 100%;
+    height: 180px;
     background-size: cover;
     background-position: center;
-    opacity: 0;
-    border-radius: 12px;
-    z-index: 1;
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    filter: grayscale(40%);
+    transition: filter 0.4s ease, transform 0.4s ease;
+    flex-shrink: 0;
 }
 
-.about-card:hover .hover-image {
-    opacity: 1;
-    transform: scale(1.05);
+.blog-card:hover .blog-card-image {
+    filter: grayscale(0%);
+    transform: scale(1.03);
+}
+
+.blog-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.25rem;
+    flex: 1;
+}
+
+.blog-card-content h2 {
+    font-size: 0.95rem;
+    color: #fcbc2d;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.blog-card-content p {
+    font-size: 0.78rem;
+    line-height: 1.6;
+    color: #ccc;
+    margin: 0;
+    flex: 1;
+}
+
+.blog-card-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    color: #777;
+    padding-top: 0.5rem;
+    border-top: 1px solid #222;
+}
+
+.blog-card-cta {
+    font-size: 0.8rem;
+    color: #fcbc2d;
+    font-weight: 600;
+    margin-top: 0.25rem;
+}
+
+/* Mobile */
+@media (max-width: 650px) {
+    .about-page {
+        padding: 1.5rem 0.75rem 3rem;
+    }
+
+    .about-title {
+        font-size: 0.85rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .blog-card-image {
+        height: 160px;
+    }
+
+    .blog-card-content {
+        padding: 1rem;
+    }
 }
