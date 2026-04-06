@@ -44,6 +44,20 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://villavredestein.nl/contact" />
   </url>
 
+  <!-- Blog: Het Boek -->
+  <url>
+    <loc>https://villavredestein.nl/blog/het-boek</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.nl/blog/het-boek" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://villavredestein.nl/blog/het-boek" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://villavredestein.nl/blog/het-boek" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://villavredestein.nl/blog/het-boek" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://villavredestein.nl/blog/het-boek" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://villavredestein.nl/blog/het-boek" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://villavredestein.nl/blog/het-boek" />
+  </url>
+
   <!-- Blog: Carpe Diem Design -->
   <url>
     <loc>https://villavredestein.nl/blog/carpe-diem-design</loc>
