@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./Pages/Auth/AuthContext.jsx";
 import ProtectedRoute from "./Pages/Auth/ProtectedRoute.jsx";
 import Nav from "./Components/Nav/Nav.jsx";
+import Footer from "./Components/Footer/Footer.jsx";
 import Home from "./Pages/Public/Home.jsx";
 import About from "./Pages/Public/About.jsx";
 import Contact from "./Pages/Public/Contact.jsx";
@@ -70,6 +71,8 @@ function App() {
 
                     <Route path="*" element={<Unauthorized />} />
                 </Routes>
+
+                <Footer />
 
             </AuthProvider>
         </BrowserRouter>
