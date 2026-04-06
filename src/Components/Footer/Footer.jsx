@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
-import { FiMapPin, FiMail } from "react-icons/fi";
+import { FiMapPin } from "react-icons/fi";
 import "./Footer.css";
 
 const Footer = () => {
@@ -31,33 +31,6 @@ const Footer = () => {
                     </NavLink>
                     <p className="footer-name">Villa Vredestein</p>
                     <p className="footer-tagline">{t("footer.tagline")}</p>
-                    <div className="footer-socials">
-                        <a
-                            href="https://www.instagram.com/villa.vredestein"
-                            target="_blank"
-                            rel="noreferrer"
-                            aria-label="Volg Villa Vredestein op Instagram"
-                            className="footer-icon-link"
-                        >
-                            <FaInstagram />
-                        </a>
-                        <a
-                            href="https://wa.me/31625015299"
-                            target="_blank"
-                            rel="noreferrer"
-                            aria-label="Stuur een WhatsApp bericht"
-                            className="footer-icon-link"
-                        >
-                            <FaWhatsapp />
-                        </a>
-                        <a
-                            href="mailto:info@villavredestein.nl"
-                            aria-label="Stuur een e-mail"
-                            className="footer-icon-link"
-                        >
-                            <FiMail />
-                        </a>
-                    </div>
                 </div>
 
                 {/* Kolom 2 — Navigatie + Blogs */}
