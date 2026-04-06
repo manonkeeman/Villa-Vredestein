@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { FaInstagram, FaWhatsapp, FaUser } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
@@ -24,8 +24,22 @@ const Nav = () => {
     const [langOpen, setLangOpen] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
     const [logoClicked, setLogoClicked] = useState(false);
+    const navLinksId = "nav-links-menu";
 
     const currentLang = i18n.language?.split("-")[0] || "nl";
+
+    // Escape key closes all dropdowns and mobile menu
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.key === "Escape") {
+                setDropdownOpen(false);
+                setLangOpen(false);
+                setMenuOpen(false);
+            }
+        };
+        document.addEventListener("keydown", handleKeyDown);
+        return () => document.removeEventListener("keydown", handleKeyDown);
+    }, []);
 
     const showLogoutDropdown =
         isLoggedIn &&
@@ -68,7 +82,8 @@ const Nav = () => {
                 className={`hamburger ${menuOpen ? "open" : ""}`}
                 onClick={() => setMenuOpen(!menuOpen)}
                 aria-expanded={menuOpen}
-                aria-label="Menu openen"
+                aria-controls={navLinksId}
+                aria-label={menuOpen ? "Menu sluiten" : "Menu openen"}
             >
                 <div className="bar"></div>
                 <div className="bar"></div>
@@ -76,7 +91,7 @@ const Nav = () => {
             </button>
 
             {/* Navigatielinks */}
-            <ul className={`nav-links ${menuOpen ? "show" : ""}`} role="list">
+            <ul id={navLinksId} className={`nav-links ${menuOpen ? "show" : ""}`} role="list">
                 <li>
                     <NavLink to="/" className="default-link" onClick={() => setMenuOpen(false)}>
                         {t("nav.home")}
@@ -146,16 +161,17 @@ const Nav = () => {
 
                 {showLogoutDropdown ? (
                     <li className="user-icon-wrapper">
-                        <FaUser
-                            className="user-icon"
+                        <button
+                            className="user-icon-btn"
                             onClick={() => setDropdownOpen(!dropdownOpen)}
+                            aria-expanded={dropdownOpen}
                             aria-label="Gebruikersmenu"
-                            role="button"
-                            tabIndex={0}
-                        />
+                        >
+                            <FaUser aria-hidden="true" />
+                        </button>
                         {dropdownOpen && (
-                            <div className="dropdown-menu">
-                                <button className="logout-button" onClick={handleLogout}>
+                            <div className="dropdown-menu" role="menu">
+                                <button className="logout-button" role="menuitem" onClick={handleLogout}>
                                     Uitloggen
                                 </button>
                             </div>
