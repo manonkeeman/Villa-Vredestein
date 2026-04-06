@@ -51,6 +51,7 @@ const Contact = () => {
             {/* Netlify form bot detection — static copy required */}
             <form name="contact" data-netlify="true" hidden aria-hidden="true">
                 <input type="hidden" name="form-name" value="contact" />
+                <input type="hidden" name="subject" />
                 <input type="text" name="naam" />
                 <input type="email" name="email" />
                 <textarea name="bericht" />

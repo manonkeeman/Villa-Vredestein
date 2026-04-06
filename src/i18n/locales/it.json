@@ -115,5 +115,15 @@
         "Volete saperne di più, farci visita o semplicemente mettervi in contatto? Inviateci un messaggio tramite il modulo di contatto o contattateci via WhatsApp. Siamo sempre aperti a una buona conversazione su Villa Vredestein, sull'abitare, sui sogni — e su come renderli realtà."
       ]
     }
-  ]
+  ],
+  "footer": {
+    "tagline": "Una villa storica del 1906 nel cuore di Driebergen-Rijsenburg.",
+    "links": "Navigazione",
+    "contactTitle": "Contatto",
+    "address": "Hoofdstraat 147",
+    "city": "Driebergen-Rijsenburg",
+    "copyright": "Tutti i diritti riservati",
+    "madeBy": "Design di",
+    "subject": "Nuovo messaggio tramite Villa Vredestein"
+  }
 }
