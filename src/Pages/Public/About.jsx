@@ -66,7 +66,7 @@ const About = () => {
                             role="button"
                             tabIndex={0}
                             aria-label={blog.title}
-                            onKeyDown={(e) => e.key === "Enter" && navigate(`/blog/${blog.slug}`)}
+                            onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && navigate(`/blog/${blog.slug}`)}
                         >
                             {image && (
                                 <div

@@ -35,7 +35,7 @@ const Button = ({
         >
             {variant === "secundary" || variant === "secondary" ? (
                 <>
-                    {text} <FaArrowRight size={16} style={{ marginLeft: "8px" }} />
+                    {text} <FaArrowRight size={16} className="btn-arrow" />
                 </>
             ) : variant === "round" ? (
                 "→"
