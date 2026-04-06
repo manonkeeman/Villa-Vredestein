@@ -157,28 +157,38 @@
 }
 
 @media (max-width: 600px) {
-    .contact-layout {
-        max-width: 100%;
-    }
-
-    .contact-box,
-    .map-box {
-        width: 100%;
-    }
-
     .contact-wrapper {
-        padding: 1rem;
+        padding: 0.75rem;
     }
 
     .contact-layout {
-        gap: 1.5rem;
+        gap: 1rem;
+    }
+
+    .contact-panel,
+    .map-panel {
+        min-height: 280px;
+    }
+
+    .contact-box {
+        padding: 1.25rem;
     }
 
     .contact-box h1 {
-        font-size: 20px;
+        font-size: 1.1rem;
     }
 
     .notice {
-        font-size: 12px;
+        font-size: 0.78rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .input-icon-wrapper input,
+    .textarea-icon-wrapper textarea {
+        font-size: 0.85rem;
+    }
+
+    .map-panel {
+        min-height: 240px;
     }
 }

@@ -8,13 +8,21 @@ import React, {
 } from "react";
 import PropTypes from "prop-types";
 import { jwtDecode } from "jwt-decode";
-import axios from "../../Helpers/AxiosHelper.js";
+import axios, { TOKEN_STORAGE_KEY } from "../../Helpers/AxiosHelper.js";
 
 const AuthContext = createContext(null);
 export const useAuth = () => useContext(AuthContext);
 
-const TOKEN_KEY = "accessToken";
+const TOKEN_KEY = TOKEN_STORAGE_KEY; // "accessToken"
 const USER_KEY = "user";
+const LOGIN_MODE_KEY = "loginMode";
+const ROOM_KEY = "room";
+
+const API_BASE = (
+    import.meta.env.VITE_API_BASE_URL ||
+    import.meta.env.VITE_API_URL ||
+    "http://localhost:8080"
+).replace(/\/$/, "");
 
 const safeJsonParse = (value) => {
     try {
@@ -27,13 +35,13 @@ const safeJsonParse = (value) => {
 const decodeToken = (token) => {
     try {
         return jwtDecode(token);
-    } catch (e) {
-        console.error("❌ Token decoding failed:", e);
+    } catch {
         return null;
     }
 };
 
 const isTokenExpired = (token) => {
+    if (!token) return true;
     const decoded = decodeToken(token);
     if (!decoded?.exp) return true;
     return decoded.exp * 1000 < Date.now();
@@ -44,80 +52,105 @@ const normalizeRoles = (raw) => {
 
     const list = Array.isArray(raw) ? raw : [raw];
 
+    const extract = (v) => {
+        if (!v) return "";
+        if (typeof v === "string") return v;
+        if (typeof v === "object") {
+            if (typeof v.authority === "string") return v.authority;
+            if (typeof v.name === "string") return v.name;
+            if (typeof v.role === "string") return v.role;
+            if (Array.isArray(v.authorities)) return v.authorities.map(extract).filter(Boolean).join(",");
+        }
+        return "";
+    };
+
     return list
-        .flatMap((x) => {
-            if (!x) return [];
-            if (typeof x === "string") return [x];
-            if (typeof x === "object" && Array.isArray(x.authorities)) return x.authorities;
-            return [];
-        })
-        .map((r) => (typeof r === "string" ? r.trim() : ""))
+        .flatMap((x) => (x && typeof x === "object" && Array.isArray(x.authorities) ? x.authorities : [x]))
+        .map(extract)
+        .flatMap((s) => String(s).split(","))
+        .map((s) => s.trim())
         .filter(Boolean)
-        .map((r) => (r.startsWith("ROLE_") ? r : `ROLE_${r}`))
-        .map((r) => r.toUpperCase());
+        .map((r) => (r.toUpperCase().startsWith("ROLE_") ? r.toUpperCase() : `ROLE_${r.toUpperCase()}`));
 };
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    const isLoggedIn = Boolean(user);
+    useEffect(() => {
+        axios.defaults.baseURL = API_BASE;
+    }, []);
 
     const logout = useCallback(() => {
         localStorage.removeItem(TOKEN_KEY);
         localStorage.removeItem(USER_KEY);
+        localStorage.removeItem(LOGIN_MODE_KEY);
+        localStorage.removeItem(ROOM_KEY);
+        delete axios.defaults.headers.common.Authorization;
         setUser(null);
+        setLoading(false); // prevents “white page keeps loading”
     }, []);
+
+    useEffect(() => {
+        const handler = () => logout();
+        window.addEventListener("auth:logout", handler);
+        return () => window.removeEventListener("auth:logout", handler);
+    }, [logout]);
 
     const loadMe = useCallback(async () => {
-        const res = await axios.get("/api/users/me");
-        const me = res.data;
+        try {
+            const res = await axios.get("/api/users/me");
+            const me = res.data;
 
-        const roles = normalizeRoles(me?.roles ?? me?.authorities ?? me?.role);
+            const roles = normalizeRoles(me?.roles ?? me?.authorities ?? me?.role);
 
-        const normalizedUser = {
-            ...me,
-            roles,
-        };
+            const normalizedUser = { ...me, roles };
+            localStorage.setItem(USER_KEY, JSON.stringify(normalizedUser));
+            setUser(normalizedUser);
 
-        localStorage.setItem(USER_KEY, JSON.stringify(normalizedUser));
-        setUser(normalizedUser);
-
-        return normalizedUser;
-    }, []);
+            return normalizedUser;
+        } catch (e) {
+            console.error("❌ loadMe failed:", e.response?.data || e.message);
+            logout();
+            return null;
+        }
+    }, [logout]);
 
     const login = useCallback(
-        async (email, password) => {
+        async (email, password, options = {}) => {
             const cleanEmail = String(email).trim().toLowerCase();
+            const loginMode = options?.loginMode ? String(options.loginMode).trim().toUpperCase() : "";
+            const room = options?.room ? String(options.room).trim() : "";
 
             try {
                 const res = await axios.post("/api/auth/login", {
                     email: cleanEmail,
                     password,
+                    loginMode: loginMode || undefined,
+                    room: room || undefined,
                 });
 
                 const token = res.data?.token ?? res.data?.jwt ?? res.data?.accessToken;
                 if (!token) {
-                    console.error("❌ Login response did not contain a token:", res.data);
+                    console.error("❌ Login response did not contain token:", res.data);
                     return false;
                 }
 
                 localStorage.setItem(TOKEN_KEY, token);
+                axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 
-                try {
-                    await loadMe();
-                } catch {
-                    // Fallback: derive minimal identity from JWT
+                if (loginMode) localStorage.setItem(LOGIN_MODE_KEY, loginMode);
+                else localStorage.removeItem(LOGIN_MODE_KEY);
+
+                if (room) localStorage.setItem(ROOM_KEY, room);
+                else localStorage.removeItem(ROOM_KEY);
+
+                const me = await loadMe();
+
+                if (!me) {
                     const decoded = decodeToken(token);
                     const roles = normalizeRoles(decoded?.roles ?? decoded?.authorities ?? decoded?.role);
-
-                    const fallbackUser = {
-                        email: cleanEmail,
-                        sub: decoded?.sub,
-                        roles,
-                        tokenDecoded: decoded,
-                    };
-
+                    const fallbackUser = { email: cleanEmail, sub: decoded?.sub, roles, tokenDecoded: decoded };
                     localStorage.setItem(USER_KEY, JSON.stringify(fallbackUser));
                     setUser(fallbackUser);
                 }
@@ -136,6 +169,7 @@ export const AuthProvider = ({ children }) => {
             const cleanData = {
                 ...data,
                 email: String(data.email ?? "").trim().toLowerCase(),
+                username: String(data.username ?? data.email ?? "").trim().toLowerCase(),
             };
 
             const res = await axios.post("/api/auth/register", cleanData);
@@ -162,13 +196,11 @@ export const AuthProvider = ({ children }) => {
                     return;
                 }
 
-                if (storedUser) {
-                    setUser(storedUser);
-                }
+                axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+
+                if (storedUser) setUser(storedUser);
 
                 await loadMe();
-            } catch {
-                if (!storedUser) logout();
             } finally {
                 setLoading(false);
             }
@@ -176,6 +208,9 @@ export const AuthProvider = ({ children }) => {
 
         bootstrap();
     }, [loadMe, logout]);
+
+    const token = localStorage.getItem(TOKEN_KEY);
+    const isLoggedIn = Boolean(user) && Boolean(token) && !isTokenExpired(token);
 
     const value = useMemo(
         () => ({
@@ -186,6 +221,8 @@ export const AuthProvider = ({ children }) => {
             register,
             loading,
             reloadUser: loadMe,
+            getStoredLoginMode: () => localStorage.getItem(LOGIN_MODE_KEY),
+            getStoredRoom: () => localStorage.getItem(ROOM_KEY),
         }),
         [isLoggedIn, user, login, logout, register, loading, loadMe]
     );

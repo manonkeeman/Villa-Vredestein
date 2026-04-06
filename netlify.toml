@@ -5,3 +5,14 @@ publish = "dist"
 [build.environment]
 NODE_VERSION = "20"
 NETLIFY_BUILD_IMAGE = "ubuntu-22.04"
+
+# SPA routing — alle routes terugsturen naar index.html
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
+
+# Netlify Forms configuratie
+[forms]
+  [forms.contact]
+    name = "contact"

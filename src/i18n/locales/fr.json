@@ -1,0 +1,119 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "contact": "Contact"
+  },
+  "home": {
+    "title": "Bienvenue à Villa Vredestein",
+    "p1": "Construite en 1906, Villa Vredestein respire le charme d'une époque révolue. Hauts plafonds, détails d'origine et une âme que l'on ressent dès que l'on franchit le seuil.",
+    "p2": "Pourtant, ce n'est pas une maison figée dans le temps. Derrière la façade nostalgique se cache un souffle nouveau. Nous modernisons dans le respect du passé, afin que cette maison ne conserve pas seulement des souvenirs, mais offre également un espace aux nouvelles histoires.",
+    "p3": "Les éléments d'origine sont préservés autant que possible — non par nostalgie, mais par amour du savoir-faire. Il en résulte une harmonie entre l'ancien et le nouveau.",
+    "p4": "Villa Vredestein porte le passé avec fierté et regarde vers l'avenir. Découvrez ce qui rend ce lieu unique si particulier.",
+    "imageAlt": "Façade avant de Villa Vredestein à Driebergen",
+    "readMore": "En savoir plus"
+  },
+  "about": {
+    "title": "À propos de Villa Vredestein",
+    "readMore": "Lire l'article",
+    "back": "← Retour à la vue d'ensemble",
+    "published": "Publié le",
+    "readTime": "de lecture"
+  },
+  "contact": {
+    "title": "Nous contacter",
+    "notice": "Vous avez des questions sur Villa Vredestein ou souhaitez discuter avec la direction ? N'hésitez pas à nous laisser un message. Nous vous répondrons dans les plus brefs délais.",
+    "mapTitle": "Localisation de Villa Vredestein sur la carte",
+    "form": {
+      "name": "Votre nom",
+      "email": "Votre adresse e-mail",
+      "message": "Votre message...",
+      "submit": "Envoyer le message",
+      "error": "Une erreur s'est produite lors de l'envoi. Veuillez réessayer plus tard.",
+      "successTitle": "Merci pour votre message !",
+      "successMessage": "Nous avons bien reçu votre message et vous répondrons dans les plus brefs délais.",
+      "signature": "Cordialement, Manon & Maxim",
+      "close": "Fermer"
+    }
+  },
+  "blogs": [
+    {
+      "slug": "villa-vredestein",
+      "title": "À propos de Villa Vredestein",
+      "summary": "Villa Vredestein a été construite en 1906 et allie charme historique et fonctionnalité moderne. Une maison qui a beaucoup d'histoires à raconter.",
+      "date": "1 janvier 2024",
+      "readTime": "3 min",
+      "content": [
+        "Villa Vredestein est située sur le Hoofdstraat à Driebergen-Rijsenburg, une villa imposante construite en 1906, à une époque de grand design et d'artisanat minutieux. La propriété a été érigée dans un style hollandais classique avec de hautes façades, d'élégantes fenêtres et une devanture qui change de visage selon les saisons.",
+        "Avec ses hauts plafonds, ses murs épais et ses parquets d'origine, la maison dégage une atmosphère que l'on rencontre rarement de nos jours. Chaque pièce raconte une histoire — du large couloir qui accueillait chaleureusement les visiteurs aux chambres où se déroulait la vie quotidienne d'antan.",
+        "Aujourd'hui, Villa Vredestein combine le meilleur des deux mondes : la beauté authentique d'une propriété historique et le confort et la fonctionnalité dont les résidents modernes ont besoin. La propriété a été soigneusement rénovée, en préservant et en restaurant les détails d'origine.",
+        "Villa Vredestein est plus qu'une maison — c'est un patrimoine. Un lieu où le passé et le présent se rencontrent, où l'hospitalité est ancrée dans les murs, et où de nouvelles histoires s'écrivent sur les fondations d'un siècle d'histoire."
+      ]
+    },
+    {
+      "slug": "geschiedenis",
+      "title": "L'Histoire",
+      "summary": "À l'origine une retraite paisible loin de l'agitation urbaine. Au fil des années, un lieu de connexion et d'épanouissement.",
+      "date": "15 janvier 2024",
+      "readTime": "4 min",
+      "content": [
+        "Au début du vingtième siècle, Driebergen était une destination prisée par les Amsterdamois et Utrechtois aisés cherchant une résidence de campagne loin de l'agitation de la ville. Villa Vredestein fut construite en 1906 comme un tel refuge — un lieu de repos, de nature et de réflexion.",
+        "Au fil des années, la propriété a été habitée par de nombreux propriétaires, chacun apportant sa propre histoire à celle de la maison. Des patriciens aux artistes, des hommes d'affaires aux universitaires — Villa Vredestein a accueilli des personnes de tous horizons.",
+        "Au fil des décennies, la propriété a conservé son caractère de lieu exceptionnel : un havre de paix au milieu des changements du monde extérieur. Les murs épais et la verdure environnante ont toujours offert un sentiment d'abri et un sentiment de chez-soi.",
+        "Aujourd'hui, plus d'un siècle plus tard, Manon et Maxim apportent un nouveau chapitre à cette riche histoire. Ils perpétuent la tradition d'hospitalité et s'appuient sur les fondations posées par les générations précédentes. L'histoire de Villa Vredestein est vivante et continue de croître."
+      ]
+    },
+    {
+      "slug": "restauratie",
+      "title": "La Restauration",
+      "summary": "Rénovée avec soin en préservant les détails d'origine. Des éléments authentiques conservés dans un cadre contemporain.",
+      "date": "1 février 2024",
+      "readTime": "4 min",
+      "content": [
+        "Rénover une propriété historique est un équilibre délicat entre préservation et renouveau. Chez Villa Vredestein, il était clair dès le début que les détails d'origine devaient occuper une place centrale. Chaque trace du temps n'a pas été effacée — au contraire, la patine du passé a été délibérément embrassée.",
+        "La restauration a commencé par un inventaire approfondi de ce qui pouvait être conservé : les parquets en bois d'origine, les moulures ornementales au plafond, les portes imposantes avec leur ferronnerie caractéristique. Tout ce qui était encore en bon état a été soigneusement restauré et remis en place.",
+        "Dans le même temps, la villa a été dotée de tout le confort moderne que les résidents et les visiteurs attendent aujourd'hui. L'isolation, les installations modernes et les cuisines contemporaines ont été intégrées de manière à ne pas dénaturer le caractère historique de la propriété.",
+        "Le résultat est une maison qui se sent à la fois confortable et authentique. Les visiteurs ressentent immédiatement le charme de la propriété historique tout en bénéficiant du confort d'un intérieur moderne. Cet équilibre est au cœur de la philosophie de restauration de Villa Vredestein."
+      ]
+    },
+    {
+      "slug": "omgeving",
+      "title": "Les Environs",
+      "summary": "Villa Vredestein est située au cœur vert de Driebergen, en bordure de l'Utrechtse Heuvelrug. Nature, histoire et tranquillité réunis.",
+      "date": "15 février 2024",
+      "readTime": "3 min",
+      "content": [
+        "Driebergen-Rijsenburg est l'une des communes les plus vertes et les plus paisibles de la province d'Utrecht. Située sur le flanc sud de l'Utrechtse Heuvelrug — une crête formée lors de la dernière période glaciaire — la région offre une combinaison incomparable de nature, de tranquillité et de culture.",
+        "Depuis Villa Vredestein, vous êtes à quelques minutes de vastes forêts et de landes. L'Utrechtse Heuvelrug offre des possibilités infinies aux randonneurs, cyclistes et à toute personne ayant besoin d'air frais et d'espace. Le contraste avec l'agitation de la Randstad est saisissant et immédiatement perceptible.",
+        "Le village de Driebergen lui-même est une charmante communauté avec un centre-ville plein de bâtiments caractéristiques, de boutiques locales et de restaurants accueillants. La Hoofdstraat historique respire la même atmosphère que Villa Vredestein : vieille mais vivante, traditionnelle mais ouverte au nouveau.",
+        "La ville d'Utrecht est à courte distance en train, tout comme Amsterdam et d'autres grandes villes. Villa Vredestein offre ainsi le meilleur des deux mondes : un environnement calme et verdoyant pour se ressourcer, avec l'énergie de la ville toujours à portée de main."
+      ]
+    },
+    {
+      "slug": "over-ons",
+      "title": "Qui Sommes-Nous",
+      "summary": "Nous sommes Manon et Maxim, construisant ensemble un lieu offrant repos, créativité et aventure. Un chez-soi et une base.",
+      "date": "1 mars 2024",
+      "readTime": "3 min",
+      "content": [
+        "Villa Vredestein est le projet de Manon Keeman et Maxim — deux personnes partageant une passion pour les beaux endroits, les vraies histoires et la création d'un environnement où les gens peuvent s'épanouir. Forts de leurs expériences dans le design et l'entrepreneuriat, ils ont relevé le défi de redonner vie à cette propriété historique.",
+        "Pour Manon, Villa Vredestein est le prolongement naturel de son travail de designer : attention aux détails, sens de l'esthétique et conviction que l'environnement dans lequel on vit influence qui l'on est. Elle a mis toute sa créativité dans chaque aspect de la propriété, du choix des matériaux à l'atmosphère de chaque pièce.",
+        "Maxim apporte son esprit d'entreprise et son talent d'organisation. Il croit en Villa Vredestein comme un lieu où les gens ne font pas que vivre, mais aussi grandir. Un foyer qui est aussi un tremplin — pour les aventures, les nouveaux projets et les connexions avec les autres.",
+        "Ensemble, ils travaillent chaque jour à leur vision : un lieu qui vous accueille avec chaleur et charme, tout en vous inspirant à donner le meilleur de vous-même. Villa Vredestein est leur projet, mais avant tout un foyer pour tous ceux qui y vivent ou y séjournent en tant qu'invités."
+      ]
+    },
+    {
+      "slug": "bezoek-inspiratie",
+      "title": "Visite & Inspiration",
+      "summary": "Découvrez les histoires, le charme et les ambitions de Villa Vredestein. Laissez-vous inspirer par ce processus de restauration et de vie.",
+      "date": "15 mars 2024",
+      "readTime": "3 min",
+      "content": [
+        "Villa Vredestein est plus qu'une adresse — c'est une histoire vivante. Chaque jour, de nouvelles pages s'écrivent par les personnes qui y vivent, y travaillent et y séjournent. À travers ce site web et les réseaux sociaux, nous aimons partager cette histoire avec un public plus large.",
+        "Sur Instagram (@villa.vredestein), nous documentons la vie dans et autour de la villa. Du premier soleil matinal sur la façade aux moments spontanés dans le jardin — nous montrons à quel point la vie quotidienne dans cette propriété historique peut être exceptionnelle. Une source d'inspiration pour quiconque souhaite un jour lancer son propre projet.",
+        "La villa sert également de source d'inspiration pour les personnes intéressées par l'immobilier historique, le design d'intérieur ou la rénovation durable. Nous recevons régulièrement des questions de personnes travaillant sur des projets similaires et sommes heureux de partager nos expériences.",
+        "Vous souhaitez en savoir plus, nous rendre visite ou simplement prendre contact ? Envoyez-nous un message via le formulaire de contact ou contactez-nous via WhatsApp. Nous sommes toujours ouverts à une bonne conversation sur Villa Vredestein, sur l'habitat, sur les rêves — et comment les rendre réels."
+      ]
+    }
+  ]
+}

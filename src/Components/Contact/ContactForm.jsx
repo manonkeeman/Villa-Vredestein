@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { FiMail, FiUser, FiMessageCircle } from "react-icons/fi";
 import Button from "../Buttons/Button.jsx";
 
 const ContactForm = ({ onSuccess }) => {
     const [error, setError] = useState("");
+    const { t } = useTranslation();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -18,10 +20,10 @@ const ContactForm = ({ onSuccess }) => {
         })
             .then(() => {
                 form.reset();
-                onSuccess(); // toon modal
+                onSuccess();
             })
             .catch(() => {
-                setError("Er ging iets mis bij het versturen. Probeer het later opnieuw.");
+                setError(t("contact.form.error"));
             });
     };
 
@@ -38,23 +40,46 @@ const ContactForm = ({ onSuccess }) => {
             <input type="hidden" name="bot-field" />
 
             <div className="input-icon-wrapper">
-                <input type="text" name="naam" placeholder="Je naam" required />
-                <FiUser className="input-icon" />
+                <label htmlFor="cf-naam" className="visually-hidden">{t("contact.form.name")}</label>
+                <input
+                    id="cf-naam"
+                    type="text"
+                    name="naam"
+                    placeholder={t("contact.form.name")}
+                    required
+                    autoComplete="name"
+                />
+                <FiUser className="input-icon" aria-hidden="true" />
             </div>
 
             <div className="input-icon-wrapper">
-                <input type="email" name="email" placeholder="Je e-mailadres" required />
-                <FiMail className="input-icon" />
+                <label htmlFor="cf-email" className="visually-hidden">{t("contact.form.email")}</label>
+                <input
+                    id="cf-email"
+                    type="email"
+                    name="email"
+                    placeholder={t("contact.form.email")}
+                    required
+                    autoComplete="email"
+                />
+                <FiMail className="input-icon" aria-hidden="true" />
             </div>
 
             <div className="textarea-icon-wrapper">
-                <textarea name="bericht" rows="4" placeholder="Je bericht..." required />
-                <FiMessageCircle className="input-icon textarea-icon" />
+                <label htmlFor="cf-bericht" className="visually-hidden">{t("contact.form.message")}</label>
+                <textarea
+                    id="cf-bericht"
+                    name="bericht"
+                    rows="4"
+                    placeholder={t("contact.form.message")}
+                    required
+                />
+                <FiMessageCircle className="input-icon textarea-icon" aria-hidden="true" />
             </div>
 
-            <Button type="submit" text="Verstuur bericht" variant="primary" />
+            <Button type="submit" text={t("contact.form.submit")} variant="primary" />
 
-            {error && <p className="error-message">❌ {error}</p>}
+            {error && <p className="error-message" role="alert">❌ {error}</p>}
         </form>
     );
 };

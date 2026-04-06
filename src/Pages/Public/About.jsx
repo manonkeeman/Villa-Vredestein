@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { Helmet } from "react-helmet-async";
 import "./About.css";
-import AboutHover from "../../Components/AboutHover/AboutHover";
 
 import Villa1 from "../../Assets/Images/VillaVredestein2024.jpg";
 import Villa2 from "../../Assets/Images/VillaVredestein1910.jpg";
@@ -9,55 +11,78 @@ import Villa6 from "../../Assets/Images/DeOmgevingVillaVredestein.jpg";
 import Villa8 from "../../Assets/Images/Maxim_Manon_ChevroletSuburban.jpg";
 import Villa9 from "../../Assets/Images/BezoekOnsVillaVredestein.jpg";
 
-const aboutData = [
-    {
-        title: "Over Villa Vredestein",
-        text: "Villa Vredestein is gebouwd in 1906 en combineert historische charme met moderne functionaliteit. Een huis met veel verhalen.",
-        image: Villa1,
-    },
-    {
-        title: "De Geschiedenis",
-        text: "Oorspronkelijk een statig rustoord ver weg van de Randstad. Door de jaren heen is het pand blijvend een plek gebleven van verbinding en ontwikkeling.",
-        image: Villa2,
-    },
-    {
-        title: "De Restauratie",
-        text: "Met aandacht voor originele details is de villa gerenoveerd. Zo blijven authentieke elementen behouden in een eigentijdse setting.",
-        image: Villa3,
-    },
-    {
-        title: "De omgeving",
-        text: "Villa Vredestein ligt in het groene hart van Driebergen, aan de rand van de Utrechtse Heuvelrug. Een omgeving waar rust, natuur en historie samenkomen.",
-        image: Villa6,
-    },
-    {
-        title: "Over ons",
-        text: "Wij zijn Manon en Maxim, samen bouwen we aan een plek die rust, creativiteit en avontuur biedt. Een thuis én een basis.",
-        image: Villa8,
-    },
-    {
-        title: "Bezoek & Inspiratie",
-        text: "Ontdek de verhalen, charme en ambities van Villa Vredestein via deze website, en laat je inspireren door het proces.",
-        image: Villa9,
-    },
-];
+const imageMap = {
+    "villa-vredestein": Villa1,
+    "geschiedenis": Villa2,
+    "restauratie": Villa3,
+    "omgeving": Villa6,
+    "over-ons": Villa8,
+    "bezoek-inspiratie": Villa9,
+};
 
 const About = () => {
+    const navigate = useNavigate();
+    const { t, i18n } = useTranslation();
+    const langCode = i18n.language?.split("-")[0] || "nl";
+
+    const blogs = t("blogs", { returnObjects: true });
+
     return (
         <main className="about-page">
+            <Helmet>
+                <html lang={langCode} />
+                <title>{t("about.title")} — Villa Vredestein</title>
+                <meta
+                    name="description"
+                    content="Ontdek de verhalen achter Villa Vredestein: de geschiedenis, restauratie, omgeving en de mensen achter dit bijzondere woonproject in Driebergen."
+                />
+                <link rel="canonical" href="https://villavredestein.nl/about" />
+                <meta property="og:title" content={`${t("about.title")} — Villa Vredestein`} />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://villavredestein.nl/about" />
+            </Helmet>
+
             <header>
-                <h1 className="about-title">Over Villa Vredestein</h1>
+                <h1 className="about-title">{t("about.title")}</h1>
             </header>
-            <section className="about-grid" aria-label="Overzicht van thema's over Villa Vredestein">
-                {aboutData.map((item, index) => (
-                    <article key={index}>
-                        <AboutHover
-                            title={item.title}
-                            text={item.text}
-                            image={item.image}
-                        />
-                    </article>
-                ))}
+
+            <section
+                className="about-grid"
+                aria-label={t("about.title")}
+            >
+                {Array.isArray(blogs) && blogs.map((blog) => {
+                    const image = imageMap[blog.slug];
+                    return (
+                        <article
+                            key={blog.slug}
+                            className="blog-card"
+                            onClick={() => navigate(`/blog/${blog.slug}`)}
+                            role="button"
+                            tabIndex={0}
+                            aria-label={blog.title}
+                            onKeyDown={(e) => e.key === "Enter" && navigate(`/blog/${blog.slug}`)}
+                        >
+                            {image && (
+                                <div
+                                    className="blog-card-image"
+                                    style={{ backgroundImage: `url(${image})` }}
+                                    aria-hidden="true"
+                                />
+                            )}
+                            <div className="blog-card-content">
+                                <h2>{blog.title}</h2>
+                                <p>{blog.summary}</p>
+                                <div className="blog-card-meta">
+                                    <span>{blog.date}</span>
+                                    <span>{blog.readTime} {t("about.readTime")}</span>
+                                </div>
+                                <span className="blog-card-cta" aria-hidden="true">
+                                    {t("about.readMore")} →
+                                </span>
+                            </div>
+                        </article>
+                    );
+                })}
             </section>
         </main>
     );
