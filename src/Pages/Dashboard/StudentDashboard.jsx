@@ -38,7 +38,8 @@ const StudentDashboard = () => {
 
                 <nav className="sidebar-nav">
                     <ul>
-                        <li><Link to="#"><FiHome /> Dashboard</Link></li>
+                        <li><Link to="/student"><FiHome /> Dashboard</Link></li>
+                        <li><Link to="/student/profiel"><FiUser /> Mijn profiel</Link></li>
                         <li><Link to="#"><FiAlertCircle /> Noodlijst</Link></li>
                         <li><Link to="#"><FiFileText /> Huisregels</Link></li>
                         <li><Link to="#"><FiClipboard /> Schoonmaakschema</Link></li>
