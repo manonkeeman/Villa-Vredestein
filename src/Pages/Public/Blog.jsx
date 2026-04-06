@@ -42,7 +42,25 @@ const Blog = () => {
     }
 
     const langCode = i18n.language?.split("-")[0] || "nl";
-    const canonicalUrl = `https://villavredestein.nl/${langCode}/blog/${slug}`;
+    const canonicalUrl = `https://villavredestein.nl/blog/${slug}`;
+    const ogImage = `https://villavredestein.nl/og-image.jpg`;
+
+    const articleSchema = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": blog.title,
+        "description": blog.summary,
+        "datePublished": blog.date,
+        "author": { "@type": "Person", "name": "Manon Keeman" },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Villa Vredestein",
+            "logo": { "@type": "ImageObject", "url": "https://villavredestein.nl/VVLogo.png" }
+        },
+        "url": canonicalUrl,
+        "image": ogImage,
+        "mainEntityOfPage": canonicalUrl
+    });
 
     return (
         <main className="blog-page" role="main">
@@ -53,9 +71,15 @@ const Blog = () => {
                 <link rel="canonical" href={canonicalUrl} />
                 <meta property="og:title" content={`${blog.title} — Villa Vredestein`} />
                 <meta property="og:description" content={blog.summary} />
-                <meta property="og:image" content={image} />
+                <meta property="og:image" content={ogImage} />
                 <meta property="og:type" content="article" />
+                <meta property="og:url" content={canonicalUrl} />
                 <meta property="article:published_time" content={blog.date} />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={`${blog.title} — Villa Vredestein`} />
+                <meta name="twitter:description" content={blog.summary} />
+                <meta name="twitter:image" content={ogImage} />
+                <script type="application/ld+json">{articleSchema}</script>
             </Helmet>
 
             <article className="blog-article">

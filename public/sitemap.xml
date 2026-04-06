@@ -13,6 +13,7 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://villavredestein.nl/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://villavredestein.nl/" />
     <xhtml:link rel="alternate" hreflang="it" href="https://villavredestein.nl/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://villavredestein.nl/" />
   </url>
 
   <!-- About -->
@@ -26,6 +27,7 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://villavredestein.nl/about" />
     <xhtml:link rel="alternate" hreflang="es" href="https://villavredestein.nl/about" />
     <xhtml:link rel="alternate" hreflang="it" href="https://villavredestein.nl/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://villavredestein.nl/about" />
   </url>
 
   <!-- Contact -->
@@ -39,6 +41,7 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://villavredestein.nl/contact" />
     <xhtml:link rel="alternate" hreflang="es" href="https://villavredestein.nl/contact" />
     <xhtml:link rel="alternate" hreflang="it" href="https://villavredestein.nl/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://villavredestein.nl/contact" />
   </url>
 
   <!-- Blog: Villa Vredestein -->
@@ -46,6 +49,13 @@
     <loc>https://villavredestein.nl/blog/villa-vredestein</loc>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.nl/blog/villa-vredestein" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://villavredestein.nl/blog/villa-vredestein" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://villavredestein.nl/blog/villa-vredestein" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://villavredestein.nl/blog/villa-vredestein" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://villavredestein.nl/blog/villa-vredestein" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://villavredestein.nl/blog/villa-vredestein" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://villavredestein.nl/blog/villa-vredestein" />
   </url>
 
   <!-- Blog: Geschiedenis -->
@@ -53,6 +63,13 @@
     <loc>https://villavredestein.nl/blog/geschiedenis</loc>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.nl/blog/geschiedenis" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://villavredestein.nl/blog/geschiedenis" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://villavredestein.nl/blog/geschiedenis" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://villavredestein.nl/blog/geschiedenis" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://villavredestein.nl/blog/geschiedenis" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://villavredestein.nl/blog/geschiedenis" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://villavredestein.nl/blog/geschiedenis" />
   </url>
 
   <!-- Blog: Restauratie -->
@@ -60,6 +77,13 @@
     <loc>https://villavredestein.nl/blog/restauratie</loc>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.nl/blog/restauratie" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://villavredestein.nl/blog/restauratie" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://villavredestein.nl/blog/restauratie" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://villavredestein.nl/blog/restauratie" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://villavredestein.nl/blog/restauratie" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://villavredestein.nl/blog/restauratie" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://villavredestein.nl/blog/restauratie" />
   </url>
 
   <!-- Blog: Omgeving -->
@@ -67,6 +91,13 @@
     <loc>https://villavredestein.nl/blog/omgeving</loc>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.nl/blog/omgeving" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://villavredestein.nl/blog/omgeving" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://villavredestein.nl/blog/omgeving" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://villavredestein.nl/blog/omgeving" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://villavredestein.nl/blog/omgeving" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://villavredestein.nl/blog/omgeving" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://villavredestein.nl/blog/omgeving" />
   </url>
 
   <!-- Blog: Over ons -->
@@ -74,6 +105,13 @@
     <loc>https://villavredestein.nl/blog/over-ons</loc>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.nl/blog/over-ons" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://villavredestein.nl/blog/over-ons" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://villavredestein.nl/blog/over-ons" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://villavredestein.nl/blog/over-ons" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://villavredestein.nl/blog/over-ons" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://villavredestein.nl/blog/over-ons" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://villavredestein.nl/blog/over-ons" />
   </url>
 
   <!-- Blog: Bezoek & Inspiratie -->
@@ -81,6 +119,13 @@
     <loc>https://villavredestein.nl/blog/bezoek-inspiratie</loc>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.nl/blog/bezoek-inspiratie" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://villavredestein.nl/blog/bezoek-inspiratie" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://villavredestein.nl/blog/bezoek-inspiratie" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://villavredestein.nl/blog/bezoek-inspiratie" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://villavredestein.nl/blog/bezoek-inspiratie" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://villavredestein.nl/blog/bezoek-inspiratie" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://villavredestein.nl/blog/bezoek-inspiratie" />
   </url>
 
 </urlset>

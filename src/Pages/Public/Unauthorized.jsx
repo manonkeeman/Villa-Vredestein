@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 export default function Unauthorized() {
     const location = useLocation();
@@ -7,6 +8,10 @@ export default function Unauthorized() {
 
     return (
         <main style={{ padding: 24 }}>
+            <Helmet>
+                <title>403 — Geen toegang | Villa Vredestein</title>
+                <meta name="robots" content="noindex, nofollow" />
+            </Helmet>
             <h1>403 - Geen toegang</h1>
             <p>Je hebt niet de juiste rechten om deze pagina te bekijken.</p>
 

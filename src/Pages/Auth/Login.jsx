@@ -2,6 +2,7 @@ import React, { useMemo, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext.jsx";
 import { FiEye, FiEyeOff, FiMail, FiLock } from "react-icons/fi";
+import { Helmet } from "react-helmet-async";
 import "./Login.css";
 
 const hasRole = (user, role) => {
@@ -160,6 +161,10 @@ const Login = () => {
 
     return (
         <main className="login-page">
+            <Helmet>
+                <title>Inloggen — Villa Vredestein</title>
+                <meta name="robots" content="noindex, nofollow" />
+            </Helmet>
             {/* Video kant */}
             <div className="login-media">
                 <iframe

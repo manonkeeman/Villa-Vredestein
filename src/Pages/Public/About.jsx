@@ -38,8 +38,14 @@ const About = () => {
                 />
                 <link rel="canonical" href="https://villavredestein.nl/about" />
                 <meta property="og:title" content={`${t("about.title")} — Villa Vredestein`} />
+                <meta property="og:description" content="Ontdek de verhalen achter Villa Vredestein: de geschiedenis, restauratie, omgeving en de mensen achter dit bijzondere woonproject in Driebergen." />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://villavredestein.nl/about" />
+                <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={`${t("about.title")} — Villa Vredestein`} />
+                <meta name="twitter:description" content="Ontdek de verhalen achter Villa Vredestein: de geschiedenis, restauratie, omgeving en de mensen achter dit bijzondere woonproject in Driebergen." />
+                <meta name="twitter:image" content="https://villavredestein.nl/og-image.jpg" />
             </Helmet>
 
             <header>
