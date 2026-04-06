@@ -1,15 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import App from "./App.jsx";
-import { AuthProvider } from "./Pages/Auth/AuthContext.jsx";
+import "./i18n/index.js";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
-        <BrowserRouter>
-            <AuthProvider>
-                <App />
-            </AuthProvider>
-        </BrowserRouter>
+        <HelmetProvider>
+            <App />
+        </HelmetProvider>
     </React.StrictMode>
 );

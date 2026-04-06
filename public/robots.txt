@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /student
+Disallow: /admin
+Disallow: /cleaning
+Disallow: /login
+Disallow: /registeruser
+Disallow: /unauthorized
+
+Sitemap: https://villavredestein.nl/sitemap.xml
