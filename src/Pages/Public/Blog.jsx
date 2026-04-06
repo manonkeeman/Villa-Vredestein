@@ -93,7 +93,7 @@ const Blog = () => {
                     </button>
                     <h1 className="blog-title">{blog.title}</h1>
                     <div className="blog-meta">
-                        <time dateTime={slug}>{t("about.published")} {blog.date}</time>
+                        <time dateTime={blog.date}>{t("about.published")} {blog.date}</time>
                         <span aria-hidden="true"> · </span>
                         <span>{blog.readTime} {t("about.readTime")}</span>
                     </div>
