@@ -20,8 +20,7 @@ const ContactForm = ({ onSuccess }) => {
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: new URLSearchParams(data).toString(),
         })
-            .then((res) => {
-                if (!res.ok && res.status !== 200) throw new Error("network");
+            .then(() => {
                 form.reset();
                 onSuccess();
             })
