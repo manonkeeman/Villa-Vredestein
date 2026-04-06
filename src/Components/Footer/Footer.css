@@ -10,7 +10,7 @@
     margin: 0 auto;
     padding: 3rem 2rem 2rem;
     display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr;
     gap: 3rem;
 }
 
@@ -76,11 +76,18 @@
     margin-bottom: 1rem;
 }
 
+/* 3-koloms linksgrid onder de navigatie heading */
+.footer-links-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0 1.5rem;
+}
+
 /* Links */
 .footer-links {
     list-style: none;
     padding: 0;
-    margin: 0 0 1rem;
+    margin: 0;
     display: flex;
     flex-direction: column;
     gap: 0.45rem;
@@ -97,12 +104,6 @@
 .footer-links a:hover,
 .footer-links a.active {
     color: #fcbc2d;
-}
-
-.footer-blogs-list {
-    border-top: 1px solid #1a1a1a;
-    padding-top: 0.75rem;
-    margin-top: 0.25rem;
 }
 
 /* Adres */
@@ -169,16 +170,12 @@ a.footer-address-row:hover {
         gap: 2rem;
     }
 
-    .footer-brand {
+    .footer-nav-wide {
         grid-column: 1 / -1;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: flex-start;
-        gap: 1.5rem;
     }
 
-    .footer-tagline {
-        max-width: 400px;
+    .footer-links-grid {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
@@ -190,9 +187,13 @@ a.footer-address-row:hover {
         gap: 1.75rem;
     }
 
-    .footer-brand {
-        flex-direction: column;
-        gap: 0.5rem;
+    .footer-nav-wide {
+        grid-column: auto;
+    }
+
+    .footer-links-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0 1rem;
     }
 
     .footer-bottom {

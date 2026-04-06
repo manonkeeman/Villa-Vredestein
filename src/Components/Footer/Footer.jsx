@@ -9,16 +9,24 @@ const Footer = () => {
     const { t } = useTranslation();
     const year = new Date().getFullYear();
 
-    const blogSlugs = [
-        "villa-vredestein",
-        "geschiedenis",
-        "restauratie",
-        "omgeving",
-        "over-ons",
-        "bezoek-inspiratie",
+    const blogs = t("blogs", { returnObjects: true });
+
+    const col1 = [
+        { to: "/", label: t("nav.home") },
+        { to: "/about", label: t("nav.about") },
+        { to: "/contact", label: t("nav.contact") },
     ];
 
-    const blogs = t("blogs", { returnObjects: true });
+    const blogSlugs = ["villa-vredestein", "geschiedenis", "restauratie", "omgeving", "over-ons", "bezoek-inspiratie"];
+    const blogLinks = Array.isArray(blogs)
+        ? blogSlugs.map((slug) => {
+              const b = blogs.find((x) => x.slug === slug);
+              return b ? { to: `/blog/${slug}`, label: b.title } : null;
+          }).filter(Boolean)
+        : [];
+
+    const col2 = blogLinks.slice(0, 3);
+    const col3 = blogLinks.slice(3);
 
     return (
         <footer className="site-footer" aria-label="Sitefooter">
@@ -33,26 +41,32 @@ const Footer = () => {
                     <p className="footer-tagline">{t("footer.tagline")}</p>
                 </div>
 
-                {/* Kolom 2 — Navigatie + Blogs */}
-                <div className="footer-col">
+                {/* Kolom 2 — Alle links in 3 sub-kolommen */}
+                <div className="footer-col footer-nav-wide">
                     <h3 className="footer-heading">{t("footer.links")}</h3>
-                    <nav aria-label="Footer navigatie">
+                    <nav aria-label="Footer navigatie" className="footer-links-grid">
                         <ul className="footer-links">
-                            <li><NavLink to="/">{t("nav.home")}</NavLink></li>
-                            <li><NavLink to="/about">{t("nav.about")}</NavLink></li>
-                            <li><NavLink to="/contact">{t("nav.contact")}</NavLink></li>
+                            {col1.map((link) => (
+                                <li key={link.to}>
+                                    <NavLink to={link.to}>{link.label}</NavLink>
+                                </li>
+                            ))}
+                        </ul>
+                        <ul className="footer-links">
+                            {col2.map((link) => (
+                                <li key={link.to}>
+                                    <NavLink to={link.to}>{link.label}</NavLink>
+                                </li>
+                            ))}
+                        </ul>
+                        <ul className="footer-links">
+                            {col3.map((link) => (
+                                <li key={link.to}>
+                                    <NavLink to={link.to}>{link.label}</NavLink>
+                                </li>
+                            ))}
                         </ul>
                     </nav>
-                    <ul className="footer-links footer-blogs-list">
-                        {Array.isArray(blogs) && blogSlugs.map((slug) => {
-                            const blog = blogs.find((b) => b.slug === slug);
-                            return blog ? (
-                                <li key={slug}>
-                                    <NavLink to={`/blog/${slug}`}>{blog.title}</NavLink>
-                                </li>
-                            ) : null;
-                        })}
-                    </ul>
                 </div>
 
                 {/* Kolom 3 — Contact info */}
@@ -74,6 +88,15 @@ const Footer = () => {
                         >
                             <FaInstagram aria-hidden="true" />
                             <span>@villa.vredestein</span>
+                        </a>
+                        <a
+                            href="https://wa.me/31625015299"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="footer-address-row"
+                        >
+                            <FaWhatsapp aria-hidden="true" />
+                            <span>WhatsApp</span>
                         </a>
                     </address>
                 </div>
