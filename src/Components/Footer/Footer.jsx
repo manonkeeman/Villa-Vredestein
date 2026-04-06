@@ -17,7 +17,7 @@ const Footer = () => {
         { to: "/contact", label: t("nav.contact") },
     ];
 
-    const blogSlugs = ["villa-vredestein", "geschiedenis", "restauratie", "omgeving", "over-ons", "bezoek-inspiratie"];
+    const blogSlugs = ["villa-vredestein", "geschiedenis", "restauratie", "omgeving", "het-boek", "carpe-diem-design", "over-ons", "bezoek-inspiratie"];
     const blogLinks = Array.isArray(blogs)
         ? blogSlugs.map((slug) => {
               const b = blogs.find((x) => x.slug === slug);
@@ -25,8 +25,8 @@ const Footer = () => {
           }).filter(Boolean)
         : [];
 
-    const col2 = blogLinks.slice(0, 3);
-    const col3 = blogLinks.slice(3);
+    const col2 = blogLinks.slice(0, 4);
+    const col3 = blogLinks.slice(4);
 
     return (
         <footer className="site-footer" aria-label="Sitefooter">
