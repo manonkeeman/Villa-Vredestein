@@ -54,7 +54,7 @@ const Login = () => {
     const { login, user: authUser, reloadUser } = useAuth();
 
     const API_BASE = useMemo(
-        () => (import.meta?.env?.VITE_API_URL || "http://localhost:8080").replace(/\/$/, ""),
+        () => (import.meta?.env?.VITE_API_BASE_URL || "http://localhost:8080").replace(/\/$/, ""),
         []
     );
     const isDev = Boolean(import.meta?.env?.DEV);
