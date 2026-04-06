@@ -20,6 +20,7 @@ import RegisterUser from "./Pages/Auth/RegisterUser.jsx";
 import StudentDashboard from "./Pages/Dashboard/StudentDashboard.jsx";
 import AdminDashboard from "./Pages/Dashboard/AdminDashboard.jsx";
 import CleaningDashboard from "./Pages/Dashboard/CleaningDashboard.jsx";
+import ProfilePage from "./Pages/Dashboard/ProfilePage.jsx";
 
 function App() {
     return (
@@ -53,6 +54,15 @@ function App() {
                         element={
                             <ProtectedRoute allowedRoles={["ROLE_STUDENT"]}>
                                 <StudentDashboard />
+                            </ProtectedRoute>
+                        }
+                    />
+
+                    <Route
+                        path="/student/profiel"
+                        element={
+                            <ProtectedRoute allowedRoles={["ROLE_STUDENT"]}>
+                                <ProfilePage />
                             </ProtectedRoute>
                         }
                     />
