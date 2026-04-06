@@ -93,8 +93,7 @@
     gap: 0.45rem;
 }
 
-.footer-links a,
-.footer-links a.active {
+.footer-links a {
     font-size: 0.8rem;
     color: #777;
     text-decoration: none;
@@ -102,7 +101,8 @@
     line-height: 1.4;
 }
 
-.footer-links a:hover {
+.footer-links a:hover,
+.footer-links a.active {
     color: #fcbc2d;
 }
 
@@ -205,5 +205,20 @@ a.footer-address-row:hover {
 
     .footer-bottom p {
         font-size: 0.7rem;
+    }
+}
+
+/* Small mobile */
+@media (max-width: 380px) {
+    .footer-inner {
+        padding: 1.5rem 0.75rem 1rem;
+    }
+
+    .footer-links-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-logo {
+        height: 56px;
     }
 }
