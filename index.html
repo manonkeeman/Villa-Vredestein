@@ -85,5 +85,13 @@
 <body>
 <div id="root"></div>
 <script type="module" src="/src/main.jsx"></script>
+
+<!-- Netlify form detectie: bot leest statische HTML, niet React bundles -->
+<form name="contact" netlify netlify-honeypot="bot-field" hidden>
+  <input type="text" name="naam" />
+  <input type="email" name="email" />
+  <input type="text" name="subject" />
+  <textarea name="bericht"></textarea>
+</form>
 </body>
 </html>
