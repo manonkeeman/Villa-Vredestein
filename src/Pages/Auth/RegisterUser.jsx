@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FiEye, FiEyeOff } from "react-icons/fi";
+import { Helmet } from "react-helmet-async";
 
 import { useAuth } from "./AuthContext.jsx";
 import Button from "../../Components/Buttons/Button.jsx";
@@ -126,6 +127,10 @@ export default function RegisterUser() {
 
     return (
         <div className="register-wrapper">
+            <Helmet>
+                <title>Registreren — Villa Vredestein</title>
+                <meta name="robots" content="noindex, nofollow" />
+            </Helmet>
             <div className="register-box">
                 <h1 className="register-title">Registreren</h1>
 
