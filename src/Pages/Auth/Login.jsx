@@ -176,7 +176,10 @@ const Login = () => {
                 <div className="login-card">
                     <img src="/VVLogo.png" alt="Villa Vredestein" className="login-logo" />
                     <h1 className="login-title">Welkom terug</h1>
-                    <p className="login-sub">Inloggen als bewoner, schoonmaak of beheer.</p>
+                    <p className="login-sub">
+                        Inloggen is alleen mogelijk als bewoner, gast of eigenaar van Villa Vredestein.
+                        Heb je een account ontvangen? Kies hieronder je rol en log in met je gegevens.
+                    </p>
 
                     {!showResetPanel ? (
                         <form onSubmit={handleSubmit} noValidate>
