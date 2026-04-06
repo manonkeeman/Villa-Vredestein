@@ -1,0 +1,233 @@
+.profile-page {
+    display: flex;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    gap: 2rem;
+}
+
+.profile-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* ── Photo section ── */
+.profile-photo-section {
+    background-color: #1a1a1a;
+    border: 1px solid #fcbc2d;
+    border-radius: 10px;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #000;
+    border: 2px solid #fcbc2d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.profile-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-avatar svg {
+    font-size: 40px;
+    color: #fcbc2d;
+}
+
+.photo-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.photo-actions p {
+    color: #aaa;
+    font-size: 13px;
+    margin: 0 0 0.5rem;
+}
+
+.photo-upload-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #111;
+    border: 1px solid #fcbc2d;
+    border-radius: 8px;
+    color: white;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    width: fit-content;
+}
+
+.photo-upload-label:hover {
+    background-color: #fcbc2d;
+    color: black;
+}
+
+.photo-upload-label input {
+    display: none;
+}
+
+.btn-delete-photo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: transparent;
+    border: 1px solid #888;
+    border-radius: 8px;
+    color: #aaa;
+    font-size: 13px;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+    width: fit-content;
+}
+
+.btn-delete-photo:hover {
+    border-color: #e74c3c;
+    color: #e74c3c;
+}
+
+/* ── Form section ── */
+.profile-form-section {
+    background-color: #1a1a1a;
+    border: 1px solid #fcbc2d;
+    border-radius: 10px;
+    padding: 2rem;
+}
+
+.profile-form-section h2 {
+    color: #fcbc2d;
+    font-size: 1.1rem;
+    margin: 0 0 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.profile-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    color: #ccc;
+    font-size: 12.5px;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+    background-color: #111;
+    border: 1px solid #444;
+    border-radius: 8px;
+    color: white;
+    padding: 0.55rem 0.8rem;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    transition: border-color 0.2s;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #fcbc2d;
+}
+
+.form-group select option {
+    background-color: #111;
+    color: white;
+}
+
+.form-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.btn-save {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.4rem;
+    background-color: #fcbc2d;
+    border: none;
+    border-radius: 8px;
+    color: black;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn-save:hover {
+    background-color: #e0a820;
+}
+
+.btn-save:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.form-feedback {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.form-feedback.success { color: #2ecc71; }
+.form-feedback.error   { color: #e74c3c; }
+
+@media (max-width: 768px) {
+    .profile-page {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-photo-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .profile-form {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group.full-width {
+        grid-column: 1;
+    }
+}
