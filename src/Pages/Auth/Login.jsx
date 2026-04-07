@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext.jsx";
 import { FiEye, FiEyeOff, FiMail, FiLock } from "react-icons/fi";
@@ -67,6 +67,21 @@ const Login = () => {
     const [submitting, setSubmitting] = useState(false);
     const [loginMode, setLoginMode] = useState("STUDENT");
     const [room, setRoom] = useState("");
+
+    const [backendReady, setBackendReady] = useState(false);
+    const [backendSlow, setBackendSlow] = useState(false);
+    const warmupDone = useRef(false);
+
+    useEffect(() => {
+        if (warmupDone.current) return;
+        warmupDone.current = true;
+        const slowTimer = setTimeout(() => setBackendSlow(true), 4000);
+        fetch(`${API_BASE}/actuator/health`, { signal: AbortSignal.timeout(60000) })
+            .then(() => { setBackendReady(true); setBackendSlow(false); })
+            .catch(() => { setBackendReady(true); setBackendSlow(false); })
+            .finally(() => clearTimeout(slowTimer));
+        return () => clearTimeout(slowTimer);
+    }, [API_BASE]);
 
     const [showResetPanel, setShowResetPanel] = useState(false);
     const [resetEmail, setResetEmail] = useState("");
@@ -185,6 +200,12 @@ const Login = () => {
                         Inloggen is alleen mogelijk als bewoner, gast of eigenaar van Villa Vredestein.
                         Heb je een account ontvangen? Kies hieronder je rol en log in met je gegevens.
                     </p>
+
+                    {backendSlow && !backendReady && (
+                        <p className="login-error" style={{ background: "#1a1a1a", color: "#fcbc2d", border: "1px solid #fcbc2d" }}>
+                            Server wordt opgestart… even geduld (±30 sec).
+                        </p>
+                    )}
 
                     {!showResetPanel ? (
                         <form onSubmit={handleSubmit} noValidate>
