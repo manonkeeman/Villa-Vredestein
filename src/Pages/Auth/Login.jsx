@@ -52,7 +52,7 @@ const ROOM_OPTIONS = ["Japan", "Argentinië", "Thailand", "Italië", "Frankrijk"
 const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const { login, user: authUser, reloadUser } = useAuth();
+    const { login, user: authUser } = useAuth();
 
     const API_BASE = useMemo(
         () => (import.meta?.env?.VITE_API_BASE_URL || "http://localhost:8080").replace(/\/$/, ""),
@@ -147,9 +147,8 @@ const Login = () => {
             const success = await login(cleanEmail, password, { loginMode, room });
             if (!success) { setError("Ongeldige gegevens of geen toegang."); return; }
 
-            let user = authUser || safeParseUser();
-            try { const refreshed = await reloadUser?.(); if (refreshed) user = refreshed; } catch { /* ignore */ }
-            if (!user) user = safeParseUser();
+            // login() already called loadMe() internally, so localStorage is fresh
+            const user = safeParseUser();
 
             if (loginMode === "ADMIN" && !hasRole(user, "ADMIN")) { setError("Dit account is geen beheerder."); return; }
             if (loginMode === "CLEANER" && !hasRole(user, "CLEANER")) { setError("Dit account heeft geen schoonmaak-toegang."); return; }
