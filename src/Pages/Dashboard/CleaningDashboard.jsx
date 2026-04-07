@@ -31,7 +31,7 @@ const CleaningDashboard = () => {
                 <nav className="sidebar-nav">
                     <ul>
                         <li><Link to="#"><FiHome /> Dashboard</Link></li>
-                        <li><Link to="#"><FiClipboard /> Mijn taken</Link></li>
+                        <li><Link to="/schoonmaakschema"><FiClipboard /> Mijn taken</Link></li>
                         <li><Link to="#"><FiCheckSquare /> Voltooide taken</Link></li>
                         <li><Link to="#"><FiCalendar /> Planning</Link></li>
                         <li><Link to="#"><FiAlertCircle /> Meldingen</Link></li>
@@ -62,6 +62,9 @@ const CleaningDashboard = () => {
                         <h2><FiClipboard /> Taken deze week</h2>
                         <p>Je weekoverzicht met alle toegewezen schoonmaaktaken wordt hier getoond.</p>
                         <p>Vink taken af zodra ze zijn afgerond.</p>
+                        <Link to="/schoonmaakschema" style={{ marginTop: "0.75rem", display: "inline-block" }}>
+                            Bekijk schoonmaakschema →
+                        </Link>
                     </div>
                 </section>
 
