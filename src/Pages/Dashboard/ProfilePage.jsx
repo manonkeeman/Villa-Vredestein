@@ -66,6 +66,8 @@ export default function ProfilePage() {
                 phoneNumber:          res.data.phoneNumber          || "",
                 emergencyPhoneNumber: res.data.emergencyPhoneNumber || "",
                 studyOrWork:          res.data.studyOrWork          || "",
+                parentsAddress:       res.data.parentsAddress       || "",
+                favoriteMeal:         res.data.favoriteMeal         || "",
                 socialPreference:     res.data.socialPreference     || "",
                 mealPreference:       res.data.mealPreference       || "",
                 availabilityStatus:   res.data.availabilityStatus   || "",
@@ -95,6 +97,8 @@ export default function ProfilePage() {
                 phoneNumber:          form.phoneNumber          || null,
                 emergencyPhoneNumber: form.emergencyPhoneNumber || null,
                 studyOrWork:          form.studyOrWork          || null,
+                parentsAddress:       form.parentsAddress       || null,
+                favoriteMeal:         form.favoriteMeal         || null,
                 socialPreference:     form.socialPreference     || null,
                 mealPreference:       form.mealPreference       || null,
                 availabilityStatus:   form.availabilityStatus   || null,
@@ -265,6 +269,16 @@ export default function ProfilePage() {
                             <div className="form-group full-width">
                                 <label htmlFor="studyOrWork">Studie / werk</label>
                                 <input id="studyOrWork" name="studyOrWork" value={form.studyOrWork} onChange={handleChange} maxLength={100} />
+                            </div>
+
+                            <div className="form-group full-width">
+                                <label htmlFor="parentsAddress">Adres ouders / contactpersoon</label>
+                                <input id="parentsAddress" name="parentsAddress" value={form.parentsAddress} onChange={handleChange} maxLength={255} />
+                            </div>
+
+                            <div className="form-group full-width">
+                                <label htmlFor="favoriteMeal">Lievelingseten</label>
+                                <input id="favoriteMeal" name="favoriteMeal" value={form.favoriteMeal} onChange={handleChange} maxLength={100} />
                             </div>
 
                             <div className="form-group">
