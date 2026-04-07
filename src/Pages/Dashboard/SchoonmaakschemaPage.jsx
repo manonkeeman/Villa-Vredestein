@@ -23,11 +23,13 @@ const hasRole = (user, role) => {
     return roles.includes(normalized);
 };
 
-const getCurrentWeek = () => {
+// Backend uses a 4-week rotation cycle (1–4), not the full ISO week number
+const getCurrentRotationWeek = () => {
     const now = new Date();
-    const jan1 = new Date(now.getFullYear(), 0, 1);
-    const dayOfYear = Math.floor((now - jan1) / 86400000) + 1;
-    return Math.ceil(dayOfYear / 7);
+    const jan4 = new Date(now.getFullYear(), 0, 4);
+    const dayOfYear = Math.round((now - jan4) / 86400000) + jan4.getDay();
+    const isoWeek = Math.floor(dayOfYear / 7) + 1;
+    return ((isoWeek - 1) % 4) + 1;
 };
 
 // ─── Sidebars ───────────────────────────────────────────────────────────────
@@ -302,7 +304,7 @@ function CreateTaskForm({ weekNumber, onCreated }) {
 
     return (
         <form className="create-task-form" onSubmit={handleSubmit}>
-            <h4><FiPlus /> Nieuwe taak — week {weekNumber}</h4>
+            <h4><FiPlus /> Nieuwe taak — rotatieweek {weekNumber}</h4>
             {error && <p className="form-error">{error}</p>}
             <input
                 type="text"
@@ -339,7 +341,7 @@ export default function SchoonmaakschemaPage() {
     const [tasks, setTasks] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [weekNumber, setWeekNumber] = useState(getCurrentWeek());
+    const [weekNumber, setWeekNumber] = useState(getCurrentRotationWeek());
     const [contractFile, setContractFile] = useState(null);
 
     if (!isLoggedIn) return <Navigate to="/login" replace />;
@@ -441,18 +443,16 @@ export default function SchoonmaakschemaPage() {
                     <div className="cleaning-week-nav">
                         <button
                             className="week-nav-btn"
-                            onClick={() => setWeekNumber(w => Math.max(1, w - 1))}
-                            disabled={weekNumber <= 1}
-                            aria-label="Vorige week"
+                            onClick={() => setWeekNumber(w => w === 1 ? 4 : w - 1)}
+                            aria-label="Vorige rotatieweek"
                         >
                             <FiChevronLeft />
                         </button>
-                        <span className="week-label">Week {weekNumber}</span>
+                        <span className="week-label">Rotatieweek {weekNumber}</span>
                         <button
                             className="week-nav-btn"
-                            onClick={() => setWeekNumber(w => Math.min(53, w + 1))}
-                            disabled={weekNumber >= 53}
-                            aria-label="Volgende week"
+                            onClick={() => setWeekNumber(w => w === 4 ? 1 : w + 1)}
+                            aria-label="Volgende rotatieweek"
                         >
                             <FiChevronRight />
                         </button>
@@ -475,7 +475,7 @@ export default function SchoonmaakschemaPage() {
 
                 {!loading && !error && tasks.length === 0 && (
                     <div className="cleaning-status">
-                        Geen taken voor week {weekNumber}.
+                        Geen taken voor rotatieweek {weekNumber}.
                         {isAdmin && " Voeg een taak toe via de knop hieronder."}
                     </div>
                 )}
