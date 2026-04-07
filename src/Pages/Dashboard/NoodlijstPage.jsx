@@ -17,20 +17,11 @@ const hasRole = (user, role) => {
     return roles.includes(normalized);
 };
 
-const NOODRUMMERS = [
-    { situatie: "Brand / Ambulance / Politie",             nummer: "112",             opmerking: "Geef adres: Hoofdstraat 147, Villa Vredestein", icon: "🚨" },
-    { situatie: "Huisartsenpost regio Utrechtse Heuvelrug", nummer: "0900-1515",       opmerking: "Buiten kantooruren",                            icon: "🏥" },
-    { situatie: "Spoed tandarts Utrecht",                   nummer: "030-3037509",     opmerking: "Alleen bij acute pijn/trauma",                  icon: "🦷" },
-    { situatie: "Maxim Staal (beheerder)",                  nummer: "+31 6 25015299",  opmerking: "24/7 bereikbaar",                               icon: "🏠" },
-    { situatie: "Scholman Servicebedrijf (storingen)",      nummer: "030-6043073",     opmerking: "CV, verwarming, overstroming, lekkage",         icon: "🔧" },
-    { situatie: "Manon Keeman (noodcontact)",               nummer: "+31 6 24766568",  opmerking: "24/7 bereikbaar",                               icon: "👤" },
-];
-
 export default function NoodlijstPage() {
     const { isLoggedIn, logout, user: authUser } = useAuth();
     const [profile, setProfile] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [slow, setSlow]       = useState(false);
+    const [slow, setSlow] = useState(false);
 
     if (!isLoggedIn) return <Navigate to="/login" replace />;
 
@@ -50,6 +41,7 @@ export default function NoodlijstPage() {
                 <meta name="robots" content="noindex, nofollow" />
             </Helmet>
 
+            {/* ── Sidebar ── */}
             <aside className="dashboard-sidebar" aria-label="Navigatie zijbalk">
                 <header className="sidebar-profile">
                     <FiUser className="profile-icon" />
@@ -78,134 +70,200 @@ export default function NoodlijstPage() {
                 </nav>
             </aside>
 
-            <main className="dashboard-main">
+            {/* ── Main infographic ── */}
+            <main className="dashboard-main nood-main">
 
-                {/* Alert banner */}
-                <div className="nood-alert">
-                    🚨 Bij calamiteiten: blijf rustig, volg deze stappen en waarschuw direct de juiste persoon.
+                {/* Hero alert */}
+                <div className="nood-hero">
+                    <span className="nood-hero-icon">🚨</span>
+                    <div>
+                        <strong>Bij calamiteiten</strong>
+                        <p>Blijf rustig · Volg deze stappen · Waarschuw direct de juiste persoon</p>
+                    </div>
                 </div>
 
-                {/* 1. Noodnummers */}
-                <section className="nood-section">
-                    <h2 className="nood-section-title">1. Noodnummers</h2>
-                    <div className="nood-table">
-                        {NOODRUMMERS.map(({ situatie, nummer, opmerking, icon }) => (
-                            <div key={nummer} className="nood-row">
-                                <span className="nood-icon">{icon}</span>
-                                <span className="nood-situatie">{situatie}</span>
-                                <a href={`tel:${nummer.replace(/[^0-9+]/g, "")}`} className="nood-tel">
-                                    <FiPhone /> {nummer}
-                                </a>
-                                <span className="nood-opmerking">{opmerking}</span>
-                            </div>
-                        ))}
+                {/* ── 1. NOODNUMMERS ── */}
+                <section className="nood-block nood-block--red">
+                    <div className="nood-block-header">
+                        <span className="nood-block-icon">📞</span>
+                        <h2>Noodnummers</h2>
+                        <span className="nood-block-sub">Altijd bellen bij direct gevaar</span>
                     </div>
-                </section>
 
-                {/* Persoonlijk noodnummer */}
-                <section className="nood-section">
-                    <h2 className="nood-section-title">Jouw noodnummer</h2>
-                    {loading ? (
-                        <p className="nood-loading">{slow ? "Server wordt opgestart… even geduld." : "Laden…"}</p>
-                    ) : profile?.emergencyPhoneNumber ? (
-                        <div className="nood-row">
-                            <span className="nood-icon">👤</span>
-                            <span className="nood-situatie">Jouw opgegeven noodnummer</span>
-                            <a href={`tel:${profile.emergencyPhoneNumber.replace(/[^0-9+]/g, "")}`} className="nood-tel">
-                                <FiPhone /> {profile.emergencyPhoneNumber}
-                            </a>
-                            <span className="nood-opmerking">
-                                <Link to="/student/profiel">Wijzigen via profiel</Link>
-                            </span>
-                        </div>
-                    ) : (
-                        <p className="nood-empty">
-                            Je hebt nog geen noodnummer ingesteld.{" "}
-                            <Link to="/student/profiel">Voeg het toe via Mijn profiel →</Link>
-                        </p>
-                    )}
-                </section>
+                    {/* 112 hero card */}
+                    <a href="tel:112" className="nood-sos-card">
+                        <span className="nood-sos-label">Brand · Ambulance · Politie</span>
+                        <span className="nood-sos-number">112</span>
+                        <span className="nood-sos-hint">Hoofdstraat 147, Villa Vredestein</span>
+                    </a>
 
-                {/* 2. Brandveiligheid */}
-                <section className="nood-section">
-                    <h2 className="nood-section-title">2. Brandveiligheid</h2>
-                    <ul className="nood-info-list">
-                        <li>🧯 Blusmiddelen: brandblusser en branddeken in de keuken en op elke verdieping naast de trap.</li>
-                        <li>🔔 Rookmelders: elke gang heeft een werkende rookmelder. Test maandelijks.</li>
-                        <li>🚪 Nooduitgangen: via hoofdingang, achterdeur en noodtrap aan tuinzijde.</li>
-                        <li>📍 Verzamelpunt: parkeerplaats bij de grote poort.</li>
-                        <li>⚠️ Gasgeur? Geen lichtschakelaars gebruiken, ramen open, bel direct 112 en beheerder.</li>
-                    </ul>
-                </section>
-
-                {/* 3. Stroom- en waterschade */}
-                <section className="nood-section">
-                    <h2 className="nood-section-title">3. Stroom- en waterschade</h2>
-                    <ul className="nood-info-list">
-                        <li>⚡ Controleer eerst de stroomkast (zekeringen en aardlekschakelaar — 1e verdieping).</li>
-                        <li>💧 Bij waterlekkage: hoofdwaterkraan afsluiten (locatie: badkamer beneden in het gat).</li>
-                        <li>📱 Meld altijd direct via WhatsApp aan de beheerder.</li>
-                        <li>🔌 Gebruik geen elektrische apparaten bij vocht of overstroming.</li>
-                    </ul>
-                </section>
-
-                {/* 4. Medische noodgevallen */}
-                <section className="nood-section">
-                    <h2 className="nood-section-title">4. Medische noodgevallen</h2>
-                    <ul className="nood-info-list">
-                        <li>🚨 Bel 112 bij levensgevaar of bewusteloosheid.</li>
-                        <li>❤️ AED locatie: Dierenartspraktijk Hoofdstraat 123.</li>
-                        <li>🩹 Kleine verwondingen: EHBO-koffer in de keuken.</li>
-                        <li>📋 Meld elk ongeval aan de beheerder en noteer datum/tijd.</li>
-                    </ul>
-                </section>
-
-                {/* 5. Toegang & Sleutels */}
-                <section className="nood-section">
-                    <h2 className="nood-section-title">5. Toegang & Sleutels</h2>
-                    <ul className="nood-info-list">
-                        <li>🔑 Toegang via sleutel + app (toegewezen bij contract).</li>
-                        <li>📄 Je wordt toegevoegd en verwijderd zodra je contract start/eindigt.</li>
-                        <li>🔒 Reservesleutel in vergrendeld kastje naast de zij-deur — code via beheerder.</li>
-                        <li>🚫 Laat niemand binnen die je niet kent of die geen toestemming heeft.</li>
-                    </ul>
-                </section>
-
-                {/* 6. Geluids- en nachtregels */}
-                <section className="nood-section">
-                    <h2 className="nood-section-title">6. Geluids- en nachtregels</h2>
-                    <ul className="nood-info-list">
-                        <li>🔇 Stilteperiode: 22:00 – 07:00 uur (geen muziek, harde stemmen of kletteren met deuren).</li>
-                        <li>⚠️ Respecteer de rust van andere bewoners en buren; overtreding = officiële waarschuwing.</li>
-                    </ul>
-                </section>
-
-                {/* 7. Noodchecklijst */}
-                <section className="nood-section">
-                    <h2 className="nood-section-title">7. Noodchecklijst <span className="nood-badge">maandelijks door beheerder</span></h2>
-                    <div className="nood-checklist">
+                    {/* overige nummers */}
+                    <div className="nood-num-grid">
                         {[
-                            "Rookmelders werken",
-                            "Blusdeken aanwezig",
-                            "EHBO-koffer compleet",
-                            "Vluchtroute vrij",
-                            "Noodverlichting werkt",
-                        ].map(item => (
-                            <div key={item} className="nood-check-item">
-                                <span className="nood-check-box">✓</span>
-                                <span>{item}</span>
+                            { label: "Huisartsenpost",       sub: "Buiten kantooruren",         num: "0900-1515",        icon: "🏥" },
+                            { label: "Spoed tandarts",        sub: "Acute pijn / trauma",        num: "030-3037509",      icon: "🦷" },
+                            { label: "Maxim Staal",           sub: "Beheerder · 24/7",           num: "+31 6 25015299",   icon: "🏠" },
+                            { label: "Scholman Servicebedrijf", sub: "CV · Water · Lekkage",    num: "030-6043073",      icon: "🔧" },
+                            { label: "Manon Keeman",          sub: "Noodcontact · 24/7",         num: "+31 6 24766568",   icon: "👤" },
+                        ].map(({ label, sub, num, icon }) => (
+                            <a key={num} href={`tel:${num.replace(/[^0-9+]/g, "")}`} className="nood-num-card">
+                                <span className="nood-num-icon">{icon}</span>
+                                <span className="nood-num-label">{label}</span>
+                                <span className="nood-num-sub">{sub}</span>
+                                <span className="nood-num-number"><FiPhone /> {num}</span>
+                            </a>
+                        ))}
+
+                        {/* Persoonlijk noodnummer */}
+                        {loading ? (
+                            <div className="nood-num-card nood-num-card--personal">
+                                <span className="nood-num-icon">👤</span>
+                                <span className="nood-num-label">Jouw noodnummer</span>
+                                <span className="nood-num-sub">{slow ? "Server start op…" : "Laden…"}</span>
+                            </div>
+                        ) : profile?.emergencyPhoneNumber ? (
+                            <a href={`tel:${profile.emergencyPhoneNumber.replace(/[^0-9+]/g, "")}`} className="nood-num-card nood-num-card--personal">
+                                <span className="nood-num-icon">🆘</span>
+                                <span className="nood-num-label">Jouw noodnummer</span>
+                                <span className="nood-num-sub"><Link to="/student/profiel" onClick={e => e.stopPropagation()}>Wijzigen</Link></span>
+                                <span className="nood-num-number"><FiPhone /> {profile.emergencyPhoneNumber}</span>
+                            </a>
+                        ) : (
+                            <Link to="/student/profiel" className="nood-num-card nood-num-card--empty">
+                                <span className="nood-num-icon">➕</span>
+                                <span className="nood-num-label">Jouw noodnummer</span>
+                                <span className="nood-num-sub">Nog niet ingesteld</span>
+                                <span className="nood-num-number">Toevoegen via profiel →</span>
+                            </Link>
+                        )}
+                    </div>
+                </section>
+
+                {/* ── 2 + 3. BRAND & WATER (2-koloms) ── */}
+                <div className="nood-two-col">
+                    <section className="nood-block nood-block--orange">
+                        <div className="nood-block-header">
+                            <span className="nood-block-icon">🔥</span>
+                            <h2>Brandveiligheid</h2>
+                        </div>
+                        <ul className="nood-icon-list">
+                            <li><span>🧯</span><span>Blusser & deken in keuken + elke verdieping naast de trap</span></li>
+                            <li><span>🔔</span><span>Rookmelders in elke gang — test maandelijks</span></li>
+                            <li><span>🚪</span><span>Nooduitgangen: hoofdingang, achterdeur, noodtrap tuinzijde</span></li>
+                            <li><span>📍</span><span>Verzamelpunt: parkeerplaats bij de grote poort</span></li>
+                            <li><span>⚠️</span><span>Gasgeur? Geen licht · ramen open · bel 112 + beheerder</span></li>
+                        </ul>
+                    </section>
+
+                    <section className="nood-block nood-block--blue">
+                        <div className="nood-block-header">
+                            <span className="nood-block-icon">💧</span>
+                            <h2>Stroom & Water</h2>
+                        </div>
+                        <ul className="nood-icon-list">
+                            <li><span>⚡</span><span>Stroomkast: zekeringen & aardlek — 1e verdieping</span></li>
+                            <li><span>🚿</span><span>Hoofdwaterkraan afsluiten: badkamer beneden in het gat</span></li>
+                            <li><span>📱</span><span>Meld direct via WhatsApp aan beheerder</span></li>
+                            <li><span>🔌</span><span>Geen elektrische apparaten bij vocht of overstroming</span></li>
+                        </ul>
+                    </section>
+                </div>
+
+                {/* ── 4. MEDISCH ── */}
+                <section className="nood-block nood-block--green">
+                    <div className="nood-block-header">
+                        <span className="nood-block-icon">❤️</span>
+                        <h2>Medische noodgevallen</h2>
+                    </div>
+                    <div className="nood-steps">
+                        {[
+                            { step: "1", icon: "🚨", text: "Bel 112 bij levensgevaar of bewusteloosheid" },
+                            { step: "2", icon: "❤️", text: "AED: Dierenartspraktijk Hoofdstraat 123" },
+                            { step: "3", icon: "🩹", text: "EHBO-koffer: keuken" },
+                            { step: "4", icon: "📋", text: "Meld aan beheerder · noteer datum & tijd" },
+                        ].map(({ step, icon, text }) => (
+                            <div key={step} className="nood-step">
+                                <span className="nood-step-num">{step}</span>
+                                <span className="nood-step-icon">{icon}</span>
+                                <span className="nood-step-text">{text}</span>
                             </div>
                         ))}
                     </div>
                 </section>
 
-                {/* 8. Overige informatie */}
-                <section className="nood-section">
-                    <h2 className="nood-section-title">8. Overige informatie</h2>
-                    <ul className="nood-info-list">
-                        <li>💊 Dichtstbijzijnde apotheek: Servicepunt De Bosrand – Traaij 2.</li>
-                        <li>🏥 Dichtstbijzijnde ziekenhuis: Diakonessenhuis Zeist, Jagersingel 1.</li>
-                    </ul>
+                {/* ── 5 + 6. TOEGANG & NACHT (2-koloms) ── */}
+                <div className="nood-two-col">
+                    <section className="nood-block nood-block--yellow">
+                        <div className="nood-block-header">
+                            <span className="nood-block-icon">🔑</span>
+                            <h2>Toegang & Sleutels</h2>
+                        </div>
+                        <ul className="nood-icon-list">
+                            <li><span>🔑</span><span>Toegang via sleutel + app (bij contract)</span></li>
+                            <li><span>📄</span><span>Account start & eindigt met je contract</span></li>
+                            <li><span>🔒</span><span>Reservesleutel: kastje naast zij-deur · code via beheerder</span></li>
+                            <li><span>🚫</span><span>Laat niemand binnen zonder toestemming</span></li>
+                        </ul>
+                    </section>
+
+                    <section className="nood-block nood-block--purple">
+                        <div className="nood-block-header">
+                            <span className="nood-block-icon">🔇</span>
+                            <h2>Nachtregels</h2>
+                        </div>
+                        <ul className="nood-icon-list">
+                            <li><span>🌙</span><span>Stilteperiode: <strong>22:00 – 07:00</strong></span></li>
+                            <li><span>🎵</span><span>Geen muziek · harde stemmen · deuren klapperen</span></li>
+                            <li><span>⚠️</span><span>Overtreding = officiële waarschuwing</span></li>
+                        </ul>
+                    </section>
+                </div>
+
+                {/* ── 7. NOODCHECKLIJST ── */}
+                <section className="nood-block nood-block--gray">
+                    <div className="nood-block-header">
+                        <span className="nood-block-icon">✅</span>
+                        <h2>Noodchecklijst <span className="nood-badge">maandelijks · beheerder</span></h2>
+                    </div>
+                    <div className="nood-checklist-grid">
+                        {[
+                            { icon: "🔔", label: "Rookmelders werken" },
+                            { icon: "🧯", label: "Blusdeken aanwezig" },
+                            { icon: "🩹", label: "EHBO-koffer compleet" },
+                            { icon: "🚪", label: "Vluchtroute vrij" },
+                            { icon: "💡", label: "Noodverlichting werkt" },
+                        ].map(({ icon, label }) => (
+                            <div key={label} className="nood-check-tile">
+                                <span className="nood-check-tile-icon">{icon}</span>
+                                <span className="nood-check-tile-label">{label}</span>
+                                <span className="nood-check-tile-mark">✓</span>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                {/* ── 8. OVERIG ── */}
+                <section className="nood-block nood-block--dark">
+                    <div className="nood-block-header">
+                        <span className="nood-block-icon">📍</span>
+                        <h2>Overige informatie</h2>
+                    </div>
+                    <div className="nood-location-cards">
+                        <div className="nood-loc-card">
+                            <span>💊</span>
+                            <div>
+                                <strong>Apotheek</strong>
+                                <p>Servicepunt De Bosrand – Traaij 2</p>
+                            </div>
+                        </div>
+                        <div className="nood-loc-card">
+                            <span>🏥</span>
+                            <div>
+                                <strong>Ziekenhuis</strong>
+                                <p>Diakonessenhuis Zeist – Jagersingel 1</p>
+                            </div>
+                        </div>
+                    </div>
                     <p className="nood-footer-text">
                         Villa Vredestein – Veiligheid is van ons allemaal. Blijf alert, handel rustig en gebruik je gezonde verstand.
                     </p>
