@@ -180,9 +180,28 @@ export default function NoodlijstPage() {
                     </ul>
                 </section>
 
+                {/* 7. Noodchecklijst */}
+                <section className="nood-section">
+                    <h2 className="nood-section-title">7. Noodchecklijst <span className="nood-badge">maandelijks door beheerder</span></h2>
+                    <div className="nood-checklist">
+                        {[
+                            "Rookmelders werken",
+                            "Blusdeken aanwezig",
+                            "EHBO-koffer compleet",
+                            "Vluchtroute vrij",
+                            "Noodverlichting werkt",
+                        ].map(item => (
+                            <div key={item} className="nood-check-item">
+                                <span className="nood-check-box">✓</span>
+                                <span>{item}</span>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
                 {/* 8. Overige informatie */}
                 <section className="nood-section">
-                    <h2 className="nood-section-title">7. Overige informatie</h2>
+                    <h2 className="nood-section-title">8. Overige informatie</h2>
                     <ul className="nood-info-list">
                         <li>💊 Dichtstbijzijnde apotheek: Servicepunt De Bosrand – Traaij 2.</li>
                         <li>🏥 Dichtstbijzijnde ziekenhuis: Diakonessenhuis Zeist, Jagersingel 1.</li>
