@@ -1,0 +1,92 @@
+.nood-card .dashboard-news-content {
+    padding: 1.5rem;
+}
+
+.nood-number {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #fcbc2d;
+    margin: 0.5rem 0;
+}
+
+.nood-sub {
+    font-size: 13px;
+    color: #aaa;
+    margin-top: 0.25rem;
+}
+
+.nood-sub a,
+.nood-empty a {
+    color: #fcbc2d;
+    text-decoration: underline;
+}
+
+.nood-empty {
+    font-size: 14px;
+    color: #aaa;
+}
+
+.nood-loading {
+    font-size: 14px;
+    color: #fcbc2d;
+}
+
+.nood-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.75rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.nood-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0.8rem;
+    background-color: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+    font-size: 13.5px;
+}
+
+.nood-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.nood-label {
+    flex: 1;
+    color: #ccc;
+}
+
+.nood-tel {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: #fcbc2d;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.2s;
+}
+
+.nood-tel:hover {
+    color: white;
+}
+
+@media (max-width: 600px) {
+    .nood-item {
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+
+    .nood-tel {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
