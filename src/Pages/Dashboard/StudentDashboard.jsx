@@ -6,7 +6,6 @@ import {
     FiLogOut, FiHome, FiAlertCircle, FiFileText, FiCalendar,
     FiUser, FiUsers, FiDollarSign, FiClipboard, FiBookOpen, FiShield,
 } from "react-icons/fi";
-import api from "../../Helpers/AxiosHelper.js";
 import "./StudentDashboard.css";
 import "../../Styles/Global.css";
 
@@ -28,10 +27,8 @@ const StudentDashboard = () => {
     if (id && currentId && String(id) !== String(currentId)) return <Navigate to="/unauthorized" replace />;
 
     useEffect(() => {
-        api.get("/api/users/me")
-            .then(res => setContractFile(res.data.contractFile || null))
-            .catch(() => {});
-    }, []);
+        setContractFile(user?.contractFile || null);
+    }, [user?.contractFile]);
 
     return (
         <div className="StudentDashboard">
@@ -52,7 +49,7 @@ const StudentDashboard = () => {
                         <li><Link to="/student/profiel"><FiUser /> Mijn profiel</Link></li>
                         <li><Link to="/student/noodlijst"><FiAlertCircle /> Noodlijst</Link></li>
                         <li><Link to="/student/huisregels"><FiFileText /> Huisregels</Link></li>
-                        <li><Link to="#"><FiClipboard /> Schoonmaakschema</Link></li>
+                        <li><Link to="/schoonmaakschema"><FiClipboard /> Schoonmaakschema</Link></li>
                         <li><Link to="#"><FiDollarSign /> Betalingen</Link></li>
                         <li>
                             {contractFile

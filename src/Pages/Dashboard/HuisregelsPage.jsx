@@ -50,7 +50,7 @@ export default function HuisregelsPage() {
                         <li><Link to="/student/profiel"><FiUser /> Mijn profiel</Link></li>
                         <li><Link to="/student/noodlijst"><FiAlertCircle /> Noodlijst</Link></li>
                         <li><Link to="/student/huisregels" className="active"><FiFileText /> Huisregels</Link></li>
-                        <li><Link to="#"><FiClipboard /> Schoonmaakschema</Link></li>
+                        <li><Link to="/schoonmaakschema"><FiClipboard /> Schoonmaakschema</Link></li>
                         <li><Link to="#"><FiDollarSign /> Betalingen</Link></li>
                         <li>
                             {contractFile

@@ -185,24 +185,31 @@ export const AuthProvider = ({ children }) => {
         const storedUser = safeJsonParse(localStorage.getItem(USER_KEY));
 
         const bootstrap = async () => {
-            try {
-                if (!token) {
-                    setUser(null);
-                    return;
-                }
-
-                if (isTokenExpired(token)) {
-                    logout();
-                    return;
-                }
-
-                axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-
-                if (storedUser) setUser(storedUser);
-
-                await loadMe();
-            } finally {
+            if (!token) {
+                setUser(null);
                 setLoading(false);
+                return;
+            }
+
+            if (isTokenExpired(token)) {
+                logout();
+                return;
+            }
+
+            axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+
+            if (storedUser) {
+                // Render immediately with cached data, refresh silently in background
+                setUser(storedUser);
+                setLoading(false);
+                loadMe(); // fire-and-forget: updates context when response arrives
+            } else {
+                // First login: must wait for user data before rendering
+                try {
+                    await loadMe();
+                } finally {
+                    setLoading(false);
+                }
             }
         };
 

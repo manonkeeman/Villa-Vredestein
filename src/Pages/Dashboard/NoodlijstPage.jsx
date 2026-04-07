@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Helmet } from "react-helmet-async";
 import { Navigate, Link } from "react-router-dom";
 import { useAuth } from "../Auth/AuthContext.jsx";
@@ -6,7 +6,6 @@ import {
     FiLogOut, FiHome, FiAlertCircle, FiFileText, FiCalendar,
     FiUser, FiUsers, FiDollarSign, FiClipboard, FiShield, FiPhone,
 } from "react-icons/fi";
-import api from "../../Helpers/AxiosHelper.js";
 import "./StudentDashboard.css";
 import "./NoodlijstPage.css";
 import "../../Styles/Global.css";
@@ -19,20 +18,13 @@ const hasRole = (user, role) => {
 
 export default function NoodlijstPage() {
     const { isLoggedIn, logout, user: authUser } = useAuth();
-    const [profile, setProfile] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [slow, setSlow] = useState(false);
+
+    // All user data (contractFile, emergencyPhoneNumber) is already in the
+    // auth context — no extra API call needed.
+    const profile = authUser;
+    const loading = false;
 
     if (!isLoggedIn) return <Navigate to="/login" replace />;
-
-    useEffect(() => {
-        const t = setTimeout(() => setSlow(true), 4000);
-        api.get("/api/users/me")
-            .then(res => setProfile(res.data))
-            .catch(() => setProfile({}))
-            .finally(() => { clearTimeout(t); setSlow(false); setLoading(false); });
-        return () => clearTimeout(t);
-    }, []);
 
     return (
         <div className="StudentDashboard">
@@ -53,7 +45,7 @@ export default function NoodlijstPage() {
                         <li><Link to="/student/profiel"><FiUser /> Mijn profiel</Link></li>
                         <li><Link to="/student/noodlijst" className="active"><FiAlertCircle /> Noodlijst</Link></li>
                         <li><Link to="/student/huisregels"><FiFileText /> Huisregels</Link></li>
-                        <li><Link to="#"><FiClipboard /> Schoonmaakschema</Link></li>
+                        <li><Link to="/schoonmaakschema"><FiClipboard /> Schoonmaakschema</Link></li>
                         <li><Link to="#"><FiDollarSign /> Betalingen</Link></li>
                         <li>
                             {profile?.contractFile
@@ -124,7 +116,7 @@ export default function NoodlijstPage() {
                             <div className="nood-num-card nood-num-card--personal">
                                 <span className="nood-num-icon">👤</span>
                                 <span className="nood-num-label">Jouw noodnummer</span>
-                                <span className="nood-num-sub">{slow ? "Server start op…" : "Laden…"}</span>
+                                <span className="nood-num-sub">Laden…</span>
                             </div>
                         ) : profile?.emergencyPhoneNumber ? (
                             <a href={`tel:${profile.emergencyPhoneNumber.replace(/[^0-9+]/g, "")}`} className="nood-num-card nood-num-card--personal">

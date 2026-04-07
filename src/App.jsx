@@ -23,6 +23,7 @@ import CleaningDashboard from "./Pages/Dashboard/CleaningDashboard.jsx";
 import ProfilePage from "./Pages/Dashboard/ProfilePage.jsx";
 import NoodlijstPage from "./Pages/Dashboard/NoodlijstPage.jsx";
 import HuisregelsPage from "./Pages/Dashboard/HuisregelsPage.jsx";
+import SchoonmaakschemaPage from "./Pages/Dashboard/SchoonmaakschemaPage.jsx";
 
 function App() {
     return (
@@ -101,6 +102,15 @@ function App() {
                         element={
                             <ProtectedRoute allowedRoles={["ROLE_CLEANER"]}>
                                 <CleaningDashboard />
+                            </ProtectedRoute>
+                        }
+                    />
+
+                    <Route
+                        path="/schoonmaakschema"
+                        element={
+                            <ProtectedRoute allowedRoles={["ROLE_STUDENT", "ROLE_ADMIN", "ROLE_CLEANER"]}>
+                                <SchoonmaakschemaPage />
                             </ProtectedRoute>
                         }
                     />
