@@ -1,86 +1,196 @@
-.nood-alert {
-    background-color: #1a0000;
+.nood-main {
+    gap: 1.25rem;
+}
+
+/* ── Hero alert ── */
+.nood-hero {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: linear-gradient(135deg, #2a0000, #1a0000);
     border: 1px solid #e74c3c;
+    border-left: 5px solid #e74c3c;
     border-radius: 10px;
-    color: #e74c3c;
-    font-weight: 600;
-    font-size: 14px;
     padding: 1rem 1.25rem;
-}
-
-.nood-section {
-    background-color: #1a1a1a;
-    border: 1px solid #fcbc2d;
-    border-radius: 10px;
-    padding: 1.5rem;
-}
-
-.nood-section-title {
-    color: #fcbc2d;
-    font-size: 1rem;
-    font-weight: 700;
-    margin: 0 0 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-/* ── Nummers tabel ── */
-.nood-table {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.nood-row {
-    display: grid;
-    grid-template-columns: 2rem 1fr auto auto;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.65rem 0.8rem;
-    background-color: #111;
-    border: 1px solid #333;
-    border-radius: 8px;
-    font-size: 13.5px;
-}
-
-.nood-icon {
-    font-size: 1.1rem;
-    text-align: center;
-}
-
-.nood-situatie {
-    color: #ddd;
-}
-
-.nood-tel {
-    display: flex;
-    align-items: center;
-    gap: 0.35rem;
-    color: #fcbc2d;
-    font-weight: 700;
-    text-decoration: none;
-    white-space: nowrap;
-    transition: color 0.2s;
-}
-
-.nood-tel:hover {
     color: white;
 }
 
-.nood-opmerking {
-    color: #888;
+.nood-hero-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.nood-hero strong {
+    display: block;
+    color: #e74c3c;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.nood-hero p {
+    margin: 0.2rem 0 0;
+    font-size: 13px;
+    color: #ccc;
+}
+
+/* ── Block base ── */
+.nood-block {
+    border-radius: 12px;
+    padding: 1.25rem;
+    border: 1px solid transparent;
+}
+
+.nood-block-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+}
+
+.nood-block-header h2 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.nood-block-icon {
+    font-size: 1.3rem;
+}
+
+.nood-block-sub {
     font-size: 12px;
-    text-align: right;
+    color: #aaa;
+    margin-left: auto;
 }
 
-.nood-opmerking a {
+/* ── Block color themes ── */
+.nood-block--red    { background: #1a0505; border-color: #c0392b; }
+.nood-block--orange { background: #1a0e00; border-color: #e67e22; }
+.nood-block--blue   { background: #00101a; border-color: #2980b9; }
+.nood-block--green  { background: #001a08; border-color: #27ae60; }
+.nood-block--yellow { background: #1a1500; border-color: #f1c40f; }
+.nood-block--purple { background: #0e0017; border-color: #8e44ad; }
+.nood-block--gray   { background: #111;    border-color: #555; }
+.nood-block--dark   { background: #111;    border-color: #fcbc2d; }
+
+.nood-block--red    .nood-block-header h2 { color: #e74c3c; }
+.nood-block--orange .nood-block-header h2 { color: #e67e22; }
+.nood-block--blue   .nood-block-header h2 { color: #3498db; }
+.nood-block--green  .nood-block-header h2 { color: #2ecc71; }
+.nood-block--yellow .nood-block-header h2 { color: #f1c40f; }
+.nood-block--purple .nood-block-header h2 { color: #9b59b6; }
+.nood-block--gray   .nood-block-header h2 { color: #aaa; }
+.nood-block--dark   .nood-block-header h2 { color: #fcbc2d; }
+
+/* ── SOS card (112) ── */
+.nood-sos-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #c0392b, #e74c3c);
+    border-radius: 12px;
+    padding: 1.25rem;
+    text-decoration: none;
+    text-align: center;
+    margin-bottom: 1rem;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 0 20px rgba(231, 76, 60, 0.4);
+}
+
+.nood-sos-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 30px rgba(231, 76, 60, 0.6);
+}
+
+.nood-sos-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.nood-sos-number {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: white;
+    line-height: 1.1;
+    letter-spacing: -1px;
+}
+
+.nood-sos-hint {
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    margin-top: 0.2rem;
+}
+
+/* ── Number grid ── */
+.nood-num-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 0.75rem;
+}
+
+.nood-num-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    background-color: rgba(0,0,0,0.4);
+    border: 1px solid #444;
+    border-radius: 10px;
+    padding: 0.85rem;
+    text-decoration: none;
+    transition: border-color 0.2s, background-color 0.2s;
+    cursor: pointer;
+}
+
+.nood-num-card:hover {
+    border-color: #fcbc2d;
+    background-color: rgba(252, 188, 45, 0.05);
+}
+
+.nood-num-card--personal {
+    border-color: #fcbc2d;
+    background-color: rgba(252, 188, 45, 0.06);
+}
+
+.nood-num-card--empty {
+    border-color: #555;
+    border-style: dashed;
+    opacity: 0.7;
+}
+
+.nood-num-icon   { font-size: 1.3rem; }
+.nood-num-label  { font-size: 13px; font-weight: 600; color: white; }
+.nood-num-sub    { font-size: 11px; color: #888; }
+
+.nood-num-sub a  { color: #fcbc2d; text-decoration: underline; }
+
+.nood-num-number {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 13.5px;
+    font-weight: 700;
     color: #fcbc2d;
-    text-decoration: underline;
+    margin-top: 0.3rem;
 }
 
-/* ── Info lijsten ── */
-.nood-info-list {
+/* ── Two-column layout ── */
+.nood-two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+}
+
+/* ── Icon list ── */
+.nood-icon-list {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -89,104 +199,161 @@
     gap: 0.5rem;
 }
 
-.nood-info-list li {
+.nood-icon-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 13px;
     color: #ccc;
-    font-size: 13.5px;
-    padding: 0.5rem 0.75rem;
-    background-color: #111;
-    border-radius: 8px;
-    border-left: 3px solid #333;
     line-height: 1.5;
 }
 
-/* ── Misc ── */
-.nood-number {
+.nood-icon-list li span:first-child {
+    font-size: 1rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+/* ── Steps (medisch) ── */
+.nood-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 0.75rem;
+}
+
+.nood-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.4rem;
+    background-color: rgba(0,0,0,0.3);
+    border: 1px solid #27ae60;
+    border-radius: 10px;
+    padding: 1rem 0.75rem;
+}
+
+.nood-step-num {
+    width: 26px;
+    height: 26px;
+    background-color: #27ae60;
+    color: black;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 800;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #fcbc2d;
-    margin: 0.5rem 0;
+    justify-content: center;
 }
 
-.nood-empty,
-.nood-loading {
-    font-size: 14px;
+.nood-step-icon { font-size: 1.5rem; }
+
+.nood-step-text {
+    font-size: 12.5px;
+    color: #ddd;
+    line-height: 1.4;
+}
+
+/* ── Checklist grid ── */
+.nood-checklist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 0.75rem;
+}
+
+.nood-check-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.4rem;
+    background-color: rgba(0,0,0,0.3);
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 1rem 0.75rem;
+}
+
+.nood-check-tile-icon  { font-size: 1.5rem; }
+.nood-check-tile-label { font-size: 12px; color: #ccc; }
+
+.nood-check-tile-mark {
+    width: 24px;
+    height: 24px;
+    background-color: #1a2e1a;
+    border: 2px solid #2ecc71;
+    border-radius: 6px;
+    color: #2ecc71;
+    font-size: 13px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.25rem;
+}
+
+/* ── Location cards ── */
+.nood-location-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.nood-loc-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: rgba(0,0,0,0.3);
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+    font-size: 1.5rem;
+}
+
+.nood-loc-card div strong {
+    display: block;
+    color: #fcbc2d;
+    font-size: 13px;
+}
+
+.nood-loc-card div p {
     color: #aaa;
+    font-size: 12px;
+    margin: 0.1rem 0 0;
 }
 
-.nood-empty a,
-.nood-section a {
-    color: #fcbc2d;
-    text-decoration: underline;
-}
-
+/* ── Badge ── */
 .nood-badge {
-    font-size: 11px;
+    font-size: 10.5px;
     font-weight: 500;
     color: #888;
     background-color: #222;
     border: 1px solid #444;
     border-radius: 20px;
-    padding: 0.15rem 0.6rem;
-    margin-left: 0.5rem;
+    padding: 0.1rem 0.55rem;
     vertical-align: middle;
 }
 
-.nood-checklist {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.nood-check-item {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.55rem 0.8rem;
-    background-color: #111;
-    border: 1px solid #333;
-    border-radius: 8px;
-    font-size: 13.5px;
-    color: #ccc;
-}
-
-.nood-check-box {
-    width: 22px;
-    height: 22px;
-    background-color: #1a2e1a;
-    border: 1px solid #2ecc71;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #2ecc71;
-    font-size: 13px;
-    font-weight: 700;
-    flex-shrink: 0;
-}
-
+/* ── Footer ── */
 .nood-footer-text {
-    margin-top: 1rem;
-    font-size: 13px;
-    color: #888;
+    font-size: 12px;
+    color: #666;
     font-style: italic;
+    text-align: center;
+    margin-top: 0.75rem;
 }
 
-@media (max-width: 768px) {
-    .nood-row {
-        grid-template-columns: 2rem 1fr;
-        grid-template-rows: auto auto;
+/* ── Responsive ── */
+@media (max-width: 900px) {
+    .nood-two-col {
+        grid-template-columns: 1fr;
     }
+}
 
-    .nood-tel {
-        grid-column: 2;
-    }
-
-    .nood-opmerking {
-        grid-column: 1 / -1;
-        text-align: left;
-        padding-left: 2.75rem;
-    }
+@media (max-width: 600px) {
+    .nood-sos-number { font-size: 2.5rem; }
+    .nood-num-grid   { grid-template-columns: 1fr 1fr; }
+    .nood-steps      { grid-template-columns: 1fr 1fr; }
+    .nood-checklist-grid { grid-template-columns: 1fr 1fr 1fr; }
+    .nood-location-cards { grid-template-columns: 1fr; }
 }
