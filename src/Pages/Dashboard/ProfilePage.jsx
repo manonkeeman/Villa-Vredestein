@@ -5,7 +5,7 @@ import { useAuth } from "../Auth/AuthContext.jsx";
 import {
     FiLogOut, FiHome, FiAlertCircle, FiFileText, FiCalendar,
     FiUser, FiUsers, FiDollarSign, FiClipboard, FiShield,
-    FiUpload, FiSave, FiTrash2,
+    FiUpload, FiSave, FiTrash2, FiLock,
 } from "react-icons/fi";
 import api from "../../Helpers/AxiosHelper.js";
 import "./StudentDashboard.css";
@@ -46,12 +46,15 @@ const AVAILABILITY_OPTIONS = [
 export default function ProfilePage() {
     const { isLoggedIn, logout, user: authUser } = useAuth();
 
-    const [profile, setProfile]     = useState(null);
-    const [form, setForm]           = useState({});
-    const [saving, setSaving]       = useState(false);
-    const [feedback, setFeedback]   = useState(null);
-    const [uploading, setUploading] = useState(false);
-    const [loadSlow, setLoadSlow]   = useState(false);
+    const [profile, setProfile]       = useState(null);
+    const [form, setForm]             = useState({});
+    const [saving, setSaving]         = useState(false);
+    const [feedback, setFeedback]     = useState(null);
+    const [uploading, setUploading]   = useState(false);
+    const [loadSlow, setLoadSlow]     = useState(false);
+    const [pwForm, setPwForm]         = useState({ oldPassword: "", newPassword: "", confirmPassword: "" });
+    const [pwSaving, setPwSaving]     = useState(false);
+    const [pwFeedback, setPwFeedback] = useState(null);
     const fileInputRef = useRef(null);
 
     if (!isLoggedIn) return <Navigate to="/login" replace />;
@@ -110,6 +113,40 @@ export default function ProfilePage() {
             setFeedback({ type: "error", msg: "Opslaan mislukt. Probeer het opnieuw." });
         } finally {
             setSaving(false);
+        }
+    };
+
+    const handlePwChange = e => {
+        setPwForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
+        setPwFeedback(null);
+    };
+
+    const handlePwSave = async e => {
+        e.preventDefault();
+        if (pwForm.newPassword !== pwForm.confirmPassword) {
+            setPwFeedback({ type: "error", msg: "Nieuwe wachtwoorden komen niet overeen." });
+            return;
+        }
+        if (pwForm.newPassword.length < 8) {
+            setPwFeedback({ type: "error", msg: "Nieuw wachtwoord moet minimaal 8 tekens zijn." });
+            return;
+        }
+        setPwSaving(true);
+        setPwFeedback(null);
+        try {
+            await api.patch("/api/users/me/password", {
+                oldPassword: pwForm.oldPassword,
+                newPassword: pwForm.newPassword,
+            });
+            setPwFeedback({ type: "success", msg: "Wachtwoord gewijzigd!" });
+            setPwForm({ oldPassword: "", newPassword: "", confirmPassword: "" });
+        } catch (err) {
+            const msg = err?.response?.status === 400
+                ? "Huidig wachtwoord is onjuist."
+                : "Wijzigen mislukt. Probeer het opnieuw.";
+            setPwFeedback({ type: "error", msg });
+        } finally {
+            setPwSaving(false);
         }
     };
 
@@ -317,6 +354,61 @@ export default function ProfilePage() {
                             </div>
                         </form>
                     )}
+                </section>
+
+                {/* Wachtwoord wijzigen */}
+                <section className="profile-form-section">
+                    <h2><FiLock /> Wachtwoord wijzigen</h2>
+                    <form className="profile-form" onSubmit={handlePwSave}>
+                        <div className="form-group full-width">
+                            <label htmlFor="oldPassword">Huidig wachtwoord</label>
+                            <input
+                                id="oldPassword"
+                                name="oldPassword"
+                                type="password"
+                                value={pwForm.oldPassword}
+                                onChange={handlePwChange}
+                                autoComplete="current-password"
+                                required
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="newPassword">Nieuw wachtwoord</label>
+                            <input
+                                id="newPassword"
+                                name="newPassword"
+                                type="password"
+                                value={pwForm.newPassword}
+                                onChange={handlePwChange}
+                                autoComplete="new-password"
+                                minLength={8}
+                                maxLength={72}
+                                required
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="confirmPassword">Herhaal nieuw wachtwoord</label>
+                            <input
+                                id="confirmPassword"
+                                name="confirmPassword"
+                                type="password"
+                                value={pwForm.confirmPassword}
+                                onChange={handlePwChange}
+                                autoComplete="new-password"
+                                minLength={8}
+                                maxLength={72}
+                                required
+                            />
+                        </div>
+                        <div className="form-actions">
+                            <button type="submit" className="btn-save" disabled={pwSaving}>
+                                <FiLock /> {pwSaving ? "Opslaan…" : "Wachtwoord wijzigen"}
+                            </button>
+                            {pwFeedback && (
+                                <span className={`form-feedback ${pwFeedback.type}`}>{pwFeedback.msg}</span>
+                            )}
+                        </div>
+                    </form>
                 </section>
             </div>
         </div>
