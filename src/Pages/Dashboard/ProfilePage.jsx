@@ -177,7 +177,12 @@ export default function ProfilePage() {
                         <li><Link to="/student/huisregels"><FiFileText /> Huisregels</Link></li>
                         <li><Link to="#"><FiClipboard /> Schoonmaakschema</Link></li>
                         <li><Link to="#"><FiDollarSign /> Betalingen</Link></li>
-                        <li><Link to="#"><FiFileText /> Huurcontract</Link></li>
+                        <li>
+                            {profile?.contractFile
+                                ? <a href={`${BASE_URL}/uploads/${encodeURIComponent(profile.contractFile)}`} target="_blank" rel="noopener noreferrer"><FiFileText /> Huurcontract</a>
+                                : <Link to="#"><FiFileText /> Huurcontract</Link>
+                            }
+                        </li>
                         <li><Link to="#"><FiUsers /> Samen eten?</Link></li>
                         <li><Link to="#"><FiCalendar /> Events</Link></li>
 

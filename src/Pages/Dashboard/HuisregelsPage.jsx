@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { Navigate, Link } from "react-router-dom";
 import { useAuth } from "../Auth/AuthContext.jsx";
@@ -6,6 +6,7 @@ import {
     FiLogOut, FiHome, FiAlertCircle, FiFileText, FiCalendar,
     FiUser, FiUsers, FiDollarSign, FiClipboard, FiShield,
 } from "react-icons/fi";
+import api from "../../Helpers/AxiosHelper.js";
 import "./StudentDashboard.css";
 import "./HuisregelsPage.css";
 import "../../Styles/Global.css";
@@ -16,9 +17,19 @@ const hasRole = (user, role) => {
     return roles.includes(normalized);
 };
 
+const BASE_URL = (import.meta.env.VITE_API_BASE_URL || "http://localhost:8080").replace(/\/$/, "");
+
 export default function HuisregelsPage() {
     const { isLoggedIn, logout, user: authUser } = useAuth();
+    const [contractFile, setContractFile] = useState(null);
+
     if (!isLoggedIn) return <Navigate to="/login" replace />;
+
+    useEffect(() => {
+        api.get("/api/users/me")
+            .then(res => setContractFile(res.data.contractFile || null))
+            .catch(() => {});
+    }, []);
 
     return (
         <div className="StudentDashboard">
@@ -41,7 +52,12 @@ export default function HuisregelsPage() {
                         <li><Link to="/student/huisregels" className="active"><FiFileText /> Huisregels</Link></li>
                         <li><Link to="#"><FiClipboard /> Schoonmaakschema</Link></li>
                         <li><Link to="#"><FiDollarSign /> Betalingen</Link></li>
-                        <li><Link to="#"><FiFileText /> Huurcontract</Link></li>
+                        <li>
+                            {contractFile
+                                ? <a href={`${BASE_URL}/uploads/${encodeURIComponent(contractFile)}`} target="_blank" rel="noopener noreferrer"><FiFileText /> Huurcontract</a>
+                                : <Link to="#"><FiFileText /> Huurcontract</Link>
+                            }
+                        </li>
                         <li><Link to="#"><FiUsers /> Samen eten?</Link></li>
                         <li><Link to="#"><FiCalendar /> Events</Link></li>
                         {hasRole(authUser, "ADMIN") && (

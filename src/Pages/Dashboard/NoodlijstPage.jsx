@@ -55,7 +55,12 @@ export default function NoodlijstPage() {
                         <li><Link to="/student/huisregels"><FiFileText /> Huisregels</Link></li>
                         <li><Link to="#"><FiClipboard /> Schoonmaakschema</Link></li>
                         <li><Link to="#"><FiDollarSign /> Betalingen</Link></li>
-                        <li><Link to="#"><FiFileText /> Huurcontract</Link></li>
+                        <li>
+                            {profile?.contractFile
+                                ? <a href={`${(import.meta.env.VITE_API_BASE_URL || "http://localhost:8080").replace(/\/$/, "")}/uploads/${encodeURIComponent(profile.contractFile)}`} target="_blank" rel="noopener noreferrer"><FiFileText /> Huurcontract</a>
+                                : <Link to="#"><FiFileText /> Huurcontract</Link>
+                            }
+                        </li>
                         <li><Link to="#"><FiUsers /> Samen eten?</Link></li>
                         <li><Link to="#"><FiCalendar /> Events</Link></li>
                         {hasRole(authUser, "ADMIN") && (
