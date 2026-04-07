@@ -174,7 +174,7 @@ export default function ProfilePage() {
                         <li><Link to="/student"><FiHome /> Dashboard</Link></li>
                         <li><Link to="/student/profiel" className="active"><FiUser /> Mijn profiel</Link></li>
                         <li><Link to="/student/noodlijst"><FiAlertCircle /> Noodlijst</Link></li>
-                        <li><Link to="#"><FiFileText /> Huisregels</Link></li>
+                        <li><Link to="/student/huisregels"><FiFileText /> Huisregels</Link></li>
                         <li><Link to="#"><FiClipboard /> Schoonmaakschema</Link></li>
                         <li><Link to="#"><FiDollarSign /> Betalingen</Link></li>
                         <li><Link to="#"><FiFileText /> Huurcontract</Link></li>

@@ -22,6 +22,7 @@ import AdminDashboard from "./Pages/Dashboard/AdminDashboard.jsx";
 import CleaningDashboard from "./Pages/Dashboard/CleaningDashboard.jsx";
 import ProfilePage from "./Pages/Dashboard/ProfilePage.jsx";
 import NoodlijstPage from "./Pages/Dashboard/NoodlijstPage.jsx";
+import HuisregelsPage from "./Pages/Dashboard/HuisregelsPage.jsx";
 
 function App() {
     return (
@@ -64,6 +65,15 @@ function App() {
                         element={
                             <ProtectedRoute allowedRoles={["ROLE_STUDENT"]}>
                                 <NoodlijstPage />
+                            </ProtectedRoute>
+                        }
+                    />
+
+                    <Route
+                        path="/student/huisregels"
+                        element={
+                            <ProtectedRoute allowedRoles={["ROLE_STUDENT", "ROLE_ADMIN"]}>
+                                <HuisregelsPage />
                             </ProtectedRoute>
                         }
                     />
