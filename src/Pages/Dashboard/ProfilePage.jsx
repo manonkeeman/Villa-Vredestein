@@ -46,16 +46,18 @@ const AVAILABILITY_OPTIONS = [
 export default function ProfilePage() {
     const { isLoggedIn, logout, user: authUser } = useAuth();
 
-    const [profile, setProfile]   = useState(null);
-    const [form, setForm]         = useState({});
-    const [saving, setSaving]     = useState(false);
-    const [feedback, setFeedback] = useState(null); // { type: "success"|"error", msg }
+    const [profile, setProfile]     = useState(null);
+    const [form, setForm]           = useState({});
+    const [saving, setSaving]       = useState(false);
+    const [feedback, setFeedback]   = useState(null);
     const [uploading, setUploading] = useState(false);
+    const [loadSlow, setLoadSlow]   = useState(false);
     const fileInputRef = useRef(null);
 
     if (!isLoggedIn) return <Navigate to="/login" replace />;
 
     useEffect(() => {
+        const slowTimer = setTimeout(() => setLoadSlow(true), 4000);
         api.get("/api/users/me").then(res => {
             setProfile(res.data);
             setForm({
@@ -68,7 +70,13 @@ export default function ProfilePage() {
                 mealPreference:       res.data.mealPreference       || "",
                 availabilityStatus:   res.data.availabilityStatus   || "",
             });
-        }).catch(() => setFeedback({ type: "error", msg: "Profiel kon niet worden geladen." }));
+            clearTimeout(slowTimer);
+            setLoadSlow(false);
+        }).catch(() => {
+            clearTimeout(slowTimer);
+            setFeedback({ type: "error", msg: "Profiel kon niet worden geladen." });
+        });
+        return () => clearTimeout(slowTimer);
     }, []);
 
     const handleChange = e => {
@@ -227,7 +235,9 @@ export default function ProfilePage() {
                     <h2><FiUser /> Persoonlijke gegevens</h2>
 
                     {profile === null && !feedback && (
-                        <p style={{ color: "#aaa", fontSize: 14 }}>Laden…</p>
+                        <p style={{ color: loadSlow ? "#fcbc2d" : "#aaa", fontSize: 14 }}>
+                            {loadSlow ? "Server wordt opgestart… even geduld (±30 sec)." : "Laden…"}
+                        </p>
                     )}
 
                     {profile && (
