@@ -40,7 +40,7 @@ const StudentDashboard = () => {
                     <ul>
                         <li><Link to="/student"><FiHome /> Dashboard</Link></li>
                         <li><Link to="/student/profiel"><FiUser /> Mijn profiel</Link></li>
-                        <li><Link to="#"><FiAlertCircle /> Noodlijst</Link></li>
+                        <li><Link to="/student/noodlijst"><FiAlertCircle /> Noodlijst</Link></li>
                         <li><Link to="#"><FiFileText /> Huisregels</Link></li>
                         <li><Link to="#"><FiClipboard /> Schoonmaakschema</Link></li>
                         <li><Link to="#"><FiDollarSign /> Betalingen</Link></li>
