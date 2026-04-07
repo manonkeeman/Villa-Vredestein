@@ -1,0 +1,296 @@
+.huis-main {
+    gap: 1.25rem;
+}
+
+/* ── Hero ── */
+.huis-hero {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: linear-gradient(135deg, #1a1200, #0e0b00);
+    border: 1px solid #fcbc2d;
+    border-left: 5px solid #fcbc2d;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    color: white;
+}
+
+.huis-hero-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.huis-hero strong {
+    display: block;
+    color: #fcbc2d;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.huis-hero p {
+    margin: 0.2rem 0 0;
+    font-size: 13px;
+    color: #ccc;
+}
+
+/* ── Intro ── */
+.huis-intro {
+    font-size: 13.5px;
+    color: #bbb;
+    line-height: 1.6;
+    background: #0e0e0e;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+}
+
+.huis-intro p { margin: 0; }
+
+/* ── Kernwaarden ── */
+.huis-values {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+}
+
+.huis-value-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    background: #111;
+    border: 1px solid #fcbc2d44;
+    border-radius: 10px;
+    padding: 1rem 0.5rem;
+    text-align: center;
+}
+
+.huis-value-tile span { font-size: 1.6rem; }
+.huis-value-tile strong { font-size: 13px; color: #fcbc2d; }
+
+/* ── Block base ── */
+.huis-block {
+    border-radius: 12px;
+    padding: 1.25rem;
+    border: 1px solid transparent;
+}
+
+.huis-block-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+}
+
+.huis-block-header span { font-size: 1.3rem; }
+
+.huis-block-header h2 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+}
+
+/* ── Block color themes ── */
+.huis-block--gold   { background: #1a1200; border-color: #fcbc2d; }
+.huis-block--purple { background: #0e0017; border-color: #8e44ad; }
+.huis-block--blue   { background: #00101a; border-color: #2980b9; }
+.huis-block--green  { background: #001a08; border-color: #27ae60; }
+.huis-block--red    { background: #1a0505; border-color: #c0392b; }
+.huis-block--orange { background: #1a0e00; border-color: #e67e22; }
+.huis-block--dark   { background: #111;    border-color: #fcbc2d; }
+
+.huis-block--gold   .huis-block-header h2 { color: #fcbc2d; }
+.huis-block--purple .huis-block-header h2 { color: #9b59b6; }
+.huis-block--blue   .huis-block-header h2 { color: #3498db; }
+.huis-block--green  .huis-block-header h2 { color: #2ecc71; }
+.huis-block--red    .huis-block-header h2 { color: #e74c3c; }
+.huis-block--orange .huis-block-header h2 { color: #e67e22; }
+.huis-block--dark   .huis-block-header h2 { color: #fcbc2d; }
+
+/* ── Two-column layout ── */
+.huis-two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+}
+
+/* ── List ── */
+.huis-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.huis-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 13px;
+    color: #ccc;
+    line-height: 1.5;
+}
+
+.huis-list li span:first-child {
+    font-size: 1rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.huis-list--flex {
+    flex: 1;
+}
+
+/* ── Time badge (geluidsstilte) ── */
+.huis-time-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(0,0,0,0.4);
+    border: 1px solid #8e44ad;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+    width: fit-content;
+}
+
+.huis-time {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #9b59b6;
+}
+
+.huis-time-sep {
+    color: #666;
+    font-size: 1rem;
+}
+
+.huis-time-label {
+    font-size: 11px;
+    color: #aaa;
+    margin-left: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ── Safety grid ── */
+.huis-safety-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 0.75rem;
+}
+
+.huis-safety-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.4rem;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid #c0392b;
+    border-radius: 10px;
+    padding: 1rem 0.75rem;
+}
+
+.huis-safety-icon { font-size: 1.5rem; }
+.huis-safety-text { font-size: 12.5px; color: #ddd; line-height: 1.4; }
+
+/* ── Betalingen ── */
+.huis-payment-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+}
+
+.huis-rent-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(0,0,0,0.4);
+    border: 2px solid #fcbc2d;
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    min-width: 140px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.huis-rent-amount {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #fcbc2d;
+    line-height: 1.1;
+}
+
+.huis-rent-label {
+    font-size: 12px;
+    color: #aaa;
+    margin-top: 0.1rem;
+}
+
+.huis-rent-sub {
+    font-size: 11px;
+    color: #666;
+    margin-top: 0.2rem;
+}
+
+/* ── Contact card ── */
+.huis-contact-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: rgba(252, 188, 45, 0.08);
+    border: 1px solid #fcbc2d;
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+    text-decoration: none;
+    margin-top: 1rem;
+    transition: background 0.2s;
+}
+
+.huis-contact-card:hover {
+    background: rgba(252, 188, 45, 0.14);
+}
+
+.huis-contact-icon { font-size: 1.5rem; }
+
+.huis-contact-card strong {
+    display: block;
+    color: #fcbc2d;
+    font-size: 13px;
+}
+
+.huis-contact-card span span,
+.huis-contact-card div > span {
+    font-size: 12px;
+    color: #aaa;
+}
+
+/* ── Footer ── */
+.huis-footer {
+    font-size: 12px;
+    color: #555;
+    font-style: italic;
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+    .huis-two-col {
+        grid-template-columns: 1fr;
+    }
+    .huis-values {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .huis-safety-grid { grid-template-columns: 1fr 1fr; }
+    .huis-payment-row { flex-direction: column; align-items: stretch; }
+    .huis-rent-card   { min-width: unset; }
+}
