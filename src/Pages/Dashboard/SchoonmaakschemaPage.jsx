@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { Helmet } from "react-helmet-async";
 import { Navigate, Link } from "react-router-dom";
 import { useAuth } from "../Auth/AuthContext.jsx";
+import Spinner from "../../Components/Spinner/Spinner.jsx";
 import {
     FiLogOut, FiHome, FiAlertCircle, FiFileText, FiCalendar,
     FiUser, FiUsers, FiDollarSign, FiClipboard, FiShield,
@@ -465,9 +466,7 @@ export default function SchoonmaakschemaPage() {
                     )}
                 </section>
 
-                {loading && (
-                    <div className="cleaning-status">Taken laden…</div>
-                )}
+                {loading && <Spinner fullPage label="Taken laden…" />}
 
                 {error && (
                     <div className="cleaning-status cleaning-error">{error}</div>
