@@ -80,12 +80,12 @@ const StudentDashboard = () => {
             <main className="dashboard-main">
                 <section className="dashboard-news">
                     <div className="dashboard-news-content">
-                        <h2><FiBookOpen /> Welkom in Villa Vredestein</h2>
+                        <h2><FiBookOpen /> Fijn dat je er bent!</h2>
                         <p>
-                            Dit is jouw persoonlijke omgeving. Hier vind je alles wat je nodig hebt als bewoner van Villa Vredestein.
+                            Dit is jouw plek in de villa. Hier vind je alles terug: je schema, huisregels, contract en meer.
                         </p>
                         <p>
-                            Mis je iets of heb je een vraag? Neem contact op via <Link to="/contact">Contact</Link>.
+                            Kom je er niet uit of heb je een vraag? Stuur gerust een berichtje via <Link to="/contact">Contact</Link>.
                         </p>
                     </div>
                 </section>

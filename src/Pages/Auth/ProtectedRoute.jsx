@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "./AuthContext.jsx";
+import Spinner from "../../Components/Spinner/Spinner.jsx";
 
 const normalizeRole = (role) => {
     if (!role) return "";
@@ -15,8 +16,8 @@ export default function ProtectedRoute({ children, allowedRoles = [] }) {
 
     if (loading) {
         return (
-            <main style={{ padding: 24 }}>
-                <p>Bezig met laden…</p>
+            <main>
+                <Spinner fullPage label="Pagina laden…" />
             </main>
         );
     }
