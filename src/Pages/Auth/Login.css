@@ -53,16 +53,18 @@
     gap: 1.6rem;
     box-shadow: 0 0 24px rgba(252, 188, 45, 0.08);
     transition: box-shadow 0.3s ease;
+    position: relative;
 }
 
-.login-card--loading {
-    box-shadow: 0 0 32px rgba(252, 188, 45, 0.25);
-    animation: card-glow 1.2s ease-in-out infinite;
-}
-
-@keyframes card-glow {
-    0%, 100% { box-shadow: 0 0 16px rgba(252, 188, 45, 0.15); }
-    50%       { box-shadow: 0 0 36px rgba(252, 188, 45, 0.35); }
+/* Laadoverlay over de hele kaart */
+.login-card--loading::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 10;
+    pointer-events: none;
 }
 
 .login-logo {
@@ -285,12 +287,19 @@
     opacity: 1 !important;
     cursor: wait !important;
     box-shadow: 0 0 16px rgba(252, 188, 45, 0.4);
-    animation: login-btn-pulse 1.2s ease-in-out infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
 }
 
-@keyframes login-btn-pulse {
-    0%, 100% { box-shadow: 0 0 8px rgba(252, 188, 45, 0.3); }
-    50%       { box-shadow: 0 0 22px rgba(252, 188, 45, 0.6); }
+/* Spinner in de gouden knop moet zwart zijn */
+.login-submit-btn--loading .spinner-ring {
+    border-color: rgba(0, 0, 0, 0.2);
+    border-top-color: #000;
+    width: 16px;
+    height: 16px;
+    border-width: 2px;
 }
 
 /* ── Forgot / linklike ──────────────────────────────── */
@@ -391,6 +400,41 @@
     border-radius: 6px;
     color: #aaa;
     box-sizing: border-box;
+}
+
+/* ── Login overlay (zichtbaar tijdens inloggen) ─────── */
+.login-overlay {
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    background: rgba(10, 10, 10, 0.82);
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    backdrop-filter: blur(2px);
+}
+
+.login-overlay__spinner {
+    width: 44px;
+    height: 44px;
+    border: 3px solid rgba(252, 188, 45, 0.2);
+    border-top-color: #fcbc2d;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.login-overlay__label {
+    font-size: 0.85rem;
+    color: #fcbc2d;
+    font-weight: 500;
+    letter-spacing: 0.03em;
 }
 
 /* ── Mobile ─────────────────────────────────────────── */
