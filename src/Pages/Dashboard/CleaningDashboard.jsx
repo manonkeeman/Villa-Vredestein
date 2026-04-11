@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { Navigate, Link } from "react-router-dom";
 import { useAuth } from "../Auth/AuthContext.jsx";
@@ -7,13 +7,34 @@ import {
     FiAlertCircle, FiCalendar, FiUser,
 } from "react-icons/fi";
 import { MdOutlineCleaningServices } from "react-icons/md";
+import api from "../../Helpers/AxiosHelper.js";
 import "./StudentDashboard.css";
 import "../../Styles/Global.css";
 
+// ISO week number (ISO 8601)
+const getIsoWeek = (date = new Date()) => {
+    const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+    d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+    const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+    return Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+};
+
+// 6-week rotation cycle: ((isoWeek - 1) % 6) + 1
+const getCurrentRotationWeek = () => ((getIsoWeek() - 1) % 6) + 1;
+
 const CleaningDashboard = () => {
     const { isLoggedIn, logout, user } = useAuth();
+    const [scheduleInfo, setScheduleInfo] = useState(null);
 
     if (!isLoggedIn) return <Navigate to="/login" replace />;
+
+    const rotationWeek = getCurrentRotationWeek();
+
+    useEffect(() => {
+        api.get("/api/cleaning/schedule/info")
+            .then(res => setScheduleInfo(res.data))
+            .catch(() => {});
+    }, []);
 
     return (
         <div className="StudentDashboard">
@@ -62,9 +83,20 @@ const CleaningDashboard = () => {
                         <h2><FiClipboard /> Taken deze week</h2>
                         <p>Je weekoverzicht met alle toegewezen schoonmaaktaken wordt hier getoond.</p>
                         <p>Vink taken af zodra ze zijn afgerond.</p>
-                        <Link to="/schoonmaakschema" style={{ marginTop: "0.75rem", display: "inline-block" }}>
-                            Bekijk schoonmaakschema →
-                        </Link>
+                        <div className="dashboard-cleaning-meta">
+                            <span className="dashboard-rotation-badge">
+                                Rotatieweek {rotationWeek}
+                                <span className="week-current-badge">nu</span>
+                            </span>
+                            {scheduleInfo && (
+                                <span className="week-iso-label">
+                                    ISO week {scheduleInfo.isoWeek} · {scheduleInfo.year}
+                                </span>
+                            )}
+                            <Link to="/schoonmaakschema" className="dashboard-schema-btn">
+                                <FiClipboard /> Bekijk schema
+                            </Link>
+                        </div>
                     </div>
                 </section>
 
