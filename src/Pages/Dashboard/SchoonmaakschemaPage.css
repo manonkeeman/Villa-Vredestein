@@ -61,12 +61,39 @@
     cursor: not-allowed;
 }
 
+.week-label-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 140px;
+    gap: 0.2rem;
+}
+
 .week-label {
     color: white;
     font-size: 1rem;
     font-weight: 600;
-    min-width: 80px;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.week-current-badge {
+    background: #fcbc2d;
+    color: #000;
+    font-size: 0.6rem;
+    font-weight: 700;
+    padding: 0.1rem 0.4rem;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1.4;
+}
+
+.week-iso-label {
+    color: #888;
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
 }
 
 .cleaning-progress {

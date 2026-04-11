@@ -24,14 +24,16 @@ const hasRole = (user, role) => {
     return roles.includes(normalized);
 };
 
-// Backend uses a 4-week rotation cycle (1–4), not the full ISO week number
-const getCurrentRotationWeek = () => {
-    const now = new Date();
-    const jan4 = new Date(now.getFullYear(), 0, 4);
-    const dayOfYear = Math.round((now - jan4) / 86400000) + jan4.getDay();
-    const isoWeek = Math.floor(dayOfYear / 7) + 1;
-    return ((isoWeek - 1) % 4) + 1;
+// ISO week number (ISO 8601)
+const getIsoWeek = (date = new Date()) => {
+    const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+    d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+    const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+    return Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
 };
+
+// 6-week rotation cycle: ((isoWeek - 1) % 6) + 1
+const getCurrentRotationWeek = () => ((getIsoWeek() - 1) % 6) + 1;
 
 // ─── Sidebars ───────────────────────────────────────────────────────────────
 
@@ -343,6 +345,7 @@ export default function SchoonmaakschemaPage() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [weekNumber, setWeekNumber] = useState(getCurrentRotationWeek());
+    const [scheduleInfo, setScheduleInfo] = useState(null);
     const [contractFile, setContractFile] = useState(null);
 
     if (!isLoggedIn) return <Navigate to="/login" replace />;
@@ -361,6 +364,12 @@ export default function SchoonmaakschemaPage() {
     }, [weekNumber]);
 
     useEffect(() => { fetchTasks(); }, [fetchTasks]);
+
+    useEffect(() => {
+        api.get("/api/cleaning/schedule/info")
+            .then(res => setScheduleInfo(res.data))
+            .catch(() => {});
+    }, []);
 
     useEffect(() => {
         if (isStudent || isAdmin) {
@@ -444,15 +453,27 @@ export default function SchoonmaakschemaPage() {
                     <div className="cleaning-week-nav">
                         <button
                             className="week-nav-btn"
-                            onClick={() => setWeekNumber(w => w === 1 ? 4 : w - 1)}
+                            onClick={() => setWeekNumber(w => w === 1 ? 6 : w - 1)}
                             aria-label="Vorige rotatieweek"
                         >
                             <FiChevronLeft />
                         </button>
-                        <span className="week-label">Rotatieweek {weekNumber}</span>
+                        <div className="week-label-wrap">
+                            <span className="week-label">
+                                Rotatieweek {weekNumber}
+                                {weekNumber === getCurrentRotationWeek() && (
+                                    <span className="week-current-badge">nu</span>
+                                )}
+                            </span>
+                            {scheduleInfo && weekNumber === getCurrentRotationWeek() && (
+                                <span className="week-iso-label">
+                                    ISO week {scheduleInfo.isoWeek} · {scheduleInfo.year}
+                                </span>
+                            )}
+                        </div>
                         <button
                             className="week-nav-btn"
-                            onClick={() => setWeekNumber(w => w === 4 ? 1 : w + 1)}
+                            onClick={() => setWeekNumber(w => w === 6 ? 1 : w + 1)}
                             aria-label="Volgende rotatieweek"
                         >
                             <FiChevronRight />
