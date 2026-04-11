@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import { Navigate, Link } from "react-router-dom";
 import { useAuth } from "../Auth/AuthContext.jsx";
+import Spinner from "../../Components/Spinner/Spinner.jsx";
 import {
     FiLogOut, FiHome, FiAlertCircle, FiFileText, FiCalendar,
     FiUser, FiUsers, FiDollarSign, FiClipboard, FiShield,
@@ -281,9 +282,9 @@ export default function ProfilePage() {
                     <h2><FiUser /> Persoonlijke gegevens</h2>
 
                     {profile === null && !feedback && (
-                        <p style={{ color: loadSlow ? "#fcbc2d" : "#aaa", fontSize: 14 }}>
-                            {loadSlow ? "Server wordt opgestart… even geduld (±30 sec)." : "Laden…"}
-                        </p>
+                        loadSlow
+                            ? <p style={{ color: "#fcbc2d", fontSize: 14 }}>Server wordt opgestart… even geduld (±30 sec).</p>
+                            : <Spinner fullPage label="Profiel laden…" />
                     )}
 
                     {profile && (
