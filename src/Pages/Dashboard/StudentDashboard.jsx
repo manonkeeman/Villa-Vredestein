@@ -6,6 +6,8 @@ import {
     FiLogOut, FiHome, FiAlertCircle, FiFileText, FiCalendar,
     FiUser, FiUsers, FiDollarSign, FiClipboard, FiBookOpen, FiShield,
 } from "react-icons/fi";
+import { MdOutlineCleaningServices } from "react-icons/md";
+import api from "../../Helpers/AxiosHelper.js";
 import "./StudentDashboard.css";
 import "../../Styles/Global.css";
 
@@ -17,18 +19,38 @@ const hasRole = (user, role) => {
     return roles.includes(normalized);
 };
 
+// ISO week number (ISO 8601)
+const getIsoWeek = (date = new Date()) => {
+    const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+    d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+    const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+    return Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+};
+
+// 6-week rotation cycle: ((isoWeek - 1) % 6) + 1
+const getCurrentRotationWeek = () => ((getIsoWeek() - 1) % 6) + 1;
+
 const StudentDashboard = () => {
     const { isLoggedIn, logout, user } = useAuth();
     const { id } = useParams();
     const [contractFile, setContractFile] = useState(null);
+    const [scheduleInfo, setScheduleInfo] = useState(null);
 
     const currentId = user?.id ?? user?.userId;
     if (!isLoggedIn) return <Navigate to="/login" replace />;
     if (id && currentId && String(id) !== String(currentId)) return <Navigate to="/unauthorized" replace />;
 
+    const rotationWeek = getCurrentRotationWeek();
+
     useEffect(() => {
         setContractFile(user?.contractFile || null);
     }, [user?.contractFile]);
+
+    useEffect(() => {
+        api.get("/api/cleaning/schedule/info")
+            .then(res => setScheduleInfo(res.data))
+            .catch(() => {});
+    }, []);
 
     return (
         <div className="StudentDashboard">
@@ -100,9 +122,23 @@ const StudentDashboard = () => {
 
                 <section className="dashboard-news">
                     <div className="dashboard-news-content">
-                        <h2><FiClipboard /> Schoonmaakschema</h2>
+                        <h2><MdOutlineCleaningServices /> Schoonmaakschema</h2>
                         <p>Bekijk jouw taken voor deze week en vink ze af zodra ze gedaan zijn.</p>
                         <p>Het rooster wisselt wekelijks zodat iedereen gelijk bijdraagt.</p>
+                        <div className="dashboard-cleaning-meta">
+                            <span className="dashboard-rotation-badge">
+                                Rotatieweek {rotationWeek}
+                                <span className="week-current-badge">nu</span>
+                            </span>
+                            {scheduleInfo && (
+                                <span className="week-iso-label">
+                                    ISO week {scheduleInfo.isoWeek} · {scheduleInfo.year}
+                                </span>
+                            )}
+                            <Link to="/schoonmaakschema" className="dashboard-schema-btn">
+                                <FiClipboard /> Bekijk schema
+                            </Link>
+                        </div>
                     </div>
                 </section>
 
