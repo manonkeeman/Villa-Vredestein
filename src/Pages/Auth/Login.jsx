@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext.jsx";
 import { FiEye, FiEyeOff, FiMail, FiLock } from "react-icons/fi";
 import { Helmet } from "react-helmet-async";
+import Spinner from "../../Components/Spinner/Spinner.jsx";
 import "./Login.css";
 
 const hasRole = (user, role) => {
@@ -192,7 +193,7 @@ const Login = () => {
 
             {/* Formulier kant */}
             <div className="login-form-wrap">
-                <div className="login-card">
+                <div className={`login-card${submitting ? " login-card--loading" : ""}`}>
                     <img src="/VVLogo.png" alt="Villa Vredestein" className="login-logo" />
                     <h1 className="login-title">Welkom terug</h1>
                     <p className="login-sub">
@@ -232,6 +233,7 @@ const Login = () => {
                                         onChange={(e) => setRoom(e.target.value)}
                                         required
                                         className="login-select"
+                                        disabled={submitting}
                                     >
                                         <option value="">Kies je kamer…</option>
                                         {ROOM_OPTIONS.map((r) => (
@@ -254,6 +256,7 @@ const Login = () => {
                                         placeholder="jij@voorbeeld.nl"
                                         autoComplete="email"
                                         required
+                                        disabled={submitting}
                                     />
                                 </div>
                             </div>
@@ -271,12 +274,14 @@ const Login = () => {
                                         placeholder="••••••••"
                                         autoComplete="current-password"
                                         required
+                                        disabled={submitting}
                                     />
                                     <button
                                         type="button"
                                         className="pw-toggle"
                                         onClick={() => setShowPassword(!showPassword)}
                                         aria-label={showPassword ? "Verberg wachtwoord" : "Toon wachtwoord"}
+                                        disabled={submitting}
                                     >
                                         {showPassword ? <FiEyeOff /> : <FiEye />}
                                     </button>
@@ -287,14 +292,19 @@ const Login = () => {
                                 type="button"
                                 className="forgot-link"
                                 onClick={() => { setShowResetPanel(true); setResetEmail(email.trim()); setResetError(""); setResetInfo(""); }}
+                                disabled={submitting}
                             >
                                 Wachtwoord vergeten?
                             </button>
 
                             {error && <p className="login-error" role="alert">{error}</p>}
 
-                            <button type="submit" className="login-submit-btn" disabled={submitting}>
-                                {submitting ? "Bezig…" : "Inloggen"}
+                            <button
+                                type="submit"
+                                className={`login-submit-btn${submitting ? " login-submit-btn--loading" : ""}`}
+                                disabled={submitting}
+                            >
+                                {submitting ? <><Spinner />&nbsp;Inloggen…</> : "Inloggen"}
                             </button>
 
                             <p className="login-register">
