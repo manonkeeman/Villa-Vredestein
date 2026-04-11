@@ -194,6 +194,12 @@ const Login = () => {
             {/* Formulier kant */}
             <div className="login-form-wrap">
                 <div className={`login-card${submitting ? " login-card--loading" : ""}`}>
+                    {submitting && (
+                        <div className="login-overlay" aria-live="polite">
+                            <div className="login-overlay__spinner" />
+                            <span className="login-overlay__label">Bezig met inloggen…</span>
+                        </div>
+                    )}
                     <img src="/VVLogo.png" alt="Villa Vredestein" className="login-logo" />
                     <h1 className="login-title">Welkom terug</h1>
                     <p className="login-sub">
