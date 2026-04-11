@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import PWAInstallBanner from "./Components/PWAInstallBanner/PWAInstallBanner.jsx";
 
 function ScrollToTop() {
     const { pathname } = useLocation();
@@ -119,6 +120,7 @@ function App() {
                 </Routes>
 
                 <Footer />
+                <PWAInstallBanner />
 
             </AuthProvider>
         </BrowserRouter>

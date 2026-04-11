@@ -145,14 +145,23 @@ export const AuthProvider = ({ children }) => {
                 if (room) localStorage.setItem(ROOM_KEY, room);
                 else localStorage.removeItem(ROOM_KEY);
 
-                const me = await loadMe();
-
-                if (!me) {
-                    const decoded = decodeToken(token);
-                    const roles = normalizeRoles(decoded?.roles ?? decoded?.authorities ?? decoded?.role);
-                    const fallbackUser = { email: cleanEmail, sub: decoded?.sub, roles, tokenDecoded: decoded };
-                    localStorage.setItem(USER_KEY, JSON.stringify(fallbackUser));
-                    setUser(fallbackUser);
+                // Gebruik user-data uit login response: sla extra /api/users/me call over
+                const loginUser = res.data?.user;
+                if (loginUser) {
+                    const roles = normalizeRoles(loginUser?.role);
+                    const normalizedUser = { ...loginUser, roles };
+                    localStorage.setItem(USER_KEY, JSON.stringify(normalizedUser));
+                    setUser(normalizedUser);
+                } else {
+                    // Fallback voor oudere backend zonder embedded user
+                    const me = await loadMe();
+                    if (!me) {
+                        const decoded = decodeToken(token);
+                        const roles = normalizeRoles(decoded?.roles ?? decoded?.authorities ?? decoded?.role);
+                        const fallbackUser = { email: cleanEmail, sub: decoded?.sub, roles, tokenDecoded: decoded };
+                        localStorage.setItem(USER_KEY, JSON.stringify(fallbackUser));
+                        setUser(fallbackUser);
+                    }
                 }
 
                 return true;
