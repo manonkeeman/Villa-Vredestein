@@ -96,21 +96,6 @@
     flex-shrink: 0;
 }
 
-/* ── iOS Safari share icon (decorative, not interactive) ── */
-.pwa-safari-share {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: #3a7bd5;
-    color: #fff;
-    border-radius: 5px;
-    padding: 2px 4px;
-    margin: 0 2px;
-    pointer-events: none;
-    user-select: none;
-    flex-shrink: 0;
-}
-
 /* ── Install button (Android with prompt) ── */
 .pwa-banner__install-btn {
     flex-shrink: 0;
