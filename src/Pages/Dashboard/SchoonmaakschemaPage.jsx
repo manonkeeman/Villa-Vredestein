@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import PropTypes from "prop-types";
 import { Helmet } from "react-helmet-async";
 import { Navigate, Link } from "react-router-dom";
@@ -33,8 +33,47 @@ const getIsoWeek = (date = new Date()) => {
     return Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
 };
 
-// 6-week rotation cycle: ((isoWeek - 1) % 6) + 1
-const getCurrentRotationWeek = () => ((getIsoWeek() - 1) % 6) + 1;
+// ISO week-based year (may differ from calendar year in week 1/52/53)
+const getIsoYear = (date = new Date()) => {
+    const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+    d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+    return d.getUTCFullYear();
+};
+
+// Number of ISO weeks in a given year (52 or 53)
+const getIsoWeeksInYear = (year) => getIsoWeek(new Date(year, 11, 28));
+
+// Move by delta weeks, crossing year boundaries correctly
+const addWeeks = (isoWeek, year, delta) => {
+    let w = isoWeek + delta;
+    let y = year;
+    while (w < 1) { y--; w += getIsoWeeksInYear(y); }
+    while (w > getIsoWeeksInYear(y)) { w -= getIsoWeeksInYear(y); y++; }
+    return { isoWeek: w, year: y };
+};
+
+// Monday–Sunday date range for a given ISO week + year
+const getWeekDates = (isoWeek, year) => {
+    const jan4 = new Date(year, 0, 4);
+    const monday = new Date(jan4);
+    monday.setDate(jan4.getDate() - ((jan4.getDay() + 6) % 7) + (isoWeek - 1) * 7);
+    const sunday = new Date(monday);
+    sunday.setDate(monday.getDate() + 6);
+    return { start: monday, end: sunday };
+};
+
+const NL_MONTHS = ['jan','feb','mrt','apr','mei','jun','jul','aug','sep','okt','nov','dec'];
+
+const formatWeekRange = (isoWeek, year) => {
+    const { start, end } = getWeekDates(isoWeek, year);
+    const sameMonth = start.getMonth() === end.getMonth();
+    return sameMonth
+        ? `${start.getDate()}–${end.getDate()} ${NL_MONTHS[start.getMonth()]}`
+        : `${start.getDate()} ${NL_MONTHS[start.getMonth()]}–${end.getDate()} ${NL_MONTHS[end.getMonth()]}`;
+};
+
+// 6-week rotation: ((isoWeek - 1) % 6) + 1
+const toRotationWeek = (isoWeek) => ((isoWeek - 1) % 6) + 1;
 
 // ─── Sidebars ───────────────────────────────────────────────────────────────
 
@@ -382,12 +421,15 @@ CreateTaskForm.propTypes = {
 
 export default function SchoonmaakschemaPage() {
     const { isLoggedIn, logout, user } = useAuth();
+    const todayIsoWeek = getIsoWeek();
+    const todayIsoYear = getIsoYear();
+
     const [tasks, setTasks] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [weekNumber, setWeekNumber] = useState(getCurrentRotationWeek());
-    const [scheduleInfo, setScheduleInfo] = useState(null);
+    const [navWeek, setNavWeek] = useState({ isoWeek: todayIsoWeek, year: todayIsoYear });
     const [contractFile, setContractFile] = useState(null);
+    const weekCache = useRef({});
 
     if (!isLoggedIn) return <Navigate to="/login" replace />;
 
@@ -395,22 +437,29 @@ export default function SchoonmaakschemaPage() {
     const isCleaner = hasRole(user, "CLEANER");
     const isStudent = hasRole(user, "STUDENT");
 
+    const rotationWeek = toRotationWeek(navWeek.isoWeek);
+    const isCurrentWeek = navWeek.isoWeek === todayIsoWeek && navWeek.year === todayIsoYear;
+
     const fetchTasks = useCallback(() => {
+        const rw = toRotationWeek(navWeek.isoWeek);
+        if (weekCache.current[rw]) {
+            setTasks(weekCache.current[rw]);
+            setLoading(false);
+            setError(null);
+            return;
+        }
         setLoading(true);
         setError(null);
-        api.get(`/api/cleaning/tasks?weekNumber=${weekNumber}`)
-            .then(res => setTasks(res.data))
+        api.get(`/api/cleaning/tasks?weekNumber=${rw}`)
+            .then(res => {
+                weekCache.current[rw] = res.data;
+                setTasks(res.data);
+            })
             .catch(() => setError("Taken konden niet worden geladen."))
             .finally(() => setLoading(false));
-    }, [weekNumber]);
+    }, [navWeek.isoWeek]);
 
     useEffect(() => { fetchTasks(); }, [fetchTasks]);
-
-    useEffect(() => {
-        api.get("/api/cleaning/schedule/info")
-            .then(res => setScheduleInfo(res.data))
-            .catch(() => {});
-    }, []);
 
     useEffect(() => {
         if (isStudent || isAdmin) {
@@ -420,10 +469,17 @@ export default function SchoonmaakschemaPage() {
         }
     }, []);
 
+    const updateCache = (rw, updater) => {
+        if (weekCache.current[rw]) {
+            weekCache.current[rw] = updater(weekCache.current[rw]);
+        }
+    };
+
     const handleToggle = async (taskId) => {
         try {
             const res = await api.put(`/api/cleaning/tasks/${taskId}/toggle`);
             setTasks(prev => prev.map(t => t.id === taskId ? res.data : t));
+            updateCache(rotationWeek, prev => prev.map(t => t.id === taskId ? res.data : t));
         } catch {
             setError("Kon taak niet bijwerken.");
         }
@@ -434,6 +490,7 @@ export default function SchoonmaakschemaPage() {
         try {
             await api.delete(`/api/cleaning/tasks/${taskId}`);
             setTasks(prev => prev.filter(t => t.id !== taskId));
+            updateCache(rotationWeek, prev => prev.filter(t => t.id !== taskId));
         } catch {
             setError("Kon taak niet verwijderen.");
         }
@@ -443,6 +500,7 @@ export default function SchoonmaakschemaPage() {
         try {
             const res = await api.put(`/api/cleaning/tasks/${taskId}/comment?comment=${encodeURIComponent(comment)}`);
             setTasks(prev => prev.map(t => t.id === taskId ? res.data : t));
+            updateCache(rotationWeek, prev => prev.map(t => t.id === taskId ? res.data : t));
         } catch {
             setError("Kon opmerking niet opslaan.");
         }
@@ -452,6 +510,7 @@ export default function SchoonmaakschemaPage() {
         try {
             const res = await api.put(`/api/cleaning/tasks/${taskId}/incident?incident=${encodeURIComponent(incident)}`);
             setTasks(prev => prev.map(t => t.id === taskId ? res.data : t));
+            updateCache(rotationWeek, prev => prev.map(t => t.id === taskId ? res.data : t));
         } catch {
             setError("Kon incident niet melden.");
         }
@@ -459,6 +518,7 @@ export default function SchoonmaakschemaPage() {
 
     const handleCreated = (newTask) => {
         setTasks(prev => [...prev, newTask]);
+        updateCache(rotationWeek, prev => [...prev, newTask]);
     };
 
     const completedCount = tasks.filter(t => t.completed).length;
@@ -494,28 +554,25 @@ export default function SchoonmaakschemaPage() {
                     <div className="cleaning-week-nav">
                         <button
                             className="week-nav-btn"
-                            onClick={() => setWeekNumber(w => w === 1 ? 6 : w - 1)}
-                            aria-label="Vorige rotatieweek"
+                            onClick={() => setNavWeek(w => addWeeks(w.isoWeek, w.year, -1))}
+                            aria-label="Vorige week"
                         >
                             <FiChevronLeft />
                         </button>
                         <div className="week-label-wrap">
                             <span className="week-label">
-                                Rotatieweek {weekNumber}
-                                {weekNumber === getCurrentRotationWeek() && (
-                                    <span className="week-current-badge">nu</span>
-                                )}
+                                Week {navWeek.isoWeek}
+                                {isCurrentWeek && <span className="week-current-badge">nu</span>}
                             </span>
-                            {scheduleInfo && weekNumber === getCurrentRotationWeek() && (
-                                <span className="week-iso-label">
-                                    ISO week {scheduleInfo.isoWeek} · {scheduleInfo.year}
-                                </span>
-                            )}
+                            <span className="week-iso-label">
+                                {formatWeekRange(navWeek.isoWeek, navWeek.year)}
+                                {navWeek.year !== todayIsoYear && ` ${navWeek.year}`}
+                            </span>
                         </div>
                         <button
                             className="week-nav-btn"
-                            onClick={() => setWeekNumber(w => w === 6 ? 1 : w + 1)}
-                            aria-label="Volgende rotatieweek"
+                            onClick={() => setNavWeek(w => addWeeks(w.isoWeek, w.year, 1))}
+                            aria-label="Volgende week"
                         >
                             <FiChevronRight />
                         </button>
@@ -536,7 +593,7 @@ export default function SchoonmaakschemaPage() {
 
                 {!loading && !error && tasks.length === 0 && (
                     <div className="cleaning-status">
-                        Geen taken voor rotatieweek {weekNumber}.
+                        Geen taken voor week {navWeek.isoWeek}.
                         {isAdmin && " Voeg een taak toe via de knop hieronder."}
                     </div>
                 )}
@@ -559,7 +616,7 @@ export default function SchoonmaakschemaPage() {
                 )}
 
                 {isAdmin && !loading && (
-                    <CreateTaskForm weekNumber={weekNumber} onCreated={handleCreated} />
+                    <CreateTaskForm weekNumber={rotationWeek} onCreated={handleCreated} />
                 )}
             </main>
         </div>
