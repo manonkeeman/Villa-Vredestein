@@ -1,6 +1,6 @@
 .pwa-banner {
     position: fixed;
-    bottom: 1rem;
+    bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
     left: 50%;
     transform: translateX(-50%);
     width: calc(100% - 2rem);
@@ -60,14 +60,16 @@
 }
 
 .pwa-banner__share-icon {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     background: #3a7bd5;
     color: #fff;
     border-radius: 4px;
-    padding: 0 3px;
-    font-size: 0.7rem;
+    padding: 2px 4px;
     vertical-align: middle;
     margin: 0 2px;
+    line-height: 1;
 }
 
 .pwa-banner__text em {
