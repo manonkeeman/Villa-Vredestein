@@ -2,7 +2,7 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
   <!-- Primary SEO -->
   <title>Villa Vredestein — Driebergen-Rijsenburg</title>
@@ -102,6 +102,17 @@
 </head>
 <body>
 <div id="root"></div>
+
+<!-- Capture beforeinstallprompt before React mounts (fires early on Android Chrome) -->
+<script>
+  window.__pwaInstallPrompt = null;
+  window.addEventListener('beforeinstallprompt', function(e) {
+    e.preventDefault();
+    window.__pwaInstallPrompt = e;
+    window.dispatchEvent(new Event('pwa-prompt-ready'));
+  });
+</script>
+
 <script type="module" src="/src/main.jsx"></script>
 
 <!-- Netlify form detectie: bot leest statische HTML, niet React bundles -->
