@@ -561,12 +561,9 @@ export default function SchoonmaakschemaPage() {
                         </button>
                         <div className="week-label-wrap">
                             <span className="week-label">
-                                Week {navWeek.isoWeek}
-                                {isCurrentWeek && <span className="week-current-badge">nu</span>}
-                            </span>
-                            <span className="week-iso-label">
-                                {formatWeekRange(navWeek.isoWeek, navWeek.year)}
+                                Week {navWeek.isoWeek} · {formatWeekRange(navWeek.isoWeek, navWeek.year)}
                                 {navWeek.year !== todayIsoYear && ` ${navWeek.year}`}
+                                {isCurrentWeek && <span className="week-current-badge">nu</span>}
                             </span>
                         </div>
                         <button
