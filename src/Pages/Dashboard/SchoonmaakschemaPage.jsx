@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
+import PropTypes from "prop-types";
 import { Helmet } from "react-helmet-async";
 import { Navigate, Link } from "react-router-dom";
 import { useAuth } from "../Auth/AuthContext.jsx";
@@ -72,6 +73,12 @@ function StudentSidebar({ user, contractFile, logout }) {
     );
 }
 
+StudentSidebar.propTypes = {
+    user: PropTypes.object,
+    contractFile: PropTypes.string,
+    logout: PropTypes.func.isRequired,
+};
+
 function AdminSidebar({ user, logout }) {
     return (
         <aside className="dashboard-sidebar" aria-label="Navigatie zijbalk">
@@ -98,6 +105,11 @@ function AdminSidebar({ user, logout }) {
     );
 }
 
+AdminSidebar.propTypes = {
+    user: PropTypes.object,
+    logout: PropTypes.func.isRequired,
+};
+
 function CleanerSidebar({ user, logout }) {
     return (
         <aside className="dashboard-sidebar" aria-label="Navigatie zijbalk">
@@ -120,6 +132,11 @@ function CleanerSidebar({ user, logout }) {
         </aside>
     );
 }
+
+CleanerSidebar.propTypes = {
+    user: PropTypes.object,
+    logout: PropTypes.func.isRequired,
+};
 
 // ─── TaskCard ────────────────────────────────────────────────────────────────
 
@@ -266,6 +283,25 @@ function TaskCard({ task, isAdmin, isCleaner, onToggle, onDelete, onComment, onI
     );
 }
 
+TaskCard.propTypes = {
+    task: PropTypes.shape({
+        id: PropTypes.number,
+        name: PropTypes.string,
+        description: PropTypes.string,
+        completed: PropTypes.bool,
+        assignedTo: PropTypes.string,
+        deadline: PropTypes.string,
+        comment: PropTypes.string,
+        incidentReport: PropTypes.string,
+    }).isRequired,
+    isAdmin: PropTypes.bool,
+    isCleaner: PropTypes.bool,
+    onToggle: PropTypes.func.isRequired,
+    onDelete: PropTypes.func.isRequired,
+    onComment: PropTypes.func.isRequired,
+    onIncident: PropTypes.func.isRequired,
+};
+
 // ─── CreateTaskForm (Admin only) ─────────────────────────────────────────────
 
 function CreateTaskForm({ weekNumber, onCreated }) {
@@ -336,6 +372,11 @@ function CreateTaskForm({ weekNumber, onCreated }) {
         </form>
     );
 }
+
+CreateTaskForm.propTypes = {
+    weekNumber: PropTypes.number.isRequired,
+    onCreated: PropTypes.func.isRequired,
+};
 
 // ─── Main Page ───────────────────────────────────────────────────────────────
 
