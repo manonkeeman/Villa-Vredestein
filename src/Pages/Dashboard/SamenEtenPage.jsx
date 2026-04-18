@@ -19,18 +19,16 @@ const hasRole = (user, role) => {
 
 // ── Static dinner data — swap for API when backend is ready ────────────
 const UPCOMING_DINNER = {
-    date: new Date(2026, 4, 8),       // 8 mei 2026
-    time: "18:30",
-    theme: "Mediterraan 🫒",
-    host: "Iedereen",
-    location: "Woonkamer & Keuken",
+    date: new Date(2026, 5, 18),       // 18 juni 2026
+    time: "17:00",
+    theme: "BBQ 🔥",
+    location: "Tuin",
     description:
-        "Kook samen, eet samen. Deze maand: Mediterraan! Denk aan hummus, tabbouleh, falafel, pita en olijven. Iedereen brengt een gerecht mee — aanmelden is verplicht zodat we niet dubbel inkopen.",
-    maxPersons: 8,
+        "Zomerse BBQ in de villa-tuin! Vlees, groenten en drankjes worden geregeld — jij hoeft alleen maar te komen genieten. Geef aan of je er bij bent, en of je iemand meeneemt zodat we genoeg inkopen.",
+    maxPersons: 20,
     signups: [
-        { name: "Manon", dish: "Tabbouleh salade", emoji: "🥗" },
-        { name: "Maxim", dish: "Falafel met saus", emoji: "🧆" },
-        { name: "Lisa",  dish: "Pita-brood",       emoji: "🫓" },
+        { name: "Manon", guests: 0, emoji: "👩" },
+        { name: "Maxim", guests: 1, emoji: "👨" },
     ],
 };
 
@@ -41,45 +39,25 @@ function formatDate(date) {
     return `${NL_DAYS_LONG[date.getDay()]} ${date.getDate()} ${NL_MONTHS_LONG[date.getMonth()]}`;
 }
 
-// ── Dish ideas per theme ───────────────────────────────────────────────
-const DISH_IDEAS = [
-    { emoji: "🥗", label: "Salade" },
-    { emoji: "🍲", label: "Soep / stoofpot" },
-    { emoji: "🫓", label: "Brood / dips" },
-    { emoji: "🍝", label: "Pasta / rijst" },
-    { emoji: "🥩", label: "Vlees / BBQ" },
-    { emoji: "🥦", label: "Groenten" },
-    { emoji: "🧁", label: "Nagerecht" },
-    { emoji: "🥤", label: "Drankjes" },
-];
-
-// ── Past dinners ───────────────────────────────────────────────────────
-const PAST_DINNERS = [
-    { month: "april 2026",    theme: "Italiaans 🍝",      persons: 7 },
-    { month: "maart 2026",    theme: "Mexicaans 🌮",      persons: 8 },
-    { month: "februari 2026", theme: "Aziatisch 🍜",      persons: 6 },
-    { month: "januari 2026",  theme: "Comfort food 🍲",   persons: 7 },
-];
-
 // ── Page ───────────────────────────────────────────────────────────────
 const SamenEtenPage = () => {
     const { isLoggedIn, logout, user } = useAuth();
     if (!isLoggedIn) return <Navigate to="/login" replace />;
 
-    const [signedUp, setSignedUp]   = useState(false);
-    const [dish, setDish]           = useState("");
     const [submitted, setSubmitted] = useState(false);
-    const [persons, setPersons]     = useState(1);
+    const [guests, setGuests]       = useState(0);
 
-    const dinner  = UPCOMING_DINNER;
-    const spotsLeft = dinner.maxPersons - dinner.signups.length;
-    const spotsPercent = Math.round((dinner.signups.length / dinner.maxPersons) * 100);
+    const dinner = UPCOMING_DINNER;
+
+    // Total persons already signed up (person + their guests)
+    const totalPersons = dinner.signups.reduce((sum, s) => sum + 1 + s.guests, 0);
+    const spotsLeft    = dinner.maxPersons - totalPersons;
+    const spotsPercent = Math.round((totalPersons / dinner.maxPersons) * 100);
+    const totalCount   = dinner.signups.length + (submitted ? 1 : 0);
 
     const handleSignup = (e) => {
         e.preventDefault();
-        if (!dish.trim()) return;
         setSubmitted(true);
-        setSignedUp(true);
     };
 
     return (
@@ -131,15 +109,15 @@ const SamenEtenPage = () => {
 
                 {/* Hero */}
                 <div className="se-hero">
-                    <span className="se-hero-icon">🍽️</span>
+                    <span className="se-hero-icon">🔥</span>
                     <div className="se-hero-text">
-                        <strong>Samen eten bij Villa Vredestein</strong>
-                        <p>Elke maand koken en eten we samen. Iedereen brengt een gerecht mee — gezelligheid gegarandeerd!</p>
+                        <strong>Villa BBQ — samen genieten!</strong>
+                        <p>Vlees, groenten en drankjes zijn geregeld. Kom gezellig langs en neem gerust iemand mee!</p>
                     </div>
                     <div className="se-hero-date">
-                        <span className="se-hero-date-label">Volgende etentje</span>
+                        <span className="se-hero-date-label">Datum</span>
                         <span className="se-hero-date-value">{formatDate(dinner.date)}</span>
-                        <span className="se-hero-date-time">🕡 {dinner.time}</span>
+                        <span className="se-hero-date-time">🕔 {dinner.time}</span>
                     </div>
                 </div>
 
@@ -149,7 +127,7 @@ const SamenEtenPage = () => {
                     {/* Left: event details */}
                     <section className="se-block se-block--gold">
                         <div className="se-block-header">
-                            <span>🫒</span>
+                            <span>🔥</span>
                             <h2>Details — {dinner.theme}</h2>
                         </div>
 
@@ -158,12 +136,12 @@ const SamenEtenPage = () => {
                             <span>{dinner.location}</span>
                         </div>
                         <div className="se-detail-row">
-                            <span className="se-detail-icon">🕡</span>
+                            <span className="se-detail-icon">🕔</span>
                             <span>{dinner.time} · {formatDate(dinner.date)}</span>
                         </div>
                         <div className="se-detail-row">
                             <span className="se-detail-icon">👥</span>
-                            <span>{dinner.maxPersons} plekken · nog {spotsLeft} vrij</span>
+                            <span>{totalPersons} personen aangemeld · nog {spotsLeft} plekken vrij</span>
                         </div>
 
                         <p className="se-description">{dinner.description}</p>
@@ -174,18 +152,8 @@ const SamenEtenPage = () => {
                                 <div className="se-progress-fill" style={{ width: `${spotsPercent}%` }} />
                             </div>
                             <span className="se-progress-label">
-                                {dinner.signups.length} / {dinner.maxPersons} aangemeld
+                                {totalPersons} / {dinner.maxPersons} personen
                             </span>
-                        </div>
-
-                        {/* Dish ideas */}
-                        <div className="se-dish-ideas">
-                            <span className="se-dish-ideas-title">Gerecht-ideeën:</span>
-                            <div className="se-dish-chips">
-                                {DISH_IDEAS.map(d => (
-                                    <span key={d.label} className="se-dish-chip">{d.emoji} {d.label}</span>
-                                ))}
-                            </div>
                         </div>
                     </section>
 
@@ -196,7 +164,7 @@ const SamenEtenPage = () => {
                         <section className="se-block se-block--dark">
                             <div className="se-block-header">
                                 <span>✅</span>
-                                <h2>Aangemeld ({dinner.signups.length + (submitted ? 1 : 0)})</h2>
+                                <h2>Aangemeld ({totalCount})</h2>
                             </div>
                             <ul className="se-signup-list">
                                 {dinner.signups.map((s, i) => (
@@ -204,17 +172,25 @@ const SamenEtenPage = () => {
                                         <span className="se-signup-emoji">{s.emoji}</span>
                                         <div>
                                             <strong>{s.name}</strong>
-                                            <span>{s.dish}</span>
+                                            <span>
+                                                {s.guests === 0
+                                                    ? "Komt alleen"
+                                                    : `Neemt ${s.guests} gast${s.guests > 1 ? "en" : ""} mee`}
+                                            </span>
                                         </div>
                                         <FiCheck className="se-check-icon" />
                                     </li>
                                 ))}
                                 {submitted && (
                                     <li className="se-signup-item se-signup-item--new">
-                                        <span className="se-signup-emoji">🍽️</span>
+                                        <span className="se-signup-emoji">🙋</span>
                                         <div>
                                             <strong>{user?.username || "Jij"}</strong>
-                                            <span>{dish}</span>
+                                            <span>
+                                                {guests === 0
+                                                    ? "Komt alleen"
+                                                    : `Neemt ${guests} gast${guests > 1 ? "en" : ""} mee`}
+                                            </span>
                                         </div>
                                         <FiHeart className="se-heart-icon" />
                                     </li>
@@ -226,31 +202,35 @@ const SamenEtenPage = () => {
                         {!submitted ? (
                             <section className="se-block se-block--green">
                                 <div className="se-block-header">
-                                    <span>🖊️</span>
-                                    <h2>Meld je aan</h2>
+                                    <span>🙋</span>
+                                    <h2>Kom je?</h2>
                                 </div>
                                 <form className="se-form" onSubmit={handleSignup}>
                                     <label className="se-label">
-                                        Wat breng jij mee?
-                                        <input
-                                            type="text"
-                                            className="se-input"
-                                            placeholder="bijv. Hummus met pitabrood"
-                                            value={dish}
-                                            onChange={e => setDish(e.target.value)}
-                                            required
-                                        />
-                                    </label>
-                                    <label className="se-label">
-                                        Aantal personen
+                                        Neem je iemand mee?
                                         <div className="se-counter">
-                                            <button type="button" className="se-counter-btn" onClick={() => setPersons(p => Math.max(1, p - 1))}><FiMinus /></button>
-                                            <span className="se-counter-val">{persons}</span>
-                                            <button type="button" className="se-counter-btn" onClick={() => setPersons(p => Math.min(spotsLeft, p + 1))}><FiPlus /></button>
+                                            <button
+                                                type="button"
+                                                className="se-counter-btn"
+                                                onClick={() => setGuests(g => Math.max(0, g - 1))}
+                                            >
+                                                <FiMinus />
+                                            </button>
+                                            <span className="se-counter-val">{guests}</span>
+                                            <button
+                                                type="button"
+                                                className="se-counter-btn"
+                                                onClick={() => setGuests(g => Math.min(spotsLeft - 1, g + 1))}
+                                            >
+                                                <FiPlus />
+                                            </button>
                                         </div>
+                                        <span className="se-counter-hint">
+                                            {guests === 0 ? "Alleen jijzelf" : `Jij + ${guests} gast${guests > 1 ? "en" : ""}`}
+                                        </span>
                                     </label>
                                     <button type="submit" className="se-submit-btn">
-                                        <FiCheck /> Aanmelden
+                                        <FiCheck /> Ik kom!
                                     </button>
                                 </form>
                             </section>
@@ -258,15 +238,19 @@ const SamenEtenPage = () => {
                             <section className="se-block se-block--success">
                                 <div className="se-success-inner">
                                     <span className="se-success-icon">🎉</span>
-                                    <strong>Je bent aangemeld!</strong>
-                                    <p>We zien je op {formatDate(dinner.date)} om {dinner.time}.</p>
-                                    <p className="se-success-dish">Jouw gerecht: <em>{dish}</em></p>
+                                    <strong>Super, je staat erbij!</strong>
+                                    <p>We zien je op {formatDate(dinner.date)} om {dinner.time} in de tuin.</p>
+                                    <p className="se-success-dish">
+                                        {guests === 0
+                                            ? "Je komt alleen — tot dan! 🔥"
+                                            : `Je neemt ${guests} gast${guests > 1 ? "en" : ""} mee — hoe gezellig!`}
+                                    </p>
                                     <button
                                         type="button"
                                         className="se-cancel-btn"
-                                        onClick={() => { setSubmitted(false); setSignedUp(false); setDish(""); }}
+                                        onClick={() => { setSubmitted(false); setGuests(0); }}
                                     >
-                                        <FiX /> Afmelden
+                                        <FiX /> Toch niet
                                     </button>
                                 </div>
                             </section>
@@ -278,16 +262,16 @@ const SamenEtenPage = () => {
                 <section className="se-block se-block--rules">
                     <div className="se-block-header">
                         <span>📋</span>
-                        <h2>Spelregels</h2>
+                        <h2>Handig om te weten</h2>
                     </div>
                     <div className="se-rules-grid">
                         {[
-                            { icon: "🍽️", rule: "Iedereen brengt één gerecht mee" },
-                            { icon: "📅", rule: "Aanmelden vóór 3 dagen van tevoren" },
-                            { icon: "🧹", rule: "Keuken en woonkamer samen opruimen na afloop" },
+                            { icon: "🔥", rule: "Vlees, groenten en drankjes worden geregeld" },
+                            { icon: "👥", rule: "Je mag gerust iemand meenemen — meld het wel even aan" },
+                            { icon: "📅", rule: "Aanmelden vóór 14 juni zodat we genoeg inkopen" },
+                            { icon: "🧹", rule: "Na afloop ruimen we de tuin samen op" },
                             { icon: "🤝", rule: "Gezelligheid boven alles — telefoon weg!" },
                             { icon: "🔔", rule: "Afmelden kan tot 24 uur van tevoren" },
-                            { icon: "🚫", rule: "Geen allergieën vergeten te melden!" },
                         ].map(({ icon, rule }) => (
                             <div key={rule} className="se-rule-tile">
                                 <span>{icon}</span>
@@ -304,7 +288,12 @@ const SamenEtenPage = () => {
                         <h2>Eerdere etentjes</h2>
                     </div>
                     <div className="se-past-grid">
-                        {PAST_DINNERS.map((d, i) => (
+                        {[
+                            { month: "mei 2026",      theme: "Mediterraan 🫒", persons: 7 },
+                            { month: "april 2026",    theme: "Italiaans 🍝",   persons: 7 },
+                            { month: "maart 2026",    theme: "Mexicaans 🌮",   persons: 8 },
+                            { month: "februari 2026", theme: "Aziatisch 🍜",   persons: 6 },
+                        ].map((d, i) => (
                             <div key={i} className="se-past-tile">
                                 <span className="se-past-theme">{d.theme}</span>
                                 <span className="se-past-month">{d.month}</span>

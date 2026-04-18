@@ -182,8 +182,8 @@ const StudentDashboard = () => {
                 {/* Samen eten */}
                 <article className="dash-card">
                     <h2><FiUsers /> Samen eten?</h2>
-                    <p>Volgende etentje: <strong>8 mei · Mediterraan 🫒</strong></p>
-                    <p>Meld je aan en geef aan wat jij meebrengt.</p>
+                    <p>Volgende event: <strong>18 juni · Villa BBQ 🔥</strong></p>
+                    <p>Geef aan of je komt en of je iemand meeneemt.</p>
                     <div className="dashboard-cleaning-meta">
                         <Link to="/student/samen-eten" className="dashboard-schema-btn">
                             <FiUsers /> Aanmelden
