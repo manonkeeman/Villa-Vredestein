@@ -8,12 +8,11 @@ import {
     FiChevronRight, FiCheckCircle, FiClock, FiAlertTriangle, FiSave,
     FiMail, FiRefreshCw,
 } from "react-icons/fi";
+import api from "../../Helpers/AxiosHelper.js";
 import "./StudentDashboard.css";
 import "./AdminBetalingenPage.css";
 import "../../Styles/Global.css";
 import PropTypes from "prop-types";
-
-const BASE_URL = (import.meta.env.VITE_API_BASE_URL || "http://localhost:8080").replace(/\/$/, "");
 
 const NL_MONTHS = [
     "januari", "februari", "maart", "april", "mei", "juni",
@@ -48,7 +47,7 @@ const StatusBadge = ({ status }) => {
 StatusBadge.propTypes = { status: PropTypes.string.isRequired };
 
 const AdminBetalingenPage = () => {
-    const { isLoggedIn, logout, user, token } = useAuth();
+    const { isLoggedIn, logout, user } = useAuth();
 
     // ── Month navigation
     const now = new Date();
@@ -80,45 +79,27 @@ const AdminBetalingenPage = () => {
     const fetchInvoices = useCallback(async () => {
         setLoadingInvoices(true);
         setInvoiceError(null);
-        try {
-            const res = await fetch(`${BASE_URL}/api/invoices`, {
-                headers: { Authorization: `Bearer ${token}` },
-            });
-            if (!res.ok) throw new Error("Kon facturen niet laden");
-            const all = await res.json();
-            const filtered = all.filter(
-                (inv) => inv.invoiceMonth === viewMonth && inv.invoiceYear === viewYear
-            );
-            // Sort by student name
-            filtered.sort((a, b) => (a.studentUsername || "").localeCompare(b.studentUsername || ""));
-            setInvoices(filtered);
-        } catch (err) {
-            setInvoiceError(err.message);
-        } finally {
-            setLoadingInvoices(false);
-        }
-    }, [token, viewMonth, viewYear]);
+        api.get("/api/invoices")
+            .then(res => {
+                const filtered = res.data.filter(
+                    (inv) => inv.invoiceMonth === viewMonth && inv.invoiceYear === viewYear
+                );
+                filtered.sort((a, b) => (a.studentName || "").localeCompare(b.studentName || ""));
+                setInvoices(filtered);
+            })
+            .catch(err => setInvoiceError(err.response?.data?.message || "Kon facturen niet laden"))
+            .finally(() => setLoadingInvoices(false));
+    }, [viewMonth, viewYear]);
 
     useEffect(() => { fetchInvoices(); }, [fetchInvoices]);
 
     // ── Fetch email templates
     useEffect(() => {
-        const fetchTemplates = async () => {
-            try {
-                const res = await fetch(`${BASE_URL}/api/admin/email-templates`, {
-                    headers: { Authorization: `Bearer ${token}` },
-                });
-                if (!res.ok) throw new Error("Kon templates niet laden");
-                const data = await res.json();
-                setTemplates(data);
-            } catch (err) {
-                setTemplateError(err.message);
-            } finally {
-                setLoadingTemplates(false);
-            }
-        };
-        fetchTemplates();
-    }, [token]);
+        api.get("/api/admin/email-templates")
+            .then(res => setTemplates(res.data))
+            .catch(err => setTemplateError(err.response?.data?.message || "Kon templates niet laden"))
+            .finally(() => setLoadingTemplates(false));
+    }, []);
 
     // ── Month navigation
     const prevMonth = () => {
@@ -142,43 +123,24 @@ const AdminBetalingenPage = () => {
     const saveTemplate = async () => {
         setSaving(true);
         setSaveMsg(null);
-        try {
-            const res = await fetch(`${BASE_URL}/api/admin/email-templates/${editingType}`, {
-                method: "PUT",
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ subject: editSubject, body: editBody }),
-            });
-            if (!res.ok) throw new Error("Opslaan mislukt");
-            const updated = await res.json();
-            setTemplates((prev) => prev.map((t) => (t.type === editingType ? updated : t)));
-            setSaveMsg("Opgeslagen!");
-            setEditingType(null);
-        } catch (err) {
-            setSaveMsg("Fout: " + err.message);
-        } finally {
-            setSaving(false);
-        }
+        api.put(`/api/admin/email-templates/${editingType}`, { subject: editSubject, body: editBody })
+            .then(res => {
+                setTemplates((prev) => prev.map((t) => (t.type === editingType ? res.data : t)));
+                setSaveMsg("Opgeslagen!");
+                setEditingType(null);
+            })
+            .catch(err => setSaveMsg("Fout: " + (err.response?.data?.message || err.message)))
+            .finally(() => setSaving(false));
     };
 
     // ── Trigger monthly invoice job
     const triggerJob = async (path, label) => {
         setTriggering(true);
         setTriggerMsg(null);
-        try {
-            const res = await fetch(`${BASE_URL}/api/admin/jobs/${path}`, {
-                method: "POST",
-                headers: { Authorization: `Bearer ${token}` },
-            });
-            const data = await res.json();
-            setTriggerMsg(data.message || label + " gestart");
-        } catch {
-            setTriggerMsg("Fout bij starten van job");
-        } finally {
-            setTriggering(false);
-        }
+        api.post(`/api/admin/jobs/${path}`)
+            .then(res => setTriggerMsg(res.data?.message || label + " gestart"))
+            .catch(() => setTriggerMsg("Fout bij starten van job"))
+            .finally(() => setTriggering(false));
     };
 
     const monthHeader = `${NL_MONTHS[viewMonth - 1]} ${viewYear}`;
