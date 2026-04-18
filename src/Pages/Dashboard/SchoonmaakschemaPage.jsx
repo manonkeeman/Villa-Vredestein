@@ -89,14 +89,14 @@ function StudentSidebar({ user, contractFile, logout }) {
                     <li><Link to="/student/noodlijst"><FiAlertCircle /> Noodlijst</Link></li>
                     <li><Link to="/student/huisregels"><FiFileText /> Huisregels</Link></li>
                     <li><Link to="/schoonmaakschema" className="active"><FiClipboard /> Schoonmaakschema</Link></li>
-                    <li><Link to="#"><FiDollarSign /> Betalingen</Link></li>
+                    <li><Link to="/student/betalingen"><FiDollarSign /> Betalingen</Link></li>
                     <li>
                         {contractFile
                             ? <a href={`${BASE_URL}/uploads/${encodeURIComponent(contractFile)}`} target="_blank" rel="noopener noreferrer"><FiFileText /> Huurcontract</a>
                             : <Link to="#"><FiFileText /> Huurcontract</Link>
                         }
                     </li>
-                    <li><Link to="#"><FiUsers /> Samen eten?</Link></li>
+                    <li><Link to="/student/samen-eten"><FiUsers /> Samen eten?</Link></li>
                     <li><Link to="/student/events"><FiCalendar /> Events</Link></li>
                     {hasRole(user, "ADMIN") && (
                         <li><Link to="/admin" className="admin-link"><FiShield /> Admin Dashboard</Link></li>
@@ -127,7 +127,7 @@ function AdminSidebar({ user, logout }) {
                 <ul>
                     <li><Link to="/admin"><FiHome /> Dashboard</Link></li>
                     <li><Link to="#"><FiUsers /> Bewoners</Link></li>
-                    <li><Link to="#"><FiDollarSign /> Betalingen</Link></li>
+                    <li><Link to="/admin/betalingen"><FiDollarSign /> Betalingen</Link></li>
                     <li><Link to="/student/huisregels"><FiFileText /> Huisregels</Link></li>
                     <li><Link to="#"><FiFileText /> Documenten</Link></li>
                     <li><Link to="/schoonmaakschema" className="active"><FiClipboard /> Schoonmaakschema</Link></li>

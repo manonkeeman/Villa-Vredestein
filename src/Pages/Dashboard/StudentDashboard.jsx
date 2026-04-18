@@ -108,7 +108,7 @@ const StudentDashboard = () => {
                                 : <Link to="#"><FiFileText /> Huurcontract</Link>
                             }
                         </li>
-                        <li><Link to="#"><FiUsers /> Samen eten?</Link></li>
+                        <li><Link to="/student/samen-eten"><FiUsers /> Samen eten?</Link></li>
                         <li><Link to="/student/events"><FiCalendar /> Events</Link></li>
 
                         {hasRole(user, "ADMIN") && (
@@ -179,10 +179,22 @@ const StudentDashboard = () => {
                     </div>
                 </article>
 
+                {/* Samen eten */}
+                <article className="dash-card">
+                    <h2><FiUsers /> Samen eten?</h2>
+                    <p>Volgende etentje: <strong>8 mei · Mediterraan 🫒</strong></p>
+                    <p>Meld je aan en geef aan wat jij meebrengt.</p>
+                    <div className="dashboard-cleaning-meta">
+                        <Link to="/student/samen-eten" className="dashboard-schema-btn">
+                            <FiUsers /> Aanmelden
+                        </Link>
+                    </div>
+                </article>
+
                 {/* Events */}
                 <article className="dash-card">
                     <h2><FiCalendar /> Events & nieuws</h2>
-                    <p>Borrels, etentjes en activiteiten in de villa.</p>
+                    <p>Borrels, BBQ's en activiteiten in de villa.</p>
                     <div className="dashboard-cleaning-meta">
                         <Link to="/student/events" className="dashboard-schema-btn">
                             <FiCalendar /> Bekijk

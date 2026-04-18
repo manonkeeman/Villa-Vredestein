@@ -98,7 +98,7 @@ const BetalingenPage = () => {
                         <li><Link to="/student/huisregels"><FiFileText /> Huisregels</Link></li>
                         <li><Link to="/schoonmaakschema"><FiClipboard /> Schoonmaakschema</Link></li>
                         <li><Link to="/student/betalingen" className="active-nav-link"><FiDollarSign /> Betalingen</Link></li>
-                        <li><Link to="#"><FiUsers /> Samen eten?</Link></li>
+                        <li><Link to="/student/samen-eten"><FiUsers /> Samen eten?</Link></li>
                         <li><Link to="/student/events"><FiCalendar /> Events</Link></li>
 
                         {hasRole(user, "ADMIN") && (
