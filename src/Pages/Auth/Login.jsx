@@ -48,7 +48,7 @@ const MODES = [
     { value: "ADMIN", label: "Beheerder" },
 ];
 
-const ROOM_OPTIONS = ["Japan", "Argentinië", "Thailand", "Italië", "Frankrijk", "Oekraïne"];
+const ROOM_OPTIONS = ["Japan", "Argentinië", "Thailand", "Frankrijk"];
 
 const Login = () => {
     const navigate = useNavigate();

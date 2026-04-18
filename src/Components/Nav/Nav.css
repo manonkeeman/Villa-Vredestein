@@ -139,6 +139,113 @@
   border-radius: 0.3rem;
 }
 
+/* ── Dashboard nav dropdown ── */
+.dash-nav-wrapper {
+  position: relative;
+}
+
+.dash-nav-btn {
+  background: none;
+  border: 1px solid #fcbc2d;
+  color: #fcbc2d;
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.28rem 0.65rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: background-color 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+
+.dash-nav-btn:hover,
+.dash-nav-btn.open {
+  background-color: #fcbc2d;
+  color: #000;
+}
+
+.dash-nav-caret {
+  font-size: 0.6rem;
+  transition: transform 0.2s;
+}
+
+.dash-nav-btn.open .dash-nav-caret {
+  transform: rotate(180deg);
+}
+
+.dash-nav-dropdown {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  background: #111;
+  border: 1px solid #2a2a2a;
+  border-top: 2px solid #fcbc2d;
+  border-radius: 10px;
+  list-style: none;
+  padding: 0.35rem 0;
+  z-index: 2100;
+  min-width: 185px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+}
+
+.dash-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: 100%;
+  background: none;
+  border: none;
+  color: #ddd;
+  font-family: inherit;
+  font-size: 0.8rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  text-decoration: none !important;
+  transition: background-color 0.15s, color 0.15s;
+  text-align: left;
+}
+
+.dash-nav-item svg {
+  color: #fcbc2d;
+  flex-shrink: 0;
+  font-size: 0.9rem;
+}
+
+.dash-nav-item:hover {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.dash-nav-item--admin {
+  color: #a855f7;
+}
+
+.dash-nav-item--admin svg {
+  color: #a855f7;
+}
+
+.dash-nav-item--logout {
+  color: #ef4444;
+}
+
+.dash-nav-item--logout svg {
+  color: #ef4444;
+}
+
+.dash-nav-item--logout:hover {
+  background: rgba(239,68,68,0.08);
+  color: #ef4444;
+}
+
+.dash-nav-divider {
+  height: 1px;
+  background: #222;
+  margin: 0.25rem 0.75rem;
+}
+
 /* Language switcher */
 .lang-switcher-wrapper {
   position: relative;
@@ -248,6 +355,36 @@
     font-size: 0.95rem;
     padding: 0.4rem 0;
     display: block;
+  }
+
+  /* Dashboard dropdown op mobile */
+  .dash-nav-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .dash-nav-btn {
+    font-size: 0.9rem;
+    padding: 0.4rem 1rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .dash-nav-dropdown {
+    position: static;
+    width: 100%;
+    border-top: none;
+    border-radius: 8px;
+    margin-top: 0.4rem;
+    box-shadow: none;
+  }
+
+  .dash-nav-item {
+    font-size: 0.85rem;
+    padding: 0.55rem 1.25rem;
+    justify-content: flex-start;
   }
 
   /* Taalkiezer op mobile: dropdown naar boven */
