@@ -4,7 +4,7 @@ import { Navigate, Link } from "react-router-dom";
 import { useAuth } from "../Auth/AuthContext.jsx";
 import {
     FiLogOut, FiHome, FiAlertCircle, FiFileText, FiCalendar,
-    FiUser, FiUsers, FiDollarSign, FiClipboard, FiBookOpen,
+    FiUser, FiUsers, FiDollarSign, FiClipboard,
     FiShield, FiDownload, FiExternalLink, FiCheckCircle, FiClock, FiAlertTriangle,
 } from "react-icons/fi";
 import "./StudentDashboard.css";
