@@ -192,17 +192,24 @@ export default function ProfilePage() {
 
     const handleContractDownload = async () => {
         if (!profile?.contractFile) return;
+        const filename = profile.contractFile.split("/").pop();
+        const encoded = profile.contractFile.split("/").map(encodeURIComponent).join("/");
+        const fileUrl = `${BASE_URL}/uploads/${encoded}`;
         try {
-            const encoded = profile.contractFile.split("/").map(encodeURIComponent).join("/");
-            const res = await api.get(`/uploads/${encoded}`, { responseType: "blob" });
-            const url = URL.createObjectURL(res.data);
+            const res = await fetch(fileUrl);
+            if (!res.ok) throw new Error(`${res.status}`);
+            const blob = await res.blob();
+            const objectUrl = URL.createObjectURL(blob);
             const a = document.createElement("a");
-            a.href = url;
-            a.download = profile.contractFile.split("/").pop();
+            a.href = objectUrl;
+            a.download = filename;
+            document.body.appendChild(a);
             a.click();
-            URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+            URL.revokeObjectURL(objectUrl);
         } catch {
-            alert("Huurcontract kon niet worden gedownload. Probeer het opnieuw.");
+            // Fallback: open directly in new tab so the user can still save
+            window.open(fileUrl, "_blank", "noopener,noreferrer");
         }
     };
 
