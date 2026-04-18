@@ -28,6 +28,7 @@ import SchoonmaakschemaPage from "./Pages/Dashboard/SchoonmaakschemaPage.jsx";
 import BetalingenPage from "./Pages/Dashboard/BetalingenPage.jsx";
 import AdminBetalingenPage from "./Pages/Dashboard/AdminBetalingenPage.jsx";
 import EventsPage from "./Pages/Dashboard/EventsPage.jsx";
+import SamenEtenPage from "./Pages/Dashboard/SamenEtenPage.jsx";
 import PaymentSuccessPage from "./Pages/Public/PaymentSuccessPage.jsx";
 
 function App() {
@@ -134,6 +135,15 @@ function App() {
                         element={
                             <ProtectedRoute allowedRoles={["ROLE_ADMIN"]}>
                                 <AdminBetalingenPage />
+                            </ProtectedRoute>
+                        }
+                    />
+
+                    <Route
+                        path="/student/samen-eten"
+                        element={
+                            <ProtectedRoute allowedRoles={["ROLE_STUDENT", "ROLE_ADMIN"]}>
+                                <SamenEtenPage />
                             </ProtectedRoute>
                         }
                     />

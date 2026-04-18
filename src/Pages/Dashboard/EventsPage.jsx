@@ -198,7 +198,7 @@ const EventsPage = () => {
                         <li><Link to="/student/huisregels"><FiFileText /> Huisregels</Link></li>
                         <li><Link to="/schoonmaakschema"><FiClipboard /> Schoonmaakschema</Link></li>
                         <li><Link to="/student/betalingen"><FiDollarSign /> Betalingen</Link></li>
-                        <li><Link to="#"><FiUsers /> Samen eten?</Link></li>
+                        <li><Link to="/student/samen-eten"><FiUsers /> Samen eten?</Link></li>
                         <li>
                             <Link to="/student/events" className="active-nav-link">
                                 <FiCalendar /> Events
