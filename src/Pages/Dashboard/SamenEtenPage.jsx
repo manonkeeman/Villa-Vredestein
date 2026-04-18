@@ -289,15 +289,13 @@ const SamenEtenPage = () => {
                     </div>
                     <div className="se-past-grid">
                         {[
-                            { month: "mei 2026",      theme: "Mediterraan 🫒", persons: 7 },
-                            { month: "april 2026",    theme: "Italiaans 🍝",   persons: 7 },
-                            { month: "maart 2026",    theme: "Mexicaans 🌮",   persons: 8 },
-                            { month: "februari 2026", theme: "Aziatisch 🍜",   persons: 6 },
+                            { date: "20 mei 2025",  theme: "Pannenkoekenavond 🥞", location: "Tuin" },
+                            { date: "1 juni 2024",  theme: "Frituuravond 🍟",       location: "Woonkamer Vredestein" },
                         ].map((d, i) => (
                             <div key={i} className="se-past-tile">
                                 <span className="se-past-theme">{d.theme}</span>
-                                <span className="se-past-month">{d.month}</span>
-                                <span className="se-past-persons">👥 {d.persons} personen</span>
+                                <span className="se-past-month">{d.date}</span>
+                                <span className="se-past-persons">📍 {d.location}</span>
                             </div>
                         ))}
                     </div>
