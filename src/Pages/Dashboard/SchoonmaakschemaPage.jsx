@@ -72,8 +72,8 @@ const formatWeekRange = (isoWeek, year) => {
         : `${start.getDate()} ${NL_MONTHS[start.getMonth()]}–${end.getDate()} ${NL_MONTHS[end.getMonth()]}`;
 };
 
-// 6-week rotation: ((isoWeek - 1) % 6) + 1
-const toRotationWeek = (isoWeek) => ((isoWeek - 1) % 6) + 1;
+// 4-week rotation: ((isoWeek - 1) % 4) + 1
+const toRotationWeek = (isoWeek) => ((isoWeek - 1) % 4) + 1;
 
 // ─── Sidebars ───────────────────────────────────────────────────────────────
 
