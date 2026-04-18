@@ -190,6 +190,22 @@ export default function ProfilePage() {
         ? `${BASE_URL}/uploads/${profile.profileImagePath}`
         : null;
 
+    const handleContractDownload = async () => {
+        if (!profile?.contractFile) return;
+        try {
+            const encoded = profile.contractFile.split("/").map(encodeURIComponent).join("/");
+            const res = await api.get(`/uploads/${encoded}`, { responseType: "blob" });
+            const url = URL.createObjectURL(res.data);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = profile.contractFile.split("/").pop();
+            a.click();
+            URL.revokeObjectURL(url);
+        } catch {
+            alert("Huurcontract kon niet worden gedownload. Probeer het opnieuw.");
+        }
+    };
+
     return (
         <div className="profile-page">
             <Helmet>
@@ -217,7 +233,7 @@ export default function ProfilePage() {
                         <li><Link to="/student/betalingen"><FiDollarSign /> Betalingen</Link></li>
                         <li>
                             {profile?.contractFile
-                                ? <a href={`${BASE_URL}/uploads/${encodeURIComponent(profile.contractFile)}`} target="_blank" rel="noopener noreferrer"><FiFileText /> Huurcontract</a>
+                                ? <button type="button" onClick={handleContractDownload} className="logout-button"><FiFileText /> Huurcontract</button>
                                 : <Link to="#"><FiFileText /> Huurcontract</Link>
                             }
                         </li>
