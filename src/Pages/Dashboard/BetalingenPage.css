@@ -1,3 +1,59 @@
+/* ── Summary bar ── */
+.payments-summary {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-top: 1rem;
+    background-color: #111;
+    border: 1px solid #333;
+    border-radius: 10px;
+    overflow: hidden;
+    flex-wrap: wrap;
+}
+
+.payments-summary-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 0.75rem 1.25rem;
+    flex: 1;
+    min-width: 100px;
+}
+
+.payments-summary-divider {
+    width: 1px;
+    background-color: #333;
+    align-self: stretch;
+}
+
+.summary-label {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.75rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.summary-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #eee;
+    font-variant-numeric: tabular-nums;
+}
+
+.summary-paid { color: #22c55e; }
+.summary-open { color: #fcbc2d; }
+.summary-overdue { color: #ef4444; }
+
+@media (max-width: 600px) {
+    .payments-summary { flex-direction: column; }
+    .payments-summary-divider { width: auto; height: 1px; }
+    .payments-summary-item { padding: 0.6rem 1rem; }
+}
+
 .payments-loading,
 .payments-empty {
     color: #aaa;

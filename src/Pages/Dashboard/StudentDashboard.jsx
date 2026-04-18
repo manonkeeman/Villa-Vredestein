@@ -5,8 +5,10 @@ import { useAuth } from "../Auth/AuthContext.jsx";
 import {
     FiLogOut, FiHome, FiAlertCircle, FiFileText, FiCalendar,
     FiUser, FiUsers, FiDollarSign, FiClipboard, FiBookOpen, FiShield,
+    FiCheckCircle, FiClock,
 } from "react-icons/fi";
 import { MdOutlineCleaningServices } from "react-icons/md";
+import api from "../../Helpers/AxiosHelper.js";
 import "./StudentDashboard.css";
 import "../../Styles/Global.css";
 
@@ -50,6 +52,8 @@ const StudentDashboard = () => {
     const { isLoggedIn, logout, user } = useAuth();
     const { id } = useParams();
     const [contractFile, setContractFile] = useState(null);
+    const [invoices, setInvoices] = useState([]);
+    const [invoicesLoading, setInvoicesLoading] = useState(true);
 
     const currentId = user?.id ?? user?.userId;
     if (!isLoggedIn) return <Navigate to="/login" replace />;
@@ -60,9 +64,22 @@ const StudentDashboard = () => {
     const currentYear = now.getFullYear();
     const weekRange = formatWeekRange(currentIsoWeek, currentYear);
 
+    const openInvoices = invoices.filter(i => i.status === "OPEN" || i.status === "OVERDUE");
+    const hasOverdue = openInvoices.some(i => i.status === "OVERDUE");
+    const nextInvoice = [...openInvoices].sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate))[0];
+    const formatBedrag = (amount) =>
+        amount != null ? new Intl.NumberFormat("nl-NL", { style: "currency", currency: "EUR" }).format(amount) : "—";
+
     useEffect(() => {
         setContractFile(user?.contractFile || null);
     }, [user?.contractFile]);
+
+    useEffect(() => {
+        api.get("/api/invoices/me")
+            .then(res => setInvoices(res.data))
+            .catch(() => {})
+            .finally(() => setInvoicesLoading(false));
+    }, []);
 
     return (
         <div className="StudentDashboard">
@@ -128,10 +145,27 @@ const StudentDashboard = () => {
                     <div className="dashboard-news-content">
                         <h2><FiDollarSign /> Betalingen</h2>
                         <p>Bekijk je openstaande en voldane huurbetalingen en ontvang een herinnering wanneer iets afloopt.</p>
-                        <p>Alle facturen staan overzichtelijk voor je klaar.</p>
-                        <Link to="/student/betalingen" className="dashboard-schema-btn" style={{ marginTop: "0.75rem", display: "inline-flex" }}>
-                            <FiDollarSign /> Bekijk betalingen
-                        </Link>
+                        <div className="dashboard-cleaning-meta">
+                            {!invoicesLoading && openInvoices.length === 0 && (
+                                <span className="dashboard-rotation-badge dashboard-invoice-paid">
+                                    <FiCheckCircle /> Alles betaald
+                                </span>
+                            )}
+                            {!invoicesLoading && openInvoices.length > 0 && (
+                                <span className={`dashboard-rotation-badge ${hasOverdue ? "dashboard-invoice-overdue" : "dashboard-invoice-open"}`}>
+                                    {hasOverdue ? <FiAlertCircle /> : <FiClock />}
+                                    {openInvoices.length} openstaand
+                                </span>
+                            )}
+                            {!invoicesLoading && nextInvoice && (
+                                <span className="week-iso-label">
+                                    {formatBedrag(nextInvoice.amount)} · vervalt {new Date(nextInvoice.dueDate).toLocaleDateString("nl-NL", { day: "numeric", month: "short" })}
+                                </span>
+                            )}
+                            <Link to="/student/betalingen" className="dashboard-schema-btn">
+                                <FiDollarSign /> Bekijk betalingen
+                            </Link>
+                        </div>
                     </div>
                 </section>
 
