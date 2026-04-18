@@ -13,6 +13,7 @@ import {
 } from "react-icons/fi";
 import { MdOutlineCleaningServices } from "react-icons/md";
 import api from "../../Helpers/AxiosHelper.js";
+import DashboardLayout from "./DashboardLayout.jsx";
 import "./StudentDashboard.css";
 import "./SchoonmaakschemaPage.css";
 import "../../Styles/Global.css";
@@ -530,15 +531,13 @@ export default function SchoonmaakschemaPage() {
             : <StudentSidebar user={user} contractFile={contractFile} logout={logout} />;
 
     return (
-        <div className="StudentDashboard">
+        <>
             <Helmet>
                 <title>Schoonmaakschema — Villa Vredestein</title>
                 <meta name="robots" content="noindex, nofollow" />
             </Helmet>
 
-            {sidebar}
-
-            <main className="dashboard-main">
+            <DashboardLayout sidebar={sidebar}>
                 <section className="cleaning-header-section">
                     <div className="cleaning-header-content">
                         <h2><MdOutlineCleaningServices /> Schoonmaakschema</h2>
@@ -615,7 +614,7 @@ export default function SchoonmaakschemaPage() {
                 {isAdmin && !loading && (
                     <CreateTaskForm weekNumber={rotationWeek} onCreated={handleCreated} />
                 )}
-            </main>
-        </div>
+            </DashboardLayout>
+        </>
     );
 }

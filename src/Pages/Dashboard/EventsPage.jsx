@@ -5,8 +5,10 @@ import { useAuth } from "../Auth/AuthContext.jsx";
 import {
     FiLogOut, FiHome, FiAlertCircle, FiFileText, FiCalendar,
     FiUser, FiUsers, FiDollarSign, FiClipboard, FiShield,
-    FiMapPin, FiClock, FiChevronDown, FiChevronUp,
+    FiMapPin, FiClock, FiChevronDown, FiChevronUp, FiRadio,
 } from "react-icons/fi";
+import DashboardLayout from "./DashboardLayout.jsx";
+import { NEWS_ITEMS } from "./StudentDashboard.jsx";
 import "./StudentDashboard.css";
 import "./EventsPage.css";
 import "../../Styles/Global.css";
@@ -129,13 +131,12 @@ const EventsPage = () => {
         daysUntil != null ? `${daysUntil} dagen` : null;
 
     return (
-        <div className="StudentDashboard">
+        <>
             <Helmet>
                 <title>Events — Villa Vredestein</title>
                 <meta name="robots" content="noindex, nofollow" />
             </Helmet>
-
-            {/* ── Sidebar ── */}
+            <DashboardLayout sidebar={
             <aside className="dashboard-sidebar" aria-label="Navigatie zijbalk">
                 <header className="sidebar-profile">
                     <FiUser className="profile-icon" />
@@ -173,9 +174,7 @@ const EventsPage = () => {
                     </ul>
                 </nav>
             </aside>
-
-            {/* ── Main ── */}
-            <main className="dashboard-main ev-main">
+            } mainClass="ev-main">
 
                 {/* Hero */}
                 <div className="ev-hero">
@@ -236,6 +235,23 @@ const EventsPage = () => {
                     </section>
                 )}
 
+                {/* ── Nieuws ── */}
+                <section className="ev-section">
+                    <h2 className="ev-section-title"><FiRadio /> Nieuws &amp; Mededelingen</h2>
+                    <div className="ev-news-list">
+                        {NEWS_ITEMS.map(n => (
+                            <div key={n.id} className="ev-news-card">
+                                <span className="ev-news-emoji">{n.emoji}</span>
+                                <div className="ev-news-body">
+                                    <strong>{n.title}</strong>
+                                    <p>{n.body}</p>
+                                </div>
+                                <span className="ev-news-date">{n.date}</span>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
                 {/* CTA */}
                 <div className="ev-suggest">
                     <span>💡</span>
@@ -248,8 +264,8 @@ const EventsPage = () => {
                     </div>
                 </div>
 
-            </main>
-        </div>
+            </DashboardLayout>
+        </>
     );
 };
 

@@ -8,6 +8,7 @@ import {
     FiShield, FiDownload, FiExternalLink, FiCheckCircle, FiClock, FiAlertTriangle,
 } from "react-icons/fi";
 import api from "../../Helpers/AxiosHelper.js";
+import DashboardLayout from "./DashboardLayout.jsx";
 import "./StudentDashboard.css";
 import "./BetalingenPage.css";
 import "../../Styles/Global.css";
@@ -78,12 +79,13 @@ const BetalingenPage = () => {
         `${NL_MONTHS[(month ?? 1) - 1] ?? "?"} ${year ?? ""}`;
 
     return (
-        <div className="StudentDashboard">
+        <>
             <Helmet>
                 <title>Betalingen — Villa Vredestein</title>
                 <meta name="robots" content="noindex, nofollow" />
             </Helmet>
 
+            <DashboardLayout sidebar={
             <aside className="dashboard-sidebar" aria-label="Navigatie zijbalk">
                 <header className="sidebar-profile">
                     <FiUser className="profile-icon" />
@@ -117,8 +119,7 @@ const BetalingenPage = () => {
                     </ul>
                 </nav>
             </aside>
-
-            <main className="dashboard-main">
+            }>
                 <section className="dashboard-news">
                     <div className="dashboard-news-content">
                         <h2><FiDollarSign /> Mijn betaalschema</h2>
@@ -239,8 +240,8 @@ const BetalingenPage = () => {
                         </div>
                     </section>
                 )}
-            </main>
-        </div>
+            </DashboardLayout>
+        </>
     );
 };
 

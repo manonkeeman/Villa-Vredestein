@@ -7,6 +7,7 @@ import {
     FiUser, FiUsers, FiDollarSign, FiClipboard, FiShield,
     FiCheck, FiX, FiPlus, FiMinus, FiHeart,
 } from "react-icons/fi";
+import DashboardLayout from "./DashboardLayout.jsx";
 import "./StudentDashboard.css";
 import "./SamenEtenPage.css";
 import "../../Styles/Global.css";
@@ -61,13 +62,12 @@ const SamenEtenPage = () => {
     };
 
     return (
-        <div className="StudentDashboard">
+        <>
             <Helmet>
                 <title>Samen eten — Villa Vredestein</title>
                 <meta name="robots" content="noindex, nofollow" />
             </Helmet>
-
-            {/* ── Sidebar ── */}
+            <DashboardLayout sidebar={
             <aside className="dashboard-sidebar" aria-label="Navigatie zijbalk">
                 <header className="sidebar-profile">
                     <FiUser className="profile-icon" />
@@ -103,9 +103,7 @@ const SamenEtenPage = () => {
                     </ul>
                 </nav>
             </aside>
-
-            {/* ── Main ── */}
-            <main className="dashboard-main se-main">
+            } mainClass="se-main">
 
                 {/* Hero */}
                 <div className="se-hero">
@@ -301,8 +299,8 @@ const SamenEtenPage = () => {
                     </div>
                 </section>
 
-            </main>
-        </div>
+            </DashboardLayout>
+        </>
     );
 };
 
