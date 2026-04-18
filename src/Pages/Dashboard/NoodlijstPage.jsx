@@ -6,6 +6,7 @@ import {
     FiLogOut, FiHome, FiAlertCircle, FiFileText, FiCalendar,
     FiUser, FiUsers, FiDollarSign, FiClipboard, FiShield, FiPhone,
 } from "react-icons/fi";
+import DashboardLayout from "./DashboardLayout.jsx";
 import "./StudentDashboard.css";
 import "./NoodlijstPage.css";
 import "../../Styles/Global.css";
@@ -27,13 +28,13 @@ export default function NoodlijstPage() {
     if (!isLoggedIn) return <Navigate to="/login" replace />;
 
     return (
-        <div className="StudentDashboard">
+        <>
             <Helmet>
                 <title>Noodlijst — Villa Vredestein</title>
                 <meta name="robots" content="noindex, nofollow" />
             </Helmet>
 
-            {/* ── Sidebar ── */}
+            <DashboardLayout sidebar={
             <aside className="dashboard-sidebar" aria-label="Navigatie zijbalk">
                 <header className="sidebar-profile">
                     <FiUser className="profile-icon" />
@@ -66,9 +67,7 @@ export default function NoodlijstPage() {
                     </ul>
                 </nav>
             </aside>
-
-            {/* ── Main infographic ── */}
-            <main className="dashboard-main nood-main">
+            } mainClass="nood-main">
 
                 {/* Hero alert */}
                 <div className="nood-hero">
@@ -266,7 +265,7 @@ export default function NoodlijstPage() {
                     </p>
                 </section>
 
-            </main>
-        </div>
+            </DashboardLayout>
+        </>
     );
 }

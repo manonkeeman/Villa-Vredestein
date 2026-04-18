@@ -184,17 +184,80 @@
     color: white;
 }
 
+/* ── Mobile hamburger button (hidden on desktop) ── */
+.sidebar-mobile-toggle {
+    display: none;
+}
+
+/* ── Mobile dropdown ── */
 @media (max-width: 768px) {
     .StudentDashboard {
         flex-direction: column;
-        align-items: center;
-        gap: 1.5rem;
+        align-items: stretch;
+        gap: 0;
         height: auto;
+        padding-top: 3.75rem; /* room for fixed toggle button */
+        position: relative;
     }
 
+    /* Hamburger button — fixed top-right */
+    .sidebar-mobile-toggle {
+        display: flex;
+        align-items: center;
+        gap: 0.45rem;
+        position: fixed;
+        top: 0.75rem;
+        right: 1rem;
+        z-index: 400;
+        background: #fcbc2d;
+        color: #111;
+        border: none;
+        border-radius: 8px;
+        padding: 0.5rem 0.9rem;
+        font-size: 13.5px;
+        font-weight: 700;
+        cursor: pointer;
+        font-family: inherit;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+        transition: background 0.15s;
+    }
+
+    .sidebar-mobile-toggle:hover {
+        background: #ffd060;
+    }
+
+    /* Overlay behind open sidebar */
+    .sidebar-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.65);
+        z-index: 300;
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+    }
+
+    /* Sidebar hidden by default on mobile */
     .dashboard-sidebar {
-        width: 90%;
-        max-height: none;
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100% !important;
+        max-width: 100% !important;
+        max-height: 82vh;
+        overflow-y: auto;
+        border-radius: 0 0 16px 16px;
+        border: 1px solid #fcbc2d;
+        border-top: 3px solid #fcbc2d;
+        padding-top: 3.5rem; /* space below toggle button */
+        z-index: 350;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Show sidebar when menu is open */
+    .sidebar-open .dashboard-sidebar {
+        display: flex;
     }
 
     .dashboard-main {
@@ -335,6 +398,145 @@
 
 .dash-card--wide {
     grid-column: span 2;
+}
+
+/* ── Colored card accents ── */
+.dash-card--gold {
+    border-color: #fcbc2d;
+    background: linear-gradient(135deg, #1a1a1a 70%, #2a2000 100%);
+    box-shadow: 0 0 18px rgba(252, 188, 45, 0.2);
+}
+.dash-card--gold h2 { color: #fcbc2d; }
+
+.dash-card--green {
+    border-color: #22c55e;
+    background: linear-gradient(135deg, #1a1a1a 70%, #0a2a14 100%);
+    box-shadow: 0 0 16px rgba(34, 197, 94, 0.15);
+}
+.dash-card--green h2 { color: #22c55e; }
+
+.dash-card--blue {
+    border-color: #3b82f6;
+    background: linear-gradient(135deg, #1a1a1a 70%, #091833 100%);
+    box-shadow: 0 0 16px rgba(59, 130, 246, 0.15);
+}
+.dash-card--blue h2 { color: #3b82f6; }
+.dash-card--blue .week-current-badge {
+    background: #3b82f6;
+    color: #fff;
+}
+.dash-card--blue .dashboard-rotation-badge {
+    background: rgba(59, 130, 246, 0.12);
+    border-color: rgba(59, 130, 246, 0.35);
+    color: #3b82f6;
+}
+
+.dash-card--orange {
+    border-color: #f97316;
+    background: linear-gradient(135deg, #1a1a1a 70%, #2a1000 100%);
+    box-shadow: 0 0 16px rgba(249, 115, 22, 0.15);
+}
+.dash-card--orange h2 { color: #f97316; }
+
+.dash-card--purple {
+    border-color: #a855f7;
+    background: linear-gradient(135deg, #1a1a1a 70%, #1a0a2a 100%);
+    box-shadow: 0 0 16px rgba(168, 85, 247, 0.15);
+}
+.dash-card--purple h2 { color: #a855f7; }
+.dash-card--purple .dashboard-schema-btn {
+    background-color: #a855f7;
+    color: #fff !important;
+}
+.dash-card--purple .dashboard-schema-btn:hover {
+    background-color: #c084fc !important;
+    color: #fff !important;
+}
+
+/* ── Cleaning task mini-list ── */
+.dash-task-list {
+    list-style: none;
+    margin: 0.25rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.dash-task-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 12.5px;
+    color: #ddd;
+    background: rgba(59, 130, 246, 0.08);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 6px;
+    padding: 0.35rem 0.6rem;
+}
+
+.dash-task-item--done {
+    opacity: 0.55;
+    text-decoration: line-through;
+}
+
+.dash-task-icon {
+    color: #3b82f6;
+    flex-shrink: 0;
+    font-size: 14px;
+}
+.dash-task-icon.done { color: #22c55e; }
+
+/* ── News mini-list ── */
+.dash-news-list {
+    list-style: none;
+    margin: 0.25rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.dash-news-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.55rem;
+    font-size: 12.5px;
+    color: #ddd;
+    background: rgba(168, 85, 247, 0.07);
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    border-radius: 6px;
+    padding: 0.4rem 0.6rem;
+}
+
+.dash-news-emoji {
+    font-size: 15px;
+    line-height: 1.3;
+    flex-shrink: 0;
+}
+
+.dash-news-item strong {
+    display: block;
+    font-weight: 600;
+    color: #fff;
+    font-size: 12px;
+}
+
+.dash-news-date {
+    font-size: 11px;
+    color: #888;
+}
+
+/* ── Event chip ── */
+.dash-event-chip {
+    font-size: 11.5px;
+    font-weight: 600;
+    background: rgba(249, 115, 22, 0.15);
+    border: 1px solid rgba(249, 115, 22, 0.35);
+    color: #f97316;
+    border-radius: 20px;
+    padding: 0.25rem 0.65rem;
+    white-space: nowrap;
 }
 
 @media (max-width: 768px) {

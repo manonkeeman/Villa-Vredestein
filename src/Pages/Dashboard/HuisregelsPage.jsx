@@ -7,6 +7,7 @@ import {
     FiUser, FiUsers, FiDollarSign, FiClipboard, FiShield,
 } from "react-icons/fi";
 import api from "../../Helpers/AxiosHelper.js";
+import DashboardLayout from "./DashboardLayout.jsx";
 import "./StudentDashboard.css";
 import "./HuisregelsPage.css";
 import "../../Styles/Global.css";
@@ -32,13 +33,12 @@ export default function HuisregelsPage() {
     }, []);
 
     return (
-        <div className="StudentDashboard">
+        <>
             <Helmet>
                 <title>Huisregels — Villa Vredestein</title>
                 <meta name="robots" content="noindex, nofollow" />
             </Helmet>
-
-            {/* ── Sidebar ── */}
+            <DashboardLayout sidebar={
             <aside className="dashboard-sidebar" aria-label="Navigatie zijbalk">
                 <header className="sidebar-profile">
                     <FiUser className="profile-icon" />
@@ -71,9 +71,7 @@ export default function HuisregelsPage() {
                     </ul>
                 </nav>
             </aside>
-
-            {/* ── Main ── */}
-            <main className="dashboard-main huis-main">
+            } mainClass="huis-main">
 
                 {/* Hero */}
                 <div className="huis-hero">
@@ -234,7 +232,7 @@ export default function HuisregelsPage() {
                     Villa Vredestein 2025 — Door in te trekken ga je akkoord met deze huisregels.
                 </p>
 
-            </main>
-        </div>
+            </DashboardLayout>
+        </>
     );
 }

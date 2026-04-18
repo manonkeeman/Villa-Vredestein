@@ -9,6 +9,7 @@ import {
     FiUpload, FiSave, FiTrash2, FiLock,
 } from "react-icons/fi";
 import api from "../../Helpers/AxiosHelper.js";
+import DashboardLayout from "./DashboardLayout.jsx";
 import "./StudentDashboard.css";
 import "./ProfilePage.css";
 import "../../Styles/Global.css";
@@ -214,13 +215,12 @@ export default function ProfilePage() {
     };
 
     return (
-        <div className="profile-page">
+        <>
             <Helmet>
                 <title>Mijn profiel — Villa Vredestein</title>
                 <meta name="robots" content="noindex, nofollow" />
             </Helmet>
-
-            {/* Sidebar — zelfde als StudentDashboard */}
+            <DashboardLayout rootClass="profile-page" mainClass="profile-content" sidebar={
             <aside className="dashboard-sidebar" aria-label="Navigatie zijbalk">
                 <header className="sidebar-profile">
                     {photoUrl
@@ -263,9 +263,7 @@ export default function ProfilePage() {
                     </ul>
                 </nav>
             </aside>
-
-            {/* Main content */}
-            <div className="profile-content">
+            }>
 
                 {/* Profielfoto */}
                 <section className="profile-photo-section">
@@ -434,7 +432,7 @@ export default function ProfilePage() {
                         </div>
                     </form>
                 </section>
-            </div>
-        </div>
+            </DashboardLayout>
+        </>
     );
 }
