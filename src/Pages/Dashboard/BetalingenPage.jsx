@@ -137,8 +137,41 @@ const BetalingenPage = () => {
             <main className="dashboard-main">
                 <section className="dashboard-news">
                     <div className="dashboard-news-content">
-                        <h2><FiDollarSign /> Mijn betalingen</h2>
+                        <h2><FiDollarSign /> Mijn betaalschema</h2>
                         <p>Hier zie je een overzicht van al je huurbetalingen. Open facturen kun je direct betalen via iDEAL.</p>
+                        {!loading && !error && invoices.length > 0 && (() => {
+                            const totalOpen = invoices
+                                .filter(i => i.status === "OPEN" || i.status === "OVERDUE")
+                                .reduce((sum, i) => sum + (Number(i.amount) || 0), 0);
+                            const totalPaid = invoices
+                                .filter(i => i.status === "PAID")
+                                .reduce((sum, i) => sum + (Number(i.amount) || 0), 0);
+                            const overdueCount = invoices.filter(i => i.status === "OVERDUE").length;
+                            const openCount = invoices.filter(i => i.status === "OPEN" || i.status === "OVERDUE").length;
+                            return (
+                                <div className="payments-summary">
+                                    <div className="payments-summary-item">
+                                        <span className="summary-label"><FiCheckCircle /> Betaald</span>
+                                        <span className="summary-value summary-paid">{formatBedrag(totalPaid)}</span>
+                                    </div>
+                                    <div className="payments-summary-divider" />
+                                    <div className="payments-summary-item">
+                                        <span className="summary-label">
+                                            {overdueCount > 0 ? <FiAlertTriangle /> : <FiClock />}
+                                            {overdueCount > 0 ? " Verlopen" : " Openstaand"}
+                                        </span>
+                                        <span className={`summary-value ${overdueCount > 0 ? "summary-overdue" : openCount > 0 ? "summary-open" : "summary-paid"}`}>
+                                            {openCount > 0 ? formatBedrag(totalOpen) : "—"}
+                                        </span>
+                                    </div>
+                                    <div className="payments-summary-divider" />
+                                    <div className="payments-summary-item">
+                                        <span className="summary-label"><FiFileText /> Facturen</span>
+                                        <span className="summary-value">{invoices.length} totaal</span>
+                                    </div>
+                                </div>
+                            );
+                        })()}
                     </div>
                 </section>
 

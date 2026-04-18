@@ -231,13 +231,31 @@
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    background-color: #2a2a00;
-    border: 1px solid #fcbc2d;
     border-radius: 20px;
-    color: #fcbc2d;
     font-size: 12px;
     font-weight: 600;
     padding: 0.25rem 0.75rem;
+    background-color: #2a2a00;
+    border: 1px solid #fcbc2d;
+    color: #fcbc2d;
+}
+
+.dashboard-invoice-paid {
+    background-color: rgba(34, 197, 94, 0.12);
+    border: 1px solid #22c55e44;
+    color: #22c55e;
+}
+
+.dashboard-invoice-open {
+    background-color: rgba(252, 188, 45, 0.12);
+    border: 1px solid #fcbc2d44;
+    color: #fcbc2d;
+}
+
+.dashboard-invoice-overdue {
+    background-color: rgba(239, 68, 68, 0.12);
+    border: 1px solid #ef444444;
+    color: #ef4444;
 }
 
 .dashboard-schema-btn {
