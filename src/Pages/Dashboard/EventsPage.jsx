@@ -24,71 +24,23 @@ const NL_DAYS_SHORT   = ["zo","ma","di","wo","do","vr","za"];
 const EVENTS = [
     {
         id: 1,
-        title: "Koningsdag Borrel",
-        category: "borrel",
-        emoji: "🍻",
-        date: new Date(2026, 3, 27),   // 27 april 2026
-        time: "15:00",
-        location: "Tuin",
-        description: "Gezellige buurtborrel in de tuin ter ere van Koningsdag. Zet je oranje aan en kom meedoen! Drankjes zijn aanwezig.",
-        color: "#fcbc2d",
-        bg: "#1a1200",
-    },
-    {
-        id: 2,
-        title: "Samen eten — mei",
-        category: "eten",
-        emoji: "🍽️",
-        date: new Date(2026, 4, 8),    // 8 mei 2026
-        time: "18:30",
-        location: "Woonkamer",
-        description: "Gezamenlijk koken en eten met alle bewoners. Iedereen brengt één gerecht mee — aanmelden via de app of groepsapp is verplicht.",
-        color: "#22c55e",
-        bg: "#001a08",
-    },
-    {
-        id: 3,
-        title: "Grote Schoonmaakdag",
-        category: "schoonmaak",
-        emoji: "🧹",
-        date: new Date(2026, 4, 16),   // 16 mei 2026
-        time: "10:00",
-        location: "Gehele villa",
-        description: "Grote voorjaarsschoonmaak voor alle bewoners. Materialen zijn aanwezig, koffie en thee worden geregeld. Iedereen doet mee!",
-        color: "#3b82f6",
-        bg: "#00101a",
-    },
-    {
-        id: 4,
-        title: "Spelletjesavond",
-        category: "activiteit",
-        emoji: "🎮",
-        date: new Date(2026, 4, 29),   // 29 mei 2026
-        time: "20:00",
-        location: "Woonkamer",
-        description: "Gezellige avond met bordspellen en kaartspellen. Snacks aanwezig — breng je favoriete spel mee! We starten stipt om 20:00.",
-        color: "#8b5cf6",
-        bg: "#0e0017",
-    },
-    {
-        id: 5,
         title: "Villa BBQ",
         category: "activiteit",
         emoji: "🔥",
-        date: new Date(2026, 5, 14),   // 14 juni 2026
+        date: new Date(2026, 5, 18),   // 18 juni 2026
         time: "17:00",
         location: "Tuin",
-        description: "Zomerse BBQ in de villa-tuin. Vlees, groenten en drankjes worden geregeld. Houd het weerbericht in de gaten!",
+        description: "Zomerse BBQ in de villa-tuin! Vlees, groenten en drankjes worden geregeld — jij hoeft alleen maar te komen genieten. Meld je aan via Samen eten en geef aan of je iemand meeneemt.",
         color: "#f97316",
         bg: "#1a0e00",
     },
 ];
 
 const CATEGORY_LABELS = {
+    activiteit: "Activiteit",
     borrel:     "Borrel",
     eten:       "Samen eten",
     schoonmaak: "Schoonmaak",
-    activiteit: "Activiteit",
 };
 
 // ── Single event card ────────────────────────────────────────────────────
