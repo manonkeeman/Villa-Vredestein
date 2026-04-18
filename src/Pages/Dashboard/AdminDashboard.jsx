@@ -31,7 +31,7 @@ const AdminDashboard = () => {
                     <ul>
                         <li><Link to="#"><FiHome /> Dashboard</Link></li>
                         <li><Link to="#"><FiUsers /> Bewoners</Link></li>
-                        <li><Link to="#"><FiDollarSign /> Betalingen</Link></li>
+                        <li><Link to="/admin/betalingen"><FiDollarSign /> Betalingen</Link></li>
                         <li><Link to="/student/huisregels"><FiFileText /> Huisregels</Link></li>
                         <li><Link to="#"><FiFileText /> Documenten</Link></li>
                         <li><Link to="/schoonmaakschema"><FiClipboard /> Schoonmaakschema</Link></li>
