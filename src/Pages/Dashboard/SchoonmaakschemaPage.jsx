@@ -443,17 +443,43 @@ export default function SchoonmaakschemaPage() {
 
     const fetchTasks = useCallback(() => {
         const rw = toRotationWeek(navWeek.isoWeek);
+
+        // 1. In-memory cache (same session, same mount)
         if (weekCache.current[rw]) {
             setTasks(weekCache.current[rw]);
             setLoading(false);
             setError(null);
             return;
         }
+
+        // 2. sessionStorage cache — show instantly, then refresh in background
+        try {
+            const cached = sessionStorage.getItem(`cleaning_rw_${rw}`);
+            if (cached) {
+                const data = JSON.parse(cached);
+                weekCache.current[rw] = data;
+                setTasks(data);
+                setLoading(false);
+                setError(null);
+                // Still refresh silently in background
+                api.get(`/api/cleaning/tasks?weekNumber=${rw}`)
+                    .then(res => {
+                        weekCache.current[rw] = res.data;
+                        setTasks(res.data);
+                        try { sessionStorage.setItem(`cleaning_rw_${rw}`, JSON.stringify(res.data)); } catch { /* ignore */ }
+                    })
+                    .catch(() => {});
+                return;
+            }
+        } catch { /* ignore */ }
+
+        // 3. No cache — full load
         setLoading(true);
         setError(null);
         api.get(`/api/cleaning/tasks?weekNumber=${rw}`)
             .then(res => {
                 weekCache.current[rw] = res.data;
+                try { sessionStorage.setItem(`cleaning_rw_${rw}`, JSON.stringify(res.data)); } catch { /* ignore */ }
                 setTasks(res.data);
             })
             .catch(() => setError("Taken konden niet worden geladen."))

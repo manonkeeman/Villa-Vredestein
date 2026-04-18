@@ -92,6 +92,10 @@ const StudentDashboard = () => {
     const rotationWeek = toRotationWeek(currentIsoWeek);
     const weekRange = formatWeekRange(currentIsoWeek, currentYear);
 
+    const currentMonth = now.getMonth() + 1;
+    const thisMonthInvoice = invoices.find(
+        i => Number(i.invoiceMonth) === currentMonth && Number(i.invoiceYear) === currentYear
+    );
     const openInvoices = invoices.filter(i => i.status === "OPEN" || i.status === "OVERDUE");
     const hasOverdue = openInvoices.some(i => i.status === "OVERDUE");
     const nextInvoice = [...openInvoices].sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate))[0];
@@ -108,9 +112,20 @@ const StudentDashboard = () => {
     }, []);
 
     useEffect(() => {
+        // Seed from sessionStorage for instant display
+        try {
+            const cached = sessionStorage.getItem(`cleaning_rw_${rotationWeek}`);
+            if (cached) {
+                const all = JSON.parse(cached);
+                const mine = all.filter(t => t.assignedTo === user?.username);
+                setMyTasks(mine.length > 0 ? mine : all.slice(0, 2));
+            }
+        } catch { /* ignore */ }
+
         api.get(`/api/cleaning/tasks?weekNumber=${rotationWeek}`)
             .then(res => {
                 const all = res.data || [];
+                try { sessionStorage.setItem(`cleaning_rw_${rotationWeek}`, JSON.stringify(all)); } catch { /* ignore */ }
                 const mine = all.filter(t => t.assignedTo === user?.username);
                 setMyTasks(mine.length > 0 ? mine : all.slice(0, 2));
             })
@@ -165,27 +180,48 @@ const StudentDashboard = () => {
             </article>
 
             {/* ── Betalingen (groen) ── */}
-            <article className="dash-card dash-card--green">
+            <article className={`dash-card ${
+                invoicesLoading ? "dash-card--green" :
+                thisMonthInvoice?.status === "PAID" ? "dash-card--green" :
+                thisMonthInvoice?.status === "OVERDUE" ? "dash-card--red" :
+                thisMonthInvoice?.status === "OPEN" ? "dash-card--yellow" :
+                "dash-card--green"
+            }`}>
                 <h2><FiDollarSign /> Betalingen</h2>
-                <p>Openstaande en voldane huurbetalingen.</p>
+
+                {/* This month's status — most prominent */}
+                {!invoicesLoading && (
+                    <div className="dash-month-status">
+                        {thisMonthInvoice?.status === "PAID" && (
+                            <span className="dash-month-badge dash-month-badge--paid">
+                                <FiCheckCircle /> Deze maand betaald
+                            </span>
+                        )}
+                        {thisMonthInvoice?.status === "OVERDUE" && (
+                            <span className="dash-month-badge dash-month-badge--overdue">
+                                <FiAlertCircle /> Betaling verlopen!
+                            </span>
+                        )}
+                        {thisMonthInvoice?.status === "OPEN" && (
+                            <span className="dash-month-badge dash-month-badge--open">
+                                <FiClock /> Nog te betalen
+                            </span>
+                        )}
+                        {!thisMonthInvoice && invoices.length > 0 && (
+                            <span className="dash-month-badge dash-month-badge--none">
+                                Nog geen factuur deze maand
+                            </span>
+                        )}
+                    </div>
+                )}
+
                 <div className="dashboard-cleaning-meta">
-                    {!invoicesLoading && openInvoices.length === 0 && (
-                        <span className="dashboard-rotation-badge dashboard-invoice-paid">
-                            <FiCheckCircle /> Alles betaald
-                        </span>
-                    )}
-                    {!invoicesLoading && openInvoices.length > 0 && (
-                        <span className={`dashboard-rotation-badge ${hasOverdue ? "dashboard-invoice-overdue" : "dashboard-invoice-open"}`}>
-                            {hasOverdue ? <FiAlertCircle /> : <FiClock />}
-                            {openInvoices.length} openstaand
-                        </span>
-                    )}
-                    {!invoicesLoading && nextInvoice && (
+                    {!invoicesLoading && nextInvoice && thisMonthInvoice?.status !== "PAID" && (
                         <span className="week-iso-label">
                             {formatBedrag(nextInvoice.amount)} · vervalt {new Date(nextInvoice.dueDate).toLocaleDateString("nl-NL", { day: "numeric", month: "short" })}
                         </span>
                     )}
-                    <Link to="/student/betalingen" className="dashboard-schema-btn">
+                    <Link to="/student/betalingen" className="dashboard-schema-btn" style={{ marginLeft: "auto" }}>
                         <FiDollarSign /> Bekijk
                     </Link>
                 </div>
