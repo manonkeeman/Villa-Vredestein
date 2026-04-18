@@ -222,7 +222,7 @@ export default function ProfilePage() {
                             }
                         </li>
                         <li><Link to="#"><FiUsers /> Samen eten?</Link></li>
-                        <li><Link to="#"><FiCalendar /> Events</Link></li>
+                        <li><Link to="/student/events"><FiCalendar /> Events</Link></li>
 
                         {hasRole(authUser, "ADMIN") && (
                             <li>
