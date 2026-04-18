@@ -7,12 +7,11 @@ import {
     FiUser, FiUsers, FiDollarSign, FiClipboard,
     FiShield, FiDownload, FiExternalLink, FiCheckCircle, FiClock, FiAlertTriangle,
 } from "react-icons/fi";
+import api from "../../Helpers/AxiosHelper.js";
 import "./StudentDashboard.css";
 import "./BetalingenPage.css";
 import "../../Styles/Global.css";
 import PropTypes from "prop-types";
-
-const BASE_URL = (import.meta.env.VITE_API_BASE_URL || "http://localhost:8080").replace(/\/$/, "");
 
 const NL_MONTHS = [
     "januari", "februari", "maart", "april", "mei", "juni",
@@ -47,7 +46,7 @@ const StatusBadge = ({ status }) => {
 StatusBadge.propTypes = { status: PropTypes.string.isRequired };
 
 const BetalingenPage = () => {
-    const { isLoggedIn, logout, user, token } = useAuth();
+    const { isLoggedIn, logout, user } = useAuth();
     const [invoices, setInvoices] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -55,38 +54,23 @@ const BetalingenPage = () => {
     if (!isLoggedIn) return <Navigate to="/login" replace />;
 
     useEffect(() => {
-        const fetchInvoices = async () => {
-            try {
-                const res = await fetch(`${BASE_URL}/api/invoices/me`, {
-                    headers: { Authorization: `Bearer ${token}` },
-                });
-                if (!res.ok) throw new Error("Kon facturen niet laden");
-                const data = await res.json();
-                setInvoices(data);
-            } catch (err) {
-                setError(err.message);
-            } finally {
-                setLoading(false);
-            }
-        };
-        fetchInvoices();
-    }, [token]);
+        api.get("/api/invoices/me")
+            .then(res => setInvoices(res.data))
+            .catch(err => setError(err.response?.data?.message || "Kon facturen niet laden"))
+            .finally(() => setLoading(false));
+    }, []);
 
     const handleDownload = async (invoiceId, title) => {
         try {
-            const res = await fetch(`${BASE_URL}/api/invoices/${invoiceId}/pdf`, {
-                headers: { Authorization: `Bearer ${token}` },
-            });
-            if (!res.ok) throw new Error("PDF kon niet worden gedownload");
-            const blob = await res.blob();
-            const url = URL.createObjectURL(blob);
+            const res = await api.get(`/api/invoices/${invoiceId}/pdf`, { responseType: "blob" });
+            const url = URL.createObjectURL(res.data);
             const a = document.createElement("a");
             a.href = url;
             a.download = `factuur-${title || invoiceId}.pdf`;
             a.click();
             URL.revokeObjectURL(url);
-        } catch (err) {
-            alert("Fout bij downloaden: " + err.message);
+        } catch {
+            alert("Fout bij downloaden van de factuur.");
         }
     };
 
@@ -115,7 +99,7 @@ const BetalingenPage = () => {
                         <li><Link to="/schoonmaakschema"><FiClipboard /> Schoonmaakschema</Link></li>
                         <li><Link to="/student/betalingen" className="active-nav-link"><FiDollarSign /> Betalingen</Link></li>
                         <li><Link to="#"><FiUsers /> Samen eten?</Link></li>
-                        <li><Link to="#"><FiCalendar /> Events</Link></li>
+                        <li><Link to="/student/events"><FiCalendar /> Events</Link></li>
 
                         {hasRole(user, "ADMIN") && (
                             <li>

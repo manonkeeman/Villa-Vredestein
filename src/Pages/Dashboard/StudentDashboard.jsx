@@ -109,7 +109,7 @@ const StudentDashboard = () => {
                             }
                         </li>
                         <li><Link to="#"><FiUsers /> Samen eten?</Link></li>
-                        <li><Link to="#"><FiCalendar /> Events</Link></li>
+                        <li><Link to="/student/events"><FiCalendar /> Events</Link></li>
 
                         {hasRole(user, "ADMIN") && (
                             <li>
@@ -182,8 +182,12 @@ const StudentDashboard = () => {
                 {/* Events */}
                 <article className="dash-card">
                     <h2><FiCalendar /> Events & nieuws</h2>
-                    <p>Blijf op de hoogte van activiteiten, etentjes en momenten in de villa.</p>
-                    <p>Volg ook <a href="https://www.instagram.com/villa.vredestein" target="_blank" rel="noopener noreferrer">@villa.vredestein</a> op Instagram.</p>
+                    <p>Borrels, etentjes en activiteiten in de villa.</p>
+                    <div className="dashboard-cleaning-meta">
+                        <Link to="/student/events" className="dashboard-schema-btn">
+                            <FiCalendar /> Bekijk
+                        </Link>
+                    </div>
                 </article>
 
                 {/* Huisregels */}
