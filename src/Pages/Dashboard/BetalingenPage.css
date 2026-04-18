@@ -1,0 +1,141 @@
+.payments-loading,
+.payments-empty {
+    color: #aaa;
+    font-style: italic;
+}
+
+.payments-error {
+    color: #f44;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.payments-section .dashboard-news-content {
+    overflow-x: auto;
+}
+
+.payments-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    color: #eee;
+}
+
+.payments-table th {
+    text-align: left;
+    color: #fcbc2d;
+    font-weight: 600;
+    padding: 0.6rem 0.8rem;
+    border-bottom: 1px solid #333;
+    white-space: nowrap;
+}
+
+.payments-table td {
+    padding: 0.65rem 0.8rem;
+    border-bottom: 1px solid #222;
+    vertical-align: middle;
+}
+
+.payment-row:hover td {
+    background-color: #1a1a1a;
+}
+
+.payment-month {
+    text-transform: capitalize;
+    font-weight: 500;
+}
+
+.payment-amount {
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.payment-due {
+    white-space: nowrap;
+    color: #bbb;
+}
+
+/* ── Status badges ── */
+.payment-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.status-paid {
+    background-color: rgba(34, 197, 94, 0.15);
+    color: #22c55e;
+    border: 1px solid #22c55e44;
+}
+
+.status-open {
+    background-color: rgba(252, 188, 45, 0.12);
+    color: #fcbc2d;
+    border: 1px solid #fcbc2d44;
+}
+
+.status-overdue {
+    background-color: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+    border: 1px solid #ef444444;
+}
+
+.status-cancelled {
+    background-color: rgba(107, 114, 128, 0.15);
+    color: #9ca3af;
+    border: 1px solid #9ca3af44;
+}
+
+/* ── Action buttons ── */
+.payment-actions {
+    white-space: nowrap;
+}
+
+.payment-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    transition: opacity 0.2s;
+}
+
+.payment-btn:hover {
+    opacity: 0.85;
+}
+
+.payment-btn-pay {
+    background-color: #fcbc2d;
+    color: #111;
+}
+
+.payment-btn-pdf {
+    background-color: #1e40af;
+    color: #fff;
+}
+
+/* ── Active sidebar link ── */
+.active-nav-link {
+    background-color: #1a1a1a !important;
+    color: #fcbc2d !important;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+    .payments-table th,
+    .payments-table td {
+        padding: 0.5rem 0.5rem;
+        font-size: 0.82rem;
+    }
+}

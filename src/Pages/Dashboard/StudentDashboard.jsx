@@ -84,7 +84,7 @@ const StudentDashboard = () => {
                         <li><Link to="/student/noodlijst"><FiAlertCircle /> Noodlijst</Link></li>
                         <li><Link to="/student/huisregels"><FiFileText /> Huisregels</Link></li>
                         <li><Link to="/schoonmaakschema"><FiClipboard /> Schoonmaakschema</Link></li>
-                        <li><Link to="#"><FiDollarSign /> Betalingen</Link></li>
+                        <li><Link to="/student/betalingen"><FiDollarSign /> Betalingen</Link></li>
                         <li>
                             {contractFile
                                 ? <a href={`${BASE_URL}/uploads/${encodeURIComponent(contractFile)}`} target="_blank" rel="noopener noreferrer"><FiFileText /> Huurcontract</a>
@@ -129,6 +129,9 @@ const StudentDashboard = () => {
                         <h2><FiDollarSign /> Betalingen</h2>
                         <p>Bekijk je openstaande en voldane huurbetalingen en ontvang een herinnering wanneer iets afloopt.</p>
                         <p>Alle facturen staan overzichtelijk voor je klaar.</p>
+                        <Link to="/student/betalingen" className="dashboard-schema-btn" style={{ marginTop: "0.75rem", display: "inline-flex" }}>
+                            <FiDollarSign /> Bekijk betalingen
+                        </Link>
                     </div>
                 </section>
 

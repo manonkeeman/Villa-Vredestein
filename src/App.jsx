@@ -25,6 +25,9 @@ import ProfilePage from "./Pages/Dashboard/ProfilePage.jsx";
 import NoodlijstPage from "./Pages/Dashboard/NoodlijstPage.jsx";
 import HuisregelsPage from "./Pages/Dashboard/HuisregelsPage.jsx";
 import SchoonmaakschemaPage from "./Pages/Dashboard/SchoonmaakschemaPage.jsx";
+import BetalingenPage from "./Pages/Dashboard/BetalingenPage.jsx";
+import AdminBetalingenPage from "./Pages/Dashboard/AdminBetalingenPage.jsx";
+import PaymentSuccessPage from "./Pages/Public/PaymentSuccessPage.jsx";
 
 function App() {
     return (
@@ -115,6 +118,26 @@ function App() {
                             </ProtectedRoute>
                         }
                     />
+
+                    <Route
+                        path="/student/betalingen"
+                        element={
+                            <ProtectedRoute allowedRoles={["ROLE_STUDENT", "ROLE_ADMIN"]}>
+                                <BetalingenPage />
+                            </ProtectedRoute>
+                        }
+                    />
+
+                    <Route
+                        path="/admin/betalingen"
+                        element={
+                            <ProtectedRoute allowedRoles={["ROLE_ADMIN"]}>
+                                <AdminBetalingenPage />
+                            </ProtectedRoute>
+                        }
+                    />
+
+                    <Route path="/betaling-verwerkt" element={<PaymentSuccessPage />} />
 
                     <Route path="*" element={<Unauthorized />} />
                 </Routes>
