@@ -77,44 +77,36 @@ const CleaningDashboard = () => {
                 </nav>
             </aside>
 
-            <main className="dashboard-main">
-                <section className="dashboard-news">
-                    <div className="dashboard-news-content">
-                        <h2><MdOutlineCleaningServices /> Schoonmaakoverzicht</h2>
-                        <p>
-                            Hier vind je alle schoonmaaktaken voor Villa Vredestein, ingedeeld per week en ruimte.
-                        </p>
-                        <p>
-                            Markeer taken als voltooid en meld bijzonderheden direct via dit dashboard.
-                        </p>
-                    </div>
-                </section>
+            <main className="dashboard-main dashboard-grid">
+                {/* Overzicht — wide */}
+                <article className="dash-card dash-card--wide">
+                    <h2><MdOutlineCleaningServices /> Schoonmaakoverzicht</h2>
+                    <p>Hier vind je alle schoonmaaktaken voor Villa Vredestein, ingedeeld per week en ruimte.</p>
+                    <p>Markeer taken als voltooid en meld bijzonderheden direct via dit dashboard.</p>
+                </article>
 
-                <section className="dashboard-news">
-                    <div className="dashboard-news-content">
-                        <h2><FiClipboard /> Taken deze week</h2>
-                        <p>Je weekoverzicht met alle toegewezen schoonmaaktaken wordt hier getoond.</p>
-                        <p>Vink taken af zodra ze zijn afgerond.</p>
-                        <div className="dashboard-cleaning-meta">
-                            <span className="dashboard-rotation-badge">
-                                Week {currentIsoWeek}
-                                <span className="week-current-badge">nu</span>
-                            </span>
-                            <span className="week-iso-label">{weekRange}</span>
-                            <Link to="/schoonmaakschema" className="dashboard-schema-btn">
-                                <FiClipboard /> Bekijk schema
-                            </Link>
-                        </div>
+                {/* Taken deze week */}
+                <article className="dash-card">
+                    <h2><FiClipboard /> Taken deze week</h2>
+                    <p>Je weekoverzicht met alle toegewezen schoonmaaktaken.</p>
+                    <div className="dashboard-cleaning-meta">
+                        <span className="dashboard-rotation-badge">
+                            Week {currentIsoWeek}
+                            <span className="week-current-badge">nu</span>
+                        </span>
+                        <span className="week-iso-label">{weekRange}</span>
+                        <Link to="/schoonmaakschema" className="dashboard-schema-btn">
+                            <FiClipboard /> Bekijk
+                        </Link>
                     </div>
-                </section>
+                </article>
 
-                <section className="dashboard-news">
-                    <div className="dashboard-news-content">
-                        <h2><FiAlertCircle /> Meldingen</h2>
-                        <p>Bijzonderheden of schades kunnen hier worden gemeld aan de beheerder.</p>
-                        <p>Alle meldingen worden direct doorgezet naar Manon & Maxim.</p>
-                    </div>
-                </section>
+                {/* Meldingen */}
+                <article className="dash-card">
+                    <h2><FiAlertCircle /> Meldingen</h2>
+                    <p>Bijzonderheden of schades melden aan de beheerder.</p>
+                    <p>Alle meldingen worden direct doorgezet naar Manon & Maxim.</p>
+                </article>
             </main>
         </div>
     );

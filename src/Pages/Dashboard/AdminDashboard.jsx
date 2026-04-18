@@ -46,34 +46,48 @@ const AdminDashboard = () => {
                 </nav>
             </aside>
 
-            <main className="dashboard-main">
-                <section className="dashboard-news">
-                    <div className="dashboard-news-content">
-                        <h2><FiShield /> Beheerdersomgeving</h2>
-                        <p>
-                            Hier beheer je alle bewoners, betalingen, documenten en schoonmaaktaken van Villa Vredestein.
-                        </p>
-                        <p>
-                            Het volledige beheer-dashboard wordt stap voor stap uitgebreid.
-                        </p>
-                    </div>
-                </section>
+            <main className="dashboard-main dashboard-grid">
+                {/* Beheerdersomgeving — wide */}
+                <article className="dash-card dash-card--wide">
+                    <h2><FiShield /> Beheerdersomgeving</h2>
+                    <p>Hier beheer je alle bewoners, betalingen, documenten en schoonmaaktaken van Villa Vredestein.</p>
+                    <p>Het volledige beheer-dashboard wordt stap voor stap uitgebreid.</p>
+                </article>
 
-                <section className="dashboard-news">
-                    <div className="dashboard-news-content">
-                        <h2><FiUsers /> Bewoners</h2>
-                        <p>Overzicht van alle huidige bewoners, gekoppelde kamers en contactgegevens.</p>
-                        <p>Beheer accounts, wijs kamers toe en bekijk profielen.</p>
-                    </div>
-                </section>
+                {/* Bewoners */}
+                <article className="dash-card">
+                    <h2><FiUsers /> Bewoners</h2>
+                    <p>Overzicht van alle huidige bewoners, kamers en contactgegevens.</p>
+                    <p>Beheer accounts, wijs kamers toe en bekijk profielen.</p>
+                </article>
 
-                <section className="dashboard-news">
-                    <div className="dashboard-news-content">
-                        <h2><FiDollarSign /> Betalingen & Facturen</h2>
-                        <p>Bekijk openstaande en voldane huurbetalingen per bewoner.</p>
-                        <p>Stuur herinneringen en exporteer overzichten.</p>
+                {/* Betalingen */}
+                <article className="dash-card">
+                    <h2><FiDollarSign /> Betalingen & Facturen</h2>
+                    <p>Bekijk openstaande en voldane huurbetalingen per bewoner.</p>
+                    <div className="dashboard-cleaning-meta">
+                        <Link to="/admin/betalingen" className="dashboard-schema-btn">
+                            <FiDollarSign /> Bekijk
+                        </Link>
                     </div>
-                </section>
+                </article>
+
+                {/* Schoonmaakschema */}
+                <article className="dash-card">
+                    <h2><FiClipboard /> Schoonmaakschema</h2>
+                    <p>Beheer taken, rooster en voltooiingen voor alle schoonmakers.</p>
+                    <div className="dashboard-cleaning-meta">
+                        <Link to="/schoonmaakschema" className="dashboard-schema-btn">
+                            <FiClipboard /> Bekijk
+                        </Link>
+                    </div>
+                </article>
+
+                {/* Documenten */}
+                <article className="dash-card">
+                    <h2><FiFileText /> Documenten</h2>
+                    <p>Huurcontracten, huisregels en andere documenten op één plek.</p>
+                </article>
             </main>
         </div>
     );

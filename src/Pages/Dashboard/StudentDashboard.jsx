@@ -128,72 +128,74 @@ const StudentDashboard = () => {
                 </nav>
             </aside>
 
-            <main className="dashboard-main">
-                <section className="dashboard-news">
-                    <div className="dashboard-news-content">
-                        <h2><FiBookOpen /> Fijn dat je er bent!</h2>
-                        <p>
-                            Dit is jouw plek in de villa. Hier vind je alles terug: je schema, huisregels, contract en meer.
-                        </p>
-                        <p>
-                            Kom je er niet uit of heb je een vraag? Stuur gerust een berichtje via <Link to="/contact">Contact</Link>.
-                        </p>
-                    </div>
-                </section>
+            <main className="dashboard-main dashboard-grid">
+                {/* Welkom — wide */}
+                <article className="dash-card dash-card--wide">
+                    <h2><FiBookOpen /> Fijn dat je er bent!</h2>
+                    <p>Dit is jouw plek in de villa. Hier vind je alles terug: je schema, huisregels, contract en meer.</p>
+                    <p>Kom je er niet uit of heb je een vraag? Stuur gerust een berichtje via <Link to="/contact">Contact</Link>.</p>
+                </article>
 
-                <section className="dashboard-news">
-                    <div className="dashboard-news-content">
-                        <h2><FiDollarSign /> Betalingen</h2>
-                        <p>Bekijk je openstaande en voldane huurbetalingen en ontvang een herinnering wanneer iets afloopt.</p>
-                        <div className="dashboard-cleaning-meta">
-                            {!invoicesLoading && openInvoices.length === 0 && (
-                                <span className="dashboard-rotation-badge dashboard-invoice-paid">
-                                    <FiCheckCircle /> Alles betaald
-                                </span>
-                            )}
-                            {!invoicesLoading && openInvoices.length > 0 && (
-                                <span className={`dashboard-rotation-badge ${hasOverdue ? "dashboard-invoice-overdue" : "dashboard-invoice-open"}`}>
-                                    {hasOverdue ? <FiAlertCircle /> : <FiClock />}
-                                    {openInvoices.length} openstaand
-                                </span>
-                            )}
-                            {!invoicesLoading && nextInvoice && (
-                                <span className="week-iso-label">
-                                    {formatBedrag(nextInvoice.amount)} · vervalt {new Date(nextInvoice.dueDate).toLocaleDateString("nl-NL", { day: "numeric", month: "short" })}
-                                </span>
-                            )}
-                            <Link to="/student/betalingen" className="dashboard-schema-btn">
-                                <FiDollarSign /> Bekijk betalingen
-                            </Link>
-                        </div>
-                    </div>
-                </section>
-
-                <section className="dashboard-news">
-                    <div className="dashboard-news-content">
-                        <h2><MdOutlineCleaningServices /> Schoonmaakschema</h2>
-                        <p>Bekijk jouw taken voor deze week en vink ze af zodra ze gedaan zijn.</p>
-                        <p>Het rooster wisselt wekelijks zodat iedereen gelijk bijdraagt.</p>
-                        <div className="dashboard-cleaning-meta">
-                            <span className="dashboard-rotation-badge">
-                                Week {currentIsoWeek}
-                                <span className="week-current-badge">nu</span>
+                {/* Betalingen */}
+                <article className="dash-card">
+                    <h2><FiDollarSign /> Betalingen</h2>
+                    <p>Openstaande en voldane huurbetalingen in één overzicht.</p>
+                    <div className="dashboard-cleaning-meta">
+                        {!invoicesLoading && openInvoices.length === 0 && (
+                            <span className="dashboard-rotation-badge dashboard-invoice-paid">
+                                <FiCheckCircle /> Alles betaald
                             </span>
-                            <span className="week-iso-label">{weekRange}</span>
-                            <Link to="/schoonmaakschema" className="dashboard-schema-btn">
-                                <FiClipboard /> Bekijk schema
-                            </Link>
-                        </div>
+                        )}
+                        {!invoicesLoading && openInvoices.length > 0 && (
+                            <span className={`dashboard-rotation-badge ${hasOverdue ? "dashboard-invoice-overdue" : "dashboard-invoice-open"}`}>
+                                {hasOverdue ? <FiAlertCircle /> : <FiClock />}
+                                {openInvoices.length} openstaand
+                            </span>
+                        )}
+                        {!invoicesLoading && nextInvoice && (
+                            <span className="week-iso-label">
+                                {formatBedrag(nextInvoice.amount)} · vervalt {new Date(nextInvoice.dueDate).toLocaleDateString("nl-NL", { day: "numeric", month: "short" })}
+                            </span>
+                        )}
+                        <Link to="/student/betalingen" className="dashboard-schema-btn">
+                            <FiDollarSign /> Bekijk
+                        </Link>
                     </div>
-                </section>
+                </article>
 
-                <section className="dashboard-news">
-                    <div className="dashboard-news-content">
-                        <h2><FiCalendar /> Events & nieuws</h2>
-                        <p>Blijf op de hoogte van activiteiten, etentjes en andere momenten in en rondom de villa.</p>
-                        <p>Volg ook <a href="https://www.instagram.com/villa.vredestein" target="_blank" rel="noopener noreferrer">@villa.vredestein</a> op Instagram.</p>
+                {/* Schoonmaakschema */}
+                <article className="dash-card">
+                    <h2><MdOutlineCleaningServices /> Schoonmaakschema</h2>
+                    <p>Jouw taken voor deze week. Het rooster wisselt wekelijks.</p>
+                    <div className="dashboard-cleaning-meta">
+                        <span className="dashboard-rotation-badge">
+                            Week {currentIsoWeek}
+                            <span className="week-current-badge">nu</span>
+                        </span>
+                        <span className="week-iso-label">{weekRange}</span>
+                        <Link to="/schoonmaakschema" className="dashboard-schema-btn">
+                            <FiClipboard /> Bekijk
+                        </Link>
                     </div>
-                </section>
+                </article>
+
+                {/* Events */}
+                <article className="dash-card">
+                    <h2><FiCalendar /> Events & nieuws</h2>
+                    <p>Blijf op de hoogte van activiteiten, etentjes en momenten in de villa.</p>
+                    <p>Volg ook <a href="https://www.instagram.com/villa.vredestein" target="_blank" rel="noopener noreferrer">@villa.vredestein</a> op Instagram.</p>
+                </article>
+
+                {/* Huisregels */}
+                <article className="dash-card">
+                    <h2><FiFileText /> Huisregels</h2>
+                    <p>Bekijk de afspraken en regels die gelden binnen Villa Vredestein.</p>
+                    <div className="dashboard-cleaning-meta">
+                        <Link to="/student/huisregels" className="dashboard-schema-btn">
+                            <FiFileText /> Bekijk
+                        </Link>
+                    </div>
+                </article>
             </main>
         </div>
     );
