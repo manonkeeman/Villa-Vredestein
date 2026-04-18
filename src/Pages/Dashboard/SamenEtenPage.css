@@ -1,0 +1,516 @@
+/* ── Layout ── */
+.se-main {
+    gap: 1.25rem;
+}
+
+/* ── Hero ── */
+.se-hero {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    background: linear-gradient(135deg, #0a1500, #120a00);
+    border: 1px solid #fcbc2d;
+    border-left: 5px solid #fcbc2d;
+    border-radius: 10px;
+    padding: 1rem 1.4rem;
+    color: white;
+    flex-wrap: wrap;
+}
+
+.se-hero-icon {
+    font-size: 2.4rem;
+    flex-shrink: 0;
+}
+
+.se-hero-text {
+    flex: 1;
+    min-width: 180px;
+}
+
+.se-hero-text strong {
+    display: block;
+    color: #fcbc2d;
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+.se-hero-text p {
+    margin: 0.2rem 0 0;
+    font-size: 13px;
+    color: #bbb;
+}
+
+.se-hero-date {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.15rem;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 0.7rem 1.1rem;
+    flex-shrink: 0;
+    text-align: right;
+}
+
+.se-hero-date-label {
+    font-size: 10.5px;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.se-hero-date-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fcbc2d;
+    text-transform: capitalize;
+}
+
+.se-hero-date-time {
+    font-size: 12px;
+    color: #888;
+}
+
+/* ── Two-column layout ── */
+.se-two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    align-items: start;
+}
+
+.se-right-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* ── Block base ── */
+.se-block {
+    border-radius: 12px;
+    padding: 1.25rem;
+    border: 1px solid transparent;
+}
+
+.se-block-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+}
+
+.se-block-header span { font-size: 1.2rem; }
+
+.se-block-header h2 {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: white;
+}
+
+/* ── Block themes ── */
+.se-block--gold  { background: #1a1200; border-color: #fcbc2d; }
+.se-block--dark  { background: #111;    border-color: #2a2a2a; }
+.se-block--green { background: #001a08; border-color: #22c55e; }
+.se-block--rules { background: #0d0d0d; border-color: #333; }
+
+.se-block--gold  .se-block-header h2 { color: #fcbc2d; }
+.se-block--dark  .se-block-header h2 { color: #aaa; }
+.se-block--green .se-block-header h2 { color: #22c55e; }
+.se-block--rules .se-block-header h2 { color: #aaa; }
+
+/* ── Detail rows ── */
+.se-detail-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 13px;
+    color: #ccc;
+    margin-bottom: 0.4rem;
+}
+
+.se-detail-icon {
+    font-size: 1rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.se-description {
+    font-size: 13px;
+    color: #bbb;
+    line-height: 1.6;
+    margin: 0.75rem 0 0;
+}
+
+/* ── Progress bar ── */
+.se-progress-wrap {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.se-progress-bar {
+    height: 6px;
+    background: #222;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.se-progress-fill {
+    height: 100%;
+    background: #fcbc2d;
+    border-radius: 999px;
+    transition: width 0.4s ease;
+}
+
+.se-progress-label {
+    font-size: 11.5px;
+    color: #666;
+}
+
+/* ── Dish idea chips ── */
+.se-dish-ideas {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.se-dish-ideas-title {
+    font-size: 11px;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.se-dish-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.se-dish-chip {
+    font-size: 11.5px;
+    color: #fcbc2d;
+    background: rgba(252, 188, 45, 0.08);
+    border: 1px solid rgba(252, 188, 45, 0.2);
+    border-radius: 20px;
+    padding: 0.2rem 0.55rem;
+}
+
+/* ── Signup list ── */
+.se-signup-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.se-signup-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid #1e1e1e;
+    border-radius: 8px;
+    padding: 0.55rem 0.75rem;
+}
+
+.se-signup-item--new {
+    border-color: #22c55e33;
+    background: rgba(34, 197, 94, 0.05);
+}
+
+.se-signup-emoji {
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+
+.se-signup-item div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.05rem;
+}
+
+.se-signup-item strong {
+    font-size: 13px;
+    color: #ddd;
+}
+
+.se-signup-item span {
+    font-size: 11.5px;
+    color: #666;
+}
+
+.se-check-icon {
+    color: #22c55e;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.se-heart-icon {
+    color: #f97316;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+/* ── Form ── */
+.se-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.se-label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    font-size: 12.5px;
+    color: #aaa;
+    font-weight: 600;
+}
+
+.se-input {
+    background: #0d0d0d;
+    border: 1px solid #333;
+    border-radius: 8px;
+    color: #eee;
+    font-size: 13.5px;
+    padding: 0.55rem 0.85rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.se-input:focus {
+    border-color: #22c55e;
+}
+
+.se-input::placeholder {
+    color: #444;
+}
+
+/* ── Person counter ── */
+.se-counter {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.15rem;
+}
+
+.se-counter-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 8px;
+    color: #ccc;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.15s;
+}
+
+.se-counter-btn:hover {
+    background: #252525;
+    color: white;
+}
+
+.se-counter-val {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #eee;
+    min-width: 24px;
+    text-align: center;
+}
+
+.se-submit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    background: #22c55e;
+    color: #000;
+    border: none;
+    border-radius: 10px;
+    font-size: 13.5px;
+    font-weight: 700;
+    padding: 0.65rem 1.25rem;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.2s;
+}
+
+.se-submit-btn:hover {
+    background: #16a34a;
+}
+
+/* ── Success state ── */
+.se-block--success {
+    background: rgba(34, 197, 94, 0.06);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    border-radius: 12px;
+    padding: 1.5rem 1.25rem;
+}
+
+.se-success-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.4rem;
+}
+
+.se-success-icon {
+    font-size: 2.2rem;
+    margin-bottom: 0.25rem;
+}
+
+.se-success-inner strong {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #22c55e;
+}
+
+.se-success-inner p {
+    font-size: 13px;
+    color: #aaa;
+    margin: 0;
+}
+
+.se-success-dish {
+    font-size: 13px !important;
+    color: #ccc !important;
+}
+
+.se-success-dish em {
+    color: #22c55e;
+    font-style: normal;
+    font-weight: 600;
+}
+
+.se-cancel-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: transparent;
+    border: 1px solid #444;
+    border-radius: 8px;
+    color: #888;
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 0.45rem 1rem;
+    cursor: pointer;
+    font-family: inherit;
+    margin-top: 0.5rem;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.se-cancel-btn:hover {
+    border-color: #ef4444;
+    color: #ef4444;
+}
+
+/* ── Rules grid ── */
+.se-rules-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+}
+
+.se-rule-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.4rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid #1e1e1e;
+    border-radius: 10px;
+    padding: 0.9rem 0.6rem;
+}
+
+.se-rule-tile span {
+    font-size: 1.4rem;
+}
+
+.se-rule-tile p {
+    font-size: 12px;
+    color: #888;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* ── Past dinners ── */
+.se-past-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+}
+
+.se-past-tile {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid #1e1e1e;
+    border-radius: 10px;
+    padding: 0.75rem 0.9rem;
+}
+
+.se-past-theme {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #ddd;
+}
+
+.se-past-month {
+    font-size: 11.5px;
+    color: #555;
+}
+
+.se-past-persons {
+    font-size: 11.5px;
+    color: #444;
+    margin-top: 0.15rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+    .se-two-col {
+        grid-template-columns: 1fr;
+    }
+
+    .se-rules-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .se-hero {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .se-hero-date {
+        align-items: flex-start;
+        text-align: left;
+        width: 100%;
+    }
+
+    .se-rules-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .se-past-grid {
+        grid-template-columns: 1fr;
+    }
+}
