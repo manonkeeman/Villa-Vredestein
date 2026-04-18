@@ -18,7 +18,7 @@ export default function PWAInstallBanner() {
 
     useEffect(() => {
         if (isStandalone()) return;
-        if (localStorage.getItem('pwa-banner-dismissed')) return;
+        if (localStorage.getItem('pwa-banner-dismissed-v2')) return;
 
         if (isIosDevice()) {
             setPlatform('ios');
@@ -79,7 +79,7 @@ export default function PWAInstallBanner() {
     };
 
     const handleDismiss = () => {
-        localStorage.setItem('pwa-banner-dismissed', '1');
+        localStorage.setItem('pwa-banner-dismissed-v2', '1');
         setPlatform(null);
     };
 
