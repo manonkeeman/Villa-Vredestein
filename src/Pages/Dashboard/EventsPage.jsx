@@ -7,7 +7,11 @@ import {
 } from "react-icons/fi";
 import DashboardLayout from "./DashboardLayout.jsx";
 import StudentSidebar from "../../Components/StudentSidebar/StudentSidebar.jsx";
-import { NEWS_ITEMS } from "./StudentDashboard.jsx";
+const NEWS_ITEMS = [
+    { id: 1, date: "15 apr 2026", emoji: "📶", title: "WiFi-wachtwoord vernieuwd", body: "Het netwerk Villa_VR heeft een nieuw wachtwoord. Vraag het op via de beheerder of WhatsApp-groep." },
+    { id: 2, date: "10 apr 2026", emoji: "🔧", title: "Onderhoud CV-ketel – 22 april", body: "Op dinsdag 22 april voert Scholman Servicebedrijf onderhoud uit. Warm water kan tijdelijk uitvallen." },
+    { id: 3, date: "3 apr 2026",  emoji: "🧹", title: "Nieuwe schoonmaakproducten aanwezig", body: "In de keuken liggen verse doekjes en afwasmiddel. Gebruik ze zuinig zodat ze lang meegaan." },
+];
 import "./StudentDashboard.css";
 import "./EventsPage.css";
 import "../../Styles/Global.css";

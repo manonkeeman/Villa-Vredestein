@@ -3,8 +3,9 @@ import { Helmet } from "react-helmet-async";
 import { Navigate, Link, useParams } from "react-router-dom";
 import { useAuth } from "../Auth/AuthContext.jsx";
 import {
-    FiBookOpen, FiDollarSign, FiClipboard, FiCalendar, FiStar,
+    FiBookOpen, FiDollarSign, FiClipboard, FiCalendar,
     FiAlertCircle, FiClock, FiCheckCircle, FiCheckSquare, FiSquare, FiTool,
+    FiRadio,
 } from "react-icons/fi";
 import { MdOutlineCleaningServices } from "react-icons/md";
 import api from "../../Helpers/AxiosHelper.js";
@@ -42,30 +43,7 @@ const formatWeekRange = (isoWeek, year) => {
         : `${start.getDate()} ${NL_MONTHS[start.getMonth()]}–${end.getDate()} ${NL_MONTHS[end.getMonth()]}`;
 };
 
-// ── Static news items ─────────────────────────────────────────────────────
-export const NEWS_ITEMS = [
-    {
-        id: 1,
-        date: "15 apr 2026",
-        emoji: "📶",
-        title: "WiFi-wachtwoord vernieuwd",
-        body: "Het netwerk Villa_VR heeft een nieuw wachtwoord. Vraag het op via de beheerder of WhatsApp-groep.",
-    },
-    {
-        id: 2,
-        date: "10 apr 2026",
-        emoji: "🔧",
-        title: "Onderhoud CV-ketel – 22 april",
-        body: "Op dinsdag 22 april voert Scholman Servicebedrijf onderhoud uit. Warm water kan tijdelijk uitvallen.",
-    },
-    {
-        id: 3,
-        date: "3 apr 2026",
-        emoji: "🧹",
-        title: "Nieuwe schoonmaakproducten aanwezig",
-        body: "In de keuken liggen verse doekjes en afwasmiddel. Gebruik ze zuinig zodat ze lang meegaan.",
-    },
-];
+const TYPE_EMOJI = { mededeling: "📢", onderhoud: "🔧", evenement: "🎉" };
 
 const StudentDashboard = () => {
     const { isLoggedIn, logout, user } = useAuth();
@@ -74,6 +52,7 @@ const StudentDashboard = () => {
     const [invoices, setInvoices] = useState([]);
     const [invoicesLoading, setInvoicesLoading] = useState(true);
     const [myTasks, setMyTasks] = useState([]);
+    const [announcements, setAnnouncements] = useState([]);
 
     const currentId = user?.id ?? user?.userId;
     if (!isLoggedIn) return <Navigate to="/login" replace />;
@@ -96,6 +75,12 @@ const StudentDashboard = () => {
         amount != null ? new Intl.NumberFormat("nl-NL", { style: "currency", currency: "EUR" }).format(amount) : "—";
 
     useEffect(() => { setContractFile(user?.contractFile || null); }, [user?.contractFile]);
+
+    useEffect(() => {
+        api.get("/api/announcements")
+            .then(res => setAnnouncements(res.data || []))
+            .catch(() => setAnnouncements([]));
+    }, []);
 
     useEffect(() => {
         api.get("/api/invoices/me")
@@ -243,24 +228,29 @@ const StudentDashboard = () => {
                 </div>
             </article>
 
-            {/* ── Events & Nieuws (paars) ── */}
+            {/* ── Mededelingen (paars) ── */}
             <article className="dash-card dash-card--purple">
-                <h2><FiCalendar /> Events &amp; Nieuws</h2>
-                <ul className="dash-news-list">
-                    {NEWS_ITEMS.slice(0, 2).map(n => (
-                        <li key={n.id} className="dash-news-item">
-                            <span className="dash-news-emoji">{n.emoji}</span>
-                            <div>
-                                <strong>{n.title}</strong>
-                                <span className="dash-news-date">{n.date}</span>
-                            </div>
-                        </li>
-                    ))}
-                </ul>
+                <h2><FiRadio /> Mededelingen</h2>
+                {announcements.length > 0 ? (
+                    <ul className="dash-news-list">
+                        {announcements.slice(0, 2).map(n => (
+                            <li key={n.id} className="dash-news-item">
+                                <span className="dash-news-emoji">{TYPE_EMOJI[n.type] || "📢"}</span>
+                                <div>
+                                    <strong>{n.title}</strong>
+                                    <span className="dash-news-date">
+                                        {new Date(n.createdAt).toLocaleDateString("nl-NL", { day: "numeric", month: "short", year: "numeric" })}
+                                    </span>
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
+                ) : (
+                    <p style={{ fontSize: "0.9rem", color: "#aaa" }}>Geen mededelingen.</p>
+                )}
                 <div className="dashboard-cleaning-meta" style={{ marginTop: "auto" }}>
-                    <span className="dash-event-chip">🔥 BBQ · 18 jun</span>
-                    <Link to="/student/events" className="dashboard-schema-btn">
-                        <FiStar /> Alles
+                    <Link to="/student/mededelingen" className="dashboard-schema-btn">
+                        <FiRadio /> Alles
                     </Link>
                 </div>
             </article>
