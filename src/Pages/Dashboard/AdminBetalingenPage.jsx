@@ -1,16 +1,18 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { Helmet } from "react-helmet-async";
-import { Navigate, Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useAuth } from "../Auth/AuthContext.jsx";
 import {
-    FiLogOut, FiHome, FiUsers, FiDollarSign, FiClipboard,
-    FiFileText, FiSettings, FiShield, FiTool, FiChevronLeft,
-    FiChevronRight, FiCheckCircle, FiClock, FiAlertTriangle, FiSave,
-    FiMail, FiRefreshCw,
+    FiDollarSign, FiChevronLeft, FiChevronRight,
+    FiCheckCircle, FiClock, FiAlertTriangle, FiSave,
+    FiMail, FiRefreshCw, FiSend,
 } from "react-icons/fi";
 import api from "../../Helpers/AxiosHelper.js";
+import DashboardLayout from "./DashboardLayout.jsx";
+import { AdminSidebar } from "./AdminBetalingenMatrix.jsx";
 import "./StudentDashboard.css";
 import "./AdminBetalingenPage.css";
+import "./AdminPages.css";
 import "../../Styles/Global.css";
 import PropTypes from "prop-types";
 
@@ -24,6 +26,19 @@ const TEMPLATE_LABELS = {
     PAYMENT_REMINDER_1: "Eerste herinnering (3e van de maand)",
     PAYMENT_REMINDER_2: "Tweede herinnering (7e van de maand)",
 };
+
+const now0 = new Date();
+const MOCK_INVOICES = [
+    { id: 1, studentName: "Desmond", invoiceMonth: now0.getMonth() + 1, invoiceYear: now0.getFullYear(), amount: 650, status: "PAID",   dueDate: `${now0.getFullYear()}-${String(now0.getMonth()+1).padStart(2,"0")}-05` },
+    { id: 2, studentName: "Medoc",   invoiceMonth: now0.getMonth() + 1, invoiceYear: now0.getFullYear(), amount: 620, status: "OPEN",   dueDate: `${now0.getFullYear()}-${String(now0.getMonth()+1).padStart(2,"0")}-05` },
+    { id: 3, studentName: "Simon",   invoiceMonth: now0.getMonth() + 1, invoiceYear: now0.getFullYear(), amount: 580, status: "OVERDUE",dueDate: `${now0.getFullYear()}-${String(now0.getMonth()+1).padStart(2,"0")}-05` },
+];
+
+const MOCK_TEMPLATES = [
+    { type: "PAYMENT_NEW",        subject: "Je factuur voor {{month}} staat klaar", body: "Beste {{name}},\n\nJe huurrekening van {{amount}} voor {{month}} is klaar. Betaal vóór {{dueDate}}.\n\nMet vriendelijke groet,\nVilla Vredestein" },
+    { type: "PAYMENT_REMINDER_1", subject: "Herinnering: openstaande betaling {{month}}", body: "Beste {{name}},\n\nJe betaling van {{amount}} voor {{month}} staat nog open.\n\nMet vriendelijke groet,\nVilla Vredestein" },
+    { type: "PAYMENT_REMINDER_2", subject: "2e herinnering: betaling {{month}} verlopen", body: "Beste {{name}},\n\nJe betaling van {{amount}} is verlopen. Neem contact op.\n\nMet vriendelijke groet,\nVilla Vredestein" },
+];
 
 const formatBedrag = (amount) => {
     if (amount == null) return "—";
@@ -79,25 +94,39 @@ const AdminBetalingenPage = () => {
     const fetchInvoices = useCallback(async () => {
         setLoadingInvoices(true);
         setInvoiceError(null);
-        api.get("/api/invoices")
-            .then(res => {
-                const filtered = res.data.filter(
-                    (inv) => inv.invoiceMonth === viewMonth && inv.invoiceYear === viewYear
-                );
-                filtered.sort((a, b) => (a.studentName || "").localeCompare(b.studentName || ""));
-                setInvoices(filtered);
-            })
-            .catch(err => setInvoiceError(err.response?.data?.message || "Kon facturen niet laden"))
-            .finally(() => setLoadingInvoices(false));
+        const mockTimer = setTimeout(() => {
+            const mock = MOCK_INVOICES.filter(i => i.invoiceMonth === viewMonth && i.invoiceYear === viewYear);
+            setInvoices(mock);
+            setLoadingInvoices(false);
+        }, 1500);
+        try {
+            const res = await api.get("/api/invoices");
+            clearTimeout(mockTimer);
+            const filtered = (res.data || []).filter(
+                (inv) => inv.invoiceMonth === viewMonth && inv.invoiceYear === viewYear
+            );
+            filtered.sort((a, b) => (a.studentName || "").localeCompare(b.studentName || ""));
+            setInvoices(filtered);
+        } catch {
+            clearTimeout(mockTimer);
+            const mock = MOCK_INVOICES.filter(i => i.invoiceMonth === viewMonth && i.invoiceYear === viewYear);
+            setInvoices(mock);
+        } finally {
+            setLoadingInvoices(false);
+        }
     }, [viewMonth, viewYear]);
 
     useEffect(() => { fetchInvoices(); }, [fetchInvoices]);
 
     // ── Fetch email templates
     useEffect(() => {
+        const mockTimer = setTimeout(() => {
+            setTemplates(MOCK_TEMPLATES);
+            setLoadingTemplates(false);
+        }, 1500);
         api.get("/api/admin/email-templates")
-            .then(res => setTemplates(res.data))
-            .catch(err => setTemplateError(err.response?.data?.message || "Kon templates niet laden"))
+            .then(res => { clearTimeout(mockTimer); setTemplates(res.data || MOCK_TEMPLATES); })
+            .catch(() => { clearTimeout(mockTimer); setTemplates(MOCK_TEMPLATES); })
             .finally(() => setLoadingTemplates(false));
     }, []);
 
@@ -133,6 +162,36 @@ const AdminBetalingenPage = () => {
             .finally(() => setSaving(false));
     };
 
+    // ── Send email to specific student
+    const [sendStudentId, setSendStudentId] = useState("");
+    const [sendStudents,  setSendStudents]  = useState([]);
+    const [sending,       setSending]       = useState(false);
+    const [sendMsg,       setSendMsg]       = useState(null);
+
+    useEffect(() => {
+        api.get("/api/users").then(res => {
+            const students = (res.data || []).filter(u => (u.roles||[]).some(r => String(r).includes("STUDENT")));
+            setSendStudents(students);
+        }).catch(() => setSendStudents([
+            { id: 1, username: "Desmond" },
+            { id: 2, username: "Medoc" },
+            { id: 3, username: "Simon" },
+        ]));
+    }, []);
+
+    const sendReminder = async (templateType) => {
+        if (!sendStudentId) { setSendMsg("Kies eerst een student."); return; }
+        setSending(true); setSendMsg(null);
+        try {
+            await api.post(`/api/admin/email/send`, { userId: sendStudentId, templateType });
+            setSendMsg("Herinnering verzonden!");
+        } catch {
+            setSendMsg("Fout bij verzenden (backend niet bereikbaar).");
+        } finally {
+            setSending(false);
+        }
+    };
+
     // ── Trigger monthly invoice job
     const triggerJob = async (path, label) => {
         setTriggering(true);
@@ -145,39 +204,14 @@ const AdminBetalingenPage = () => {
 
     const monthHeader = `${NL_MONTHS[viewMonth - 1]} ${viewYear}`;
 
+    const sidebar = <AdminSidebar active="betalingen" logout={logout} username={user?.username} />;
+
     return (
-        <div className="StudentDashboard">
+        <DashboardLayout sidebar={sidebar} mainClass="admin-main">
             <Helmet>
                 <title>Betalingen beheer — Villa Vredestein</title>
                 <meta name="robots" content="noindex, nofollow" />
             </Helmet>
-
-            <aside className="dashboard-sidebar" aria-label="Navigatie zijbalk">
-                <header className="sidebar-profile">
-                    <FiShield className="profile-icon" />
-                </header>
-                <h3 className="sidebar-title">Welkom {user?.username || "Beheerder"}</h3>
-
-                <nav className="sidebar-nav">
-                    <ul>
-                        <li><Link to="/admin"><FiHome /> Dashboard</Link></li>
-                        <li><Link to="#"><FiUsers /> Bewoners</Link></li>
-                        <li><Link to="/admin/betalingen" className="active-nav-link"><FiDollarSign /> Betalingen</Link></li>
-                        <li><Link to="/student/huisregels"><FiFileText /> Huisregels</Link></li>
-                        <li><Link to="#"><FiFileText /> Documenten</Link></li>
-                        <li><Link to="/schoonmaakschema"><FiClipboard /> Schoonmaakschema</Link></li>
-                        <li><Link to="#"><FiTool /> Onderhoud</Link></li>
-                        <li><Link to="#"><FiSettings /> Instellingen</Link></li>
-                        <li>
-                            <button onClick={logout} type="button" className="logout-button">
-                                <FiLogOut /> Log uit
-                            </button>
-                        </li>
-                    </ul>
-                </nav>
-            </aside>
-
-            <main className="dashboard-main">
 
                 {/* ── Invoice overview ── */}
                 <section className="dashboard-news admin-payments-section">
@@ -249,39 +283,44 @@ const AdminBetalingenPage = () => {
                     </div>
                 </section>
 
-                {/* ── Job triggers ── */}
-                <section className="dashboard-news">
-                    <div className="dashboard-news-content">
-                        <h2><FiRefreshCw /> Jobs handmatig starten</h2>
-                        <p className="jobs-hint">Start een job handmatig om facturen aan te maken of herinneringen te sturen.</p>
-                        <div className="jobs-row">
-                            <button
-                                type="button"
-                                className="job-btn"
-                                disabled={triggering}
-                                onClick={() => triggerJob("monthly-invoices/trigger", "Maandfacturen")}
-                            >
-                                Facturen aanmaken (1e)
-                            </button>
-                            <button
-                                type="button"
-                                className="job-btn"
-                                disabled={triggering}
-                                onClick={() => triggerJob("payment-reminder-1/trigger", "Eerste herinnering")}
-                            >
-                                Eerste herinnering (3e)
-                            </button>
-                            <button
-                                type="button"
-                                className="job-btn"
-                                disabled={triggering}
-                                onClick={() => triggerJob("payment-reminder-2/trigger", "Tweede herinnering")}
-                            >
-                                Tweede herinnering (7e)
-                            </button>
-                        </div>
-                        {triggerMsg && <p className="trigger-msg">{triggerMsg}</p>}
+                {/* ── Herinnering sturen per student ── */}
+                <section className="admin-section" style={{ marginBottom: "1.5rem" }}>
+                    <h2 className="admin-page-header" style={{ marginBottom: "1rem" }}><FiSend /> Herinnering sturen</h2>
+                    <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", alignItems: "center", marginBottom: "0.75rem" }}>
+                        <select
+                            value={sendStudentId}
+                            onChange={e => { setSendStudentId(e.target.value); setSendMsg(null); }}
+                            className="template-input"
+                            style={{ minWidth: 160 }}
+                        >
+                            <option value="">— Kies student —</option>
+                            {sendStudents.map(s => (
+                                <option key={s.id} value={s.id}>{s.username}</option>
+                            ))}
+                        </select>
+                        <button type="button" className="admin-btn" disabled={sending || !sendStudentId} onClick={() => sendReminder("PAYMENT_REMINDER_1")}>
+                            <FiSend /> {sending ? "Versturen…" : "Stuur herinnering"}
+                        </button>
                     </div>
+                    {sendMsg && <p style={{ fontSize: 13, color: sendMsg.startsWith("Fout") ? "#ef4444" : "#22c55e" }}>{sendMsg}</p>}
+                </section>
+
+                {/* ── Job triggers ── */}
+                <section className="admin-section" style={{ marginBottom: "1.5rem" }}>
+                    <h2 style={{ marginBottom: "0.75rem", display: "flex", alignItems: "center", gap: "0.5rem" }}><FiRefreshCw /> Jobs handmatig starten</h2>
+                    <p className="jobs-hint" style={{ fontSize: 13, color: "#aaa", marginBottom: "0.75rem" }}>Start een job om facturen aan te maken of herinneringen voor alle bewoners te sturen.</p>
+                    <div className="jobs-row">
+                        <button type="button" className="admin-btn" disabled={triggering} onClick={() => triggerJob("monthly-invoices/trigger", "Maandfacturen")}>
+                            Facturen aanmaken (1e)
+                        </button>
+                        <button type="button" className="admin-btn admin-btn--ghost" disabled={triggering} onClick={() => triggerJob("payment-reminder-1/trigger", "Eerste herinnering")}>
+                            Eerste herinnering (3e)
+                        </button>
+                        <button type="button" className="admin-btn admin-btn--ghost" disabled={triggering} onClick={() => triggerJob("payment-reminder-2/trigger", "Tweede herinnering")}>
+                            Tweede herinnering (7e)
+                        </button>
+                    </div>
+                    {triggerMsg && <p style={{ fontSize: 13, color: "#22c55e", marginTop: "0.5rem" }}>{triggerMsg}</p>}
                 </section>
 
                 {/* ── Email template editor ── */}
@@ -339,6 +378,25 @@ const AdminBetalingenPage = () => {
                                             <span className="template-label-inline">Onderwerp:</span> {tpl.subject}
                                         </p>
                                         <pre className="template-body-preview">{tpl.body}</pre>
+                                        <div style={{ marginTop: "0.75rem", display: "flex", gap: "0.5rem", alignItems: "center", flexWrap: "wrap" }}>
+                                            <select
+                                                value={sendStudentId}
+                                                onChange={e => { setSendStudentId(e.target.value); setSendMsg(null); }}
+                                                className="template-input"
+                                                style={{ minWidth: 140, fontSize: 13 }}
+                                            >
+                                                <option value="">— Student —</option>
+                                                {sendStudents.map(s => <option key={s.id} value={s.id}>{s.username}</option>)}
+                                            </select>
+                                            <button
+                                                type="button"
+                                                className="admin-btn admin-btn--small"
+                                                disabled={sending || !sendStudentId}
+                                                onClick={() => sendReminder(tpl.type)}
+                                            >
+                                                <FiSend /> Verstuur
+                                            </button>
+                                        </div>
                                     </div>
                                 )}
                             </div>
@@ -346,8 +404,7 @@ const AdminBetalingenPage = () => {
                     </div>
                 </section>
 
-            </main>
-        </div>
+        </DashboardLayout>
     );
 };
 
