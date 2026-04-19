@@ -12,8 +12,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import {
     FiLogOut, FiHome, FiAlertCircle, FiFileText,
-    FiUser, FiDollarSign, FiClipboard, FiShield,
-    FiCalendar, FiTool, FiRadio,
+    FiUser, FiDollarSign, FiClipboard,
+    FiCalendar, FiRadio,
 } from "react-icons/fi";
 
 const BASE_URL = (import.meta.env.VITE_API_BASE_URL || "http://localhost:8080").replace(/\/$/, "");
@@ -54,15 +54,6 @@ export default function StudentSidebar({ user, logout, active = "", contractFile
                     )}
                     <li><Link to="/student/mededelingen" className={cls("mededelingen")}><FiRadio />   Mededelingen</Link></li>
                     <li><Link to="/student/events"    className={cls("events")}><FiCalendar />  Events &amp; Nieuws</Link></li>
-                    <li><Link to="/student/meldingen" className={cls("meldingen")}><FiTool />   Iets melden</Link></li>
-
-                    {hasRole(user, "ADMIN") && (
-                        <li>
-                            <Link to="/admin" className="admin-link">
-                                <FiShield /> Admin Dashboard
-                            </Link>
-                        </li>
-                    )}
                     <li>
                         <button onClick={logout} type="button" className="logout-button">
                             <FiLogOut /> Log uit

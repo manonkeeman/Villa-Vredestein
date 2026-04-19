@@ -26,6 +26,10 @@ const getDeletedIds = () => {
     try { return new Set(JSON.parse(localStorage.getItem(DELETED_KEY) || "[]")); }
     catch { return new Set(); }
 };
+const getContractOverrides = () => {
+    try { return JSON.parse(localStorage.getItem("villa_contract_overrides") || "{}"); }
+    catch { return {}; }
+};
 const persistDeletedId = (id) => {
     const ids = getDeletedIds();
     ids.add(String(id));
@@ -386,7 +390,10 @@ const AdminBewonersPage = () => {
                     return !email.includes("alvarmantyla") && !email.includes("arwenleonor")
                         && name !== "alvar" && name !== "arwen";
                 })
-                .map(u => ({ ...u, roles: resolveRoles(u) }));
+                .map(u => {
+                    const overrides = getContractOverrides();
+                    return { ...u, ...(overrides[String(u.id)] || {}), roles: resolveRoles(u) };
+                });
         };
 
         const mockTimer = setTimeout(() => {
