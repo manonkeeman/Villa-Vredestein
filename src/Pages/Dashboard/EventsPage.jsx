@@ -109,9 +109,13 @@ function EventCard({ event, past }) {
 }
 
 // ── Page ─────────────────────────────────────────────────────────────────
+const BASE_URL = (import.meta.env.VITE_API_BASE_URL || "http://localhost:8080").replace(/\/$/, "");
+
 const EventsPage = () => {
     const { isLoggedIn, logout, user } = useAuth();
     if (!isLoggedIn) return <Navigate to="/login" replace />;
+
+    const contractFile = user?.contractFile || null;
 
     const now   = new Date();
     const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
@@ -151,6 +155,12 @@ const EventsPage = () => {
                         <li><Link to="/student/huisregels"><FiFileText /> Huisregels</Link></li>
                         <li><Link to="/schoonmaakschema"><FiClipboard /> Schoonmaakschema</Link></li>
                         <li><Link to="/student/betalingen"><FiDollarSign /> Betalingen</Link></li>
+                        <li>
+                            {contractFile
+                                ? <a href={`${BASE_URL}/uploads/${encodeURIComponent(contractFile)}`} target="_blank" rel="noopener noreferrer"><FiFileText /> Huurcontract</a>
+                                : <Link to="#"><FiFileText /> Huurcontract</Link>
+                            }
+                        </li>
                         <li><Link to="/student/samen-eten"><FiUsers /> Samen eten?</Link></li>
                         <li>
                             <Link to="/student/events" className="active-nav-link">
