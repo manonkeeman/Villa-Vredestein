@@ -196,29 +196,33 @@
         align-items: stretch;
         gap: 0;
         height: auto;
-        padding-top: 3.75rem; /* room for fixed toggle button */
+        padding-top: calc(108px + 50px); /* nav + toggle knop hoogte */
         position: relative;
     }
 
-    /* Hamburger button — fixed top-right */
+    /* ── Toggle button: gecentreerd, onder de sticky nav ── */
     .sidebar-mobile-toggle {
         display: flex;
         align-items: center;
         gap: 0.45rem;
+        /* Gecentreerd boven de cards, ONDER de nav */
         position: fixed;
-        top: 0.75rem;
-        right: 1rem;
-        z-index: 400;
+        top: 108px;          /* nav hoogte (~104px) + 4px marge */
+        left: 50%;
+        transform: translateX(-50%);
+        right: auto;
+        z-index: 1100;       /* boven de navigatie (z-index 1000) */
         background: #fcbc2d;
         color: #111;
         border: none;
-        border-radius: 8px;
-        padding: 0.5rem 0.9rem;
+        border-radius: 20px;
+        padding: 0.5rem 1.4rem;
         font-size: 13.5px;
         font-weight: 700;
         cursor: pointer;
         font-family: inherit;
-        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+        white-space: nowrap;
         transition: background 0.15s;
     }
 
@@ -226,33 +230,33 @@
         background: #ffd060;
     }
 
-    /* Overlay behind open sidebar */
+    /* Overlay — dekt pagina-inhoud af */
     .sidebar-overlay {
         position: fixed;
         inset: 0;
         background: rgba(0, 0, 0, 0.65);
-        z-index: 300;
+        z-index: 1040;       /* boven nav-content, onder sidebar */
         backdrop-filter: blur(2px);
         -webkit-backdrop-filter: blur(2px);
     }
 
-    /* Sidebar hidden by default on mobile */
+    /* Sidebar — verschijnt gecentreerd ONDER de toggle-knop */
     .dashboard-sidebar {
         display: none;
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        width: 100% !important;
-        max-width: 100% !important;
-        max-height: 82vh;
+        top: 158px;          /* 108px toggle-top + ~42px knophoogte + 8px */
+        left: 0.75rem;
+        right: 0.75rem;
+        width: auto !important;
+        max-width: calc(100% - 1.5rem) !important;
+        max-height: 72vh;
         overflow-y: auto;
-        border-radius: 0 0 16px 16px;
+        border-radius: 14px;
         border: 1px solid #fcbc2d;
         border-top: 3px solid #fcbc2d;
-        padding-top: 3.5rem; /* space below toggle button */
-        z-index: 350;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+        padding-top: 0.75rem;
+        z-index: 1050;       /* boven overlay en nav */
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
     }
 
     /* Show sidebar when menu is open */

@@ -215,7 +215,7 @@
     .profile-page {
         flex-direction: column;
         align-items: stretch;
-        padding-top: 3.75rem;
+        padding-top: calc(108px + 50px);
         position: relative;
         gap: 0;
     }
@@ -223,19 +223,19 @@
     .profile-page .dashboard-sidebar {
         display: none;
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        width: 100% !important;
-        max-width: 100% !important;
-        max-height: 82vh;
+        top: 158px;
+        left: 0.75rem;
+        right: 0.75rem;
+        width: auto !important;
+        max-width: calc(100% - 1.5rem) !important;
+        max-height: 72vh;
         overflow-y: auto;
-        border-radius: 0 0 16px 16px;
+        border-radius: 14px;
         border: 1px solid #fcbc2d;
         border-top: 3px solid #fcbc2d;
-        padding-top: 3.5rem;
-        z-index: 350;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+        padding-top: 0.75rem;
+        z-index: 1050;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
     }
 
     .profile-page.sidebar-open .dashboard-sidebar {
