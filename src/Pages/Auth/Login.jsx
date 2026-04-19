@@ -71,13 +71,14 @@ const Login = () => {
 
     const [backendReady, setBackendReady] = useState(false);
     const [backendSlow, setBackendSlow] = useState(false);
+    const [submitSlow, setSubmitSlow] = useState(false);
     const warmupDone = useRef(false);
 
     useEffect(() => {
         if (warmupDone.current) return;
         warmupDone.current = true;
         const slowTimer = setTimeout(() => setBackendSlow(true), 4000);
-        fetch(`${API_BASE}/actuator/health`, { signal: AbortSignal.timeout(60000) })
+        fetch(`${API_BASE}/actuator/health`, { signal: AbortSignal.timeout(12000) })
             .then(() => { setBackendReady(true); setBackendSlow(false); })
             .catch(() => { setBackendReady(true); setBackendSlow(false); })
             .finally(() => clearTimeout(slowTimer));
@@ -140,7 +141,9 @@ const Login = () => {
         e.preventDefault();
         setError("");
         setSubmitting(true);
+        setSubmitSlow(false);
         const cleanEmail = email.trim();
+        const slowTimer = setTimeout(() => setSubmitSlow(true), 5000);
         try {
             if (!cleanEmail || !password) { setError("Vul e-mail en wachtwoord in."); return; }
             if (loginMode === "STUDENT" && !room) { setError("Kies eerst je kamer."); return; }
@@ -170,6 +173,8 @@ const Login = () => {
         } catch {
             setError("Er ging iets mis. Probeer het opnieuw.");
         } finally {
+            clearTimeout(slowTimer);
+            setSubmitSlow(false);
             setSubmitting(false);
         }
     };
@@ -197,7 +202,9 @@ const Login = () => {
                     {submitting && (
                         <div className="login-overlay" aria-live="polite">
                             <div className="login-overlay__spinner" />
-                            <span className="login-overlay__label">Bezig met inloggen…</span>
+                            <span className="login-overlay__label">
+                                {submitSlow ? "Server wordt opgestart… even geduld (±30 sec)." : "Bezig met inloggen…"}
+                            </span>
                         </div>
                     )}
                     <img src="/VVLogo.png" alt="Villa Vredestein" className="login-logo" />

@@ -79,7 +79,7 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         axios.defaults.baseURL = API_BASE;
-    }, []);
+    }, [API_BASE]);
 
     const logout = useCallback(() => {
         localStorage.removeItem(TOKEN_KEY);
@@ -110,11 +110,14 @@ export const AuthProvider = ({ children }) => {
 
             return normalizedUser;
         } catch (e) {
-            console.error("❌ loadMe failed:", e.response?.data || e.message);
-            logout();
+            // Silently fail — do NOT logout here. If called after login the
+            // immediateUser is already set; if called as a background refresh
+            // the cached user stays valid. Only the bootstrap path (no stored
+            // user at all) should logout on failure.
+            console.warn("loadMe failed, keeping existing session:", e.message);
             return null;
         }
-    }, [logout]);
+    }, []);
 
     const login = useCallback(
         async (email, password, options = {}) => {
@@ -223,9 +226,10 @@ export const AuthProvider = ({ children }) => {
                     loadMe(); // fire-and-forget: updates context when response arrives
                 }
             } else {
-                // First login: must wait for user data before rendering
+                // No cached user — must fetch before rendering
                 try {
-                    await loadMe();
+                    const result = await loadMe();
+                    if (!result) logout(); // No data at all → clear token
                 } finally {
                     setLoading(false);
                 }
