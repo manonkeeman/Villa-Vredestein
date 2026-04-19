@@ -4,7 +4,7 @@ import { Navigate, Link } from "react-router-dom";
 import { useAuth } from "../Auth/AuthContext.jsx";
 import {
     FiUsers, FiDollarSign, FiFileText, FiClipboard, FiPlus,
-    FiShield, FiTool, FiMessageSquare, FiGrid,
+    FiShield, FiMessageSquare, FiGrid,
     FiAlertTriangle, FiCheckCircle, FiClock, FiCalendar,
 } from "react-icons/fi";
 import api from "../../Helpers/AxiosHelper.js";
@@ -121,22 +121,6 @@ const AdminDashboard = () => {
                 <div className="dashboard-cleaning-meta">
                     <Link to="/admin/contracten" className="dashboard-schema-btn">
                         <FiFileText /> Contract-dashboard
-                    </Link>
-                </div>
-            </article>
-
-            {/* Meldingen / Tickets */}
-            <article className={`dash-card ${stats.openTickets > 0 ? "dash-card--orange" : "dash-card--green"}`}>
-                <h2><FiTool /> Meldingen</h2>
-                <p style={{ fontSize: 13, color: "#aaa", marginBottom: "0.5rem" }}>
-                    {stats.openTickets > 0
-                        ? <span style={{ color: "#f59e0b" }}><FiClock /> {stats.openTickets} open melding{stats.openTickets !== 1 ? "en" : ""}</span>
-                        : <span style={{ color: "#22c55e" }}><FiCheckCircle /> Geen openstaande meldingen</span>
-                    }
-                </p>
-                <div className="dashboard-cleaning-meta">
-                    <Link to="/admin/berichten" className="dashboard-schema-btn">
-                        <FiTool /> Bekijk meldingen
                     </Link>
                 </div>
             </article>
