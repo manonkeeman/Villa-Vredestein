@@ -108,28 +108,39 @@
     font-size: 0.88rem;
 }
 
-/* ── Factuur aanmaken ── */
-.factuur-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 0.5rem;
+/* ── Facturen & herinneringen sectie ── */
+.factuur-blok {
+    padding: 0.75rem 0;
 }
 
-.factuur-header h2 {
+.factuur-blok-label {
     display: flex;
     align-items: center;
     gap: 0.4rem;
-    margin: 0;
-    font-size: 1rem;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #fcbc2d;
+    margin: 0 0 0.35rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
-.factuur-form {
-    background: #0d0d0d;
-    border: 1px solid #2a2a2a;
-    border-radius: 10px;
-    padding: 1rem;
-    margin-top: 0.75rem;
+.factuur-blok-hint {
+    font-size: 12px;
+    color: #888;
+    margin: 0 0 0.75rem;
+    line-height: 1.5;
+}
+
+.factuur-divider {
+    border: none;
+    border-top: 1px solid #2a2a2a;
+    margin: 0.75rem 0;
+}
+
+.factuur-feedback {
+    font-size: 13px;
+    margin-top: 0.5rem;
 }
 
 .factuur-form-row {
@@ -139,14 +150,20 @@
     align-items: flex-end;
 }
 
-.factuur-form-row .bew-field {
+.factuur-field {
     display: flex;
     flex-direction: column;
-    gap: 0.35rem;
-    min-width: 130px;
+    gap: 0.3rem;
+    flex: 1;
+    min-width: 160px;
 }
 
-.factuur-form-row label {
+.factuur-field--sm {
+    flex: 0 0 120px;
+    min-width: 100px;
+}
+
+.factuur-field label {
     font-size: 11px;
     font-weight: 600;
     color: #888;

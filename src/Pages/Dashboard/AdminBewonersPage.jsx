@@ -48,11 +48,10 @@ const persistLocalUser = (user) => {
 
 // ── Mock data ─────────────────────────────────────────────────────────────
 const MOCK_USERS = [
-    { id: 1, username: "Desmond",  email: "desmond@example.com",  room: "Japan",       roles: ["ROLE_STUDENT"] },
-    { id: 2, username: "Medoc",    email: "medoc@example.com",    room: "Argentinië",  roles: ["ROLE_STUDENT"] },
-    { id: 3, username: "Simon",    email: "simon@example.com",    room: "Thailand",    roles: ["ROLE_STUDENT"] },
-    { id: 4, username: "François", email: "francois@example.com", room: "Frankrijk",   roles: ["ROLE_STUDENT"] },
-    { id: 5, username: "Maria",    email: "maria@example.com",    room: "",            roles: ["ROLE_CLEANER"] },
+    { id: 1, username: "Desmond", email: "desmondstaal@gmail.com",  room: "Japan",      roles: ["ROLE_STUDENT"] },
+    { id: 2, username: "Medoc",   email: "medocstaal@gmail.com",    room: "Argentinië", roles: ["ROLE_STUDENT"] },
+    { id: 3, username: "Simon",   email: "simontalsma2@gmail.com",  room: "Thailand",   roles: ["ROLE_STUDENT"] },
+    { id: 5, username: "Maria",   email: "maria@example.com",       room: "",           roles: ["ROLE_CLEANER"] },
 ];
 
 // ── Helpers ───────────────────────────────────────────────────────────────
