@@ -1,0 +1,297 @@
+/* ── Student Tickets Page ───────────────────────────────────────────── */
+
+.sticket-main {
+    max-width: 780px;
+}
+
+/* Hero */
+.sticket-hero {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background: linear-gradient(135deg, #1a1a1a, #111);
+    border: 1px solid #333;
+    border-left: 4px solid #fcbc2d;
+    border-radius: 12px;
+    padding: 1.2rem 1.4rem;
+    margin-bottom: 1.5rem;
+}
+
+.sticket-hero-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.sticket-hero strong {
+    display: block;
+    font-size: 1.1rem;
+    color: #fcbc2d;
+    margin-bottom: 0.2rem;
+}
+
+.sticket-hero p {
+    margin: 0;
+    font-size: 14px;
+    color: #aaa;
+}
+
+/* Form card */
+.sticket-form-card {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.sticket-form-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    color: #fcbc2d;
+    margin: 0 0 1.2rem;
+}
+
+.sticket-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.sticket-form-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1rem;
+}
+
+.sticket-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.sticket-field--full { grid-column: 1 / -1; }
+.sticket-field--grow { flex: 1; }
+
+.sticket-field label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.sticket-field input,
+.sticket-field select,
+.sticket-field textarea {
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    padding: 0.55rem 0.8rem;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.sticket-field input:focus,
+.sticket-field select:focus,
+.sticket-field textarea:focus {
+    outline: none;
+    border-color: #fcbc2d;
+}
+
+.sticket-field select option { background: #111; }
+
+/* Photo upload */
+.sticket-photo-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: #111;
+    border: 1px dashed #444;
+    border-radius: 8px;
+    color: #888;
+    font-size: 13px;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+    width: fit-content;
+}
+
+.sticket-photo-label:hover {
+    border-color: #fcbc2d;
+    color: #fcbc2d;
+}
+
+.sticket-photo-preview {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.sticket-photo-preview img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #333;
+}
+
+.sticket-remove-photo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: transparent;
+    border: 1px solid #444;
+    border-radius: 6px;
+    color: #888;
+    font-size: 12px;
+    padding: 0.3rem 0.7rem;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+    font-family: 'Poppins', sans-serif;
+}
+
+.sticket-remove-photo:hover { border-color: #e74c3c; color: #e74c3c; }
+
+.sticket-submit-msg { font-size: 13px; font-weight: 500; }
+
+.sticket-submit-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #fcbc2d;
+    border: none;
+    border-radius: 8px;
+    color: black;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 0.7rem 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-family: 'Poppins', sans-serif;
+    width: fit-content;
+}
+
+.sticket-submit-btn:hover    { background: #e0a820; }
+.sticket-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* My tickets section */
+.sticket-my-section { margin-top: 0.5rem; }
+
+.sticket-section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    color: #fcbc2d;
+    margin-bottom: 1rem;
+}
+
+.sticket-loading { color: #888; font-size: 14px; }
+.sticket-empty   { color: #666; font-size: 14px; }
+
+.sticket-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+/* Own ticket card */
+.sticket-card {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.sticket-card-header {
+    padding: 0.9rem 1.1rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.sticket-card-header:hover { background: rgba(255,255,255,0.02); }
+
+.sticket-card-top {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.3rem;
+}
+
+.sticket-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 20px;
+}
+
+.sticket-status--open     { background: rgba(245,158,11,0.12); color: #f59e0b; }
+.sticket-status--progress { background: rgba(59,130,246,0.12); color: #60a5fa; }
+.sticket-status--resolved { background: rgba(34,197,94,0.12);  color: #22c55e; }
+.sticket-status--closed   { background: rgba(107,114,128,0.12); color: #6b7280; }
+
+.sticket-category {
+    font-size: 12px;
+    color: #888;
+    background: rgba(255,255,255,0.05);
+    padding: 2px 8px;
+    border-radius: 20px;
+}
+
+.sticket-expand { margin-left: auto; color: #666; }
+
+.sticket-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: white;
+    margin: 0 0 0.2rem;
+}
+
+.sticket-date { font-size: 12px; color: #666; }
+
+.sticket-card-body {
+    padding: 0 1.1rem 1rem;
+    border-top: 1px solid #222;
+}
+
+.sticket-description {
+    color: #ccc;
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0.8rem 0;
+}
+
+.sticket-comments { background: #111; border-radius: 8px; padding: 0.8rem; margin-top: 0.8rem; }
+
+.sticket-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.5rem;
+}
+
+.sticket-comment {
+    font-size: 13px;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+.sticket-comment:last-child { border-bottom: none; }
+.sticket-comment strong { color: #fcbc2d; margin-right: 0.3rem; }
+.sticket-comment p { color: #ccc; margin: 0.2rem 0 0; }
+
+/* Mobile */
+@media (max-width: 768px) {
+    .sticket-form-row { grid-template-columns: 1fr; }
+    .sticket-form-card { padding: 1.1rem; }
+}

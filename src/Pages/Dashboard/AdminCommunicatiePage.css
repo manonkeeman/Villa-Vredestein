@@ -1,0 +1,158 @@
+/* ── Admin Communicatie Page ─────────────────────────────────────────── */
+
+/* Post form */
+.comm-form-card {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.comm-form-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    color: #fcbc2d;
+    margin: 0 0 1.2rem;
+}
+
+.comm-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.comm-form-row {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 1rem;
+}
+
+.comm-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.comm-field--grow { flex: 1; }
+
+.comm-field label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.comm-field input,
+.comm-field select,
+.comm-field textarea {
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    padding: 0.55rem 0.8rem;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.comm-field input:focus,
+.comm-field select:focus,
+.comm-field textarea:focus {
+    outline: none;
+    border-color: #fcbc2d;
+}
+
+.comm-field select option { background: #111; }
+
+/* Grid of announcement cards */
+.comm-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+/* Announcement card */
+.comm-card {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    transition: transform 0.15s;
+}
+
+.comm-card:hover { transform: translateY(-2px); }
+
+.comm-card--mededeling { border-top: 3px solid #3b82f6; }
+.comm-card--onderhoud  { border-top: 3px solid #f59e0b; }
+.comm-card--evenement  { border-top: 3px solid #a855f7; }
+
+.comm-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.comm-type-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 2px 8px;
+    border-radius: 20px;
+}
+
+.comm-card--mededeling .comm-type-badge { background: rgba(59,130,246,0.15); color: #60a5fa; }
+.comm-card--onderhoud  .comm-type-badge { background: rgba(245,158,11,0.15); color: #f59e0b; }
+.comm-card--evenement  .comm-type-badge { background: rgba(168,85,247,0.15); color: #c084fc; }
+
+.comm-date {
+    font-size: 11px;
+    color: #555;
+}
+
+.comm-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: white;
+    margin: 0;
+}
+
+.comm-body {
+    font-size: 13px;
+    color: #aaa;
+    line-height: 1.6;
+    flex: 1;
+}
+
+.comm-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-top: 0.3rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid #222;
+}
+
+.comm-author {
+    font-size: 12px;
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    .comm-form-row { grid-template-columns: 1fr; }
+    .comm-grid     { grid-template-columns: 1fr; }
+}

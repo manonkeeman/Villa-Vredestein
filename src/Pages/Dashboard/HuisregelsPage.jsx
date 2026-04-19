@@ -4,7 +4,7 @@ import { Navigate, Link } from "react-router-dom";
 import { useAuth } from "../Auth/AuthContext.jsx";
 import {
     FiLogOut, FiHome, FiAlertCircle, FiFileText, FiCalendar,
-    FiUser, FiUsers, FiDollarSign, FiClipboard, FiShield,
+    FiUser, FiUsers, FiDollarSign, FiClipboard, FiShield, FiTool,
 } from "react-icons/fi";
 import api from "../../Helpers/AxiosHelper.js";
 import DashboardLayout from "./DashboardLayout.jsx";
@@ -60,6 +60,7 @@ export default function HuisregelsPage() {
                         </li>
                         <li><Link to="/student/samen-eten"><FiUsers /> Samen eten?</Link></li>
                         <li><Link to="/student/events"><FiCalendar /> Events</Link></li>
+                        <li><Link to="/student/meldingen"><FiTool /> Iets melden</Link></li>
                         {hasRole(authUser, "ADMIN") && (
                             <li><Link to="/admin" className="admin-link"><FiShield /> Admin Dashboard</Link></li>
                         )}

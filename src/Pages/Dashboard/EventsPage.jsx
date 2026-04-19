@@ -4,7 +4,7 @@ import { Navigate, Link } from "react-router-dom";
 import { useAuth } from "../Auth/AuthContext.jsx";
 import {
     FiLogOut, FiHome, FiAlertCircle, FiFileText, FiCalendar,
-    FiUser, FiUsers, FiDollarSign, FiClipboard, FiShield,
+    FiUser, FiUsers, FiDollarSign, FiClipboard, FiShield, FiTool,
     FiMapPin, FiClock, FiChevronDown, FiChevronUp, FiRadio,
 } from "react-icons/fi";
 import DashboardLayout from "./DashboardLayout.jsx";
@@ -167,6 +167,7 @@ const EventsPage = () => {
                                 <FiCalendar /> Events
                             </Link>
                         </li>
+                        <li><Link to="/student/meldingen"><FiTool /> Iets melden</Link></li>
 
                         {hasRole(user, "ADMIN") && (
                             <li>

@@ -27,6 +27,11 @@ import HuisregelsPage from "./Pages/Dashboard/HuisregelsPage.jsx";
 import SchoonmaakschemaPage from "./Pages/Dashboard/SchoonmaakschemaPage.jsx";
 import BetalingenPage from "./Pages/Dashboard/BetalingenPage.jsx";
 import AdminBetalingenPage from "./Pages/Dashboard/AdminBetalingenPage.jsx";
+import AdminBetalingenMatrix from "./Pages/Dashboard/AdminBetalingenMatrix.jsx";
+import AdminContractenPage from "./Pages/Dashboard/AdminContractenPage.jsx";
+import AdminTicketsPage from "./Pages/Dashboard/AdminTicketsPage.jsx";
+import AdminCommunicatiePage from "./Pages/Dashboard/AdminCommunicatiePage.jsx";
+import StudentTicketsPage from "./Pages/Dashboard/StudentTicketsPage.jsx";
 import EventsPage from "./Pages/Dashboard/EventsPage.jsx";
 import SamenEtenPage from "./Pages/Dashboard/SamenEtenPage.jsx";
 import PaymentSuccessPage from "./Pages/Public/PaymentSuccessPage.jsx";
@@ -140,6 +145,42 @@ function App() {
                     />
 
                     <Route
+                        path="/admin/betaalmatrix"
+                        element={
+                            <ProtectedRoute allowedRoles={["ROLE_ADMIN"]}>
+                                <AdminBetalingenMatrix />
+                            </ProtectedRoute>
+                        }
+                    />
+
+                    <Route
+                        path="/admin/contracten"
+                        element={
+                            <ProtectedRoute allowedRoles={["ROLE_ADMIN"]}>
+                                <AdminContractenPage />
+                            </ProtectedRoute>
+                        }
+                    />
+
+                    <Route
+                        path="/admin/tickets"
+                        element={
+                            <ProtectedRoute allowedRoles={["ROLE_ADMIN"]}>
+                                <AdminTicketsPage />
+                            </ProtectedRoute>
+                        }
+                    />
+
+                    <Route
+                        path="/admin/communicatie"
+                        element={
+                            <ProtectedRoute allowedRoles={["ROLE_ADMIN"]}>
+                                <AdminCommunicatiePage />
+                            </ProtectedRoute>
+                        }
+                    />
+
+                    <Route
                         path="/student/samen-eten"
                         element={
                             <ProtectedRoute allowedRoles={["ROLE_STUDENT", "ROLE_ADMIN"]}>
@@ -153,6 +194,15 @@ function App() {
                         element={
                             <ProtectedRoute allowedRoles={["ROLE_STUDENT", "ROLE_ADMIN"]}>
                                 <EventsPage />
+                            </ProtectedRoute>
+                        }
+                    />
+
+                    <Route
+                        path="/student/meldingen"
+                        element={
+                            <ProtectedRoute allowedRoles={["ROLE_STUDENT", "ROLE_ADMIN"]}>
+                                <StudentTicketsPage />
                             </ProtectedRoute>
                         }
                     />
