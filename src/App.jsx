@@ -35,6 +35,7 @@ import AdminCommunicatiePage from "./Pages/Dashboard/AdminCommunicatiePage.jsx";
 import AdminBerichtenPage from "./Pages/Dashboard/AdminBerichtenPage.jsx";
 import AdminInstellingenPage from "./Pages/Dashboard/AdminInstellingenPage.jsx";
 import StudentTicketsPage from "./Pages/Dashboard/StudentTicketsPage.jsx";
+import MededelingenPage from "./Pages/Dashboard/MededelingenPage.jsx";
 import EventsPage from "./Pages/Dashboard/EventsPage.jsx";
 import SamenEtenPage from "./Pages/Dashboard/SamenEtenPage.jsx";
 import PaymentSuccessPage from "./Pages/Public/PaymentSuccessPage.jsx";
@@ -233,6 +234,15 @@ function App() {
                         element={
                             <ProtectedRoute allowedRoles={["ROLE_STUDENT", "ROLE_ADMIN"]}>
                                 <StudentTicketsPage />
+                            </ProtectedRoute>
+                        }
+                    />
+
+                    <Route
+                        path="/student/mededelingen"
+                        element={
+                            <ProtectedRoute allowedRoles={["ROLE_STUDENT", "ROLE_ADMIN"]}>
+                                <MededelingenPage />
                             </ProtectedRoute>
                         }
                     />
