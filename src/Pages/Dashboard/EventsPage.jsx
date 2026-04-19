@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Navigate } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 import { useAuth } from "../Auth/AuthContext.jsx";
 import {
     FiCalendar, FiMapPin, FiClock, FiChevronDown, FiChevronUp, FiRadio,

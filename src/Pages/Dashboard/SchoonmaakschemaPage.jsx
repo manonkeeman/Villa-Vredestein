@@ -6,7 +6,7 @@ import { useAuth } from "../Auth/AuthContext.jsx";
 import Spinner from "../../Components/Spinner/Spinner.jsx";
 import {
     FiLogOut, FiHome, FiAlertCircle, FiClipboard, FiShield,
-    FiUser, FiDollarSign, FiFileText, FiCalendar,
+    FiUser, FiUsers, FiDollarSign, FiFileText, FiCalendar,
     FiCheckSquare, FiSquare, FiPlus, FiTrash2,
     FiChevronLeft, FiChevronRight, FiTool, FiSettings,
     FiMessageSquare, FiAlertTriangle,

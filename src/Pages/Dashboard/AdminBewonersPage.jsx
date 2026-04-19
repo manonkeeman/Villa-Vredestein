@@ -262,12 +262,20 @@ const AdminBewonersPage = () => {
 
     const load = useCallback(async () => {
         setLoading(true);
+        // Show mock data after 1.5s if backend hasn't responded yet
+        const mockTimer = setTimeout(() => {
+            setBewoners(prev => prev.length === 0 ? MOCK_USERS : prev);
+            setIsMock(true);
+            setLoading(false);
+        }, 1500);
         try {
             const res = await api.get("/api/users");
+            clearTimeout(mockTimer);
             const all = (res.data || []).map(u => ({ ...u, roles: resolveRoles(u) }));
             setBewoners(all);
             setIsMock(false);
         } catch {
+            clearTimeout(mockTimer);
             setBewoners(MOCK_USERS);
             setIsMock(true);
         } finally {
