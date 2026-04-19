@@ -200,34 +200,76 @@
         position: relative;
     }
 
-    /* ── Toggle button: gecentreerd, onder de sticky nav ── */
+    /* ── Toggle button: Vredestein design, gecentreerd onder nav ── */
     .sidebar-mobile-toggle {
         display: flex;
         align-items: center;
-        gap: 0.45rem;
-        /* Gecentreerd boven de cards, ONDER de nav */
+        gap: 0;
         position: fixed;
-        top: 108px;          /* nav hoogte (~104px) + 4px marge */
+        top: 108px;
         left: 50%;
         transform: translateX(-50%);
         right: auto;
-        z-index: 1100;       /* boven de navigatie (z-index 1000) */
-        background: #fcbc2d;
-        color: #111;
-        border: none;
-        border-radius: 20px;
-        padding: 0.5rem 1.4rem;
-        font-size: 13.5px;
-        font-weight: 700;
+        z-index: 1100;
+        /* Pill-shape met gouden rand en zwarte achtergrond */
+        background: #111;
+        border: 2px solid #fcbc2d;
+        border-radius: 50px;
+        padding: 0;
         cursor: pointer;
         font-family: inherit;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+        box-shadow:
+            0 4px 20px rgba(0, 0, 0, 0.6),
+            0 0 0 1px rgba(252, 188, 45, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.06);
         white-space: nowrap;
-        transition: background 0.15s;
+        overflow: hidden;
+        transition: border-color 0.2s, box-shadow 0.2s;
     }
 
-    .sidebar-mobile-toggle:hover {
-        background: #ffd060;
+    .sidebar-mobile-toggle:hover,
+    .sidebar-mobile-toggle--open {
+        border-color: #ffd060;
+        box-shadow:
+            0 6px 24px rgba(0, 0, 0, 0.7),
+            0 0 16px rgba(252, 188, 45, 0.35);
+    }
+
+    /* VV monogram-blokje links */
+    .smt-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fcbc2d;
+        color: #111;
+        font-size: 11px;
+        font-weight: 900;
+        letter-spacing: 0.04em;
+        padding: 0.52rem 0.75rem;
+        line-height: 1;
+        border-radius: 0;
+        flex-shrink: 0;
+    }
+
+    /* Label in het midden */
+    .smt-label {
+        color: #fcbc2d;
+        font-size: 12.5px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 0 0.85rem;
+        line-height: 1;
+    }
+
+    /* Icoon rechts */
+    .smt-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fcbc2d;
+        padding: 0.52rem 0.7rem 0.52rem 0;
+        flex-shrink: 0;
     }
 
     /* Overlay — dekt pagina-inhoud af */
