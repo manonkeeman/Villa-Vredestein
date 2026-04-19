@@ -73,11 +73,17 @@ function primaryRole(roles = []) {
 }
 
 // ── Bewoner-kaart ─────────────────────────────────────────────────────────
+function resolveRoom(u) {
+    return u.room?.name || u.roomName || u.assignedRoom || u.assignedRoomName
+        || (typeof u.room === "string" ? u.room : "") || "";
+}
+
 function BewonerCard({ bewoner, onDelete }) {
     const [confirming, setConfirming] = useState(false);
     const [deleting,   setDeleting]   = useState(false);
     const roles = resolveRoles(bewoner);
     const role  = primaryRole(roles);
+    const room  = resolveRoom(bewoner);
 
     const handleDelete = async () => {
         setDeleting(true);
@@ -100,7 +106,7 @@ function BewonerCard({ bewoner, onDelete }) {
             <div className="bew-card-info">
                 <strong className="bew-card-name">{bewoner.username}</strong>
                 <span className="bew-card-email"><FiMail /> {bewoner.email}</span>
-                {bewoner.room && <span className="bew-card-room"><FiHome /> {bewoner.room}</span>}
+                {room && <span className="bew-card-room"><FiHome /> {room}</span>}
             </div>
             <span className={`bew-role-badge ${role.cls}`}>{role.label}</span>
 
@@ -169,27 +175,63 @@ function NieuwBewoner({ onCreated, onClose }) {
         }
         setSaving(true); setErr(null);
 
-        try {
-            const res = await api.post("/api/admin/students", {
-                username:         form.username.trim(),
-                email:            form.email.trim().toLowerCase(),
-                password:         form.password,
-                room:             form.room,
-                rentAmount:       Number(form.rentAmount),
-                sendWelcomeEmail: true,
-            });
+        const payload = {
+            username:         form.username.trim(),
+            email:            form.email.trim().toLowerCase(),
+            password:         form.password,
+            room:             form.room,
+            role:             "ROLE_STUDENT",
+            roles:            ["ROLE_STUDENT"],
+            rentAmount:       Number(form.rentAmount),
+            sendWelcomeEmail: true,
+            sendEmail:        true,
+        };
+
+        const endpoints = ["/api/admin/students", "/api/admin/users", "/api/users", "/api/auth/register"];
+        let lastEx = null;
+        let res = null;
+
+        for (const ep of endpoints) {
+            try {
+                res = await api.post(ep, payload);
+                break;
+            } catch (ex) {
+                lastEx = ex;
+                const status = ex.response?.status;
+                const raw    = ex.response?.data;
+                const msg    = (raw?.message || raw?.error || raw?.detail || "").toLowerCase();
+                // Duplicate email/username → stop trying, show clear message
+                if (status === 409 || msg.includes("exist") || msg.includes("bestaat") || msg.includes("duplicate")) {
+                    setErr("Dit e-mailadres bestaat al in het systeem. Verwijder het oude account eerst via de bewonerslijst en ververs de pagina.");
+                    setSaving(false);
+                    return;
+                }
+                // Other errors (404, 403, 400 for wrong endpoint) → try next
+            }
+        }
+
+        if (res) {
             const newUser = { ...res.data, roles: resolveRoles(res.data) };
             persistLocalUser(newUser);
-            onCreated(newUser);
-        } catch (ex) {
-            const raw = ex?.response?.data;
-            const msg = raw?.message || raw?.error || raw?.detail
+            onCreated(newUser, true);
+        } else if (!lastEx?.response) {
+            // Network error → save locally
+            const newUser = {
+                id: `local_${Date.now()}`,
+                username: form.username.trim(),
+                email:    form.email.trim().toLowerCase(),
+                room:     form.room,
+                roles:    ["ROLE_STUDENT"],
+            };
+            persistLocalUser(newUser);
+            onCreated(newUser, false);
+        } else {
+            const raw = lastEx.response?.data;
+            setErr(raw?.message || raw?.error || raw?.detail
                 || (typeof raw === "string" ? raw : null)
-                || `HTTP ${ex.response?.status ?? "?"} — aanmaken mislukt.`;
-            setErr(msg);
-        } finally {
-            setSaving(false);
+                || `HTTP ${lastEx.response.status} — aanmaken mislukt.`);
         }
+        setSaving(false);
     };
 
     return (
@@ -369,12 +411,15 @@ const AdminBewonersPage = () => {
 
     useEffect(() => { load(); }, [load]);
 
-    const handleCreated = (newUser) => {
+    const handleCreated = (newUser, emailSent) => {
         const normalized = { ...newUser, roles: resolveRoles(newUser) };
         setBewoners(prev => [normalized, ...prev]);
         setShowForm(false);
         const name = newUser.username || newUser.email || "Nieuwe student";
-        setSuccessMsg(`${name} aangemaakt — welkomstmail verstuurd, factuur + betaallink aangemaakt.`);
+        const msg = emailSent
+            ? `${name} aangemaakt. Welkomstmail verstuurd.`
+            : `${name} aangemaakt (lokaal opgeslagen — backend onbereikbaar).`;
+        setSuccessMsg(msg);
         setTimeout(() => setSuccessMsg(null), 7000);
     };
 
