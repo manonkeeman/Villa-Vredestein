@@ -25,7 +25,11 @@ export function AdminSidebar({ active, logout, username }) {
             <nav className="sidebar-nav">
                 <ul>
                     <li><Link to="/admin"><FiHome /> Dashboard</Link></li>
-                    <li><Link to="/admin/bewoners"><FiUsers /> Bewoners</Link></li>
+                    <li>
+                        <Link to="/admin/bewoners" className={active === "bewoners" ? "active-nav-link" : ""}>
+                            <FiUsers /> Bewoners
+                        </Link>
+                    </li>
                     <li>
                         <Link to="/admin/betaalmatrix" className={active === "matrix" ? "active-nav-link" : ""}>
                             <FiGrid /> Betaal-matrix
@@ -64,18 +68,17 @@ export function AdminSidebar({ active, logout, username }) {
     );
 }
 
-// ── Static fallback data ─────────────────────────────────────────────────
+// ── Static fallback data (alleen tonen als backend onbereikbaar is) ───────
 const MOCK_MATRIX = {
-    students: ["Anna de Vries", "Bas Jansen", "Chloé Müller", "David Bakker"],
+    students: ["Desmond", "Medoc", "Simon"],
     months: [
         { year: 2026, month: 1 }, { year: 2026, month: 2 }, { year: 2026, month: 3 },
         { year: 2026, month: 4 }, { year: 2026, month: 5 }, { year: 2026, month: 6 },
     ],
     cells: {
-        "Anna de Vries": { "2026-1": "PAID","2026-2":"PAID","2026-3":"PAID","2026-4":"PAID","2026-5":"OPEN","2026-6":null },
-        "Bas Jansen":    { "2026-1": "PAID","2026-2":"PAID","2026-3":"OVERDUE","2026-4":"OVERDUE","2026-5":"OVERDUE","2026-6":null },
-        "Chloé Müller":  { "2026-1": "PAID","2026-2":"PAID","2026-3":"PAID","2026-4":"PAID","2026-5":"PAID","2026-6":null },
-        "David Bakker":  { "2026-1": "PAID","2026-2":"OPEN","2026-3":"OPEN","2026-4":null,"2026-5":null,"2026-6":null },
+        "Desmond": { "2026-1": "PAID","2026-2":"PAID","2026-3":"PAID","2026-4":"PAID","2026-5":"OPEN","2026-6":null },
+        "Medoc":   { "2026-1": "PAID","2026-2":"PAID","2026-3":"PAID","2026-4":"PAID","2026-5":"PAID","2026-6":null },
+        "Simon":   { "2026-1": "PAID","2026-2":"PAID","2026-3":"OPEN","2026-4":"OPEN","2026-5":null,"2026-6":null },
     },
 };
 
