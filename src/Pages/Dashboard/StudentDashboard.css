@@ -200,7 +200,7 @@
         position: relative;
     }
 
-    /* ── Toggle button: Vredestein design, gecentreerd onder nav ── */
+    /* ── Toggle button: card-style, gecentreerd onder nav ── */
     .sidebar-mobile-toggle {
         display: flex;
         align-items: center;
@@ -211,10 +211,9 @@
         transform: translateX(-50%);
         right: auto;
         z-index: 1100;
-        /* Pill-shape met gouden rand en zwarte achtergrond */
         background: #111;
         border: 2px solid #fcbc2d;
-        border-radius: 50px;
+        border-radius: 10px;
         padding: 0;
         cursor: pointer;
         font-family: inherit;

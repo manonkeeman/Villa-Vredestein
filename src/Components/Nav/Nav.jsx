@@ -1,10 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { NavLink, Link, useNavigate, useLocation } from "react-router-dom";
 import { FaInstagram, FaWhatsapp, FaUser } from "react-icons/fa";
-import {
-    FiHome, FiUser as FiUserIcon, FiAlertCircle, FiFileText,
-    FiClipboard, FiDollarSign, FiUsers, FiCalendar, FiShield,
-} from "react-icons/fi";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "../../Pages/Auth/AuthContext.jsx";
 import "./Nav.css";
@@ -31,12 +27,10 @@ const Nav = () => {
     const { t, i18n } = useTranslation();
 
     const [dropdownOpen, setDropdownOpen] = useState(false);
-    const [dashOpen, setDashOpen] = useState(false);
     const [langOpen, setLangOpen] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
     const [logoClicked, setLogoClicked] = useState(false);
 
-    const dashRef = useRef(null);
     const userRef = useRef(null);
     const langRef = useRef(null);
     const navLinksId = "nav-links-menu";
@@ -52,7 +46,6 @@ const Nav = () => {
     // Close all dropdowns on outside click
     useEffect(() => {
         const handleClick = (e) => {
-            if (dashRef.current && !dashRef.current.contains(e.target)) setDashOpen(false);
             if (userRef.current && !userRef.current.contains(e.target)) setDropdownOpen(false);
             if (langRef.current && !langRef.current.contains(e.target)) setLangOpen(false);
         };
@@ -65,7 +58,6 @@ const Nav = () => {
         const handleKeyDown = (e) => {
             if (e.key === "Escape") {
                 setDropdownOpen(false);
-                setDashOpen(false);
                 setLangOpen(false);
                 setMenuOpen(false);
             }
@@ -75,7 +67,7 @@ const Nav = () => {
     }, []);
 
     // Close mobile menu on route change
-    useEffect(() => { setMenuOpen(false); setDashOpen(false); }, [location.pathname]);
+    useEffect(() => { setMenuOpen(false); }, [location.pathname]);
 
     const handleLogout = () => {
         logout();
@@ -93,7 +85,7 @@ const Nav = () => {
         setTimeout(() => setLogoClicked(false), 1000);
     };
 
-    const closeAll = () => { setMenuOpen(false); setDashOpen(false); setDropdownOpen(false); };
+    const closeAll = () => { setMenuOpen(false); setDropdownOpen(false); };
 
     return (
         <nav className="navigatie-container" aria-label="Hoofdnavigatie">
@@ -152,73 +144,6 @@ const Nav = () => {
                         <FaWhatsapp aria-hidden="true" />
                     </a>
                 </li>
-
-                {/* ── Dashboard dropdown (alleen ingelogd) ── */}
-                {isLoggedIn && (
-                    <li className="dash-nav-wrapper" ref={dashRef}>
-                        <button
-                            className={`dash-nav-btn${dashOpen ? " open" : ""}`}
-                            onClick={() => setDashOpen(o => !o)}
-                            aria-expanded={dashOpen}
-                            aria-haspopup="true"
-                        >
-                            Dashboard <span className="dash-nav-caret" aria-hidden="true">▾</span>
-                        </button>
-
-                        {dashOpen && (
-                            <ul className="dash-nav-dropdown" role="menu">
-                                <li role="none">
-                                    <Link to={dashboardHome} className="dash-nav-item" onClick={closeAll} role="menuitem">
-                                        <FiHome /> Dashboard
-                                    </Link>
-                                </li>
-                                <li role="none">
-                                    <Link to="/student/profiel" className="dash-nav-item" onClick={closeAll} role="menuitem">
-                                        <FiUserIcon /> Mijn profiel
-                                    </Link>
-                                </li>
-                                <li role="none">
-                                    <Link to="/schoonmaakschema" className="dash-nav-item" onClick={closeAll} role="menuitem">
-                                        <FiClipboard /> Schoonmaakschema
-                                    </Link>
-                                </li>
-                                <li role="none">
-                                    <Link to="/student/betalingen" className="dash-nav-item" onClick={closeAll} role="menuitem">
-                                        <FiDollarSign /> Betalingen
-                                    </Link>
-                                </li>
-                                <li role="none">
-                                    <Link to="/student/noodlijst" className="dash-nav-item" onClick={closeAll} role="menuitem">
-                                        <FiAlertCircle /> Noodlijst
-                                    </Link>
-                                </li>
-                                <li role="none">
-                                    <Link to="/student/samen-eten" className="dash-nav-item" onClick={closeAll} role="menuitem">
-                                        <FiUsers /> Samen eten?
-                                    </Link>
-                                </li>
-                                <li role="none">
-                                    <Link to="/student/events" className="dash-nav-item" onClick={closeAll} role="menuitem">
-                                        <FiCalendar /> Events &amp; Nieuws
-                                    </Link>
-                                </li>
-                                {hasRole(user, "ADMIN") && (
-                                    <li role="none">
-                                        <Link to="/admin" className="dash-nav-item dash-nav-item--admin" onClick={closeAll} role="menuitem">
-                                            <FiShield /> Admin
-                                        </Link>
-                                    </li>
-                                )}
-                                <li className="dash-nav-divider" role="none" />
-                                <li role="none">
-                                    <button className="dash-nav-item dash-nav-item--logout" onClick={handleLogout} role="menuitem">
-                                        Uitloggen
-                                    </button>
-                                </li>
-                            </ul>
-                        )}
-                    </li>
-                )}
 
                 {/* Taalkiezer */}
                 <li className="lang-switcher-wrapper" ref={langRef}>
