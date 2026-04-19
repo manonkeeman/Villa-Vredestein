@@ -129,7 +129,7 @@ export default function NoodlijstPage() {
                         ))}
 
                         {/* Persoonlijk noodnummer */}
-                        {loading ? (
+                        {false ? (
                             <div className="nood-num-card nood-num-card--personal">
                                 <span className="nood-num-icon">👤</span>
                                 <span className="nood-num-label">Jouw noodnummer</span>

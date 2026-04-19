@@ -6,7 +6,7 @@ import {
     FiLogOut, FiHome, FiUsers, FiDollarSign, FiClipboard,
     FiFileText, FiShield, FiTool, FiMessageSquare, FiGrid,
     FiRefreshCw, FiMail, FiAlertTriangle, FiCheckCircle, FiClock,
-    FiX, FiSettings, FiCalendar,
+    FiX, FiSettings, FiCalendar, FiAlertCircle,
 } from "react-icons/fi";
 import api from "../../Helpers/AxiosHelper.js";
 import DashboardLayout from "./DashboardLayout.jsx";
@@ -25,14 +25,14 @@ export function AdminSidebar({ active, logout, username }) {
             <h3 className="sidebar-title">Welkom {username || "Beheerder"}</h3>
             <nav className="sidebar-nav">
                 <ul>
-                    <li><Link to="/admin" className={cls("")}><FiHome /> Dashboard</Link></li>
                     <li><Link to="/admin/bewoners" className={cls("bewoners")}><FiUsers /> Bewoners</Link></li>
                     <li><Link to="/admin/betalingen" className={cls("betalingen")}><FiDollarSign /> Betalingen</Link></li>
                     <li><Link to="/admin/contracten" className={cls("contracten")}><FiFileText /> Contracten</Link></li>
                     <li><Link to="/admin/berichten" className={cls("berichten")}><FiMessageSquare /> Berichten &amp; Meldingen</Link></li>
+                    <li><Link to="/student/noodlijst" className={cls("noodlijst")}><FiAlertCircle /> Noodlijst</Link></li>
+                    <li><Link to="/student/huisregels" className={cls("huisregels")}><FiFileText /> Huisregels</Link></li>
                     <li><Link to="/student/events" className={cls("events")}><FiCalendar /> Events &amp; Nieuws</Link></li>
                     <li><Link to="/schoonmaakschema" className={cls("schema")}><FiClipboard /> Schoonmaakschema</Link></li>
-                    <li><Link to="/student/huisregels" className={cls("huisregels")}><FiFileText /> Huisregels</Link></li>
                     <li><Link to="/admin/instellingen" className={cls("instellingen")}><FiSettings /> Instellingen</Link></li>
                     <li>
                         <button onClick={logout} type="button" className="logout-button">
