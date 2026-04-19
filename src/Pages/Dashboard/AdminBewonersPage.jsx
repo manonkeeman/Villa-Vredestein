@@ -139,13 +139,23 @@ function BewonerCard({ bewoner, onDelete }) {
 
 // ── Nieuw student formulier (modal) ──────────────────────────────────────
 function NieuwBewoner({ onCreated, onClose }) {
-    const [form,    setForm]    = useState({ username: "", email: "", password: "", room: ALL_ROOMS[0] });
-    const [showPw,  setShowPw]  = useState(false);
-    const [saving,  setSaving]  = useState(false);
-    const [err,     setErr]     = useState(null);
+    const [form,           setForm]           = useState({ username: "", email: "", password: "", room: "", rentAmount: "350" });
+    const [showPw,         setShowPw]         = useState(false);
+    const [saving,         setSaving]         = useState(false);
+    const [err,            setErr]            = useState(null);
+    const [availableRooms, setAvailableRooms] = useState(null); // null = loading
     const firstRef = useRef(null);
 
-    useEffect(() => { firstRef.current?.focus(); }, []);
+    useEffect(() => {
+        firstRef.current?.focus();
+        api.get("/api/admin/rooms/available")
+            .then(res => {
+                const rooms = res.data || [];
+                setAvailableRooms(rooms);
+                if (rooms.length > 0) setForm(f => ({ ...f, room: rooms[0] }));
+            })
+            .catch(() => setAvailableRooms([])); // empty = all occupied
+    }, []);
 
     const set = (k) => (e) => setForm(f => ({ ...f, [k]: e.target.value }));
 
@@ -154,67 +164,32 @@ function NieuwBewoner({ onCreated, onClose }) {
         if (!form.username.trim() || !form.email.trim() || !form.password.trim()) {
             setErr("Vul alle verplichte velden in."); return;
         }
+        if (!form.rentAmount || isNaN(Number(form.rentAmount)) || Number(form.rentAmount) < 1) {
+            setErr("Vul een geldig huurbedrag in."); return;
+        }
         setSaving(true); setErr(null);
 
-        const payload = {
-            username:         form.username.trim(),
-            email:            form.email.trim().toLowerCase(),
-            password:         form.password,
-            room:             form.room,
-            role:             "ROLE_STUDENT",
-            roles:            ["ROLE_STUDENT"],
-            sendWelcomeEmail: true,
-            sendEmail:        true,
-        };
-
-        // Try admin endpoints first, then fall back to public register.
-        // Only stop early on 409 (duplicate user) — room/validation errors
-        // from one endpoint don't block the next one.
-        const endpoints = ["/api/admin/students", "/api/admin/users", "/api/users", "/api/auth/register"];
-        let lastEx;
-        let res = null;
-        for (const ep of endpoints) {
-            try {
-                res = await api.post(ep, payload);
-                break;
-            } catch (ex) {
-                lastEx = ex;
-                const status = ex.response?.status;
-                // 409 = duplicate user — no point trying other endpoints
-                if (status === 409) {
-                    const raw = ex.response.data;
-                    setErr(raw?.message || raw?.error || raw?.detail
-                        || (typeof raw === "string" ? raw : null)
-                        || "Dit e-mailadres of gebruikersnaam bestaat al.");
-                    setSaving(false);
-                    return;
-                }
-                // All other errors (400, 401, 403, 404, 422…) → try next endpoint
-            }
-        }
-
-        if (res) {
+        try {
+            const res = await api.post("/api/admin/students", {
+                username:         form.username.trim(),
+                email:            form.email.trim().toLowerCase(),
+                password:         form.password,
+                room:             form.room,
+                rentAmount:       Number(form.rentAmount),
+                sendWelcomeEmail: true,
+            });
             const newUser = { ...res.data, roles: resolveRoles(res.data) };
             persistLocalUser(newUser);
-            onCreated(newUser, true);
-        } else if (!lastEx?.response) {
-            // Network error — save locally, still show success
-            const newUser = {
-                id: `local_${Date.now()}`,
-                username: form.username.trim(),
-                email:    form.email.trim().toLowerCase(),
-                room:     form.room,
-                roles:    ["ROLE_STUDENT"],
-            };
-            persistLocalUser(newUser);
-            onCreated(newUser, false);
-        } else {
-            const raw = lastEx.response?.data;
-            setErr(raw?.message || raw?.error || raw?.detail
+            onCreated(newUser);
+        } catch (ex) {
+            const raw = ex?.response?.data;
+            const msg = raw?.message || raw?.error || raw?.detail
                 || (typeof raw === "string" ? raw : null)
-                || `HTTP ${lastEx.response.status} — aanmaken mislukt.`);
+                || `HTTP ${ex.response?.status ?? "?"} — aanmaken mislukt.`;
+            setErr(msg);
+        } finally {
+            setSaving(false);
         }
-        setSaving(false);
     };
 
     return (
@@ -279,16 +254,40 @@ function NieuwBewoner({ onCreated, onClose }) {
                         </div>
                     </div>
 
-                    <div className="bew-field">
-                        <label htmlFor="bew-room"><FiHome style={{ marginRight: 4 }} /> Kamer</label>
-                        <select id="bew-room" value={form.room} onChange={set("room")}>
-                            <option value="">— Geen kamer —</option>
-                            {ALL_ROOMS.map(r => <option key={r} value={r}>{r}</option>)}
-                        </select>
+                    <div className="bew-form-row">
+                        <div className="bew-field">
+                            <label htmlFor="bew-room">
+                                <FiHome style={{ marginRight: 4 }} />
+                                Lege kamer
+                                {availableRooms === null && <span style={{ fontSize: 11, color: "#888", marginLeft: 6 }}>laden…</span>}
+                            </label>
+                            {availableRooms !== null && availableRooms.length > 0 ? (
+                                <select id="bew-room" value={form.room} onChange={set("room")}>
+                                    <option value="">— Geen kamer —</option>
+                                    {availableRooms.map(r => <option key={r} value={r}>{r}</option>)}
+                                </select>
+                            ) : availableRooms !== null ? (
+                                <p className="bew-info" style={{ color: "#f87171", margin: 0 }}>Alle kamers zijn bezet.</p>
+                            ) : null}
+                        </div>
+
+                        <div className="bew-field">
+                            <label htmlFor="bew-rent">Huur per maand (€) <span aria-hidden>*</span></label>
+                            <input
+                                id="bew-rent"
+                                type="number"
+                                min="1"
+                                step="0.01"
+                                placeholder="bijv. 350"
+                                value={form.rentAmount}
+                                onChange={set("rentAmount")}
+                                required
+                            />
+                        </div>
                     </div>
 
                     <p className="bew-info-msg">
-                        De nieuwe bewoner ontvangt automatisch een welkomstbericht per mail met daarin de inloggegevens.
+                        De student ontvangt een welkomstmail met inloggegevens en kamer. Er wordt direct een factuur + Mollie betaallink aangemaakt.
                     </p>
 
                     {err && (
@@ -298,7 +297,7 @@ function NieuwBewoner({ onCreated, onClose }) {
                     )}
 
                     <div className="bew-form-actions">
-                        <button type="submit" className="admin-btn" disabled={saving}>
+                        <button type="submit" className="admin-btn" disabled={saving || (availableRooms !== null && availableRooms.length === 0 && !form.room)}>
                             <FiSave /> {saving ? "Aanmaken…" : "Student aanmaken"}
                         </button>
                         <button type="button" className="admin-btn admin-btn--ghost" onClick={onClose}>
@@ -370,16 +369,13 @@ const AdminBewonersPage = () => {
 
     useEffect(() => { load(); }, [load]);
 
-    const handleCreated = (newUser, emailSent) => {
+    const handleCreated = (newUser) => {
         const normalized = { ...newUser, roles: resolveRoles(newUser) };
         setBewoners(prev => [normalized, ...prev]);
         setShowForm(false);
-        const name = newUser.username || newUser.email || "Nieuwe bewoner";
-        const msg = emailSent
-            ? `${name} aangemaakt. Een welkomstmail met inloggegevens is verstuurd.`
-            : `${name} aangemaakt (lokaal opgeslagen — geen mail verstuurd, backend onbereikbaar).`;
-        setSuccessMsg(msg);
-        setTimeout(() => setSuccessMsg(null), 6000);
+        const name = newUser.username || newUser.email || "Nieuwe student";
+        setSuccessMsg(`${name} aangemaakt — welkomstmail verstuurd, factuur + betaallink aangemaakt.`);
+        setTimeout(() => setSuccessMsg(null), 7000);
     };
 
     const handleDelete = (id) => {
