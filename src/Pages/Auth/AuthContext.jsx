@@ -145,24 +145,30 @@ export const AuthProvider = ({ children }) => {
                 if (room) localStorage.setItem(ROOM_KEY, room);
                 else localStorage.removeItem(ROOM_KEY);
 
-                // Gebruik user-data uit login response: sla extra /api/users/me call over
+                // Stap 1: zet user DIRECT vanuit token of embedded user — geen wachten
                 const loginUser = res.data?.user;
+                const decoded = decodeToken(token);
+
+                let immediateUser;
                 if (loginUser) {
-                    const roles = normalizeRoles(loginUser?.role);
-                    const normalizedUser = { ...loginUser, roles, _lastFetched: Date.now() };
-                    localStorage.setItem(USER_KEY, JSON.stringify(normalizedUser));
-                    setUser(normalizedUser);
+                    const roles = normalizeRoles(loginUser?.roles ?? loginUser?.role ?? loginUser?.authorities);
+                    immediateUser = { ...loginUser, roles, _lastFetched: 0 };
                 } else {
-                    // Fallback voor oudere backend zonder embedded user
-                    const me = await loadMe();
-                    if (!me) {
-                        const decoded = decodeToken(token);
-                        const roles = normalizeRoles(decoded?.roles ?? decoded?.authorities ?? decoded?.role);
-                        const fallbackUser = { email: cleanEmail, sub: decoded?.sub, roles, tokenDecoded: decoded };
-                        localStorage.setItem(USER_KEY, JSON.stringify(fallbackUser));
-                        setUser(fallbackUser);
-                    }
+                    // Haal basis-info uit het JWT token zelf — direct beschikbaar
+                    const roles = normalizeRoles(decoded?.roles ?? decoded?.authorities ?? decoded?.role);
+                    immediateUser = {
+                        email: cleanEmail,
+                        username: decoded?.sub ?? decoded?.username ?? decoded?.email ?? cleanEmail,
+                        sub: decoded?.sub,
+                        roles,
+                        _lastFetched: 0,
+                    };
                 }
+                localStorage.setItem(USER_KEY, JSON.stringify(immediateUser));
+                setUser(immediateUser);
+
+                // Stap 2: haal volledig profiel op de achtergrond — blokkeert NIET
+                loadMe();
 
                 return true;
             } catch (error) {
