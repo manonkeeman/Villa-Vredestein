@@ -17,11 +17,6 @@ import "../../Styles/Global.css";
 
 // ── Kamer-opties (fallback als API faalt) ─────────────────────────────────
 const ALL_ROOMS = ["Argentinië", "Frankrijk", "Japan", "Thailand"];
-const ROLE_OPTIONS = [
-    { value: "ROLE_STUDENT", label: "Student / Bewoner" },
-    { value: "ROLE_CLEANER", label: "Schoonmaakster" },
-    { value: "ROLE_ADMIN",   label: "Beheerder" },
-];
 
 // ── localStorage helpers ──────────────────────────────────────────────────
 const DELETED_KEY     = "villa_deleted_users";
@@ -142,17 +137,30 @@ function BewonerCard({ bewoner, onDelete }) {
     );
 }
 
-// ── Nieuw-bewoner formulier (modal) ───────────────────────────────────────
-const EMPTY_FORM = { username: "", email: "", password: "", room: ALL_ROOMS[0], role: "ROLE_STUDENT" };
-
+// ── Nieuw student formulier (modal) ──────────────────────────────────────
 function NieuwBewoner({ onCreated, onClose }) {
-    const [form,    setForm]    = useState(EMPTY_FORM);
-    const [showPw,  setShowPw]  = useState(false);
-    const [saving,  setSaving]  = useState(false);
-    const [err,     setErr]     = useState(null);
+    const [form,           setForm]           = useState({ username: "", email: "", password: "", room: "", sendWelcomeEmail: true });
+    const [showPw,         setShowPw]         = useState(false);
+    const [saving,         setSaving]         = useState(false);
+    const [err,            setErr]            = useState(null);
+    const [availableRooms, setAvailableRooms] = useState([]);
+    const [roomsLoading,   setRoomsLoading]   = useState(true);
     const firstRef = useRef(null);
 
-    useEffect(() => { firstRef.current?.focus(); }, []);
+    useEffect(() => {
+        firstRef.current?.focus();
+        api.get("/api/admin/rooms/available")
+            .then(res => {
+                const rooms = res.data || [];
+                setAvailableRooms(rooms);
+                if (rooms.length > 0) setForm(f => ({ ...f, room: rooms[0] }));
+            })
+            .catch(() => {
+                setAvailableRooms(ALL_ROOMS);
+                setForm(f => ({ ...f, room: ALL_ROOMS[0] }));
+            })
+            .finally(() => setRoomsLoading(false));
+    }, []);
 
     const set = (k) => (e) => setForm(f => ({ ...f, [k]: e.target.value }));
 
@@ -163,65 +171,23 @@ function NieuwBewoner({ onCreated, onClose }) {
         }
         setSaving(true); setErr(null);
 
-        // Probeer beide payloadformaten (sommige backends verwachten 'roles' als array)
-        const basePayload = {
-            username: form.username.trim(),
-            email:    form.email.trim().toLowerCase(),
-            password: form.password,
-            room:     form.room,
-            role:     form.role,
-            roles:    [form.role],
-        };
-
-        // Probeer endpoints op volgorde; stop alleen bij echte validatiefouten
-        const tryCreate = async () => {
-            const endpoints = [
-                "/api/auth/register",   // meest voorkomend
-                "/api/admin/users",
-                "/api/users",
-            ];
-            let lastError;
-            for (const endpoint of endpoints) {
-                try {
-                    return await api.post(endpoint, basePayload);
-                } catch (ex) {
-                    lastError = ex;
-                    const status = ex.response?.status;
-                    // Validatiefout van backend → stop meteen
-                    if (status === 400 || status === 409 || status === 422) throw ex;
-                    // 404/403/405 → probeer volgend endpoint
-                }
-            }
-            throw lastError;
-        };
-
         try {
-            const res = await tryCreate();
-            const newUser = res.data || { id: Date.now(), ...form, roles: [form.role] };
-            const normalized = { ...newUser, roles: resolveRoles(newUser) };
-            persistLocalUser(normalized);
-            onCreated(normalized);
+            const res = await api.post("/api/admin/students", {
+                username:         form.username.trim(),
+                email:            form.email.trim().toLowerCase(),
+                password:         form.password,
+                room:             form.room,
+                sendWelcomeEmail: form.sendWelcomeEmail,
+            });
+            const newUser = { ...res.data, roles: resolveRoles(res.data) };
+            persistLocalUser(newUser);
+            onCreated(newUser);
         } catch (ex) {
-            const isNetworkError = !ex.response;
-            if (isNetworkError) {
-                // Backend onbereikbaar — lokaal opslaan
-                const newUser = {
-                    id: `local_${Date.now()}`,
-                    username: form.username.trim(),
-                    email:    form.email.trim().toLowerCase(),
-                    room:     form.room,
-                    roles:    [form.role],
-                };
-                persistLocalUser(newUser);
-                onCreated(newUser);
-            } else {
-                // Toon de exacte foutmelding van de backend
-                const raw = ex?.response?.data;
-                const msg = raw?.message || raw?.error || raw?.detail
-                    || (typeof raw === "string" ? raw : null)
-                    || `HTTP ${ex.response.status} — aanmaken mislukt.`;
-                setErr(msg);
-            }
+            const raw = ex?.response?.data;
+            const msg = raw?.message || raw?.error || raw?.detail
+                || (typeof raw === "string" ? raw : null)
+                || `HTTP ${ex.response?.status ?? "?"} — aanmaken mislukt.`;
+            setErr(msg);
         } finally {
             setSaving(false);
         }
@@ -229,9 +195,9 @@ function NieuwBewoner({ onCreated, onClose }) {
 
     return (
         <div className="bew-modal-overlay" onClick={e => { if (e.target === e.currentTarget) onClose(); }}>
-            <div className="bew-modal" role="dialog" aria-modal="true" aria-label="Nieuwe bewoner aanmaken">
+            <div className="bew-modal" role="dialog" aria-modal="true" aria-label="Nieuwe student aanmaken">
                 <div className="bew-modal-header">
-                    <h2><FiPlus /> Nieuwe bewoner aanmaken</h2>
+                    <h2><FiPlus /> Nieuwe student aanmaken</h2>
                     <button type="button" className="bew-modal-close" onClick={onClose} aria-label="Sluiten">
                         <FiX />
                     </button>
@@ -244,7 +210,7 @@ function NieuwBewoner({ onCreated, onClose }) {
                             id="bew-username"
                             ref={firstRef}
                             type="text"
-                            placeholder="bijv. Desmond"
+                            placeholder="bijv. Lisa"
                             value={form.username}
                             onChange={set("username")}
                             required
@@ -257,7 +223,7 @@ function NieuwBewoner({ onCreated, onClose }) {
                         <input
                             id="bew-email"
                             type="email"
-                            placeholder="bewoner@example.com"
+                            placeholder="student@example.com"
                             value={form.email}
                             onChange={set("email")}
                             required
@@ -266,12 +232,12 @@ function NieuwBewoner({ onCreated, onClose }) {
                     </div>
 
                     <div className="bew-field">
-                        <label htmlFor="bew-password">Wachtwoord <span aria-hidden>*</span></label>
+                        <label htmlFor="bew-password">Tijdelijk wachtwoord <span aria-hidden>*</span></label>
                         <div className="bew-pw-wrap">
                             <input
                                 id="bew-password"
                                 type={showPw ? "text" : "password"}
-                                placeholder="Tijdelijk wachtwoord"
+                                placeholder="Min. 8 tekens"
                                 value={form.password}
                                 onChange={set("password")}
                                 required
@@ -289,25 +255,30 @@ function NieuwBewoner({ onCreated, onClose }) {
                         </div>
                     </div>
 
-                    <div className="bew-form-row">
-                        <div className="bew-field">
-                            <label htmlFor="bew-room">Kamer</label>
+                    <div className="bew-field">
+                        <label htmlFor="bew-room">
+                            <FiHome style={{ marginRight: 4 }} />
+                            Lege kamer toewijzen
+                            {roomsLoading && <span style={{ fontSize: 11, color: "#888", marginLeft: 6 }}>laden…</span>}
+                        </label>
+                        {availableRooms.length > 0 ? (
                             <select id="bew-room" value={form.room} onChange={set("room")}>
-                                {ALL_ROOMS.map(r => <option key={r} value={r}>{r}</option>)}
+                                <option value="">— Geen kamer —</option>
+                                {availableRooms.map(r => <option key={r} value={r}>{r}</option>)}
                             </select>
-                        </div>
-
-                        <div className="bew-field">
-                            <label htmlFor="bew-role">Rol</label>
-                            <select id="bew-role" value={form.role} onChange={set("role")}>
-                                {ROLE_OPTIONS.map(r => <option key={r.value} value={r.value}>{r.label}</option>)}
-                            </select>
-                        </div>
+                        ) : !roomsLoading ? (
+                            <p className="bew-info">Alle kamers zijn bezet.</p>
+                        ) : null}
                     </div>
 
-                    <p className="bew-info-msg">
-                        De nieuwe bewoner ontvangt automatisch een welkomstbericht per mail met daarin de inloggegevens.
-                    </p>
+                    <label className="bew-checkbox-row">
+                        <input
+                            type="checkbox"
+                            checked={form.sendWelcomeEmail}
+                            onChange={e => setForm(f => ({ ...f, sendWelcomeEmail: e.target.checked }))}
+                        />
+                        <span>Stuur welkomstmail met inloggegevens</span>
+                    </label>
 
                     {err && (
                         <div className="bew-error">
@@ -317,7 +288,7 @@ function NieuwBewoner({ onCreated, onClose }) {
 
                     <div className="bew-form-actions">
                         <button type="submit" className="admin-btn" disabled={saving}>
-                            <FiSave /> {saving ? "Aanmaken…" : "Bewoner aanmaken"}
+                            <FiSave /> {saving ? "Aanmaken…" : "Student aanmaken"}
                         </button>
                         <button type="button" className="admin-btn admin-btn--ghost" onClick={onClose}>
                             Annuleren
