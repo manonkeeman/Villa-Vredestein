@@ -41,10 +41,13 @@ function formatDate(date) {
 }
 
 // ── Page ───────────────────────────────────────────────────────────────
+const BASE_URL = (import.meta.env.VITE_API_BASE_URL || "http://localhost:8080").replace(/\/$/, "");
+
 const SamenEtenPage = () => {
     const { isLoggedIn, logout, user } = useAuth();
     if (!isLoggedIn) return <Navigate to="/login" replace />;
 
+    const contractFile = user?.contractFile || null;
     const [submitted, setSubmitted] = useState(false);
     const [guests, setGuests]       = useState(0);
 
@@ -81,6 +84,12 @@ const SamenEtenPage = () => {
                         <li><Link to="/student/huisregels"><FiFileText /> Huisregels</Link></li>
                         <li><Link to="/schoonmaakschema"><FiClipboard /> Schoonmaakschema</Link></li>
                         <li><Link to="/student/betalingen"><FiDollarSign /> Betalingen</Link></li>
+                        <li>
+                            {contractFile
+                                ? <a href={`${BASE_URL}/uploads/${encodeURIComponent(contractFile)}`} target="_blank" rel="noopener noreferrer"><FiFileText /> Huurcontract</a>
+                                : <Link to="#"><FiFileText /> Huurcontract</Link>
+                            }
+                        </li>
                         <li>
                             <Link to="/student/samen-eten" className="active-nav-link">
                                 <FiUsers /> Samen eten?

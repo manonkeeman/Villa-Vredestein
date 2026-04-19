@@ -46,8 +46,11 @@ const StatusBadge = ({ status }) => {
 };
 StatusBadge.propTypes = { status: PropTypes.string.isRequired };
 
+const BASE_URL = (import.meta.env.VITE_API_BASE_URL || "http://localhost:8080").replace(/\/$/, "");
+
 const BetalingenPage = () => {
     const { isLoggedIn, logout, user } = useAuth();
+    const contractFile = user?.contractFile || null;
     const [invoices, setInvoices] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -100,6 +103,12 @@ const BetalingenPage = () => {
                         <li><Link to="/student/huisregels"><FiFileText /> Huisregels</Link></li>
                         <li><Link to="/schoonmaakschema"><FiClipboard /> Schoonmaakschema</Link></li>
                         <li><Link to="/student/betalingen" className="active-nav-link"><FiDollarSign /> Betalingen</Link></li>
+                        <li>
+                            {contractFile
+                                ? <a href={`${BASE_URL}/uploads/${encodeURIComponent(contractFile)}`} target="_blank" rel="noopener noreferrer"><FiFileText /> Huurcontract</a>
+                                : <Link to="#"><FiFileText /> Huurcontract</Link>
+                            }
+                        </li>
                         <li><Link to="/student/samen-eten"><FiUsers /> Samen eten?</Link></li>
                         <li><Link to="/student/events"><FiCalendar /> Events</Link></li>
 
