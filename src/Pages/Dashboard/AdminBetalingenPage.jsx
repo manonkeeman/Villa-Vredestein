@@ -132,9 +132,20 @@ const AdminBetalingenPage = () => {
 
     // ── Fetch students list
     useEffect(() => {
+        const deletedIds = (() => {
+            try { return new Set(JSON.parse(localStorage.getItem("villa_deleted_users") || "[]")); }
+            catch { return new Set(); }
+        })();
+        const clean = (list) => list
+            .filter(u => !deletedIds.has(String(u.id)))
+            .filter(u => {
+                const e = (u.email || "").toLowerCase();
+                return !e.includes("alvarmantyla") && !e.includes("arwenleonor");
+            });
+
         api.get("/api/users")
             .then(res => {
-                const students = (res.data || []).filter(u => (u.roles||[]).some(r => String(r).includes("STUDENT")));
+                const students = clean(res.data || []).filter(u => (u.roles||[]).some(r => String(r).includes("STUDENT")));
                 setSendStudents(students.length > 0 ? students : MOCK_STUDENTS);
             })
             .catch(() => setSendStudents(MOCK_STUDENTS));
@@ -152,9 +163,14 @@ const AdminBetalingenPage = () => {
         try {
             const res = await api.get("/api/invoices");
             clearTimeout(mockTimer);
-            const filtered = (res.data || []).filter(
-                (inv) => inv.invoiceMonth === viewMonth && inv.invoiceYear === viewYear
-            );
+            const filtered = (res.data || [])
+                .filter(inv => inv.invoiceMonth === viewMonth && inv.invoiceYear === viewYear)
+                .filter(inv => {
+                    const e = (inv.studentEmail || "").toLowerCase();
+                    const n = (inv.studentName  || "").toLowerCase();
+                    return !e.includes("alvarmantyla") && !e.includes("arwenleonor")
+                        && !n.includes("alvar") && !n.includes("arwen");
+                });
             filtered.sort((a, b) => (a.studentName || "").localeCompare(b.studentName || ""));
             setInvoices(filtered.length > 0 ? filtered : MOCK_INVOICES.filter(i => i.invoiceMonth === viewMonth && i.invoiceYear === viewYear));
         } catch {
