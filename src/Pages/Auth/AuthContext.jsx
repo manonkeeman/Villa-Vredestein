@@ -104,7 +104,7 @@ export const AuthProvider = ({ children }) => {
 
             const roles = normalizeRoles(me?.roles ?? me?.authorities ?? me?.role);
 
-            const normalizedUser = { ...me, roles };
+            const normalizedUser = { ...me, roles, _lastFetched: Date.now() };
             localStorage.setItem(USER_KEY, JSON.stringify(normalizedUser));
             setUser(normalizedUser);
 
@@ -149,7 +149,7 @@ export const AuthProvider = ({ children }) => {
                 const loginUser = res.data?.user;
                 if (loginUser) {
                     const roles = normalizeRoles(loginUser?.role);
-                    const normalizedUser = { ...loginUser, roles };
+                    const normalizedUser = { ...loginUser, roles, _lastFetched: Date.now() };
                     localStorage.setItem(USER_KEY, JSON.stringify(normalizedUser));
                     setUser(normalizedUser);
                 } else {
@@ -208,10 +208,14 @@ export const AuthProvider = ({ children }) => {
             axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 
             if (storedUser) {
-                // Render immediately with cached data, refresh silently in background
+                // Render immediately with cached data
                 setUser(storedUser);
                 setLoading(false);
-                loadMe(); // fire-and-forget: updates context when response arrives
+                // Only refresh in background if data is older than 5 minutes
+                const lastFetched = storedUser._lastFetched || 0;
+                if (Date.now() - lastFetched > 5 * 60 * 1000) {
+                    loadMe(); // fire-and-forget: updates context when response arrives
+                }
             } else {
                 // First login: must wait for user data before rendering
                 try {
