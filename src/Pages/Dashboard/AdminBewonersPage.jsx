@@ -168,8 +168,19 @@ function NieuwBewoner({ onCreated, onClose }) {
             sendWelcomeInvoice: sendInvoice,
         };
 
+        // Try admin endpoint first, then auth/register as fallback
+        const tryCreate = async () => {
+            try {
+                return await api.post("/api/admin/users", payload);
+            } catch (ex1) {
+                if (ex1.response) throw ex1; // real backend error — bubble up
+                // Network error on admin endpoint — try register
+                return await api.post("/api/auth/register", payload);
+            }
+        };
+
         try {
-            const res = await api.post("/api/auth/register", payload);
+            const res = await tryCreate();
             const newUser = res.data || { id: Date.now(), ...form, roles: [form.role] };
             const normalized = { ...newUser, roles: resolveRoles(newUser) };
             persistLocalUser(normalized);
@@ -177,7 +188,7 @@ function NieuwBewoner({ onCreated, onClose }) {
         } catch (ex) {
             const isNetworkError = !ex.response;
             if (isNetworkError) {
-                // Backend not reachable — create locally
+                // Both endpoints unreachable — create locally
                 const newUser = {
                     id: `local_${Date.now()}`,
                     username: form.username.trim(),
