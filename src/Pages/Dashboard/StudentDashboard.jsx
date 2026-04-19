@@ -99,10 +99,35 @@ const StudentDashboard = () => {
 
     useEffect(() => {
         api.get("/api/invoices/me")
-            .then(res => setInvoices(res.data))
-            .catch(() => {})
+            .then(res => setInvoices(res.data || []))
+            .catch(() => {
+                // Mock fallback: Desmond has unpaid invoices, others are all paid
+                const mockMonth = now.getMonth() + 1;
+                const mockYear  = now.getFullYear();
+                if ((user?.username || "").toLowerCase() === "desmond") {
+                    setInvoices([{
+                        id: 9001,
+                        invoiceMonth: mockMonth,
+                        invoiceYear:  mockYear,
+                        amount: 550,
+                        status: "OVERDUE",
+                        dueDate: `${mockYear}-${String(mockMonth).padStart(2,"0")}-05`,
+                        checkoutUrl: "https://checkout.mollie.com/mock-desmond",
+                    }]);
+                } else {
+                    setInvoices([{
+                        id: 9002,
+                        invoiceMonth: mockMonth,
+                        invoiceYear:  mockYear,
+                        amount: 550,
+                        status: "PAID",
+                        dueDate: `${mockYear}-${String(mockMonth).padStart(2,"0")}-05`,
+                        paidAt: `${mockYear}-${String(mockMonth).padStart(2,"0")}-03`,
+                    }]);
+                }
+            })
             .finally(() => setInvoicesLoading(false));
-    }, []);
+    }, [user?.username]);
 
     useEffect(() => {
         // Seed from sessionStorage for instant display

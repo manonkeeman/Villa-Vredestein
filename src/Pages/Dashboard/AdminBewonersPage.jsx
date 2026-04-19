@@ -5,7 +5,7 @@ import { useAuth } from "../Auth/AuthContext.jsx";
 import {
     FiUsers, FiRefreshCw, FiAlertTriangle, FiPlus,
     FiTrash2, FiUser, FiMail, FiHome, FiShield,
-    FiX, FiSave, FiEye, FiEyeOff, FiSearch, FiTool,
+    FiX, FiSave, FiEye, FiEyeOff, FiTool,
 } from "react-icons/fi";
 import api from "../../Helpers/AxiosHelper.js";
 import DashboardLayout from "./DashboardLayout.jsx";
@@ -23,11 +23,36 @@ const ROLE_OPTIONS = [
     { value: "ROLE_ADMIN",   label: "Beheerder" },
 ];
 
+// ── localStorage helpers ──────────────────────────────────────────────────
+const DELETED_KEY     = "villa_deleted_users";
+const LOCAL_USERS_KEY = "villa_local_users";
+
+const getDeletedIds = () => {
+    try { return new Set(JSON.parse(localStorage.getItem(DELETED_KEY) || "[]")); }
+    catch { return new Set(); }
+};
+const persistDeletedId = (id) => {
+    const ids = getDeletedIds();
+    ids.add(String(id));
+    localStorage.setItem(DELETED_KEY, JSON.stringify([...ids]));
+};
+const getLocalUsers = () => {
+    try { return JSON.parse(localStorage.getItem(LOCAL_USERS_KEY) || "[]"); }
+    catch { return []; }
+};
+const persistLocalUser = (user) => {
+    const users = getLocalUsers().filter(u => String(u.id) !== String(user.id));
+    users.push(user);
+    localStorage.setItem(LOCAL_USERS_KEY, JSON.stringify(users));
+};
+
 // ── Mock data ─────────────────────────────────────────────────────────────
 const MOCK_USERS = [
-    { id: 1, username: "Desmond", email: "desmond@example.com", room: "Japan",      roles: ["ROLE_STUDENT"] },
-    { id: 2, username: "Medoc",   email: "medoc@example.com",   room: "Argentinië", roles: ["ROLE_STUDENT"] },
-    { id: 3, username: "Simon",   email: "simon@example.com",   room: "Thailand",   roles: ["ROLE_STUDENT"] },
+    { id: 1, username: "Desmond",  email: "desmond@example.com",  room: "Japan",       roles: ["ROLE_STUDENT"] },
+    { id: 2, username: "Medoc",    email: "medoc@example.com",    room: "Argentinië",  roles: ["ROLE_STUDENT"] },
+    { id: 3, username: "Simon",    email: "simon@example.com",    room: "Thailand",    roles: ["ROLE_STUDENT"] },
+    { id: 4, username: "François", email: "francois@example.com", room: "Frankrijk",   roles: ["ROLE_STUDENT"] },
+    { id: 5, username: "Maria",    email: "maria@example.com",    room: "",            roles: ["ROLE_CLEANER"] },
 ];
 
 // ── Helpers ───────────────────────────────────────────────────────────────
@@ -48,7 +73,7 @@ function primaryRole(roles = []) {
 }
 
 // ── Bewoner-kaart ─────────────────────────────────────────────────────────
-function BewonderCard({ bewoner, onDelete }) {
+function BewonerCard({ bewoner, onDelete }) {
     const [confirming, setConfirming] = useState(false);
     const [deleting,   setDeleting]   = useState(false);
     const roles = resolveRoles(bewoner);
@@ -58,14 +83,13 @@ function BewonderCard({ bewoner, onDelete }) {
         setDeleting(true);
         try {
             await api.delete(`/api/users/${bewoner.id}`);
-            onDelete(bewoner.id);
         } catch {
-            // optimistic delete for demo
-            onDelete(bewoner.id);
-        } finally {
-            setDeleting(false);
-            setConfirming(false);
+            // optimistic: persist deletion even if backend fails
         }
+        persistDeletedId(bewoner.id);
+        onDelete(bewoner.id);
+        setDeleting(false);
+        setConfirming(false);
     };
 
     return (
@@ -113,14 +137,15 @@ function BewonderCard({ bewoner, onDelete }) {
     );
 }
 
-// ── Nieuw-bewoner formulier (modal/slide-in) ──────────────────────────────
+// ── Nieuw-bewoner formulier (modal) ───────────────────────────────────────
 const EMPTY_FORM = { username: "", email: "", password: "", room: ROOM_OPTIONS[0], role: "ROLE_STUDENT" };
 
 function NieuwBewoner({ onCreated, onClose }) {
-    const [form,     setForm]     = useState(EMPTY_FORM);
-    const [showPw,   setShowPw]   = useState(false);
-    const [saving,   setSaving]   = useState(false);
-    const [err,      setErr]      = useState(null);
+    const [form,       setForm]       = useState(EMPTY_FORM);
+    const [showPw,     setShowPw]     = useState(false);
+    const [saving,     setSaving]     = useState(false);
+    const [err,        setErr]        = useState(null);
+    const [sendInvoice, setSendInvoice] = useState(true);
     const firstRef = useRef(null);
 
     useEffect(() => { firstRef.current?.focus(); }, []);
@@ -133,18 +158,39 @@ function NieuwBewoner({ onCreated, onClose }) {
             setErr("Vul alle verplichte velden in."); return;
         }
         setSaving(true); setErr(null);
+
+        const payload = {
+            username: form.username.trim(),
+            email:    form.email.trim().toLowerCase(),
+            password: form.password,
+            room:     form.room,
+            role:     form.role,
+            sendWelcomeInvoice: sendInvoice,
+        };
+
         try {
-            const res = await api.post("/api/auth/register", {
-                username: form.username.trim(),
-                email:    form.email.trim().toLowerCase(),
-                password: form.password,
-                room:     form.room,
-                role:     form.role,
-            });
-            onCreated(res.data || { id: Date.now(), ...form, roles: [form.role] });
+            const res = await api.post("/api/auth/register", payload);
+            const newUser = res.data || { id: Date.now(), ...form, roles: [form.role] };
+            const normalized = { ...newUser, roles: resolveRoles(newUser) };
+            persistLocalUser(normalized);
+            onCreated(normalized);
         } catch (ex) {
-            const msg = ex?.response?.data?.message || ex?.response?.data || "Aanmaken mislukt. Controleer of het e-mailadres al bestaat.";
-            setErr(typeof msg === "string" ? msg : JSON.stringify(msg));
+            const isNetworkError = !ex.response;
+            if (isNetworkError) {
+                // Backend not reachable — create locally
+                const newUser = {
+                    id: `local_${Date.now()}`,
+                    username: form.username.trim(),
+                    email: form.email.trim().toLowerCase(),
+                    room: form.room,
+                    roles: [form.role],
+                };
+                persistLocalUser(newUser);
+                onCreated(newUser);
+            } else {
+                const msg = ex?.response?.data?.message || ex?.response?.data || "Aanmaken mislukt. Controleer of het e-mailadres al bestaat.";
+                setErr(typeof msg === "string" ? msg : JSON.stringify(msg));
+            }
         } finally {
             setSaving(false);
         }
@@ -228,6 +274,15 @@ function NieuwBewoner({ onCreated, onClose }) {
                         </div>
                     </div>
 
+                    <label className="bew-checkbox-row">
+                        <input
+                            type="checkbox"
+                            checked={sendInvoice}
+                            onChange={e => setSendInvoice(e.target.checked)}
+                        />
+                        <span>Stuur welkomstfactuur met Mollie betaallink</span>
+                    </label>
+
                     {err && (
                         <div className="bew-error">
                             <FiAlertTriangle /> {err}
@@ -256,27 +311,46 @@ const AdminBewonersPage = () => {
     const [bewoners, setBewoners] = useState([]);
     const [loading,  setLoading]  = useState(true);
     const [isMock,   setIsMock]   = useState(false);
-    const [search,   setSearch]   = useState("");
     const [showForm, setShowForm] = useState(false);
-    const [filter,   setFilter]   = useState("all"); // all | student | cleaner | admin
+    const [filter,   setFilter]   = useState("all");
 
     const load = useCallback(async () => {
         setLoading(true);
-        // Show mock data after 1.5s if backend hasn't responded yet
+        const deletedIds = getDeletedIds();
+        const localUsers = getLocalUsers();
+
+        const applyFilters = (list) => {
+            const merged = [...list];
+            // Add local users that aren't in the backend list
+            localUsers.forEach(lu => {
+                if (!merged.some(u => String(u.id) === String(lu.id))) {
+                    merged.push(lu);
+                }
+            });
+            // Filter out deleted and Alvar/Arwen
+            return merged
+                .filter(u => !deletedIds.has(String(u.id)))
+                .filter(u => {
+                    const email = (u.email || "").toLowerCase();
+                    return !email.includes("alvarmantyla") && !email.includes("arwenleonor");
+                })
+                .map(u => ({ ...u, roles: resolveRoles(u) }));
+        };
+
         const mockTimer = setTimeout(() => {
-            setBewoners(prev => prev.length === 0 ? MOCK_USERS : prev);
+            setBewoners(applyFilters(MOCK_USERS));
             setIsMock(true);
             setLoading(false);
         }, 1500);
+
         try {
             const res = await api.get("/api/users");
             clearTimeout(mockTimer);
-            const all = (res.data || []).map(u => ({ ...u, roles: resolveRoles(u) }));
-            setBewoners(all);
+            setBewoners(applyFilters(res.data || []));
             setIsMock(false);
         } catch {
             clearTimeout(mockTimer);
-            setBewoners(MOCK_USERS);
+            setBewoners(applyFilters(MOCK_USERS));
             setIsMock(true);
         } finally {
             setLoading(false);
@@ -292,24 +366,14 @@ const AdminBewonersPage = () => {
     };
 
     const handleDelete = (id) => {
-        setBewoners(prev => prev.filter(b => b.id !== id));
+        setBewoners(prev => prev.filter(b => String(b.id) !== String(id)));
     };
 
-    // Filtered & searched list
     const filtered = bewoners.filter(b => {
-        const matchRole =
-            filter === "all"     ? true :
-            filter === "student" ? b.roles.some(r => r.includes("STUDENT")) :
-            filter === "cleaner" ? b.roles.some(r => r.includes("CLEANER")) :
-            filter === "admin"   ? b.roles.some(r => r.includes("ADMIN"))   : true;
-
-        const q = search.trim().toLowerCase();
-        const matchSearch = !q ||
-            (b.username || "").toLowerCase().includes(q) ||
-            (b.email    || "").toLowerCase().includes(q) ||
-            (b.room     || "").toLowerCase().includes(q);
-
-        return matchRole && matchSearch;
+        if (filter === "student") return b.roles.some(r => r.includes("STUDENT"));
+        if (filter === "cleaner") return b.roles.some(r => r.includes("CLEANER"));
+        if (filter === "admin")   return b.roles.some(r => r.includes("ADMIN"));
+        return true;
     });
 
     const counts = {
@@ -362,25 +426,6 @@ const AdminBewonersPage = () => {
                 </div>
             </div>
 
-            {/* Toolbar */}
-            <div className="admin-toolbar">
-                <div className="admin-search-wrap">
-                    <FiSearch />
-                    <input
-                        type="search"
-                        className="admin-search-input"
-                        placeholder="Zoek op naam, e-mail of kamer…"
-                        value={search}
-                        onChange={e => setSearch(e.target.value)}
-                    />
-                    {search && (
-                        <button type="button" onClick={() => setSearch("")} style={{ background: "none", border: "none", color: "#666", cursor: "pointer", padding: 0 }}>
-                            <FiX />
-                        </button>
-                    )}
-                </div>
-            </div>
-
             {/* Filter tabs */}
             <div className="admin-filter-tabs">
                 {[
@@ -408,7 +453,7 @@ const AdminBewonersPage = () => {
                 )}
                 <div className="bew-list">
                     {filtered.map(b => (
-                        <BewonderCard key={b.id} bewoner={b} onDelete={handleDelete} />
+                        <BewonerCard key={b.id} bewoner={b} onDelete={handleDelete} />
                     ))}
                 </div>
             </div>
