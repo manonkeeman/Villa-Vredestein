@@ -5,8 +5,8 @@ import { Navigate, Link } from "react-router-dom";
 import { useAuth } from "../Auth/AuthContext.jsx";
 import Spinner from "../../Components/Spinner/Spinner.jsx";
 import {
-    FiLogOut, FiHome, FiAlertCircle, FiFileText, FiCalendar,
-    FiUser, FiUsers, FiDollarSign, FiClipboard, FiShield,
+    FiLogOut, FiHome, FiAlertCircle, FiClipboard, FiShield,
+    FiUser, FiDollarSign, FiFileText, FiCalendar,
     FiCheckSquare, FiSquare, FiPlus, FiTrash2,
     FiChevronLeft, FiChevronRight, FiTool, FiSettings,
     FiMessageSquare, FiAlertTriangle,
@@ -14,6 +14,7 @@ import {
 import { MdOutlineCleaningServices } from "react-icons/md";
 import api from "../../Helpers/AxiosHelper.js";
 import DashboardLayout from "./DashboardLayout.jsx";
+import StudentSidebarShared from "../../Components/StudentSidebar/StudentSidebar.jsx";
 import "./StudentDashboard.css";
 import "./SchoonmaakschemaPage.css";
 import "../../Styles/Global.css";
@@ -78,47 +79,7 @@ const toRotationWeek = (isoWeek) => ((isoWeek - 1) % 4) + 1;
 
 // ─── Sidebars ───────────────────────────────────────────────────────────────
 
-function StudentSidebar({ user, contractFile, logout }) {
-    return (
-        <aside className="dashboard-sidebar" aria-label="Navigatie zijbalk">
-            <header className="sidebar-profile"><FiUser className="profile-icon" /></header>
-            <h3 className="sidebar-title">Welkom {user?.username || "Vredesteiner"}</h3>
-            <nav className="sidebar-nav">
-                <ul>
-                    <li><Link to="/student"><FiHome /> Dashboard</Link></li>
-                    <li><Link to="/student/profiel"><FiUser /> Mijn profiel</Link></li>
-                    <li><Link to="/student/noodlijst"><FiAlertCircle /> Noodlijst</Link></li>
-                    <li><Link to="/student/huisregels"><FiFileText /> Huisregels</Link></li>
-                    <li><Link to="/schoonmaakschema" className="active"><FiClipboard /> Schoonmaakschema</Link></li>
-                    <li><Link to="/student/betalingen"><FiDollarSign /> Betalingen</Link></li>
-                    <li>
-                        {contractFile
-                            ? <a href={`${BASE_URL}/uploads/${encodeURIComponent(contractFile)}`} target="_blank" rel="noopener noreferrer"><FiFileText /> Huurcontract</a>
-                            : <Link to="#"><FiFileText /> Huurcontract</Link>
-                        }
-                    </li>
-                    <li><Link to="/student/samen-eten"><FiUsers /> Samen eten?</Link></li>
-                    <li><Link to="/student/events"><FiCalendar /> Events</Link></li>
-                    <li><Link to="/student/meldingen"><FiTool /> Iets melden</Link></li>
-                    {hasRole(user, "ADMIN") && (
-                        <li><Link to="/admin" className="admin-link"><FiShield /> Admin Dashboard</Link></li>
-                    )}
-                    <li>
-                        <button onClick={logout} type="button" className="logout-button">
-                            <FiLogOut /> Log uit
-                        </button>
-                    </li>
-                </ul>
-            </nav>
-        </aside>
-    );
-}
-
-StudentSidebar.propTypes = {
-    user: PropTypes.object,
-    contractFile: PropTypes.string,
-    logout: PropTypes.func.isRequired,
-};
+// StudentSidebar comes from shared component — imported as StudentSidebarShared
 
 function AdminSidebar({ user, logout }) {
     return (
@@ -555,7 +516,7 @@ export default function SchoonmaakschemaPage() {
         ? <AdminSidebar user={user} logout={logout} />
         : isCleaner
             ? <CleanerSidebar user={user} logout={logout} />
-            : <StudentSidebar user={user} contractFile={contractFile} logout={logout} />;
+            : <StudentSidebarShared user={user} logout={logout} active="schema" contractFile={contractFile} />;
 
     return (
         <>

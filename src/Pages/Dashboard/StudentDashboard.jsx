@@ -3,23 +3,16 @@ import { Helmet } from "react-helmet-async";
 import { Navigate, Link, useParams } from "react-router-dom";
 import { useAuth } from "../Auth/AuthContext.jsx";
 import {
-    FiLogOut, FiHome, FiAlertCircle, FiFileText, FiCalendar,
-    FiUser, FiUsers, FiDollarSign, FiClipboard, FiBookOpen, FiShield, FiTool,
-    FiCheckCircle, FiClock, FiCheckSquare, FiSquare, FiStar,
+    FiBookOpen, FiDollarSign, FiClipboard, FiCalendar, FiStar,
+    FiAlertCircle, FiClock, FiCheckCircle, FiCheckSquare, FiSquare, FiTool,
 } from "react-icons/fi";
 import { MdOutlineCleaningServices } from "react-icons/md";
 import api from "../../Helpers/AxiosHelper.js";
 import DashboardLayout from "./DashboardLayout.jsx";
+import StudentSidebar from "../../Components/StudentSidebar/StudentSidebar.jsx";
 import "./StudentDashboard.css";
 import "../../Styles/Global.css";
 
-const BASE_URL = (import.meta.env.VITE_API_BASE_URL || "http://localhost:8080").replace(/\/$/, "");
-
-const hasRole = (user, role) => {
-    const roles = user?.roles || [];
-    const normalized = role.startsWith("ROLE_") ? role : `ROLE_${role}`;
-    return roles.includes(normalized);
-};
 
 const getIsoWeek = (date = new Date()) => {
     const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
@@ -132,39 +125,7 @@ const StudentDashboard = () => {
             .catch(() => {});
     }, [rotationWeek, user?.username]);
 
-    const sidebar = (
-        <aside className="dashboard-sidebar" aria-label="Navigatie zijbalk">
-            <header className="sidebar-profile"><FiUser className="profile-icon" /></header>
-            <h3 className="sidebar-title">Welkom {user?.username || "Vredesteiner"}</h3>
-            <nav className="sidebar-nav">
-                <ul>
-                    <li><Link to="/student"><FiHome /> Dashboard</Link></li>
-                    <li><Link to="/student/profiel"><FiUser /> Mijn profiel</Link></li>
-                    <li><Link to="/student/noodlijst"><FiAlertCircle /> Noodlijst</Link></li>
-                    <li><Link to="/student/huisregels"><FiFileText /> Huisregels</Link></li>
-                    <li><Link to="/schoonmaakschema"><FiClipboard /> Schoonmaakschema</Link></li>
-                    <li><Link to="/student/betalingen"><FiDollarSign /> Betalingen</Link></li>
-                    <li>
-                        {contractFile
-                            ? <a href={`${BASE_URL}/uploads/${encodeURIComponent(contractFile)}`} target="_blank" rel="noopener noreferrer"><FiFileText /> Huurcontract</a>
-                            : <Link to="#"><FiFileText /> Huurcontract</Link>
-                        }
-                    </li>
-                    <li><Link to="/student/samen-eten"><FiUsers /> Samen eten?</Link></li>
-                    <li><Link to="/student/events"><FiCalendar /> Events</Link></li>
-                    <li><Link to="/student/meldingen"><FiTool /> Iets melden</Link></li>
-                    {hasRole(user, "ADMIN") && (
-                        <li><Link to="/admin" className="admin-link"><FiShield /> Admin Dashboard</Link></li>
-                    )}
-                    <li>
-                        <button onClick={logout} type="button" className="logout-button">
-                            <FiLogOut /> Log uit
-                        </button>
-                    </li>
-                </ul>
-            </nav>
-        </aside>
-    );
+    const sidebar = <StudentSidebar user={user} logout={logout} active="dashboard" contractFile={contractFile} />;
 
     return (
         <DashboardLayout sidebar={sidebar} mainClass="dashboard-grid">
@@ -257,18 +218,6 @@ const StudentDashboard = () => {
                 </div>
             </article>
 
-            {/* ── Samen eten (oranje) ── */}
-            <article className="dash-card dash-card--orange">
-                <h2><FiUsers /> Samen eten?</h2>
-                <p>Volgende event: <strong>18 juni · Villa BBQ 🔥</strong></p>
-                <p>Geef aan of je erbij bent en of je iemand meeneemt.</p>
-                <div className="dashboard-cleaning-meta" style={{ marginTop: "auto" }}>
-                    <Link to="/student/samen-eten" className="dashboard-schema-btn">
-                        <FiUsers /> Aanmelden
-                    </Link>
-                </div>
-            </article>
-
             {/* ── Events & Nieuws (paars) ── */}
             <article className="dash-card dash-card--purple">
                 <h2><FiCalendar /> Events &amp; Nieuws</h2>
@@ -287,6 +236,17 @@ const StudentDashboard = () => {
                     <span className="dash-event-chip">🔥 BBQ · 18 jun</span>
                     <Link to="/student/events" className="dashboard-schema-btn">
                         <FiStar /> Alles
+                    </Link>
+                </div>
+            </article>
+
+            {/* ── Iets melden (oranje) ── */}
+            <article className="dash-card dash-card--orange">
+                <h2><FiTool /> Iets melden</h2>
+                <p>Defect, beschadiging of klacht? Meld het hier zodat het snel opgepakt kan worden.</p>
+                <div className="dashboard-cleaning-meta" style={{ marginTop: "auto" }}>
+                    <Link to="/student/meldingen" className="dashboard-schema-btn">
+                        <FiTool /> Melding indienen
                     </Link>
                 </div>
             </article>

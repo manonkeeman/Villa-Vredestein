@@ -32,6 +32,8 @@ import AdminBewonersPage from "./Pages/Dashboard/AdminBewonersPage.jsx";
 import AdminContractenPage from "./Pages/Dashboard/AdminContractenPage.jsx";
 import AdminTicketsPage from "./Pages/Dashboard/AdminTicketsPage.jsx";
 import AdminCommunicatiePage from "./Pages/Dashboard/AdminCommunicatiePage.jsx";
+import AdminBerichtenPage from "./Pages/Dashboard/AdminBerichtenPage.jsx";
+import AdminInstellingenPage from "./Pages/Dashboard/AdminInstellingenPage.jsx";
 import StudentTicketsPage from "./Pages/Dashboard/StudentTicketsPage.jsx";
 import EventsPage from "./Pages/Dashboard/EventsPage.jsx";
 import SamenEtenPage from "./Pages/Dashboard/SamenEtenPage.jsx";
@@ -186,6 +188,24 @@ function App() {
                         element={
                             <ProtectedRoute allowedRoles={["ROLE_ADMIN"]}>
                                 <AdminCommunicatiePage />
+                            </ProtectedRoute>
+                        }
+                    />
+
+                    <Route
+                        path="/admin/berichten"
+                        element={
+                            <ProtectedRoute allowedRoles={["ROLE_ADMIN"]}>
+                                <AdminBerichtenPage />
+                            </ProtectedRoute>
+                        }
+                    />
+
+                    <Route
+                        path="/admin/instellingen"
+                        element={
+                            <ProtectedRoute allowedRoles={["ROLE_ADMIN"]}>
+                                <AdminInstellingenPage />
                             </ProtectedRoute>
                         }
                     />

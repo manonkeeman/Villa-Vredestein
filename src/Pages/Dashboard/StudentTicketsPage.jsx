@@ -1,26 +1,17 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { Helmet } from "react-helmet-async";
-import { Navigate, Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useAuth } from "../Auth/AuthContext.jsx";
 import {
-    FiLogOut, FiHome, FiAlertCircle, FiFileText, FiCalendar,
-    FiUser, FiUsers, FiDollarSign, FiClipboard, FiShield,
     FiTool, FiSend, FiChevronDown, FiChevronUp, FiCheckCircle,
     FiClock, FiImage, FiX,
 } from "react-icons/fi";
 import api from "../../Helpers/AxiosHelper.js";
 import DashboardLayout from "./DashboardLayout.jsx";
+import StudentSidebarShared from "../../Components/StudentSidebar/StudentSidebar.jsx";
 import "./StudentDashboard.css";
 import "./StudentTicketsPage.css";
 import "../../Styles/Global.css";
-
-const BASE_URL = (import.meta.env.VITE_API_BASE_URL || "http://localhost:8080").replace(/\/$/, "");
-
-const hasRole = (user, role) => {
-    const roles = user?.roles || [];
-    const normalized = role.startsWith("ROLE_") ? role : `ROLE_${role}`;
-    return roles.includes(normalized);
-};
 
 const CATEGORIES = ["loodgieterswerk","verwarming","elektra","schoonmaak","overig"];
 const CATEGORY_LABELS = { loodgieterswerk:"Loodgieterswerk", verwarming:"Verwarming", elektra:"Elektra", schoonmaak:"Schoonmaak", overig:"Overig" };
@@ -37,47 +28,6 @@ const STATUS_META = {
 const MOCK_MY_TICKETS = [
     { id: 10, title: "Wifi valt uit", category: "overig", priority: "middel", status: "OPEN", createdAt: "2026-04-14T20:00:00", description: "Wifi valt uit op de bovenverdieping.", comments: [] },
 ];
-
-// ── Student sidebar ──────────────────────────────────────────────────────
-function StudentSidebar({ user, logout, contractFile }) {
-    return (
-        <aside className="dashboard-sidebar" aria-label="Navigatie zijbalk">
-            <header className="sidebar-profile"><FiUser className="profile-icon" /></header>
-            <h3 className="sidebar-title">Welkom {user?.username || "Vredesteiner"}</h3>
-            <nav className="sidebar-nav">
-                <ul>
-                    <li><Link to="/student"><FiHome /> Dashboard</Link></li>
-                    <li><Link to="/student/profiel"><FiUser /> Mijn profiel</Link></li>
-                    <li><Link to="/student/noodlijst"><FiAlertCircle /> Noodlijst</Link></li>
-                    <li><Link to="/student/huisregels"><FiFileText /> Huisregels</Link></li>
-                    <li><Link to="/schoonmaakschema"><FiClipboard /> Schoonmaakschema</Link></li>
-                    <li><Link to="/student/betalingen"><FiDollarSign /> Betalingen</Link></li>
-                    <li>
-                        {contractFile
-                            ? <a href={`${BASE_URL}/uploads/${encodeURIComponent(contractFile)}`} target="_blank" rel="noopener noreferrer"><FiFileText /> Huurcontract</a>
-                            : <Link to="#"><FiFileText /> Huurcontract</Link>
-                        }
-                    </li>
-                    <li><Link to="/student/samen-eten"><FiUsers /> Samen eten?</Link></li>
-                    <li><Link to="/student/events"><FiCalendar /> Events</Link></li>
-                    <li>
-                        <Link to="/student/meldingen" className="active-nav-link">
-                            <FiTool /> Iets melden
-                        </Link>
-                    </li>
-                    {hasRole(user, "ADMIN") && (
-                        <li><Link to="/admin" className="admin-link"><FiShield /> Admin Dashboard</Link></li>
-                    )}
-                    <li>
-                        <button onClick={logout} type="button" className="logout-button">
-                            <FiLogOut /> Log uit
-                        </button>
-                    </li>
-                </ul>
-            </nav>
-        </aside>
-    );
-}
 
 // ── Own ticket card ──────────────────────────────────────────────────────
 function MyTicketCard({ ticket }) {
@@ -182,7 +132,7 @@ const StudentTicketsPage = () => {
         }
     };
 
-    const sidebar = <StudentSidebar user={user} logout={logout} contractFile={contractFile} />;
+    const sidebar = <StudentSidebarShared user={user} logout={logout} active="meldingen" contractFile={contractFile} />;
 
     return (
         <DashboardLayout sidebar={sidebar} mainClass="sticket-main">

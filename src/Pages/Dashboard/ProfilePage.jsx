@@ -1,26 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
-import { Navigate, Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useAuth } from "../Auth/AuthContext.jsx";
 import Spinner from "../../Components/Spinner/Spinner.jsx";
 import {
-    FiLogOut, FiHome, FiAlertCircle, FiFileText, FiCalendar,
-    FiUser, FiUsers, FiDollarSign, FiClipboard, FiShield, FiTool,
-    FiUpload, FiSave, FiTrash2, FiLock,
+    FiUser, FiUpload, FiSave, FiTrash2, FiLock,
 } from "react-icons/fi";
 import api from "../../Helpers/AxiosHelper.js";
 import DashboardLayout from "./DashboardLayout.jsx";
+import StudentSidebar from "../../Components/StudentSidebar/StudentSidebar.jsx";
 import "./StudentDashboard.css";
 import "./ProfilePage.css";
 import "../../Styles/Global.css";
 
 const BASE_URL = (import.meta.env.VITE_API_BASE_URL || "http://localhost:8080").replace(/\/$/, "");
-
-const hasRole = (user, role) => {
-    const roles = user?.roles || [];
-    const normalized = role.startsWith("ROLE_") ? role : `ROLE_${role}`;
-    return roles.includes(normalized);
-};
 
 const SOCIAL_OPTIONS = [
     { value: "", label: "— Kies voorkeur —" },
@@ -220,51 +213,7 @@ export default function ProfilePage() {
                 <title>Mijn profiel — Villa Vredestein</title>
                 <meta name="robots" content="noindex, nofollow" />
             </Helmet>
-            <DashboardLayout rootClass="profile-page" mainClass="profile-content" sidebar={
-            <aside className="dashboard-sidebar" aria-label="Navigatie zijbalk">
-                <header className="sidebar-profile">
-                    {photoUrl
-                        ? <img src={photoUrl} alt="Profielfoto" style={{ width: "100%", height: "100%", borderRadius: "50%", objectFit: "cover" }} />
-                        : <FiUser className="profile-icon" />
-                    }
-                </header>
-                <h3 className="sidebar-title">{authUser?.username || "Vredesteiner"}</h3>
-
-                <nav className="sidebar-nav">
-                    <ul>
-                        <li><Link to="/student"><FiHome /> Dashboard</Link></li>
-                        <li><Link to="/student/profiel" className="active"><FiUser /> Mijn profiel</Link></li>
-                        <li><Link to="/student/noodlijst"><FiAlertCircle /> Noodlijst</Link></li>
-                        <li><Link to="/student/huisregels"><FiFileText /> Huisregels</Link></li>
-                        <li><Link to="/schoonmaakschema"><FiClipboard /> Schoonmaakschema</Link></li>
-                        <li><Link to="/student/betalingen"><FiDollarSign /> Betalingen</Link></li>
-                        <li>
-                            {profile?.contractFile
-                                ? <button type="button" onClick={handleContractDownload} className="logout-button"><FiFileText /> Huurcontract</button>
-                                : <Link to="#"><FiFileText /> Huurcontract</Link>
-                            }
-                        </li>
-                        <li><Link to="/student/samen-eten"><FiUsers /> Samen eten?</Link></li>
-                        <li><Link to="/student/events"><FiCalendar /> Events</Link></li>
-                        <li><Link to="/student/meldingen"><FiTool /> Iets melden</Link></li>
-
-                        {hasRole(authUser, "ADMIN") && (
-                            <li>
-                                <Link to="/admin" className="admin-link">
-                                    <FiShield /> Admin Dashboard
-                                </Link>
-                            </li>
-                        )}
-
-                        <li>
-                            <button onClick={logout} type="button" className="logout-button">
-                                <FiLogOut /> Log uit
-                            </button>
-                        </li>
-                    </ul>
-                </nav>
-            </aside>
-            }>
+            <DashboardLayout rootClass="profile-page" mainClass="profile-content" sidebar={<StudentSidebar user={authUser} logout={logout} active="profiel" contractFile={profile?.contractFile} />}>
 
                 {/* Profielfoto */}
                 <section className="profile-photo-section">
