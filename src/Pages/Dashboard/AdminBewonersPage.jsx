@@ -43,9 +43,9 @@ const persistLocalUser = (user) => {
 
 // ── Mock data ─────────────────────────────────────────────────────────────
 const MOCK_USERS = [
-    { id: 1, username: "Desmond", email: "desmondstaal@gmail.com",        room: "Japan",      roles: ["ROLE_STUDENT"] },
-    { id: 2, username: "Medoc",   email: "medocstaal@gmail.com",          room: "Argentinië", roles: ["ROLE_STUDENT"] },
-    { id: 3, username: "Simon",   email: "simontalsma2@gmail.com",        room: "Thailand",   roles: ["ROLE_STUDENT"] },
+    { id: 1, username: "Desmond", email: "desmondstaal@gmail.com",        room: "Thailand",   roles: ["ROLE_STUDENT"] },
+    { id: 2, username: "Medoc",   email: "medocstaal@gmail.com",          room: "Frankrijk",  roles: ["ROLE_STUDENT"] },
+    { id: 3, username: "Simon",   email: "simontalsma2@gmail.com",        room: "Argentinië", roles: ["ROLE_STUDENT"] },
     { id: 5, username: "Schoonmaak",              email: "cleaner@villavredestein.com", room: "", roles: ["ROLE_CLEANER"] },
     { id: 6, username: "Villa Vredestein Admin", email: "admin@villavredestein.com",   room: "", roles: ["ROLE_ADMIN"] },
 ];
