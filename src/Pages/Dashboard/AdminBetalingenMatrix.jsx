@@ -6,7 +6,7 @@ import {
     FiLogOut, FiHome, FiUsers, FiDollarSign, FiClipboard,
     FiFileText, FiShield, FiTool, FiMessageSquare, FiGrid,
     FiRefreshCw, FiMail, FiAlertTriangle, FiCheckCircle, FiClock,
-    FiX,
+    FiX, FiSettings, FiCalendar,
 } from "react-icons/fi";
 import api from "../../Helpers/AxiosHelper.js";
 import DashboardLayout from "./DashboardLayout.jsx";
@@ -18,45 +18,22 @@ const NL_MONTHS_SHORT = ["jan","feb","mrt","apr","mei","jun","jul","aug","sep","
 
 // ── Shared admin sidebar ─────────────────────────────────────────────────
 export function AdminSidebar({ active, logout, username }) {
+    const cls = (key) => active === key ? "active-nav-link" : undefined;
     return (
         <aside className="dashboard-sidebar" aria-label="Navigatie zijbalk">
             <header className="sidebar-profile"><FiShield className="profile-icon" /></header>
             <h3 className="sidebar-title">Welkom {username || "Beheerder"}</h3>
             <nav className="sidebar-nav">
                 <ul>
-                    <li><Link to="/admin"><FiHome /> Dashboard</Link></li>
-                    <li>
-                        <Link to="/admin/bewoners" className={active === "bewoners" ? "active-nav-link" : ""}>
-                            <FiUsers /> Bewoners
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/admin/betaalmatrix" className={active === "matrix" ? "active-nav-link" : ""}>
-                            <FiGrid /> Betaal-matrix
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/admin/betalingen" className={active === "betalingen" ? "active-nav-link" : ""}>
-                            <FiDollarSign /> Betalingen
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/admin/contracten" className={active === "contracten" ? "active-nav-link" : ""}>
-                            <FiFileText /> Contracten
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/admin/tickets" className={active === "tickets" ? "active-nav-link" : ""}>
-                            <FiTool /> Meldingen
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/admin/communicatie" className={active === "communicatie" ? "active-nav-link" : ""}>
-                            <FiMessageSquare /> Communicatie
-                        </Link>
-                    </li>
-                    <li><Link to="/schoonmaakschema"><FiClipboard /> Schoonmaakschema</Link></li>
-                    <li><Link to="/student/huisregels"><FiFileText /> Huisregels</Link></li>
+                    <li><Link to="/admin" className={cls("")}><FiHome /> Dashboard</Link></li>
+                    <li><Link to="/admin/bewoners" className={cls("bewoners")}><FiUsers /> Bewoners</Link></li>
+                    <li><Link to="/admin/betalingen" className={cls("betalingen")}><FiDollarSign /> Betalingen</Link></li>
+                    <li><Link to="/admin/contracten" className={cls("contracten")}><FiFileText /> Contracten</Link></li>
+                    <li><Link to="/admin/berichten" className={cls("berichten")}><FiMessageSquare /> Berichten &amp; Meldingen</Link></li>
+                    <li><Link to="/student/events" className={cls("events")}><FiCalendar /> Events &amp; Nieuws</Link></li>
+                    <li><Link to="/schoonmaakschema" className={cls("schema")}><FiClipboard /> Schoonmaakschema</Link></li>
+                    <li><Link to="/student/huisregels" className={cls("huisregels")}><FiFileText /> Huisregels</Link></li>
+                    <li><Link to="/admin/instellingen" className={cls("instellingen")}><FiSettings /> Instellingen</Link></li>
                     <li>
                         <button onClick={logout} type="button" className="logout-button">
                             <FiLogOut /> Log uit

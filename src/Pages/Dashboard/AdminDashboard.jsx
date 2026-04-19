@@ -103,11 +103,8 @@ const AdminDashboard = () => {
                     )}
                 </div>
                 <div className="dashboard-cleaning-meta">
-                    <Link to="/admin/betaalmatrix" className="dashboard-schema-btn">
-                        <FiGrid /> Bekijk matrix
-                    </Link>
-                    <Link to="/admin/betalingen" className="dashboard-schema-btn" style={{ background: "transparent", border: "1px solid rgba(255,255,255,0.2)", color: "#ccc" }}>
-                        <FiDollarSign /> Beheer
+                    <Link to="/admin/betalingen" className="dashboard-schema-btn">
+                        <FiGrid /> Betalingen &amp; matrix
                     </Link>
                 </div>
             </article>
@@ -138,21 +135,21 @@ const AdminDashboard = () => {
                     }
                 </p>
                 <div className="dashboard-cleaning-meta">
-                    <Link to="/admin/tickets" className="dashboard-schema-btn">
+                    <Link to="/admin/berichten" className="dashboard-schema-btn">
                         <FiTool /> Bekijk meldingen
                     </Link>
                 </div>
             </article>
 
-            {/* Communicatie */}
+            {/* Berichten & Meldingen */}
             <article className="dash-card dash-card--purple">
-                <h2><FiMessageSquare /> Communicatie</h2>
+                <h2><FiMessageSquare /> Berichten &amp; Meldingen</h2>
                 <p style={{ fontSize: 13, color: "#aaa", marginBottom: "0.5rem" }}>
-                    Stuur mededelingen, onderhoud-updates en event-aankondigingen naar alle bewoners.
+                    Stuur mededelingen naar bewoners en beheer openstaande meldingen.
                 </p>
                 <div className="dashboard-cleaning-meta">
-                    <Link to="/admin/communicatie" className="dashboard-schema-btn">
-                        <FiMessageSquare /> Communicatieboard
+                    <Link to="/admin/berichten" className="dashboard-schema-btn">
+                        <FiMessageSquare /> Berichten &amp; Meldingen
                     </Link>
                 </div>
             </article>
