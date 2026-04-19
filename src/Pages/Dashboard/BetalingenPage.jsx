@@ -62,7 +62,7 @@ const BetalingenPage = () => {
                         id: 9000 + month,
                         invoiceMonth: month,
                         invoiceYear: 2026,
-                        amount: 550,
+                        amount: 350,
                         status: isDesmond ? "OVERDUE" : "PAID",
                         dueDate: `2026-${String(month).padStart(2,"0")}-05`,
                         paidAt: isDesmond ? null : `2026-${String(month).padStart(2,"0")}-03`,
