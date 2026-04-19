@@ -167,8 +167,10 @@ function NieuwBewoner({ onCreated, onClose }) {
             sendEmail:        true,
         };
 
-        // Try endpoints in order; stop on validation errors, continue on 404/403/405
-        const endpoints = ["/api/auth/register", "/api/admin/students", "/api/admin/users", "/api/users"];
+        // Try admin endpoints first, then fall back to public register.
+        // Only stop early on 409 (duplicate user) — room/validation errors
+        // from one endpoint don't block the next one.
+        const endpoints = ["/api/admin/students", "/api/admin/users", "/api/users", "/api/auth/register"];
         let lastEx;
         let res = null;
         for (const ep of endpoints) {
@@ -178,16 +180,16 @@ function NieuwBewoner({ onCreated, onClose }) {
             } catch (ex) {
                 lastEx = ex;
                 const status = ex.response?.status;
-                if (status === 400 || status === 409 || status === 422) {
-                    // Validation error — show message and stop
+                // 409 = duplicate user — no point trying other endpoints
+                if (status === 409) {
                     const raw = ex.response.data;
                     setErr(raw?.message || raw?.error || raw?.detail
                         || (typeof raw === "string" ? raw : null)
-                        || `HTTP ${status} — aanmaken mislukt.`);
+                        || "Dit e-mailadres of gebruikersnaam bestaat al.");
                     setSaving(false);
                     return;
                 }
-                // 401/403/404/405 → try next endpoint
+                // All other errors (400, 401, 403, 404, 422…) → try next endpoint
             }
         }
 
