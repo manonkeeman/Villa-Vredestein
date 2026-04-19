@@ -108,6 +108,52 @@
     font-size: 0.88rem;
 }
 
+/* ── Factuur aanmaken ── */
+.factuur-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.factuur-header h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 0;
+    font-size: 1rem;
+}
+
+.factuur-form {
+    background: #0d0d0d;
+    border: 1px solid #2a2a2a;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-top: 0.75rem;
+}
+
+.factuur-form-row {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.factuur-form-row .bew-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    min-width: 130px;
+}
+
+.factuur-form-row label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
 /* ── Email template editor ── */
 .template-hint {
     color: #aaa;
@@ -127,9 +173,10 @@
 .template-card {
     border: 1px solid #2a2a2a;
     border-radius: 10px;
-    padding: 1rem;
+    padding: 1.25rem;
     margin-bottom: 1rem;
     background: #0d0d0d;
+    overflow: visible;
 }
 
 .template-card-header {
@@ -189,6 +236,7 @@
     font-family: monospace;
     width: 100%;
     box-sizing: border-box;
+    min-height: 180px;
 }
 
 .template-input:focus,
