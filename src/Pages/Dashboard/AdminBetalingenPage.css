@@ -2,6 +2,20 @@
 @import "./BetalingenPage.css";
 
 /* ── Admin-specific ── */
+
+/* Override student-dashboard card height — admin forms need auto height */
+.admin-main .dashboard-news {
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    max-width: 100%;
+}
+
+.admin-main .dashboard-news-content {
+    width: 100%;
+    justify-content: flex-start;
+}
+
 .admin-payments-section .dashboard-news-content {
     overflow-x: auto;
 }
