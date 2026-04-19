@@ -29,13 +29,17 @@ function formatDate(dateStr) {
     return new Date(dateStr).toLocaleDateString("nl-NL");
 }
 
-// ── Mock data ────────────────────────────────────────────────────────────
+// ── Mock data (alleen zichtbaar als backend onbereikbaar is) ─────────────
 const MOCK_USERS = [
-    { id: 1, username: "anna",  email: "anna@example.com",   room: "Japan",      contractStart: "2025-09-01", contractEnd: "2026-08-31", deposit: 750, contractFile: null },
-    { id: 2, username: "bas",   email: "bas@example.com",    room: "Argentinië", contractStart: "2025-09-01", contractEnd: "2026-06-30", deposit: 750, contractFile: "bas_contract.pdf" },
-    { id: 3, username: "chloe", email: "chloe@example.com",  room: "Thailand",   contractStart: "2025-02-01", contractEnd: "2026-01-31", deposit: 750, contractFile: null },
-    { id: 4, username: "david", email: "david@example.com",  room: "Frankrijk",  contractStart: "2024-09-01", contractEnd: "2026-08-31", deposit: 750, contractFile: "david_contract.pdf" },
+    { id: 1, username: "Desmond", email: "desmond@example.com", room: "Japan",      contractStart: "2025-09-01", contractEnd: "2026-08-31", deposit: 750, contractFile: null },
+    { id: 2, username: "Medoc",   email: "medoc@example.com",   room: "Argentinië", contractStart: "2025-09-01", contractEnd: "2026-08-31", deposit: 750, contractFile: null },
+    { id: 3, username: "Simon",   email: "simon@example.com",   room: "Thailand",   contractStart: "2025-09-01", contractEnd: "2026-08-31", deposit: 750, contractFile: null },
 ];
+
+// ── Haal contractFile op uit meerdere mogelijke veldnamen ─────────────────
+function resolveContractFile(u) {
+    return u.contractFile || u.contractFileName || u.contract || u.contractPath || null;
+}
 
 // ── Contract card ────────────────────────────────────────────────────────
 function ContractCard({ tenant, onUpload }) {
@@ -145,10 +149,27 @@ const AdminContractenPage = () => {
         setLoading(true);
         try {
             const res = await api.get("/api/users");
-            const students = (res.data || []).filter(u =>
-                (u.roles || []).some(r => r === "ROLE_STUDENT")
-            );
-            setTenants(students);
+            const all = res.data || [];
+
+            // Toon alle bewoners die GEEN admin zijn
+            // Accepteer rollen in elk formaat dat de backend stuurt
+            const isAdmin = (u) => {
+                const roles = u.roles || u.authorities || [];
+                return roles.some(r => {
+                    const s = typeof r === "string" ? r : (r?.authority || r?.name || "");
+                    return s.toUpperCase().includes("ADMIN");
+                });
+            };
+
+            const students = all.filter(u => !isAdmin(u));
+
+            // Normaliseer contractFile veldnaam
+            const normalized = students.map(u => ({
+                ...u,
+                contractFile: resolveContractFile(u),
+            }));
+
+            setTenants(normalized);
             setIsMock(false);
         } catch {
             setTenants(MOCK_USERS);

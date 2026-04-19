@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { Navigate, Link } from "react-router-dom";
 import { useAuth } from "../Auth/AuthContext.jsx";
 import {
-    FiUsers, FiDollarSign, FiFileText, FiClipboard,
+    FiUsers, FiDollarSign, FiFileText, FiClipboard, FiPlus,
     FiShield, FiTool, FiMessageSquare, FiGrid,
     FiAlertTriangle, FiCheckCircle, FiClock, FiCalendar,
 } from "react-icons/fi";
@@ -77,7 +77,7 @@ const AdminDashboard = () => {
                 </p>
                 <div className="dashboard-cleaning-meta">
                     <Link to="/admin/bewoners" className="dashboard-schema-btn">
-                        <FiUsers /> Beheer bewoners
+                        <FiPlus /> Bewoners beheren
                     </Link>
                 </div>
             </article>

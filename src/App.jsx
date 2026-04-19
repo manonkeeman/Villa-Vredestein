@@ -28,6 +28,7 @@ import SchoonmaakschemaPage from "./Pages/Dashboard/SchoonmaakschemaPage.jsx";
 import BetalingenPage from "./Pages/Dashboard/BetalingenPage.jsx";
 import AdminBetalingenPage from "./Pages/Dashboard/AdminBetalingenPage.jsx";
 import AdminBetalingenMatrix from "./Pages/Dashboard/AdminBetalingenMatrix.jsx";
+import AdminBewonersPage from "./Pages/Dashboard/AdminBewonersPage.jsx";
 import AdminContractenPage from "./Pages/Dashboard/AdminContractenPage.jsx";
 import AdminTicketsPage from "./Pages/Dashboard/AdminTicketsPage.jsx";
 import AdminCommunicatiePage from "./Pages/Dashboard/AdminCommunicatiePage.jsx";
@@ -140,6 +141,15 @@ function App() {
                         element={
                             <ProtectedRoute allowedRoles={["ROLE_ADMIN"]}>
                                 <AdminBetalingenPage />
+                            </ProtectedRoute>
+                        }
+                    />
+
+                    <Route
+                        path="/admin/bewoners"
+                        element={
+                            <ProtectedRoute allowedRoles={["ROLE_ADMIN"]}>
+                                <AdminBewonersPage />
                             </ProtectedRoute>
                         }
                     />
