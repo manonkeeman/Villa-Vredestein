@@ -25,7 +25,6 @@ export default function DashboardLayout({ sidebar, mainClass = "", rootClass = "
                 aria-label={open ? "Menu sluiten" : "Menu openen"}
                 aria-expanded={open}
             >
-                <span className="smt-logo">VV</span>
                 <span className="smt-label">{open ? "Sluiten" : "Dashboard"}</span>
                 <span className="smt-icon" aria-hidden="true">
                     {open ? <FiX size={14} /> : <FiMenu size={14} />}

@@ -167,15 +167,26 @@ function NieuwBewoner({ onCreated, onClose }) {
             sendWelcomeInvoice: sendInvoice,
         };
 
-        // Try admin endpoint first, then auth/register as fallback
+        // Try multiple endpoints; stop only on validation errors (400/409/422)
         const tryCreate = async () => {
-            try {
-                return await api.post("/api/admin/users", payload);
-            } catch (ex1) {
-                if (ex1.response) throw ex1; // real backend error — bubble up
-                // Network error on admin endpoint — try register
-                return await api.post("/api/auth/register", payload);
+            const endpoints = [
+                "/api/admin/users",
+                "/api/users/register",
+                "/api/auth/register",
+            ];
+            let lastError;
+            for (const endpoint of endpoints) {
+                try {
+                    return await api.post(endpoint, payload);
+                } catch (ex) {
+                    lastError = ex;
+                    const status = ex.response?.status;
+                    // Stop trying if backend explicitly rejects the data
+                    if (status === 400 || status === 409 || status === 422) throw ex;
+                    // 404/403/405 = endpoint not found/forbidden → try next
+                }
             }
+            throw lastError;
         };
 
         try {
