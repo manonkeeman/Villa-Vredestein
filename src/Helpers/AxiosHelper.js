@@ -31,18 +31,32 @@ instance.interceptors.request.use(
     (error) => Promise.reject(error)
 );
 
+// Decode JWT expiry without an import — avoids circular deps
+const getTokenExp = (token) => {
+    try { return JSON.parse(atob(token.split(".")[1])).exp; }
+    catch { return null; }
+};
+
 instance.interceptors.response.use(
     (response) => response,
     (error) => {
         const status = error.response?.status;
 
         if (status === 401) {
-            localStorage.removeItem(TOKEN_STORAGE_KEY);
-            localStorage.removeItem("user");
-            localStorage.removeItem("loginMode");
-            localStorage.removeItem("room");
+            const token = localStorage.getItem(TOKEN_STORAGE_KEY);
+            const exp   = getTokenExp(token);
+            const isExpiredOrMissing = !token || !exp || exp * 1000 < Date.now();
 
-            window.dispatchEvent(new Event("auth:logout"));
+            // Only force-logout when the token is truly gone or expired.
+            // A 401 on an admin endpoint with a valid token = permission error,
+            // not a session failure — don't kick the user out.
+            if (isExpiredOrMissing) {
+                localStorage.removeItem(TOKEN_STORAGE_KEY);
+                localStorage.removeItem("user");
+                localStorage.removeItem("loginMode");
+                localStorage.removeItem("room");
+                window.dispatchEvent(new Event("auth:logout"));
+            }
         }
 
         return Promise.reject(error);

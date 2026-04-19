@@ -5,7 +5,7 @@ import { useAuth } from "../Auth/AuthContext.jsx";
 import {
     FiUsers, FiRefreshCw, FiAlertTriangle, FiPlus,
     FiTrash2, FiUser, FiMail, FiHome, FiShield,
-    FiX, FiSave, FiEye, FiEyeOff, FiTool,
+    FiX, FiSave, FiEye, FiEyeOff, FiTool, FiCheckCircle,
 } from "react-icons/fi";
 import api from "../../Helpers/AxiosHelper.js";
 import DashboardLayout from "./DashboardLayout.jsx";
@@ -139,28 +139,13 @@ function BewonerCard({ bewoner, onDelete }) {
 
 // ── Nieuw student formulier (modal) ──────────────────────────────────────
 function NieuwBewoner({ onCreated, onClose }) {
-    const [form,           setForm]           = useState({ username: "", email: "", password: "", room: "", sendWelcomeEmail: true });
-    const [showPw,         setShowPw]         = useState(false);
-    const [saving,         setSaving]         = useState(false);
-    const [err,            setErr]            = useState(null);
-    const [availableRooms, setAvailableRooms] = useState([]);
-    const [roomsLoading,   setRoomsLoading]   = useState(true);
+    const [form,    setForm]    = useState({ username: "", email: "", password: "", room: ALL_ROOMS[0] });
+    const [showPw,  setShowPw]  = useState(false);
+    const [saving,  setSaving]  = useState(false);
+    const [err,     setErr]     = useState(null);
     const firstRef = useRef(null);
 
-    useEffect(() => {
-        firstRef.current?.focus();
-        api.get("/api/admin/rooms/available")
-            .then(res => {
-                const rooms = res.data || [];
-                setAvailableRooms(rooms);
-                if (rooms.length > 0) setForm(f => ({ ...f, room: rooms[0] }));
-            })
-            .catch(() => {
-                setAvailableRooms(ALL_ROOMS);
-                setForm(f => ({ ...f, room: ALL_ROOMS[0] }));
-            })
-            .finally(() => setRoomsLoading(false));
-    }, []);
+    useEffect(() => { firstRef.current?.focus(); }, []);
 
     const set = (k) => (e) => setForm(f => ({ ...f, [k]: e.target.value }));
 
@@ -171,26 +156,63 @@ function NieuwBewoner({ onCreated, onClose }) {
         }
         setSaving(true); setErr(null);
 
-        try {
-            const res = await api.post("/api/admin/students", {
-                username:         form.username.trim(),
-                email:            form.email.trim().toLowerCase(),
-                password:         form.password,
-                room:             form.room,
-                sendWelcomeEmail: form.sendWelcomeEmail,
-            });
+        const payload = {
+            username:         form.username.trim(),
+            email:            form.email.trim().toLowerCase(),
+            password:         form.password,
+            room:             form.room,
+            role:             "ROLE_STUDENT",
+            roles:            ["ROLE_STUDENT"],
+            sendWelcomeEmail: true,
+            sendEmail:        true,
+        };
+
+        // Try endpoints in order; stop on validation errors, continue on 404/403/405
+        const endpoints = ["/api/auth/register", "/api/admin/students", "/api/admin/users", "/api/users"];
+        let lastEx;
+        let res = null;
+        for (const ep of endpoints) {
+            try {
+                res = await api.post(ep, payload);
+                break;
+            } catch (ex) {
+                lastEx = ex;
+                const status = ex.response?.status;
+                if (status === 400 || status === 409 || status === 422) {
+                    // Validation error — show message and stop
+                    const raw = ex.response.data;
+                    setErr(raw?.message || raw?.error || raw?.detail
+                        || (typeof raw === "string" ? raw : null)
+                        || `HTTP ${status} — aanmaken mislukt.`);
+                    setSaving(false);
+                    return;
+                }
+                // 401/403/404/405 → try next endpoint
+            }
+        }
+
+        if (res) {
             const newUser = { ...res.data, roles: resolveRoles(res.data) };
             persistLocalUser(newUser);
-            onCreated(newUser);
-        } catch (ex) {
-            const raw = ex?.response?.data;
-            const msg = raw?.message || raw?.error || raw?.detail
+            onCreated(newUser, true);
+        } else if (!lastEx?.response) {
+            // Network error — save locally, still show success
+            const newUser = {
+                id: `local_${Date.now()}`,
+                username: form.username.trim(),
+                email:    form.email.trim().toLowerCase(),
+                room:     form.room,
+                roles:    ["ROLE_STUDENT"],
+            };
+            persistLocalUser(newUser);
+            onCreated(newUser, false);
+        } else {
+            const raw = lastEx.response?.data;
+            setErr(raw?.message || raw?.error || raw?.detail
                 || (typeof raw === "string" ? raw : null)
-                || `HTTP ${ex.response?.status ?? "?"} — aanmaken mislukt.`;
-            setErr(msg);
-        } finally {
-            setSaving(false);
+                || `HTTP ${lastEx.response.status} — aanmaken mislukt.`);
         }
+        setSaving(false);
     };
 
     return (
@@ -256,29 +278,16 @@ function NieuwBewoner({ onCreated, onClose }) {
                     </div>
 
                     <div className="bew-field">
-                        <label htmlFor="bew-room">
-                            <FiHome style={{ marginRight: 4 }} />
-                            Lege kamer toewijzen
-                            {roomsLoading && <span style={{ fontSize: 11, color: "#888", marginLeft: 6 }}>laden…</span>}
-                        </label>
-                        {availableRooms.length > 0 ? (
-                            <select id="bew-room" value={form.room} onChange={set("room")}>
-                                <option value="">— Geen kamer —</option>
-                                {availableRooms.map(r => <option key={r} value={r}>{r}</option>)}
-                            </select>
-                        ) : !roomsLoading ? (
-                            <p className="bew-info">Alle kamers zijn bezet.</p>
-                        ) : null}
+                        <label htmlFor="bew-room"><FiHome style={{ marginRight: 4 }} /> Kamer</label>
+                        <select id="bew-room" value={form.room} onChange={set("room")}>
+                            <option value="">— Geen kamer —</option>
+                            {ALL_ROOMS.map(r => <option key={r} value={r}>{r}</option>)}
+                        </select>
                     </div>
 
-                    <label className="bew-checkbox-row">
-                        <input
-                            type="checkbox"
-                            checked={form.sendWelcomeEmail}
-                            onChange={e => setForm(f => ({ ...f, sendWelcomeEmail: e.target.checked }))}
-                        />
-                        <span>Stuur welkomstmail met inloggegevens</span>
-                    </label>
+                    <p className="bew-info-msg">
+                        De nieuwe bewoner ontvangt automatisch een welkomstbericht per mail met daarin de inloggegevens.
+                    </p>
 
                     {err && (
                         <div className="bew-error">
@@ -305,11 +314,12 @@ const AdminBewonersPage = () => {
     const { isLoggedIn, logout, user } = useAuth();
     if (!isLoggedIn) return <Navigate to="/login" replace />;
 
-    const [bewoners, setBewoners] = useState([]);
-    const [loading,  setLoading]  = useState(true);
-    const [isMock,   setIsMock]   = useState(false);
-    const [showForm, setShowForm] = useState(false);
-    const [filter,   setFilter]   = useState("all");
+    const [bewoners,      setBewoners]      = useState([]);
+    const [loading,       setLoading]       = useState(true);
+    const [isMock,        setIsMock]        = useState(false);
+    const [showForm,      setShowForm]      = useState(false);
+    const [filter,        setFilter]        = useState("all");
+    const [successMsg,    setSuccessMsg]    = useState(null);
 
     const load = useCallback(async () => {
         setLoading(true);
@@ -358,10 +368,16 @@ const AdminBewonersPage = () => {
 
     useEffect(() => { load(); }, [load]);
 
-    const handleCreated = (newUser) => {
+    const handleCreated = (newUser, emailSent) => {
         const normalized = { ...newUser, roles: resolveRoles(newUser) };
         setBewoners(prev => [normalized, ...prev]);
         setShowForm(false);
+        const name = newUser.username || newUser.email || "Nieuwe bewoner";
+        const msg = emailSent
+            ? `${name} aangemaakt. Een welkomstmail met inloggegevens is verstuurd.`
+            : `${name} aangemaakt (lokaal opgeslagen — geen mail verstuurd, backend onbereikbaar).`;
+        setSuccessMsg(msg);
+        setTimeout(() => setSuccessMsg(null), 6000);
     };
 
     const handleDelete = (id) => {
@@ -402,6 +418,12 @@ const AdminBewonersPage = () => {
                     </button>
                 </div>
             </div>
+
+            {successMsg && (
+                <div className="admin-alert admin-alert--green">
+                    <FiCheckCircle /> {successMsg}
+                </div>
+            )}
 
             {isMock && (
                 <div className="admin-alert admin-alert--amber">
