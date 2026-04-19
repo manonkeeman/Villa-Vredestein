@@ -204,8 +204,25 @@ function NieuwBewoner({ onCreated, onClose }) {
                 const status = ex.response?.status;
                 const raw    = ex.response?.data;
                 const msg    = (raw?.message || raw?.error || raw?.detail || "").toLowerCase();
-                // Duplicate email/username → stop trying, show clear message
+                // Duplicate email/username
                 if (status === 409 || msg.includes("exist") || msg.includes("bestaat") || msg.includes("duplicate")) {
+                    const emailLower = form.email.trim().toLowerCase();
+                    const isFiltered = emailLower.includes("arwenleonor") || emailLower.includes("alvarmantyla");
+                    if (isFiltered) {
+                        // This user is filtered out of the UI — auto-delete and retry
+                        try {
+                            const usersRes = await api.get("/api/users");
+                            const conflicting = (usersRes.data || []).find(u =>
+                                (u.email || "").toLowerCase() === emailLower
+                            );
+                            if (conflicting?.id) {
+                                await api.delete(`/api/users/${conflicting.id}`);
+                                persistDeletedId(conflicting.id);
+                                res = await api.post(ep, payload);
+                                break; // success after auto-cleanup
+                            }
+                        } catch { /* ignore — fall through to normal error */ }
+                    }
                     setErr("Dit e-mailadres bestaat al in het systeem. Verwijder het oude account eerst via de bewonerslijst en ververs de pagina.");
                     setSaving(false);
                     return;

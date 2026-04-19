@@ -70,7 +70,7 @@ function App() {
                     <Route
                         path="/student/profiel"
                         element={
-                            <ProtectedRoute allowedRoles={["ROLE_STUDENT"]}>
+                            <ProtectedRoute allowedRoles={["ROLE_STUDENT", "ROLE_ADMIN"]}>
                                 <ProfilePage />
                             </ProtectedRoute>
                         }
@@ -79,7 +79,7 @@ function App() {
                     <Route
                         path="/student/noodlijst"
                         element={
-                            <ProtectedRoute allowedRoles={["ROLE_STUDENT"]}>
+                            <ProtectedRoute allowedRoles={["ROLE_STUDENT", "ROLE_ADMIN"]}>
                                 <NoodlijstPage />
                             </ProtectedRoute>
                         }

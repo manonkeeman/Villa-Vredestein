@@ -4,7 +4,7 @@ import { Navigate, Link, useParams } from "react-router-dom";
 import { useAuth } from "../Auth/AuthContext.jsx";
 import {
     FiBookOpen, FiDollarSign, FiClipboard,
-    FiAlertCircle, FiClock, FiCheckCircle, FiCheckSquare, FiSquare, FiTool,
+    FiAlertCircle, FiClock, FiCheckCircle, FiCheckSquare, FiSquare,
 } from "react-icons/fi";
 import { MdOutlineCleaningServices } from "react-icons/md";
 import api from "../../Helpers/AxiosHelper.js";
@@ -214,16 +214,6 @@ const StudentDashboard = () => {
                 </div>
             </article>
 
-            {/* ── Iets melden (oranje) ── */}
-            <article className="dash-card dash-card--orange">
-                <h2><FiTool /> Iets melden</h2>
-                <p>Defect, beschadiging of klacht? Meld het hier zodat het snel opgepakt kan worden.</p>
-                <div className="dashboard-cleaning-meta" style={{ marginTop: "auto" }}>
-                    <Link to="/student/meldingen" className="dashboard-schema-btn">
-                        <FiTool /> Melding indienen
-                    </Link>
-                </div>
-            </article>
         </DashboardLayout>
     );
 };
