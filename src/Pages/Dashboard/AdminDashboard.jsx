@@ -5,7 +5,7 @@ import { useAuth } from "../Auth/AuthContext.jsx";
 import {
     FiUsers, FiDollarSign, FiFileText, FiClipboard, FiPlus,
     FiShield, FiMessageSquare, FiGrid,
-    FiAlertTriangle, FiCheckCircle, FiClock, FiCalendar,
+    FiAlertTriangle, FiCheckCircle, FiClock, FiCalendar, FiAlertCircle,
 } from "react-icons/fi";
 import api from "../../Helpers/AxiosHelper.js";
 import DashboardLayout from "./DashboardLayout.jsx";
@@ -160,6 +160,32 @@ const AdminDashboard = () => {
                 <div className="dashboard-cleaning-meta">
                     <Link to="/student/events" className="dashboard-schema-btn">
                         <FiCalendar /> Events bekijken
+                    </Link>
+                </div>
+            </article>
+
+            {/* Noodlijst */}
+            <article className="dash-card dash-card--red">
+                <h2><FiAlertCircle /> Noodlijst</h2>
+                <p style={{ fontSize: 13, color: "#aaa", marginBottom: "0.5rem" }}>
+                    Beheer noodcontacten, noodnummers en veiligheidsinformatie voor bewoners.
+                </p>
+                <div className="dashboard-cleaning-meta">
+                    <Link to="/student/noodlijst" className="dashboard-schema-btn">
+                        <FiAlertCircle /> Noodlijst beheren
+                    </Link>
+                </div>
+            </article>
+
+            {/* Huisregels */}
+            <article className="dash-card dash-card--blue">
+                <h2><FiFileText /> Huisregels</h2>
+                <p style={{ fontSize: 13, color: "#aaa", marginBottom: "0.5rem" }}>
+                    Bekijk en bewerk de huisregels voor alle bewoners van Villa Vredestein.
+                </p>
+                <div className="dashboard-cleaning-meta">
+                    <Link to="/student/huisregels" className="dashboard-schema-btn">
+                        <FiFileText /> Huisregels beheren
                     </Link>
                 </div>
             </article>
