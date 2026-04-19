@@ -356,6 +356,103 @@
     font-size: 13px; font-weight: 700; color: #fcbc2d; white-space: nowrap;
 }
 
+/* ── Contract card new layout ── */
+.contract-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.6rem;
+}
+.contract-card-title {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+.contract-icon { color: #888; flex-shrink: 0; }
+.contract-email { display: block; font-size: 12px; color: #666; }
+.contract-card-body { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.contract-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    font-size: 13px;
+    color: #aaa;
+}
+.contract-meta-row strong { color: #ddd; }
+
+.contract-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    margin-top: 0.35rem;
+}
+.contract-no-file { font-size: 12px; color: #555; display: flex; align-items: center; gap: 0.3rem; }
+
+/* ── Inline edit form ── */
+.contract-edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+.contract-edit-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+}
+.contract-edit-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+.contract-edit-field label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+.contract-edit-field input,
+.contract-edit-field select {
+    background: #0d0d0d;
+    border: 1px solid #444;
+    border-radius: 8px;
+    color: #eee;
+    padding: 0.45rem 0.65rem;
+    font-size: 13px;
+    width: 100%;
+    box-sizing: border-box;
+}
+.contract-edit-field input:focus,
+.contract-edit-field select:focus {
+    outline: none;
+    border-color: #fcbc2d;
+}
+.contract-edit-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+.contract-save-msg {
+    font-size: 12px;
+    color: #22c55e;
+    margin: 0;
+}
+
+/* Mobile: stack to single column */
+@media (max-width: 480px) {
+    .contract-edit-grid {
+        grid-template-columns: 1fr;
+    }
+    .contract-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
 /* ══════════════════════════════════════════════════
    TICKETS
    ══════════════════════════════════════════════════ */
