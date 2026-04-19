@@ -122,10 +122,11 @@ const AdminBetalingenPage = () => {
     const [triggering,  setTriggering]  = useState(false);
 
     // ── Send per-template state
-    const [sendStudentId, setSendStudentId] = useState("");
-    const [sendStudents,  setSendStudents]  = useState([]);
-    const [sending,       setSending]       = useState(false);
-    const [sendMsg,       setSendMsg]       = useState(null);
+    const [sendStudentId,  setSendStudentId]  = useState("");
+    const [sendStudents,   setSendStudents]   = useState([]);
+    const [sending,        setSending]        = useState(false);
+    const [sendMsg,        setSendMsg]        = useState(null);   // { type, text, ok }
+    const [sendingType,    setSendingType]    = useState(null);   // templateType currently sending
 
     if (!isLoggedIn) return <Navigate to="/login" replace />;
 
@@ -240,15 +241,28 @@ const AdminBetalingenPage = () => {
 
     // ── Send reminder
     const sendReminder = async (templateType) => {
-        if (!sendStudentId) { setSendMsg("Kies eerst een student."); return; }
-        setSending(true); setSendMsg(null);
+        if (!sendStudentId) {
+            setSendMsg({ type: templateType, text: "Kies eerst een student hierboven.", ok: false });
+            return;
+        }
+        setSending(true); setSendingType(templateType); setSendMsg(null);
+        const student = sendStudents.find(s => String(s.id) === String(sendStudentId));
         try {
             await api.post("/api/admin/email/send", { userId: sendStudentId, templateType });
-            setSendMsg("E-mail verzonden!");
-        } catch {
-            setSendMsg("Fout bij verzenden (backend niet bereikbaar).");
+            setSendMsg({
+                type: templateType,
+                text: `Verstuurd naar ${student?.username ?? "student"} (${student?.email ?? sendStudentId})`,
+                ok: true,
+            });
+        } catch (ex) {
+            const detail = ex.response?.data?.message || ex.response?.data || ex.message || "";
+            setSendMsg({
+                type: templateType,
+                text: `Fout bij versturen${detail ? `: ${detail}` : " — controleer of de backend actief is."}`,
+                ok: false,
+            });
         } finally {
-            setSending(false);
+            setSending(false); setSendingType(null);
         }
     };
 
@@ -480,6 +494,31 @@ const AdminBetalingenPage = () => {
                         <code>{"{{betaalLink}}"}</code>, <code>{"{{vervaldatum}}"}</code> als placeholders.
                     </p>
 
+                    {/* ── Centrale student-selector ── */}
+                    <div className="tpl-student-bar">
+                        <label className="tpl-student-label"><FiSend /> Verstuur naar:</label>
+                        <select
+                            value={sendStudentId}
+                            onChange={e => { setSendStudentId(e.target.value); setSendMsg(null); }}
+                            className="template-input tpl-student-select"
+                        >
+                            <option value="">— Kies student —</option>
+                            {sendStudents.map(s => (
+                                <option key={s.id} value={s.id}>
+                                    {s.username} — {s.email}
+                                </option>
+                            ))}
+                        </select>
+                        {sendStudentId && (
+                            <span className="tpl-student-email">
+                                {sendStudents.find(s => String(s.id) === String(sendStudentId))?.email}
+                            </span>
+                        )}
+                    </div>
+                    {!sendStudentId && (
+                        <p className="tpl-no-student-hint">Selecteer eerst een student om een sjabloon te versturen.</p>
+                    )}
+
                     {loadingTemplates && <p className="payments-loading">Sjablonen laden…</p>}
 
                     {!loadingTemplates && templates.map((tpl) => (
@@ -525,37 +564,36 @@ const AdminBetalingenPage = () => {
                                         <span className="template-label-inline">Onderwerp:</span> {tpl.subject}
                                     </p>
                                     <pre className="template-body-preview">{tpl.body}</pre>
-                                    <div style={{ marginTop: "0.75rem", display: "flex", gap: "0.5rem", alignItems: "center", flexWrap: "wrap" }}>
-                                        <select
-                                            value={sendStudentId}
-                                            onChange={e => { setSendStudentId(e.target.value); setSendMsg(null); }}
-                                            className="template-input"
-                                            style={{ minWidth: 160, fontSize: 13 }}
-                                        >
-                                            <option value="">— Kies student —</option>
-                                            {sendStudents.map(s => (
-                                                <option key={s.id} value={s.id}>{s.username} · {s.email}</option>
-                                            ))}
-                                        </select>
+
+                                    {/* Verstuur-knop — werkt met de centrale selector hierboven */}
+                                    <div className="tpl-send-row">
                                         <button
                                             type="button"
                                             className="admin-btn admin-btn--small"
                                             disabled={sending || !sendStudentId}
                                             onClick={() => sendReminder(tpl.type)}
+                                            title={!sendStudentId ? "Kies eerst een student bovenaan" : ""}
                                         >
-                                            <FiSend /> {sending ? "Versturen…" : "Verstuur"}
+                                            <FiSend />
+                                            {sendingType === tpl.type
+                                                ? "Versturen…"
+                                                : sendStudentId
+                                                    ? `Verstuur naar ${sendStudents.find(s => String(s.id) === String(sendStudentId))?.username ?? "student"}`
+                                                    : "Kies student ↑"
+                                            }
                                         </button>
+
+                                        {/* Feedback uitsluitend voor dit template */}
+                                        {sendMsg?.type === tpl.type && (
+                                            <span className={`tpl-send-feedback ${sendMsg.ok ? "tpl-send-ok" : "tpl-send-err"}`}>
+                                                {sendMsg.ok ? "✓" : "✗"} {sendMsg.text}
+                                            </span>
+                                        )}
                                     </div>
-                                    {sendMsg && tpl.type === templates.find(t => t.type === templates[templates.length - 1]?.type)?.type && (
-                                        <p style={{ fontSize: 12, marginTop: "0.3rem", color: sendMsg.startsWith("Fout") ? "#ef4444" : "#22c55e" }}>{sendMsg}</p>
-                                    )}
                                 </div>
                             )}
                         </div>
                     ))}
-                    {sendMsg && !loadingTemplates && (
-                        <p style={{ fontSize: 13, marginTop: "0.25rem", color: sendMsg.startsWith("Fout") ? "#ef4444" : "#22c55e" }}>{sendMsg}</p>
-                    )}
                 </div>
             </section>
 

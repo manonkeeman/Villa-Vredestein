@@ -31,10 +31,16 @@ function formatDate(dateStr) {
 
 // ── Mock data (alleen zichtbaar als backend onbereikbaar is) ─────────────
 const MOCK_USERS = [
-    { id: 1, username: "Desmond", email: "desmond@example.com", room: "Japan",      contractStart: "2025-09-01", contractEnd: "2026-08-31", deposit: 750, contractFile: null },
-    { id: 2, username: "Medoc",   email: "medoc@example.com",   room: "Argentinië", contractStart: "2025-09-01", contractEnd: "2026-08-31", deposit: 750, contractFile: null },
-    { id: 3, username: "Simon",   email: "simon@example.com",   room: "Thailand",   contractStart: "2025-09-01", contractEnd: "2026-08-31", deposit: 750, contractFile: null },
+    { id: 1, username: "Desmond", email: "desmondstaal@gmail.com",  room: "Japan",      contractStart: "2025-09-01", contractEnd: "2026-08-31", deposit: 750, contractFile: null },
+    { id: 2, username: "Medoc",   email: "medocstaal@gmail.com",    room: "Argentinië", contractStart: "2025-09-01", contractEnd: "2026-08-31", deposit: 750, contractFile: null },
+    { id: 3, username: "Simon",   email: "simontalsma2@gmail.com",  room: "Thailand",   contractStart: "2025-09-01", contractEnd: "2026-08-31", deposit: 750, contractFile: null },
 ];
+
+// ── Hergebruik dezelfde deleted-IDs als op de bewoners-pagina ─────────────
+const getDeletedIds = () => {
+    try { return new Set(JSON.parse(localStorage.getItem("villa_deleted_users") || "[]")); }
+    catch { return new Set(); }
+};
 
 // ── Haal contractFile op uit meerdere mogelijke veldnamen ─────────────────
 function resolveContractFile(u) {
@@ -147,12 +153,20 @@ const AdminContractenPage = () => {
 
     const load = useCallback(async () => {
         setLoading(true);
+        const deletedIds = getDeletedIds();
+
+        const filterUsers = (list) =>
+            list
+                .filter(u => !deletedIds.has(String(u.id)))
+                .filter(u => {
+                    const email = (u.email || "").toLowerCase();
+                    return !email.includes("alvarmantyla") && !email.includes("arwenleonor");
+                });
+
         try {
             const res = await api.get("/api/users");
             const all = res.data || [];
 
-            // Toon alle bewoners die GEEN admin zijn
-            // Accepteer rollen in elk formaat dat de backend stuurt
             const isAdmin = (u) => {
                 const roles = u.roles || u.authorities || [];
                 return roles.some(r => {
@@ -161,10 +175,7 @@ const AdminContractenPage = () => {
                 });
             };
 
-            const students = all.filter(u => !isAdmin(u));
-
-            // Normaliseer contractFile veldnaam
-            const normalized = students.map(u => ({
+            const normalized = filterUsers(all.filter(u => !isAdmin(u))).map(u => ({
                 ...u,
                 contractFile: resolveContractFile(u),
             }));
@@ -172,7 +183,7 @@ const AdminContractenPage = () => {
             setTenants(normalized);
             setIsMock(false);
         } catch {
-            setTenants(MOCK_USERS);
+            setTenants(filterUsers(MOCK_USERS));
             setIsMock(true);
         } finally {
             setLoading(false);

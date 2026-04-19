@@ -171,6 +171,74 @@
     letter-spacing: 0.04em;
 }
 
+/* ── Centrale student-selector in sjablonen ── */
+.tpl-student-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    background: #0d0d0d;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+}
+
+.tpl-student-label {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #fcbc2d;
+    white-space: nowrap;
+}
+
+.tpl-student-select {
+    flex: 1;
+    min-width: 200px;
+}
+
+.tpl-student-email {
+    font-size: 0.78rem;
+    color: #22c55e;
+    font-weight: 600;
+}
+
+.tpl-no-student-hint {
+    font-size: 12px;
+    color: #666;
+    margin: -0.5rem 0 0.75rem;
+    font-style: italic;
+}
+
+.tpl-send-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 0.75rem;
+}
+
+.tpl-send-feedback {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 0.3rem 0.75rem;
+    border-radius: 8px;
+}
+
+.tpl-send-ok {
+    background: rgba(34,197,94,0.12);
+    color: #22c55e;
+    border: 1px solid #22c55e44;
+}
+
+.tpl-send-err {
+    background: rgba(239,68,68,0.12);
+    color: #ef4444;
+    border: 1px solid #ef444444;
+}
+
 /* ── Email template editor ── */
 .template-hint {
     color: #aaa;
