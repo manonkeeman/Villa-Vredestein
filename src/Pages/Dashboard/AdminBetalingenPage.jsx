@@ -27,12 +27,11 @@ const TEMPLATE_LABELS = {
     PAYMENT_REMINDER_2: "Tweede herinnering (7e van de maand)",
 };
 
-// ── Mock students list ────────────────────────────────────────────────────
+// ── Mock students list (echte e-mailadressen uit de backend) ─────────────
 const MOCK_STUDENTS = [
-    { id: 1, username: "Desmond",  email: "desmond@example.com",  room: "Japan" },
-    { id: 2, username: "Medoc",    email: "medoc@example.com",    room: "Argentinië" },
-    { id: 3, username: "Simon",    email: "simon@example.com",    room: "Thailand" },
-    { id: 4, username: "François", email: "francois@example.com", room: "Frankrijk" },
+    { id: 1, username: "Desmond",  email: "desmondstaal@gmail.com",  room: "Japan" },
+    { id: 2, username: "Medoc",    email: "medocstaal@gmail.com",    room: "Argentinië" },
+    { id: 3, username: "Simon",    email: "simontalsma2@gmail.com",  room: "Thailand" },
 ];
 
 // ── Generate mock invoices for all months in 2026 ─────────────────────────
@@ -101,13 +100,13 @@ const AdminBetalingenPage = () => {
     const [loadingInvoices, setLoadingInvoices] = useState(true);
     const [invoiceError,    setInvoiceError]    = useState(null);
 
-    // ── Create invoice form
-    const [showCreateForm,  setShowCreateForm]  = useState(false);
-    const [newInvStudentId, setNewInvStudentId] = useState("");
-    const [newInvAmount,    setNewInvAmount]    = useState("550");
-    const [newInvDueDate,   setNewInvDueDate]   = useState("");
-    const [creatingInv,     setCreatingInv]     = useState(false);
-    const [createInvMsg,    setCreateInvMsg]    = useState(null);
+    // ── Create / send form
+    const [manualStudentId,  setManualStudentId]  = useState("");
+    const [manualType,       setManualType]       = useState("PAYMENT_NEW");
+    const [manualAmount,     setManualAmount]     = useState("550");
+    const [manualDueDate,    setManualDueDate]    = useState("");
+    const [manualSending,    setManualSending]    = useState(false);
+    const [manualMsg,        setManualMsg]        = useState(null);
 
     // ── Email templates
     const [templates,         setTemplates]         = useState([]);
@@ -189,27 +188,32 @@ const AdminBetalingenPage = () => {
         else setViewMonth(m => m + 1);
     };
 
-    // ── Create invoice
-    const createInvoice = async () => {
-        if (!newInvStudentId || !newInvAmount) {
-            setCreateInvMsg("Kies een student en vul een bedrag in."); return;
-        }
-        setCreatingInv(true); setCreateInvMsg(null);
+    // ── Send manual invoice or reminder to one student
+    const sendManual = async () => {
+        if (!manualStudentId) { setManualMsg("Kies eerst een student."); return; }
+        setManualSending(true); setManualMsg(null);
         try {
-            await api.post("/api/invoices", {
-                userId:    newInvStudentId,
-                amount:    parseFloat(newInvAmount),
-                dueDate:   newInvDueDate || undefined,
-                sendEmail: true,
-            });
-            setCreateInvMsg("Factuur aangemaakt en e-mail met betaallink verzonden!");
-            setShowCreateForm(false);
-            setNewInvStudentId(""); setNewInvAmount("550"); setNewInvDueDate("");
-            fetchInvoices();
+            if (manualType === "PAYMENT_NEW") {
+                if (!manualAmount) { setManualMsg("Vul een bedrag in."); setManualSending(false); return; }
+                await api.post("/api/invoices", {
+                    userId:    manualStudentId,
+                    amount:    parseFloat(manualAmount),
+                    dueDate:   manualDueDate || undefined,
+                    sendEmail: true,
+                });
+                setManualMsg("Factuur aangemaakt — e-mail met Mollie-betaallink verstuurd!");
+                fetchInvoices();
+            } else {
+                await api.post("/api/admin/email/send", {
+                    userId:       manualStudentId,
+                    templateType: manualType,
+                });
+                setManualMsg("E-mail verstuurd naar de student!");
+            }
         } catch {
-            setCreateInvMsg("Fout bij aanmaken (backend niet bereikbaar). Mollie-link wordt aangemaakt door backend.");
+            setManualMsg("Fout bij versturen (controleer of de backend actief is).");
         } finally {
-            setCreatingInv(false);
+            setManualSending(false);
         }
     };
 
@@ -333,101 +337,138 @@ const AdminBetalingenPage = () => {
                 </div>
             </section>
 
-            {/* ── Factuur aanmaken ── */}
+            {/* ── Facturen & herinneringen ── */}
             <section className="dashboard-news">
                 <div className="dashboard-news-content">
-                    <div className="factuur-header">
-                        <h2><FiPlus /> Factuur aanmaken</h2>
-                        <button
-                            type="button"
-                            className="admin-btn admin-btn--ghost admin-btn--small"
-                            onClick={() => { setShowCreateForm(v => !v); setCreateInvMsg(null); }}
-                        >
-                            {showCreateForm ? <><FiX /> Sluiten</> : <><FiPlus /> Nieuw</>}
-                        </button>
-                    </div>
-                    <p style={{ fontSize: 13, color: "#888", marginBottom: "0.75rem" }}>
-                        Maak een factuur voor een specifieke student aan. De backend stuurt automatisch een e-mail met Mollie-betaallink naar het gekoppelde e-mailadres.
+                    <h2 style={{ display: "flex", alignItems: "center", gap: "0.45rem", marginBottom: "0.25rem" }}>
+                        <FiSend /> Facturen &amp; herinneringen sturen
+                    </h2>
+                    <p style={{ fontSize: 13, color: "#888", marginBottom: "1.25rem" }}>
+                        Stuur automatisch naar alle bewoners, of kies één student voor een specifieke factuur of herinnering.
+                        De backend koppelt automatisch een Mollie-betaallink aan het e-mailadres van de student.
                     </p>
 
-                    {showCreateForm && (
-                        <div className="factuur-form">
-                            <div className="factuur-form-row">
-                                <div className="bew-field" style={{ flex: 2 }}>
-                                    <label>Student</label>
-                                    <select
-                                        value={newInvStudentId}
-                                        onChange={e => { setNewInvStudentId(e.target.value); setCreateInvMsg(null); }}
-                                        className="template-input"
-                                    >
-                                        <option value="">— Kies student —</option>
-                                        {sendStudents.map(s => (
-                                            <option key={s.id} value={s.id}>
-                                                {s.username} ({s.email || s.room || ""})
-                                            </option>
-                                        ))}
-                                    </select>
-                                </div>
-                                <div className="bew-field" style={{ flex: 1 }}>
-                                    <label>Bedrag (€)</label>
-                                    <input
-                                        type="number"
-                                        min="1"
-                                        step="0.01"
-                                        value={newInvAmount}
-                                        onChange={e => setNewInvAmount(e.target.value)}
-                                        className="template-input"
-                                        placeholder="550.00"
-                                    />
-                                </div>
-                                <div className="bew-field" style={{ flex: 1 }}>
-                                    <label>Vervaldatum</label>
-                                    <input
-                                        type="date"
-                                        value={newInvDueDate}
-                                        onChange={e => setNewInvDueDate(e.target.value)}
-                                        className="template-input"
-                                    />
-                                </div>
-                            </div>
-                            <div style={{ display: "flex", gap: "0.75rem", alignItems: "center", marginTop: "0.5rem" }}>
-                                <button
-                                    type="button"
-                                    className="admin-btn"
-                                    disabled={creatingInv || !newInvStudentId || !newInvAmount}
-                                    onClick={createInvoice}
+                    {/* ── Automatisch: alle bewoners ── */}
+                    <div className="factuur-blok">
+                        <p className="factuur-blok-label"><FiRefreshCw /> Automatisch — alle bewoners</p>
+                        <p className="factuur-blok-hint">
+                            Voer de maandelijkse job uit. De backend maakt facturen aan voor
+                            {" "}{sendStudents.map(s => s.username).join(", ")} en stuurt ze per e-mail.
+                        </p>
+                        <div className="jobs-row">
+                            <button
+                                type="button"
+                                className="admin-btn"
+                                disabled={triggering}
+                                onClick={() => triggerJob("monthly-invoices/trigger", "Maandfacturen")}
+                                title="Maakt facturen aan voor alle bewoners en stuurt e-mail met Mollie-betaallink (wordt automatisch op de 1e uitgevoerd)"
+                            >
+                                <FiDollarSign /> Facturen aanmaken (1e)
+                            </button>
+                            <button
+                                type="button"
+                                className="admin-btn admin-btn--ghost"
+                                disabled={triggering}
+                                onClick={() => triggerJob("payment-reminder-1/trigger", "Eerste herinnering")}
+                                title="Stuurt een eerste herinnering naar alle bewoners met openstaande betaling (wordt automatisch op de 3e uitgevoerd)"
+                            >
+                                <FiMail /> Eerste herinnering (3e)
+                            </button>
+                            <button
+                                type="button"
+                                className="admin-btn admin-btn--ghost"
+                                disabled={triggering}
+                                onClick={() => triggerJob("payment-reminder-2/trigger", "Tweede herinnering")}
+                                title="Stuurt een tweede herinnering naar alle bewoners met openstaande betaling (wordt automatisch op de 7e uitgevoerd)"
+                            >
+                                <FiAlertTriangle /> Tweede herinnering (7e)
+                            </button>
+                        </div>
+                        {triggerMsg && (
+                            <p className="factuur-feedback" style={{ color: triggerMsg.startsWith("Fout") ? "#ef4444" : "#22c55e" }}>
+                                {triggerMsg}
+                            </p>
+                        )}
+                    </div>
+
+                    <div className="factuur-divider" />
+
+                    {/* ── Handmatig: één student ── */}
+                    <div className="factuur-blok">
+                        <p className="factuur-blok-label"><FiPlus /> Handmatig — één student</p>
+                        <p className="factuur-blok-hint">
+                            Kies een student en het type bericht. Bij "Nieuwe factuur" wordt ook een Mollie-betaallink aangemaakt.
+                        </p>
+                        <div className="factuur-form-row">
+                            <div className="factuur-field">
+                                <label>Student</label>
+                                <select
+                                    value={manualStudentId}
+                                    onChange={e => { setManualStudentId(e.target.value); setManualMsg(null); }}
+                                    className="template-input"
                                 >
-                                    <FiSend /> {creatingInv ? "Aanmaken…" : "Aanmaken & stuur e-mail"}
-                                </button>
+                                    <option value="">— Kies student —</option>
+                                    {sendStudents.map(s => (
+                                        <option key={s.id} value={s.id}>
+                                            {s.username} · {s.email}
+                                        </option>
+                                    ))}
+                                </select>
                             </div>
-                            {createInvMsg && (
-                                <p style={{ fontSize: 13, marginTop: "0.5rem", color: createInvMsg.startsWith("Fout") ? "#ef4444" : "#22c55e" }}>
-                                    {createInvMsg}
-                                </p>
+                            <div className="factuur-field">
+                                <label>Type</label>
+                                <select
+                                    value={manualType}
+                                    onChange={e => { setManualType(e.target.value); setManualMsg(null); }}
+                                    className="template-input"
+                                >
+                                    <option value="PAYMENT_NEW">Nieuwe factuur (+ Mollie-link)</option>
+                                    <option value="PAYMENT_REMINDER_1">Eerste herinnering</option>
+                                    <option value="PAYMENT_REMINDER_2">Tweede herinnering</option>
+                                </select>
+                            </div>
+                            {manualType === "PAYMENT_NEW" && (
+                                <>
+                                    <div className="factuur-field factuur-field--sm">
+                                        <label>Bedrag (€)</label>
+                                        <input
+                                            type="number"
+                                            min="1"
+                                            step="0.01"
+                                            value={manualAmount}
+                                            onChange={e => setManualAmount(e.target.value)}
+                                            className="template-input"
+                                            placeholder="550.00"
+                                        />
+                                    </div>
+                                    <div className="factuur-field factuur-field--sm">
+                                        <label>Vervaldatum</label>
+                                        <input
+                                            type="date"
+                                            value={manualDueDate}
+                                            onChange={e => setManualDueDate(e.target.value)}
+                                            className="template-input"
+                                        />
+                                    </div>
+                                </>
                             )}
                         </div>
-                    )}
+                        <button
+                            type="button"
+                            className="admin-btn"
+                            style={{ marginTop: "0.75rem" }}
+                            disabled={manualSending || !manualStudentId}
+                            onClick={sendManual}
+                        >
+                            <FiSend /> {manualSending ? "Versturen…" : (manualType === "PAYMENT_NEW" ? "Factuur aanmaken & versturen" : "Herinnering versturen")}
+                        </button>
+                        {manualMsg && (
+                            <p className="factuur-feedback" style={{ color: manualMsg.startsWith("Fout") ? "#ef4444" : "#22c55e" }}>
+                                {manualMsg}
+                            </p>
+                        )}
+                    </div>
                 </div>
-            </section>
-
-            {/* ── Job triggers ── */}
-            <section className="admin-section" style={{ marginBottom: "1.5rem" }}>
-                <h2 style={{ marginBottom: "0.75rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                    <FiRefreshCw /> Automatische jobs
-                </h2>
-                <p className="jobs-hint">Start een job om facturen voor alle bewoners aan te maken of herinneringen te sturen.</p>
-                <div className="jobs-row">
-                    <button type="button" className="admin-btn" disabled={triggering} onClick={() => triggerJob("monthly-invoices/trigger", "Maandfacturen")}>
-                        Facturen aanmaken (1e)
-                    </button>
-                    <button type="button" className="admin-btn admin-btn--ghost" disabled={triggering} onClick={() => triggerJob("payment-reminder-1/trigger", "Eerste herinnering")}>
-                        Eerste herinnering (3e)
-                    </button>
-                    <button type="button" className="admin-btn admin-btn--ghost" disabled={triggering} onClick={() => triggerJob("payment-reminder-2/trigger", "Tweede herinnering")}>
-                        Tweede herinnering (7e)
-                    </button>
-                </div>
-                {triggerMsg && <p style={{ fontSize: 13, color: "#22c55e", marginTop: "0.5rem" }}>{triggerMsg}</p>}
             </section>
 
             {/* ── Email template editor ── */}
@@ -493,7 +534,7 @@ const AdminBetalingenPage = () => {
                                         >
                                             <option value="">— Kies student —</option>
                                             {sendStudents.map(s => (
-                                                <option key={s.id} value={s.id}>{s.username}</option>
+                                                <option key={s.id} value={s.id}>{s.username} · {s.email}</option>
                                             ))}
                                         </select>
                                         <button
