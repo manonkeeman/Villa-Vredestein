@@ -20,13 +20,16 @@ export default function DashboardLayout({ sidebar, mainClass = "", rootClass = "
             {/* Mobile hamburger — hidden on desktop via CSS */}
             <button
                 type="button"
-                className="sidebar-mobile-toggle"
+                className={`sidebar-mobile-toggle${open ? " sidebar-mobile-toggle--open" : ""}`}
                 onClick={() => setOpen(o => !o)}
                 aria-label={open ? "Menu sluiten" : "Menu openen"}
                 aria-expanded={open}
             >
-                {open ? <FiX size={16} /> : <FiMenu size={16} />}
-                <span>{open ? "Sluiten" : "Menu"}</span>
+                <span className="smt-logo">VV</span>
+                <span className="smt-label">{open ? "Sluiten" : "Navigatie"}</span>
+                <span className="smt-icon" aria-hidden="true">
+                    {open ? <FiX size={14} /> : <FiMenu size={14} />}
+                </span>
             </button>
 
             {/* Overlay — closes menu on tap outside */}
