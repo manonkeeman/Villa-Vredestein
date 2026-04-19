@@ -29,9 +29,9 @@ const TEMPLATE_LABELS = {
 
 // ── Mock students list (echte e-mailadressen uit de backend) ─────────────
 const MOCK_STUDENTS = [
-    { id: 1, username: "Desmond",  email: "desmondstaal@gmail.com",  room: "Japan" },
-    { id: 2, username: "Medoc",    email: "medocstaal@gmail.com",    room: "Argentinië" },
-    { id: 3, username: "Simon",    email: "simontalsma2@gmail.com",  room: "Thailand" },
+    { id: 1, username: "Desmond",  email: "desmondstaal@gmail.com",  room: "Thailand" },
+    { id: 2, username: "Medoc",    email: "medocstaal@gmail.com",    room: "Frankrijk" },
+    { id: 3, username: "Simon",    email: "simontalsma2@gmail.com",  room: "Argentinië" },
 ];
 
 // ── Mock facturen: €350/mnd, jan t/m jul 2026; Desmond OVERDUE, rest PAID ──
