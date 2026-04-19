@@ -200,16 +200,17 @@
         position: relative;
     }
 
-    /* ── Toggle button: card-style, gecentreerd onder nav ── */
+    /* ── Toggle button: full-width card-style, matches cards below ── */
     .sidebar-mobile-toggle {
         display: flex;
         align-items: center;
         gap: 0;
         position: fixed;
         top: 108px;
-        left: 50%;
-        transform: translateX(-50%);
-        right: auto;
+        left: 1rem;
+        right: 1rem;
+        width: auto;
+        transform: none;
         z-index: 1100;
         background: #111;
         border: 2px solid #fcbc2d;

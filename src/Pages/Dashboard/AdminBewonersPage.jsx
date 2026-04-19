@@ -51,15 +51,20 @@ const MOCK_USERS = [
     { id: 1, username: "Desmond", email: "desmondstaal@gmail.com",        room: "Japan",      roles: ["ROLE_STUDENT"] },
     { id: 2, username: "Medoc",   email: "medocstaal@gmail.com",          room: "Argentinië", roles: ["ROLE_STUDENT"] },
     { id: 3, username: "Simon",   email: "simontalsma2@gmail.com",        room: "Thailand",   roles: ["ROLE_STUDENT"] },
-    { id: 5, username: "Maria",   email: "cleaner@villavredestein.com",   room: "",           roles: ["ROLE_CLEANER"] },
-    { id: 6, username: "Maxim",   email: "admin@villavredestein.com",     room: "",           roles: ["ROLE_ADMIN"] },
+    { id: 5, username: "Schoonmaak",              email: "cleaner@villavredestein.com", room: "", roles: ["ROLE_CLEANER"] },
+    { id: 6, username: "Villa Vredestein Admin", email: "admin@villavredestein.com",   room: "", roles: ["ROLE_ADMIN"] },
 ];
 
 // ── Helpers ───────────────────────────────────────────────────────────────
 function resolveRoles(u) {
-    const raw = u.roles || u.authorities || [];
+    // Support roles/authorities array AND singular role field
+    let raw = u.roles || u.authorities || [];
+    if (!Array.isArray(raw)) raw = [raw];
+    if (raw.length === 0 && u.role) {
+        raw = Array.isArray(u.role) ? u.role : [u.role];
+    }
     return raw.map(r => {
-        const s = typeof r === "string" ? r : (r?.authority || r?.name || "");
+        const s = typeof r === "string" ? r : (r?.authority || r?.name || r?.role || "");
         if (!s) return null;
         const up = s.trim().toUpperCase();
         return up.startsWith("ROLE_") ? up : `ROLE_${up}`;
