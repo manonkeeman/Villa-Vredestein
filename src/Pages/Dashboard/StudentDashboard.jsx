@@ -3,9 +3,8 @@ import { Helmet } from "react-helmet-async";
 import { Navigate, Link, useParams } from "react-router-dom";
 import { useAuth } from "../Auth/AuthContext.jsx";
 import {
-    FiBookOpen, FiDollarSign, FiClipboard, FiCalendar,
+    FiBookOpen, FiDollarSign, FiClipboard,
     FiAlertCircle, FiClock, FiCheckCircle, FiCheckSquare, FiSquare, FiTool,
-    FiRadio,
 } from "react-icons/fi";
 import { MdOutlineCleaningServices } from "react-icons/md";
 import api from "../../Helpers/AxiosHelper.js";
@@ -43,8 +42,6 @@ const formatWeekRange = (isoWeek, year) => {
         : `${start.getDate()} ${NL_MONTHS[start.getMonth()]}–${end.getDate()} ${NL_MONTHS[end.getMonth()]}`;
 };
 
-const TYPE_EMOJI = { mededeling: "📢", onderhoud: "🔧", evenement: "🎉" };
-
 const StudentDashboard = () => {
     const { isLoggedIn, logout, user } = useAuth();
     const { id } = useParams();
@@ -52,7 +49,6 @@ const StudentDashboard = () => {
     const [invoices, setInvoices] = useState([]);
     const [invoicesLoading, setInvoicesLoading] = useState(true);
     const [myTasks, setMyTasks] = useState([]);
-    const [announcements, setAnnouncements] = useState([]);
 
     const currentId = user?.id ?? user?.userId;
     if (!isLoggedIn) return <Navigate to="/login" replace />;
@@ -75,12 +71,6 @@ const StudentDashboard = () => {
         amount != null ? new Intl.NumberFormat("nl-NL", { style: "currency", currency: "EUR" }).format(amount) : "—";
 
     useEffect(() => { setContractFile(user?.contractFile || null); }, [user?.contractFile]);
-
-    useEffect(() => {
-        api.get("/api/announcements")
-            .then(res => setAnnouncements(res.data || []))
-            .catch(() => setAnnouncements([]));
-    }, []);
 
     useEffect(() => {
         api.get("/api/invoices/me")
@@ -224,33 +214,6 @@ const StudentDashboard = () => {
                 <div className="dashboard-cleaning-meta" style={{ marginTop: "auto" }}>
                     <Link to="/schoonmaakschema" className="dashboard-schema-btn">
                         <FiClipboard /> Bekijk
-                    </Link>
-                </div>
-            </article>
-
-            {/* ── Mededelingen (paars) ── */}
-            <article className="dash-card dash-card--purple">
-                <h2><FiRadio /> Mededelingen</h2>
-                {announcements.length > 0 ? (
-                    <ul className="dash-news-list">
-                        {announcements.slice(0, 2).map(n => (
-                            <li key={n.id} className="dash-news-item">
-                                <span className="dash-news-emoji">{TYPE_EMOJI[n.type] || "📢"}</span>
-                                <div>
-                                    <strong>{n.title}</strong>
-                                    <span className="dash-news-date">
-                                        {new Date(n.createdAt).toLocaleDateString("nl-NL", { day: "numeric", month: "short", year: "numeric" })}
-                                    </span>
-                                </div>
-                            </li>
-                        ))}
-                    </ul>
-                ) : (
-                    <p style={{ fontSize: "0.9rem", color: "#aaa" }}>Geen mededelingen.</p>
-                )}
-                <div className="dashboard-cleaning-meta" style={{ marginTop: "auto" }}>
-                    <Link to="/student/mededelingen" className="dashboard-schema-btn">
-                        <FiRadio /> Alles
                     </Link>
                 </div>
             </article>
