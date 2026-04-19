@@ -269,22 +269,15 @@
 }
 
 /* ── Checkbox row ── */
-.bew-checkbox-row {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+.bew-info-msg {
     font-size: 13px;
-    color: #ccc;
-    cursor: pointer;
-    user-select: none;
-}
-
-.bew-checkbox-row input[type="checkbox"] {
-    width: 16px;
-    height: 16px;
-    accent-color: #fcbc2d;
-    cursor: pointer;
-    flex-shrink: 0;
+    color: #aaa;
+    background: #111;
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+    padding: 0.55rem 0.85rem;
+    margin: 0;
+    line-height: 1.5;
 }
 
 /* ── Mobile ── */

@@ -15,8 +15,8 @@ import "./AdminPages.css";
 import "./AdminBewonersPage.css";
 import "../../Styles/Global.css";
 
-// ── Kamer-opties ──────────────────────────────────────────────────────────
-const ROOM_OPTIONS = ["Japan", "Argentinië", "Thailand", "Frankrijk"];
+// ── Kamer-opties (fallback als API faalt) ─────────────────────────────────
+const ALL_ROOMS = ["Argentinië", "Frankrijk", "Japan", "Thailand"];
 const ROLE_OPTIONS = [
     { value: "ROLE_STUDENT", label: "Student / Bewoner" },
     { value: "ROLE_CLEANER", label: "Schoonmaakster" },
@@ -143,14 +143,13 @@ function BewonerCard({ bewoner, onDelete }) {
 }
 
 // ── Nieuw-bewoner formulier (modal) ───────────────────────────────────────
-const EMPTY_FORM = { username: "", email: "", password: "", room: ROOM_OPTIONS[0], role: "ROLE_STUDENT" };
+const EMPTY_FORM = { username: "", email: "", password: "", room: ALL_ROOMS[0], role: "ROLE_STUDENT" };
 
 function NieuwBewoner({ onCreated, onClose }) {
-    const [form,       setForm]       = useState(EMPTY_FORM);
-    const [showPw,     setShowPw]     = useState(false);
-    const [saving,     setSaving]     = useState(false);
-    const [err,        setErr]        = useState(null);
-    const [sendInvoice, setSendInvoice] = useState(true);
+    const [form,    setForm]    = useState(EMPTY_FORM);
+    const [showPw,  setShowPw]  = useState(false);
+    const [saving,  setSaving]  = useState(false);
+    const [err,     setErr]     = useState(null);
     const firstRef = useRef(null);
 
     useEffect(() => { firstRef.current?.focus(); }, []);
@@ -166,14 +165,12 @@ function NieuwBewoner({ onCreated, onClose }) {
 
         // Probeer beide payloadformaten (sommige backends verwachten 'roles' als array)
         const basePayload = {
-            username:           form.username.trim(),
-            email:              form.email.trim().toLowerCase(),
-            password:           form.password,
-            room:               form.room,
-            role:               form.role,
-            roles:              [form.role],
-            sendEmail:          sendInvoice,
-            sendWelcomeInvoice: sendInvoice,
+            username: form.username.trim(),
+            email:    form.email.trim().toLowerCase(),
+            password: form.password,
+            room:     form.room,
+            role:     form.role,
+            roles:    [form.role],
         };
 
         // Probeer endpoints op volgorde; stop alleen bij echte validatiefouten
@@ -296,7 +293,7 @@ function NieuwBewoner({ onCreated, onClose }) {
                         <div className="bew-field">
                             <label htmlFor="bew-room">Kamer</label>
                             <select id="bew-room" value={form.room} onChange={set("room")}>
-                                {ROOM_OPTIONS.map(r => <option key={r} value={r}>{r}</option>)}
+                                {ALL_ROOMS.map(r => <option key={r} value={r}>{r}</option>)}
                             </select>
                         </div>
 
@@ -308,14 +305,9 @@ function NieuwBewoner({ onCreated, onClose }) {
                         </div>
                     </div>
 
-                    <label className="bew-checkbox-row">
-                        <input
-                            type="checkbox"
-                            checked={sendInvoice}
-                            onChange={e => setSendInvoice(e.target.checked)}
-                        />
-                        <span>Stuur welkomstfactuur met Mollie betaallink</span>
-                    </label>
+                    <p className="bew-info-msg">
+                        De nieuwe bewoner ontvangt automatisch een welkomstbericht per mail met daarin de inloggegevens.
+                    </p>
 
                     {err && (
                         <div className="bew-error">
