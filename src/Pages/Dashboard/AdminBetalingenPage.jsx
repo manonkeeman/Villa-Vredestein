@@ -139,8 +139,10 @@ const AdminBetalingenPage = () => {
         const clean = (list) => list
             .filter(u => !deletedIds.has(String(u.id)))
             .filter(u => {
-                const e = (u.email || "").toLowerCase();
-                return !e.includes("alvarmantyla") && !e.includes("arwenleonor");
+                const e = (u.email    || "").toLowerCase();
+                const n = (u.username || u.name || "").toLowerCase();
+                return !e.includes("alvarmantyla") && !e.includes("arwenleonor")
+                    && n !== "alvar" && n !== "arwen";
             });
 
         api.get("/api/users")

@@ -353,7 +353,9 @@ const AdminBewonersPage = () => {
                 .filter(u => !deletedIds.has(String(u.id)))
                 .filter(u => {
                     const email = (u.email || "").toLowerCase();
-                    return !email.includes("alvarmantyla") && !email.includes("arwenleonor");
+                    const name  = (u.username || u.name || "").toLowerCase();
+                    return !email.includes("alvarmantyla") && !email.includes("arwenleonor")
+                        && name !== "alvar" && name !== "arwen";
                 })
                 .map(u => ({ ...u, roles: resolveRoles(u) }));
         };
