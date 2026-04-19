@@ -79,27 +79,23 @@ const StudentDashboard = () => {
                 // Mock fallback: Desmond has unpaid invoices, others are all paid
                 const mockMonth = now.getMonth() + 1;
                 const mockYear  = now.getFullYear();
-                if ((user?.username || "").toLowerCase() === "desmond") {
-                    setInvoices([{
-                        id: 9001,
-                        invoiceMonth: mockMonth,
+                const isDesmond = (user?.username || "").toLowerCase() === "desmond";
+                const mockInvoices = [];
+                for (let month = 1; month <= 7; month++) {
+                    const isFuture = month >= 5;
+                    const status = isFuture ? "OPEN" : (isDesmond ? "OVERDUE" : "PAID");
+                    mockInvoices.push({
+                        id: 9000 + month,
+                        invoiceMonth: month,
                         invoiceYear:  mockYear,
                         amount: 350,
-                        status: "OVERDUE",
-                        dueDate: `${mockYear}-${String(mockMonth).padStart(2,"0")}-05`,
-                        checkoutUrl: "https://checkout.mollie.com/mock-desmond",
-                    }]);
-                } else {
-                    setInvoices([{
-                        id: 9002,
-                        invoiceMonth: mockMonth,
-                        invoiceYear:  mockYear,
-                        amount: 350,
-                        status: "PAID",
-                        dueDate: `${mockYear}-${String(mockMonth).padStart(2,"0")}-05`,
-                        paidAt: `${mockYear}-${String(mockMonth).padStart(2,"0")}-03`,
-                    }]);
+                        status,
+                        dueDate: `${mockYear}-${String(month).padStart(2,"0")}-05`,
+                        paidAt: status === "PAID" ? `${mockYear}-${String(month).padStart(2,"0")}-03` : null,
+                        checkoutUrl: (status === "OPEN" || status === "OVERDUE") ? "https://checkout.mollie.com/mock-desmond" : null,
+                    });
                 }
+                setInvoices(mockInvoices);
             })
             .finally(() => setInvoicesLoading(false));
     }, [user?.username]);

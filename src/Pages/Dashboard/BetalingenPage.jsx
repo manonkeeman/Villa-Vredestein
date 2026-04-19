@@ -57,16 +57,19 @@ const BetalingenPage = () => {
                 // Mock fallback keyed to username
                 const isDesmond = (user?.username || "").toLowerCase() === "desmond";
                 const mockInvoices = [];
-                for (let month = 1; month <= 4; month++) {
+                // Months 1–4 = past → PAID / OVERDUE; months 5–7 = future → OPEN
+                for (let month = 1; month <= 7; month++) {
+                    const isFuture = month >= 5;
+                    const status = isFuture ? "OPEN" : (isDesmond ? "OVERDUE" : "PAID");
                     mockInvoices.push({
                         id: 9000 + month,
                         invoiceMonth: month,
                         invoiceYear: 2026,
                         amount: 350,
-                        status: isDesmond ? "OVERDUE" : "PAID",
+                        status,
                         dueDate: `2026-${String(month).padStart(2,"0")}-05`,
-                        paidAt: isDesmond ? null : `2026-${String(month).padStart(2,"0")}-03`,
-                        checkoutUrl: isDesmond ? "https://checkout.mollie.com/mock-desmond" : null,
+                        paidAt: status === "PAID" ? `2026-${String(month).padStart(2,"0")}-03` : null,
+                        checkoutUrl: (status === "OPEN" || status === "OVERDUE") ? "https://checkout.mollie.com/mock-desmond" : null,
                     });
                 }
                 setInvoices(mockInvoices);

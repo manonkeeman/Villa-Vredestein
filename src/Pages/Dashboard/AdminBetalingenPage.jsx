@@ -38,9 +38,13 @@ const MOCK_STUDENTS = [
 const MOCK_INVOICES = (() => {
     const invoices = [];
     let idCounter = 1;
+    // Months 1–4 (Jan–Apr) = past → PAID for others, OVERDUE for Desmond
+    // Months 5–7 (May–Jul) = future → OPEN for everyone
     for (let month = 1; month <= 7; month++) {
+        const isFuture = month >= 5;
         MOCK_STUDENTS.forEach(s => {
             const isDesmond = s.username === "Desmond";
+            const status = isFuture ? "OPEN" : (isDesmond ? "OVERDUE" : "PAID");
             invoices.push({
                 id: idCounter++,
                 studentId:    s.id,
@@ -49,11 +53,11 @@ const MOCK_INVOICES = (() => {
                 invoiceMonth: month,
                 invoiceYear:  2026,
                 amount:       350,
-                status:       isDesmond ? "OVERDUE" : "PAID",
+                status,
                 dueDate:      `2026-${String(month).padStart(2,"0")}-05`,
-                paidAt:       isDesmond ? null : `2026-${String(month).padStart(2,"0")}-03`,
-                checkoutUrl:  isDesmond ? "https://checkout.mollie.com/mock-desmond" : null,
-                reminderCount: isDesmond ? Math.min(month, 2) : 0,
+                paidAt:       status === "PAID" ? `2026-${String(month).padStart(2,"0")}-03` : null,
+                checkoutUrl:  (status === "OPEN" || status === "OVERDUE") ? "https://checkout.mollie.com/mock" : null,
+                reminderCount: isDesmond && !isFuture ? Math.min(month, 2) : 0,
             });
         });
     }
