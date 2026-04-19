@@ -48,10 +48,11 @@ const persistLocalUser = (user) => {
 
 // ── Mock data ─────────────────────────────────────────────────────────────
 const MOCK_USERS = [
-    { id: 1, username: "Desmond", email: "desmondstaal@gmail.com",  room: "Japan",      roles: ["ROLE_STUDENT"] },
-    { id: 2, username: "Medoc",   email: "medocstaal@gmail.com",    room: "Argentinië", roles: ["ROLE_STUDENT"] },
-    { id: 3, username: "Simon",   email: "simontalsma2@gmail.com",  room: "Thailand",   roles: ["ROLE_STUDENT"] },
-    { id: 5, username: "Maria",   email: "maria@example.com",       room: "",           roles: ["ROLE_CLEANER"] },
+    { id: 1, username: "Desmond", email: "desmondstaal@gmail.com",        room: "Japan",      roles: ["ROLE_STUDENT"] },
+    { id: 2, username: "Medoc",   email: "medocstaal@gmail.com",          room: "Argentinië", roles: ["ROLE_STUDENT"] },
+    { id: 3, username: "Simon",   email: "simontalsma2@gmail.com",        room: "Thailand",   roles: ["ROLE_STUDENT"] },
+    { id: 5, username: "Maria",   email: "cleaner@villavredestein.com",   room: "",           roles: ["ROLE_CLEANER"] },
+    { id: 6, username: "Maxim",   email: "admin@villavredestein.com",     room: "",           roles: ["ROLE_ADMIN"] },
 ];
 
 // ── Helpers ───────────────────────────────────────────────────────────────
@@ -158,32 +159,35 @@ function NieuwBewoner({ onCreated, onClose }) {
         }
         setSaving(true); setErr(null);
 
-        const payload = {
-            username: form.username.trim(),
-            email:    form.email.trim().toLowerCase(),
-            password: form.password,
-            room:     form.room,
-            role:     form.role,
+        // Probeer beide payloadformaten (sommige backends verwachten 'roles' als array)
+        const basePayload = {
+            username:           form.username.trim(),
+            email:              form.email.trim().toLowerCase(),
+            password:           form.password,
+            room:               form.room,
+            role:               form.role,
+            roles:              [form.role],
+            sendEmail:          sendInvoice,
             sendWelcomeInvoice: sendInvoice,
         };
 
-        // Try multiple endpoints; stop only on validation errors (400/409/422)
+        // Probeer endpoints op volgorde; stop alleen bij echte validatiefouten
         const tryCreate = async () => {
             const endpoints = [
+                "/api/auth/register",   // meest voorkomend
                 "/api/admin/users",
-                "/api/users/register",
-                "/api/auth/register",
+                "/api/users",
             ];
             let lastError;
             for (const endpoint of endpoints) {
                 try {
-                    return await api.post(endpoint, payload);
+                    return await api.post(endpoint, basePayload);
                 } catch (ex) {
                     lastError = ex;
                     const status = ex.response?.status;
-                    // Stop trying if backend explicitly rejects the data
+                    // Validatiefout van backend → stop meteen
                     if (status === 400 || status === 409 || status === 422) throw ex;
-                    // 404/403/405 = endpoint not found/forbidden → try next
+                    // 404/403/405 → probeer volgend endpoint
                 }
             }
             throw lastError;
@@ -198,19 +202,23 @@ function NieuwBewoner({ onCreated, onClose }) {
         } catch (ex) {
             const isNetworkError = !ex.response;
             if (isNetworkError) {
-                // Both endpoints unreachable — create locally
+                // Backend onbereikbaar — lokaal opslaan
                 const newUser = {
                     id: `local_${Date.now()}`,
                     username: form.username.trim(),
-                    email: form.email.trim().toLowerCase(),
-                    room: form.room,
-                    roles: [form.role],
+                    email:    form.email.trim().toLowerCase(),
+                    room:     form.room,
+                    roles:    [form.role],
                 };
                 persistLocalUser(newUser);
                 onCreated(newUser);
             } else {
-                const msg = ex?.response?.data?.message || ex?.response?.data || "Aanmaken mislukt. Controleer of het e-mailadres al bestaat.";
-                setErr(typeof msg === "string" ? msg : JSON.stringify(msg));
+                // Toon de exacte foutmelding van de backend
+                const raw = ex?.response?.data;
+                const msg = raw?.message || raw?.error || raw?.detail
+                    || (typeof raw === "string" ? raw : null)
+                    || `HTTP ${ex.response.status} — aanmaken mislukt.`;
+                setErr(msg);
             }
         } finally {
             setSaving(false);

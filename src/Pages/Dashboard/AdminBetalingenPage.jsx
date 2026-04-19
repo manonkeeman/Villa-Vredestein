@@ -34,25 +34,25 @@ const MOCK_STUDENTS = [
     { id: 3, username: "Simon",    email: "simontalsma2@gmail.com",  room: "Thailand" },
 ];
 
-// ── Generate mock invoices for all months in 2026 ─────────────────────────
+// ── Mock facturen: €350/mnd, jan t/m jul 2026; Desmond OVERDUE, rest PAID ──
 const MOCK_INVOICES = (() => {
     const invoices = [];
     let idCounter = 1;
-    for (let month = 1; month <= 12; month++) {
+    for (let month = 1; month <= 7; month++) {
         MOCK_STUDENTS.forEach(s => {
             const isDesmond = s.username === "Desmond";
             invoices.push({
                 id: idCounter++,
-                studentId:   s.id,
-                studentName: s.username,
+                studentId:    s.id,
+                studentName:  s.username,
                 studentEmail: s.email,
                 invoiceMonth: month,
                 invoiceYear:  2026,
-                amount: 550,
-                status:   isDesmond ? "OVERDUE" : "PAID",
-                dueDate:  `2026-${String(month).padStart(2,"0")}-05`,
-                paidAt:   isDesmond ? null : `2026-${String(month).padStart(2,"0")}-03`,
-                checkoutUrl: isDesmond ? "https://checkout.mollie.com/mock-desmond" : null,
+                amount:       350,
+                status:       isDesmond ? "OVERDUE" : "PAID",
+                dueDate:      `2026-${String(month).padStart(2,"0")}-05`,
+                paidAt:       isDesmond ? null : `2026-${String(month).padStart(2,"0")}-03`,
+                checkoutUrl:  isDesmond ? "https://checkout.mollie.com/mock-desmond" : null,
                 reminderCount: isDesmond ? Math.min(month, 2) : 0,
             });
         });
