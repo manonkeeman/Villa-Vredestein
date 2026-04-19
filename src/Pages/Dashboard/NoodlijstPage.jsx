@@ -4,7 +4,7 @@ import { Navigate, Link } from "react-router-dom";
 import { useAuth } from "../Auth/AuthContext.jsx";
 import {
     FiLogOut, FiHome, FiAlertCircle, FiFileText, FiCalendar,
-    FiUser, FiUsers, FiDollarSign, FiClipboard, FiShield, FiPhone,
+    FiUser, FiUsers, FiDollarSign, FiClipboard, FiShield, FiPhone, FiTool,
 } from "react-icons/fi";
 import DashboardLayout from "./DashboardLayout.jsx";
 import "./StudentDashboard.css";
@@ -56,6 +56,7 @@ export default function NoodlijstPage() {
                         </li>
                         <li><Link to="/student/samen-eten"><FiUsers /> Samen eten?</Link></li>
                         <li><Link to="/student/events"><FiCalendar /> Events</Link></li>
+                        <li><Link to="/student/meldingen"><FiTool /> Iets melden</Link></li>
                         {hasRole(authUser, "ADMIN") && (
                             <li><Link to="/admin" className="admin-link"><FiShield /> Admin Dashboard</Link></li>
                         )}

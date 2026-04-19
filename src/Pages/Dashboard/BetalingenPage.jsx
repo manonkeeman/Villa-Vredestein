@@ -4,7 +4,7 @@ import { Navigate, Link } from "react-router-dom";
 import { useAuth } from "../Auth/AuthContext.jsx";
 import {
     FiLogOut, FiHome, FiAlertCircle, FiFileText, FiCalendar,
-    FiUser, FiUsers, FiDollarSign, FiClipboard,
+    FiUser, FiUsers, FiDollarSign, FiClipboard, FiTool,
     FiShield, FiDownload, FiExternalLink, FiCheckCircle, FiClock, FiAlertTriangle,
 } from "react-icons/fi";
 import api from "../../Helpers/AxiosHelper.js";
@@ -111,6 +111,7 @@ const BetalingenPage = () => {
                         </li>
                         <li><Link to="/student/samen-eten"><FiUsers /> Samen eten?</Link></li>
                         <li><Link to="/student/events"><FiCalendar /> Events</Link></li>
+                        <li><Link to="/student/meldingen"><FiTool /> Iets melden</Link></li>
 
                         {hasRole(user, "ADMIN") && (
                             <li>

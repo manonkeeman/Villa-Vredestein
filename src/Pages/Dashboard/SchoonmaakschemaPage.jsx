@@ -99,6 +99,7 @@ function StudentSidebar({ user, contractFile, logout }) {
                     </li>
                     <li><Link to="/student/samen-eten"><FiUsers /> Samen eten?</Link></li>
                     <li><Link to="/student/events"><FiCalendar /> Events</Link></li>
+                    <li><Link to="/student/meldingen"><FiTool /> Iets melden</Link></li>
                     {hasRole(user, "ADMIN") && (
                         <li><Link to="/admin" className="admin-link"><FiShield /> Admin Dashboard</Link></li>
                     )}
