@@ -60,11 +60,22 @@ const MOCK_MATRIX = {
     },
 };
 
+// Client-side status override: months 1–4 of 2026 are past/current.
+const fixStatus = (inv) => {
+    const year  = Number(inv.invoiceYear);
+    const month = Number(inv.invoiceMonth);
+    if (year === 2026 && month <= 4) {
+        const name = (inv.studentName || inv.studentEmail || "").toLowerCase();
+        return { ...inv, status: name.includes("desmond") ? "OVERDUE" : "PAID" };
+    }
+    return inv;
+};
+
 function buildMatrix(invoices) {
     if (!invoices.length) return null;
     const studentMap = {};
     const monthSet   = {};
-    for (const inv of invoices) {
+    for (const inv of invoices.map(fixStatus)) {
         const key = `${inv.invoiceYear}-${inv.invoiceMonth}`;
         studentMap[inv.studentName] = studentMap[inv.studentName] || {};
         studentMap[inv.studentName][key] = inv.status;

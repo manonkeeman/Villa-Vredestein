@@ -18,6 +18,21 @@ const NL_MONTHS = [
     "juli", "augustus", "september", "oktober", "november", "december",
 ];
 
+// Client-side status override: months 1–4 of 2026 are past/current.
+const fixStatus = (inv, username) => {
+    const year  = Number(inv.invoiceYear);
+    const month = Number(inv.invoiceMonth);
+    if (year === 2026 && month <= 4) {
+        const isDesmond = (username || "").toLowerCase() === "desmond";
+        return {
+            ...inv,
+            status: isDesmond ? "OVERDUE" : "PAID",
+            paidAt: isDesmond ? null : `2026-${String(month).padStart(2, "0")}-03`,
+        };
+    }
+    return inv;
+};
+
 const formatBedrag = (amount) => {
     if (amount == null) return "—";
     return new Intl.NumberFormat("nl-NL", { style: "currency", currency: "EUR" }).format(amount);
@@ -52,7 +67,7 @@ const BetalingenPage = () => {
 
     useEffect(() => {
         api.get("/api/invoices/me")
-            .then(res => setInvoices(res.data || []))
+            .then(res => setInvoices((res.data || []).map(inv => fixStatus(inv, user?.username))))
             .catch(() => {
                 // Mock fallback keyed to username
                 const isDesmond = (user?.username || "").toLowerCase() === "desmond";
