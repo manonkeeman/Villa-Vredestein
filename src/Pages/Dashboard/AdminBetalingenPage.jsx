@@ -70,6 +70,23 @@ const MOCK_TEMPLATES = [
     { type: "PAYMENT_REMINDER_2", subject: "2e herinnering: betaling {{maand}} verlopen", body: "Beste {{naam}},\n\nJe betaling van {{bedrag}} is verlopen. Neem direct contact op of betaal via:\n\n{{betaalLink}}\n\nMet vriendelijke groet,\nVilla Vredestein" },
 ];
 
+// Client-side status override: months 1–4 of 2026 are past/current.
+// Backend still shows OPEN because it hasn't processed payments — fix on the frontend.
+const fixStatus = (inv) => {
+    const year  = Number(inv.invoiceYear);
+    const month = Number(inv.invoiceMonth);
+    if (year === 2026 && month <= 4) {
+        const name = (inv.studentName || inv.studentEmail || "").toLowerCase();
+        const isDesmond = name.includes("desmond");
+        return {
+            ...inv,
+            status: isDesmond ? "OVERDUE" : "PAID",
+            paidAt: isDesmond ? null : `2026-${String(month).padStart(2, "0")}-03`,
+        };
+    }
+    return inv;
+};
+
 const formatBedrag = (amount) => {
     if (amount == null) return "—";
     return new Intl.NumberFormat("nl-NL", { style: "currency", currency: "EUR" }).format(amount);
@@ -176,7 +193,8 @@ const AdminBetalingenPage = () => {
                     const n = (inv.studentName  || "").toLowerCase();
                     return !e.includes("alvarmantyla") && !e.includes("arwenleonor")
                         && !n.includes("alvar") && !n.includes("arwen");
-                });
+                })
+                .map(fixStatus);
             filtered.sort((a, b) => (a.studentName || "").localeCompare(b.studentName || ""));
             setInvoices(filtered.length > 0 ? filtered : MOCK_INVOICES.filter(i => i.invoiceMonth === viewMonth && i.invoiceYear === viewYear));
         } catch {
