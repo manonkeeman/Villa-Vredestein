@@ -426,3 +426,10 @@
     width: 72px;
   }
 }
+
+/* ── PWA standalone: voeg safe-area-inset-top toe zodat de nav niet achter de statusbalk valt ── */
+@media (display-mode: standalone) {
+  .navigatie-container {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+}
