@@ -475,3 +475,48 @@
         padding: 1.25rem 1rem;
     }
 }
+
+/* ── Mobile: voorkom iOS auto-zoom door font-size >= 16px op inputs ── */
+/* Labels, knoppen en overige tekst op 14px voor compacte weergave.     */
+@media (max-width: 768px) {
+    /* Inputs / select — 16px is het iOS-minimum om auto-zoom te stoppen */
+    .login-input-wrap input,
+    .login-select,
+    .login-plain-input,
+    .dev-token input {
+        font-size: 16px;
+    }
+
+    /* Labels */
+    .login-label {
+        font-size: 14px;
+    }
+
+    /* Rolknoppen */
+    .mode-btn {
+        font-size: 14px;
+        padding: 0.5rem 0.25rem;
+    }
+
+    /* Inlog-knop */
+    .login-submit-btn {
+        font-size: 14px;
+    }
+
+    /* Wachtwoord vergeten + registreer */
+    .forgot-link,
+    .login-register {
+        font-size: 14px;
+    }
+
+    /* Fout- en succesmeldingen */
+    .login-error,
+    .reset-success {
+        font-size: 14px;
+    }
+
+    /* Subtitel onder de titel */
+    .login-sub {
+        font-size: 14px;
+    }
+}
