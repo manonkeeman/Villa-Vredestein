@@ -12,6 +12,7 @@ const instance = axios.create({
         Accept: "application/json",
     },
     withCredentials: false,
+    timeout: 45000, // 45s — genoeg voor Render cold start; voorkomt eindeloos hangen
 });
 
 instance.interceptors.request.use(
