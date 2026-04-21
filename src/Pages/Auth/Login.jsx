@@ -77,8 +77,8 @@ const Login = () => {
     useEffect(() => {
         if (warmupDone.current) return;
         warmupDone.current = true;
-        const slowTimer = setTimeout(() => setBackendSlow(true), 4000);
-        fetch(`${API_BASE}/actuator/health`, { signal: AbortSignal.timeout(12000) })
+        const slowTimer = setTimeout(() => setBackendSlow(true), 2500);
+        fetch(`${API_BASE}/actuator/health`, { signal: AbortSignal.timeout(50000) })
             .then(() => { setBackendReady(true); setBackendSlow(false); })
             .catch(() => { setBackendReady(true); setBackendSlow(false); })
             .finally(() => clearTimeout(slowTimer));
@@ -143,7 +143,7 @@ const Login = () => {
         setSubmitting(true);
         setSubmitSlow(false);
         const cleanEmail = email.trim();
-        const slowTimer = setTimeout(() => setSubmitSlow(true), 5000);
+        const slowTimer = setTimeout(() => setSubmitSlow(true), 2500);
         try {
             if (!cleanEmail || !password) { setError("Vul e-mail en wachtwoord in."); return; }
             if (loginMode === "STUDENT" && !room) { setError("Kies eerst je kamer."); return; }
@@ -170,8 +170,12 @@ const Login = () => {
                 isSafeRedirect(fromPath) && canAccessPathForMode(fromPath, loginMode) ? fromPath : fallback,
                 { replace: true }
             );
-        } catch {
-            setError("Er ging iets mis. Probeer het opnieuw.");
+        } catch (err) {
+            const isTimeout = err?.code === "ECONNABORTED" || err?.message?.includes("timeout");
+            setError(isTimeout
+                ? "De server reageert niet — wacht even en probeer opnieuw."
+                : "Er ging iets mis. Probeer het opnieuw."
+            );
         } finally {
             clearTimeout(slowTimer);
             setSubmitSlow(false);
