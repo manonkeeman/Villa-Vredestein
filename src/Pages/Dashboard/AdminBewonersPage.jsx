@@ -16,7 +16,7 @@ import "./AdminBewonersPage.css";
 import "../../Styles/Global.css";
 
 // ── Kamer-opties (fallback als API faalt) ─────────────────────────────────
-const ALL_ROOMS = ["Argentinië", "Frankrijk", "Japan", "Thailand"];
+const ALL_ROOMS = ["Argentinië", "Frankrijk", "Italië", "Japan", "Thailand"];
 
 // ── localStorage helpers ──────────────────────────────────────────────────
 const DELETED_KEY     = "villa_deleted_users";
@@ -50,6 +50,7 @@ const MOCK_USERS = [
     { id: 1, username: "Desmond", email: "desmondstaal@gmail.com",        room: "Thailand",   roles: ["ROLE_STUDENT"] },
     { id: 2, username: "Medoc",   email: "medocstaal@gmail.com",          room: "Frankrijk",  roles: ["ROLE_STUDENT"] },
     { id: 3, username: "Simon",   email: "simontalsma2@gmail.com",        room: "Argentinië", roles: ["ROLE_STUDENT"] },
+    { id: 4, username: "Arwen",   email: "arwenleonor@gmail.com",         room: "Italië",     roles: ["ROLE_STUDENT"] },
     { id: 5, username: "Schoonmaak",              email: "cleaner@villavredestein.com", room: "", roles: ["ROLE_CLEANER"] },
     { id: 6, username: "Villa Vredestein Admin", email: "admin@villavredestein.com",   room: "", roles: ["ROLE_ADMIN"] },
 ];
@@ -398,14 +399,13 @@ const AdminBewonersPage = () => {
                     merged.push(lu);
                 }
             });
-            // Filter out deleted and Alvar/Arwen
+            // Filter out deleted and Alvar
             return merged
                 .filter(u => !deletedIds.has(String(u.id)))
                 .filter(u => {
                     const email = (u.email || "").toLowerCase();
                     const name  = (u.username || u.name || "").toLowerCase();
-                    return !email.includes("alvarmantyla") && !email.includes("arwenleonor")
-                        && name !== "alvar" && name !== "arwen";
+                    return !email.includes("alvarmantyla") && name !== "alvar";
                 })
                 .map(u => {
                     const overrides = getContractOverrides();
