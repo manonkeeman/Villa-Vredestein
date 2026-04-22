@@ -47,13 +47,14 @@ export function AdminSidebar({ active, logout, username }) {
 
 // ── Static fallback data (alleen tonen als backend onbereikbaar is) ───────
 const MOCK_MATRIX = {
-    students: ["Desmond", "Medoc", "Simon"],
+    students: ["Arwen", "Desmond", "Medoc", "Simon"],
     months: [
         { year: 2026, month: 1 }, { year: 2026, month: 2 }, { year: 2026, month: 3 },
         { year: 2026, month: 4 }, { year: 2026, month: 5 }, { year: 2026, month: 6 },
         { year: 2026, month: 7 },
     ],
     cells: {
+        "Arwen":   { "2026-1": "PAID",   "2026-2":"PAID",   "2026-3":"PAID",   "2026-4":"PAID",   "2026-5":"OPEN","2026-6":"OPEN","2026-7":"OPEN" },
         "Desmond": { "2026-1": "OVERDUE","2026-2":"OVERDUE","2026-3":"OVERDUE","2026-4":"OVERDUE","2026-5":"OPEN","2026-6":"OPEN","2026-7":"OPEN" },
         "Medoc":   { "2026-1": "PAID",   "2026-2":"PAID",   "2026-3":"PAID",   "2026-4":"PAID",   "2026-5":"OPEN","2026-6":"OPEN","2026-7":"OPEN" },
         "Simon":   { "2026-1": "PAID",   "2026-2":"PAID",   "2026-3":"PAID",   "2026-4":"PAID",   "2026-5":"OPEN","2026-6":"OPEN","2026-7":"OPEN" },

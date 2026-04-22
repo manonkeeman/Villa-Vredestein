@@ -29,9 +29,10 @@ const TEMPLATE_LABELS = {
 
 // ── Mock students list (echte e-mailadressen uit de backend) ─────────────
 const MOCK_STUDENTS = [
-    { id: 1, username: "Desmond",  email: "desmondstaal@gmail.com",  room: "Thailand" },
-    { id: 2, username: "Medoc",    email: "medocstaal@gmail.com",    room: "Frankrijk" },
-    { id: 3, username: "Simon",    email: "simontalsma2@gmail.com",  room: "Argentinië" },
+    { id: 1, username: "Desmond",  email: "desmondstaal@gmail.com",    room: "Thailand" },
+    { id: 2, username: "Medoc",    email: "medocstaal@gmail.com",      room: "Frankrijk" },
+    { id: 3, username: "Simon",    email: "simontalsma2@gmail.com",    room: "Argentinië" },
+    { id: 4, username: "Arwen",    email: "arwenleonor@gmail.com",     room: "Italië" },
 ];
 
 // ── Mock facturen: €350/mnd, jan t/m jul 2026; Desmond OVERDUE, rest PAID ──
@@ -162,8 +163,7 @@ const AdminBetalingenPage = () => {
             .filter(u => {
                 const e = (u.email    || "").toLowerCase();
                 const n = (u.username || u.name || "").toLowerCase();
-                return !e.includes("alvarmantyla") && !e.includes("arwenleonor")
-                    && n !== "alvar" && n !== "arwen";
+                return !e.includes("alvarmantyla") && n !== "alvar";
             });
 
         api.get("/api/users")
@@ -191,8 +191,7 @@ const AdminBetalingenPage = () => {
                 .filter(inv => {
                     const e = (inv.studentEmail || "").toLowerCase();
                     const n = (inv.studentName  || "").toLowerCase();
-                    return !e.includes("alvarmantyla") && !e.includes("arwenleonor")
-                        && !n.includes("alvar") && !n.includes("arwen");
+                    return !e.includes("alvarmantyla") && !n.includes("alvar");
                 })
                 .map(fixStatus);
             filtered.sort((a, b) => (a.studentName || "").localeCompare(b.studentName || ""));

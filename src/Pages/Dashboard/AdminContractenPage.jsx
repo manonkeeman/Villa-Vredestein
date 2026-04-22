@@ -15,7 +15,7 @@ import "./AdminPages.css";
 import "../../Styles/Global.css";
 
 const BASE_URL = (import.meta.env.VITE_API_BASE_URL || "http://localhost:8080").replace(/\/$/, "");
-const ROOM_OPTIONS = ["Argentinië", "Frankrijk", "Japan", "Thailand"];
+const ROOM_OPTIONS = ["Argentinië", "Frankrijk", "Italië", "Japan", "Thailand"];
 const OVERRIDES_KEY = "villa_contract_overrides";
 
 // ── Helpers ───────────────────────────────────────────────────────────────
@@ -43,9 +43,10 @@ function applyOverrides(list) {
 
 // ── Mock data ─────────────────────────────────────────────────────────────
 const MOCK_USERS = [
-    { id: 1, username: "Desmond", email: "desmondstaal@gmail.com", room: "Thailand",   contractStart: "2025-09-01", contractEnd: "2026-08-31", deposit: 750, contractFile: null },
-    { id: 2, username: "Medoc",   email: "medocstaal@gmail.com",   room: "Frankrijk",  contractStart: "2025-09-01", contractEnd: "2026-08-31", deposit: 750, contractFile: null },
-    { id: 3, username: "Simon",   email: "simontalsma2@gmail.com", room: "Argentinië", contractStart: "2025-09-01", contractEnd: "2026-08-31", deposit: 750, contractFile: null },
+    { id: 1, username: "Desmond", email: "desmondstaal@gmail.com",  room: "Thailand",   contractStart: "2025-09-01", contractEnd: "2026-08-31", deposit: 750, contractFile: null },
+    { id: 2, username: "Medoc",   email: "medocstaal@gmail.com",    room: "Frankrijk",  contractStart: "2025-09-01", contractEnd: "2026-08-31", deposit: 750, contractFile: null },
+    { id: 3, username: "Simon",   email: "simontalsma2@gmail.com",  room: "Argentinië", contractStart: "2025-09-01", contractEnd: "2026-08-31", deposit: 750, contractFile: null },
+    { id: 4, username: "Arwen",   email: "arwenleonor@gmail.com",   room: "Italië",     contractStart: "2025-09-01", contractEnd: "2026-08-31", deposit: 750, contractFile: null },
 ];
 
 const getDeletedIds = () => {
@@ -257,8 +258,7 @@ const AdminContractenPage = () => {
                 .filter(u => {
                     const email = (u.email || "").toLowerCase();
                     const name  = (u.username || "").toLowerCase();
-                    return !email.includes("alvarmantyla") && !email.includes("arwenleonor")
-                        && name !== "alvar" && name !== "arwen";
+                    return !email.includes("alvarmantyla") && name !== "alvar";
                 });
 
         try {
