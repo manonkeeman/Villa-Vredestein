@@ -21,7 +21,7 @@ const getIsoWeek = (date = new Date()) => {
     return Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
 };
 
-const toRotationWeek = (isoWeek) => ((isoWeek - 1) % 4) + 1;
+const toRotationWeek = (isoWeek) => ((isoWeek - 1) % 5) + 1;
 
 const getWeekDates = (isoWeek, year) => {
     const jan4 = new Date(year, 0, 4);
@@ -45,10 +45,11 @@ const formatWeekRange = (isoWeek, year) => {
 const StudentDashboard = () => {
     const { isLoggedIn, logout, user } = useAuth();
     const { id } = useParams();
-    const [contractFile, setContractFile] = useState(null);
-    const [invoices, setInvoices] = useState([]);
+    const [contractFile,   setContractFile]   = useState(null);
+    const [invoices,       setInvoices]       = useState([]);
     const [invoicesLoading, setInvoicesLoading] = useState(true);
-    const [myTasks, setMyTasks] = useState([]);
+    const [myTasks,        setMyTasks]        = useState([]);
+    const [rotationLength, setRotationLength] = useState(5); // wordt bijgewerkt via backend
 
     const currentId = user?.id ?? user?.userId;
     if (!isLoggedIn) return <Navigate to="/login" replace />;
@@ -57,7 +58,7 @@ const StudentDashboard = () => {
     const now = new Date();
     const currentIsoWeek = getIsoWeek(now);
     const currentYear = now.getFullYear();
-    const rotationWeek = toRotationWeek(currentIsoWeek);
+    const rotationWeek = ((currentIsoWeek - 1) % rotationLength) + 1;
     const weekRange = formatWeekRange(currentIsoWeek, currentYear);
 
     const currentMonth = now.getMonth() + 1;
@@ -71,6 +72,12 @@ const StudentDashboard = () => {
         amount != null ? new Intl.NumberFormat("nl-NL", { style: "currency", currency: "EUR" }).format(amount) : "—";
 
     useEffect(() => { setContractFile(user?.contractFile || null); }, [user?.contractFile]);
+
+    useEffect(() => {
+        api.get("/api/cleaning/schedule/info")
+            .then(res => { if (res.data?.rotationLength) setRotationLength(res.data.rotationLength); })
+            .catch(() => {});
+    }, []);
 
     useEffect(() => {
         api.get("/api/invoices/me")

@@ -15,54 +15,11 @@ import "./AdminPages.css";
 import "./AdminBewonersPage.css";
 import "../../Styles/Global.css";
 
-// ── Kamer-opties (fallback als API faalt) ─────────────────────────────────
-const ALL_ROOMS = ["Argentinië", "Frankrijk", "Italië", "Japan", "Thailand"];
-
-// ── localStorage helpers ──────────────────────────────────────────────────
-const DELETED_KEY     = "villa_deleted_users";
-const LOCAL_USERS_KEY = "villa_local_users";
-
-const getDeletedIds = () => {
-    try { return new Set(JSON.parse(localStorage.getItem(DELETED_KEY) || "[]")); }
-    catch { return new Set(); }
-};
-const getContractOverrides = () => {
-    try { return JSON.parse(localStorage.getItem("villa_contract_overrides") || "{}"); }
-    catch { return {}; }
-};
-const persistDeletedId = (id) => {
-    const ids = getDeletedIds();
-    ids.add(String(id));
-    localStorage.setItem(DELETED_KEY, JSON.stringify([...ids]));
-};
-const getLocalUsers = () => {
-    try { return JSON.parse(localStorage.getItem(LOCAL_USERS_KEY) || "[]"); }
-    catch { return []; }
-};
-const persistLocalUser = (user) => {
-    const users = getLocalUsers().filter(u => String(u.id) !== String(user.id));
-    users.push(user);
-    localStorage.setItem(LOCAL_USERS_KEY, JSON.stringify(users));
-};
-
-// ── Mock data ─────────────────────────────────────────────────────────────
-const MOCK_USERS = [
-    { id: 1, username: "Desmond", email: "desmondstaal@gmail.com",        room: "Thailand",   roles: ["ROLE_STUDENT"] },
-    { id: 2, username: "Medoc",   email: "medocstaal@gmail.com",          room: "Frankrijk",  roles: ["ROLE_STUDENT"] },
-    { id: 3, username: "Simon",   email: "simontalsma2@gmail.com",        room: "Argentinië", roles: ["ROLE_STUDENT"] },
-    { id: 4, username: "Arwen",   email: "arwenleonor@gmail.com",         room: "Italië",     roles: ["ROLE_STUDENT"] },
-    { id: 5, username: "Schoonmaak",              email: "cleaner@villavredestein.com", room: "", roles: ["ROLE_CLEANER"] },
-    { id: 6, username: "Villa Vredestein Admin", email: "admin@villavredestein.com",   room: "", roles: ["ROLE_ADMIN"] },
-];
-
 // ── Helpers ───────────────────────────────────────────────────────────────
 function resolveRoles(u) {
-    // Support roles/authorities array AND singular role field
     let raw = u.roles || u.authorities || [];
     if (!Array.isArray(raw)) raw = [raw];
-    if (raw.length === 0 && u.role) {
-        raw = Array.isArray(u.role) ? u.role : [u.role];
-    }
+    if (raw.length === 0 && u.role) raw = Array.isArray(u.role) ? u.role : [u.role];
     return raw.map(r => {
         const s = typeof r === "string" ? r : (r?.authority || r?.name || r?.role || "");
         if (!s) return null;
@@ -72,48 +29,53 @@ function resolveRoles(u) {
 }
 
 function primaryRole(roles = []) {
-    if (roles.some(r => r.includes("ADMIN")))   return { label: "Beheerder",   cls: "bew-role--admin",   icon: <FiShield /> };
-    if (roles.some(r => r.includes("CLEANER"))) return { label: "Schoonmaak",  cls: "bew-role--cleaner", icon: <FiTool /> };
+    if (roles.some(r => r.includes("ADMIN")))   return { label: "Beheerder",  cls: "bew-role--admin",   icon: <FiShield /> };
+    if (roles.some(r => r.includes("CLEANER"))) return { label: "Schoonmaak", cls: "bew-role--cleaner", icon: <FiTool /> };
     return { label: "Bewoner", cls: "bew-role--student", icon: <FiUser /> };
 }
 
-// ── Bewoner-kaart ─────────────────────────────────────────────────────────
 function resolveRoom(u) {
     return u.room?.name || u.roomName || u.assignedRoom || u.assignedRoomName
         || (typeof u.room === "string" ? u.room : "") || "";
 }
 
+// ── Bewoner-kaart ─────────────────────────────────────────────────────────
 function BewonerCard({ bewoner, onDelete }) {
     const [confirming, setConfirming] = useState(false);
     const [deleting,   setDeleting]   = useState(false);
+    const [deleteErr,  setDeleteErr]  = useState(null);
+
     const roles = resolveRoles(bewoner);
     const role  = primaryRole(roles);
     const room  = resolveRoom(bewoner);
 
     const handleDelete = async () => {
         setDeleting(true);
+        setDeleteErr(null);
         try {
             await api.delete(`/api/users/${bewoner.id}`);
-        } catch {
-            // optimistic: persist deletion even if backend fails
+            onDelete(bewoner.id);
+        } catch (ex) {
+            const msg = ex.response?.data?.message || ex.response?.data?.error
+                || `Verwijderen mislukt (HTTP ${ex.response?.status ?? "?"})`;
+            setDeleteErr(msg);
+            setDeleting(false);
         }
-        persistDeletedId(bewoner.id);
-        onDelete(bewoner.id);
-        setDeleting(false);
-        setConfirming(false);
     };
 
     return (
         <div className="bew-card">
-            <div className="bew-card-avatar">
-                {role.icon}
-            </div>
+            <div className="bew-card-avatar">{role.icon}</div>
             <div className="bew-card-info">
                 <strong className="bew-card-name">{bewoner.username}</strong>
                 <span className="bew-card-email"><FiMail /> {bewoner.email}</span>
                 {room && <span className="bew-card-room"><FiHome /> {room}</span>}
             </div>
             <span className={`bew-role-badge ${role.cls}`}>{role.label}</span>
+
+            {deleteErr && (
+                <span className="bew-delete-err" title={deleteErr}><FiAlertTriangle /></span>
+            )}
 
             {confirming ? (
                 <div className="bew-confirm-row">
@@ -129,7 +91,7 @@ function BewonerCard({ bewoner, onDelete }) {
                     <button
                         type="button"
                         className="admin-btn admin-btn--small admin-btn--ghost"
-                        onClick={() => setConfirming(false)}
+                        onClick={() => { setConfirming(false); setDeleteErr(null); }}
                     >
                         <FiX /> Annuleer
                     </button>
@@ -165,7 +127,7 @@ function NieuwBewoner({ onCreated, onClose }) {
                 setAvailableRooms(rooms);
                 if (rooms.length > 0) setForm(f => ({ ...f, room: rooms[0] }));
             })
-            .catch(() => setAvailableRooms([])); // empty = all occupied
+            .catch(() => setAvailableRooms([]));
     }, []);
 
     const set = (k) => (e) => setForm(f => ({ ...f, [k]: e.target.value }));
@@ -180,81 +142,30 @@ function NieuwBewoner({ onCreated, onClose }) {
         }
         setSaving(true); setErr(null);
 
-        const payload = {
-            username:         form.username.trim(),
-            email:            form.email.trim().toLowerCase(),
-            password:         form.password,
-            room:             form.room,
-            role:             "ROLE_STUDENT",
-            roles:            ["ROLE_STUDENT"],
-            rentAmount:       Number(form.rentAmount),
-            sendWelcomeEmail: true,
-            sendEmail:        true,
-        };
-
-        const endpoints = ["/api/admin/students", "/api/admin/users", "/api/users", "/api/auth/register"];
-        let lastEx = null;
-        let res = null;
-
-        for (const ep of endpoints) {
-            try {
-                res = await api.post(ep, payload);
-                break;
-            } catch (ex) {
-                lastEx = ex;
-                const status = ex.response?.status;
-                const raw    = ex.response?.data;
-                const msg    = (raw?.message || raw?.error || raw?.detail || "").toLowerCase();
-                // Duplicate email/username
-                if (status === 409 || msg.includes("exist") || msg.includes("bestaat") || msg.includes("duplicate")) {
-                    const emailLower = form.email.trim().toLowerCase();
-                    const isFiltered = emailLower.includes("arwenleonor") || emailLower.includes("alvarmantyla");
-                    if (isFiltered) {
-                        // This user is filtered out of the UI — auto-delete and retry
-                        try {
-                            const usersRes = await api.get("/api/users");
-                            const conflicting = (usersRes.data || []).find(u =>
-                                (u.email || "").toLowerCase() === emailLower
-                            );
-                            if (conflicting?.id) {
-                                await api.delete(`/api/users/${conflicting.id}`);
-                                persistDeletedId(conflicting.id);
-                                res = await api.post(ep, payload);
-                                break; // success after auto-cleanup
-                            }
-                        } catch { /* ignore — fall through to normal error */ }
-                    }
-                    setErr("Dit e-mailadres bestaat al in het systeem. Verwijder het oude account eerst via de bewonerslijst en ververs de pagina.");
-                    setSaving(false);
-                    return;
-                }
-                // Other errors (404, 403, 400 for wrong endpoint) → try next
-            }
-        }
-
-        if (res) {
-            const newUser = { ...res.data, roles: resolveRoles(res.data) };
-            persistLocalUser(newUser);
-            onCreated(newUser, true);
-        } else if (!lastEx?.response) {
-            // Network error → save locally
-            const newUser = {
-                id: `local_${Date.now()}`,
-                username: form.username.trim(),
-                email:    form.email.trim().toLowerCase(),
-                room:     form.room,
-                roles:    ["ROLE_STUDENT"],
-            };
-            persistLocalUser(newUser);
-            onCreated(newUser, false);
-        } else {
-            const raw = lastEx.response?.data;
-            setErr(raw?.message || raw?.error || raw?.detail
+        try {
+            const res = await api.post("/api/admin/students", {
+                username:         form.username.trim(),
+                email:            form.email.trim().toLowerCase(),
+                password:         form.password,
+                room:             form.room,
+                rentAmount:       Number(form.rentAmount),
+                sendWelcomeEmail: true,
+            });
+            onCreated({ ...res.data, roles: resolveRoles(res.data) });
+        } catch (ex) {
+            const raw    = ex.response?.data;
+            const status = ex.response?.status;
+            let msg = raw?.message || raw?.error || raw?.detail
                 || (typeof raw === "string" ? raw : null)
-                || `HTTP ${lastEx.response.status} — aanmaken mislukt.`);
+                || `HTTP ${status ?? "?"} — aanmaken mislukt.`;
+            if (status === 409) msg = "Dit e-mailadres bestaat al in het systeem.";
+            setErr(msg);
+        } finally {
+            setSaving(false);
         }
-        setSaving(false);
     };
+
+    const allOccupied = availableRooms !== null && availableRooms.length === 0;
 
     return (
         <div className="bew-modal-overlay" onClick={e => { if (e.target === e.currentTarget) onClose(); }}>
@@ -323,16 +234,20 @@ function NieuwBewoner({ onCreated, onClose }) {
                             <label htmlFor="bew-room">
                                 <FiHome style={{ marginRight: 4 }} />
                                 Lege kamer
-                                {availableRooms === null && <span style={{ fontSize: 11, color: "#888", marginLeft: 6 }}>laden…</span>}
+                                {availableRooms === null && (
+                                    <span style={{ fontSize: 11, color: "#888", marginLeft: 6 }}>laden…</span>
+                                )}
                             </label>
-                            {availableRooms !== null && availableRooms.length > 0 ? (
+                            {availableRooms === null ? null : availableRooms.length > 0 ? (
                                 <select id="bew-room" value={form.room} onChange={set("room")}>
                                     <option value="">— Geen kamer —</option>
                                     {availableRooms.map(r => <option key={r} value={r}>{r}</option>)}
                                 </select>
-                            ) : availableRooms !== null ? (
-                                <p className="bew-info" style={{ color: "#f87171", margin: 0 }}>Alle kamers zijn bezet.</p>
-                            ) : null}
+                            ) : (
+                                <p className="bew-info" style={{ color: "#f87171", margin: 0 }}>
+                                    Alle kamers zijn bezet.
+                                </p>
+                            )}
                         </div>
 
                         <div className="bew-field">
@@ -351,7 +266,8 @@ function NieuwBewoner({ onCreated, onClose }) {
                     </div>
 
                     <p className="bew-info-msg">
-                        De student ontvangt een welkomstmail met inloggegevens en kamer. Er wordt direct een factuur + Mollie betaallink aangemaakt.
+                        De student ontvangt een welkomstmail met inloggegevens, kamernummer en info over Villa Vredestein.
+                        Er wordt direct een factuur + Mollie betaallink aangemaakt. Het schoonmaakrooster wordt automatisch bijgewerkt.
                     </p>
 
                     {err && (
@@ -361,7 +277,11 @@ function NieuwBewoner({ onCreated, onClose }) {
                     )}
 
                     <div className="bew-form-actions">
-                        <button type="submit" className="admin-btn" disabled={saving || (availableRooms !== null && availableRooms.length === 0 && !form.room)}>
+                        <button
+                            type="submit"
+                            className="admin-btn"
+                            disabled={saving || allOccupied}
+                        >
                             <FiSave /> {saving ? "Aanmaken…" : "Student aanmaken"}
                         </button>
                         <button type="button" className="admin-btn admin-btn--ghost" onClick={onClose}>
@@ -379,55 +299,29 @@ const AdminBewonersPage = () => {
     const { isLoggedIn, logout, user } = useAuth();
     if (!isLoggedIn) return <Navigate to="/login" replace />;
 
-    const [bewoners,      setBewoners]      = useState([]);
-    const [loading,       setLoading]       = useState(true);
-    const [isMock,        setIsMock]        = useState(false);
-    const [showForm,      setShowForm]      = useState(false);
-    const [filter,        setFilter]        = useState("all");
-    const [successMsg,    setSuccessMsg]    = useState(null);
+    const [bewoners,   setBewoners]   = useState([]);
+    const [loading,    setLoading]    = useState(true);
+    const [loadErr,    setLoadErr]    = useState(null);
+    const [showForm,   setShowForm]   = useState(false);
+    const [filter,     setFilter]     = useState("all");
+    const [successMsg, setSuccessMsg] = useState(null);
 
     const load = useCallback(async () => {
         setLoading(true);
-        const deletedIds = getDeletedIds();
-        const localUsers = getLocalUsers();
-
-        const applyFilters = (list) => {
-            const merged = [...list];
-            // Add local users that aren't in the backend list
-            localUsers.forEach(lu => {
-                if (!merged.some(u => String(u.id) === String(lu.id))) {
-                    merged.push(lu);
-                }
-            });
-            // Filter out deleted and Alvar
-            return merged
-                .filter(u => !deletedIds.has(String(u.id)))
+        setLoadErr(null);
+        try {
+            const res = await api.get("/api/users");
+            const all = (res.data || [])
                 .filter(u => {
                     const email = (u.email || "").toLowerCase();
                     const name  = (u.username || u.name || "").toLowerCase();
+                    // filter only known test/ghost accounts
                     return !email.includes("alvarmantyla") && name !== "alvar";
                 })
-                .map(u => {
-                    const overrides = getContractOverrides();
-                    return { ...u, ...(overrides[String(u.id)] || {}), roles: resolveRoles(u) };
-                });
-        };
-
-        const mockTimer = setTimeout(() => {
-            setBewoners(applyFilters(MOCK_USERS));
-            setIsMock(true);
-            setLoading(false);
-        }, 1500);
-
-        try {
-            const res = await api.get("/api/users");
-            clearTimeout(mockTimer);
-            setBewoners(applyFilters(res.data || []));
-            setIsMock(false);
+                .map(u => ({ ...u, roles: resolveRoles(u) }));
+            setBewoners(all);
         } catch {
-            clearTimeout(mockTimer);
-            setBewoners(applyFilters(MOCK_USERS));
-            setIsMock(true);
+            setLoadErr("Kon bewonerslijst niet laden. Controleer de verbinding en probeer het opnieuw.");
         } finally {
             setLoading(false);
         }
@@ -435,20 +329,15 @@ const AdminBewonersPage = () => {
 
     useEffect(() => { load(); }, [load]);
 
-    const handleCreated = (newUser, emailSent) => {
-        const normalized = { ...newUser, roles: resolveRoles(newUser) };
-        setBewoners(prev => [normalized, ...prev]);
+    const handleCreated = () => {
         setShowForm(false);
-        const name = newUser.username || newUser.email || "Nieuwe student";
-        const msg = emailSent
-            ? `${name} aangemaakt. Welkomstmail verstuurd.`
-            : `${name} aangemaakt (lokaal opgeslagen — backend onbereikbaar).`;
-        setSuccessMsg(msg);
-        setTimeout(() => setSuccessMsg(null), 7000);
+        setSuccessMsg("Nieuwe student aangemaakt. Welkomstmail verstuurd. Schoonmaakrooster bijgewerkt.");
+        setTimeout(() => setSuccessMsg(null), 8000);
+        load(); // herlaad om backend-state te spiegelen
     };
 
-    const handleDelete = (id) => {
-        setBewoners(prev => prev.filter(b => String(b.id) !== String(id)));
+    const handleDelete = () => {
+        load(); // herlaad na verwijdering
     };
 
     const filtered = bewoners.filter(b => {
@@ -492,9 +381,9 @@ const AdminBewonersPage = () => {
                 </div>
             )}
 
-            {isMock && (
+            {loadErr && (
                 <div className="admin-alert admin-alert--amber">
-                    <FiAlertTriangle /> Backend niet beschikbaar — voorbeelddata wordt getoond.
+                    <FiAlertTriangle /> {loadErr}
                 </div>
             )}
 
@@ -536,7 +425,7 @@ const AdminBewonersPage = () => {
             {/* List */}
             <div className="admin-section">
                 {loading && <p className="admin-loading">Laden…</p>}
-                {!loading && filtered.length === 0 && (
+                {!loading && !loadErr && filtered.length === 0 && (
                     <p className="admin-empty">Geen bewoners gevonden.</p>
                 )}
                 <div className="bew-list">
