@@ -69,7 +69,7 @@ const formatWeekRange = (isoWeek, year) => {
         : `${start.getDate()} ${NL_MONTHS[start.getMonth()]}–${end.getDate()} ${NL_MONTHS[end.getMonth()]}`;
 };
 
-const toRotationWeek = (isoWeek) => ((isoWeek - 1) % 4) + 1;
+const toRotationWeek = (isoWeek) => ((isoWeek - 1) % 5) + 1;
 
 // ─── CleanerSidebar (only for cleaners, not shown to admin/student) ──────────
 
@@ -370,12 +370,25 @@ export default function SchoonmaakschemaPage() {
     const todayIsoWeek = getIsoWeek();
     const todayIsoYear = getIsoYear();
 
-    const [tasks,        setTasks]        = useState([]);
-    const [loading,      setLoading]      = useState(true);
-    const [error,        setError]        = useState(null);
-    const [navWeek,      setNavWeek]      = useState({ isoWeek: todayIsoWeek, year: todayIsoYear });
-    const [contractFile, setContractFile] = useState(null);
+    const [tasks,          setTasks]          = useState([]);
+    const [loading,        setLoading]        = useState(true);
+    const [error,          setError]          = useState(null);
+    const [navWeek,        setNavWeek]        = useState({ isoWeek: todayIsoWeek, year: todayIsoYear });
+    const [contractFile,   setContractFile]   = useState(null);
+    const [rotationLength, setRotationLength] = useState(5); // wordt bijgewerkt via backend
     const weekCache = useRef({});
+
+    // Haal rotationLength op van de backend zodat het schema altijd klopt
+    useEffect(() => {
+        api.get("/api/cleaning/schedule/info")
+            .then(res => {
+                if (res.data?.rotationLength) setRotationLength(res.data.rotationLength);
+            })
+            .catch(() => {}); // gebruik default als het faalt
+    }, []);
+
+    // Lokale formule op basis van server-rotationLength
+    const toRotW = useCallback((isoWeek) => ((isoWeek - 1) % rotationLength) + 1, [rotationLength]);
 
     if (!isLoggedIn) return <Navigate to="/login" replace />;
 
@@ -383,11 +396,11 @@ export default function SchoonmaakschemaPage() {
     const isCleaner = hasRole(user, "CLEANER");
     const isStudent = hasRole(user, "STUDENT");
 
-    const rotationWeek  = toRotationWeek(navWeek.isoWeek);
+    const rotationWeek  = toRotW(navWeek.isoWeek);
     const isCurrentWeek = navWeek.isoWeek === todayIsoWeek && navWeek.year === todayIsoYear;
 
     const fetchTasks = useCallback(() => {
-        const rw = toRotationWeek(navWeek.isoWeek);
+        const rw = toRotW(navWeek.isoWeek);
 
         if (weekCache.current[rw]) {
             setTasks(weekCache.current[rw]);
