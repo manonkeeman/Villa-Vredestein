@@ -1,5 +1,5 @@
 import React, { useMemo, useState, useEffect, useRef } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext.jsx";
 import { FiEye, FiEyeOff, FiMail, FiLock } from "react-icons/fi";
 import { Helmet } from "react-helmet-async";
@@ -48,7 +48,7 @@ const MODES = [
     { value: "ADMIN", label: "Beheerder" },
 ];
 
-const ROOM_OPTIONS = ["Japan", "Argentinië", "Thailand", "Frankrijk"];
+const ROOM_OPTIONS = ["Argentinië", "Frankrijk", "Italië", "Japan", "Thailand"];
 
 const Login = () => {
     const navigate = useNavigate();
@@ -324,10 +324,6 @@ const Login = () => {
                                 {submitting ? <><Spinner />&nbsp;Inloggen…</> : "Inloggen"}
                             </button>
 
-                            <p className="login-register">
-                                Nieuwe bewoner?{" "}
-                                <Link to="/registeruser">Registreer hier</Link>
-                            </p>
                         </form>
                     ) : (
                         <div className="reset-panel" aria-live="polite">
