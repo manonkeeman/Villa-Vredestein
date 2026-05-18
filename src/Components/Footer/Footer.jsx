@@ -108,8 +108,8 @@ const Footer = () => {
                 <p>© {year} Villa Vredestein — {t("footer.copyright")}</p>
                 <p>
                     {t("footer.madeBy")}{" "}
-                    <a href="https://www.manonkeeman.com" target="_blank" rel="noreferrer">
-                        Manon Keeman
+                    <a href="https://www.manonit.com" target="_blank" rel="noreferrer">
+                        ManonIT
                     </a>
                 </p>
             </div>
