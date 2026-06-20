@@ -39,6 +39,7 @@ import MededelingenPage from "./Pages/Dashboard/MededelingenPage.jsx";
 import EventsPage from "./Pages/Dashboard/EventsPage.jsx";
 import SamenEtenPage from "./Pages/Dashboard/SamenEtenPage.jsx";
 import PaymentSuccessPage from "./Pages/Public/PaymentSuccessPage.jsx";
+import Tijdlijn from "./Pages/Public/Tijdlijn.jsx";
 
 function App() {
     return (
@@ -52,6 +53,7 @@ function App() {
                     <Route path="/about" element={<About />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/blog/:slug" element={<Blog />} />
+                    <Route path="/tijdlijn" element={<Tijdlijn />} />
 
                     <Route path="/login" element={<Login />} />
                     <Route path="/registeruser" element={<RegisterUser />} />

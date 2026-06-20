@@ -127,3 +127,100 @@
         padding: 1rem;
     }
 }
+/* ── De Vredesteiners sectie ── */
+.vredesteiners-sectie {
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid #1e1e1e;
+}
+
+.vredesteiners-titel {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #FCBC2D;
+    margin-bottom: 0.75rem;
+}
+
+.vredesteiners-intro {
+    font-size: 0.95rem;
+    color: #aaa;
+    max-width: 580px;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+.vredesteiners-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+}
+
+.vredesteiner-card {
+    background-color: #111;
+    border: 1px solid #222;
+    border-radius: 14px;
+    padding: 1.5rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.vredesteiner-card:hover {
+    border-color: #FCBC2D;
+    transform: translateY(-5px);
+}
+
+.vredesteiner-avatar {
+    font-size: 2.5rem;
+    background-color: #1a1a1a;
+    border: 2px solid #2a2a2a;
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.25rem;
+    transition: border-color 0.3s ease;
+}
+
+.vredesteiner-card:hover .vredesteiner-avatar {
+    border-color: #FCBC2D;
+}
+
+.vredesteiner-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+}
+
+.vredesteiner-kamer {
+    font-size: 0.7rem;
+    color: #FCBC2D;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+}
+
+.vredesteiner-card p {
+    font-size: 0.82rem;
+    color: #888;
+    line-height: 1.6;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .vredesteiners-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .vredesteiners-grid {
+        grid-template-columns: 1fr;
+    }
+}
