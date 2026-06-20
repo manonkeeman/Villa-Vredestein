@@ -53,6 +53,24 @@
     border-color: #FCBC2D;
 }
 
+/* ── Historische kaarten ── */
+.tijdlijn-item:has(.badge-historisch) .tijdlijn-kaart:hover {
+    border-color: #c8a46e;
+    box-shadow: 0 8px 24px rgba(200, 164, 110, 0.08);
+}
+.tijdlijn-item:has(.badge-historisch) .tijdlijn-kaart.kaart-open {
+    border-color: #c8a46e;
+}
+.tijdlijn-item:has(.badge-historisch) .tijdlijn-dot {
+    border-color: #c8a46e;
+}
+.tijdlijn-item:has(.badge-historisch):hover .tijdlijn-dot {
+    background-color: #c8a46e;
+}
+.tijdlijn-item:has(.badge-historisch) .tijdlijn-cta {
+    color: #c8a46e;
+}
+
 /* ── Kaart inhoud ── */
 .tijdlijn-kaart-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.6rem; }
 .tijdlijn-datum { font-size: 0.72rem; color: #666; text-transform: uppercase; letter-spacing: 0.08em; }
@@ -95,8 +113,35 @@
 
 .tijdlijn-kaart:hover .tijdlijn-cta { opacity: 0.8; }
 
+/* ── Sectielabel ── */
+.tijdlijn-sectie-label {
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #888;
+    margin: 2.5rem 0 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+.tijdlijn-sectie-label::before,
+.tijdlijn-sectie-label::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #333, transparent);
+}
+
+/* ── Lijn variant historisch ── */
+.tijdlijn-lijn--historisch {
+    background: linear-gradient(to bottom, #c8a46e, #2a2a2a);
+}
+
 /* ── Badges ── */
 .tijdlijn-badge { font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.2rem 0.6rem; border-radius: 20px; white-space: nowrap; }
+.badge-historisch { background: #2a1a0a; color: #c8a46e; border: 1px solid #4a3010; }
 .badge-gedaan   { background: #1a3a1a; color: #4caf50; border: 1px solid #2d5a2d; }
 .badge-bezig    { background: #3a2a00; color: #FCBC2D; border: 1px solid #5a4000; }
 .badge-gepland  { background: #1a1a3a; color: #7c9ef8; border: 1px solid #2a2a5a; }
