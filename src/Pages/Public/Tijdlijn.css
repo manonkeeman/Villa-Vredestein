@@ -2,38 +2,107 @@
 .fade-trigger.visible { opacity: 1; transform: translateY(0); }
 
 @keyframes fadeInUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+@keyframes detailOpen { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:translateY(0); } }
 
+/* ── Pagina ── */
 .tijdlijn-page { width: 100%; max-width: 900px; margin: 0 auto; padding: 3rem 2rem 6rem; box-sizing: border-box; }
 
 .tijdlijn-header { text-align: center; margin-bottom: 4rem; animation: fadeInUp 0.7s ease forwards; }
 .tijdlijn-header h1 { font-size: 2.4rem; font-weight: 700; color: white; margin-bottom: 1rem; }
 .tijdlijn-header p { font-size: 0.95rem; color: #aaa; max-width: 520px; margin: 0 auto; line-height: 1.7; }
 
+/* ── Lijn & container ── */
 .tijdlijn-container { position: relative; display: flex; flex-direction: column; gap: 3rem; }
 .tijdlijn-lijn { position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, #FCBC2D, #2a2a2a); transform: translateX(-50%); z-index: 0; }
 
-.tijdlijn-item { display: flex; align-items: flex-start; gap: 2rem; position: relative; z-index: 1; }
-.tijdlijn-item.links { flex-direction: row; }
+/* ── Items ── */
+.tijdlijn-item { display: flex; align-items: flex-start; position: relative; z-index: 1; }
+.tijdlijn-item.links  { flex-direction: row; }
 .tijdlijn-item.rechts { flex-direction: row-reverse; }
-.tijdlijn-item.links .tijdlijn-kaart { margin-right: calc(50% + 2.5rem); }
+.tijdlijn-item.links  .tijdlijn-kaart { margin-right: calc(50% + 2.5rem); }
 .tijdlijn-item.rechts .tijdlijn-kaart { margin-left: calc(50% + 2.5rem); }
 
-.tijdlijn-dot { position: absolute; left: 50%; transform: translateX(-50%); background-color: #111; border: 2px solid #FCBC2D; border-radius: 50%; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; z-index: 2; transition: background-color 0.3s; }
+/* ── Dot ── */
+.tijdlijn-dot { position: absolute; left: 50%; transform: translateX(-50%); background-color: #111; border: 2px solid #FCBC2D; border-radius: 50%; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; z-index: 2; transition: background-color 0.3s; flex-shrink: 0; }
 .tijdlijn-item:hover .tijdlijn-dot { background-color: #FCBC2D; }
 
-.tijdlijn-kaart { background-color: #111; border: 1px solid #222; border-radius: 14px; padding: 1.5rem; width: calc(50% - 4.5rem); transition: border-color 0.3s, transform 0.3s; }
-.tijdlijn-kaart:hover { border-color: #FCBC2D; transform: translateY(-3px); }
+/* ── Kaart ── */
+.tijdlijn-kaart {
+    background-color: #111;
+    border: 1px solid #222;
+    border-radius: 14px;
+    padding: 1.5rem;
+    width: calc(50% - 4.5rem);
+    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    box-sizing: border-box;
+}
+
+.tijdlijn-kaart.kaart-link,
+.tijdlijn-kaart[role="button"] {
+    cursor: pointer;
+}
+
+.tijdlijn-kaart.kaart-link:hover,
+.tijdlijn-kaart[role="button"]:hover {
+    border-color: #FCBC2D;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(252, 188, 45, 0.08);
+}
+
+.tijdlijn-kaart.kaart-open {
+    border-color: #FCBC2D;
+}
+
+/* ── Kaart inhoud ── */
 .tijdlijn-kaart-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.6rem; }
 .tijdlijn-datum { font-size: 0.72rem; color: #666; text-transform: uppercase; letter-spacing: 0.08em; }
-.tijdlijn-kaart h3 { font-size: 1rem; font-weight: 700; color: white; margin: 0 0 0.5rem; }
-.tijdlijn-kaart p { font-size: 0.85rem; color: #aaa; line-height: 1.65; margin: 0; }
+.tijdlijn-kaart h3 { font-size: 1rem; font-weight: 700; color: white; margin: 0 0 0.6rem; }
+.tijdlijn-preview { font-size: 0.85rem; color: #aaa; line-height: 1.65; margin: 0; }
 
-.tijdlijn-badge { font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.2rem 0.6rem; border-radius: 20px; }
+/* ── Expandable detail ── */
+.tijdlijn-detail {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+    opacity: 0;
+}
+
+.tijdlijn-detail.detail-open {
+    max-height: 200px;
+    opacity: 1;
+    animation: detailOpen 0.3s ease forwards;
+}
+
+.tijdlijn-detail p {
+    font-size: 0.83rem;
+    color: #888;
+    line-height: 1.6;
+    margin: 0.75rem 0 0;
+    padding-top: 0.75rem;
+    border-top: 1px solid #222;
+}
+
+/* ── Footer & CTA ── */
+.tijdlijn-kaart-footer { margin-top: 1rem; }
+
+.tijdlijn-cta {
+    font-size: 0.78rem;
+    color: #FCBC2D;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    transition: opacity 0.2s;
+}
+
+.tijdlijn-kaart:hover .tijdlijn-cta { opacity: 0.8; }
+
+/* ── Badges ── */
+.tijdlijn-badge { font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.2rem 0.6rem; border-radius: 20px; white-space: nowrap; }
 .badge-gedaan   { background: #1a3a1a; color: #4caf50; border: 1px solid #2d5a2d; }
 .badge-bezig    { background: #3a2a00; color: #FCBC2D; border: 1px solid #5a4000; }
 .badge-gepland  { background: #1a1a3a; color: #7c9ef8; border: 1px solid #2a2a5a; }
 .badge-toekomst { background: #222;    color: #888;    border: 1px solid #333; }
 
+/* ── Responsive ── */
 @media (max-width: 700px) {
     .tijdlijn-lijn { left: 24px; }
     .tijdlijn-item, .tijdlijn-item.links, .tijdlijn-item.rechts { flex-direction: column; padding-left: 60px; }
