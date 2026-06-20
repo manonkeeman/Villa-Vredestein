@@ -1,104 +1,90 @@
 import React, { useState } from "react";
-import "../Styles/BentoGrid.css";
-import "./Contact.css";
-import Button from "../Components/Buttons/Button.jsx";
+import { FaInstagram, FaWhatsapp, FaEnvelope } from "react-icons/fa";
 import Modal from "../Components/Modal/Modal.jsx";
+import "./Contact.css";
 
 const Contact = () => {
     const [showModal, setShowModal] = useState(false);
-    const [formData, setFormData] = useState({
-        firstName: "",
-        lastName: "",
-        email: "",
-        message: "",
-    });
+    const [naam, setNaam] = useState("");
+    const [bericht, setBericht] = useState("");
 
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
-
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         setShowModal(true);
-        setFormData({
-            firstName: "",
-            lastName: "",
-            email: "",
-            message: "",
-        });
+        setNaam("");
+        setBericht("");
     };
 
     return (
         <div className="contact-page">
-            <div className="bento-grid">
-                <div className="box box1">
-                    <h1>Neem contact met ons op</h1>
-                    <p>Heb je vragen, wil je meer informatie over Villa Vredestein, of ben je benieuwd naar onze missie en visie?
-                        <br/>Vul het contactformulier hieronder in en we nemen zo snel mogelijk contact met je op.
-                    </p>
+            <div className="contact-header">
+                <h1>Wil je meer weten?</h1>
+                <p>
+                    Neem gerust contact op. Of volg ons op Instagram voor een inkijkje
+                    in het dagelijks leven bij Villa Vredestein.
+                </p>
+            </div>
 
-                    <form onSubmit={handleSubmit} className="contact-form">
-                        <div className="name-fields">
-                            <div className="input-group">
-                                <label>Voornaam</label>
-                                <input
-                                    type="text"
-                                    name="firstName"
-                                    value={formData.firstName}
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </div>
-
-                            <div className="input-group">
-                                <label>Achternaam</label>
-                                <input
-                                    type="text"
-                                    name="lastName"
-                                    value={formData.lastName}
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </div>
+            <div className="contact-grid">
+                <div className="contact-socials">
+                    <a
+                        href="https://www.instagram.com/villa.vredestein"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="contact-social-card"
+                    >
+                        <FaInstagram className="social-icon" />
+                        <div>
+                            <span className="social-naam">Instagram</span>
+                            <span className="social-handle">@villa.vredestein</span>
                         </div>
+                    </a>
 
-                        <div className="input-group">
-                            <label>Emailadres</label>
-                            <input
-                                type="email"
-                                name="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                required
-                            />
+                    <a
+                        href="https://wa.me/31625015299"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="contact-social-card"
+                    >
+                        <FaWhatsapp className="social-icon" />
+                        <div>
+                            <span className="social-naam">WhatsApp</span>
+                            <span className="social-handle">Stuur ons een bericht</span>
                         </div>
+                    </a>
 
-                        <div className="input-group">
-                            <label>Bericht</label>
-                            <textarea
-                                name="message"
-                                value={formData.message}
-                                onChange={handleChange}
-                                rows="4"
-                                required
-                            />
+                    <a
+                        href="mailto:villa@vredestein.nl"
+                        className="contact-social-card"
+                    >
+                        <FaEnvelope className="social-icon" />
+                        <div>
+                            <span className="social-naam">E-mail</span>
+                            <span className="social-handle">villa@vredestein.nl</span>
                         </div>
-
-                        <Button type="submit" text="verstuur" classname="custom-button" />
-                    </form>
+                    </a>
                 </div>
 
-                <div className="box box2">
-                <div className="location">
-                    <iframe
-                        src="https://storage.googleapis.com/maps-solutions-sw132nzda1/commutes/e0od/commutes.html"
-                        className="location-map"
-                        loading="lazy"
-                        allowFullScreen
-                        title="Locatie Villa Vredestein"
+                <form className="contact-form" onSubmit={handleSubmit}>
+                    <h2>Stuur een bericht</h2>
+                    <input
+                        type="text"
+                        placeholder="Jouw naam"
+                        value={naam}
+                        onChange={(e) => setNaam(e.target.value)}
+                        required
                     />
-                </div>
-                </div>
+                    <textarea
+                        placeholder="Jouw bericht..."
+                        rows={5}
+                        value={bericht}
+                        onChange={(e) => setBericht(e.target.value)}
+                        required
+                    />
+                    <button type="submit" className="contact-submit">
+                        Verstuur bericht
+                    </button>
+                </form>
             </div>
 
             <Modal show={showModal} onClose={() => setShowModal(false)} />
