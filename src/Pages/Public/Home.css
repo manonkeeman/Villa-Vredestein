@@ -25,9 +25,9 @@
     display: flex;
     justify-content: center;
     gap: 4rem;
-    padding: 2rem;
-    border-top: 1px solid #1e1e1e;
-    margin-top: 2rem;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #1e1e1e;
+    margin-bottom: 2rem;
     animation: fadeInUp 0.8s ease 0.3s forwards;
     opacity: 0;
 }
