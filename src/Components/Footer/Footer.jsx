@@ -11,9 +11,10 @@ const Footer = () => {
 
     const blogs = t("blogs", { returnObjects: true });
 
-    const col1 = [
+    const paginas = [
         { to: "/", label: t("nav.home") },
         { to: "/about", label: t("nav.about") },
+        { to: "/tijdlijn", label: "Tijdlijn" },
         { to: "/contact", label: t("nav.contact") },
     ];
 
@@ -25,51 +26,45 @@ const Footer = () => {
           }).filter(Boolean)
         : [];
 
-    const col2 = blogLinks.slice(0, 4);
-    const col3 = blogLinks.slice(4);
-
     return (
         <footer className="site-footer" aria-label="Sitefooter">
-            <div className="footer-inner">
 
-                {/* Kolom 1 — Branding */}
-                <div className="footer-col footer-brand">
-                    <NavLink to="/" aria-label="Villa Vredestein – naar homepage">
-                        <img src="/VVLogo.png" alt="Villa Vredestein logo" className="footer-logo" width="80" height="80" />
-                    </NavLink>
+            {/* Branding — bovenaan, volle breedte */}
+            <div className="footer-brand-bar">
+                <NavLink to="/" aria-label="Villa Vredestein – naar homepage" className="footer-brand-logo-link">
+                    <img src="/VVLogo.png" alt="Villa Vredestein logo" className="footer-logo" width="64" height="64" />
+                </NavLink>
+                <div className="footer-brand-text">
                     <p className="footer-name">Villa Vredestein</p>
                     <p className="footer-tagline">{t("footer.tagline")}</p>
                 </div>
+            </div>
 
-                {/* Kolom 2 — Alle links in 3 sub-kolommen */}
-                <div className="footer-col footer-nav-wide">
+            {/* Links — drie kolommen */}
+            <div className="footer-inner">
+
+                <div className="footer-col">
                     <h3 className="footer-heading">{t("footer.links")}</h3>
-                    <nav aria-label="Footer navigatie" className="footer-links-grid">
-                        <ul className="footer-links">
-                            {col1.map((link) => (
-                                <li key={link.to}>
-                                    <NavLink to={link.to}>{link.label}</NavLink>
-                                </li>
-                            ))}
-                        </ul>
-                        <ul className="footer-links">
-                            {col2.map((link) => (
-                                <li key={link.to}>
-                                    <NavLink to={link.to}>{link.label}</NavLink>
-                                </li>
-                            ))}
-                        </ul>
-                        <ul className="footer-links">
-                            {col3.map((link) => (
-                                <li key={link.to}>
-                                    <NavLink to={link.to}>{link.label}</NavLink>
-                                </li>
-                            ))}
-                        </ul>
-                    </nav>
+                    <ul className="footer-links">
+                        {paginas.map((link) => (
+                            <li key={link.to}>
+                                <NavLink to={link.to}>{link.label}</NavLink>
+                            </li>
+                        ))}
+                    </ul>
                 </div>
 
-                {/* Kolom 3 — Contact info */}
+                <div className="footer-col">
+                    <h3 className="footer-heading">{t("footer.verhalen")}</h3>
+                    <ul className="footer-links">
+                        {blogLinks.map((link) => (
+                            <li key={link.to}>
+                                <NavLink to={link.to}>{link.label}</NavLink>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+
                 <div className="footer-col">
                     <h3 className="footer-heading">{t("footer.contactTitle")}</h3>
                     <address className="footer-address">
