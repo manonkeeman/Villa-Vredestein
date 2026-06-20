@@ -63,6 +63,21 @@ const Home = () => {
                 })}</script>
             </Helmet>
 
+            <div className="home-facts">
+                <div className="fact-card">
+                    <span className="fact-number">1906</span>
+                    <span className="fact-label">Bouwjaar</span>
+                </div>
+                <div className="fact-card">
+                    <span className="fact-number">6</span>
+                    <span className="fact-label">Bewoners</span>
+                </div>
+                <div className="fact-card">
+                    <span className="fact-number">∞</span>
+                    <span className="fact-label">Plannen</span>
+                </div>
+            </div>
+
             <section className="card-wrapper home-animate">
                 <figure className="card image-card home-image home-img-animate">
                     <img
@@ -97,20 +112,6 @@ const Home = () => {
                 </section>
             </section>
 
-            <div className="home-facts">
-                <div className="fact-card">
-                    <span className="fact-number">1906</span>
-                    <span className="fact-label">Bouwjaar</span>
-                </div>
-                <div className="fact-card">
-                    <span className="fact-number">6</span>
-                    <span className="fact-label">Bewoners</span>
-                </div>
-                <div className="fact-card">
-                    <span className="fact-number">∞</span>
-                    <span className="fact-label">Plannen</span>
-                </div>
-            </div>
         </main>
     );
 };
