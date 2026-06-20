@@ -9,7 +9,7 @@ const historisch = [
         titel: "De villa wordt gebouwd",
         emoji: "🏛️",
         status: "historisch",
-        tekst: "Burgemeester Baltus Koker van Krimpen aan den IJssel laat aan de Hoofdstraat in Driebergen-Rijsenburg een statig buitenhuis bouwen. Hoge plafonds, dikke muren — een fundament voor meer dan een eeuw geschiedenis.",
+        tekst: "Burgemeester Baltus Koker van Krimpen aan den IJssel laat aan de Hoofdstraat in Driebergen-Rijsenburg een statig buitenhuis bouwen. Hoge plafonds, dikke muren en een ziel die meer dan een eeuw later nog voelbaar is.",
         blogSlug: "geschiedenis",
         cta: "Lees de geschiedenis",
     },
@@ -54,7 +54,7 @@ const historisch = [
         titel: "Ortholab",
         emoji: "🔬",
         status: "historisch",
-        tekst: "Ortholab betrekt de villa voor korte tijd — een bijzondere wending in het leven van het pand. Een zakelijk intermezzo in een anders residentieel verhaal.",
+        tekst: "Ortholab betrekt de villa voor korte tijd. Een bijzondere wending in het leven van het pand: na bijna vijf decennia residentieel gebruik wordt het gebouw even iets anders.",
     },
     {
         datum: "1973 — 2019",
@@ -62,7 +62,7 @@ const historisch = [
         emoji: "🎓",
         status: "historisch",
         tekst: "Familie Blooij brengt de villa nieuw leven in. Bijna vijf decennia lang is het pand een studentenhuis voor de IVA-opleiding in Driebergen. Generaties studenten wonen, leren en leven aan de Hoofdstraat.",
-        detail: "Ruim 46 jaar lang draait Vredestein op studenten. De villa raakt aan het oog onttrokken achter laag in laag geschilderde muren en afgedekte vloeren — het originele karakter begraven onder decennia gebruik.",
+        detail: "Ruim 46 jaar lang draait Vredestein op studenten. Laag na laag verf trekt over de muren, vloeren verdwijnen onder tapijt, en het originele karakter van de villa raakt diep begraven.",
     },
 ];
 
@@ -72,7 +72,7 @@ const renovatie = [
         titel: "Manon & Maxim kopen de villa",
         emoji: "🗝️",
         status: "gedaan",
-        tekst: "Midden in een pandemie slaat de sleutel in het slot. De villa was jarenlang studentenhuis voor IVA — verwaarloosde muren, begraven karakter. Maar wie goed keek, zag wat eronder lag.",
+        tekst: "Midden in een pandemie slaat de sleutel in het slot. De villa had jarenlang dienst gedaan als studentenhuis voor IVA, met verwaarloosde muren en een begraven karakter. Maar wie goed keek, zag wat eronder lag.",
         blogSlug: "villa-vredestein",
         cta: "Lees het verhaal",
     },
@@ -81,7 +81,7 @@ const renovatie = [
         titel: "De restauratie begint",
         emoji: "🔨",
         status: "gedaan",
-        tekst: "Van kelder tot zolder. Originele houten vloeren, sierstucwerk, karakteristieke deuren — alles wat nog te redden viel, werd bewaard. Een balans tussen oud en nieuw.",
+        tekst: "Van kelder tot zolder. De originele houten vloeren, het sierstucwerk, de karakteristieke deuren: alles wat nog te redden viel werd zorgvuldig bewaard en teruggeplaatst. Oud en nieuw vonden elkaar.",
         blogSlug: "restauratie",
         cta: "Bekijk de restauratie",
     },
@@ -99,7 +99,7 @@ const renovatie = [
         titel: "Woonkamer & interieur",
         emoji: "💡",
         status: "gedaan",
-        tekst: "Nieuwe verlichting, doordachte indeling, sfeer gecreëerd. De woonkamer is nu het kloppende hart van de villa — waar 's avonds iedereen samenkomt.",
+        tekst: "Nieuwe verlichting, doordachte indeling, sfeer gecreëerd. De woonkamer is nu het kloppende hart van de villa, de plek waar 's avonds iedereen samenkomt.",
         detail: "Van de verlichting tot de keuze voor meubels: elk detail is afgestemd op het karakter van het pand. Modern comfort dat de historische ruimte niet verdringt, maar versterkt.",
     },
     {
@@ -107,7 +107,7 @@ const renovatie = [
         titel: "De tuin wordt wakker",
         emoji: "🌱",
         status: "bezig",
-        tekst: "Eerste planten, eerste plannen. Een terras in wording. Zodra de zon meewerkt, gaat de schop de grond in — en krijgt de tuin het verhaal dat het verdient.",
+        tekst: "Eerste planten, eerste plannen. Een terras in wording. Zodra de zon meewerkt, gaat de schop de grond in. Dan krijgt de tuin eindelijk het verhaal dat het verdient.",
         detail: "De tuin wordt een verlengstuk van het huis: een plek om te zitten, te eten en de kinderen te laten rennen. Moestuin, borders en misschien een kleine vijver staan op de lijst.",
     },
     {
@@ -115,7 +115,7 @@ const renovatie = [
         titel: "Badkamer renovatie",
         emoji: "🚿",
         status: "gepland",
-        tekst: "De grote klus op de eerste verdieping. Nieuwe tegels, nieuwe kranen — dit wordt het pronkstuk van boven.",
+        tekst: "De grote klus op de eerste verdieping. Nieuwe tegels, nieuwe kranen, nieuwe energie. Dit wordt het pronkstuk van boven.",
         detail: "Nog in voorbereiding. Materialen zijn gekozen, inspiratie is er genoeg. Zodra het werk begint, volgt een update.",
     },
     {
@@ -123,7 +123,7 @@ const renovatie = [
         titel: "Meer plannen onderweg",
         emoji: "✨",
         status: "toekomst",
-        tekst: "Villa Vredestein is een werk in uitvoering. Er zijn altijd meer ideeën dan tijd — maar dat maakt het juist bijzonder.",
+        tekst: "Villa Vredestein is een werk in uitvoering. Er zijn altijd meer ideeën dan tijd. En juist dat maakt dit huis zo bijzonder.",
         detail: "Volg de tijdlijn. Er komen updates over de schuur, de voortuin, de kamers en veel meer.",
     },
 ];
@@ -209,12 +209,12 @@ const Tijdlijn = () => {
         <main className="tijdlijn-page">
             <Helmet>
                 <title>Tijdlijn — Villa Vredestein</title>
-                <meta name="description" content="Volg de restauratie en geschiedenis van Villa Vredestein stap voor stap — van 1906 tot nu." />
+                <meta name="description" content="Volg de restauratie en geschiedenis van Villa Vredestein stap voor stap, van 1906 tot nu." />
             </Helmet>
 
             <header className="tijdlijn-header">
                 <h1>Tijdlijn Villa Vredestein</h1>
-                <p>Van 1906 tot nu. De volledige geschiedenis van het pand — de bewoners door de jaren heen, de restauratie en de plannen voor de toekomst.</p>
+                <p>Van 1906 tot nu: de volledige geschiedenis van het pand, de bewoners door de jaren heen, de restauratie en de plannen voor de toekomst.</p>
             </header>
 
             <div className="tijdlijn-sectie-label">📜 Geschiedenis</div>
