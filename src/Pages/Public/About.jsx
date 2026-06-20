@@ -95,30 +95,6 @@ const About = () => {
                 })}
             </section>
 
-            <section className="vredesteiners-sectie" aria-label="De Vredesteiners">
-                <h2 className="vredesteiners-titel">De Vredesteiners</h2>
-                <p className="vredesteiners-intro">
-                    Een gezin, een kat en één villa uit 1906. Van drukke ochtenden tot avonden met z'n allen aan tafel —
-                    dit zijn de mensen (en het dier) die Villa Vredestein thuis maken.
-                </p>
-                <div className="vredesteiners-grid">
-                    {[
-                        { naam: "Manon",   kamer: "De Studio",  emoji: "🎨", bio: "Bouwt websites, houdt van koffie om middernacht en bedenkt plannen voor de verbouw die iedereen enthousiast maken." },
-                        { naam: "Maxim",   kamer: "De Werkplaats", emoji: "🔧", bio: "Weet hoe je een spijker slaat en een IKEA-kast in de helft van de tijd opbouwt. Onmisbaar." },
-                        { naam: "Arwen",   kamer: "Italië",     emoji: "🧒", bio: "Heeft de mooiste kamer van de villa — en dat weet ze. Italië is haar wereld en ze laat je daar graag in." },
-                        { naam: "Desmond", kamer: "Thailand",   emoji: "🧒", bio: "Ontdekt elke dag iets nieuws in de villa. Weet al precies welke plekken het leukst zijn om te verstoppertje te spelen." },
-                        { naam: "Medoc",   kamer: "Frankrijk",  emoji: "🧒", bio: "Energiek, creatief en altijd ergens mee bezig. De villa is zijn speelparadijs." },
-                        { naam: "Q",       kamer: "Overal",     emoji: "🐱", bio: "De echte baas van de villa. Kiest zelf waar hij slaapt, wanneer hij eet en wie aandacht verdient." },
-                    ].map((b) => (
-                        <div key={b.naam} className="vredesteiner-card">
-                            <div className="vredesteiner-avatar">{b.emoji}</div>
-                            <h3>{b.naam}</h3>
-                            <span className="vredesteiner-kamer">{b.kamer}</span>
-                            <p>{b.bio}</p>
-                        </div>
-                    ))}
-                </div>
-            </section>
         </main>
     );
 };
