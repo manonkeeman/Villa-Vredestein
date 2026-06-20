@@ -63,8 +63,8 @@ const Home = () => {
                 })}</script>
             </Helmet>
 
-            <section className="card-wrapper">
-                <figure className="card image-card home-image">
+            <section className="card-wrapper home-animate">
+                <figure className="card image-card home-image home-img-animate">
                     <img
                         src={VillaVredestein}
                         alt={t("home.imageAlt")}
@@ -74,7 +74,7 @@ const Home = () => {
                     />
                 </figure>
 
-                <section className="card text-card home-text">
+                <section className="card text-card home-text home-text-animate">
                     <header>
                         <h1 id="home-title">{t("home.title")}</h1>
                     </header>
@@ -82,13 +82,35 @@ const Home = () => {
                     <p>{t("home.p2")}</p>
                     <p>{t("home.p3")}</p>
                     <p>{t("home.p4")}</p>
-                    <Button
-                        text={t("home.readMore")}
-                        variant="secundary"
-                        onClick={() => navigate("/about")}
-                    />
+                    <div className="home-buttons">
+                        <Button
+                            text={t("home.readMore")}
+                            variant="secundary"
+                            onClick={() => navigate("/about")}
+                        />
+                        <Button
+                            text="Tijdlijn"
+                            variant="secundary"
+                            onClick={() => navigate("/tijdlijn")}
+                        />
+                    </div>
                 </section>
             </section>
+
+            <div className="home-facts">
+                <div className="fact-card">
+                    <span className="fact-number">1906</span>
+                    <span className="fact-label">Bouwjaar</span>
+                </div>
+                <div className="fact-card">
+                    <span className="fact-number">6</span>
+                    <span className="fact-label">Bewoners</span>
+                </div>
+                <div className="fact-card">
+                    <span className="fact-number">∞</span>
+                    <span className="fact-label">Plannen</span>
+                </div>
+            </div>
         </main>
     );
 };
