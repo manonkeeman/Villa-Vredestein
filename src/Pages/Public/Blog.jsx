@@ -39,7 +39,7 @@ const Blog = () => {
             <main className="blog-page">
                 <div className="blog-not-found">
                     <h1>{t("about.back")}</h1>
-                    <Button text={t("about.back")} variant="primary" onClick={() => navigate("/about")} />
+                    <Button text={t("about.back")} variant="primary" onClick={() => navigate("/tijdlijn")} />
                 </div>
             </main>
         );
@@ -90,7 +90,7 @@ const Blog = () => {
                 <header className="blog-header">
                     <button
                         className="blog-back-btn"
-                        onClick={() => navigate("/about")}
+                        onClick={() => navigate("/tijdlijn")}
                         aria-label={t("about.back")}
                     >
                         {t("about.back")}
@@ -124,7 +124,7 @@ const Blog = () => {
                     <Button
                         text={t("about.back")}
                         variant="primary"
-                        onClick={() => navigate("/about")}
+                        onClick={() => navigate("/tijdlijn")}
                     />
                 </footer>
             </article>
