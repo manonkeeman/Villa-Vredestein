@@ -68,10 +68,27 @@ const Home = () => {
                     <span className="fact-number">1906</span>
                     <span className="fact-label">Bouwjaar</span>
                 </div>
+                <div className="fact-divider" />
+                <div className="fact-card">
+                    <span className="fact-number">120</span>
+                    <span className="fact-label">Jaar oud</span>
+                </div>
+                <div className="fact-divider" />
                 <div className="fact-card">
                     <span className="fact-number">6</span>
                     <span className="fact-label">Bewoners</span>
                 </div>
+                <div className="fact-divider" />
+                <div className="fact-card">
+                    <span className="fact-number">3</span>
+                    <span className="fact-label">Kinderen</span>
+                </div>
+                <div className="fact-divider" />
+                <div className="fact-card">
+                    <span className="fact-number">1</span>
+                    <span className="fact-label">Kat</span>
+                </div>
+                <div className="fact-divider" />
                 <div className="fact-card">
                     <span className="fact-number">∞</span>
                     <span className="fact-label">Plannen</span>
