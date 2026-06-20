@@ -1,0 +1,233 @@
+/* ── Animaties ── */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in-up-trigger {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in-up-trigger.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── Pagina ── */
+.tijdlijn-page {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem 6rem;
+    box-sizing: border-box;
+}
+
+/* ── Header ── */
+.tijdlijn-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    animation: fadeInUp 0.7s ease forwards;
+}
+
+.tijdlijn-header h1 {
+    font-size: 2.6rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.tijdlijn-header p {
+    font-size: 1rem;
+    color: #aaa;
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* ── Tijdlijn container ── */
+.tijdlijn-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.tijdlijn-lijn {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, #FCBC2D, #2a2a2a);
+    transform: translateX(-50%);
+    z-index: 0;
+}
+
+/* ── Item ── */
+.tijdlijn-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.tijdlijn-item.links {
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.tijdlijn-item.rechts {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+.tijdlijn-item.links .tijdlijn-kaart {
+    margin-right: calc(50% + 2.5rem);
+}
+
+.tijdlijn-item.rechts .tijdlijn-kaart {
+    margin-left: calc(50% + 2.5rem);
+}
+
+/* ── Dot ── */
+.tijdlijn-dot {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #111;
+    border: 2px solid #FCBC2D;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    z-index: 2;
+    flex-shrink: 0;
+    transition: background-color 0.3s ease;
+}
+
+.tijdlijn-item:hover .tijdlijn-dot {
+    background-color: #FCBC2D;
+}
+
+/* ── Kaart ── */
+.tijdlijn-kaart {
+    background-color: #111;
+    border: 1px solid #222;
+    border-radius: 14px;
+    padding: 1.5rem;
+    width: calc(50% - 4.5rem);
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.tijdlijn-kaart:hover {
+    border-color: #FCBC2D;
+    transform: translateY(-3px);
+}
+
+.tijdlijn-kaart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.6rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tijdlijn-datum {
+    font-size: 0.75rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.tijdlijn-kaart h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: white;
+    margin: 0 0 0.5rem;
+}
+
+.tijdlijn-kaart p {
+    font-size: 0.88rem;
+    color: #aaa;
+    line-height: 1.65;
+    margin: 0;
+}
+
+/* ── Badges ── */
+.tijdlijn-badge {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.65rem;
+    border-radius: 20px;
+}
+
+.badge-gedaan {
+    background-color: #1a3a1a;
+    color: #4caf50;
+    border: 1px solid #2d5a2d;
+}
+
+.badge-bezig {
+    background-color: #3a2a00;
+    color: #FCBC2D;
+    border: 1px solid #5a4000;
+}
+
+.badge-gepland {
+    background-color: #1a1a3a;
+    color: #7c9ef8;
+    border: 1px solid #2a2a5a;
+}
+
+.badge-toekomst {
+    background-color: #222;
+    color: #888;
+    border: 1px solid #333;
+}
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+    .tijdlijn-lijn {
+        left: 24px;
+    }
+
+    .tijdlijn-item,
+    .tijdlijn-item.links,
+    .tijdlijn-item.rechts {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 60px;
+    }
+
+    .tijdlijn-item.links .tijdlijn-kaart,
+    .tijdlijn-item.rechts .tijdlijn-kaart {
+        margin: 0;
+        width: 100%;
+    }
+
+    .tijdlijn-dot {
+        left: 24px;
+        top: 0;
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .tijdlijn-kaart {
+        width: 100%;
+    }
+
+    .tijdlijn-header h1 {
+        font-size: 1.9rem;
+    }
+}
