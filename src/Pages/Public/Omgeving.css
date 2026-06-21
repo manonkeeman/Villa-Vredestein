@@ -1,7 +1,7 @@
 .reveal-section { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
 .reveal-section.in-view { opacity: 1; transform: translateY(0); }
 
-.omgeving-page { background: #0c0a07; color: #fff; overflow-x: hidden; }
+.omgeving-page { background: #0c0a07; color: #fff; overflow-x: clip; }
 
 /* Hero */
 .omg-hero {
@@ -126,7 +126,7 @@
 
 .omg-sfeer-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-columns: 3fr 2fr;
     gap: 0.5rem;
     margin-top: 2rem;
 }

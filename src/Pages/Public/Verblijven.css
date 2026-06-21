@@ -1,7 +1,7 @@
 .reveal-section { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
 .reveal-section.in-view { opacity: 1; transform: translateY(0); }
 
-.verblijven-page { background: #0c0a07; color: #fff; overflow-x: hidden; }
+.verblijven-page { background: #0c0a07; color: #fff; overflow-x: clip; }
 
 /* Hero */
 .verb-hero {
