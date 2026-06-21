@@ -203,7 +203,7 @@ const OverOns = () => {
                                         onClick={() => toggleExpanded(sec.slug)}
                                         style={{ "--btn-accent": sec.accent }}
                                     >
-                                        {expanded[sec.slug] ? "Minder tonen" : "Lees meer"}
+                                        {expanded[sec.slug] ? "Tekst inklappen ↑" : "Tekst uitklappen ↓"}
                                     </button>
                                 )}
 
