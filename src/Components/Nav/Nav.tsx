@@ -136,6 +136,11 @@ const Nav = () => {
                     </NavLink>
                 </li>
                 <li>
+                    <NavLink to="/in-de-pers" className="default-link" onClick={closeAll}>
+                        In de Pers
+                    </NavLink>
+                </li>
+                <li>
                     <NavLink to="/galerij-villa" className="default-link" onClick={closeAll}>
                         Galerij
                     </NavLink>
