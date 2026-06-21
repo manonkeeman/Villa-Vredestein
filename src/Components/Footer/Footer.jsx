@@ -13,10 +13,13 @@ const Footer = () => {
 
     const paginas = [
         { to: "/", label: t("nav.home") },
-        { to: "/about", label: t("nav.about") },
-        { to: "/over-ons", label: t("nav.overons") },
+        { to: "/verhaal", label: "Het Verhaal" },
+        { to: "/galerij-villa", label: "Galerij" },
+        { to: "/ruimtes", label: "De Ruimtes" },
+        { to: "/omgeving", label: "Omgeving" },
+        { to: "/verblijven", label: "Verblijven" },
         { to: "/tijdlijn", label: "Tijdlijn" },
-        { to: "/galerij", label: "Galerij" },
+        { to: "/galerij", label: "Historisch archief" },
         { to: "/contact", label: t("nav.contact") },
     ];
 

@@ -42,6 +42,10 @@ import PaymentSuccessPage from "./Pages/Public/PaymentSuccessPage.jsx";
 import Tijdlijn from "./Pages/Public/Tijdlijn.jsx";
 import OverOns from "./Pages/Public/OverOns.jsx";
 import Galerij from "./Pages/Public/Galerij.jsx";
+import GalerijVilla from "./Pages/Public/GalerijVilla.jsx";
+import Omgeving from "./Pages/Public/Omgeving.jsx";
+import Verblijven from "./Pages/Public/Verblijven.jsx";
+import Plattegrond from "./Pages/Public/Plattegrond.jsx";
 
 function App() {
     return (
@@ -57,7 +61,12 @@ function App() {
                     <Route path="/blog/:slug" element={<Blog />} />
                     <Route path="/tijdlijn" element={<Tijdlijn />} />
                     <Route path="/over-ons" element={<OverOns />} />
+                    <Route path="/verhaal" element={<OverOns />} />
                     <Route path="/galerij" element={<Galerij />} />
+                    <Route path="/galerij-villa" element={<GalerijVilla />} />
+                    <Route path="/omgeving" element={<Omgeving />} />
+                    <Route path="/verblijven" element={<Verblijven />} />
+                    <Route path="/ruimtes" element={<Plattegrond />} />
 
                     <Route path="/login" element={<Login />} />
                     <Route path="/registeruser" element={<RegisterUser />} />
