@@ -351,12 +351,12 @@
     gap: 0.75rem;
     margin-top: 1.75rem;
     padding-top: 1.75rem;
-    border-top: 1px solid #1e1a2e;
+    border-top: 1px solid #2a1a0a;
 }
 
 .oo-carpe-cta-btn {
-    background: #7c9ef8;
-    color: #07091a;
+    background: #e0853a;
+    color: #0e0800;
     border: none;
     font-size: 0.9rem;
     font-weight: 700;
@@ -368,14 +368,14 @@
 }
 
 .oo-carpe-cta-btn:hover {
-    background: #9db4ff;
+    background: #c86e28;
     transform: translateY(-2px);
 }
 
 .oo-carpe-tagline {
     font-size: 0.85rem;
     font-style: italic;
-    color: #5a5a80;
+    color: #6b4e2a;
     letter-spacing: 0.04em;
 }
 
