@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import "./Plattegrond.css";
 
 import WoonkamerImg from "../../Assets/Images/int-woonkamer.jpg";
-import WijnkamerImg from "../../Assets/Images/int-wijnkamer.jpg";
 
 /* ─────────────────────────────────────────────
    Verdiepingen (visueel overzicht)
@@ -13,15 +12,15 @@ const VERDIEPINGEN = [
     {
         id: "boven",
         label: "Bovenste verdieping",
-        bewoners: "Studenten",
+        bewoners: "Studenten · Desmond",
         icon: "🎓",
         kleur: "#7c9ef8",
         beschrijving: "Drie studentenkamers met eigen gedeelde keuken, badkamer en woonruimte. Toekomstige eigen ingang gepland.",
         status: "beschikbaar",
         ruimtes: [
-            { naam: "Studentenkamer A", icon: "🛏️", afm: "~17 m²", info: "Goed licht, rustig" },
-            { naam: "Studentenkamer B", icon: "🛏️", afm: "~16 m²", info: "Zolderkamer, daklichten" },
-            { naam: "Studentenkamer C", icon: "🛏️", afm: "~16 m²", info: "Compact en stil" },
+            { naam: "Thailand (Desmond)", icon: "🇹🇭", afm: "~17 m²", info: "Goed licht, rustig" },
+            { naam: "Japan",              icon: "🇯🇵", afm: "~16 m²", info: "Zolderkamer, daklichten" },
+            { naam: "Argentinië",         icon: "🇦🇷", afm: "~16 m²", info: "Compact en stil" },
             { naam: "Gedeelde badkamer", icon: "🚿", afm: "~8 m²", info: "1 badkamer voor 3 kamers" },
             { naam: "Studentenkeuken", icon: "🍳", afm: "~12 m²", info: "Eigen keuken, gedeeld" },
             { naam: "Gedeelde zitruimte", icon: "🛋️", afm: "~14 m²", info: "Ontspan- en studeerruimte" },
@@ -30,15 +29,15 @@ const VERDIEPINGEN = [
     {
         id: "midden",
         label: "Middelste verdieping",
-        bewoners: "Desmond · Arwen · Medoc",
+        bewoners: "Arwen · Medoc · Logeerkamer",
         icon: "✨",
         kleur: "#FCBC2D",
-        beschrijving: "Drie luxe slaapkamers waarvan twee met balkon. Eigen badkamer, kitchenette en eigen ingang aan de zijkant. Sportkamer in aanbouw.",
+        beschrijving: "Drie luxe slaapkamers waarvan twee met balkon, eigen badkamer, kitchenette en eigen ingang. Oekraïne is nu de slaapkamer van Manon & Maxim, wordt straks logeerkamer. Sportkamer in aanbouw.",
         status: "eigen ingang",
         ruimtes: [
-            { naam: "Kamer Desmond (2001)", icon: "🛏️", afm: "~22 m²", info: "Balkon, straatzijde, grootste kamer" },
-            { naam: "Kamer Arwen (2006)",   icon: "🌿", afm: "~18 m²", info: "Balkon, tuinzijde, veel groen" },
-            { naam: "Kamer Medoc (2005)",   icon: "🇮🇹", afm: "~15 m²", info: "Uniek interieur, warm ingericht" },
+            { naam: "Italië (Arwen 2006)",               icon: "🇮🇹", afm: "~22 m²", info: "Balkon, straatzijde, grootste kamer" },
+            { naam: "Frankrijk (Medoc 2005)",             icon: "🇫🇷", afm: "~18 m²", info: "Balkon, tuinzijde, veel groen" },
+            { naam: "Oekraïne (straks logeerkamer)",      icon: "🇺🇦", afm: "~15 m²", info: "Nu: Manon & Maxim. Wordt logeerkamer." },
             { naam: "Badkamer",              icon: "🚿", afm: "~9 m²",  info: "Eigen badkamer voor deze verdieping" },
             { naam: "Kitchenette",           icon: "☕", afm: "~8 m²",  info: "Kleine keukenunit per verdieping" },
             { naam: "Sportkamer",            icon: "🏋️", afm: "~20 m²", info: "In aanbouw", aanbouw: true },
@@ -53,11 +52,10 @@ const VERDIEPINGEN = [
         beschrijving: "Ruime woonkamer met open keuken en eetkamer — het gemeenschappelijk hart. Slaapkamer en badkamer in aanbouw. Verbonden met de tuin.",
         status: "in ontwikkeling",
         ruimtes: [
-            { naam: "Woonkamer",            icon: "🛋️", afm: "~45 m²", info: "Open plan, hoge plafonds, erker, houtkachel" },
+            { naam: "Woonkamer",              icon: "🛋️", afm: "~45 m²", info: "Open plan, hoge plafonds, erker, houtkachel" },
             { naam: "Open keuken + eetkamer", icon: "🍽️", afm: "~28 m²", info: "Volledig uitgerust, eiken tafel" },
-            { naam: "Wijnkamer",            icon: "🍷", afm: "~12 m²", info: "Wijnrek, kroonluchter, eigen sfeer" },
-            { naam: "Slaapkamer",           icon: "🛏️", afm: "~18 m²", info: "In aanbouw", aanbouw: true },
-            { naam: "Badkamer",             icon: "🚿", afm: "~10 m²", info: "In aanbouw", aanbouw: true },
+            { naam: "Slaapkamer",             icon: "🛏️", afm: "~18 m²", info: "In aanbouw", aanbouw: true },
+            { naam: "Badkamer",               icon: "🚿", afm: "~10 m²", info: "In aanbouw", aanbouw: true },
         ],
     },
     {
@@ -185,7 +183,6 @@ const Plattegrond = () => {
             <section className="pg-fotos reveal-section" ref={addRef as any}>
                 <div className="pg-inner pg-fotos-grid">
                     <img src={WoonkamerImg} alt="Woonkamer Villa Vredestein" loading="lazy" />
-                    <img src={WijnkamerImg} alt="Wijnkamer Villa Vredestein" loading="lazy" />
                 </div>
             </section>
 

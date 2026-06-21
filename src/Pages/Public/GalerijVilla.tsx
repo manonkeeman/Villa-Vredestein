@@ -47,7 +47,7 @@ const FOTOS = [
     { src: ImgWoonkamer,    cat: "Interieur",   caption: "De woonkamer",          sub: "Hoge plafonds, authentieke stoelen, veel licht" },
     { src: ImgWoonkamer2,   cat: "Interieur",   caption: "Woonkamer hoek",        sub: "Knus hoekje naast de houtkachel" },
     { src: ImgKroonluchter, cat: "Interieur",   caption: "Kristallen kroonluchter", sub: "Origineel, meer dan een eeuw oud" },
-    { src: ImgWijnkamer,    cat: "Interieur",   caption: "Wijnkamer",             sub: "Sfeervolle ruimte met eigen karakter" },
+    { src: ImgWijnkamer,    cat: "Interieur",   caption: "Oude woonkamer (voor renovatie)", sub: "De woonkamer zoals die er uitzag vóór de restauratie" },
     { src: ImgDetail,       cat: "Interieur",   caption: "Interieurdetail",       sub: "Authenticiteit in elk hoekje" },
     { src: ImgDetail2,      cat: "Interieur",   caption: "Interieurdetail II",    sub: "Historisch stucwerk en warme kleuren" },
 
