@@ -27,6 +27,39 @@
 .pg-stat span { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #666; }
 .pg-stat-div { width: 1px; height: 40px; background: #1a1a1a; flex-shrink: 0; }
 
+/* Verdiepingen overzicht */
+.pg-verdiepingen { padding: 4rem 0; border-top: 1px solid #1a1a1a; }
+
+.verdieping-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-top: 2rem;
+}
+
+.verdieping-card {
+    background: #0e0e0e;
+    border: 1px solid #1e1e1e;
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    transition: border-color 0.3s;
+}
+
+.verdieping-card:hover { border-color: #333; }
+
+.verdieping-icon { font-size: 1.75rem; flex-shrink: 0; margin-top: 0.1rem; }
+
+.verdieping-card strong { font-size: 0.95rem; color: #fff; display: block; margin-bottom: 0.2rem; }
+.verdieping-card em { font-size: 0.75rem; color: #FCBC2D; font-style: normal; display: block; margin-bottom: 0.6rem; }
+.verdieping-card p { font-size: 0.82rem; color: #777; line-height: 1.6; margin: 0; }
+
+/* Aanbouw-kaart stijl */
+.kamer-aanbouw { border-style: dashed; border-color: #2a2a2a; opacity: 0.75; }
+.kamer-aanbouw:hover { border-color: #444; opacity: 0.9; transform: none; }
+
 /* Inner */
 .pg-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
 .pg-section-title { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; color: #fff; margin: 0 0 2rem; }
@@ -136,6 +169,7 @@
 
 /* Responsive */
 @media (max-width: 900px) {
+    .verdieping-grid { grid-template-columns: 1fr; }
     .kamers-grid { grid-template-columns: 1fr 1fr; }
     .voorzienin-grid { grid-template-columns: 1fr 1fr; }
     .pg-stat { padding: 1.25rem 1.5rem; }

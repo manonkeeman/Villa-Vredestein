@@ -12,7 +12,7 @@ import WijnImg from "../../Assets/Images/int-wijnkamer.jpg";
 
 const KENMERKEN = [
     { icon: "🏛️", label: "1906", sub: "Bouwjaar" },
-    { icon: "🛏️", label: "5", sub: "Kamers" },
+    { icon: "🛏️", label: "6", sub: "Slaapkamers" },
     { icon: "🌳", label: "Heuvelrug", sub: "Op de stoep" },
     { icon: "🚂", label: "15 min", sub: "Utrecht CS" },
     { icon: "✈️", label: "50 min", sub: "Schiphol" },

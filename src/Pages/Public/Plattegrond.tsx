@@ -3,9 +3,29 @@ import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import "./Plattegrond.css";
 
-import WoonkamerImg from "../../Assets/Images/int-woonkamer.jpg";
-import WijnkamerImg from "../../Assets/Images/int-wijnkamer.jpg";
-import KroonluchterImg from "../../Assets/Images/int-kroonluchter.jpg";
+import WoonkamerImg  from "../../Assets/Images/int-woonkamer.jpg";
+import WijnkamerImg  from "../../Assets/Images/int-wijnkamer.jpg";
+
+const VERDIEPINGEN = [
+    {
+        label: "Bovenste verdieping",
+        sub: "3 studentenkamers",
+        icon: "🎓",
+        beschrijving: "De bovenste verdieping is ingericht voor drie studenten. Rustig, hoog in de villa, elk met eigen karakter.",
+    },
+    {
+        label: "Middelste verdieping",
+        sub: "Desmond · Arwen · Medoc",
+        icon: "👨‍👩‍👧‍👦",
+        beschrijving: "De middelste verdieping is voor onze drie volwassen kinderen: Desmond (2001), Arwen (2006) en Medoc (2005). Elk hun eigen plek.",
+    },
+    {
+        label: "Begane grond",
+        sub: "Gedeelde ruimtes",
+        icon: "🏡",
+        beschrijving: "Woonkamer, keukens, badkamers en de wijnkamer. De begane grond is de gemeenschappelijke kern van de villa.",
+    },
+];
 
 const KAMERS = [
     {
@@ -19,59 +39,95 @@ const KAMERS = [
         img: WoonkamerImg,
     },
     {
-        id: "kamer1",
-        naam: "Kamer 1: Groot",
-        verdieping: "Eerste verdieping",
+        id: "desmond",
+        naam: "Kamer Desmond",
+        verdieping: "Middelste verdieping",
         icon: "🛏️",
         afmeting: "~22 m²",
-        beschrijving: "De grootste slaapkamer van de villa. Ruim, licht en rustig. Uitzicht op de Hoofdstraat en de bomen.",
-        kenmerken: ["Straatzijde", "Groot bureau", "Licht", "Hoge plafonds"],
+        beschrijving: "De grootste kamer op de middelste verdieping. Ruim, licht en rustig. Uitzicht op de Hoofdstraat.",
+        kenmerken: ["Straatzijde", "Groot bureau", "Veel licht", "Hoge plafonds"],
         featured: true,
     },
     {
-        id: "kamer2",
-        naam: "Kamer 2: Tuinzijde",
-        verdieping: "Eerste verdieping",
+        id: "arwen",
+        naam: "Kamer Arwen",
+        verdieping: "Middelste verdieping",
         icon: "🌿",
         afmeting: "~18 m²",
-        beschrijving: "Rustige kamer aan de tuinzijde. Zicht op het groen en de achtertuin. Lekker stil.",
-        kenmerken: ["Tuinzijde", "Stil", "Privé ingang mogelijk", "Zicht op groen"],
+        beschrijving: "Rustige kamer aan de tuinzijde. Zicht op het groen en de achtertuin.",
+        kenmerken: ["Tuinzijde", "Stil", "Zicht op groen"],
     },
     {
-        id: "kamer3",
-        naam: "Kamer 3: Zolder",
-        verdieping: "Tweede verdieping",
-        icon: "🏔️",
-        afmeting: "~16 m²",
-        beschrijving: "Karakteristieke zolderkamer met daklichten en schuin dak. Perfect voor wie van sfeer houdt.",
-        kenmerken: ["Daklichten", "Schuin dak", "Aparte sfeer", "Hoog in de villa"],
-    },
-    {
-        id: "kamer4",
-        naam: "Kamer 4",
-        verdieping: "Eerste verdieping",
-        icon: "🛏️",
-        afmeting: "~17 m²",
-        beschrijving: "Comfortabele kamer midden in de villa. Goed licht overdag, rustig in de nacht.",
-        kenmerken: ["Centraal gelegen", "Goed licht", "Rustig"],
-    },
-    {
-        id: "kamer5",
-        naam: "Kamer 5: Italië",
-        verdieping: "Eerste verdieping",
+        id: "medoc",
+        naam: "Kamer Medoc",
+        verdieping: "Middelste verdieping",
         icon: "🇮🇹",
         afmeting: "~15 m²",
-        beschrijving: "De gezelligste kamer van de villa. Warm ingericht met details die aan Italië doen denken.",
-        kenmerken: ["Uniek interieur", "Gezellig", "Details"],
+        beschrijving: "Warm ingericht met details die aan Italië doen denken. De gezelligste kamer op deze verdieping.",
+        kenmerken: ["Uniek interieur", "Gezellig", "Eigen sfeer"],
     },
     {
-        id: "keuken",
-        naam: "Keuken",
+        id: "student1",
+        naam: "Studentenkamer A",
+        verdieping: "Bovenste verdieping",
+        icon: "📚",
+        afmeting: "~17 m²",
+        beschrijving: "Ruime studentenkamer hoog in de villa. Goed licht overdag, stil in de nacht.",
+        kenmerken: ["Eigen ruimte", "Rustig", "Hoog in de villa"],
+    },
+    {
+        id: "student2",
+        naam: "Studentenkamer B",
+        verdieping: "Bovenste verdieping",
+        icon: "🏔️",
+        afmeting: "~16 m²",
+        beschrijving: "Karakteristieke zolderkamer met daklichten en schuin dak. Eigen sfeer, hoog in de villa.",
+        kenmerken: ["Daklichten", "Schuin dak", "Zolderkamer", "Aparte sfeer"],
+    },
+    {
+        id: "student3",
+        naam: "Studentenkamer C",
+        verdieping: "Bovenste verdieping",
+        icon: "🛏️",
+        afmeting: "~16 m²",
+        beschrijving: "Derde studentenkamer op de bovenste verdieping. Rustig en compact.",
+        kenmerken: ["Rustig", "Compact", "Bovenste etage"],
+    },
+    {
+        id: "aanbouw",
+        naam: "Kamer 7 (in aanbouw)",
+        verdieping: "In aanbouw",
+        icon: "🔨",
+        afmeting: "Nader te bepalen",
+        beschrijving: "De zevende slaapkamer is momenteel nog in aanbouw. Wordt een volwaardige extra kamer.",
+        kenmerken: ["In aanbouw", "Binnenkort beschikbaar"],
+    },
+    {
+        id: "keuken1",
+        naam: "Keuken 1",
         verdieping: "Begane grond",
         icon: "🍳",
         afmeting: "~20 m²",
-        beschrijving: "Volledig uitgeruste gedeelde keuken. Van koelkast tot oven, alles aanwezig voor zelf koken.",
+        beschrijving: "Volledig uitgeruste gedeelde keuken met vaatwasser, oven en koelkast.",
         kenmerken: ["Volledige uitrusting", "Vaatwasser", "Oven", "Gedeeld"],
+    },
+    {
+        id: "keuken2",
+        naam: "Keuken 2",
+        verdieping: "Begane grond",
+        icon: "🍽️",
+        afmeting: "~15 m²",
+        beschrijving: "Tweede keuken in de villa. Extra kookmogelijkheid voor bewoners van de bovenste verdieping.",
+        kenmerken: ["Tweede keuken", "Koelkast", "Kookplaat", "Gedeeld"],
+    },
+    {
+        id: "keuken3",
+        naam: "Keuken 3 (in aanbouw)",
+        verdieping: "In aanbouw",
+        icon: "🔨",
+        afmeting: "Nader te bepalen",
+        beschrijving: "Derde keuken is nog in aanbouw. Straks drie keukens voor maximale vrijheid per verdieping.",
+        kenmerken: ["In aanbouw", "Binnenkort beschikbaar"],
     },
     {
         id: "wijnkamer",
@@ -79,26 +135,28 @@ const KAMERS = [
         verdieping: "Begane grond",
         icon: "🍷",
         afmeting: "~12 m²",
-        beschrijving: "Exclusieve kamer met wijnrek, sfeerverlichting en een originele kroonluchter. Voor de avonduren.",
+        beschrijving: "Exclusieve ruimte met wijnrek, sfeerverlichting en een originele kroonluchter.",
         kenmerken: ["Wijnrek", "Sfeerverlichting", "Originele details"],
         img: WijnkamerImg,
     },
 ];
 
 const GEMEENSCHAPPELIJK = [
-    { icon: "🚿", label: "Badkamers", tekst: "2 volledig uitgeruste badkamers op de eerste verdieping" },
-    { icon: "🌳", label: "Tuin & terras", tekst: "Grote achtertuin met terras, barbecue en zitgelegenheid" },
+    { icon: "🚿", label: "Badkamers",       tekst: "2 volledig uitgeruste badkamers. Derde badkamer is in aanbouw." },
+    { icon: "🌳", label: "Tuin & terras",   tekst: "Grote achtertuin met terras, barbecue en zitgelegenheid" },
     { icon: "🚲", label: "Fietsenstalling", tekst: "Overdekte fietsenstalling aan de zijkant van het pand" },
-    { icon: "🅿️", label: "Parkeren", tekst: "Oprit met ruimte voor meerdere auto's" },
-    { icon: "📶", label: "Glasvezel wifi", tekst: "Snel internet in de hele villa" },
-    { icon: "🧺", label: "Wasmachine", tekst: "Wasmachine en droger beschikbaar" },
+    { icon: "🅿️", label: "Parkeren",        tekst: "Oprit met ruimte voor meerdere auto's" },
+    { icon: "📶", label: "Glasvezel wifi",  tekst: "Snel internet in de hele villa" },
+    { icon: "🧺", label: "Wasmachine",      tekst: "Wasmachine en droger beschikbaar" },
 ];
 
 const Plattegrond = () => {
     const navigate = useNavigate();
-    const [actief, setActief] = React.useState(null);
-    const revealRefs = useRef([]);
-    const addRef = (el) => { if (el && !revealRefs.current.includes(el)) revealRefs.current.push(el); };
+    const [actief, setActief] = React.useState<string | null>(null);
+    const revealRefs = useRef<HTMLElement[]>([]);
+    const addRef = (el: HTMLElement | null) => {
+        if (el && !revealRefs.current.includes(el)) revealRefs.current.push(el);
+    };
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -113,39 +171,61 @@ const Plattegrond = () => {
         <main className="plattegrond-page">
             <Helmet>
                 <title>De Ruimtes — Villa Vredestein</title>
-                <meta name="description" content="Vijf slaapkamers, gemeenschappelijke woonkamer, volledig uitgeruste keuken en een grote tuin. Bekijk de indeling van Villa Vredestein." />
+                <meta
+                    name="description"
+                    content="6 slaapkamers (1 in aanbouw), 2 keukens (3e in aanbouw), 2 badkamers (3e in aanbouw). Bovenste verdieping voor studenten, middelste voor de kinderen. Bekijk de indeling van Villa Vredestein."
+                />
                 <link rel="canonical" href="https://villavredestein.nl/ruimtes" />
             </Helmet>
 
-            <header className="pg-hero reveal-section" ref={addRef}>
+            <header className="pg-hero reveal-section" ref={addRef as any}>
                 <div className="pg-hero-inner">
                     <span className="pg-eyebrow">De ruimtes</span>
-                    <h1>Vijf kamers. Één villa.</h1>
+                    <h1>Zes kamers. Drie verdiepingen.</h1>
                     <p>
-                        Elke kamer heeft zijn eigen karakter en sfeer. Samen delen ze de prachtige
-                        woonkamer, volledig ingerichte keuken, twee badkamers en een grote tuin.
+                        Bovenste verdieping voor studenten, middelste voor de kinderen, begane grond voor iedereen.
+                        Twee keukens, twee badkamers — en allebei wordt het er drie.
                     </p>
                 </div>
                 <div className="pg-hero-stats">
-                    <div className="pg-stat"><strong>5</strong><span>Kamers</span></div>
+                    <div className="pg-stat"><strong>6</strong><span>Slaapkamers</span></div>
                     <div className="pg-stat-div" />
-                    <div className="pg-stat"><strong>2</strong><span>Badkamers</span></div>
+                    <div className="pg-stat"><strong>2→3</strong><span>Keukens</span></div>
                     <div className="pg-stat-div" />
-                    <div className="pg-stat"><strong>450 m²</strong><span>Perceel</span></div>
+                    <div className="pg-stat"><strong>2→3</strong><span>Badkamers</span></div>
                     <div className="pg-stat-div" />
                     <div className="pg-stat"><strong>1906</strong><span>Bouwjaar</span></div>
                 </div>
             </header>
 
+            {/* Verdiepingen overzicht */}
+            <section className="pg-verdiepingen reveal-section" ref={addRef as any}>
+                <div className="pg-inner">
+                    <h2 className="pg-section-title">De indeling per verdieping</h2>
+                    <div className="verdieping-grid">
+                        {VERDIEPINGEN.map((v) => (
+                            <div key={v.label} className="verdieping-card">
+                                <span className="verdieping-icon" aria-hidden="true">{v.icon}</span>
+                                <div>
+                                    <strong>{v.label}</strong>
+                                    <em>{v.sub}</em>
+                                    <p>{v.beschrijving}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
             {/* Kamer cards */}
-            <section className="pg-kamers reveal-section" ref={addRef}>
+            <section className="pg-kamers reveal-section" ref={addRef as any}>
                 <div className="pg-inner">
                     <h2 className="pg-section-title">Alle ruimtes</h2>
                     <div className="kamers-grid">
                         {KAMERS.map((kamer) => (
                             <article
                                 key={kamer.id}
-                                className={`kamer-card ${kamer.featured ? "kamer-featured" : ""} ${actief === kamer.id ? "kamer-open" : ""}`}
+                                className={`kamer-card ${kamer.featured ? "kamer-featured" : ""} ${kamer.id === "aanbouw" || kamer.id === "keuken3" ? "kamer-aanbouw" : ""} ${actief === kamer.id ? "kamer-open" : ""}`}
                                 onClick={() => setActief(actief === kamer.id ? null : kamer.id)}
                                 role="button"
                                 tabIndex={0}
@@ -190,7 +270,7 @@ const Plattegrond = () => {
             </section>
 
             {/* Gemeenschappelijke voorzieningen */}
-            <section className="pg-voorzieningen reveal-section" ref={addRef}>
+            <section className="pg-voorzieningen reveal-section" ref={addRef as any}>
                 <div className="pg-inner">
                     <h2 className="pg-section-title">Gemeenschappelijke voorzieningen</h2>
                     <div className="voorzienin-grid">
@@ -208,7 +288,7 @@ const Plattegrond = () => {
             </section>
 
             {/* CTA */}
-            <section className="pg-cta reveal-section" ref={addRef}>
+            <section className="pg-cta reveal-section" ref={addRef as any}>
                 <div className="pg-inner pg-cta-inner">
                     <div>
                         <h2>Interesse in een kamer of de volledige villa?</h2>
