@@ -36,7 +36,7 @@ const SECTIONS = [
         theme: "dark",
         accent: "#7c9ef8",
         imgSide: "right",
-        pullQuote: "Geen kantoor. Geen strandtent. Gewoon bouwen.",
+        pullQuote: "Sindsdien geen spreuk meer.",
     },
     {
         slug: "bezoek-inspiratie",
@@ -189,6 +189,18 @@ const OverOns = () => {
                                     >
                                         {expanded[sec.slug] ? "Minder tonen" : "Lees meer"}
                                     </button>
+                                )}
+
+                                {sec.slug === "carpe-diem-design" && (
+                                    <div className="oo-carpe-cta">
+                                        <button
+                                            className="oo-carpe-cta-btn"
+                                            onClick={() => navigate("/contact")}
+                                        >
+                                            Neem contact op
+                                        </button>
+                                        <span className="oo-carpe-tagline">Leef. Pluk de dag.</span>
+                                    </div>
                                 )}
 
                                 <div className="oo-section-footer">
