@@ -70,7 +70,7 @@
 
 .contact-box {
     width: 100%;
-    background-color: #111;
+    background-color: #140e08;
     padding: 1.75rem;
     border: 1px solid #fcbc2d;
     border-radius: 10px;
@@ -85,7 +85,7 @@
 }
 
 .notice {
-    color: #aaa;
+    color: #b8a890;
     font-size: 0.78rem;
     text-align: center;
     margin-bottom: 1.5rem;
@@ -109,7 +109,7 @@
     padding: 0.65rem 2.5rem 0.65rem 0.75rem;
     border-radius: 8px;
     border: 1px solid #fcbc2d;
-    background-color: #1a1a1a;
+    background-color: #1e1812;
     color: white;
     font-size: 0.82rem;
     font-family: inherit;
@@ -117,7 +117,7 @@
 
 .input-icon-wrapper input::placeholder,
 .textarea-icon-wrapper textarea::placeholder {
-    color: #888;
+    color: #988068;
 }
 
 .input-icon {

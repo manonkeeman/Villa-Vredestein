@@ -1,9 +1,9 @@
-.galerij-villa-page { background: #080808; min-height: 100vh; padding: 0 0 5rem; }
+.galerij-villa-page { background: #0c0a07; min-height: 100vh; padding: 0 0 5rem; }
 
 /* Header */
 .gv-header { text-align: center; padding: 4rem 2rem 2.5rem; }
 .gv-header h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; color: #fff; margin: 0 0 0.75rem; }
-.gv-header p { font-size: 0.95rem; color: #666; margin: 0; }
+.gv-header p { font-size: 0.95rem; color: #786050; margin: 0; }
 
 /* Filter */
 .gv-filter {
@@ -15,9 +15,9 @@
 }
 
 .gv-filter-btn {
-    background: #111;
-    border: 1px solid #222;
-    color: #888;
+    background: #140e08;
+    border: 1px solid #241c12;
+    color: #988068;
     font-family: inherit;
     font-size: 0.78rem;
     font-weight: 500;
@@ -28,7 +28,7 @@
     letter-spacing: 0.03em;
 }
 
-.gv-filter-btn:hover { color: #fff; border-color: #444; }
+.gv-filter-btn:hover { color: #fff; border-color: #4a3e2e; }
 .gv-filter-btn.active { background: #FCBC2D; color: #000; border-color: #FCBC2D; font-weight: 700; }
 
 /* Grid */
@@ -56,7 +56,7 @@
 
 .gv-item:focus { outline: 2px solid #FCBC2D; outline-offset: 2px; }
 
-.gv-img-wrap { position: relative; overflow: hidden; background: #111; }
+.gv-img-wrap { position: relative; overflow: hidden; background: #140e08; }
 
 .gv-img-wrap img {
     width: 100%;
@@ -85,7 +85,7 @@
 .gv-item:hover .gv-img-wrap img { transform: scale(1.05); filter: brightness(0.65) saturate(0.65); }
 
 .gv-cat { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #FCBC2D; }
-.gv-caption { font-size: 0.78rem; color: #e8e8e8; margin: 0; font-weight: 500; }
+.gv-caption { font-size: 0.78rem; color: #f0e0c8; margin: 0; font-weight: 500; }
 .gv-zoom { font-size: 1rem; color: rgba(255,255,255,0.5); margin-top: 0.2rem; }
 
 @media (hover: none) {
@@ -127,7 +127,7 @@
     right: 0;
     background: transparent;
     border: none;
-    color: #888;
+    color: #988068;
     font-size: 1.3rem;
     cursor: pointer;
     transition: color 0.2s;
@@ -136,7 +136,7 @@
 .gvlb-close:hover { color: #fff; }
 
 .gvlb-img-wrap {
-    background: #111;
+    background: #140e08;
     border-radius: 10px;
     overflow: hidden;
     max-height: 68vh;
@@ -150,7 +150,7 @@
 .gvlb-info { padding: 0 0.5rem; }
 .gvlb-cat { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #FCBC2D; display: block; margin-bottom: 0.35rem; }
 .gvlb-caption { font-size: 1rem; font-weight: 600; color: #fff; margin: 0 0 0.5rem; }
-.gvlb-sub { font-size: 0.82rem; color: #888; line-height: 1.55; margin: 0; }
+.gvlb-sub { font-size: 0.82rem; color: #988068; line-height: 1.55; margin: 0; }
 
 .gvlb-nav {
     position: absolute;
@@ -173,7 +173,7 @@
 .gvlb-prev { left: -3.75rem; }
 .gvlb-next { right: -3.75rem; }
 
-.gvlb-counter { position: absolute; bottom: -2.25rem; left: 50%; transform: translateX(-50%); font-size: 0.68rem; color: #555; white-space: nowrap; }
+.gvlb-counter { position: absolute; bottom: -2.25rem; left: 50%; transform: translateX(-50%); font-size: 0.68rem; color: #5a4e3e; white-space: nowrap; }
 
 @media (max-width: 700px) {
     .gvlb-prev { left: 0.25rem; top: auto; bottom: 5rem; transform: none; }
