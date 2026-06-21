@@ -65,7 +65,7 @@ const VERDIEPINGEN = [
         bewoners: "Gedeeld",
         icon: "🌿",
         kleur: "#4caf50",
-        beschrijving: "Groot perceel (450 m²) in ontwikkeling. Moestuin is er al. Sauna, dompelbad, buitenkeuken en veranda aan de schuur zijn in aanbouw.",
+        beschrijving: "Groot perceel van 680 m² met een woonoppervlakte van 292 m². In ontwikkeling. Moestuin is er al. Sauna, dompelbad, buitenkeuken en veranda aan de schuur zijn in aanbouw.",
         status: "deels beschikbaar",
         ruimtes: [
             { naam: "Terras",                     icon: "☀️", afm: "~40 m²", info: "Achtertuin, barbecue, zitgelegenheid" },
@@ -82,7 +82,8 @@ const STATS = [
     { val: "6",    label: "Slaapkamers", sub: "(+1 in aanbouw)" },
     { val: "2→3",  label: "Keukens",     sub: "(3e in aanbouw)" },
     { val: "2→3",  label: "Badkamers",   sub: "(3e in aanbouw)" },
-    { val: "450",  label: "m² perceel",  sub: "" },
+    { val: "680",  label: "m² perceel",  sub: "" },
+    { val: "292",  label: "m² wonen",    sub: "" },
 ];
 
 const Plattegrond = () => {
