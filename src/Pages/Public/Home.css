@@ -11,7 +11,7 @@
 
 /* ── Pagina ── */
 .home-lux {
-    background: #080808;
+    background: #0c0a07;
     color: #fff;
     overflow-x: hidden;
 }
@@ -153,9 +153,9 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    border-top: 1px solid #1a1a1a;
-    border-bottom: 1px solid #1a1a1a;
-    background: #0a0a0a;
+    border-top: 1px solid #1e1812;
+    border-bottom: 1px solid #1e1812;
+    background: #0e0b08;
 }
 
 .kenmerk-item {
@@ -164,7 +164,7 @@
     align-items: center;
     gap: 0.2rem;
     padding: 1.5rem 2.5rem;
-    border-right: 1px solid #1a1a1a;
+    border-right: 1px solid #1e1812;
 }
 
 .kenmerk-item:last-child { border-right: none; }
@@ -182,7 +182,7 @@
 
 .kenmerk-sub {
     font-size: 0.68rem;
-    color: #666;
+    color: #786050;
     text-transform: uppercase;
     letter-spacing: 0.08em;
 }
@@ -230,7 +230,7 @@
 .intro-text-col p {
     font-size: 1rem;
     line-height: 1.85;
-    color: #999;
+    color: #a89878;
     margin: 0 0 1rem;
 }
 
@@ -272,7 +272,7 @@
 
 .highlights-header p {
     font-size: 0.95rem;
-    color: #666;
+    color: #786050;
 }
 
 .highlights-grid {
@@ -285,8 +285,8 @@
     cursor: pointer;
     border-radius: 12px;
     overflow: hidden;
-    background: #111;
-    border: 1px solid #1a1a1a;
+    background: #140e08;
+    border: 1px solid #1e1812;
     transition: transform 0.35s ease, border-color 0.3s;
     display: flex;
     flex-direction: column;
@@ -345,7 +345,7 @@
 
 .hl-sub {
     font-size: 0.83rem;
-    color: #777;
+    color: #887060;
     line-height: 1.55;
     margin: 0;
     flex: 1;
@@ -364,9 +364,9 @@
    BOOKING STRIP
 ══════════════════════════════════════ */
 .booking-strip {
-    background: linear-gradient(135deg, #0f0c00, #0a0a0a);
-    border-top: 1px solid #1e1800;
-    border-bottom: 1px solid #1e1800;
+    background: linear-gradient(135deg, #140c06, #0e0b08);
+    border-top: 1px solid #221c08;
+    border-bottom: 1px solid #221c08;
     padding: 4rem 2rem;
 }
 
@@ -389,7 +389,7 @@
 
 .booking-strip-text p {
     font-size: 0.9rem;
-    color: #777;
+    color: #887060;
     line-height: 1.6;
     margin: 0;
     max-width: 400px;
@@ -418,8 +418,8 @@
 
 .contact-btn {
     background: transparent;
-    color: #888;
-    border: 1px solid #333;
+    color: #988068;
+    border: 1px solid #382e1e;
     font-size: 0.9rem;
     font-weight: 500;
     padding: 0.85rem 2rem;
@@ -429,7 +429,7 @@
     white-space: nowrap;
     font-family: inherit;
 }
-.contact-btn:hover { color: #fff; border-color: #555; }
+.contact-btn:hover { color: #f5d8c8; border-color: #8b3a3a; }
 
 /* ══════════════════════════════════════
    SFEER STRIP
@@ -446,7 +446,7 @@
 .sfeer-strip-header span {
     display: block;
     font-size: 0.7rem;
-    color: #555;
+    color: #5a4e3e;
     text-transform: uppercase;
     letter-spacing: 0.15em;
     margin-bottom: 0.5rem;
@@ -486,7 +486,7 @@
     display: inline-block;
     font-size: 0.8rem;
     font-weight: 600;
-    color: #888;
+    color: #988068;
     text-decoration: none;
     letter-spacing: 0.06em;
     transition: color 0.2s;
@@ -521,8 +521,8 @@
     }
 
     .kenmerk-item {
-        border-right: 1px solid #1a1a1a;
-        border-bottom: 1px solid #1a1a1a;
+        border-right: 1px solid #1e1812;
+        border-bottom: 1px solid #1e1812;
         padding: 1rem 0.75rem;
     }
 

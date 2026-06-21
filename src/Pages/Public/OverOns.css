@@ -13,7 +13,7 @@
 .over-ons-page {
     width: 100%;
     overflow-x: hidden;
-    background: #0a0a0a;
+    background: #0e0b08;
 }
 
 /* ── Hero ── */
@@ -22,7 +22,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: radial-gradient(ellipse at 60% 40%, #1a1200 0%, #080808 70%);
+    background: radial-gradient(ellipse at 60% 40%, #1a1200 0%, #0c0a07 70%);
     text-align: center;
     padding: 6rem 2rem 4rem;
     position: relative;
@@ -52,7 +52,7 @@
 
 .oo-hero-sub {
     font-size: 1.05rem;
-    color: #888;
+    color: #988068;
     line-height: 1.75;
     max-width: 560px;
     margin: 0 auto 3rem;
@@ -63,7 +63,7 @@
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
-    color: #555;
+    color: #5a4e3e;
     font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -73,7 +73,7 @@
 .oo-scroll-arrow {
     width: 1px;
     height: 40px;
-    background: linear-gradient(to bottom, #555, transparent);
+    background: linear-gradient(to bottom, #5a4e3e, transparent);
 }
 
 @keyframes oo-bounce {
@@ -97,7 +97,7 @@
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #333;
+    background: #382e1e;
     border: none;
     cursor: pointer;
     transition: background 0.3s, transform 0.3s;
@@ -123,20 +123,20 @@
 
 /* Theme: dark */
 .oo-theme--dark {
-    background: #0e0e0e;
-    border-top: 1px solid #1a1a1a;
+    background: #120f09;
+    border-top: 1px solid #1e1812;
 }
 
 /* Theme: sepia */
 .oo-theme--sepia {
-    background: #0f0d09;
-    border-top: 1px solid #2a200e;
+    background: #130e08;
+    border-top: 1px solid #2e2210;
 }
 
 /* Theme: light */
 .oo-theme--light {
-    background: #0a0a0a;
-    border-top: 1px solid #161616;
+    background: #0e0b08;
+    border-top: 1px solid #1c1610;
 }
 
 /* ── Image column ── */
@@ -237,7 +237,7 @@
 .oo-body-text p {
     font-size: 1rem;
     line-height: 1.85;
-    color: #b0b0b0;
+    color: #c0aa90;
     margin: 0;
 }
 
@@ -248,14 +248,14 @@
     justify-content: space-between;
     margin-top: 2.5rem;
     padding-top: 1.5rem;
-    border-top: 1px solid #222;
+    border-top: 1px solid #241c12;
     flex-wrap: wrap;
     gap: 1rem;
 }
 
 .oo-readtime {
     font-size: 0.72rem;
-    color: #555;
+    color: #5a4e3e;
     text-transform: uppercase;
     letter-spacing: 0.08em;
 }
@@ -280,7 +280,7 @@
 
 /* ── CTA section ── */
 .oo-cta {
-    background: linear-gradient(135deg, #0e0e0e, #0a0800);
+    background: linear-gradient(135deg, #120f09, #100c06);
     border-top: 1px solid #1e1a0e;
     padding: 6rem 2rem;
     text-align: center;
@@ -301,7 +301,7 @@
 .oo-cta p {
     font-size: 1rem;
     line-height: 1.85;
-    color: #888;
+    color: #988068;
     margin: 0 0 2.5rem;
 }
 
@@ -332,8 +332,8 @@
 
 .oo-cta-secondary {
     background: transparent;
-    color: #777;
-    border: 1px solid #333;
+    color: #887060;
+    border: 1px solid #382e1e;
     font-size: 0.9rem;
     font-weight: 600;
     padding: 0.8rem 2rem;
@@ -344,7 +344,7 @@
 
 .oo-cta-secondary:hover {
     color: #fff;
-    border-color: #555;
+    border-color: #5a4e3e;
 }
 
 /* ── Responsive ── */

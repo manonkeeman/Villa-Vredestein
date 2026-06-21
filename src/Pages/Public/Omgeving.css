@@ -1,7 +1,7 @@
 .reveal-section { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
 .reveal-section.in-view { opacity: 1; transform: translateY(0); }
 
-.omgeving-page { background: #080808; color: #fff; overflow-x: hidden; }
+.omgeving-page { background: #0c0a07; color: #fff; overflow-x: hidden; }
 
 /* Hero */
 .omg-hero {
@@ -40,7 +40,7 @@
 
 .omg-hero p {
     font-size: 1rem;
-    color: #999;
+    color: #a89878;
     line-height: 1.8;
     margin: 0;
 }
@@ -61,10 +61,10 @@
     margin: 0 0 0.75rem;
 }
 
-.omg-section-sub { font-size: 0.95rem; color: #777; line-height: 1.7; margin: 0 0 2.5rem; max-width: 560px; }
+.omg-section-sub { font-size: 0.95rem; color: #887060; line-height: 1.7; margin: 0 0 2.5rem; max-width: 560px; }
 
 /* Afstanden */
-.omg-afstanden { padding: 4rem 0; border-top: 1px solid #1a1a1a; }
+.omg-afstanden { padding: 4rem 0; border-top: 1px solid #1e1812; }
 
 .afstand-grid {
     display: grid;
@@ -74,8 +74,8 @@
 }
 
 .afstand-card {
-    background: #111;
-    border: 1px solid #1e1e1e;
+    background: #140e08;
+    border: 1px solid #221b12;
     border-radius: 10px;
     padding: 1.25rem 1.5rem;
     display: flex;
@@ -90,39 +90,39 @@
 
 .afstand-info { display: flex; flex-direction: column; gap: 0.2rem; }
 .afstand-info strong { font-size: 0.9rem; color: #fff; font-weight: 600; }
-.afstand-info span { font-size: 0.78rem; color: #666; }
+.afstand-info span { font-size: 0.78rem; color: #786050; }
 
 /* Map */
-.omg-map-section { padding: 4rem 0 0; border-top: 1px solid #1a1a1a; }
+.omg-map-section { padding: 4rem 0 0; border-top: 1px solid #1e1812; }
 
 .omg-map-wrap {
     height: 520px;
     margin-top: 2rem;
     border-radius: 0;
     overflow: hidden;
-    border-top: 1px solid #1a1a1a;
-    border-bottom: 1px solid #1a1a1a;
+    border-top: 1px solid #1e1812;
+    border-bottom: 1px solid #1e1812;
 }
 
 /* Override Leaflet for dark theme */
-.leaflet-container { background: #080808; }
+.leaflet-container { background: #0c0a07; }
 .leaflet-tile-pane { filter: brightness(0.85); }
 .leaflet-popup-content-wrapper {
-    background: #111;
+    background: #140e08;
     color: #fff;
-    border: 1px solid #333;
+    border: 1px solid #382e1e;
     border-radius: 8px;
     box-shadow: 0 4px 16px rgba(0,0,0,0.6);
 }
-.leaflet-popup-tip { background: #111; }
-.leaflet-popup-close-button { color: #888 !important; }
+.leaflet-popup-tip { background: #140e08; }
+.leaflet-popup-close-button { color: #988068 !important; }
 
 .map-popup { display: flex; flex-direction: column; gap: 0.25rem; padding: 0.25rem; }
 .map-popup strong { font-size: 0.85rem; color: #fff; }
-.map-popup span { font-size: 0.75rem; color: #999; }
+.map-popup span { font-size: 0.75rem; color: #a89878; }
 
 /* Sfeer */
-.omg-sfeer { padding: 4rem 0; border-top: 1px solid #1a1a1a; }
+.omg-sfeer { padding: 4rem 0; border-top: 1px solid #1e1812; }
 
 .omg-sfeer-grid {
     display: grid;
@@ -163,10 +163,10 @@
 }
 
 .omg-sfeer-caption strong { font-size: 0.85rem; color: #fff; font-weight: 600; }
-.omg-sfeer-caption span { font-size: 0.72rem; color: #bbb; }
+.omg-sfeer-caption span { font-size: 0.72rem; color: #c8b8a0; }
 
 /* Tips */
-.omg-tips { padding: 4rem 0 6rem; border-top: 1px solid #1a1a1a; }
+.omg-tips { padding: 4rem 0 6rem; border-top: 1px solid #1e1812; }
 
 .tips-grid {
     display: grid;
@@ -176,19 +176,19 @@
 }
 
 .tip-card {
-    background: #0e0e0e;
-    border: 1px solid #1a1a1a;
+    background: #120f09;
+    border: 1px solid #1e1812;
     border-radius: 10px;
     padding: 1.5rem;
     transition: border-color 0.3s;
 }
 
-.tip-card:hover { border-color: #333; }
+.tip-card:hover { border-color: #382e1e; }
 
 .tip-icon { font-size: 1.75rem; display: block; margin-bottom: 0.75rem; }
 
 .tip-card h3 { font-size: 0.9rem; font-weight: 700; color: #fff; margin: 0 0 0.6rem; }
-.tip-card p { font-size: 0.82rem; color: #777; line-height: 1.6; margin: 0; }
+.tip-card p { font-size: 0.82rem; color: #887060; line-height: 1.6; margin: 0; }
 
 /* Responsive */
 @media (max-width: 900px) {

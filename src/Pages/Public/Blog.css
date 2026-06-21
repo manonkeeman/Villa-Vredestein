@@ -45,7 +45,7 @@
 
 .blog-meta {
     font-size: 0.78rem;
-    color: #888;
+    color: #988068;
     display: flex;
     gap: 0.25rem;
     flex-wrap: wrap;
@@ -81,12 +81,12 @@
 .blog-body p {
     font-size: 0.95rem;
     line-height: 1.85;
-    color: #ddd;
+    color: #e8d8c0;
 }
 
 .blog-footer {
     padding-top: 1.25rem;
-    border-top: 1px solid #1e1e1e;
+    border-top: 1px solid #221b12;
 }
 
 .blog-not-found {

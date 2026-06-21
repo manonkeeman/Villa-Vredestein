@@ -1,7 +1,7 @@
 .reveal-section { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
 .reveal-section.in-view { opacity: 1; transform: translateY(0); }
 
-.verblijven-page { background: #080808; color: #fff; overflow-x: hidden; }
+.verblijven-page { background: #0c0a07; color: #fff; overflow-x: hidden; }
 
 /* Hero */
 .verb-hero {
@@ -55,13 +55,13 @@
 .verb-section-title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; color: #fff; margin: 0 0 2rem; }
 
 /* Opties */
-.verb-opties { padding: 5rem 0; border-top: 1px solid #1a1a1a; }
+.verb-opties { padding: 5rem 0; border-top: 1px solid #1e1812; }
 
 .opties-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
 
 .optie-card {
-    background: #0e0e0e;
-    border: 1px solid #1e1e1e;
+    background: #120f09;
+    border: 1px solid #221b12;
     border-radius: 14px;
     padding: 2rem 1.75rem;
     cursor: pointer;
@@ -72,9 +72,9 @@
     gap: 0.5rem;
 }
 
-.optie-card:hover { border-color: #333; transform: translateY(-4px); }
+.optie-card:hover { border-color: #382e1e; transform: translateY(-4px); }
 .optie-card:focus { outline: 2px solid #FCBC2D; outline-offset: 2px; }
-.optie-selected { border-color: #FCBC2D !important; background: #0f0c00; }
+.optie-selected { border-color: #FCBC2D !important; background: #140c06; }
 .optie-featured { border-color: #FCBC2D; }
 
 .optie-badge {
@@ -94,28 +94,28 @@
 .optie-icon { font-size: 2rem; margin-bottom: 0.25rem; }
 
 .optie-card h3 { font-size: 1.1rem; font-weight: 700; color: #fff; margin: 0; }
-.optie-sub { font-size: 0.75rem; color: #666; text-transform: uppercase; letter-spacing: 0.08em; }
-.optie-card p { font-size: 0.85rem; color: #888; line-height: 1.6; margin: 0.5rem 0 0; flex: 1; }
+.optie-sub { font-size: 0.75rem; color: #786050; text-transform: uppercase; letter-spacing: 0.08em; }
+.optie-card p { font-size: 0.85rem; color: #988068; line-height: 1.6; margin: 0.5rem 0 0; flex: 1; }
 
 .optie-features { list-style: none; padding: 0; margin: 1rem 0 0; display: flex; flex-direction: column; gap: 0.35rem; }
-.optie-features li { font-size: 0.8rem; color: #777; display: flex; align-items: center; gap: 0.5rem; }
+.optie-features li { font-size: 0.8rem; color: #887060; display: flex; align-items: center; gap: 0.5rem; }
 .optie-features li span { color: #FCBC2D; font-size: 0.75rem; }
 
-.optie-prijs { margin-top: auto; padding-top: 1rem; border-top: 1px solid #1a1a1a; }
+.optie-prijs { margin-top: auto; padding-top: 1rem; border-top: 1px solid #1e1812; }
 .optie-prijs span { font-size: 0.82rem; color: #FCBC2D; font-weight: 600; }
 
 /* Form section */
-.verb-form-section { padding: 5rem 0 6rem; border-top: 1px solid #1a1a1a; }
+.verb-form-section { padding: 5rem 0 6rem; border-top: 1px solid #1e1812; }
 
 .verb-form-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; align-items: start; }
 
-.verb-form-left p { font-size: 0.95rem; color: #888; line-height: 1.75; margin: 0 0 2rem; }
+.verb-form-left p { font-size: 0.95rem; color: #988068; line-height: 1.75; margin: 0 0 2rem; }
 
 .verb-form-img { border-radius: 12px; overflow: hidden; height: 260px; margin-bottom: 2rem; }
 .verb-form-img img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.7) saturate(0.75); }
 
 .verb-garanties { display: flex; flex-direction: column; gap: 0.6rem; }
-.garantie-item { display: flex; align-items: center; gap: 0.6rem; font-size: 0.83rem; color: #777; }
+.garantie-item { display: flex; align-items: center; gap: 0.6rem; font-size: 0.83rem; color: #887060; }
 .garantie-item span:first-child { color: #FCBC2D; font-size: 0.8rem; }
 
 /* Form */
@@ -129,19 +129,19 @@
 .form-field label, .form-field-select label {
     font-size: 0.78rem;
     font-weight: 600;
-    color: #aaa;
+    color: #b8a890;
     text-transform: uppercase;
     letter-spacing: 0.06em;
 }
 
-.form-field label span, .form-field-select label span { color: #555; font-weight: 400; text-transform: none; letter-spacing: 0; }
+.form-field label span, .form-field-select label span { color: #5a4e3e; font-weight: 400; text-transform: none; letter-spacing: 0; }
 
 .form-field input,
 .form-field select,
 .form-field textarea,
 .form-field-select select {
-    background: #111;
-    border: 1px solid #2a2a2a;
+    background: #140e08;
+    border: 1px solid #2e2418;
     border-radius: 8px;
     color: #fff;
     font-family: inherit;
@@ -161,7 +161,7 @@
 }
 
 .form-field input::placeholder,
-.form-field textarea::placeholder { color: #444; }
+.form-field textarea::placeholder { color: #4a3e2e; }
 
 .form-field textarea { resize: vertical; min-height: 110px; }
 
@@ -185,14 +185,14 @@ input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1) opacit
 .verb-submit:hover:not(:disabled) { background: #e5a920; transform: translateY(-2px); }
 .verb-submit:disabled { opacity: 0.6; cursor: not-allowed; }
 
-.form-privacy { font-size: 0.72rem; color: #444; text-align: center; margin: 0; }
+.form-privacy { font-size: 0.72rem; color: #4a3e2e; text-align: center; margin: 0; }
 
 /* Success */
 .verb-success {
     text-align: center;
     padding: 4rem 2rem;
-    background: #0e0e0e;
-    border: 1px solid #222;
+    background: #120f09;
+    border: 1px solid #241c12;
     border-radius: 14px;
 }
 
@@ -210,12 +210,12 @@ input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1) opacit
 }
 
 .verb-success h3 { font-size: 1.4rem; font-weight: 700; color: #fff; margin: 0 0 0.75rem; }
-.verb-success p { font-size: 0.9rem; color: #777; line-height: 1.6; margin: 0 0 2rem; }
+.verb-success p { font-size: 0.9rem; color: #887060; line-height: 1.6; margin: 0 0 2rem; }
 
 .verb-btn-secondary {
     background: transparent;
-    color: #888;
-    border: 1px solid #333;
+    color: #988068;
+    border: 1px solid #382e1e;
     font-family: inherit;
     font-size: 0.9rem;
     font-weight: 500;
@@ -224,7 +224,7 @@ input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1) opacit
     cursor: pointer;
     transition: color 0.2s, border-color 0.2s;
 }
-.verb-btn-secondary:hover { color: #fff; border-color: #555; }
+.verb-btn-secondary:hover { color: #f5d8c8; border-color: #8b3a3a; }
 
 /* Responsive */
 @media (max-width: 900px) {

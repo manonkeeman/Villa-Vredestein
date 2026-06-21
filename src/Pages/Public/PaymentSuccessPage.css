@@ -7,7 +7,7 @@
 }
 
 .payment-success-card {
-    background: #111;
+    background: #140e08;
     border: 1px solid #fcbc2d;
     border-radius: 16px;
     padding: 3rem 2.5rem;
@@ -42,7 +42,7 @@
     align-items: center;
     gap: 0.5rem;
     background: #fcbc2d;
-    color: #111;
+    color: #140e08;
     font-weight: 700;
     padding: 0.6rem 1.5rem;
     border-radius: 10px;
