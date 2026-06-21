@@ -7,7 +7,6 @@ import "./Omgeving.css";
 
 import GrotImg from "../../Assets/Images/omg-grot.jpg";
 import OmgevingImg from "../../Assets/Images/DeOmgevingVillaVredestein.jpg";
-import FietsImg from "../../Assets/Images/life-bloemen-fiets.jpg";
 
 // Fix leaflet default icon path (Vite/bundler issue)
 delete L.Icon.Default.prototype._getIconUrl;
@@ -166,13 +165,6 @@ const Omgeving = () => {
                         <div className="omg-sfeer-caption">
                             <strong>Lourdesgrot</strong>
                             <span>Driebergen, op wandelafstand</span>
-                        </div>
-                    </div>
-                    <div className="omg-sfeer-item">
-                        <img src={FietsImg} alt="Bloemen markt Driebergen" loading="lazy" />
-                        <div className="omg-sfeer-caption">
-                            <strong>Lokale markt</strong>
-                            <span>Bloemen, vers en authentiek</span>
                         </div>
                     </div>
                     <div className="omg-sfeer-item">
