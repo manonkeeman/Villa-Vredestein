@@ -3,7 +3,12 @@ import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import "./Plattegrond.css";
 
-import WoonkamerImg from "../../Assets/Images/int-woonkamer.jpg";
+import WoonkamerImg     from "../../Assets/Images/int-woonkamer.jpg";
+import ImgPercelen      from "../../Assets/Images/archief-kadaster-percelen.jpg";
+import ImgHoofdstraat   from "../../Assets/Images/archief-kadaster-hoofdstraat.jpg";
+import ImgKaartBlauw    from "../../Assets/Images/archief-kadasterkaart-blauw-1.jpg";
+import ImgRegister      from "../../Assets/Images/archief-register-1.jpg";
+import ImgBouwreg       from "../../Assets/Images/archief-bouwregister-1.jpg";
 
 /* ─────────────────────────────────────────────
    Verdiepingen (visueel overzicht)
@@ -180,6 +185,35 @@ const Plattegrond = () => {
                     </div>
                 </section>
             ))}
+
+            {/* ── Historisch archief ── */}
+            <section className="pg-archief reveal-section" ref={addRef as any}>
+                <div className="pg-inner">
+                    <h2 className="pg-section-title">Historische documenten</h2>
+                    <p className="pg-archief-sub">
+                        Kadasterkaarten en handgeschreven registers uit het gemeentearchief.
+                        Ze bevatten de oorspronkelijke maatvoering en perceelligging van Hoofdstraat 147 —
+                        vóór de huidige verbouwing.
+                    </p>
+                    <div className="pg-archief-grid">
+                        {[
+                            { src: ImgPercelen,    titel: "Kadastrale perceelkaart",        sub: "Bouwnummers 2253-2256, Hoofdstraat" },
+                            { src: ImgHoofdstraat, titel: "Situatiekaart Hoofdstraat",      sub: "Historische bebouwingskaart" },
+                            { src: ImgKaartBlauw,  titel: "Blauwdrukkaart Driebergen",      sub: "Historische kadasterkaart" },
+                            { src: ImgRegister,    titel: "Kamerafmetingen (register)",     sub: "Handgeschreven archiefregister" },
+                            { src: ImgBouwreg,     titel: "Bouwregister Hfdstr. 147",       sub: "Oppervlakten & aantekeningen" },
+                        ].map((doc) => (
+                            <figure key={doc.titel} className="pg-archief-item">
+                                <img src={doc.src} alt={doc.titel} loading="lazy" />
+                                <figcaption>
+                                    <strong>{doc.titel}</strong>
+                                    <span>{doc.sub}</span>
+                                </figcaption>
+                            </figure>
+                        ))}
+                    </div>
+                </div>
+            </section>
 
             {/* ── Afbeelding referentie ── */}
             <section className="pg-fotos reveal-section" ref={addRef as any}>
