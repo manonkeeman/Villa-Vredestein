@@ -379,6 +379,42 @@
     border-color: #5a4e3e;
 }
 
+/* ── Carpe Diem CTA ── */
+.oo-carpe-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-top: 1.75rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid #1e1a2e;
+}
+
+.oo-carpe-cta-btn {
+    background: #7c9ef8;
+    color: #07091a;
+    border: none;
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    letter-spacing: 0.03em;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.oo-carpe-cta-btn:hover {
+    background: #9db4ff;
+    transform: translateY(-2px);
+}
+
+.oo-carpe-tagline {
+    font-size: 0.85rem;
+    font-style: italic;
+    color: #5a5a80;
+    letter-spacing: 0.04em;
+}
+
 /* ── Lees meer button ── */
 .oo-lees-meer-btn {
     background: none;
