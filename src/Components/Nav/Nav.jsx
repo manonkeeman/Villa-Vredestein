@@ -30,6 +30,14 @@ const Nav = () => {
     const [langOpen, setLangOpen] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
     const [logoClicked, setLogoClicked] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const onScroll = () => setScrolled(window.scrollY > 60);
+        window.addEventListener("scroll", onScroll, { passive: true });
+        onScroll();
+        return () => window.removeEventListener("scroll", onScroll);
+    }, []);
 
     const userRef = useRef(null);
     const langRef = useRef(null);
@@ -88,7 +96,7 @@ const Nav = () => {
     const closeAll = () => { setMenuOpen(false); setDropdownOpen(false); };
 
     return (
-        <nav className="navigatie-container" aria-label="Hoofdnavigatie">
+        <nav className={`navigatie-container ${scrolled ? "nav-scrolled" : "nav-transparent"}`} aria-label="Hoofdnavigatie">
             {/* Logo */}
             <div className="logo">
                 <NavLink to="/" className="logo-link" onClick={handleLogoClick}>
@@ -118,28 +126,33 @@ const Nav = () => {
             {/* Navigatielinks */}
             <ul id={navLinksId} className={`nav-links ${menuOpen ? "show" : ""}`} role="list">
                 <li>
-                    <NavLink to="/" className="default-link" onClick={closeAll}>
+                    <NavLink to="/" className="default-link" onClick={closeAll} end>
                         {t("nav.home")}
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/about" className="default-link" onClick={closeAll}>
-                        {t("nav.about")}
+                    <NavLink to="/verhaal" className="default-link" onClick={closeAll}>
+                        Het Verhaal
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/over-ons" className="default-link" onClick={closeAll}>
-                        {t("nav.overons")}
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to="/tijdlijn" className="default-link" onClick={closeAll}>
-                        Tijdlijn
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to="/galerij" className="default-link" onClick={closeAll}>
+                    <NavLink to="/galerij-villa" className="default-link" onClick={closeAll}>
                         Galerij
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to="/ruimtes" className="default-link" onClick={closeAll}>
+                        De Ruimtes
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to="/omgeving" className="default-link" onClick={closeAll}>
+                        Omgeving
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to="/verblijven" className="default-link nav-highlight" onClick={closeAll}>
+                        Verblijven
                     </NavLink>
                 </li>
                 <li>
