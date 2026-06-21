@@ -49,6 +49,8 @@ const SECTIONS = [
     },
 ];
 
+const PREVIEW_PARAGRAPHS = 2;
+
 const OverOns = () => {
     const { t } = useTranslation();
     const navigate = useNavigate();
@@ -56,6 +58,10 @@ const OverOns = () => {
     const sectionRefs = useRef([]);
     const heroRef = useRef(null);
     const [activeSection, setActiveSection] = useState(null);
+    const [expanded, setExpanded] = useState({});
+
+    const toggleExpanded = (slug) =>
+        setExpanded((prev) => ({ ...prev, [slug]: !prev[slug] }));
 
     const getBlog = (slug) => Array.isArray(blogs) ? blogs.find((b) => b.slug === slug) : null;
 
@@ -100,7 +106,7 @@ const OverOns = () => {
                 />
                 <div className="oo-hero-overlay" aria-hidden="true" />
                 <div className="oo-hero-inner">
-                    <span className="oo-hero-eyebrow">Vier verhalen. Één huis.</span>
+                    <span className="oo-hero-eyebrow">Veel verhalen. Één huis.</span>
                     <h1 className="oo-hero-title">De mensen achter de villa</h1>
                     <p className="oo-hero-sub">
                         Manon & Maxim, Het Boek, Carpe Diem Design en een open deur voor iedereen die het wil zien.
@@ -167,10 +173,23 @@ const OverOns = () => {
 
                                 <div className="oo-body-text">
                                     {Array.isArray(blog.content) &&
-                                        blog.content.map((paragraph, j) => (
+                                        (expanded[sec.slug]
+                                            ? blog.content
+                                            : blog.content.slice(0, PREVIEW_PARAGRAPHS)
+                                        ).map((paragraph, j) => (
                                             <p key={j}>{paragraph}</p>
                                         ))}
                                 </div>
+
+                                {Array.isArray(blog.content) && blog.content.length > PREVIEW_PARAGRAPHS && (
+                                    <button
+                                        className="oo-lees-meer-btn"
+                                        onClick={() => toggleExpanded(sec.slug)}
+                                        style={{ "--btn-accent": sec.accent }}
+                                    >
+                                        {expanded[sec.slug] ? "Minder tonen" : "Lees meer"}
+                                    </button>
+                                )}
 
                                 <div className="oo-section-footer">
                                     <span className="oo-readtime">{blog.readTime} leestijd</span>
