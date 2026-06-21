@@ -20,6 +20,15 @@ import Img1959 from "../../Assets/Images/Krant1959.jpg";
 import Img1965 from "../../Assets/Images/Krant1965.jpg";
 import ImgNight from "../../Assets/Images/VredesteineByNight.jpg";
 
+import ImgKaartBlauw1  from "../../Assets/Images/archief-kadasterkaart-blauw-1.jpg";
+import ImgKaartBlauw2  from "../../Assets/Images/archief-kadasterkaart-blauw-2.jpg";
+import ImgPercelen     from "../../Assets/Images/archief-kadaster-percelen.jpg";
+import ImgHoofdstraat  from "../../Assets/Images/archief-kadaster-hoofdstraat.jpg";
+import ImgRegister1    from "../../Assets/Images/archief-register-1.jpg";
+import ImgRegister2    from "../../Assets/Images/archief-register-2.jpg";
+import ImgBouwreg1     from "../../Assets/Images/archief-bouwregister-1.jpg";
+import ImgBouwreg2     from "../../Assets/Images/archief-bouwregister-2.jpg";
+
 const FOTOS = [
     {
         src: Img1912,
@@ -122,6 +131,54 @@ const FOTOS = [
         jaar: "Archief",
         caption: "Vredestein by night",
         beschrijving: "Een nachtfoto van de villa aan de Hoofdstraat. De verlichte ramen vertellen hun eigen verhaal.",
+    },
+    {
+        src: ImgKaartBlauw1,
+        jaar: "Oud Kadaster",
+        caption: "Kadasterkaart Driebergen (blauwdruk I)",
+        beschrijving: "Historische blauwdruk-kadasterkaart van Driebergen-Rijsenburg met de ligging van percelen langs de Hoofdstraat.",
+    },
+    {
+        src: ImgKaartBlauw2,
+        jaar: "Oud Kadaster",
+        caption: "Kadasterkaart Driebergen (blauwdruk II)",
+        beschrijving: "Tweede blauwdrukkaart van het gebied rond Driebergen-Rijsenburg — een zeldzaam historisch document.",
+    },
+    {
+        src: ImgPercelen,
+        jaar: "Oud Kadaster",
+        caption: "Kadastrale perceelkaart Hoofdstraat",
+        beschrijving: "Perceelkaart met bouwnummers 2253, 2254, 2255 en 2256. Toont de ligging van Hoofdstraat 147 in zijn historische context.",
+    },
+    {
+        src: ImgHoofdstraat,
+        jaar: "Oud Kadaster",
+        caption: "Situatiekaart Hoofdstraat",
+        beschrijving: "Overzichtskaart van de bebouwing langs de Hoofdstraat in Driebergen — de villa is herkenbaar in de rij panden.",
+    },
+    {
+        src: ImgRegister1,
+        jaar: "Oud Archief",
+        caption: "Historisch register — kamerafmetingen",
+        beschrijving: "Handgeschreven archiefregister met ruimtematen en perceelgegevens van Hoofdstraat 147. Bevat de oorspronkelijke oppervlakten.",
+    },
+    {
+        src: ImgRegister2,
+        jaar: "Oud Archief",
+        caption: "Historisch register II",
+        beschrijving: "Tweede pagina uit hetzelfde register. De cijfers bevatten de historische maatvoering van het pand.",
+    },
+    {
+        src: ImgBouwreg1,
+        jaar: "Oud Archief",
+        caption: "Bouwregister Hoofdstraat 147 (I)",
+        beschrijving: "Officieel bouwregister met kolommen voor grootte, aantekeningen en bouwdata. Historische grondstoffenregistratie van het pand.",
+    },
+    {
+        src: ImgBouwreg2,
+        jaar: "Oud Archief",
+        caption: "Bouwregister Hoofdstraat 147 (II)",
+        beschrijving: "Vervolg van het bouwregister — bevat aanvullende data over de historische indeling en oppervlakten van de villa.",
     },
 ];
 
