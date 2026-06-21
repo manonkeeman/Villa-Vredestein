@@ -8,6 +8,7 @@ import ImgManonMaxim from "../../Assets/Images/Maxim_Manon_ChevroletSuburban.jpg
 import LuchtballonImg from "../../Assets/Images/ext-luchtballon.png";
 import ImgBoek from "../../Assets/Images/VillaVredestein.jpg";
 import ImgCarpeDiem from "../../Assets/Images/PannenkoekenAvondVillaVredestein.jpg";
+import CarpeDiemVideo from "../../Assets/Videos/carpe-diem.mp4";
 import ImgBezoek from "../../Assets/Images/BezoekOnsVillaVredestein.jpg";
 
 const SECTIONS = [
@@ -33,6 +34,7 @@ const SECTIONS = [
         slug: "carpe-diem-design",
         img: ImgCarpeDiem,
         imgAlt: "Carpe Diem Design werkplaats",
+        video: CarpeDiemVideo,
         theme: "dark",
         accent: "#e0853a",
         imgSide: "right",
@@ -147,15 +149,29 @@ const OverOns = () => {
                         data-slug={sec.slug}
                         style={{ "--accent": sec.accent }}
                     >
-                        {/* Image column */}
+                        {/* Image / Video column */}
                         <div className="oo-img-col">
                             <figure className="oo-img-wrap">
-                                <img
-                                    src={sec.img}
-                                    alt={sec.imgAlt}
-                                    loading="lazy"
-                                    className="oo-img"
-                                />
+                                {sec.video ? (
+                                    <video
+                                        src={sec.video}
+                                        className="oo-img"
+                                        autoPlay
+                                        muted
+                                        loop
+                                        playsInline
+                                        preload="metadata"
+                                        poster={sec.img}
+                                        aria-label={sec.imgAlt}
+                                    />
+                                ) : (
+                                    <img
+                                        src={sec.img}
+                                        alt={sec.imgAlt}
+                                        loading="lazy"
+                                        className="oo-img"
+                                    />
+                                )}
                                 <div className="oo-img-overlay" aria-hidden="true" />
                             </figure>
                         </div>
