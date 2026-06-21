@@ -16,7 +16,7 @@ const KENMERKEN = [
     { icon: "🌳", label: "Heuvelrug", sub: "Op de stoep" },
     { icon: "🚂", label: "15 min", sub: "Utrecht CS" },
     { icon: "✈️", label: "50 min", sub: "Schiphol" },
-    { icon: "🌿", label: "450 m²", sub: "Perceel" },
+    { icon: "🌿", label: "680 m²", sub: "Perceel" },
 ];
 
 const HIGHLIGHTS = [
