@@ -1,0 +1,240 @@
+/* ── Pagina ── */
+.idp-page {
+    width: 100%;
+    background: #0e0b08;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* ── Hero ── */
+.idp-hero {
+    min-height: 52vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 7rem 2rem 4rem;
+    background: radial-gradient(ellipse at 50% 60%, #1a1200 0%, #0c0a07 70%);
+    border-bottom: 1px solid #1e1a10;
+    position: relative;
+}
+
+.idp-hero::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: #FCBC2D;
+    border-radius: 2px;
+}
+
+.idp-hero-inner {
+    max-width: 640px;
+}
+
+.idp-eyebrow {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #FCBC2D;
+    margin-bottom: 1.25rem;
+}
+
+.idp-title {
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.1;
+    margin: 0 0 1.25rem;
+}
+
+.idp-sub {
+    font-size: 1.05rem;
+    color: #988068;
+    line-height: 1.75;
+    margin: 0;
+}
+
+/* ── Grid ── */
+.idp-grid-section {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+}
+
+.idp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.75rem;
+}
+
+/* ── Kaart ── */
+.idp-reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.idp-reveal.idp-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.idp-card {
+    background: #120f09;
+    border: 1px solid #211a10;
+    border-radius: 16px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    transition: border-color 0.25s, transform 0.25s;
+}
+
+.idp-card:hover {
+    border-color: #FCBC2D;
+    transform: translateY(-4px);
+}
+
+.idp-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.idp-tag {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #FCBC2D;
+    background: rgba(252, 188, 45, 0.1);
+    padding: 0.25rem 0.65rem;
+    border-radius: 20px;
+}
+
+.idp-datum {
+    font-size: 0.75rem;
+    color: #5a4e3e;
+}
+
+.idp-medium {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #786050;
+    margin: 0;
+}
+
+.idp-kop {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.35;
+    margin: 0;
+}
+
+.idp-samenvatting {
+    font-size: 0.9rem;
+    line-height: 1.75;
+    color: #988068;
+    margin: 0;
+    flex: 1;
+}
+
+.idp-lees-link {
+    display: inline-block;
+    color: #FCBC2D;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    margin-top: 0.25rem;
+    transition: opacity 0.2s;
+}
+
+.idp-lees-link:hover {
+    opacity: 0.7;
+}
+
+/* ── CTA ── */
+.idp-cta {
+    background: linear-gradient(135deg, #120f09, #0e0b06);
+    border-top: 1px solid #1e1a0e;
+    padding: 6rem 2rem;
+    text-align: center;
+}
+
+.idp-cta-inner {
+    max-width: 580px;
+    margin: 0 auto;
+}
+
+.idp-cta-eyebrow {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: #FCBC2D;
+    margin-bottom: 1.25rem;
+}
+
+.idp-cta h2 {
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 1.25rem;
+}
+
+.idp-cta p {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: #988068;
+    margin: 0 0 2.5rem;
+}
+
+.idp-cta-btn {
+    background: #FCBC2D;
+    color: #000;
+    border: none;
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 0.85rem 2.25rem;
+    border-radius: 8px;
+    cursor: pointer;
+    letter-spacing: 0.03em;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.idp-cta-btn:hover {
+    background: #e5a920;
+    transform: translateY(-2px);
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+    .idp-hero {
+        min-height: 42vh;
+        padding: 6rem 1.25rem 3rem;
+    }
+
+    .idp-grid-section {
+        padding: 3rem 1.25rem;
+    }
+
+    .idp-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .idp-cta {
+        padding: 4rem 1.25rem;
+    }
+}

@@ -20,6 +20,7 @@ const Footer = () => {
         { to: "/verblijven", label: "Verblijven" },
         { to: "/tijdlijn", label: "Tijdlijn" },
         { to: "/galerij", label: "Historisch archief" },
+        { to: "/in-de-pers", label: "In de pers" },
         { to: "/contact", label: t("nav.contact") },
     ];
 

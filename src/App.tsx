@@ -46,6 +46,7 @@ import GalerijVilla from "./Pages/Public/GalerijVilla";
 import Omgeving from "./Pages/Public/Omgeving";
 import Verblijven from "./Pages/Public/Verblijven";
 import Plattegrond from "./Pages/Public/Plattegrond";
+import InDePers from "./Pages/Public/InDePers";
 
 function App() {
     return (
@@ -62,6 +63,7 @@ function App() {
                     <Route path="/tijdlijn" element={<Tijdlijn />} />
                     <Route path="/over-ons" element={<OverOns />} />
                     <Route path="/verhaal" element={<OverOns />} />
+                    <Route path="/in-de-pers" element={<InDePers />} />
                     <Route path="/galerij" element={<Galerij />} />
                     <Route path="/galerij-villa" element={<GalerijVilla />} />
                     <Route path="/omgeving" element={<Omgeving />} />
