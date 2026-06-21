@@ -8,7 +8,7 @@ import HeroImg from "../../Assets/Images/int-woonkamer.jpg";
 import VillaImg from "../../Assets/Images/VillaVredestein2024.jpg";
 import TuinImg from "../../Assets/Images/ext-tuinfeest.jpg";
 import KroonluchterImg from "../../Assets/Images/int-kroonluchter.jpg";
-import WijnImg from "../../Assets/Images/int-wijnkamer.jpg";
+import WoonkamerImg2 from "../../Assets/Images/int-woonkamer2.jpg";
 
 const KENMERKEN = [
     { icon: "🏛️", label: "1906", sub: "Bouwjaar" },
@@ -29,10 +29,10 @@ const HIGHLIGHTS = [
     },
     {
         to: "/ruimtes",
-        img: WijnImg,
+        img: WoonkamerImg2,
         label: "De kamers",
-        titel: "Vijf unieke ruimtes",
-        sub: "Elke kamer met eigen karakter. Rustig, licht, historisch.",
+        titel: "Zes slaapkamers",
+        sub: "Drie verdiepingen, elk met eigen karakter. Rustig, licht, historisch.",
     },
     {
         to: "/verblijven",
@@ -208,7 +208,7 @@ const Home = () => {
                     <h2>Het leven in de villa</h2>
                 </div>
                 <div className="sfeer-grid">
-                    {[HeroImg, TuinImg, KroonluchterImg, WijnImg].map((src, i) => (
+                    {[HeroImg, TuinImg, KroonluchterImg, WoonkamerImg2].map((src, i) => (
                         <div key={i} className="sfeer-item">
                             <img src={src} alt="Villa sfeer" loading="lazy" />
                         </div>
