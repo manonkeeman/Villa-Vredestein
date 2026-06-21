@@ -1,150 +1,178 @@
+/* ── Reveal ── */
 .reveal-section { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
 .reveal-section.in-view { opacity: 1; transform: translateY(0); }
 
 .plattegrond-page { background: #080808; color: #fff; overflow-x: hidden; padding-bottom: 5rem; }
 
-/* Hero */
+/* ── Hero ── */
 .pg-hero { padding: 5rem 2rem 0; border-bottom: 1px solid #1a1a1a; }
 .pg-hero-inner { max-width: 700px; margin: 0 auto; text-align: center; padding-bottom: 3rem; }
 
 .pg-eyebrow { display: block; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: #FCBC2D; margin-bottom: 1.25rem; }
 
 .pg-hero h1 { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 700; color: #fff; line-height: 1.2; margin: 0 0 1.25rem; }
-
 .pg-hero p { font-size: 1rem; color: #888; line-height: 1.8; margin: 0; }
 
+/* Stats balk */
 .pg-hero-stats {
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 0;
+    align-items: stretch;
     border-top: 1px solid #1a1a1a;
     margin-top: 2.5rem;
 }
 
-.pg-stat { padding: 1.5rem 3rem; text-align: center; display: flex; flex-direction: column; gap: 0.2rem; }
-.pg-stat strong { font-size: 1.4rem; font-weight: 700; color: #FCBC2D; }
-.pg-stat span { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #666; }
-.pg-stat-div { width: 1px; height: 40px; background: #1a1a1a; flex-shrink: 0; }
-
-/* Verdiepingen overzicht */
-.pg-verdiepingen { padding: 4rem 0; border-top: 1px solid #1a1a1a; }
-
-.verdieping-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
-    margin-top: 2rem;
-}
-
-.verdieping-card {
-    background: #0e0e0e;
-    border: 1px solid #1e1e1e;
-    border-radius: 12px;
-    padding: 1.5rem;
+.pg-stat {
+    flex: 1;
+    padding: 1.5rem 1rem;
+    text-align: center;
     display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    transition: border-color 0.3s;
+    flex-direction: column;
+    gap: 0.15rem;
+    border-right: 1px solid #1a1a1a;
+}
+.pg-stat:last-child { border-right: none; }
+.pg-stat strong { font-size: 1.4rem; font-weight: 700; color: #FCBC2D; }
+.pg-stat span { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #888; }
+.pg-stat small { font-size: 0.62rem; color: #555; }
+.pg-stat-div { width: 1px; background: #1a1a1a; }
+
+/* ── Verdiepingen ── */
+.pg-verd {
+    border-top: 1px solid #1a1a1a;
+    padding: 3.5rem 0;
 }
 
-.verdieping-card:hover { border-color: #333; }
-
-.verdieping-icon { font-size: 1.75rem; flex-shrink: 0; margin-top: 0.1rem; }
-
-.verdieping-card strong { font-size: 0.95rem; color: #fff; display: block; margin-bottom: 0.2rem; }
-.verdieping-card em { font-size: 0.75rem; color: #FCBC2D; font-style: normal; display: block; margin-bottom: 0.6rem; }
-.verdieping-card p { font-size: 0.82rem; color: #777; line-height: 1.6; margin: 0; }
-
-/* Aanbouw-kaart stijl */
-.kamer-aanbouw { border-style: dashed; border-color: #2a2a2a; opacity: 0.75; }
-.kamer-aanbouw:hover { border-color: #444; opacity: 0.9; transform: none; }
-
-/* Inner */
 .pg-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-.pg-section-title { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; color: #fff; margin: 0 0 2rem; }
 
-/* Kamers */
-.pg-kamers { padding: 4rem 0; border-top: 1px solid #1a1a1a; }
-
-.kamers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
-
-.kamer-card {
-    background: #0e0e0e;
-    border: 1px solid #1e1e1e;
-    border-radius: 12px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: border-color 0.3s, transform 0.3s;
-    position: relative;
+/* Verdieping header */
+.pg-verd-header {
+    margin-bottom: 2rem;
 }
 
-.kamer-card:hover { border-color: #333; transform: translateY(-3px); }
-.kamer-card:focus { outline: 2px solid #FCBC2D; outline-offset: 2px; }
-.kamer-open { border-color: #FCBC2D; }
-.kamer-featured { border-color: rgba(252,188,45,0.4); }
+.pg-verd-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+}
 
-.kamer-badge {
-    position: absolute;
-    top: 0.75rem;
-    right: 0.75rem;
-    background: #FCBC2D;
-    color: #000;
-    font-size: 0.6rem;
+.pg-verd-icon { font-size: 2rem; flex-shrink: 0; }
+
+.pg-verd-titel {
+    font-size: clamp(1.3rem, 3vw, 1.75rem);
     font-weight: 700;
+    color: #fff;
+    margin: 0;
+    border-left: 3px solid var(--vkleur, #FCBC2D);
+    padding-left: 0.75rem;
+}
+
+.pg-verd-bewoners {
+    font-size: 0.75rem;
+    color: var(--vkleur, #FCBC2D);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: block;
+    padding-left: 0.75rem;
+}
+
+.pg-verd-badge {
+    margin-left: auto;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid #2a2a2a;
+    color: #888;
+    font-size: 0.65rem;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    padding: 0.18rem 0.6rem;
-    border-radius: 10px;
-    z-index: 2;
+    padding: 0.22rem 0.7rem;
+    border-radius: 20px;
+    white-space: nowrap;
 }
 
-.kamer-img-wrap { height: 180px; overflow: hidden; }
-.kamer-img-wrap img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.7) saturate(0.75); transition: transform 0.5s; }
-.kamer-card:hover .kamer-img-wrap img { transform: scale(1.05); }
+.pg-verd-beschr {
+    font-size: 0.9rem;
+    color: #888;
+    line-height: 1.75;
+    margin: 0;
+    max-width: 680px;
+}
 
-.kamer-body { padding: 1.25rem; }
+/* Ruimte grid */
+.pg-ruimte-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.85rem;
+}
 
-.kamer-header-row { display: flex; align-items: flex-start; gap: 0.85rem; margin-bottom: 0.75rem; }
-.kamer-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 0.1rem; }
-.kamer-naam { font-size: 0.95rem; font-weight: 700; color: #fff; margin: 0; }
-.kamer-verdieping { font-size: 0.7rem; color: #666; text-transform: uppercase; letter-spacing: 0.06em; }
-.kamer-afmeting { margin-left: auto; font-size: 0.82rem; font-weight: 600; color: #FCBC2D; white-space: nowrap; flex-shrink: 0; }
-
-.kamer-beschrijving { font-size: 0.83rem; color: #888; line-height: 1.6; margin: 0 0 0.75rem; }
-
-.kamer-detail { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, opacity 0.3s ease; opacity: 0; }
-.kamer-detail.detail-visible { max-height: 200px; opacity: 1; }
-
-.kamer-features { list-style: none; padding: 0; margin: 0 0 0.75rem; display: flex; flex-direction: column; gap: 0.3rem; }
-.kamer-features li { font-size: 0.78rem; color: #777; display: flex; align-items: center; gap: 0.4rem; }
-.kamer-features li span { color: #FCBC2D; font-size: 0.72rem; }
-
-.kamer-toggle { font-size: 0.72rem; color: #FCBC2D; font-weight: 600; }
-
-/* Voorzieningen */
-.pg-voorzieningen { padding: 4rem 0; border-top: 1px solid #1a1a1a; }
-
-.voorzienin-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 0.5rem; }
-
-.voorzienin-card {
+.pg-ruimte-card {
     background: #0e0e0e;
-    border: 1px solid #1a1a1a;
-    border-radius: 10px;
-    padding: 1.25rem;
+    border: 1px solid #1e1e1e;
+    border-left: 3px solid var(--vkleur, #FCBC2D);
+    border-radius: 0 10px 10px 0;
+    padding: 1rem 1.25rem;
     display: flex;
     align-items: flex-start;
-    gap: 1rem;
-    transition: border-color 0.2s;
+    gap: 0.85rem;
+    position: relative;
+    transition: border-color 0.25s, background 0.25s;
 }
-.voorzienin-card:hover { border-color: #333; }
 
-.voorzienin-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 0.1rem; }
+.pg-ruimte-card:hover { background: #111; }
 
-.voorzienin-card strong { font-size: 0.88rem; color: #fff; display: block; margin-bottom: 0.25rem; }
-.voorzienin-card p { font-size: 0.78rem; color: #777; line-height: 1.5; margin: 0; }
+/* Aanbouw stijl */
+.pg-aanbouw {
+    border-left-color: #333;
+    border-color: #1e1e1e;
+    opacity: 0.65;
+    border-left-style: dashed;
+}
 
-/* CTA */
+.pg-aanbouw-chip {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.6rem;
+    font-size: 0.58rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #FCBC2D;
+    background: rgba(252,188,45,0.1);
+    border: 1px solid rgba(252,188,45,0.2);
+    padding: 0.12rem 0.45rem;
+    border-radius: 10px;
+}
+
+.pg-ruimte-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 0.1rem; }
+
+.pg-ruimte-body { display: flex; flex-direction: column; gap: 0.2rem; flex: 1; min-width: 0; }
+.pg-ruimte-body strong { font-size: 0.85rem; color: #fff; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pg-ruimte-afm { font-size: 0.68rem; color: var(--vkleur, #FCBC2D); font-weight: 600; }
+.pg-ruimte-body p { font-size: 0.75rem; color: #666; line-height: 1.45; margin: 0; }
+
+/* ── Foto's ── */
+.pg-fotos { padding: 4rem 0; border-top: 1px solid #1a1a1a; }
+
+.pg-fotos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.pg-fotos-grid img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 10px;
+    filter: brightness(0.75) saturate(0.8);
+    transition: filter 0.4s;
+}
+
+.pg-fotos-grid img:hover { filter: brightness(0.85) saturate(0.9); }
+
+/* ── CTA ── */
 .pg-cta { padding: 4rem 0; border-top: 1px solid #1a1a1a; }
 .pg-cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
 
@@ -167,20 +195,18 @@
 }
 .pg-cta-btn:hover { background: #e5a920; transform: translateY(-2px); }
 
-/* Responsive */
+/* ── Responsive ── */
 @media (max-width: 900px) {
-    .verdieping-grid { grid-template-columns: 1fr; }
-    .kamers-grid { grid-template-columns: 1fr 1fr; }
-    .voorzienin-grid { grid-template-columns: 1fr 1fr; }
-    .pg-stat { padding: 1.25rem 1.5rem; }
+    .pg-ruimte-grid { grid-template-columns: 1fr 1fr; }
+    .pg-fotos-grid { grid-template-columns: 1fr; }
+    .pg-fotos-grid img { height: 220px; }
 }
 
 @media (max-width: 600px) {
-    .kamers-grid { grid-template-columns: 1fr; }
-    .voorzienin-grid { grid-template-columns: 1fr; }
-    .pg-cta-inner { flex-direction: column; }
+    .pg-ruimte-grid { grid-template-columns: 1fr; }
     .pg-hero-stats { flex-wrap: wrap; }
-    .pg-stat { padding: 1rem 1.5rem; }
-    .pg-stat-div { display: none; }
+    .pg-stat { min-width: 50%; border-right: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; }
+    .pg-verd-meta { gap: 0.75rem; }
+    .pg-cta-inner { flex-direction: column; }
     .pg-inner { padding: 0 1.25rem; }
 }
