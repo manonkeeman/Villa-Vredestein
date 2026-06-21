@@ -134,7 +134,7 @@ const Home = () => {
                     <p>
                         Villa Vredestein werd gebouwd als buitenverblijf voor de burgemeester
                         van Krimpen aan den IJssel. Sindsdien heeft het pand talloze bewoners
-                        verwelkomd — van christelijk pension tot studentenhuis, van verbouwproject
+                        verwelkomd. Van christelijk pension tot studentenhuis, van verbouwproject
                         tot wat het nu is: een plek om trots op te zijn.
                     </p>
                     <p>
