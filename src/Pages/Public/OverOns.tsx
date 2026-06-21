@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet-async";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./OverOns.css";
 
 import ImgManonMaxim from "../../Assets/Images/Maxim_Manon_ChevroletSuburban.jpg";
@@ -208,15 +208,11 @@ const OverOns = () => {
                                 )}
 
                                 {sec.slug === "carpe-diem-design" && (
-                                    <div className="oo-carpe-cta">
-                                        <button
-                                            className="oo-carpe-cta-btn"
-                                            onClick={() => navigate("/contact")}
-                                        >
-                                            Neem contact op
-                                        </button>
-                                        <span className="oo-carpe-tagline">Leef. Pluk de dag.</span>
-                                    </div>
+                                    <p className="oo-inline-contact">
+                                        <Link to="/contact" className="oo-inline-link" style={{ "--btn-accent": sec.accent } as React.CSSProperties}>
+                                            Neem contact op →
+                                        </Link>
+                                    </p>
                                 )}
 
                             </div>
