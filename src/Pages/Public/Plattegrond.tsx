@@ -20,7 +20,7 @@ const KAMERS = [
     },
     {
         id: "kamer1",
-        naam: "Kamer 1 — Groot",
+        naam: "Kamer 1: Groot",
         verdieping: "Eerste verdieping",
         icon: "🛏️",
         afmeting: "~22 m²",
@@ -30,7 +30,7 @@ const KAMERS = [
     },
     {
         id: "kamer2",
-        naam: "Kamer 2 — Tuinzijde",
+        naam: "Kamer 2: Tuinzijde",
         verdieping: "Eerste verdieping",
         icon: "🌿",
         afmeting: "~18 m²",
@@ -39,7 +39,7 @@ const KAMERS = [
     },
     {
         id: "kamer3",
-        naam: "Kamer 3 — Zolder",
+        naam: "Kamer 3: Zolder",
         verdieping: "Tweede verdieping",
         icon: "🏔️",
         afmeting: "~16 m²",
@@ -57,7 +57,7 @@ const KAMERS = [
     },
     {
         id: "kamer5",
-        naam: "Kamer 5 — Italië",
+        naam: "Kamer 5: Italië",
         verdieping: "Eerste verdieping",
         icon: "🇮🇹",
         afmeting: "~15 m²",

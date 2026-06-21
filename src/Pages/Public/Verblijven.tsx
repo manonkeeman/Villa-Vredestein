@@ -80,7 +80,7 @@ const Verblijven = () => {
         <main className="verblijven-page">
             <Helmet>
                 <title>Verblijven & Boeken — Villa Vredestein</title>
-                <meta name="description" content="Verblijf in Villa Vredestein in Driebergen-Rijsenburg. Kamer, volledige villa of tijdelijk verblijf — vraag beschikbaarheid op." />
+                <meta name="description" content="Verblijf in Villa Vredestein in Driebergen-Rijsenburg. Kamer, volledige villa of tijdelijk verblijf. Vraag beschikbaarheid op." />
                 <link rel="canonical" href="https://villavredestein.nl/verblijven" />
             </Helmet>
 

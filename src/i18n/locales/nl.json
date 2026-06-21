@@ -7,10 +7,10 @@
   },
   "home": {
     "title": "Welkom bij Villa Vredestein",
-    "p1": "Gebouwd in 1906, ademt Villa Vredestein de charme van weleer. Hoge plafonds, oude details en een ziel die je voelt zodra je binnenstapt.",
-    "p2": "Toch is dit geen huis dat stilstaat in de tijd. Achter de nostalgische gevel schuilt een frisse wind. We moderniseren met respect voor het verleden, zodat dit huis niet alleen herinneringen bewaart, maar ook ruimte biedt aan nieuwe verhalen.",
-    "p3": "De originele elementen blijven behouden waar mogelijk, niet uit nostalgie, maar uit liefde voor vakmanschap. Zo ontstaat een harmonie tussen oud en nieuw.",
-    "p4": "Villa Vredestein draagt het verleden met trots en kijkt vooruit. Ontdek wat deze unieke plek zo bijzonder maakt.",
+    "p1": "Gebouwd in 1906. Hoge plafonds, originele details en een ziel die je voelt zodra je binnenstapt.",
+    "p2": "We restaureren met respect voor het verleden, zodat dit huis niet alleen herinneringen bewaart maar ook ruimte biedt aan nieuwe verhalen.",
+    "p3": "Originele elementen blijven behouden waar mogelijk. Niet uit nostalgie, maar uit liefde voor vakmanschap.",
+    "p4": "Ontdek wat Villa Vredestein zo bijzonder maakt.",
     "imageAlt": "Voorgevel van Villa Vredestein in Driebergen",
     "readMore": "Lees meer"
   },
@@ -23,7 +23,7 @@
   },
   "contact": {
     "title": "Neem contact op",
-    "notice": "Heb je vragen over Villa Vredestein of wil je iets bespreken met het beheer? Laat gerust een bericht achter. We nemen spoedig contact met je op.",
+    "notice": "Vragen over Villa Vredestein of wil je iets bespreken? Stuur een bericht. We reageren snel.",
     "mapTitle": "Locatie Villa Vredestein op kaart",
     "form": {
       "name": "Je naam",
@@ -32,7 +32,7 @@
       "submit": "Verstuur bericht",
       "error": "Er ging iets mis bij het versturen. Probeer het later opnieuw.",
       "successTitle": "Bedankt voor je bericht!",
-      "successMessage": "We hebben uw bericht goed ontvangen en zullen gauw contact opnemen.",
+      "successMessage": "We nemen zo snel mogelijk contact met je op.",
       "signature": "Hartelijke groet, Manon & Maxim",
       "close": "Sluiten"
     }
@@ -40,29 +40,26 @@
   "blogs": [
     {
       "slug": "villa-vredestein",
-      "title": "Villa Vredestein: Van Uitgeleefd Studentenhuis tot Gerestaureerde Trots",
+      "title": "Villa Vredestein: Van Studentenhuis tot Gerestaureerde Trots",
       "summary": "Gebouwd in 1906, jarenlang studentenhuis, nu werk in uitvoering. Het eerlijke verhaal van hoe Villa Vredestein in 2020 een tweede leven begon.",
       "date": "1 januari 2024",
-      "readTime": "4 min",
+      "readTime": "3 min",
       "content": [
-        "Aan de Hoofdstraat in Driebergen-Rijsenburg staat een pand dat zijn beste jaren nog voor zich heeft. Villa Vredestein, gebouwd in 1906 als hervormd-christelijk pension, beleeft momenteel een tweede leven. Dat leven begon in 2020, midden in de onzekerheid van een wereldwijde pandemie.",
-        "Toen wij het pand kochten, was het verre van de villa die het ooit was geweest. Jarenlang had het dienst gedaan als studentenhuis voor zeven studenten van de IVA, de particuliere automotive school in Driebergen. De muren hadden het gezien, de vloeren hadden het gevoeld, en het karakter van het pand was diep begraven onder lagen verwaarlozing. Maar wie goed keek, zag wat er onder zat. Wij zagen potentieel.",
-        "De verbouwing is van een schaal die je pas begrijpt als je er middenin zit. Van de kelder tot de vliering, van de oprijlaan tot de grote schuur die in de achtertuin gepland staat, alles wordt aangepakt, alles wordt hersteld. De een-steens muren, de hoge plafonds, de originele houten vloeren: het zijn details die je niet nabootst, die je alleen maar kunt redden als je er de tijd en het geduld voor neemt.",
-        "En die verbouwing gaat niet altijd zoals gepland. Er zijn teleurstellingen, momenten waarop je iets openbreekt en aantreft wat je liever niet had gevonden. Maar er zijn ook verrassingen van de mooiste soort: momenten waarop het pand je iets teruggeeft dat je niet had verwacht. Dat wisselspel maakt het bijzonder. Het maakt het eerlijk.",
-        "Villa Vredestein is geen monument; het is een werk in uitvoering. Een pand met meer dan een eeuw geschiedenis op zijn schouders, dat nu stap voor stap wordt teruggegeven aan de staat die het altijd verdiend heeft. Van hervormd pension naar studentenhuis naar wat het nu wordt: een plek om trots op te zijn."
+        "Villa Vredestein, gebouwd in 1906 als hervormd-christelijk pension, begon in 2020 een tweede leven. Midden in een pandemie, met een sleutel die in het slot sloeg.",
+        "Het pand had jarenlang dienst gedaan als studentenhuis voor de IVA. De muren hadden het gezien, de vloeren hadden het gevoeld. Maar wie goed keek, zag wat eronder lag.",
+        "Van kelder tot vliering pakt Manon dit pand aan. Niet om het te slopen, maar om terug te geven wat het altijd was: een plek om trots op te zijn."
       ]
     },
     {
       "slug": "geschiedenis",
       "title": "De Geschiedenis",
-      "summary": "Oorspronkelijk een statig rustoord ver weg van de Randstad. Door de jaren heen een plek van verbinding en ontwikkeling.",
+      "summary": "Oorspronkelijk een statig rustoord ver van de Randstad. Door de jaren heen een plek van verbinding en ontwikkeling.",
       "date": "15 januari 2024",
-      "readTime": "4 min",
+      "readTime": "3 min",
       "content": [
-        "In het begin van de twintigste eeuw was Driebergen een geliefde bestemming voor Amsterdamse en Utrechtse welgestelden die een buitenverblijf zochten ver van de drukte van de stad. Villa Vredestein werd in 1906 gebouwd als een dergelijk buitenverblijf, een plek van rust, natuur en bezinning.",
-        "Het pand is in de loop der jaren door diverse eigenaren bewoond, elk met hun eigen verhaal en bijdrage aan de geschiedenis van het huis. Van patriciërs tot kunstenaars, van zakenlieden tot academici, Villa Vredestein heeft mensen uit alle lagen van de samenleving verwelkomd.",
-        "Door de decennia heen behield het pand zijn functie als bijzondere plek: een rustpunt te midden van de veranderingen in de wereld. De dikke muren en het groen rondom de villa boden altijd een gevoel van beschutting en thuiskomen.",
-        "Nu, meer dan een eeuw later, brengen Manon en Maxim een nieuw hoofdstuk in dit rijke verhaal. Ze zetten de traditie van gastvrijheid voort en bouwen voort op de fundamenten van generaties die voor hen kwamen. De geschiedenis van Villa Vredestein is levend en groeit nog steeds."
+        "In 1906 liet burgemeester Baltus Koker van Krimpen aan den IJssel dit buitenhuis bouwen aan de Hoofdstraat in Driebergen. Een plek van rust, natuur en bezinning.",
+        "Het pand kende tientallen bewoners: een christelijk logement, een pension, studenten. Elk tijdperk liet zijn sporen na in de muren en vloeren.",
+        "Manon en Maxim schrijven nu een nieuw hoofdstuk. Ze bouwen voort op de fundamenten van meer dan een eeuw Driebergs leven."
       ]
     },
     {
@@ -70,25 +67,22 @@
       "title": "De Restauratie",
       "summary": "Met aandacht voor originele details is de villa gerenoveerd. Authentieke elementen behouden in een eigentijdse setting.",
       "date": "1 februari 2024",
-      "readTime": "4 min",
+      "readTime": "3 min",
       "content": [
-        "Een historisch pand renoveren is een delicate balans tussen behoud en vernieuwing. Bij Villa Vredestein stond van meet af aan vast dat de originele details centraal moesten staan. Niet elk spoor van tijd werd weggewerkt, integendeel, de patina van het verleden werd bewust omarmd.",
-        "De restauratie begon met een grondige inventarisatie van wat bewaard kon worden: de originele houten vloeren, de sierlijsten aan het plafond, de imposante deuren met hun karakteristieke ijzerwerk. Alles wat nog in goede staat was, werd zorgvuldig gerestaureerd en teruggeplaatst.",
-        "Tegelijkertijd werd de villa voorzien van alle moderne gemakken die bewoners en gasten tegenwoordig verwachten. Isolatie, moderne installaties en eigentijdse keukens werden op zo'n manier geïntegreerd dat ze niet afleiden van het historische karakter van het pand.",
-        "Het resultaat is een huis dat zowel comfortabel als authentiek aanvoelt. Bezoekers voelen meteen de charme van het historische pand, maar ervaren tegelijkertijd het gemak van een modern ingericht huis. Dat evenwicht is de kern van de restauratiefilosofie van Villa Vredestein."
+        "Originele details staan centraal. Niet elk spoor van tijd wordt weggewerkt. De patina van het verleden is hier bewust.",
+        "Houten vloeren, sierlijsten, imposante deuren met origineel ijzerwerk: alles in goede staat werd gerestaureerd en teruggeplaatst. Moderne installaties zijn zo ingepast dat ze het karakter niet doorbreken.",
+        "Het resultaat is een huis dat comfortabel en authentiek aanvoelt. Historische charme en modern gemak, zonder compromis."
       ]
     },
     {
       "slug": "omgeving",
       "title": "De Omgeving",
-      "summary": "Villa Vredestein ligt in het groene hart van Driebergen, aan de rand van de Utrechtse Heuvelrug. Rust, natuur en historie samengekomen.",
+      "summary": "Villa Vredestein ligt in het groene hart van Driebergen, aan de rand van de Utrechtse Heuvelrug. Rust, natuur en bereikbaarheid.",
       "date": "15 februari 2024",
-      "readTime": "3 min",
+      "readTime": "2 min",
       "content": [
-        "Driebergen-Rijsenburg is een van de groenste en rustigste gemeenten in de provincie Utrecht. Gelegen aan de zuidflank van de Utrechtse Heuvelrug, een stuwwal uit de laatste ijstijd, biedt de omgeving een ongeëvenaarde combinatie van natuur, rust en cultuur.",
-        "Vanuit Villa Vredestein ben je in minuten in uitgestrekte bossen en heidevelden. De Utrechtse Heuvelrug biedt eindeloze mogelijkheden voor wandelaars, fietsers en mensen die behoefte hebben aan frisse lucht en ruimte. Het contrast met de hectiek van de Randstad is groot en voelbaar.",
-        "Het dorp Driebergen zelf is een charmante gemeenschap met een dorpskern vol karakteristieke panden, lokale winkeltjes en gezellige eetgelegenheden. De historische Hoofdstraat ademt dezelfde sfeer als Villa Vredestein zelf: oud maar levendig, traditioneel maar open voor het nieuwe.",
-        "Utrecht stad is op korte afstand per trein bereikbaar, net als Amsterdam en andere steden. Villa Vredestein biedt zo het beste van twee werelden: een rustige, groene omgeving om tot rust te komen, met de dynamiek van de stad altijd binnen handbereik."
+        "Driebergen-Rijsenburg ligt op de zuidflank van de Utrechtse Heuvelrug. Bos om de hoek, een echte dorpskern op de fiets, stilte als je die wil.",
+        "Utrecht is een kwartier per trein. Amsterdam veertig minuten. Schiphol vijftig. Stad en natuur, beide binnen handbereik."
       ]
     },
     {
@@ -96,55 +90,46 @@
       "title": "Maxim & Manon",
       "summary": "Ze ontmoetten elkaar bij KLM. Zij ontwerpt, hij vliegt. Samen restaureren ze Villa Vredestein en wonen er gewoon middenin.",
       "date": "1 maart 2024",
-      "readTime": "3 min",
+      "readTime": "2 min",
       "content": [
-        "Villa Vredestein is het project van Manon Keeman en Maxim Staal. Maar eigenlijk begint het verhaal niet in Driebergen, het begint ergens boven de wolken. Ze ontmoetten elkaar bij KLM, en wie ze zijn zie je terug in alles wat ze doen.",
-        "Maxim vliegt lange afstand, routes die geduld en kalmte vragen. Die energie neemt hij mee naar huis, naar een verbouwing die soms aanvoelt als een intercontinentale vlucht: je weet waar je naartoe wilt, maar onderweg kan er van alles gebeuren.",
-        "Manon begon als grafisch vormgever, schoolde om naar IT en combineert die twee werelden moeiteloos. Ze ziet meteen wat mooi is, en weet ook precies hoe ze het voor elkaar krijgt.",
-        "Samen delen ze een leven vol design, auto's, reizen, vintage vondsten en de voldoening van dingen die kapot zijn maar de moeite waard om te redden. Villa Vredestein past daar perfect in.",
-        "Voor Manon is het pand een overtuiging die ze al jaren met zich meedraagt: dat de ruimte om je heen bepaalt wie je bent. Elk materiaal, elke kleur, elke hoek is een keuze die telt.",
-        "Voor Maxim is het meer dan een huis, het is een vertrekpunt. Een plek van waaruit mensen groeien, nieuwe dingen beginnen en verbindingen maken die ertoe doen.",
-        "En ondertussen is het gewoon druk thuis. Hun vier volwassen kinderen wonen er nog allemaal, kat Q loopt er met het zelfvertrouwen van een huisbaas, en ergens tussen de verbouwingsdrukte door wordt er ook gewoon geleefd. Dat is misschien wel het mooiste aan Villa Vredestein: het is nooit alleen maar een project geweest. Het is vanaf dag één gewoon thuis."
+        "Manon Keeman en Maxim Staal ontmoetten elkaar bij KLM, ergens boven de wolken. Sindsdien doen ze alles samen.",
+        "Maxim vliegt intercontinentaal. Die kalmte brengt hij mee naar huis en naar een verbouwing die soms aanvoelt als een lange vlucht.",
+        "Manon begon als grafisch ontwerper, schoolde om naar IT. Ze ziet meteen wat mooi is en weet hoe ze het voor elkaar krijgt.",
+        "Vier kinderen, een kat, een verbouwing en gewoon leven. Villa Vredestein is nooit alleen maar een project geweest. Het is thuis."
       ]
     },
     {
       "slug": "het-boek",
       "title": "Het Boek",
-      "summary": "Villa Vredestein in beeld. De geschiedenis. De verbouwing en de restauratie van dit bijzondere pand, vastgelegd door Manon Keeman.",
+      "summary": "Villa Vredestein in beeld. De geschiedenis. De verbouwing en restauratie van dit bijzondere pand, vastgelegd door Manon Keeman.",
       "date": "1 mei 2024",
-      "readTime": "3 min",
+      "readTime": "2 min",
       "content": [
-        "Villa Vredestein heeft een verhaal dat groter is dan woorden alleen. Dat is de reden waarom ik besloot het vast te leggen in een boek, niet alleen in tekst, maar vooral in beeld. Een document van wat er was, wat er is geworden en hoe dat proces er van dichtbij uitzag.",
-        "Het boek neemt je mee door de geschiedenis van het pand: van de bouw in 1906, de opeenvolgende bewoners en de decennia die sporen hebben nagelaten in de muren, de vloeren en de details die je pas opmerkt als je echt goed kijkt.",
-        "Een groot deel van het boek is gewijd aan de restauratie. Niet het gepolijste eindresultaat, maar het échte werk: de beslissingen, de verrassingen achter muren, de keuzes tussen behouden en vernieuwen. Foto's, schetsen en aantekeningen die samen het proces laten zien zoals het was.",
-        "Het boek is nog in de maak. Wil je op de hoogte blijven wanneer het verschijnt, of heb je interesse om een exemplaar te reserveren? Neem contact op via het contactformulier. We horen het graag!"
+        "Villa Vredestein heeft een verhaal dat groter is dan woorden alleen. Manon legt het vast in een boek: de geschiedenis van het pand, de verbouwing, de echte keuzes achter elke muur.",
+        "Het boek is nog in de maak. Interesse in een exemplaar of wil je op de hoogte blijven? Neem contact op."
       ]
     },
     {
       "slug": "carpe-diem-design",
       "title": "Carpe Diem Design",
-      "summary": "Een werkplaats voor bouwers en developers. Geen kantoor, geen strandtent. Gewoon bouwen; in Driebergen.",
+      "summary": "Een werkplaats voor bouwers en developers. Geen kantoor, geen strandtent. Gewoon bouwen, in Driebergen.",
       "date": "1 april 2024",
-      "readTime": "4 min",
+      "readTime": "2 min",
       "content": [
-        "Carpe Diem Design is een werkplaats die is ontstaan uit een simpele frustratie: geen plek hebben om écht te bouwen. Epoxy in de keuken, gereedschap door het hele huis, en nooit iets dat echt af wordt. Dat kan anders.",
-        "De space bestaat uit vier zones: een DEV ZONE voor developers die gefocust willen werken, een BUILD ZONE voor campers, interieur en elektra, een SHAPE ZONE voor detailwerk en reparaties, en een COFFEE CORNER met goede koffie en gesprekken die ergens over gaan.",
-        "Carpe Diem Design is er voor surfers zonder werkplaats, makers die klaar zijn met half werk, en developers die iets échts willen bouwen, niet alleen achter hun scherm. Het is geen hangplek, geen design studio en geen showroom. Gewoon een werkplaats.",
-        "We beginnen klein: 5 tot 10 founding members. Geen massa. Wel een kern van mensen die iets maken. Opruimen wat je rommel maakt, afmaken waar je aan begint, gereedschap respecteren. Dat zijn de enige regels.",
-        "Carpe Diem Design bevindt zich in Driebergen, en maakt deel uit van de bredere visie van Villa Vredestein: een plek waar mensen niet alleen wonen, maar ook creëren. Wil je weten of er nog plek is? Neem contact op."
+        "Carpe Diem Design ontstond uit een simpele frustratie: nergens plek om écht te bouwen. Vier zones: een DEV ZONE, een BUILD ZONE, een SHAPE ZONE en een COFFEE CORNER. Gewoon een werkplaats in Driebergen.",
+        "Voor makers die klaar zijn met half werk. Developers die iets tastbaars willen bouwen. Surfers zonder plek. Geen showroom, geen design studio.",
+        "We beginnen klein: 5 tot 10 founding members. Opruimen wat je rommel maakt, afmaken wat je begint. Wil je erbij? Neem contact op."
       ]
     },
     {
       "slug": "bezoek-inspiratie",
       "title": "Bezoek & Inspiratie",
-      "summary": "Ontdek de verhalen, charme en ambities van Villa Vredestein. Laat je inspireren door het proces van restauratie en living.",
+      "summary": "Ontdek de verhalen, charme en ambities van Villa Vredestein. Laat je inspireren door het proces van restauratie en wonen.",
       "date": "15 maart 2024",
-      "readTime": "3 min",
+      "readTime": "2 min",
       "content": [
-        "Villa Vredestein is meer dan een adres, het is een levend verhaal. Elke dag worden er nieuwe pagina's geschreven door de mensen die er wonen, werken en te gast zijn. Via deze website en sociale media delen we dat verhaal graag met een breder publiek.",
-        "Op Instagram (@villa.vredestein) documenteren we het leven in en rond de villa. Van de eerste ochtendzon op de gevel tot spontane momenten in de tuin, we laten zien hoe bijzonder het dagelijks leven in dit historische pand is. Inspiratie voor wie ooit een eigen project wil starten.",
-        "De villa heeft ook een functie als inspiratiebron voor mensen die geïnteresseerd zijn in historisch vastgoed, interieurdesign of duurzame renovatie. We ontvangen regelmatig vragen van mensen die bezig zijn met vergelijkbare projecten en delen graag onze ervaringen.",
-        "Wil je meer weten, een bezoek brengen of gewoon in contact komen? Stuur ons een bericht via het contactformulier of neem contact op via WhatsApp. We staan altijd open voor een goed gesprek over Villa Vredestein, over wonen, over dromen en hoe je die werkelijkheid maakt."
+        "Villa Vredestein is meer dan een adres. Via Instagram (@villa.vredestein) en deze website delen we het dagelijkse leven, de verbouwing en alles wat er speelt.",
+        "Wil je meer weten, een keer langs komen of gewoon in contact? Stuur een bericht. We zijn altijd in voor een goed gesprek."
       ]
     }
   ],
