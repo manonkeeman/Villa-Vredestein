@@ -12,19 +12,19 @@ const OPTIES = [
         icon: "🛏️",
         titel: "Privékamer",
         sub: "In de villa",
-        beschrijving: "Eén van de vijf unieke kamers in Villa Vredestein. Eigen ruimte, gedeelde woonkamer, keuken en tuin.",
+        beschrijving: "Eigen ruimte in een historisch pand. Gedeelde woonkamer, keuken en tuin.",
         vanaf: "Op aanvraag",
         kenmerken: ["Eigen kamer", "Gedeelde woonkamer", "Gemeenschappelijke keuken", "Tuin & terras", "Historisch pand"],
+        featured: true,
     },
     {
-        id: "villa",
-        icon: "🏛️",
-        titel: "Volledige villa",
-        sub: "Exclusief gebruik",
-        beschrijving: "De gehele Villa Vredestein voor jouw groep of evenement. Alle vijf kamers, alle gemeenschappelijke ruimtes en de volledige tuin.",
+        id: "iva",
+        icon: "🎓",
+        titel: "IVA kamerverhuur",
+        sub: "Voor IVA-studenten",
+        beschrijving: "Villa Vredestein heeft een lange geschiedenis met IVA. Studenten van de IVA automotive opleiding in Driebergen zijn van harte welkom.",
         vanaf: "Op aanvraag",
-        kenmerken: ["5 kamers", "Volledige woonkamer", "Volledig keuken", "Grote tuin & terras", "Parkeerplaats", "Evenementenruimte"],
-        featured: true,
+        kenmerken: ["IVA-studenten welkom", "Eigen kamer", "Gedeelde faciliteiten", "Loopafstand van IVA"],
     },
     {
         id: "tijdelijk",
@@ -33,17 +33,26 @@ const OPTIES = [
         sub: "Kort of lang",
         beschrijving: "Op zoek naar tijdelijk onderdak tijdens een verbouwing, verhuizing of project? We denken graag mee.",
         vanaf: "Op aanvraag",
-        kenmerken: ["Flexibele duur", "Gemeubileerd", "Inclusief internet", "Meteen bewoonbaar"],
+        kenmerken: ["Flexibele duur", "Gemeubileerd", "Inclusief internet", "Beschikbaarheid in overleg"],
+    },
+    {
+        id: "villa",
+        icon: "🏛️",
+        titel: "Volledige villa",
+        sub: "Exclusief gebruik",
+        beschrijving: "De gehele Villa Vredestein voor jouw groep. Alle zes slaapkamers, alle gemeenschappelijke ruimtes en de volledige tuin.",
+        vanaf: "Op aanvraag",
+        kenmerken: ["6 slaapkamers", "Volledige woonkamer", "Keukens", "Grote tuin & terras", "Parkeerplaats"],
     },
 ];
 
 const Verblijven = () => {
     const navigate = useNavigate();
-    const [selectedOptie, setSelectedOptie] = useState("villa");
+    const [selectedOptie, setSelectedOptie] = useState("kamer");
     const [form, setForm] = useState({
         naam: "", email: "", telefoon: "",
         aankomst: "", vertrek: "", gasten: "1",
-        optie: "villa", bericht: "",
+        optie: "kamer", bericht: "",
     });
     const [sent, setSent] = useState(false);
     const [sending, setSending] = useState(false);
