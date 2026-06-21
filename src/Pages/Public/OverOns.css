@@ -22,13 +22,36 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: radial-gradient(ellipse at 60% 40%, #1a1200 0%, #0c0a07 70%);
     text-align: center;
     padding: 6rem 2rem 4rem;
     position: relative;
+    overflow: hidden;
+}
+
+.oo-hero-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center 30%;
+    transform-origin: center;
+    z-index: 0;
+}
+
+.oo-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(10, 8, 5, 0.55) 0%,
+        rgba(10, 8, 5, 0.35) 40%,
+        rgba(10, 8, 5, 0.75) 100%
+    );
+    z-index: 1;
 }
 
 .oo-hero-inner {
+    position: relative;
+    z-index: 2;
     max-width: 720px;
 }
 
@@ -48,14 +71,16 @@
     color: #ffffff;
     line-height: 1.15;
     margin: 0 0 1.5rem;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.6);
 }
 
 .oo-hero-sub {
     font-size: 1.05rem;
-    color: #988068;
+    color: rgba(255, 255, 255, 0.8);
     line-height: 1.75;
     max-width: 560px;
     margin: 0 auto 3rem;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.5);
 }
 
 .oo-hero-scroll {
@@ -63,7 +88,7 @@
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
-    color: #5a4e3e;
+    color: rgba(255,255,255,0.5);
     font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -73,7 +98,7 @@
 .oo-scroll-arrow {
     width: 1px;
     height: 40px;
-    background: linear-gradient(to bottom, #5a4e3e, transparent);
+    background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
 }
 
 @keyframes oo-bounce {

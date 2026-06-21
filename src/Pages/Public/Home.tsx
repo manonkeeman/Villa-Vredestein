@@ -9,6 +9,7 @@ import VillaImg from "../../Assets/Images/VillaVredestein2024.jpg";
 import TuinImg from "../../Assets/Images/ext-tuinfeest.jpg";
 import KroonluchterImg from "../../Assets/Images/int-kroonluchter.jpg";
 import WoonkamerImg2 from "../../Assets/Images/int-woonkamer2.jpg";
+import LuchtballonImg from "../../Assets/Images/ext-luchtballon.png";
 
 const KENMERKEN = [
     { icon: "🏛️", label: "1906", sub: "Bouwjaar" },
@@ -208,7 +209,7 @@ const Home = () => {
                     <h2>Het leven in de villa</h2>
                 </div>
                 <div className="sfeer-grid">
-                    {[HeroImg, TuinImg, KroonluchterImg, WoonkamerImg2].map((src, i) => (
+                    {[HeroImg, TuinImg, KroonluchterImg, LuchtballonImg].map((src, i) => (
                         <div key={i} className="sfeer-item">
                             <img src={src} alt="Villa sfeer" loading="lazy" />
                         </div>

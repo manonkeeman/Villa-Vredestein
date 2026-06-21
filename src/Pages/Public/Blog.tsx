@@ -12,6 +12,7 @@ import Villa6 from "../../Assets/Images/DeOmgevingVillaVredestein.jpg";
 import Villa5 from "../../Assets/Images/VillaVredestein.jpg";
 import Villa7 from "../../Assets/Images/PannenkoekenAvondVillaVredestein.jpg";
 import Villa8 from "../../Assets/Images/Maxim_Manon_ChevroletSuburban.jpg";
+import LuchtballonImg from "../../Assets/Images/ext-luchtballon.png";
 import Villa9 from "../../Assets/Images/BezoekOnsVillaVredestein.jpg";
 
 const imageMap = {
@@ -21,7 +22,7 @@ const imageMap = {
     "omgeving": Villa6,
     "het-boek": Villa5,
     "carpe-diem-design": Villa7,
-    "over-ons": Villa8,
+    "over-ons": LuchtballonImg,
     "bezoek-inspiratie": Villa9,
 };
 
