@@ -1,7 +1,8 @@
 {
   "nav": {
     "home": "Startseite",
-    "about": "Über uns",
+    "about": "Geschichten",
+    "overons": "Unsere Geschichte",
     "contact": "Kontakt"
   },
   "home": {

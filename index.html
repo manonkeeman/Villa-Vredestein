@@ -7,10 +7,20 @@
   <!-- Primary SEO -->
   <title>Villa Vredestein — Driebergen-Rijsenburg</title>
   <meta name="description" content="Villa Vredestein is een historische villa uit 1906 in Driebergen-Rijsenburg. Ontdek de geschiedenis, restauratie en het unieke woonproject van Manon en Maxim op de Utrechtse Heuvelrug." />
-  <meta name="keywords" content="Villa Vredestein, Driebergen, Utrechtse Heuvelrug, historische villa, wonen, restauratie, Manon Keeman" />
+  <meta name="keywords" content="Villa Vredestein, Driebergen, Utrechtse Heuvelrug, historische villa, wonen, restauratie, Manon Keeman, Driebergen-Rijsenburg, pension 1906, studentenhuis" />
   <meta name="author" content="Manon Keeman & Maxim" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://villavredestein.nl" />
+
+  <!-- GEO targeting -->
+  <meta name="geo.region" content="NL-UT" />
+  <meta name="geo.placename" content="Driebergen-Rijsenburg" />
+  <meta name="geo.position" content="52.04312;5.28701" />
+  <meta name="ICBM" content="52.04312, 5.28701" />
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
@@ -64,39 +74,75 @@
   <link rel="apple-touch-icon" sizes="128x128" href="/icons/icon-128x128.png" />
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" preload as="style" />
 
   <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "LodgingBusiness",
-    "name": "Villa Vredestein",
-    "description": "Historische villa uit 1906 in Driebergen-Rijsenburg, gerenoveerd door Manon Keeman en Maxim.",
-    "url": "https://villavredestein.nl",
-    "logo": "https://villavredestein.nl/VVLogo.png",
-    "image": "https://villavredestein.nl/VVLogo.png",
-    "telephone": "+31625015299",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Hoofdstraat 147",
-      "addressLocality": "Driebergen-Rijsenburg",
-      "postalCode": "3975 ED",
-      "addressCountry": "NL"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 52.04312,
-      "longitude": 5.28701
-    },
-    "sameAs": [
-      "https://www.instagram.com/villa.vredestein"
-    ],
-    "founder": [
-      { "@type": "Person", "name": "Manon Keeman" },
-      { "@type": "Person", "name": "Maxim" }
-    ],
-    "foundingDate": "1906"
+    "@graph": [
+      {
+        "@type": "ResidentialBuilding",
+        "@id": "https://villavredestein.nl/#building",
+        "name": "Villa Vredestein",
+        "alternateName": "Rustoord Vredestein",
+        "description": "Historische villa uit 1906 aan de Hoofdstraat in Driebergen-Rijsenburg. Gebouwd door burgemeester Baltus Koker, gerenoveerd door Manon Keeman en Maxim Staal.",
+        "url": "https://villavredestein.nl",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://villavredestein.nl/VVLogo.png",
+          "width": 512,
+          "height": 512
+        },
+        "image": "https://villavredestein.nl/VVLogo.png",
+        "telephone": "+31625015299",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Hoofdstraat 147",
+          "addressLocality": "Driebergen-Rijsenburg",
+          "postalCode": "3975 ED",
+          "addressRegion": "Utrecht",
+          "addressCountry": "NL"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 52.04312,
+          "longitude": 5.28701
+        },
+        "sameAs": [
+          "https://www.instagram.com/villa.vredestein"
+        ],
+        "hasMap": "https://maps.google.com/?q=Hoofdstraat+147+Driebergen-Rijsenburg",
+        "foundingDate": "1906",
+        "founder": {
+          "@type": "Person",
+          "name": "Baltus Koker"
+        },
+        "owner": [
+          { "@type": "Person", "name": "Manon Keeman" },
+          { "@type": "Person", "name": "Maxim Staal" }
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://villavredestein.nl/#website",
+        "url": "https://villavredestein.nl",
+        "name": "Villa Vredestein",
+        "description": "Historische villa uit 1906 in Driebergen-Rijsenburg.",
+        "inLanguage": ["nl", "en", "fr", "de", "es", "it"],
+        "about": { "@id": "https://villavredestein.nl/#building" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://villavredestein.nl/" },
+          { "@type": "ListItem", "position": 2, "name": "Verhalen", "item": "https://villavredestein.nl/about" },
+          { "@type": "ListItem", "position": 3, "name": "Ons Verhaal", "item": "https://villavredestein.nl/over-ons" },
+          { "@type": "ListItem", "position": 4, "name": "Tijdlijn", "item": "https://villavredestein.nl/tijdlijn" },
+          { "@type": "ListItem", "position": 5, "name": "Galerij", "item": "https://villavredestein.nl/galerij" }
+        ]
+      }
+    ]
   }
   </script>
 </head>
