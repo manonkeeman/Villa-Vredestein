@@ -16,3 +16,66 @@ status = 200
 [forms]
   [forms.contact]
     name = "contact"
+
+# ── Security & performance headers ──────────────────────────────
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Clickjacking protection
+    X-Frame-Options = "DENY"
+    # MIME sniffing prevention
+    X-Content-Type-Options = "nosniff"
+    # XSS protection (legacy browsers)
+    X-XSS-Protection = "1; mode=block"
+    # Referrer privacy
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    # Permissions policy
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=()"
+    # HSTS (1 year)
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    # Content Security Policy
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' snapwidget.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com data:; img-src 'self' data: blob: https:; frame-src https://www.google.com https://maps.google.com; connect-src 'self' https:; worker-src 'self' blob:; manifest-src 'self';"
+
+# Static assets: cache agressief
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Images
+[[headers]]
+  for = "*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+# Sitemap + robots — geen cache
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+    Content-Type = "application/xml"
+
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"

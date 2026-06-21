@@ -40,6 +40,8 @@ import EventsPage from "./Pages/Dashboard/EventsPage.jsx";
 import SamenEtenPage from "./Pages/Dashboard/SamenEtenPage.jsx";
 import PaymentSuccessPage from "./Pages/Public/PaymentSuccessPage.jsx";
 import Tijdlijn from "./Pages/Public/Tijdlijn.jsx";
+import OverOns from "./Pages/Public/OverOns.jsx";
+import Galerij from "./Pages/Public/Galerij.jsx";
 
 function App() {
     return (
@@ -54,6 +56,8 @@ function App() {
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/blog/:slug" element={<Blog />} />
                     <Route path="/tijdlijn" element={<Tijdlijn />} />
+                    <Route path="/over-ons" element={<OverOns />} />
+                    <Route path="/galerij" element={<Galerij />} />
 
                     <Route path="/login" element={<Login />} />
                     <Route path="/registeruser" element={<RegisterUser />} />

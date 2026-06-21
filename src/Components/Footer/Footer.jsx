@@ -14,7 +14,9 @@ const Footer = () => {
     const paginas = [
         { to: "/", label: t("nav.home") },
         { to: "/about", label: t("nav.about") },
+        { to: "/over-ons", label: t("nav.overons") },
         { to: "/tijdlijn", label: "Tijdlijn" },
+        { to: "/galerij", label: "Galerij" },
         { to: "/contact", label: t("nav.contact") },
     ];
 

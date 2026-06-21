@@ -128,8 +128,18 @@ const Nav = () => {
                     </NavLink>
                 </li>
                 <li>
+                    <NavLink to="/over-ons" className="default-link" onClick={closeAll}>
+                        {t("nav.overons")}
+                    </NavLink>
+                </li>
+                <li>
                     <NavLink to="/tijdlijn" className="default-link" onClick={closeAll}>
                         Tijdlijn
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to="/galerij" className="default-link" onClick={closeAll}>
+                        Galerij
                     </NavLink>
                 </li>
                 <li>
