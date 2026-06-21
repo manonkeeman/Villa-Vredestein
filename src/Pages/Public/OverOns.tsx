@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "./OverOns.css";
 
 import ImgManonMaxim from "../../Assets/Images/Maxim_Manon_ChevroletSuburban.jpg";
+import LuchtballonImg from "../../Assets/Images/ext-luchtballon.png";
 import ImgBoek from "../../Assets/Images/VillaVredestein.jpg";
 import ImgCarpeDiem from "../../Assets/Images/PannenkoekenAvondVillaVredestein.jpg";
 import ImgBezoek from "../../Assets/Images/BezoekOnsVillaVredestein.jpg";
@@ -17,7 +18,7 @@ const SECTIONS = [
         theme: "dark",
         accent: "#FCBC2D",
         imgSide: "right",
-        pullQuote: "Ze ontmoetten elkaar boven de wolken. De rest bouwden ze zelf.",
+        pullQuote: "Verre horizonten en een stevige basis. Dat is wat ze samenbouwen.",
     },
     {
         slug: "het-boek",
@@ -91,6 +92,13 @@ const OverOns = () => {
 
             {/* Hero */}
             <header className="oo-hero oo-reveal" ref={heroRef}>
+                <div
+                    className="oo-hero-bg"
+                    style={{ backgroundImage: `url(${LuchtballonImg})` }}
+                    role="img"
+                    aria-label="Villa Vredestein met luchtballon"
+                />
+                <div className="oo-hero-overlay" aria-hidden="true" />
                 <div className="oo-hero-inner">
                     <span className="oo-hero-eyebrow">Vier verhalen. Één huis.</span>
                     <h1 className="oo-hero-title">De mensen achter de villa</h1>
