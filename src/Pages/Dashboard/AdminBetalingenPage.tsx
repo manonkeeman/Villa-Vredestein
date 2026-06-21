@@ -106,7 +106,6 @@ const StatusBadge = ({ status }) => {
         </span>
     );
 };
-StatusBadge.propTypes = { status: PropTypes.string.isRequired };
 
 const AdminBetalingenPage = () => {
     const { isLoggedIn, logout, user } = useAuth();
