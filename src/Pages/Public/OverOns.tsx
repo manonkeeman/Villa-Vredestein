@@ -203,16 +203,6 @@ const OverOns = () => {
                                     </div>
                                 )}
 
-                                <div className="oo-section-footer">
-                                    <span className="oo-readtime">{blog.readTime} leestijd</span>
-                                    <button
-                                        className="oo-read-btn"
-                                        onClick={() => navigate(`/blog/${sec.slug}`)}
-                                        style={{ "--btn-accent": sec.accent }}
-                                    >
-                                        Volledig artikel
-                                    </button>
-                                </div>
                             </div>
                         </div>
                     </section>
