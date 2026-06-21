@@ -138,8 +138,9 @@
 .oo-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    min-height: 100vh;
+    min-height: auto;
     position: relative;
+    align-items: center;
 }
 
 .oo-section--right { direction: ltr; }
@@ -166,17 +167,21 @@
 
 /* ── Image column ── */
 .oo-img-col {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3.5rem 2.5rem;
 }
 
 .oo-img-wrap {
     width: 100%;
-    height: 100%;
+    max-width: 460px;
+    aspect-ratio: 4 / 5;
+    border-radius: 20px;
+    overflow: hidden;
     margin: 0;
     position: relative;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.55);
 }
 
 .oo-img {
@@ -184,29 +189,31 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
-    filter: brightness(0.65) saturate(0.8);
-    transition: filter 0.6s ease;
+    filter: brightness(0.85) saturate(0.9);
+    transition: filter 0.6s ease, transform 0.6s ease;
 }
 
 .oo-section:hover .oo-img {
-    filter: brightness(0.75) saturate(0.9);
+    filter: brightness(0.95) saturate(1);
+    transform: scale(1.03);
 }
 
 .oo-img-overlay {
     position: absolute;
     inset: 0;
     background: linear-gradient(
-        to right,
-        rgba(10, 10, 10, 0.6),
-        transparent 50%
+        to top,
+        rgba(10, 10, 10, 0.35),
+        transparent 60%
     );
+    border-radius: 20px;
 }
 
 .oo-section--left .oo-img-overlay {
     background: linear-gradient(
-        to left,
-        rgba(10, 10, 10, 0.6),
-        transparent 50%
+        to top,
+        rgba(10, 10, 10, 0.35),
+        transparent 60%
     );
 }
 
@@ -372,11 +379,30 @@
     border-color: #5a4e3e;
 }
 
+/* ── Lees meer button ── */
+.oo-lees-meer-btn {
+    background: none;
+    border: none;
+    color: var(--btn-accent, var(--accent));
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.5rem 0;
+    margin-top: 0.5rem;
+    letter-spacing: 0.04em;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: opacity 0.2s;
+}
+
+.oo-lees-meer-btn:hover {
+    opacity: 0.75;
+}
+
 /* ── Responsive ── */
 @media (max-width: 900px) {
     .oo-section {
         grid-template-columns: 1fr;
-        min-height: auto;
     }
 
     .oo-section--left,
@@ -385,14 +411,16 @@
     }
 
     .oo-img-col {
-        position: relative;
-        height: 55vw;
-        min-height: 280px;
-        max-height: 420px;
+        padding: 2.5rem 1.75rem 1rem;
+    }
+
+    .oo-img-wrap {
+        max-width: 100%;
+        aspect-ratio: 16 / 9;
     }
 
     .oo-text-col {
-        padding: 3rem 1.75rem;
+        padding: 1rem 1.75rem 3rem;
     }
 
     .oo-dot-nav {
@@ -406,8 +434,17 @@
         padding: 5rem 1.25rem 3rem;
     }
 
+    .oo-img-col {
+        padding: 2rem 1.25rem 0.5rem;
+    }
+
+    .oo-img-wrap {
+        aspect-ratio: 4 / 3;
+        border-radius: 14px;
+    }
+
     .oo-text-col {
-        padding: 2.5rem 1.25rem;
+        padding: 1rem 1.25rem 2.5rem;
     }
 
     .oo-pull-quote {
