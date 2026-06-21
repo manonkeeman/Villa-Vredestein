@@ -147,19 +147,10 @@
 .oo-section--left  { direction: rtl; }
 .oo-section--left > * { direction: ltr; }
 
-/* ── Video sectie: video bovenaan, tekst eronder ── */
-.oo-section--video {
-    grid-template-columns: 1fr;
-    direction: ltr;
-}
-
-.oo-section--video .oo-img-col {
-    padding: 3rem 3rem 1.5rem;
-}
-
+/* ── Video sectie: zelfde 2-koloms layout, kader 16:9 ── */
 .oo-section--video .oo-img-wrap {
-    max-width: 100%;
     aspect-ratio: 16 / 9;
+    max-width: 480px;
 }
 
 .oo-section--video .oo-img {
@@ -170,15 +161,6 @@
 .oo-section--video:hover .oo-img {
     filter: brightness(1) saturate(1.05);
     transform: none;
-}
-
-.oo-section--video .oo-text-col {
-    padding: 1.5rem 3rem 3.5rem;
-    align-items: flex-start;
-}
-
-.oo-section--video .oo-text-inner {
-    max-width: 720px;
 }
 
 /* Theme: dark */
@@ -461,12 +443,8 @@
         display: none;
     }
 
-    .oo-section--video .oo-img-col {
-        padding: 2rem 1.75rem 1rem;
-    }
-
-    .oo-section--video .oo-text-col {
-        padding: 1rem 1.75rem 2.5rem;
+    .oo-section--video .oo-img-wrap {
+        aspect-ratio: 16 / 9;
     }
 }
 
