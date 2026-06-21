@@ -3,7 +3,6 @@ import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import "./Plattegrond.css";
 
-import WoonkamerImg     from "../../Assets/Images/int-woonkamer.jpg";
 import ImgPercelen      from "../../Assets/Images/archief-kadaster-percelen.jpg";
 import ImgHoofdstraat   from "../../Assets/Images/archief-kadaster-hoofdstraat.jpg";
 import ImgKaartBlauw    from "../../Assets/Images/archief-kadasterkaart-blauw-1.jpg";
@@ -212,13 +211,6 @@ const Plattegrond = () => {
                             </figure>
                         ))}
                     </div>
-                </div>
-            </section>
-
-            {/* ── Afbeelding referentie ── */}
-            <section className="pg-fotos reveal-section" ref={addRef as any}>
-                <div className="pg-inner pg-fotos-grid">
-                    <img src={WoonkamerImg} alt="Woonkamer Villa Vredestein" loading="lazy" />
                 </div>
             </section>
 
