@@ -62,7 +62,51 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://villavredestein.nl/tijdlijn" />
   </url>
 
-  <!-- Historische Galerij -->
+  <!-- Villa Galerij (foto's) -->
+  <url>
+    <loc>https://villavredestein.nl/galerij-villa</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.nl/galerij-villa" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://villavredestein.nl/galerij-villa" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://villavredestein.nl/galerij-villa" />
+  </url>
+
+  <!-- De Ruimtes -->
+  <url>
+    <loc>https://villavredestein.nl/ruimtes</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.nl/ruimtes" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://villavredestein.nl/ruimtes" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://villavredestein.nl/ruimtes" />
+  </url>
+
+  <!-- Omgeving & Locatie -->
+  <url>
+    <loc>https://villavredestein.nl/omgeving</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.nl/omgeving" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://villavredestein.nl/omgeving" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://villavredestein.nl/omgeving" />
+  </url>
+
+  <!-- Verblijven / Boeken -->
+  <url>
+    <loc>https://villavredestein.nl/verblijven</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.nl/verblijven" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://villavredestein.nl/verblijven" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://villavredestein.nl/verblijven" />
+  </url>
+
+  <!-- Historische Galerij (krantenartikelen) -->
   <url>
     <loc>https://villavredestein.nl/galerij</loc>
     <lastmod>2026-06-01</lastmod>
