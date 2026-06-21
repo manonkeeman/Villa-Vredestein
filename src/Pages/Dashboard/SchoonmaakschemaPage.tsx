@@ -87,7 +87,6 @@ function CleanerSidebar({ user, logout }) {
     );
 }
 
-CleanerSidebar.propTypes = { user: PropTypes.object, logout: PropTypes.func.isRequired };
 
 // ─── TaskCard ────────────────────────────────────────────────────────────────
 
@@ -269,25 +268,6 @@ function TaskCard({ task, isAdmin, isCleaner, onToggle, onDelete, onEdit, onComm
     );
 }
 
-TaskCard.propTypes = {
-    task: PropTypes.shape({
-        id: PropTypes.number,
-        name: PropTypes.string,
-        description: PropTypes.string,
-        completed: PropTypes.bool,
-        assignedTo: PropTypes.string,
-        deadline: PropTypes.string,
-        comment: PropTypes.string,
-        incidentReport: PropTypes.string,
-    }).isRequired,
-    isAdmin: PropTypes.bool,
-    isCleaner: PropTypes.bool,
-    onToggle: PropTypes.func.isRequired,
-    onDelete: PropTypes.func.isRequired,
-    onEdit: PropTypes.func.isRequired,
-    onComment: PropTypes.func.isRequired,
-    onIncident: PropTypes.func.isRequired,
-};
 
 // ─── CreateTaskForm (Admin only) ─────────────────────────────────────────────
 
@@ -357,10 +337,6 @@ function CreateTaskForm({ weekNumber, onCreated }) {
     );
 }
 
-CreateTaskForm.propTypes = {
-    weekNumber: PropTypes.number.isRequired,
-    onCreated: PropTypes.func.isRequired,
-};
 
 // ─── Main Page ───────────────────────────────────────────────────────────────
 
