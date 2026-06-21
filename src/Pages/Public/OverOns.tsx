@@ -144,7 +144,7 @@ const OverOns = () => {
                 return (
                     <section
                         key={sec.slug}
-                        className={`oo-section oo-section--${sec.imgSide} oo-theme--${sec.theme} oo-reveal`}
+                        className={`oo-section oo-section--${sec.imgSide} oo-theme--${sec.theme} oo-reveal${sec.video ? " oo-section--video" : ""}`}
                         ref={(el) => (sectionRefs.current[i] = el)}
                         data-slug={sec.slug}
                         style={{ "--accent": sec.accent }}
