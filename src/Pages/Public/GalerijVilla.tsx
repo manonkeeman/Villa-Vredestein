@@ -4,7 +4,6 @@ import "./GalerijVilla.css";
 
 // Interieur
 import ImgWoonkamer    from "../../Assets/Images/int-woonkamer.jpg";
-import ImgWoonkamer2   from "../../Assets/Images/int-woonkamer2.jpg";
 import ImgWijnkamer    from "../../Assets/Images/int-wijnkamer.jpg";
 import ImgKroonluchter from "../../Assets/Images/int-kroonluchter.jpg";
 
@@ -60,7 +59,6 @@ const CATEGORIEEN = ["Alles", "Interieur", "Exterieur", "Tuin", "Leven", "Geschi
 const FOTOS = [
     // ── Interieur ──────────────────────────────────────────────────────────
     { src: ImgWoonkamer,    cat: "Interieur",   caption: "De woonkamer",              sub: "Hoge plafonds, authentieke stoelen, veel licht" },
-    { src: ImgWoonkamer2,   cat: "Interieur",   caption: "Woonkamer hoek",            sub: "Knus hoekje naast de houtkachel" },
     { src: ImgKroonluchter, cat: "Interieur",   caption: "Kristallen kroonluchter",   sub: "Origineel, meer dan een eeuw oud" },
     { src: ImgWijnkamer,    cat: "Interieur",   caption: "Oude woonkamer (voor renovatie)", sub: "De woonkamer zoals die er uitzag vóór de restauratie" },
     { src: ImgRestauratie,  cat: "Interieur",   caption: "Glas-in-lood",             sub: "Het originele glas-in-loodraam tijdens de restauratie" },
