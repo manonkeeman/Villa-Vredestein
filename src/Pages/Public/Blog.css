@@ -84,6 +84,19 @@
     color: #e8d8c0;
 }
 
+.blog-inline-media {
+    margin: 1.5rem 0 0.5rem;
+}
+
+.blog-inline-media img {
+    width: 100%;
+    max-width: 640px;
+    border-radius: 4px;
+    display: block;
+    margin: 0 auto;
+    object-fit: cover;
+}
+
 .blog-footer {
     padding-top: 1.25rem;
     border-top: 1px solid #221b12;

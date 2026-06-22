@@ -10,13 +10,21 @@ import ImgKroonluchter from "../../Assets/Images/int-kroonluchter.jpg";
 import ImgDetail       from "../../Assets/Images/int-detail.jpg";
 import ImgDetail2      from "../../Assets/Images/int-detail2.jpg";
 
-// Exterieur (zonder persoonsfoto's)
+// Exterieur
 import ImgVilla2024    from "../../Assets/Images/VillaVredestein2024.jpg";
-import ImgRestauratie  from "../../Assets/Images/VillaVredesteinRestauratie.jpg";
 import ImgNight        from "../../Assets/Images/VredesteineByNight.jpg";
+import ImgVillaNight2  from "../../Assets/Images/ext-villa-night-2.jpg";
+import ImgVillaFront   from "../../Assets/Images/ext-villa-voorkant.jpg";
+import ImgVredesteinBord from "../../Assets/Images/ext-vredestein-bord.jpg";
+import ImgVillaBloemen from "../../Assets/Images/ext-villa-bloemen.jpg";
 
-// Tuin (zonder Gert)
+// Tuin
 import ImgTuin         from "../../Assets/Images/ext-tuinfeest.jpg";
+import ImgTuinTractor  from "../../Assets/Images/tuin-tractor.jpg";
+import ImgTuinTerras   from "../../Assets/Images/tuin-terras.jpg";
+
+// Interieur extra (glas-in-lood)
+import ImgRestauratie  from "../../Assets/Images/VillaVredesteinRestauratie.jpg";
 
 // Leven
 import ImgDiner        from "../../Assets/Images/life-diner.jpg";
@@ -44,20 +52,24 @@ const CATEGORIEEN = ["Alles", "Interieur", "Exterieur", "Tuin", "Leven", "Geschi
 
 const FOTOS = [
     // ── Interieur ──────────────────────────────────────────────────────────
-    { src: ImgWoonkamer,    cat: "Interieur",   caption: "De woonkamer",          sub: "Hoge plafonds, authentieke stoelen, veel licht" },
-    { src: ImgWoonkamer2,   cat: "Interieur",   caption: "Woonkamer hoek",        sub: "Knus hoekje naast de houtkachel" },
-    { src: ImgKroonluchter, cat: "Interieur",   caption: "Kristallen kroonluchter", sub: "Origineel, meer dan een eeuw oud" },
+    { src: ImgWoonkamer,    cat: "Interieur",   caption: "De woonkamer",              sub: "Hoge plafonds, authentieke stoelen, veel licht" },
+    { src: ImgWoonkamer2,   cat: "Interieur",   caption: "Woonkamer hoek",            sub: "Knus hoekje naast de houtkachel" },
+    { src: ImgKroonluchter, cat: "Interieur",   caption: "Kristallen kroonluchter",   sub: "Origineel, meer dan een eeuw oud" },
     { src: ImgWijnkamer,    cat: "Interieur",   caption: "Oude woonkamer (voor renovatie)", sub: "De woonkamer zoals die er uitzag vóór de restauratie" },
-    { src: ImgDetail,       cat: "Interieur",   caption: "Interieurdetail",       sub: "Authenticiteit in elk hoekje" },
-    { src: ImgDetail2,      cat: "Interieur",   caption: "Interieurdetail II",    sub: "Historisch stucwerk en warme kleuren" },
+    { src: ImgRestauratie,  cat: "Interieur",   caption: "Glas-in-lood",             sub: "Het originele glas-in-loodraam tijdens de restauratie" },
 
     // ── Exterieur ──────────────────────────────────────────────────────────
-    { src: ImgVilla2024,    cat: "Exterieur",   caption: "Villa Vredestein 2024", sub: "Gevel na restauratie, Hoofdstraat 147" },
-    { src: ImgRestauratie,  cat: "Exterieur",   caption: "Restauratie 2021-2022", sub: "De villa in wording" },
-    { src: ImgNight,        cat: "Exterieur",   caption: "Vredestein by night",   sub: "Sfeer als de zon ondergaat" },
+    { src: ImgVilla2024,      cat: "Exterieur", caption: "Villa Vredestein 2024",    sub: "Gevel na restauratie, Hoofdstraat 147" },
+    { src: ImgVillaFront,     cat: "Exterieur", caption: "De voorkant",              sub: "Balkon en erker, karakteristiek voor 1906" },
+    { src: ImgVredesteinBord, cat: "Exterieur", caption: "Vredestein",               sub: "Het originele naambordje in de boogvorm boven de ingang" },
+    { src: ImgVillaBloemen,   cat: "Exterieur", caption: "Villa in de zomer",        sub: "Hortensia's voor de gevel, Hoofdstraat 147" },
+    { src: ImgNight,          cat: "Exterieur", caption: "Vredestein by night",      sub: "Sfeer als de zon ondergaat" },
+    { src: ImgVillaNight2,    cat: "Exterieur", caption: "Nacht na restauratie",     sub: "De villa na voltooiing, verlicht in het donker" },
 
     // ── Tuin ───────────────────────────────────────────────────────────────
-    { src: ImgTuin,         cat: "Tuin",        caption: "Tuinfeest",             sub: "Buiten eten op het terras" },
+    { src: ImgTuin,        cat: "Tuin",         caption: "Tuinfeest",                sub: "Buiten eten op het terras" },
+    { src: ImgTuinTractor, cat: "Tuin",         caption: "De tractor in de tuin",    sub: "Grondwerk in de grote tuin van 680 m²" },
+    { src: ImgTuinTerras,  cat: "Tuin",         caption: "Terras in de zomer",       sub: "De achtertuin met stoelen, bank en hangmat" },
 
     // ── Leven ──────────────────────────────────────────────────────────────
     { src: ImgDiner,        cat: "Leven",       caption: "Diner aan de grote tafel", sub: "Gedeeld eten zoals het hoort" },
