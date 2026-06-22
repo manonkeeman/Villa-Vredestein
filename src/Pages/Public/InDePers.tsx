@@ -120,14 +120,19 @@ const InDePers = () => {
                         key={i}
                         className="idp-article idp-reveal"
                         ref={(el) => (cardRefs.current[i] = el)}
+                        onClick={() => item.imgs?.length && openViewer(item.imgs, 0)}
+                        role={item.imgs?.length ? "button" : undefined}
+                        tabIndex={item.imgs?.length ? 0 : undefined}
+                        onKeyDown={(e) => { if ((e.key === "Enter" || e.key === " ") && item.imgs?.length) openViewer(item.imgs, 0); }}
+                        aria-label={item.imgs?.length ? `Bekijk artikel: ${item.kop}` : undefined}
+                        style={{ cursor: item.imgs?.length ? "zoom-in" : "default" }}
                     >
                         {/* Één thumbnail */}
                         {item.imgs && item.imgs.length > 0 && (
                             <div className="idp-thumb-col">
-                                <button
+                                <div
                                     className="idp-thumb-btn"
-                                    onClick={() => openViewer(item.imgs, 0)}
-                                    aria-label={`Bekijk foto's bij: ${item.kop}`}
+                                    aria-hidden="true"
                                 >
                                     <img
                                         src={item.imgs[0]}
@@ -140,7 +145,7 @@ const InDePers = () => {
                                             📷 {item.imgs.length} foto's
                                         </span>
                                     )}
-                                </button>
+                                </div>
                             </div>
                         )}
 
