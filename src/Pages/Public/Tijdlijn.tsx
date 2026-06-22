@@ -209,7 +209,17 @@ const Tijdlijn = () => {
         <main className="tijdlijn-page">
             <Helmet>
                 <title>Tijdlijn — Villa Vredestein</title>
-                <meta name="description" content="Volg de restauratie en geschiedenis van Villa Vredestein stap voor stap, van 1906 tot nu." />
+                <meta name="description" content="Van 1906 tot nu: de volledige geschiedenis van Villa Vredestein. De bewoners, de restauratie en de plannen voor de toekomst." />
+                <link rel="canonical" href="https://villavredestein.nl/tijdlijn" />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://villavredestein.nl/tijdlijn" />
+                <meta property="og:title" content="Tijdlijn — Villa Vredestein" />
+                <meta property="og:description" content="Van 1906 tot nu: de volledige geschiedenis van Villa Vredestein. De bewoners, de restauratie en de plannen voor de toekomst." />
+                <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
+                <meta property="og:image:alt" content="Villa Vredestein — historische villa in Driebergen-Rijsenburg" />
+                <meta property="og:site_name" content="Villa Vredestein" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:image" content="https://villavredestein.nl/og-image.jpg" />
             </Helmet>
 
             <header className="tijdlijn-header">
