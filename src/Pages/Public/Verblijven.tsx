@@ -14,7 +14,7 @@ const OPTIES = [
         sub: "In de villa",
         beschrijving: "Eigen ruimte in een historisch pand. Gedeelde woonkamer, keuken en tuin.",
         vanaf: "Op aanvraag",
-        kenmerken: ["Eigen kamer", "Gedeelde woonkamer", "Gemeenschappelijke keuken", "Tuin & terras", "Historisch pand"],
+        kenmerken: ["Eigen kamer", "Gedeelde woonkamer", "Gemeenschappelijke keuken", "Tuin & terras", "Parkeerplaats", "Historisch pand"],
         featured: true,
     },
     {
@@ -24,7 +24,7 @@ const OPTIES = [
         sub: "Kort of lang",
         beschrijving: "Op zoek naar tijdelijk onderdak tijdens een verbouwing, verhuizing of project? Of IVA-student op zoek naar een kamer op loopafstand? We denken graag mee.",
         vanaf: "Op aanvraag",
-        kenmerken: ["Flexibele duur", "Gemeubileerd", "Inclusief internet", "IVA-studenten welkom", "Beschikbaarheid in overleg"],
+        kenmerken: ["Flexibele duur", "Gemeubileerd", "Inclusief internet", "IVA-studenten welkom", "Parkeerplaats", "Beschikbaarheid in overleg"],
     },
     {
         id: "villa",
