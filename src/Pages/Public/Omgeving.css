@@ -190,21 +190,235 @@
 .tip-card h3 { font-size: 0.9rem; font-weight: 700; color: #fff; margin: 0 0 0.6rem; }
 .tip-card p { font-size: 0.82rem; color: #887060; line-height: 1.6; margin: 0; }
 
+/* Transport */
+.omg-transport { padding: 4rem 0; border-top: 1px solid #1e1812; }
+
+.transport-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.transport-card {
+    background: #140e08;
+    border: 1px solid #221b12;
+    border-radius: 12px;
+    padding: 1.5rem 1.25rem;
+    transition: border-color 0.3s;
+}
+
+.transport-card:hover { border-color: #382e18; }
+
+.transport-icon { font-size: 1.6rem; display: block; margin-bottom: 0.75rem; }
+
+.transport-card h3 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #FCBC2D;
+    margin: 0 0 0.4rem;
+}
+
+.transport-loc {
+    font-size: 0.8rem;
+    color: #a89878;
+    margin: 0 0 0.75rem;
+    font-style: italic;
+}
+
+.transport-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.transport-list li {
+    font-size: 0.78rem;
+    color: #786050;
+    line-height: 1.5;
+}
+
+.transport-web-item { color: #c8a46e !important; }
+
+/* Eten & Drinken */
+.omg-eten { padding: 4rem 0; border-top: 1px solid #1e1812; }
+
+.omg-cat-block { margin-bottom: 3rem; }
+.omg-cat-block:last-child { margin-bottom: 0; }
+
+.omg-cat-label {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: #FCBC2D;
+    background: rgba(252, 188, 45, 0.08);
+    border: 1px solid rgba(252, 188, 45, 0.2);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    margin-bottom: 1.25rem;
+}
+
+.omg-venues-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.venue-card {
+    background: #120f09;
+    border: 1px solid #1e1812;
+    border-radius: 12px;
+    padding: 1.5rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    transition: border-color 0.3s;
+}
+
+.venue-card:hover { border-color: #382e18; }
+
+.venue-naam {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+}
+
+.venue-desc {
+    font-size: 0.78rem;
+    color: #786050;
+    line-height: 1.6;
+    margin: 0;
+    flex: 1;
+}
+
+.venue-adres {
+    font-size: 0.72rem;
+    color: #5a4a38;
+    margin-top: 0.25rem;
+}
+
+.venue-web {
+    font-size: 0.72rem;
+    color: #c8a46e;
+}
+
+/* Boodschappen */
+.omg-boodschappen { padding: 4rem 0; border-top: 1px solid #1e1812; }
+
+.boodschappen-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin-top: 2rem;
+}
+
+.boodschappen-card {
+    background: #140e08;
+    border: 1px solid #221b12;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    transition: border-color 0.3s;
+}
+
+.boodschappen-card:hover { border-color: #382e18; }
+
+.boodschappen-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+.boodschappen-card div { display: flex; flex-direction: column; gap: 0.2rem; }
+.boodschappen-card strong { font-size: 0.85rem; color: #fff; font-weight: 600; }
+.boodschappen-card span { font-size: 0.75rem; color: #786050; }
+
+/* Bezienswaardigheden & Activiteiten */
+.omg-bz { padding: 4rem 0; border-top: 1px solid #1e1812; }
+.omg-ontdekken { padding: 4rem 0; border-top: 1px solid #1e1812; }
+
+.bz-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.bz-card {
+    background: #120f09;
+    border: 1px solid #1e1812;
+    border-radius: 12px;
+    padding: 1.5rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    transition: border-color 0.3s;
+}
+
+.bz-card:hover { border-color: #382e18; }
+
+.bz-emoji { font-size: 1.75rem; display: block; margin-bottom: 0.25rem; }
+
+.bz-naam {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+}
+
+.bz-desc {
+    font-size: 0.78rem;
+    color: #786050;
+    line-height: 1.6;
+    margin: 0;
+    flex: 1;
+}
+
+.bz-adres {
+    font-size: 0.72rem;
+    color: #5a4a38;
+    margin-top: 0.25rem;
+}
+
+/* Kastelen */
+.omg-kastelen { padding: 4rem 0; border-top: 1px solid #1e1812; }
+
+/* Nightlife */
+.omg-nightlife { padding: 4rem 0 6rem; border-top: 1px solid #1e1812; }
+
+.omg-venues-grid--last { margin-bottom: 0; }
+
 /* Responsive */
+@media (max-width: 1100px) {
+    .omg-venues-grid { grid-template-columns: repeat(2, 1fr); }
+    .bz-grid { grid-template-columns: repeat(2, 1fr); }
+    .transport-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
 @media (max-width: 900px) {
     .omg-hero { grid-template-columns: 1fr; }
     .omg-hero-img { height: 280px; }
     .omg-hero-inner { padding: 3rem 1.5rem; max-width: 100%; }
     .afstand-grid { grid-template-columns: 1fr 1fr; }
-    .tips-grid { grid-template-columns: 1fr 1fr; }
     .omg-sfeer-grid { grid-template-columns: 1fr 1fr; }
     .omg-sfeer-large { grid-column: 1 / -1; }
     .omg-map-wrap { height: 380px; }
+    .boodschappen-grid { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 600px) {
-    .afstand-grid, .tips-grid { grid-template-columns: 1fr; }
+    .afstand-grid { grid-template-columns: 1fr; }
     .omg-sfeer-grid { grid-template-columns: 1fr; }
     .omg-map-wrap { height: 300px; }
     .omg-section-inner { padding: 0 1.25rem; }
+    .omg-venues-grid { grid-template-columns: 1fr; }
+    .bz-grid { grid-template-columns: 1fr; }
+    .transport-grid { grid-template-columns: 1fr; }
+    .boodschappen-grid { grid-template-columns: 1fr; }
 }
