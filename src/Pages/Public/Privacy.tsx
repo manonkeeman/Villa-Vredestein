@@ -23,7 +23,7 @@ const Privacy = () => (
         <div className="priv-body">
             <section className="priv-section">
                 <h2>1. Wie zijn wij</h2>
-                <p>Villa Vredestein is een particuliere woning en kleinschalig verblijfsadres, gevestigd op Hoofdstraat 147, 3975 ED Driebergen-Rijsenburg. Verantwoordelijk voor de verwerking van persoonsgegevens zijn Manon Keeman en Maxim Staal (hierna: "wij" of "Villa Vredestein"). Vragen over dit beleid kunnen worden gestuurd naar <a href="mailto:info@villavredestein.nl">info@villavredestein.nl</a>.</p>
+                <p>Villa Vredestein is een particuliere woning en kleinschalig verblijfsadres, gevestigd op Hoofdstraat 147, 3975 ED Driebergen-Rijsenburg. Verantwoordelijk voor de verwerking van persoonsgegevens zijn Manon Keeman en Maxim Staal (hierna: "wij" of "Villa Vredestein"). Vragen over dit beleid kunnen worden gestuurd naar <a href="mailto:villavredestein@gmail.com">villavredestein@gmail.com</a>.</p>
             </section>
 
             <section className="priv-section">
@@ -75,7 +75,7 @@ const Privacy = () => (
                     <li>Bezwaar te maken tegen de verwerking.</li>
                     <li>Uw toestemming in te trekken.</li>
                 </ul>
-                <p>Stuur uw verzoek naar <a href="mailto:info@villavredestein.nl">info@villavredestein.nl</a>. Wij reageren binnen 30 dagen.</p>
+                <p>Stuur uw verzoek naar <a href="mailto:villavredestein@gmail.com">villavredestein@gmail.com</a>. Wij reageren binnen 30 dagen.</p>
                 <p>U heeft ook het recht om een klacht in te dienen bij de Autoriteit Persoonsgegevens: <a href="https://www.autoriteitpersoonsgegevens.nl" target="_blank" rel="noreferrer">autoriteitpersoonsgegevens.nl</a>.</p>
             </section>
 

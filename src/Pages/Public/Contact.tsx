@@ -67,7 +67,7 @@ const Contact = () => {
                         <FiMail className="ct-info-icon" aria-hidden="true" />
                         <div>
                             <h3>E-mail</h3>
-                            <a href="mailto:info@villavredestein.nl">info@villavredestein.nl</a>
+                            <a href="mailto:villavredestein@gmail.com">villavredestein@gmail.com</a>
                         </div>
                     </div>
                 </aside>
