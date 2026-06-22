@@ -1,1 +1,5 @@
+# Canonical redirect: old slug → new slug
+/over-ons /verhaal 301
+
+# SPA fallback — must be last
 /* /index.html 200
