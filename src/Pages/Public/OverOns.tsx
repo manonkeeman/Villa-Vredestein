@@ -1,12 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet-async";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./OverOns.css";
 
 import ImgManonMaxim from "../../Assets/Images/Maxim_Manon_ChevroletSuburban.jpg";
 import LuchtballonImg from "../../Assets/Images/ext-luchtballon.png";
-import ImgBoek from "../../Assets/Images/VillaVredestein.jpg";
 import ImgCarpeDiem from "../../Assets/Images/PannenkoekenAvondVillaVredestein.jpg";
 import CarpeDiemVideo from "../../Assets/Videos/carpe-diem.mp4";
 import ImgBezoek from "../../Assets/Images/BezoekOnsVillaVredestein.jpg";
@@ -19,16 +18,7 @@ const SECTIONS = [
         theme: "dark",
         accent: "#FCBC2D",
         imgSide: "right",
-        pullQuote: "Verre horizonten en een stevige basis. Dat is wat ze samenbouwen.",
-    },
-    {
-        slug: "het-boek",
-        img: ImgBoek,
-        imgAlt: "Villa Vredestein",
-        theme: "sepia",
-        accent: "#c8a46e",
-        imgSide: "left",
-        pullQuote: "Niet alleen in tekst. Vooral in beeld.",
+        pullQuote: "Verre horizonten en een stevige basis. Dat is wat ze samen bouwen.",
     },
     {
         slug: "carpe-diem-design",
@@ -89,13 +79,13 @@ const OverOns = () => {
                 <title>Ons Verhaal — Villa Vredestein</title>
                 <meta
                     name="description"
-                    content="De mensen achter Villa Vredestein. Het verhaal van Manon & Maxim, Het Boek, Carpe Diem Design en de open deur voor bezoekers en gelijkgestemden."
+                    content="De mensen achter Villa Vredestein. Het verhaal van Manon & Maxim, Carpe Diem Design en de open deur voor bezoekers en gelijkgestemden."
                 />
                 <link rel="canonical" href="https://villavredestein.nl/verhaal" />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://villavredestein.nl/verhaal" />
                 <meta property="og:title" content="Ons Verhaal — Villa Vredestein" />
-                <meta property="og:description" content="De mensen achter Villa Vredestein. Het verhaal van Manon & Maxim, Het Boek, Carpe Diem Design en de open deur voor bezoekers." />
+                <meta property="og:description" content="De mensen achter Villa Vredestein. Het verhaal van Manon & Maxim, Carpe Diem Design en de open deur voor bezoekers." />
                 <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />
@@ -115,7 +105,7 @@ const OverOns = () => {
                     <span className="oo-hero-eyebrow">Veel verhalen. Één huis.</span>
                     <h1 className="oo-hero-title">De mensen achter de villa</h1>
                     <p className="oo-hero-sub">
-                        Manon & Maxim, Het Boek, Carpe Diem Design en een open deur voor iedereen die het wil zien.
+                        Manon & Maxim, Carpe Diem Design en een open deur voor iedereen die het wil zien.
                     </p>
                     <div className="oo-hero-scroll" aria-hidden="true">
                         <span>Scroll</span>
@@ -211,13 +201,6 @@ const OverOns = () => {
                                     </button>
                                 )}
 
-                                {sec.slug === "carpe-diem-design" && (
-                                    <p className="oo-inline-contact">
-                                        <Link to="/contact" className="oo-inline-link" style={{ "--btn-accent": sec.accent } as React.CSSProperties}>
-                                            Neem contact op →
-                                        </Link>
-                                    </p>
-                                )}
 
                             </div>
                         </div>
