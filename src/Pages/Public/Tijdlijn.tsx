@@ -92,10 +92,10 @@ const renovatie = [
     {
         datum: "2024",
         titel: "Woonkamer & interieur",
-        emoji: "💡",
+        emoji: "🔥",
         status: "gedaan",
-        tekst: "Nieuwe verlichting, doordachte indeling, sfeer gecreëerd. De woonkamer is nu het kloppende hart van de villa, de plek waar 's avonds iedereen samenkomt.",
-        detail: "Van de verlichting tot de keuze voor meubels: elk detail is afgestemd op het karakter van het pand. Modern comfort dat de historische ruimte niet verdringt, maar versterkt.",
+        tekst: "Een houtkachel brengt de warmte van vroeger terug. Nieuwe verlichting, doordachte indeling, sfeer gecreëerd. De woonkamer is het kloppende hart van de villa geworden.",
+        detail: "We hebben een houtkachel teruggebracht in het huis. Het vuur geeft de woonkamer precies de warmte en het karakter dat een pand van deze leeftijd verdient. Van de verlichting tot de keuze voor meubels: elk detail is afgestemd op het karakter van het pand.",
     },
     {
         datum: "Vroegejaar 2025",

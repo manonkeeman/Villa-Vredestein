@@ -62,6 +62,10 @@ const POIS: Poi[] = [
     { pos: [52.0875, 5.2255],                         label: "De Schavuit",               sub: "20 min fiets · Zeist",         emoji: "🍺", color: "#8b5e3c", link: "https://www.deschavuit.nl",                                       linkLabel: "deschavuit.nl"                },
     { pos: [52.0462, 5.2844],                         label: "Eetcafé Louwietje",         sub: "5 min fiets",                  emoji: "🍺", color: "#8b5e3c", link: "https://www.louwietje.nl",                                        linkLabel: "louwietje.nl"                 },
     { pos: [52.0884, 5.2157],                         label: "Brouwerij Brasser",         sub: "25 min fiets · Zeist",         emoji: "🍺", color: "#8b5e3c", link: "https://www.brouwerijbrasser.nl",                                 linkLabel: "brouwerijbrasser.nl"          },
+    { pos: [51.9770, 5.4522],                         label: "Boscafé Mas Montagne",      sub: "35 min fiets · Amerongen",     emoji: "🌲", color: "#8b5e3c", link: "https://www.masmontagne.nl",                                      linkLabel: "masmontagne.nl"               },
+    { pos: [52.0890, 5.2320],                         label: "Restaurant Hoog Beek",      sub: "25 min fiets · Zeist",         emoji: "🍽️", color: "#8b5e3c", link: "https://maps.google.com/?q=Restaurant+Hoog+Beek+Zeist",            linkLabel: "Google Maps →"                },
+    { pos: [51.9741, 5.3328],                         label: "Centrum Wijk bij Duurstede",sub: "25 min fiets",                 emoji: "🏘️", color: "#8b5e3c", link: "https://maps.google.com/?q=Markt+Wijk+bij+Duurstede",             linkLabel: "Google Maps →"                },
+    { pos: [52.1551, 5.3875],                         label: "Centrum Amersfoort",        sub: "35 min auto",                  emoji: "🏙️", color: "#8b5e3c", link: "https://maps.google.com/?q=Hof+Amersfoort",                       linkLabel: "Google Maps →"                },
 
     // Boodschappen
     { pos: [52.0434, 5.2869],                         label: "Albert Heijn",              sub: "2 min te voet",                emoji: "🛒", color: "#3a7a28", link: "https://maps.google.com/?q=Hoofdstraat+162+Driebergen",            linkLabel: "Google Maps →"                },
@@ -74,12 +78,17 @@ const POIS: Poi[] = [
     { pos: [52.0188, 5.3316],                         label: "Kaapse Bossen Uitkijktoren",sub: "20 min fiets · Doorn",         emoji: "🗼", color: "#5a8a40", link: "https://maps.google.com/?q=St.+Helenaheuvellaan+2+Doorn",         linkLabel: "Google Maps →"                },
     { pos: [52.0620, 5.3490],                         label: "Pyramide van Austerlitz",   sub: "20 min fiets",                 emoji: "🔺", color: "#5a8a40", link: "https://maps.google.com/?q=Pyramide+van+Austerlitz",              linkLabel: "Google Maps →"                },
     { pos: [52.0420, 5.2862],                         label: "De Lourdesgrot",            sub: "5 min te voet",                emoji: "⛪", color: "#5a8a40", link: "https://maps.google.com/?q=Park+Seminarie+61+Driebergen",         linkLabel: "Google Maps →"                },
+    { pos: [51.9762, 5.3338],                         label: "Windmolen aan de Rijn",     sub: "25 min fiets · Wijk bij Duurstede", emoji: "🌬️", color: "#5a8a40", link: "https://maps.google.com/?q=Windmolen+Wijk+bij+Duurstede",   linkLabel: "Google Maps →"                },
+    { pos: [52.1568, 5.3843],                         label: "Koppelpoort Amersfoort",    sub: "35 min auto · Amersfoort",     emoji: "⚓", color: "#5a8a40", link: "https://maps.google.com/?q=Koppelpoort+Amersfoort",               linkLabel: "Google Maps →"                },
+    { pos: [52.1557, 5.3877],                         label: "Onze Lieve Vrouwentoren",   sub: "35 min auto · Amersfoort",     emoji: "🔔", color: "#5a8a40", link: "https://maps.google.com/?q=Onze+Lieve+Vrouwentoren+Amersfoort",   linkLabel: "Google Maps →"                },
 
     // Kastelen & Landgoederen
     { pos: [51.9934, 5.4200],                         label: "Parc Broekhuizen",          sub: "30 min fiets · Leersum",       emoji: "🏰", color: "#7a6080", link: "https://www.parcbroekhuizen.nl",                                  linkLabel: "parcbroekhuizen.nl"           },
     { pos: [52.0273, 5.3514],                         label: "Huis Doorn",                sub: "20 min fiets · Doorn",         emoji: "🏛️", color: "#7a6080", link: "https://www.huisdoorn.nl",                                        linkLabel: "huisdoorn.nl"                 },
     { pos: [52.0846, 5.1547],                         label: "Landgoed Oud-Amelisweerd",  sub: "25 min auto · Bunnik",         emoji: "🏡", color: "#7a6080", link: "https://www.veldkeuken.nl",                                       linkLabel: "veldkeuken.nl"                },
     { pos: [51.9749, 5.4519],                         label: "Kasteel Amerongen",         sub: "35 min fiets · Amerongen",     emoji: "🏰", color: "#7a6080", link: "https://www.kasteelamerongen.nl",                                 linkLabel: "kasteelamerongen.nl"          },
+    { pos: [51.9726, 5.3340],                         label: "Kasteel Duurstede",         sub: "25 min fiets · Wijk bij Duurstede", emoji: "🏯", color: "#7a6080", link: "https://www.kasteelduurstede.nl",                            linkLabel: "kasteelduurstede.nl"          },
+    { pos: [52.0888, 5.2363],                         label: "Slot Zeist",                sub: "25 min fiets · Zeist",         emoji: "🏰", color: "#7a6080", link: "https://www.slotzeist.nl",                                        linkLabel: "slotzeist.nl"                 },
 
     // Activiteiten
     { pos: [52.0356, 5.2722],                         label: "Kartcircuit Driebergen",    sub: "10 min fiets",                 emoji: "🏎️", color: "#4a6080", link: "https://www.kartbaan.com",                                        linkLabel: "kartbaan.com"                 },
@@ -120,10 +129,13 @@ const AFHAAL_DINNER: Venue[] = [
 ];
 
 const CAFE: Venue[] = [
-    { naam: "De Schavuit",          desc: "Muziek & bierspecialiteiten café. Pool, darten, pubquiz. Dagelijks 16:00–2:00.", adres: "Steynlaan 21, Zeist",           web: "deschavuit.nl",           photo: ImgSfeer    },
-    { naam: "Eetcafe Louwietje",    desc: "Bruin eetcafe — voor lunch, een borrel of gewoon een drankje.",                  adres: "Traaij 56, Driebergen",          web: "louwietje.nl",            photo: ImgDiner    },
-    { naam: "Wapen van Rijsenburg", desc: "Eten, drinken, netwerken, dansen en zingen. Voor van alles en iedereen.",       adres: "Hoofdstraat 83, Driebergen",     web: "wapenvandriebergen.nl",   photo: ImgTuinfeest},
-    { naam: "Brouwerij Brasser",    desc: "Ambachtelijk gebrouwen bier uit Zeist. Wo–zo 16:00–00:00.",                     adres: "Slotlaan 314, Zeist",            web: "brouwerijbrasser.nl",     photo: ImgBuiten   },
+    { naam: "De Schavuit",          desc: "Muziek & bierspecialiteiten café. Pool, darten, pubquiz. Dagelijks 16:00–2:00.", adres: "Steynlaan 21, Zeist",                web: "deschavuit.nl",           photo: ImgSfeer    },
+    { naam: "Eetcafe Louwietje",    desc: "Bruin eetcafe voor lunch, een borrel of gewoon een drankje.",                    adres: "Traaij 56, Driebergen",              web: "louwietje.nl",            photo: ImgDiner    },
+    { naam: "Wapen van Rijsenburg", desc: "Eten, drinken, netwerken, dansen en zingen. Voor van alles en iedereen.",       adres: "Hoofdstraat 83, Driebergen",         web: "wapenvandriebergen.nl",   photo: ImgTuinfeest},
+    { naam: "Brouwerij Brasser",    desc: "Ambachtelijk gebrouwen bier uit Zeist. Wo–zo 16:00–00:00.",                     adres: "Slotlaan 314, Zeist",                web: "brouwerijbrasser.nl",     photo: ImgBuiten   },
+    { naam: "Boscafé Mas Montagne", desc: "Verborgen boscafé in het groen bij Kasteel Amerongen. Perfect rustpunt op de fietsroute langs de kastelen. Di–zo 10:00–17:00.", adres: "Maarsbergseweg 2, Amerongen", web: "masmontagne.nl", photo: ImgBuiten },
+    { naam: "Centrum Wijk bij Duurstede", desc: "Historisch stadje direct aan de Rijn. Sfeervolle terrassen rondom het kasteel en langs het water. Op 25 minuten fietsen van de villa.", adres: "Markt, Wijk bij Duurstede", web: "vvvutrechtheuvelrug.nl", photo: ImgSfeer },
+    { naam: "Centrum Amersfoort",   desc: "Levendige binnenstad met terrassen, restaurants en cultuur. Bereikbaar in 35 minuten met de auto of trein.", adres: "Hof 10, Amersfoort",         web: "vvvamersfoort.nl",        photo: ImgDiner    },
 ];
 
 const BOODSCHAPPEN: Boodschap[] = [
@@ -134,17 +146,22 @@ const BOODSCHAPPEN: Boodschap[] = [
 ];
 
 const BEZIENSWAARDIGHEDEN: BzItem[] = [
-    { emoji: "🌿", naam: "Heidetuin Driebergen",       desc: "500 soorten heide achter de beuken en dennen. Elk seizoen de moeite waard.",                                              adres: "Wethouder Verhaarlaan 1, Driebergen",    photo: OmgevingImg,  web: null },
-    { emoji: "🗼", naam: "Kaapse Bossen Uitkijktoren", desc: "Bij Doorn. Beklim de toren voor een weids uitzicht over vrijwel de hele Utrechtse Heuvelrug.",                           adres: "St. Helenaheuvellaan 2, Doorn",          photo: ImgBloemen,   web: null },
-    { emoji: "🔺", naam: "Pyramide van Austerlitz",    desc: "Eén van de meest bijzondere bezienswaardigheden van de Heuvelrug — bos, wandelingen en een groot terras.",              adres: "Zeisterweg 98, Woudenberg",              photo: OmgevingImg,  web: null },
-    { emoji: "⛪", naam: "De Lourdesgrot",             desc: "Circa 120 jaar oud. De opening ligt richting Jeruzalem. Rustige plek om een kaarsje te branden.",                       adres: "Park Seminarie 61, Driebergen",          photo: ImgGrot,      web: null },
+    { emoji: "🌿", naam: "Heidetuin Driebergen",       desc: "500 soorten heide achter de beuken en dennen. Elk seizoen de moeite waard.",                                                adres: "Wethouder Verhaarlaan 1, Driebergen",        photo: OmgevingImg,  web: null },
+    { emoji: "🗼", naam: "Kaapse Bossen Uitkijktoren", desc: "Bij Doorn. Beklim de toren voor een weids uitzicht over vrijwel de hele Utrechtse Heuvelrug.",                             adres: "St. Helenaheuvellaan 2, Doorn",              photo: ImgBloemen,   web: null },
+    { emoji: "🔺", naam: "Pyramide van Austerlitz",    desc: "Bijzondere bezienswaardigheid van de Heuvelrug met bos, wandelingen en een groot terras.",                                 adres: "Zeisterweg 98, Woudenberg",                  photo: OmgevingImg,  web: null },
+    { emoji: "⛪", naam: "De Lourdesgrot",             desc: "Circa 120 jaar oud. De opening ligt richting Jeruzalem. Rustige plek om een kaarsje te branden.",                         adres: "Park Seminarie 61, Driebergen",              photo: ImgGrot,      web: null },
+    { emoji: "🌬️", naam: "Windmolen aan de Rijn",     desc: "Historische molen op het punt waar de Rijn en de Lek samenkomen. Karakteristiek landschap en mooi startpunt voor een wandeling langs het water.", adres: "Rijnkade, Wijk bij Duurstede", photo: OmgevingImg, web: null },
+    { emoji: "⚓", naam: "Koppelpoort Amersfoort",     desc: "Middeleeuwse water- en landpoort uit 1425. Een van de best bewaard gebleven stadspoorten van Nederland en icoon van Amersfoort.", adres: "Koppelpoort, Amersfoort",             photo: ImgVilla1910, web: null },
+    { emoji: "🔔", naam: "Onze Lieve Vrouwentoren",   desc: "Iconische scheefstaande gotische toren uit 1444. Symbool van Amersfoort en zichtbaar van heel ver.",                      adres: "Lieve Vrouwenkerkhof, Amersfoort",           photo: ImgBloemen,   web: null },
 ];
 
 const KASTELEN: Venue[] = [
-    { naam: "Landgoed Parc Broekhuizen",   desc: "Imposant landgoed verscholen in de natuur. Restaurant Voltaire, bistro LOF en boetiek hotel.", adres: "Broekhuizerlaan 2, Leersum",   web: "parcbroekhuizen.nl", photo: ImgVilla1910 },
-    { naam: "Huis Doorn",                  desc: "Beroemd als het voormalige verblijf van de Duitse ex-keizer Wilhelm II.",                       adres: "Langbroekerweg 10, Doorn",     web: "huisdoorn.nl",       photo: ImgBloemen   },
-    { naam: "Landgoed Oud-Amelisweerd",    desc: "Prachtig natuurgebied met fijn restaurant, bakkerij en landwinkel De Veldkeuken.",             adres: "Koningslaan 11A, Bunnik",      web: "veldkeuken.nl",      photo: ImgMoestuin  },
-    { naam: "Kasteel Amerongen",           desc: "Een tipje van de kastelengeschiedenis van de Heuvelrug. Vlakbij boscafé Mas Montagne.",        adres: "Drostestraat 20, Amerongen",   web: "kasteelamerongen.nl",photo: ImgVilla1910 },
+    { naam: "Landgoed Parc Broekhuizen",   desc: "Imposant landgoed verscholen in de natuur. Restaurant Voltaire, bistro LOF en boetiek hotel.", adres: "Broekhuizerlaan 2, Leersum",        web: "parcbroekhuizen.nl",  photo: ImgVilla1910 },
+    { naam: "Huis Doorn",                  desc: "Beroemd als het voormalige verblijf van de Duitse ex-keizer Wilhelm II.",                       adres: "Langbroekerweg 10, Doorn",          web: "huisdoorn.nl",        photo: ImgBloemen   },
+    { naam: "Landgoed Oud-Amelisweerd",    desc: "Prachtig natuurgebied met fijn restaurant, bakkerij en landwinkel De Veldkeuken.",             adres: "Koningslaan 11A, Bunnik",           web: "veldkeuken.nl",       photo: ImgMoestuin  },
+    { naam: "Kasteel Amerongen",           desc: "Een tipje van de kastelengeschiedenis van de Heuvelrug. Vlakbij boscafé Mas Montagne.",        adres: "Drostestraat 20, Amerongen",        web: "kasteelamerongen.nl", photo: ImgVilla1910 },
+    { naam: "Kasteel Duurstede",           desc: "Indrukwekkende middeleeuwse kasteelruïne direct aan de Rijn in Wijk bij Duurstede. Museum met eeuwenoude geschiedenis. Op 25 minuten fietsen.", adres: "Kasteel 1, Wijk bij Duurstede", web: "kasteelduurstede.nl", photo: ImgVilla1910 },
+    { naam: "Slot Zeist",                  desc: "Prachtig 17e-eeuws kasteel midden in Zeist, omgeven door een monumentaal park. Regelmatig evenementen en markten.",                    adres: "Zinzendorflaan 1, Zeist",           web: "slotzeist.nl",        photo: ImgBloemen   },
 ];
 
 const ACTIVITEITEN: BzItem[] = [
