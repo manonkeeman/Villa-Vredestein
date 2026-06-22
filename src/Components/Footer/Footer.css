@@ -58,7 +58,7 @@
     margin: 0 auto;
     padding: 2rem 2rem 2.5rem;
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 2.5rem;
 }
 
@@ -99,27 +99,6 @@
 .footer-links a:hover,
 .footer-links a.active {
     color: #fcbc2d;
-}
-
-/* Verhalen overview-link boven de blog-lijst */
-.footer-verhalen-overview {
-    display: inline-block;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: #fcbc2d;
-    text-decoration: none;
-    margin-bottom: 0.75rem;
-    transition: opacity 0.2s ease;
-}
-
-.footer-verhalen-overview:hover {
-    opacity: 0.75;
-}
-
-/* Ingesprongen blog-lijst onder de overview-link */
-.footer-links--verhalen {
-    padding-left: 0.75rem;
-    border-left: 1px solid #2a2018;
 }
 
 /* Adres */
@@ -182,12 +161,7 @@ a.footer-address-row:hover {
 /* ── Tablet ── */
 @media (max-width: 900px) {
     .footer-inner {
-        grid-template-columns: 1fr 1fr;
         gap: 2rem;
-    }
-
-    .footer-inner .footer-col:last-child {
-        grid-column: 1 / -1;
     }
 }
 
@@ -201,10 +175,6 @@ a.footer-address-row:hover {
         grid-template-columns: 1fr 1fr;
         padding: 1.5rem 1rem 2rem;
         gap: 1.5rem;
-    }
-
-    .footer-inner .footer-col:last-child {
-        grid-column: 1 / -1;
     }
 
     .footer-bottom {
