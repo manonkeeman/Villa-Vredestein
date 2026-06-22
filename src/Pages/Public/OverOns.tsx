@@ -28,7 +28,7 @@ const SECTIONS = [
         theme: "dark",
         accent: "#e0853a",
         imgSide: "right",
-        pullQuote: "Sindsdien geen spreuk meer.",
+        pullQuote: "Sindsdien is het geen spreuk meer voor hem.",
     },
     {
         slug: "bezoek-inspiratie",
