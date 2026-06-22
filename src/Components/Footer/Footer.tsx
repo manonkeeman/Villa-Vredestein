@@ -9,8 +9,6 @@ const Footer = () => {
     const { t } = useTranslation();
     const year = new Date().getFullYear();
 
-    const blogs = t("blogs", { returnObjects: true });
-
     const paginas = [
         { to: "/", label: t("nav.home") },
         { to: "/galerij", label: "Galerij" },
@@ -21,14 +19,6 @@ const Footer = () => {
         { to: "/in-de-pers", label: "In de pers" },
         { to: "/contact", label: t("nav.contact") },
     ];
-
-    const blogSlugs = ["villa-vredestein", "geschiedenis", "restauratie", "omgeving", "over-ons", "carpe-diem-design", "bezoek-inspiratie"];
-    const blogLinks = Array.isArray(blogs)
-        ? blogSlugs.map((slug) => {
-              const b = blogs.find((x) => x.slug === slug);
-              return b ? { to: `/blog/${slug}`, label: b.title } : null;
-          }).filter(Boolean)
-        : [];
 
     return (
         <footer className="site-footer" aria-label="Sitefooter">
@@ -44,27 +34,13 @@ const Footer = () => {
                 </div>
             </div>
 
-            {/* Links — drie kolommen */}
+            {/* Links — twee kolommen */}
             <div className="footer-inner">
 
                 <div className="footer-col">
                     <h3 className="footer-heading">{t("footer.links")}</h3>
                     <ul className="footer-links">
                         {paginas.map((link) => (
-                            <li key={link.to}>
-                                <NavLink to={link.to}>{link.label}</NavLink>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-
-                <div className="footer-col">
-                    <h3 className="footer-heading">{t("footer.verhalen")}</h3>
-                    <NavLink to="/verhaal" className="footer-verhalen-overview">
-                        Het Verhaal — alle verhalen &rarr;
-                    </NavLink>
-                    <ul className="footer-links footer-links--verhalen">
-                        {blogLinks.map((link) => (
                             <li key={link.to}>
                                 <NavLink to={link.to}>{link.label}</NavLink>
                             </li>

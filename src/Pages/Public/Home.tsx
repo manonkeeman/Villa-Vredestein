@@ -112,11 +112,11 @@ const Home = () => {
                         en een ziel die je voelt zodra je binnenstapt.
                     </p>
                     <div className="hero-ctas">
-                        <button className="hero-btn-primary" onClick={() => navigate("/verblijven")}>
-                            Bekijk beschikbaarheid
+                        <button className="hero-btn-primary" onClick={() => navigate("/verhaal")}>
+                            Het Verhaal
                         </button>
-                        <button className="hero-btn-ghost" onClick={() => navigate("/verhaal")}>
-                            Ons verhaal
+                        <button className="hero-btn-ghost" onClick={() => navigate("/tijdlijn")}>
+                            Tijdlijn
                         </button>
                     </div>
                 </div>
