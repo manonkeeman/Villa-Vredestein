@@ -136,11 +136,6 @@ const Nav = () => {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/in-de-pers" className="default-link" onClick={closeAll}>
-                        In de Pers
-                    </NavLink>
-                </li>
-                <li>
                     <NavLink to="/galerij-villa" className="default-link" onClick={closeAll}>
                         Galerij
                     </NavLink>
@@ -158,6 +153,21 @@ const Nav = () => {
                 <li>
                     <NavLink to="/verblijven" className="default-link nav-highlight" onClick={closeAll}>
                         Verblijven
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to="/tijdlijn" className="default-link" onClick={closeAll}>
+                        Tijdlijn
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to="/galerij" className="default-link" onClick={closeAll}>
+                        Historisch archief
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to="/in-de-pers" className="default-link" onClick={closeAll}>
+                        In de pers
                     </NavLink>
                 </li>
                 <li>
