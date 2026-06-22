@@ -13,7 +13,6 @@ const Footer = () => {
 
     const paginas = [
         { to: "/", label: t("nav.home") },
-        { to: "/verhaal", label: "Het Verhaal" },
         { to: "/galerij", label: "Galerij" },
         { to: "/tijdlijn", label: "Tijdlijn" },
         { to: "/ruimtes", label: "De Ruimtes" },
@@ -23,7 +22,7 @@ const Footer = () => {
         { to: "/contact", label: t("nav.contact") },
     ];
 
-    const blogSlugs = ["villa-vredestein", "geschiedenis", "restauratie", "carpe-diem-design", "over-ons"];
+    const blogSlugs = ["villa-vredestein", "geschiedenis", "restauratie", "omgeving", "over-ons", "carpe-diem-design", "bezoek-inspiratie"];
     const blogLinks = Array.isArray(blogs)
         ? blogSlugs.map((slug) => {
               const b = blogs.find((x) => x.slug === slug);
@@ -61,7 +60,10 @@ const Footer = () => {
 
                 <div className="footer-col">
                     <h3 className="footer-heading">{t("footer.verhalen")}</h3>
-                    <ul className="footer-links">
+                    <NavLink to="/verhaal" className="footer-verhalen-overview">
+                        Het Verhaal — alle verhalen &rarr;
+                    </NavLink>
+                    <ul className="footer-links footer-links--verhalen">
                         {blogLinks.map((link) => (
                             <li key={link.to}>
                                 <NavLink to={link.to}>{link.label}</NavLink>

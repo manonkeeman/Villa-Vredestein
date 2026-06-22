@@ -38,12 +38,58 @@ const VILLA: [number, number] = [52.0431, 5.2870];
 type Poi = { pos: [number, number]; label: string; sub: string; emoji: string; color: string; link: string; linkLabel: string };
 
 const POIS: Poi[] = [
-    { pos: VILLA,                                    label: "Villa Vredestein",       sub: "Hoofdstraat 147",       emoji: "🏛️", color: "#FCBC2D", link: "https://www.villavredestein.nl",              linkLabel: "villavredestein.nl"        },
-    { pos: [52.0317, 5.2447] as [number, number],   label: "NS Driebergen-Zeist",    sub: "5 min met de auto",     emoji: "🚂", color: "#d4804a", link: "https://maps.google.com/?q=52.0317,5.2447",   linkLabel: "Google Maps →"             },
-    { pos: [52.0543, 5.3211] as [number, number],   label: "Utrechtse Heuvelrug NP", sub: "Op loopafstand",        emoji: "🌲", color: "#c8a46e", link: "https://www.np-utrechtse-heuvelrug.nl",       linkLabel: "np-utrechtse-heuvelrug.nl" },
-    { pos: [52.0894, 5.1101] as [number, number],   label: "Utrecht Centraal",        sub: "15 min per trein",      emoji: "🏙️", color: "#c8a46e", link: "https://maps.google.com/?q=52.0894,5.1101",   linkLabel: "Google Maps →"             },
-    { pos: [52.3791, 4.8999] as [number, number],   label: "Amsterdam Centraal",      sub: "~40 min per trein",     emoji: "🌆", color: "#888",    link: "https://maps.google.com/?q=52.3791,4.8999",   linkLabel: "Google Maps →"             },
-    { pos: [52.3105, 4.7683] as [number, number],   label: "Schiphol Airport",        sub: "~50 min per trein",     emoji: "✈️", color: "#888",    link: "https://www.schiphol.nl",                    linkLabel: "schiphol.nl"               },
+    // Villa & Vervoer
+    { pos: VILLA,                                     label: "Villa Vredestein",          sub: "Hoofdstraat 147",              emoji: "🏛️", color: "#FCBC2D", link: "https://www.villavredestein.nl",                                  linkLabel: "villavredestein.nl"           },
+    { pos: [52.0317, 5.2447],                         label: "NS Driebergen-Zeist",       sub: "5 min met de auto",            emoji: "🚂", color: "#d4804a", link: "https://maps.google.com/?q=NS+Station+Driebergen-Zeist",           linkLabel: "Google Maps →"                },
+    { pos: [52.0543, 5.3211],                         label: "Utrechtse Heuvelrug NP",    sub: "Op loopafstand",               emoji: "🌲", color: "#6a9050", link: "https://www.np-utrechtse-heuvelrug.nl",                           linkLabel: "np-utrechtse-heuvelrug.nl"    },
+    { pos: [52.0894, 5.1101],                         label: "Utrecht Centraal",           sub: "15 min per trein",             emoji: "🏙️", color: "#888",    link: "https://maps.google.com/?q=Utrecht+Centraal",                     linkLabel: "Google Maps →"                },
+    { pos: [52.3791, 4.8999],                         label: "Amsterdam Centraal",         sub: "~40 min per trein",            emoji: "🌆", color: "#666",    link: "https://maps.google.com/?q=Amsterdam+Centraal",                   linkLabel: "Google Maps →"                },
+    { pos: [52.3105, 4.7683],                         label: "Schiphol Airport",           sub: "~50 min per trein",            emoji: "✈️", color: "#666",    link: "https://www.schiphol.nl",                                         linkLabel: "schiphol.nl"                  },
+
+    // Ontbijt & Brunch
+    { pos: [52.0466, 5.2841],                         label: "Huiskamer van Driebergen",  sub: "5 min fiets",                  emoji: "☕", color: "#a06030", link: "https://www.dehuiskamervandriebergen.nl",                         linkLabel: "dehuiskamervandriebergen.nl"  },
+    { pos: [52.0428, 5.2853],                         label: "Het Wapen van Driebergen",  sub: "5 min fiets",                  emoji: "🍽️", color: "#a06030", link: "https://www.wapenvandriebergen.nl",                               linkLabel: "wapenvandriebergen.nl"        },
+    { pos: [52.0640, 5.1980],                         label: "Restaurant Vroeg",           sub: "15 min auto · Bunnik",         emoji: "🌾", color: "#a06030", link: "https://www.vroeg.nl",                                            linkLabel: "vroeg.nl"                     },
+    { pos: [52.0432, 5.2857],                         label: "Koek & Ei",                 sub: "5 min fiets",                  emoji: "🥐", color: "#a06030", link: "https://www.koekeneidriebergen.nl",                               linkLabel: "koekeneidriebergen.nl"        },
+
+    // Afhaal & Dinner
+    { pos: [52.0452, 5.2878],                         label: "De Sluis Gaarde",           sub: "5 min fiets",                  emoji: "🥡", color: "#c05040", link: "https://www.desluisgaarde.nl",                                    linkLabel: "desluisgaarde.nl"             },
+    { pos: [52.0453, 5.2857],                         label: "Mi Piace",                  sub: "5 min fiets",                  emoji: "🍕", color: "#c05040", link: "https://www.mipiacedriegergen.nl",                                linkLabel: "mipiacedriegergen.nl"         },
+    { pos: [52.0463, 5.2843],                         label: "Kwalitaria",                sub: "5 min fiets",                  emoji: "🍟", color: "#c05040", link: "https://www.kwalitaria.nl",                                       linkLabel: "kwalitaria.nl"                },
+    { pos: [52.0464, 5.2841],                         label: "Rotiq",                     sub: "5 min fiets",                  emoji: "🍛", color: "#c05040", link: "https://www.rotiq.nl",                                            linkLabel: "rotiq.nl"                     },
+
+    // Bier, Wijn & Cocktails
+    { pos: [52.0875, 5.2255],                         label: "De Schavuit",               sub: "20 min fiets · Zeist",         emoji: "🍺", color: "#8b5e3c", link: "https://www.deschavuit.nl",                                       linkLabel: "deschavuit.nl"                },
+    { pos: [52.0462, 5.2844],                         label: "Eetcafé Louwietje",         sub: "5 min fiets",                  emoji: "🍺", color: "#8b5e3c", link: "https://www.louwietje.nl",                                        linkLabel: "louwietje.nl"                 },
+    { pos: [52.0884, 5.2157],                         label: "Brouwerij Brasser",         sub: "25 min fiets · Zeist",         emoji: "🍺", color: "#8b5e3c", link: "https://www.brouwerijbrasser.nl",                                 linkLabel: "brouwerijbrasser.nl"          },
+
+    // Boodschappen
+    { pos: [52.0434, 5.2869],                         label: "Albert Heijn",              sub: "2 min te voet",                emoji: "🛒", color: "#3a7a28", link: "https://maps.google.com/?q=Hoofdstraat+162+Driebergen",            linkLabel: "Google Maps →"                },
+    { pos: [52.0481, 5.2812],                         label: "Lidl",                      sub: "8 min fiets",                  emoji: "🛒", color: "#3a7a28", link: "https://maps.google.com/?q=Traaij+153+Driebergen",                linkLabel: "Google Maps →"                },
+    { pos: [52.0468, 5.2833],                         label: "Aldi",                      sub: "5 min fiets",                  emoji: "🛒", color: "#3a7a28", link: "https://maps.google.com/?q=Traaij+99+Driebergen",                 linkLabel: "Google Maps →"                },
+    { pos: [52.0460, 5.2845],                         label: "Woensdagmarkt Traaij",      sub: "5 min fiets · wekelijks",      emoji: "🥦", color: "#3a7a28", link: "https://maps.google.com/?q=Traaij+Driebergen",                    linkLabel: "Google Maps →"                },
+
+    // Bezienswaardigheden
+    { pos: [52.0459, 5.2884],                         label: "Heidetuin Driebergen",      sub: "5 min te voet",                emoji: "🌿", color: "#5a8a40", link: "https://maps.google.com/?q=Wethouder+Verhaarlaan+1+Driebergen",   linkLabel: "Google Maps →"                },
+    { pos: [52.0188, 5.3316],                         label: "Kaapse Bossen Uitkijktoren",sub: "20 min fiets · Doorn",         emoji: "🗼", color: "#5a8a40", link: "https://maps.google.com/?q=St.+Helenaheuvellaan+2+Doorn",         linkLabel: "Google Maps →"                },
+    { pos: [52.0620, 5.3490],                         label: "Pyramide van Austerlitz",   sub: "20 min fiets",                 emoji: "🔺", color: "#5a8a40", link: "https://maps.google.com/?q=Pyramide+van+Austerlitz",              linkLabel: "Google Maps →"                },
+    { pos: [52.0420, 5.2862],                         label: "De Lourdesgrot",            sub: "5 min te voet",                emoji: "⛪", color: "#5a8a40", link: "https://maps.google.com/?q=Park+Seminarie+61+Driebergen",         linkLabel: "Google Maps →"                },
+
+    // Kastelen & Landgoederen
+    { pos: [51.9934, 5.4200],                         label: "Parc Broekhuizen",          sub: "30 min fiets · Leersum",       emoji: "🏰", color: "#7a6080", link: "https://www.parcbroekhuizen.nl",                                  linkLabel: "parcbroekhuizen.nl"           },
+    { pos: [52.0273, 5.3514],                         label: "Huis Doorn",                sub: "20 min fiets · Doorn",         emoji: "🏛️", color: "#7a6080", link: "https://www.huisdoorn.nl",                                        linkLabel: "huisdoorn.nl"                 },
+    { pos: [52.0846, 5.1547],                         label: "Landgoed Oud-Amelisweerd",  sub: "25 min auto · Bunnik",         emoji: "🏡", color: "#7a6080", link: "https://www.veldkeuken.nl",                                       linkLabel: "veldkeuken.nl"                },
+    { pos: [51.9749, 5.4519],                         label: "Kasteel Amerongen",         sub: "35 min fiets · Amerongen",     emoji: "🏰", color: "#7a6080", link: "https://www.kasteelamerongen.nl",                                 linkLabel: "kasteelamerongen.nl"          },
+
+    // Activiteiten
+    { pos: [52.0356, 5.2722],                         label: "Kartcircuit Driebergen",    sub: "10 min fiets",                 emoji: "🏎️", color: "#4a6080", link: "https://www.kartbaan.com",                                        linkLabel: "kartbaan.com"                 },
+    { pos: [52.0434, 5.2871],                         label: "Bibliotheek Driebergen",    sub: "2 min te voet",                emoji: "📚", color: "#4a6080", link: "https://www.bibliotheekzout.nl",                                  linkLabel: "bibliotheekzout.nl"           },
+
+    // Nightlife Utrecht
+    { pos: [52.0920, 5.1189],                         label: "Club Poema",                sub: "40 min trein · Utrecht",       emoji: "🎶", color: "#443355", link: "https://www.clubpoema.nl",                                        linkLabel: "clubpoema.nl"                 },
+    { pos: [52.0934, 5.1239],                         label: "EKKO",                      sub: "40 min trein · Utrecht",       emoji: "🎸", color: "#443355", link: "https://www.ekko.nl",                                             linkLabel: "ekko.nl"                      },
+    { pos: [52.0921, 5.1155],                         label: "Tivoli Vredenburg",         sub: "40 min trein · Utrecht",       emoji: "🎤", color: "#443355", link: "https://www.tivolivredenburg.nl",                                 linkLabel: "tivolivredenburg.nl"          },
+    { pos: [52.0903, 5.1197],                         label: "Club Basis",                sub: "40 min trein · Utrecht",       emoji: "🎛️", color: "#443355", link: "https://www.clubbasis.nl",                                        linkLabel: "clubbasis.nl"                 },
 ];
 
 const AFSTANDEN = [
@@ -268,8 +314,6 @@ const Omgeving = () => {
                             <h3>Parkeren</h3>
                             <p className="transport-loc">Terrein Villa Vredestein</p>
                             <ul className="transport-list">
-                                <li>Achteringang via het hek rechts</li>
-                                <li>4 plaatsen op eigen terrein</li>
                                 <li>3 extra op terrein achter Vredestein</li>
                                 <li>Laat ruimte voor elkaar</li>
                             </ul>
