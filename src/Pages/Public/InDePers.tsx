@@ -5,6 +5,7 @@ import "./InDePers.css";
 
 import PersAdFoto from "../../Assets/Images/pers-ad-foto.jpeg";
 import PersAdArtikel from "../../Assets/Images/pers-ad-artikel.jpeg";
+import PersImg4594 from "../../Assets/Images/pers-img4594.jpg";
 
 const PERS_ITEMS = [
     {
@@ -15,7 +16,7 @@ const PERS_ITEMS = [
         samenvatting: "Maxim Staal (49), piloot uit Driebergen, tilt het repareren naar een hoger niveau. Als piloot reist hij de wereld over en neemt hij overal onderdelen mee. Een zadel uit Bogota, een tank uit Kuala Lumpur, onderdelen uit Shanghai.",
         url: null,
         tag: "Nationaal",
-        imgs: [PersAdFoto, PersAdArtikel],
+        imgs: [PersAdFoto, PersAdArtikel, PersImg4594],
     },
 ];
 
