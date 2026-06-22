@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet-async";
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
-import { FiMapPin, FiMail } from "react-icons/fi";
+import { FiMapPin } from "react-icons/fi";
 import ContactForm from "../../Components/Contact/ContactForm";
 import ModalContactForm from "../../Components/Contact/ModalContactForm";
 import "./Contact.css";
@@ -65,13 +65,7 @@ const Contact = () => {
                             <a href="https://www.instagram.com/villa.vredestein" target="_blank" rel="noreferrer">@villa.vredestein</a>
                         </div>
                     </div>
-                    <div className="ct-info-block">
-                        <FiMail className="ct-info-icon" aria-hidden="true" />
-                        <div>
-                            <h3>E-mail</h3>
-                            <a href="mailto:villavredestein@gmail.com">villavredestein@gmail.com</a>
-                        </div>
-                    </div>
+
                 </aside>
 
                 <div className="ct-form-wrap">

@@ -9,7 +9,7 @@ const historisch = [
         emoji: "🏛️",
         status: "historisch",
         tekst: "Burgemeester Baltus Koker van Krimpen aan den IJssel laat aan de Hoofdstraat in Driebergen-Rijsenburg een statig buitenhuis bouwen. Hoge plafonds, dikke muren en een ziel die meer dan een eeuw later nog voelbaar is.",
-        detail: "Koker koos voor vakmanschap dat generaties zou meegaan: sierstucwerk aan de plafonds, hoge paneeldeuren, een imposante schouw en forse houten balken. De locatie aan de Hoofdstraat was geen toeval — Driebergen was in die tijd een geliefde villawijk voor gegoede burgers uit de steden.",
+        detail: "Koker koos voor vakmanschap dat generaties zou meegaan: sierstucwerk aan de plafonds, hoge paneeldeuren, een imposante schouw en forse houten balken. De locatie aan de Hoofdstraat was geen toeval. Driebergen was in die tijd een geliefde villawijk voor gegoede burgers uit de steden.",
     },
     {
         datum: "1906 — 1912",
@@ -70,16 +70,16 @@ const renovatie = [
         titel: "Manon & Maxim kopen de villa",
         emoji: "🗝️",
         status: "gedaan",
-        tekst: "Midden in een pandemie slaat de sleutel in het slot. De villa had jarenlang dienst gedaan als studentenhuis voor IVA, met verwaarloosde muren en een begraven karakter. Maar wie goed keek, zag wat eronder lag.",
-        detail: "Na decennia als studentenhuis stond de villa er verwaarloosd bij. Lagen verf, verborgen plafonds en begraven vloeren. Maar de botten waren sterk: hoge plafonds, dikke muren, origineel sierstucwerk dat wachtte om bevrijd te worden.",
+        tekst: "Midden in een pandemie slaat de sleutel in het slot. De villa had jarenlang als studentenhuis voor de IVA gediend en droeg de sporen van een radicale verbouwing uit de jaren zeventig. Wie goed keek, zag een pand met veel te vertellen.",
+        detail: "De villa was in de jaren zeventig rigoureus verbouwd: kersenhout overal, karrenwielen verwerkt in de muren en bronzen deurhendels die losvielen zodra je ze openmaakte. De begane grondvloer was verrot en we hebben de kruipkelder opgeheven voor een industriële betonnen gietvloer, geïsoleerd met kleikorrels en daarna gevlinderd tot een mooie industriële basis. Op de verdiepingen werken we met gebrand eikenhout en brengen we de panelen terug in oude glorie. Het sierstucwerk was helaas verdwenen en dat hebben we opgelost met kroonluchters. We willen wel de markiezen, de openslaande deuren en de ramen met glas in lood terugbrengen. Via contact met de familie Roelofsen kregen we in 2022 de kans heel veel foto's te zien van vóór de radicale jaren zeventig verbouwing. We mochten de hele familie uitnodigen en hoorden alle jeugdverhalen: het roetsjen van de trapleuning, de schuurfeesten en de gaarkeuken met de kolenkachel. De meest waardevolle foto die we ooit van dit huis hebben gezien. Er is nog steeds contact en ze houden graag de verbouwing bij van hun jeugdhuis.",
     },
     {
         datum: "2021 — 2022",
         titel: "De restauratie begint",
         emoji: "🔨",
         status: "gedaan",
-        tekst: "Van kelder tot zolder. De originele houten vloeren, het sierstucwerk, de karakteristieke deuren: alles wat nog te redden viel werd zorgvuldig bewaard en teruggeplaatst. Oud en nieuw vonden elkaar.",
-        detail: "Elke kamer werd teruggestript naar de basis. De eiken vloerdelen kwamen terug. Het sierstucwerk werd millimeter voor millimeter gerestaureerd. De hoge paneeldeuren — met hun oorspronkelijke beslag — keerden terug op hun plek.",
+        tekst: "Van kelder tot zolder. Alle wanden zijn voorzien van 15 centimeter isolatie en volledig opnieuw gestuct. Het pand is van 11 kamers herdacht naar 7 kamers, 3 badkamers, twee keukens, een kitchenette en een sportkamer.",
+        detail: "Elke ruimte werd teruggestript naar de basis. De wanden zijn volledig geïsoleerd met 15 centimeter isolatie en daarna opnieuw gestuct. De indeling is grondig veranderd: van 11 naar 7 kamers, met 3 badkamers, twee keukens, een kitchenette en een sportkamer. Het doel is het huis in oude glorie terug te brengen, maar naar de moderne eisen van duurzaamheid en klimaat.",
     },
     {
         datum: "2023",
@@ -87,7 +87,7 @@ const renovatie = [
         emoji: "🌳",
         status: "gedaan",
         tekst: "De villa staat niet op zichzelf. Driebergen-Rijsenburg biedt bos, rust en architectuur die je nergens anders vindt. De omgeving werd een bewuste keuze.",
-        detail: "Het Nationaal Park Utrechtse Heuvelrug begint letterlijk aan de achterdeur. Utrecht ligt op een kwartier, Amsterdam op veertig minuten. Driebergen werd geen compromis maar een bewuste keuze — en dat verschil voel je.",
+        detail: "Het Nationaal Park Utrechtse Heuvelrug begint letterlijk aan de achterdeur. Utrecht ligt op een kwartier, Amsterdam op veertig minuten. Driebergen was geen compromis, maar een bewuste keuze. En dat verschil voel je.",
     },
     {
         datum: "2024",
