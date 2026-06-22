@@ -9,21 +9,31 @@ import Villa1 from "../../Assets/Images/VillaVredestein2024.jpg";
 import Villa2 from "../../Assets/Images/VillaVredestein1910.jpg";
 import Villa3 from "../../Assets/Images/VillaVredesteinRestauratie.jpg";
 import Villa6 from "../../Assets/Images/DeOmgevingVillaVredestein.jpg";
-import Villa5 from "../../Assets/Images/VillaVredestein.jpg";
 import Villa7 from "../../Assets/Images/PannenkoekenAvondVillaVredestein.jpg";
 import Villa8 from "../../Assets/Images/Maxim_Manon_ChevroletSuburban.jpg";
 import LuchtballonImg from "../../Assets/Images/ext-luchtballon.png";
 import Villa9 from "../../Assets/Images/BezoekOnsVillaVredestein.jpg";
+import CarpeDiemVideo from "../../Assets/Videos/carpe-diem.mp4";
+import CafeRacer1 from "../../Assets/Images/cafe-racer-1.jpg";
 
 const imageMap = {
     "villa-vredestein": Villa1,
     "geschiedenis": Villa2,
     "restauratie": Villa3,
     "omgeving": Villa6,
-    "het-boek": Villa5,
     "carpe-diem-design": Villa7,
     "over-ons": LuchtballonImg,
     "bezoek-inspiratie": Villa9,
+};
+
+const videoMap: Record<string, string> = {
+    "carpe-diem-design": CarpeDiemVideo,
+};
+
+const inlineMediaMap: Record<string, { afterParagraph: number; src: string; alt: string }[]> = {
+    "carpe-diem-design": [
+        { afterParagraph: 2, src: CafeRacer1, alt: "De cafe racer van Maxim — gebouwd van onderdelen uit de hele wereld" },
+    ],
 };
 
 const Blog = () => {
@@ -49,6 +59,8 @@ const Blog = () => {
     const langCode = i18n.language?.split("-")[0] || "nl";
     const canonicalUrl = `https://villavredestein.nl/blog/${slug}`;
     const ogImage = `https://villavredestein.nl/og-image.jpg`;
+    const video = videoMap[slug] || null;
+    const inlineMedia = inlineMediaMap[slug] || [];
 
     const articleSchema = JSON.stringify({
         "@context": "https://schema.org",
@@ -104,20 +116,36 @@ const Blog = () => {
                     </div>
                 </header>
 
-                {image && (
+                {video ? (
                     <figure className="blog-hero">
-                        <img
-                            src={image}
-                            alt={blog.title}
+                        <video
+                            src={video}
                             className="blog-hero-img"
-                            loading="lazy"
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            preload="metadata"
+                            poster={image}
+                            aria-label={blog.title}
                         />
                     </figure>
-                )}
+                ) : image ? (
+                    <figure className="blog-hero">
+                        <img src={image} alt={blog.title} className="blog-hero-img" loading="lazy" />
+                    </figure>
+                ) : null}
 
                 <div className="blog-body">
                     {Array.isArray(blog.content) && blog.content.map((paragraph, i) => (
-                        <p key={i}>{paragraph}</p>
+                        <React.Fragment key={i}>
+                            <p>{paragraph}</p>
+                            {inlineMedia.filter((m) => m.afterParagraph === i).map((m, j) => (
+                                <figure key={j} className="blog-inline-media">
+                                    <img src={m.src} alt={m.alt} loading="lazy" />
+                                </figure>
+                            ))}
+                        </React.Fragment>
                     ))}
                 </div>
 
