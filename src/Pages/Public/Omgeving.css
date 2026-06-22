@@ -280,9 +280,19 @@
     flex-direction: column;
     gap: 0.4rem;
     transition: border-color 0.3s;
+    text-decoration: none;
+    color: inherit;
 }
 
 .venue-card:hover { border-color: #382e18; }
+
+.venue-card--link:hover {
+    border-color: #FCBC2D;
+}
+
+.venue-card--link:hover .venue-naam {
+    color: #FCBC2D;
+}
 
 .venue-naam {
     font-size: 0.88rem;
@@ -359,9 +369,19 @@
     flex-direction: column;
     gap: 0.4rem;
     transition: border-color 0.3s;
+    text-decoration: none;
+    color: inherit;
 }
 
 .bz-card:hover { border-color: #382e18; }
+
+.bz-card--link:hover {
+    border-color: #FCBC2D;
+}
+
+.bz-card--link:hover .bz-naam {
+    color: #FCBC2D;
+}
 
 .bz-emoji { font-size: 1.75rem; display: block; margin-bottom: 0.25rem; }
 

@@ -228,7 +228,7 @@ const Omgeving = () => {
                             <ul className="transport-list">
                                 <li>OV E-bike: €10 (eerste 24 uur)</li>
                                 <li>OV Fiets: €4,65 — na 3 dagen €9,65 p.d.</li>
-                                <li className="transport-web-item">ovfietsbeschikbaar.nl</li>
+                                <li><a href="https://www.ovfietsbeschikbaar.nl" target="_blank" rel="noreferrer" className="transport-web-item">ovfietsbeschikbaar.nl</a></li>
                             </ul>
                         </div>
                         <div className="transport-card">
@@ -256,12 +256,12 @@ const Omgeving = () => {
                         <span className="omg-cat-label">Ontbijt & Brunch</span>
                         <div className="omg-venues-grid">
                             {ONTBIJT.map((v) => (
-                                <div key={v.naam} className="venue-card">
+                                <a key={v.naam} href={`https://www.${v.web}`} target="_blank" rel="noreferrer" className="venue-card venue-card--link">
                                     <strong className="venue-naam">{v.naam}</strong>
                                     <p className="venue-desc">{v.desc}</p>
                                     <span className="venue-adres">{v.adres}</span>
                                     <span className="venue-web">{v.web}</span>
-                                </div>
+                                </a>
                             ))}
                         </div>
                     </div>
@@ -270,12 +270,12 @@ const Omgeving = () => {
                         <span className="omg-cat-label">Afhaal & Dinner</span>
                         <div className="omg-venues-grid">
                             {AFHAAL_DINNER.map((v) => (
-                                <div key={v.naam} className="venue-card">
+                                <a key={v.naam} href={`https://www.${v.web}`} target="_blank" rel="noreferrer" className="venue-card venue-card--link">
                                     <strong className="venue-naam">{v.naam}</strong>
                                     <p className="venue-desc">{v.desc}</p>
                                     <span className="venue-adres">{v.adres}</span>
                                     <span className="venue-web">{v.web}</span>
-                                </div>
+                                </a>
                             ))}
                         </div>
                     </div>
@@ -284,12 +284,12 @@ const Omgeving = () => {
                         <span className="omg-cat-label">Bier, Wijn & Cocktails</span>
                         <div className="omg-venues-grid">
                             {CAFE.map((v) => (
-                                <div key={v.naam} className="venue-card">
+                                <a key={v.naam} href={`https://www.${v.web}`} target="_blank" rel="noreferrer" className="venue-card venue-card--link">
                                     <strong className="venue-naam">{v.naam}</strong>
                                     <p className="venue-desc">{v.desc}</p>
                                     <span className="venue-adres">{v.adres}</span>
                                     <span className="venue-web">{v.web}</span>
-                                </div>
+                                </a>
                             ))}
                         </div>
                     </div>
@@ -367,12 +367,12 @@ const Omgeving = () => {
                     <p className="omg-section-sub">Culture is calling — allemaal op fietsafstand.</p>
                     <div className="omg-venues-grid">
                         {KASTELEN.map((k) => (
-                            <div key={k.naam} className="venue-card">
+                            <a key={k.naam} href={`https://www.${k.web}`} target="_blank" rel="noreferrer" className="venue-card venue-card--link">
                                 <strong className="venue-naam">{k.naam}</strong>
                                 <p className="venue-desc">{k.desc}</p>
                                 <span className="venue-adres">{k.adres}</span>
                                 <span className="venue-web">{k.web}</span>
-                            </div>
+                            </a>
                         ))}
                     </div>
                 </div>
@@ -385,13 +385,22 @@ const Omgeving = () => {
                     <p className="omg-section-sub">Rondom en in Driebergen.</p>
                     <div className="bz-grid">
                         {ACTIVITEITEN.map((a) => (
-                            <div key={a.naam} className="bz-card">
-                                <span className="bz-emoji" aria-hidden="true">{a.emoji}</span>
-                                <strong className="bz-naam">{a.naam}</strong>
-                                <p className="bz-desc">{a.desc}</p>
-                                <span className="bz-adres">{a.adres}</span>
-                                {a.web && <span className="venue-web">{a.web}</span>}
-                            </div>
+                            a.web ? (
+                                <a key={a.naam} href={`https://www.${a.web}`} target="_blank" rel="noreferrer" className="bz-card bz-card--link">
+                                    <span className="bz-emoji" aria-hidden="true">{a.emoji}</span>
+                                    <strong className="bz-naam">{a.naam}</strong>
+                                    <p className="bz-desc">{a.desc}</p>
+                                    <span className="bz-adres">{a.adres}</span>
+                                    <span className="venue-web">{a.web}</span>
+                                </a>
+                            ) : (
+                                <div key={a.naam} className="bz-card">
+                                    <span className="bz-emoji" aria-hidden="true">{a.emoji}</span>
+                                    <strong className="bz-naam">{a.naam}</strong>
+                                    <p className="bz-desc">{a.desc}</p>
+                                    <span className="bz-adres">{a.adres}</span>
+                                </div>
+                            )
                         ))}
                     </div>
                 </div>
@@ -404,12 +413,12 @@ const Omgeving = () => {
                     <p className="omg-section-sub">Dance like no one is watching — Utrecht is vlakbij.</p>
                     <div className="omg-venues-grid omg-venues-grid--last">
                         {NIGHTLIFE.map((n) => (
-                            <div key={n.naam} className="venue-card">
+                            <a key={n.naam} href={`https://www.${n.web}`} target="_blank" rel="noreferrer" className="venue-card venue-card--link">
                                 <strong className="venue-naam">{n.naam}</strong>
                                 <p className="venue-desc">{n.desc}</p>
                                 <span className="venue-adres">{n.adres}</span>
                                 <span className="venue-web">{n.web}</span>
-                            </div>
+                            </a>
                         ))}
                     </div>
                 </div>
