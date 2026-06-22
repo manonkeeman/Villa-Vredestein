@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import "./Plattegrond.css";
@@ -18,13 +18,13 @@ const VERDIEPINGEN = [
         label: "Bovenste verdieping",
         bewoners: "Studenten · Desmond",
         icon: "🎓",
-        kleur: "#7c9ef8",
+        kleur: "#d4804a",
         beschrijving: "Drie studentenkamers met eigen gedeelde keuken, badkamer en woonruimte. Toekomstige eigen ingang gepland.",
         status: "beschikbaar",
         ruimtes: [
-            { naam: "Thailand (Desmond)", icon: "🇹🇭", afm: "~17 m²", info: "Goed licht, rustig" },
-            { naam: "Japan",              icon: "🇯🇵", afm: "~16 m²", info: "Zolderkamer, daklichten" },
-            { naam: "Argentinië",         icon: "🇦🇷", afm: "~16 m²", info: "Compact en stil" },
+            { naam: "Thailand (Desmond)", icon: "🇹🇭", afm: "~17 m²", info: "Airco, goed licht, rustig" },
+            { naam: "Japan",              icon: "🇯🇵", afm: "~16 m²", info: "Airco, balkon (uitsluitend nooduitgang), daklichten" },
+            { naam: "Argentinië",         icon: "🇦🇷", afm: "~16 m²", info: "Airco, compact en stil" },
             { naam: "Gedeelde badkamer", icon: "🚿", afm: "~8 m²", info: "1 badkamer voor 3 kamers" },
             { naam: "Studentenkeuken", icon: "🍳", afm: "~12 m²", info: "Eigen keuken, gedeeld" },
             { naam: "Gedeelde zitruimte", icon: "🛋️", afm: "~14 m²", info: "Ontspan- en studeerruimte" },
@@ -39,8 +39,8 @@ const VERDIEPINGEN = [
         beschrijving: "Drie luxe slaapkamers waarvan twee met balkon, eigen badkamer, kitchenette en eigen ingang. Oekraïne is nu de slaapkamer van Manon & Maxim, wordt straks logeerkamer. Sportkamer in aanbouw.",
         status: "eigen ingang",
         ruimtes: [
-            { naam: "Italië (Arwen 2006)",               icon: "🇮🇹", afm: "~22 m²", info: "Balkon, straatzijde, grootste kamer" },
-            { naam: "Frankrijk (Medoc 2005)",             icon: "🇫🇷", afm: "~18 m²", info: "Balkon, tuinzijde, veel groen" },
+            { naam: "Italië (Arwen 2006)",               icon: "🇮🇹", afm: "~22 m²", info: "Airco, balkon tuinzijde, grootste kamer" },
+            { naam: "Frankrijk (Medoc 2005)",             icon: "🇫🇷", afm: "~18 m²", info: "Airco, balkon straatzijde" },
             { naam: "Oekraïne (straks logeerkamer)",      icon: "🇺🇦", afm: "~15 m²", info: "Nu: Manon & Maxim. Wordt logeerkamer." },
             { naam: "Badkamer",    icon: "🚿", afm: "~9 m²",  info: "In aanbouw", aanbouw: true },
             { naam: "Kitchenette", icon: "☕", afm: "~8 m²",  info: "In aanbouw", aanbouw: true },
@@ -68,7 +68,7 @@ const VERDIEPINGEN = [
         label: "Tuin & buitenruimte",
         bewoners: "Gedeeld",
         icon: "🌿",
-        kleur: "#4caf50",
+        kleur: "#9e8c6e",
         beschrijving: "Groot perceel van 680 m² met een woonoppervlakte van 292 m². In ontwikkeling. Moestuin is er al. Sauna, dompelbad, buitenkeuken en veranda aan de schuur zijn in aanbouw.",
         status: "deels beschikbaar",
         ruimtes: [
@@ -93,6 +93,7 @@ const STATS = [
 const Plattegrond = () => {
     const navigate = useNavigate();
     const [actief, setActief] = React.useState<string | null>(null);
+    const [lightboxDoc, setLightboxDoc] = useState<string | null>(null);
     const revealRefs = useRef<HTMLElement[]>([]);
     const addRef = (el: HTMLElement | null) => {
         if (el && !revealRefs.current.includes(el)) revealRefs.current.push(el);
@@ -106,6 +107,17 @@ const Plattegrond = () => {
         revealRefs.current.forEach((el) => el && observer.observe(el));
         return () => observer.disconnect();
     }, []);
+
+    useEffect(() => {
+        if (!lightboxDoc) return;
+        const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setLightboxDoc(null); };
+        document.addEventListener("keydown", onKey);
+        document.body.style.overflow = "hidden";
+        return () => {
+            document.removeEventListener("keydown", onKey);
+            document.body.style.overflow = "";
+        };
+    }, [lightboxDoc]);
 
     return (
         <main className="plattegrond-page">
@@ -208,7 +220,15 @@ const Plattegrond = () => {
                             { src: ImgRegister,    titel: "Kamerafmetingen (register)",     sub: "Handgeschreven archiefregister" },
                             { src: ImgBouwreg,     titel: "Bouwregister Hfdstr. 147",       sub: "Oppervlakten & aantekeningen" },
                         ].map((doc) => (
-                            <figure key={doc.titel} className="pg-archief-item">
+                            <figure
+                                key={doc.titel}
+                                className="pg-archief-item"
+                                onClick={() => setLightboxDoc(doc.src)}
+                                role="button"
+                                tabIndex={0}
+                                onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && setLightboxDoc(doc.src)}
+                                aria-label={`${doc.titel} — klik om te vergroten`}
+                            >
                                 <img src={doc.src} alt={doc.titel} loading="lazy" />
                                 <figcaption>
                                     <strong>{doc.titel}</strong>
@@ -232,6 +252,31 @@ const Plattegrond = () => {
                     </button>
                 </div>
             </section>
+
+            {/* ── Lightbox historische documenten ── */}
+            {lightboxDoc && (
+                <div
+                    className="pg-lightbox"
+                    onClick={() => setLightboxDoc(null)}
+                    role="dialog"
+                    aria-modal="true"
+                    aria-label="Document vergroot"
+                >
+                    <button
+                        className="pg-lightbox-close"
+                        onClick={() => setLightboxDoc(null)}
+                        aria-label="Sluiten"
+                    >
+                        ✕
+                    </button>
+                    <img
+                        src={lightboxDoc}
+                        alt="Historisch document"
+                        className="pg-lightbox-img"
+                        onClick={(e) => e.stopPropagation()}
+                    />
+                </div>
+            )}
         </main>
     );
 };
