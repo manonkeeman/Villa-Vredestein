@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import "./Tijdlijn.css";
 
@@ -10,8 +9,7 @@ const historisch = [
         emoji: "🏛️",
         status: "historisch",
         tekst: "Burgemeester Baltus Koker van Krimpen aan den IJssel laat aan de Hoofdstraat in Driebergen-Rijsenburg een statig buitenhuis bouwen. Hoge plafonds, dikke muren en een ziel die meer dan een eeuw later nog voelbaar is.",
-        blogSlug: "geschiedenis",
-        cta: "Lees de geschiedenis",
+        detail: "Koker koos voor vakmanschap dat generaties zou meegaan: sierstucwerk aan de plafonds, hoge paneeldeuren, een imposante schouw en forse houten balken. De locatie aan de Hoofdstraat was geen toeval — Driebergen was in die tijd een geliefde villawijk voor gegoede burgers uit de steden.",
     },
     {
         datum: "1906 — 1912",
@@ -73,8 +71,7 @@ const renovatie = [
         emoji: "🗝️",
         status: "gedaan",
         tekst: "Midden in een pandemie slaat de sleutel in het slot. De villa had jarenlang dienst gedaan als studentenhuis voor IVA, met verwaarloosde muren en een begraven karakter. Maar wie goed keek, zag wat eronder lag.",
-        blogSlug: "villa-vredestein",
-        cta: "Lees het verhaal",
+        detail: "Na decennia als studentenhuis stond de villa er verwaarloosd bij. Lagen verf, verborgen plafonds en begraven vloeren. Maar de botten waren sterk: hoge plafonds, dikke muren, origineel sierstucwerk dat wachtte om bevrijd te worden.",
     },
     {
         datum: "2021 — 2022",
@@ -82,8 +79,7 @@ const renovatie = [
         emoji: "🔨",
         status: "gedaan",
         tekst: "Van kelder tot zolder. De originele houten vloeren, het sierstucwerk, de karakteristieke deuren: alles wat nog te redden viel werd zorgvuldig bewaard en teruggeplaatst. Oud en nieuw vonden elkaar.",
-        blogSlug: "restauratie",
-        cta: "Bekijk de restauratie",
+        detail: "Elke kamer werd teruggestript naar de basis. De eiken vloerdelen kwamen terug. Het sierstucwerk werd millimeter voor millimeter gerestaureerd. De hoge paneeldeuren — met hun oorspronkelijke beslag — keerden terug op hun plek.",
     },
     {
         datum: "2023",
@@ -91,8 +87,7 @@ const renovatie = [
         emoji: "🌳",
         status: "gedaan",
         tekst: "De villa staat niet op zichzelf. Driebergen-Rijsenburg biedt bos, rust en architectuur die je nergens anders vindt. De omgeving werd een bewuste keuze.",
-        blogSlug: "omgeving",
-        cta: "Ontdek de omgeving",
+        detail: "Het Nationaal Park Utrechtse Heuvelrug begint letterlijk aan de achterdeur. Utrecht ligt op een kwartier, Amsterdam op veertig minuten. Driebergen werd geen compromis maar een bewuste keuze — en dat verschil voel je.",
     },
     {
         datum: "2024",
@@ -137,15 +132,7 @@ const statusLabel = {
 };
 
 function TijdlijnItem({ item, index, globalIndex, expanded, onKlik, innerRef }) {
-    const navigate = useNavigate();
-
-    const handleKlik = () => {
-        if (item.blogSlug) {
-            navigate(`/blog/${item.blogSlug}`);
-        } else {
-            onKlik(globalIndex);
-        }
-    };
+    const isOpen = expanded === globalIndex;
 
     return (
         <div
@@ -154,14 +141,7 @@ function TijdlijnItem({ item, index, globalIndex, expanded, onKlik, innerRef }) 
         >
             <div className="tijdlijn-dot"><span>{item.emoji}</span></div>
 
-            <div
-                className={`tijdlijn-kaart ${item.blogSlug ? "kaart-link" : ""} ${expanded === globalIndex ? "kaart-open" : ""}`}
-                onClick={handleKlik}
-                role={item.blogSlug || item.detail ? "button" : undefined}
-                tabIndex={item.blogSlug || item.detail ? 0 : undefined}
-                onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && handleKlik()}
-                aria-expanded={item.detail ? expanded === globalIndex : undefined}
-            >
+            <div className={`tijdlijn-kaart ${item.detail ? "kaart-expandable" : ""} ${isOpen ? "kaart-open" : ""}`}>
                 <div className="tijdlijn-kaart-header">
                     <span className="tijdlijn-datum">{item.datum}</span>
                     <span className={`tijdlijn-badge badge-${item.status}`}>{statusLabel[item.status]}</span>
@@ -170,21 +150,23 @@ function TijdlijnItem({ item, index, globalIndex, expanded, onKlik, innerRef }) 
                 <p className="tijdlijn-preview">{item.tekst}</p>
 
                 {item.detail && (
-                    <div className={`tijdlijn-detail ${expanded === globalIndex ? "detail-open" : ""}`}>
-                        <p>{item.detail}</p>
+                    <div className={`tijdlijn-detail ${isOpen ? "detail-open" : ""}`}>
+                        <div className="tijdlijn-detail-inner">
+                            <p>{item.detail}</p>
+                        </div>
                     </div>
                 )}
 
-                <div className="tijdlijn-kaart-footer">
-                    {item.blogSlug && (
-                        <span className="tijdlijn-cta">{item.cta} →</span>
-                    )}
-                    {item.detail && !item.blogSlug && (
-                        <span className="tijdlijn-cta">
-                            {expanded === globalIndex ? "Minder lezen ↑" : "Lees meer ↓"}
-                        </span>
-                    )}
-                </div>
+                {item.detail && (
+                    <button
+                        className="tijdlijn-lees-meer"
+                        onClick={() => onKlik(globalIndex)}
+                        aria-expanded={isOpen}
+                    >
+                        {isOpen ? "Minder lezen" : "Lees meer"}
+                        <span className={`lees-meer-pijl ${isOpen ? "pijl-omhoog" : ""}`} aria-hidden="true">↓</span>
+                    </button>
+                )}
             </div>
         </div>
     );

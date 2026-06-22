@@ -2,7 +2,6 @@
 .fade-trigger.visible { opacity: 1; transform: translateY(0); }
 
 @keyframes fadeInUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
-@keyframes detailOpen { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:translateY(0); } }
 
 /* ── Pagina ── */
 .tijdlijn-page { width: 100%; max-width: 900px; margin: 0 auto; padding: 3rem 2rem 6rem; box-sizing: border-box; }
@@ -33,33 +32,19 @@
     border-radius: 14px;
     padding: 1.5rem;
     width: calc(50% - 4.5rem);
-    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    transition: border-color 0.3s, box-shadow 0.3s;
     box-sizing: border-box;
-}
-
-.tijdlijn-kaart.kaart-link,
-.tijdlijn-kaart[role="button"] {
-    cursor: pointer;
-}
-
-.tijdlijn-kaart.kaart-link:hover,
-.tijdlijn-kaart[role="button"]:hover {
-    border-color: #FCBC2D;
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(252, 188, 45, 0.08);
 }
 
 .tijdlijn-kaart.kaart-open {
     border-color: #FCBC2D;
+    box-shadow: 0 8px 24px rgba(252, 188, 45, 0.08);
 }
 
 /* ── Historische kaarten ── */
-.tijdlijn-item:has(.badge-historisch) .tijdlijn-kaart:hover {
-    border-color: #c8a46e;
-    box-shadow: 0 8px 24px rgba(200, 164, 110, 0.08);
-}
 .tijdlijn-item:has(.badge-historisch) .tijdlijn-kaart.kaart-open {
     border-color: #c8a46e;
+    box-shadow: 0 8px 24px rgba(200, 164, 110, 0.08);
 }
 .tijdlijn-item:has(.badge-historisch) .tijdlijn-dot {
     border-color: #c8a46e;
@@ -67,8 +52,11 @@
 .tijdlijn-item:has(.badge-historisch):hover .tijdlijn-dot {
     background-color: #c8a46e;
 }
-.tijdlijn-item:has(.badge-historisch) .tijdlijn-cta {
+.tijdlijn-item:has(.badge-historisch) .tijdlijn-lees-meer {
     color: #c8a46e;
+}
+.tijdlijn-item:has(.badge-historisch) .tijdlijn-lees-meer:hover {
+    color: #e0b87c;
 }
 
 /* ── Kaart inhoud ── */
@@ -77,41 +65,64 @@
 .tijdlijn-kaart h3 { font-size: 1rem; font-weight: 700; color: white; margin: 0 0 0.6rem; }
 .tijdlijn-preview { font-size: 0.85rem; color: #b8a890; line-height: 1.65; margin: 0; }
 
-/* ── Expandable detail ── */
+/* ── Expandable detail (CSS grid truc voor vloeiende hoogte-animatie) ── */
 .tijdlijn-detail {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease, opacity 0.4s ease;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s ease, opacity 0.35s ease;
     opacity: 0;
 }
 
 .tijdlijn-detail.detail-open {
-    max-height: 200px;
+    grid-template-rows: 1fr;
     opacity: 1;
-    animation: detailOpen 0.3s ease forwards;
 }
 
-.tijdlijn-detail p {
+.tijdlijn-detail-inner {
+    overflow: hidden;
+}
+
+.tijdlijn-detail-inner p {
     font-size: 0.83rem;
     color: #988068;
-    line-height: 1.6;
-    margin: 0.75rem 0 0;
-    padding-top: 0.75rem;
+    line-height: 1.65;
+    margin: 0;
+    padding-top: 0.85rem;
+    margin-top: 0.85rem;
     border-top: 1px solid #241c12;
 }
 
-/* ── Footer & CTA ── */
-.tijdlijn-kaart-footer { margin-top: 1rem; }
-
-.tijdlijn-cta {
+/* ── Lees meer button ── */
+.tijdlijn-lees-meer {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.9rem;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
     font-size: 0.78rem;
-    color: #FCBC2D;
     font-weight: 600;
+    color: #FCBC2D;
     letter-spacing: 0.02em;
-    transition: opacity 0.2s;
+    transition: color 0.2s, opacity 0.2s;
 }
 
-.tijdlijn-kaart:hover .tijdlijn-cta { opacity: 0.8; }
+.tijdlijn-lees-meer:hover {
+    color: #ffd05c;
+}
+
+.lees-meer-pijl {
+    display: inline-block;
+    transition: transform 0.35s ease;
+    font-style: normal;
+    line-height: 1;
+}
+
+.lees-meer-pijl.pijl-omhoog {
+    transform: rotate(180deg);
+}
 
 /* ── Sectielabel ── */
 .tijdlijn-sectie-label {
@@ -145,7 +156,7 @@
 .badge-gedaan   { background: #1a3a1a; color: #4caf50; border: 1px solid #2d5a2d; }
 .badge-bezig    { background: #3a2a00; color: #FCBC2D; border: 1px solid #5a4000; }
 .badge-gepland  { background: #1a1a3a; color: #7c9ef8; border: 1px solid #2a2a5a; }
-.badge-toekomst { background: #241c12;    color: #988068;    border: 1px solid #382e1e; }
+.badge-toekomst { background: #241c12; color: #988068; border: 1px solid #382e1e; }
 
 /* ── Responsive ── */
 @media (max-width: 700px) {

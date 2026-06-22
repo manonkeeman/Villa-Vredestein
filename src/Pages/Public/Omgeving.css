@@ -3,21 +3,33 @@
 
 .omgeving-page { background: #0c0a07; color: #fff; overflow-x: clip; }
 
-/* Hero */
-.omg-hero {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: 55vh;
+/* Hero — kaart als header */
+.omg-hero-map {
     position: relative;
+    height: 70vh;
+    min-height: 520px;
     overflow: hidden;
 }
 
-.omg-hero-inner {
-    padding: 5rem 3rem 5rem 2rem;
+.omg-hero-map-inner {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.omg-hero-map-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-width: 560px;
+    align-items: flex-end;
+    background: linear-gradient(to top, rgba(12,10,7,0.92) 0%, rgba(12,10,7,0.35) 42%, transparent 65%);
+}
+
+.omg-hero-map-text {
+    padding: 2.5rem 3rem;
+    max-width: 620px;
 }
 
 .omg-eyebrow {
@@ -30,25 +42,19 @@
     display: block;
 }
 
-.omg-hero h1 {
+.omg-hero-map-text h1 {
     font-size: clamp(1.8rem, 4vw, 3rem);
     font-weight: 700;
     color: #fff;
     line-height: 1.2;
-    margin: 0 0 1.5rem;
+    margin: 0 0 1rem;
 }
 
-.omg-hero p {
+.omg-hero-map-text p {
     font-size: 1rem;
     color: #a89878;
     line-height: 1.8;
     margin: 0;
-}
-
-.omg-hero-img {
-    background-size: cover;
-    background-position: center;
-    filter: brightness(0.6) saturate(0.7);
 }
 
 /* Sections */
@@ -92,18 +98,6 @@
 .afstand-info strong { font-size: 0.9rem; color: #fff; font-weight: 600; }
 .afstand-info span { font-size: 0.78rem; color: #786050; }
 
-/* Map */
-.omg-map-section { padding: 4rem 0 0; border-top: 1px solid #1e1812; }
-
-.omg-map-wrap {
-    height: 520px;
-    margin-top: 2rem;
-    border-radius: 0;
-    overflow: hidden;
-    border-top: 1px solid #1e1812;
-    border-bottom: 1px solid #1e1812;
-}
-
 /* Override Leaflet for dark theme */
 .leaflet-container { background: #0c0a07; }
 .leaflet-tile-pane { filter: brightness(0.85); }
@@ -120,6 +114,14 @@
 .map-popup { display: flex; flex-direction: column; gap: 0.25rem; padding: 0.25rem; }
 .map-popup strong { font-size: 0.85rem; color: #fff; }
 .map-popup span { font-size: 0.75rem; color: #a89878; }
+.map-popup-link {
+    font-size: 0.72rem;
+    color: #c8a46e;
+    text-decoration: none;
+    margin-top: 0.2rem;
+    transition: color 0.2s;
+}
+.map-popup-link:hover { color: #FCBC2D; }
 
 /* Transport */
 .omg-transport { padding: 4rem 0; border-top: 1px solid #1e1812; }
@@ -354,18 +356,17 @@
 }
 
 @media (max-width: 900px) {
-    .omg-hero { grid-template-columns: 1fr; }
-    .omg-hero-img { height: 280px; }
-    .omg-hero-inner { padding: 3rem 1.5rem; max-width: 100%; }
+    .omg-hero-map { height: 55vh; min-height: 420px; }
+    .omg-hero-map-text { padding: 2rem 1.5rem; }
     .afstand-grid { grid-template-columns: 1fr 1fr; }
-    .omg-map-wrap { height: 380px; }
     .boodschappen-grid { grid-template-columns: 1fr 1fr; }
     .venue-photo { height: 150px; }
 }
 
 @media (max-width: 600px) {
+    .omg-hero-map { height: 50vh; min-height: 360px; }
+    .omg-hero-map-text { padding: 1.5rem 1.25rem; }
     .afstand-grid { grid-template-columns: 1fr; }
-    .omg-map-wrap { height: 300px; }
     .omg-section-inner { padding: 0 1.25rem; }
     .omg-venues-grid { grid-template-columns: 1fr 1fr; }
     .transport-grid { grid-template-columns: 1fr; }
