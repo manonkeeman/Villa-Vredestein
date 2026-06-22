@@ -12,7 +12,6 @@ import ProtectedRoute from "./Pages/Auth/ProtectedRoute";
 import Nav from "./Components/Nav/Nav";
 import Footer from "./Components/Footer/Footer";
 import Home from "./Pages/Public/Home";
-import About from "./Pages/Public/About";
 import Contact from "./Pages/Public/Contact";
 import Unauthorized from "./Pages/Public/Unauthorized";
 import Blog from "./Pages/Public/Blog";
@@ -57,7 +56,6 @@ function App() {
 
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/about" element={<About />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/blog/:slug" element={<Blog />} />
                     <Route path="/tijdlijn" element={<Tijdlijn />} />

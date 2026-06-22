@@ -201,6 +201,8 @@ const Tijdlijn = () => {
                 <meta property="og:image:alt" content="Villa Vredestein — historische villa in Driebergen-Rijsenburg" />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Tijdlijn — Villa Vredestein" />
+                <meta name="twitter:description" content="Van 1906 tot nu: de volledige geschiedenis van Villa Vredestein. De bewoners, de restauratie en de plannen voor de toekomst." />
                 <meta name="twitter:image" content="https://villavredestein.nl/og-image.jpg" />
             </Helmet>
 

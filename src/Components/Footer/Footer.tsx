@@ -23,7 +23,7 @@ const Footer = () => {
         { to: "/contact", label: t("nav.contact") },
     ];
 
-    const blogSlugs = ["villa-vredestein", "geschiedenis", "restauratie", "omgeving", "carpe-diem-design", "over-ons", "bezoek-inspiratie"];
+    const blogSlugs = ["villa-vredestein", "geschiedenis", "restauratie", "carpe-diem-design", "over-ons"];
     const blogLinks = Array.isArray(blogs)
         ? blogSlugs.map((slug) => {
               const b = blogs.find((x) => x.slug === slug);

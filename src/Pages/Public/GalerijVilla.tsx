@@ -163,6 +163,8 @@ const GalerijVilla = () => {
                 <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Galerij & Historisch Archief — Villa Vredestein" />
+                <meta name="twitter:description" content="Fotogalerij en historisch archief van Villa Vredestein. Interieur, exterieur, kadasterkaarten en een eeuw krantenartikelen." />
                 <meta name="twitter:image" content="https://villavredestein.nl/og-image.jpg" />
             </Helmet>
 

@@ -89,6 +89,8 @@ const OverOns = () => {
                 <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Ons Verhaal — Villa Vredestein" />
+                <meta name="twitter:description" content="De mensen achter Villa Vredestein. Het verhaal van Manon & Maxim, Carpe Diem Design en de open deur voor bezoekers." />
                 <meta name="twitter:image" content="https://villavredestein.nl/og-image.jpg" />
             </Helmet>
 

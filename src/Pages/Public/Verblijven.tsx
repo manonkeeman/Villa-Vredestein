@@ -89,6 +89,8 @@ const Verblijven = () => {
                 <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Verblijven in Villa Vredestein — Driebergen-Rijsenburg" />
+                <meta name="twitter:description" content="Privékamer, volledige villa of tijdelijk verblijf in een historisch pand uit 1906. Vraag beschikbaarheid op." />
                 <meta name="twitter:image" content="https://villavredestein.nl/og-image.jpg" />
             </Helmet>
 
