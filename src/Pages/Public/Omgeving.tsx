@@ -79,8 +79,7 @@ const CAFE: Venue[] = [
 ];
 
 const BOODSCHAPPEN: Boodschap[] = [
-    { naam: "Albert Heijn",    sub: "Hoofdstraat 162 · ma–za 8:00–22:00, zo 12:00–18:00" },
-    { naam: "Albert Heijn",    sub: "Binnenhof 1 · ma–za 8:00–22:00, zo 12:00–18:00"    },
+    { naam: "Albert Heijn",    sub: "Hoofdstraat 162 & Binnenhof 1 · ma–za 8:00–22:00, zo 12:00–18:00" },
     { naam: "Lidl",            sub: "Traaij 153a · ma–za 8:00–21:00, zo 12:00–18:00"    },
     { naam: "Aldi",            sub: "Traaij 99-101 · ma–za 8:00–18:00"                  },
     { naam: "Woensdagmarkt",   sub: "Traaij, Driebergen · wekelijks 11:00–17:00"         },
