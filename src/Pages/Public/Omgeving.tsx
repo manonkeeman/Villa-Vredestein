@@ -175,6 +175,8 @@ const Omgeving = () => {
                 <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Omgeving & Locatie — Villa Vredestein" />
+                <meta name="twitter:description" content="Bos op de stoep, Utrecht in een kwartier. Villa Vredestein ligt op de Utrechtse Heuvelrug in Driebergen-Rijsenburg." />
                 <meta name="twitter:image" content="https://villavredestein.nl/og-image.jpg" />
             </Helmet>
 

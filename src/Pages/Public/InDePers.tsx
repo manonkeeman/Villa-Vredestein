@@ -97,6 +97,8 @@ const InDePers = () => {
                 <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="In de Pers — Villa Vredestein" />
+                <meta name="twitter:description" content="Villa Vredestein in het nieuws. Artikelen in kranten en magazines over dit bijzondere historische pand in Driebergen-Rijsenburg." />
                 <meta name="twitter:image" content="https://villavredestein.nl/og-image.jpg" />
             </Helmet>
 
