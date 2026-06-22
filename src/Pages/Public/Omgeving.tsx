@@ -35,13 +35,15 @@ const makeIcon = (emoji: string, color = "#FCBC2D") =>
 
 const VILLA: [number, number] = [52.0431, 5.2870];
 
-const POIS = [
-    { pos: VILLA,                                    label: "Villa Vredestein",      sub: "Hoofdstraat 147",        emoji: "🏛️", color: "#FCBC2D" },
-    { pos: [52.0317, 5.2447] as [number, number],   label: "NS Driebergen-Zeist",   sub: "5 min met de auto",      emoji: "🚂", color: "#d4804a" },
-    { pos: [52.0543, 5.3211] as [number, number],   label: "Utrechtse Heuvelrug NP",sub: "Op loopafstand",         emoji: "🌲", color: "#c8a46e" },
-    { pos: [52.0894, 5.1101] as [number, number],   label: "Utrecht Centraal",       sub: "15 min per trein",       emoji: "🏙️", color: "#c8a46e" },
-    { pos: [52.3791, 4.8999] as [number, number],   label: "Amsterdam Centraal",     sub: "~40 min per trein",      emoji: "🌆", color: "#888" },
-    { pos: [52.3105, 4.7683] as [number, number],   label: "Schiphol Airport",       sub: "~50 min per trein",      emoji: "✈️", color: "#888" },
+type Poi = { pos: [number, number]; label: string; sub: string; emoji: string; color: string; link: string; linkLabel: string };
+
+const POIS: Poi[] = [
+    { pos: VILLA,                                    label: "Villa Vredestein",       sub: "Hoofdstraat 147",       emoji: "🏛️", color: "#FCBC2D", link: "https://www.villavredestein.nl",              linkLabel: "villavredestein.nl"        },
+    { pos: [52.0317, 5.2447] as [number, number],   label: "NS Driebergen-Zeist",    sub: "5 min met de auto",     emoji: "🚂", color: "#d4804a", link: "https://maps.google.com/?q=52.0317,5.2447",   linkLabel: "Google Maps →"             },
+    { pos: [52.0543, 5.3211] as [number, number],   label: "Utrechtse Heuvelrug NP", sub: "Op loopafstand",        emoji: "🌲", color: "#c8a46e", link: "https://www.np-utrechtse-heuvelrug.nl",       linkLabel: "np-utrechtse-heuvelrug.nl" },
+    { pos: [52.0894, 5.1101] as [number, number],   label: "Utrecht Centraal",        sub: "15 min per trein",      emoji: "🏙️", color: "#c8a46e", link: "https://maps.google.com/?q=52.0894,5.1101",   linkLabel: "Google Maps →"             },
+    { pos: [52.3791, 4.8999] as [number, number],   label: "Amsterdam Centraal",      sub: "~40 min per trein",     emoji: "🌆", color: "#888",    link: "https://maps.google.com/?q=52.3791,4.8999",   linkLabel: "Google Maps →"             },
+    { pos: [52.3105, 4.7683] as [number, number],   label: "Schiphol Airport",        sub: "~50 min per trein",     emoji: "✈️", color: "#888",    link: "https://www.schiphol.nl",                    linkLabel: "schiphol.nl"               },
 ];
 
 const AFSTANDEN = [
@@ -176,17 +178,32 @@ const Omgeving = () => {
                 <meta name="twitter:image" content="https://villavredestein.nl/og-image.jpg" />
             </Helmet>
 
-            {/* Hero */}
-            <header className="omg-hero reveal-section" ref={addRef}>
-                <div className="omg-hero-inner">
-                    <span className="omg-eyebrow">Locatie</span>
-                    <h1>Midden in het groen,<br />vlak bij alles</h1>
-                    <p>
-                        Driebergen-Rijsenburg ligt op de zuidflank van de Utrechtse Heuvelrug.
-                        Bos op de stoep. Utrecht in een kwartier. Amsterdam in veertig minuten.
-                    </p>
+            {/* Hero — kaart als header */}
+            <header className="omg-hero-map" aria-label="Locatie kaart">
+                <div className="omg-hero-map-inner">
+                    <MapContainer center={VILLA} zoom={11} scrollWheelZoom={false} style={{ width: "100%", height: "100%" }} aria-label="Interactieve kaart van de omgeving">
+                        <TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>' url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png" />
+                        {POIS.map((poi) => (
+                            <Marker key={poi.label} position={poi.pos} icon={makeIcon(poi.emoji, poi.color)}>
+                                <Popup>
+                                    <div className="map-popup">
+                                        <strong>{poi.label}</strong>
+                                        <span>{poi.sub}</span>
+                                        <a href={poi.link} target="_blank" rel="noreferrer" className="map-popup-link">{poi.linkLabel}</a>
+                                    </div>
+                                </Popup>
+                            </Marker>
+                        ))}
+                        <Polyline positions={[VILLA, [52.0894, 5.1101]]} color="rgba(252,188,45,0.3)" weight={2} dashArray="6 6" />
+                    </MapContainer>
                 </div>
-                <div className="omg-hero-img" style={{ backgroundImage: `url(${OmgevingImg})` }} aria-hidden="true" />
+                <div className="omg-hero-map-overlay" aria-hidden="true">
+                    <div className="omg-hero-map-text">
+                        <span className="omg-eyebrow">Locatie</span>
+                        <h1>Midden in het groen,<br />vlak bij alles</h1>
+                        <p>Driebergen-Rijsenburg op de Utrechtse Heuvelrug. Bos op de stoep. Utrecht in een kwartier. Amsterdam in veertig minuten.</p>
+                    </div>
+                </div>
             </header>
 
             {/* Afstandstabel */}
@@ -204,25 +221,6 @@ const Omgeving = () => {
                             </div>
                         ))}
                     </div>
-                </div>
-            </section>
-
-            {/* Kaart */}
-            <section className="omg-map-section reveal-section" ref={addRef} aria-label="Kaart">
-                <div className="omg-section-inner">
-                    <h2 className="omg-section-title">Op de kaart</h2>
-                    <p className="omg-section-sub">Klik op een marker voor meer informatie.</p>
-                </div>
-                <div className="omg-map-wrap">
-                    <MapContainer center={VILLA} zoom={11} scrollWheelZoom={false} style={{ width: "100%", height: "100%" }} aria-label="Interactieve kaart van de omgeving">
-                        <TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>' url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png" />
-                        {POIS.map((poi) => (
-                            <Marker key={poi.label} position={poi.pos} icon={makeIcon(poi.emoji, poi.color)}>
-                                <Popup><div className="map-popup"><strong>{poi.label}</strong><span>{poi.sub}</span></div></Popup>
-                            </Marker>
-                        ))}
-                        <Polyline positions={[VILLA, [52.0894, 5.1101]]} color="rgba(252,188,45,0.3)" weight={2} dashArray="6 6" />
-                    </MapContainer>
                 </div>
             </section>
 
