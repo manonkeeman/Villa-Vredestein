@@ -91,11 +91,15 @@ const OverOns = () => {
                     name="description"
                     content="De mensen achter Villa Vredestein. Het verhaal van Manon & Maxim, Het Boek, Carpe Diem Design en de open deur voor bezoekers en gelijkgestemden."
                 />
-                <link rel="canonical" href="https://villavredestein.nl/over-ons" />
+                <link rel="canonical" href="https://villavredestein.nl/verhaal" />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://villavredestein.nl/verhaal" />
                 <meta property="og:title" content="Ons Verhaal — Villa Vredestein" />
                 <meta property="og:description" content="De mensen achter Villa Vredestein. Het verhaal van Manon & Maxim, Het Boek, Carpe Diem Design en de open deur voor bezoekers." />
-                <meta property="og:url" content="https://villavredestein.nl/over-ons" />
-                <meta property="og:type" content="website" />
+                <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
+                <meta property="og:site_name" content="Villa Vredestein" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:image" content="https://villavredestein.nl/og-image.jpg" />
             </Helmet>
 
             {/* Hero */}

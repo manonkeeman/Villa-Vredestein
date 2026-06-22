@@ -129,6 +129,14 @@ const GalerijVilla = () => {
                     content="Fotogalerij van Villa Vredestein: interieur, exterieur, tuin en historische krantenartikelen van 1912 tot nu."
                 />
                 <link rel="canonical" href="https://villavredestein.nl/galerij-villa" />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://villavredestein.nl/galerij-villa" />
+                <meta property="og:title" content="De Villa in Beeld — Villa Vredestein" />
+                <meta property="og:description" content="Fotogalerij van Villa Vredestein: interieur, exterieur en tuin van een historisch pand uit 1906 in Driebergen-Rijsenburg." />
+                <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
+                <meta property="og:site_name" content="Villa Vredestein" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:image" content="https://villavredestein.nl/og-image.jpg" />
             </Helmet>
 
             <header className="gv-header">

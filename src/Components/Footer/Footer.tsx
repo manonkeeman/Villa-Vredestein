@@ -108,6 +108,8 @@ const Footer = () => {
             <div className="footer-bottom">
                 <p>© {year} Villa Vredestein — {t("footer.copyright")}</p>
                 <p>
+                    <NavLink to="/privacy" className="footer-privacy-link">Privacybeleid</NavLink>
+                    {" · "}
                     {t("footer.madeBy")}{" "}
                     <a href="https://www.manonit.com" target="_blank" rel="noreferrer">
                         ManonIT

@@ -234,8 +234,14 @@ const Galerij = () => {
                     content="Krantenartikelen en historische foto's van Villa Vredestein van 1912 tot nu. Een visueel archief van meer dan een eeuw Hoofdstraat 147."
                 />
                 <link rel="canonical" href="https://villavredestein.nl/galerij" />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://villavredestein.nl/galerij" />
                 <meta property="og:title" content="Historische Galerij — Villa Vredestein" />
-                <meta property="og:description" content="Krantenartikelen en historische foto's van 1912 tot nu." />
+                <meta property="og:description" content="Krantenartikelen en historische foto's van Villa Vredestein van 1912 tot nu." />
+                <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
+                <meta property="og:site_name" content="Villa Vredestein" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:image" content="https://villavredestein.nl/og-image.jpg" />
             </Helmet>
 
             <header className="galerij-header">

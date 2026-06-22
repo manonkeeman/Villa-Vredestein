@@ -47,6 +47,7 @@ import Omgeving from "./Pages/Public/Omgeving";
 import Verblijven from "./Pages/Public/Verblijven";
 import Plattegrond from "./Pages/Public/Plattegrond";
 import InDePers from "./Pages/Public/InDePers";
+import Privacy from "./Pages/Public/Privacy";
 
 function App() {
     return (
@@ -69,6 +70,7 @@ function App() {
                     <Route path="/omgeving" element={<Omgeving />} />
                     <Route path="/verblijven" element={<Verblijven />} />
                     <Route path="/ruimtes" element={<Plattegrond />} />
+                    <Route path="/privacy" element={<Privacy />} />
 
                     <Route path="/login" element={<Login />} />
                     <Route path="/registeruser" element={<RegisterUser />} />

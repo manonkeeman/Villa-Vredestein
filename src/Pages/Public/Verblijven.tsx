@@ -89,8 +89,16 @@ const Verblijven = () => {
         <main className="verblijven-page">
             <Helmet>
                 <title>Verblijven & Boeken — Villa Vredestein</title>
-                <meta name="description" content="Verblijf in Villa Vredestein in Driebergen-Rijsenburg. Kamer, volledige villa of tijdelijk verblijf. Vraag beschikbaarheid op." />
+                <meta name="description" content="Verblijf in Villa Vredestein in Driebergen-Rijsenburg. Privékamer, volledige villa of tijdelijk verblijf. Vraag beschikbaarheid op." />
                 <link rel="canonical" href="https://villavredestein.nl/verblijven" />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://villavredestein.nl/verblijven" />
+                <meta property="og:title" content="Verblijven in Villa Vredestein — Driebergen-Rijsenburg" />
+                <meta property="og:description" content="Privékamer, volledige villa of tijdelijk verblijf in een historisch pand uit 1906. Vraag beschikbaarheid op." />
+                <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
+                <meta property="og:site_name" content="Villa Vredestein" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:image" content="https://villavredestein.nl/og-image.jpg" />
             </Helmet>
 
             {/* Hero */}
