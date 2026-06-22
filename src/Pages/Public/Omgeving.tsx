@@ -72,6 +72,14 @@ const Omgeving = () => {
                 <title>Omgeving & Locatie — Villa Vredestein</title>
                 <meta name="description" content="Villa Vredestein ligt in Driebergen-Rijsenburg op de Utrechtse Heuvelrug. Utrecht in 15 minuten, Amsterdam in 40, bos op de stoep." />
                 <link rel="canonical" href="https://villavredestein.nl/omgeving" />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://villavredestein.nl/omgeving" />
+                <meta property="og:title" content="Omgeving & Locatie — Villa Vredestein" />
+                <meta property="og:description" content="Bos op de stoep, Utrecht in een kwartier. Villa Vredestein ligt op de Utrechtse Heuvelrug in Driebergen-Rijsenburg." />
+                <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
+                <meta property="og:site_name" content="Villa Vredestein" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:image" content="https://villavredestein.nl/og-image.jpg" />
             </Helmet>
 
             <header className="omg-hero reveal-section" ref={addRef}>
