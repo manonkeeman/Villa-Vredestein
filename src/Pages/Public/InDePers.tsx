@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import "./InDePers.css";
@@ -22,8 +22,11 @@ const PERS_ITEMS = [
 
 const InDePers = () => {
     const navigate = useNavigate();
-    const cardRefs = useRef([]);
-    const [lightbox, setLightbox] = useState<{ src: string; index: number } | null>(null);
+    const cardRefs = useRef<(HTMLElement | null)[]>([]);
+    const [viewer, setViewer] = useState<{ imgs: string[]; startIndex: number } | null>(null);
+    const [activeSlide, setActiveSlide] = useState(0);
+    const slidesRef = useRef<(HTMLDivElement | null)[]>([]);
+    const viewerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -34,11 +37,49 @@ const InDePers = () => {
         return () => observer.disconnect();
     }, []);
 
+    const openViewer = useCallback((imgs: string[], index: number) => {
+        setViewer({ imgs, startIndex: index });
+        setActiveSlide(index);
+        document.body.style.overflow = "hidden";
+    }, []);
+
+    const closeViewer = useCallback(() => {
+        setViewer(null);
+        document.body.style.overflow = "";
+    }, []);
+
+    // Escape key
     useEffect(() => {
-        const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setLightbox(null); };
+        if (!viewer) return;
+        const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") closeViewer(); };
         document.addEventListener("keydown", onKey);
         return () => document.removeEventListener("keydown", onKey);
-    }, []);
+    }, [viewer, closeViewer]);
+
+    // Scroll to start slide after opening
+    useEffect(() => {
+        if (!viewer) return;
+        const el = slidesRef.current[viewer.startIndex];
+        if (el) el.scrollIntoView({ behavior: "instant" });
+    }, [viewer]);
+
+    // Track which slide is visible via IntersectionObserver
+    useEffect(() => {
+        if (!viewer) return;
+        const obs = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((e) => {
+                    if (e.isIntersecting) {
+                        const idx = slidesRef.current.indexOf(e.target as HTMLDivElement);
+                        if (idx !== -1) setActiveSlide(idx);
+                    }
+                });
+            },
+            { root: viewerRef.current, threshold: 0.5 }
+        );
+        slidesRef.current.forEach((el) => el && obs.observe(el));
+        return () => obs.disconnect();
+    }, [viewer]);
 
     return (
         <main className="idp-page">
@@ -78,24 +119,26 @@ const InDePers = () => {
                         className="idp-article idp-reveal"
                         ref={(el) => (cardRefs.current[i] = el)}
                     >
-                        {/* Foto's */}
+                        {/* Één thumbnail */}
                         {item.imgs && item.imgs.length > 0 && (
-                            <div className="idp-imgs">
-                                {item.imgs.map((src, j) => (
-                                    <button
-                                        key={j}
-                                        className="idp-img-btn"
-                                        onClick={() => setLightbox({ src, index: j })}
-                                        aria-label={`Bekijk afbeelding ${j + 1} van ${item.kop}`}
-                                    >
-                                        <img
-                                            src={src}
-                                            alt={j === 0 ? `Foto bij: ${item.kop}` : `Artikel: ${item.kop}`}
-                                            className="idp-img"
-                                            loading="lazy"
-                                        />
-                                    </button>
-                                ))}
+                            <div className="idp-thumb-col">
+                                <button
+                                    className="idp-thumb-btn"
+                                    onClick={() => openViewer(item.imgs, 0)}
+                                    aria-label={`Bekijk foto's bij: ${item.kop}`}
+                                >
+                                    <img
+                                        src={item.imgs[0]}
+                                        alt={`Foto bij: ${item.kop}`}
+                                        className="idp-thumb-img"
+                                        loading="lazy"
+                                    />
+                                    {item.imgs.length > 1 && (
+                                        <span className="idp-foto-count">
+                                            📷 {item.imgs.length} foto's
+                                        </span>
+                                    )}
+                                </button>
                             </div>
                         )}
 
@@ -110,12 +153,7 @@ const InDePers = () => {
                             <h2 className="idp-kop">{item.kop}</h2>
                             <p className="idp-samenvatting">{item.samenvatting}</p>
                             {item.url && (
-                                <a
-                                    href={item.url}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="idp-lees-link"
-                                >
+                                <a href={item.url} target="_blank" rel="noreferrer" className="idp-lees-link">
                                     Lees artikel →
                                 </a>
                             )}
@@ -124,24 +162,31 @@ const InDePers = () => {
                 ))}
             </section>
 
-            {/* Lightbox */}
-            {lightbox && (
+            {/* Scroll-viewer */}
+            {viewer && (
                 <div
-                    className="idp-lightbox"
-                    onClick={() => setLightbox(null)}
+                    className="idp-viewer"
+                    ref={viewerRef}
                     role="dialog"
                     aria-modal="true"
-                    aria-label="Afbeelding vergroot"
+                    aria-label="Foto's bekijken"
                 >
-                    <button className="idp-lightbox-close" onClick={() => setLightbox(null)} aria-label="Sluiten">
-                        ✕
-                    </button>
-                    <img
-                        src={lightbox.src}
-                        alt="Persartikel vergroot"
-                        className="idp-lightbox-img"
-                        onClick={(e) => e.stopPropagation()}
-                    />
+                    <div className="idp-viewer-bar">
+                        <span className="idp-viewer-counter">
+                            {activeSlide + 1} / {viewer.imgs.length}
+                        </span>
+                        <button className="idp-viewer-close" onClick={closeViewer} aria-label="Sluiten">✕</button>
+                    </div>
+
+                    {viewer.imgs.map((src, idx) => (
+                        <div
+                            key={idx}
+                            className="idp-viewer-slide"
+                            ref={(el) => (slidesRef.current[idx] = el)}
+                        >
+                            <img src={src} alt={`Foto ${idx + 1}`} className="idp-viewer-img" />
+                        </div>
+                    ))}
                 </div>
             )}
 
