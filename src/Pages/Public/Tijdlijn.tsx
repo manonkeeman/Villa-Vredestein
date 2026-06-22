@@ -60,7 +60,7 @@ const historisch = [
         emoji: "🎓",
         status: "historisch",
         tekst: "Familie Blooij brengt de villa nieuw leven in. Bijna vijf decennia lang is het pand een studentenhuis voor de IVA-opleiding in Driebergen. Generaties studenten wonen, leren en leven aan de Hoofdstraat.",
-        detail: "Ruim 46 jaar lang draait Vredestein op studenten. Laag na laag verf trekt over de muren, vloeren verdwijnen onder tapijt, en het originele karakter van de villa raakt diep begraven.",
+        detail: "Ruim 46 jaar lang draait Vredestein op studenten. Dhr. Blooij was loodgieter van beroep en werkte zelf veel aan het pand. In de loop van de decennia raakte het totaaloverzicht verloren. Pas bij de restauratie in 2021 kwamen gasleidingen in de tuin en andere bijzondere aansluitingen aan het licht.",
     },
 ];
 
@@ -70,7 +70,7 @@ const renovatie = [
         titel: "Manon & Maxim kopen de villa",
         emoji: "🗝️",
         status: "gedaan",
-        tekst: "Midden in een pandemie slaat de sleutel in het slot. De villa had jarenlang als studentenhuis voor de IVA gediend en droeg de sporen van een radicale verbouwing uit de jaren zeventig. Wie goed keek, zag een pand met veel te vertellen.",
+        tekst: "Maxim groeide op in Driebergen. Na zijn scheiding bleef hij verbonden aan de buurt voor zijn kinderen en kocht een pand vlak bij zijn ouderlijk huis. Hij zag de grootte, de ruimte en de schuur. Als oud-IVA-student vond hij het mooi dit studentenhuis in stand te houden. Manon ruilde Amsterdam en de zee voor de Utrechtse Heuvelrug. Ze mist het strand, maar werkt nu in Culemborg en is er stilletjes fan van geworden.",
         detail: "De villa was in de jaren zeventig rigoureus verbouwd: kersenhout overal, karrenwielen verwerkt in de muren en bronzen deurhendels die losvielen zodra je ze openmaakte. De begane grondvloer was verrot en we hebben de kruipkelder opgeheven voor een industriële betonnen gietvloer, geïsoleerd met kleikorrels en daarna gevlinderd tot een mooie industriële basis. Op de verdiepingen werken we met gebrand eikenhout en brengen we de panelen terug in oude glorie. Het sierstucwerk was helaas verdwenen en dat hebben we opgelost met kroonluchters. We willen wel de markiezen, de openslaande deuren en de ramen met glas in lood terugbrengen. Via contact met de familie Roelofsen kregen we in 2022 de kans heel veel foto's te zien van vóór de radicale jaren zeventig verbouwing. We mochten de hele familie uitnodigen en hoorden alle jeugdverhalen: het roetsjen van de trapleuning, de schuurfeesten en de gaarkeuken met de kolenkachel. De meest waardevolle foto die we ooit van dit huis hebben gezien. Er is nog steeds contact en ze houden graag de verbouwing bij van hun jeugdhuis.",
     },
     {
@@ -78,8 +78,8 @@ const renovatie = [
         titel: "De restauratie begint",
         emoji: "🔨",
         status: "gedaan",
-        tekst: "Van kelder tot zolder. Alle wanden zijn voorzien van 15 centimeter isolatie en volledig opnieuw gestuct. Het pand is van 11 kamers herdacht naar 7 kamers, 3 badkamers, twee keukens, een kitchenette en een sportkamer.",
-        detail: "Elke ruimte werd teruggestript naar de basis. De wanden zijn volledig geïsoleerd met 15 centimeter isolatie en daarna opnieuw gestuct. De indeling is grondig veranderd: van 11 naar 7 kamers, met 3 badkamers, twee keukens, een kitchenette en een sportkamer. Het doel is het huis in oude glorie terug te brengen, maar naar de moderne eisen van duurzaamheid en klimaat.",
+        tekst: "Van kelder tot zolder gestript en opnieuw opgebouwd. 15 cm isolatie, volledig gestuct, vloerverwarming in de betonnen gietvloer en airco's op de verdiepingen. Alle elektriciteit en leidingwerk vernieuwd. Van 11 kamers naar 7, met 3 badkamers, twee keukens, een kitchenette en een sportkamer.",
+        detail: "Elke ruimte werd teruggestript naar de basis. De wanden zijn voorzien van 15 centimeter isolatie en daarna volledig opnieuw gestuct. In de industriële betonnen gietvloer op de begane grond is vloerverwarming aangebracht. Op de tweede en derde verdieping hangen airco's: de voorkant van het huis staat recht op de zon en warmt in de zomer flink op. Vroeger plantten bewoners lindenbomen voor de deur voor schaduw. Wij kozen voor een open tuin met zicht op de straat. Alle elektriciteit is vernieuwd en aangepast aan de moderne eisen. Hetzelfde geldt voor het leidingwerk. Dhr. Blooij was loodgieter en had door de jaren heen veel zelf aan elkaar geplakt. Het totaaloverzicht was verloren gegaan: bij het uitgraven vonden we gasleidingen in de tuin en andere gevaarlijke aansluitingen. Alles is veiliggesteld en opnieuw aangelegd. Het doel blijft het huis in oude glorie terugbrengen, maar naar de moderne eisen van duurzaamheid en klimaat.",
     },
     {
         datum: "2023",
@@ -94,16 +94,16 @@ const renovatie = [
         titel: "Woonkamer & interieur",
         emoji: "🔥",
         status: "gedaan",
-        tekst: "Een houtkachel brengt de warmte van vroeger terug. Nieuwe verlichting, doordachte indeling, sfeer gecreëerd. De woonkamer is het kloppende hart van de villa geworden.",
-        detail: "We hebben een houtkachel teruggebracht in het huis. Het vuur geeft de woonkamer precies de warmte en het karakter dat een pand van deze leeftijd verdient. Van de verlichting tot de keuze voor meubels: elk detail is afgestemd op het karakter van het pand.",
+        tekst: "Een houtkachel brengt de warmte van vroeger terug. De woonkamer is ingericht met vintage vondsten: van veilingen, van reizen, soms gerepareerd en opnieuw gestoffeerd in India. Elk meubelstuk heeft een verhaal.",
+        detail: "We hebben een houtkachel teruggebracht in het huis. Het vuur geeft de woonkamer precies de warmte die een pand van deze leeftijd verdient. De inrichting is samengesteld uit vintage vondsten: soms trekken we een dag door Nederland op zoek naar iets bijzonders, soms repareren we een oude bank en laten die herstofferen in India. Op veilingen vinden we prachtige Eicholtz-meubels en passen de rest van de inrichting daarop aan. Elk meubelstuk heeft een verhaal. Wij wonen in principe beneden, de studenten en de kinderen delen de ruimtes boven. Ze zijn volwassen en hebben zo hun eigen leefwereld. Je hoeft hier niet per se samen te komen, maar dat doe je toch.",
     },
     {
         datum: "Vroegejaar 2025",
         titel: "De tuin wordt wakker",
         emoji: "🌱",
         status: "bezig",
-        tekst: "Eerste planten, eerste plannen. Een terras in wording. Zodra de zon meewerkt, gaat de schop de grond in. Dan krijgt de tuin eindelijk het verhaal dat het verdient.",
-        detail: "De tuin wordt een verlengstuk van het huis: een plek om te zitten, te eten en de kinderen te laten rennen. Moestuin, borders en misschien een kleine vijver staan op de lijst.",
+        tekst: "De sauna met dompelbad zet de toon. Passieflora, jasmijn en kruiden in potten voor geur en kleur. Een moestuin om uit te eten. En achteraan de schuur van 110 m² met werkplaats, veranda en buitenkeuken.",
+        detail: "De tuin komt als laatste aan de beurt maar heeft de meeste plannen. Een sauna met dompelbad wordt het rustpunt in de buitenruimte. Daaromheen een kleine urban tuin met passieflora, jasmijn en kruiden in potten. Een moestuin voor het eigen eten. Helemaal achteraan de schuur van 110 m²: ruimte om te klussen aan auto's en andere projecten, een veranda en een buitenkeuken. Voor zowel ons als de studenten.",
     },
     {
         datum: "Zomer 2025",
