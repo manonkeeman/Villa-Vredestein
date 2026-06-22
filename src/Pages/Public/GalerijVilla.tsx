@@ -27,6 +27,16 @@ import ImgRestauratie  from "../../Assets/Images/VillaVredesteinRestauratie.jpg"
 import ImgDiner        from "../../Assets/Images/life-diner.jpg";
 import ImgMoestuin     from "../../Assets/Images/life-moestuin.jpg";
 
+// Geschiedenis — kadasterdocumenten
+import ImgKaartBlauw1  from "../../Assets/Images/archief-kadasterkaart-blauw-1.jpg";
+import ImgKaartBlauw2  from "../../Assets/Images/archief-kadasterkaart-blauw-2.jpg";
+import ImgPercelen     from "../../Assets/Images/archief-kadaster-percelen.jpg";
+import ImgHoofdstraat  from "../../Assets/Images/archief-kadaster-hoofdstraat.jpg";
+import ImgRegister1    from "../../Assets/Images/archief-register-1.jpg";
+import ImgRegister2    from "../../Assets/Images/archief-register-2.jpg";
+import ImgBouwreg1     from "../../Assets/Images/archief-bouwregister-1.jpg";
+import ImgBouwreg2     from "../../Assets/Images/archief-bouwregister-2.jpg";
+
 // Geschiedenis — krantenartikelen
 import ImgK1912 from "../../Assets/Images/Krant1912.jpg";
 import ImgK1913 from "../../Assets/Images/Krant1913.jpg";
@@ -72,7 +82,15 @@ const FOTOS = [
     { src: ImgMoestuin,     cat: "Leven",       caption: "Oogst uit de moestuin", sub: "Eigen groenten van het perceel" },
 
     // ── Geschiedenis ──────────────────────────────────────────────────────
-    { src: ImgVilla1910, cat: "Geschiedenis", caption: "Vredestein circa 1910",   sub: "Historische foto van de villa, kort na de bouw in 1906" },
+    { src: ImgVilla1910,     cat: "Geschiedenis", caption: "Vredestein circa 1910",               sub: "Historische foto van de villa, kort na de bouw in 1906" },
+    { src: ImgKaartBlauw1,  cat: "Geschiedenis", caption: "Kadasterkaart Driebergen (blauwdruk I)",  sub: "Historische blauwdruk-kadasterkaart van Driebergen-Rijsenburg" },
+    { src: ImgKaartBlauw2,  cat: "Geschiedenis", caption: "Kadasterkaart Driebergen (blauwdruk II)", sub: "Tweede blauwdrukkaart van het gebied rond Driebergen-Rijsenburg" },
+    { src: ImgPercelen,     cat: "Geschiedenis", caption: "Kadastrale perceelkaart",               sub: "Perceelkaart met bouwnummers 2253-2256, Hoofdstraat 147" },
+    { src: ImgHoofdstraat,  cat: "Geschiedenis", caption: "Situatiekaart Hoofdstraat",             sub: "Historische bebouwingskaart langs de Hoofdstraat" },
+    { src: ImgRegister1,    cat: "Geschiedenis", caption: "Historisch kamerafmetingen register",   sub: "Handgeschreven archiefregister met ruimtematen van Hfdstr. 147" },
+    { src: ImgRegister2,    cat: "Geschiedenis", caption: "Historisch register II",                sub: "Tweede pagina — historische maatvoering van het pand" },
+    { src: ImgBouwreg1,     cat: "Geschiedenis", caption: "Bouwregister Hoofdstraat 147 (I)",      sub: "Officieel bouwregister met aantekeningen en bouwdata" },
+    { src: ImgBouwreg2,     cat: "Geschiedenis", caption: "Bouwregister Hoofdstraat 147 (II)",     sub: "Vervolg van het bouwregister — historische indeling en oppervlakten" },
 
     // Krantenartikelen
     { src: ImgK1912,  cat: "Geschiedenis", caption: "Ingezonden stuk, 1912",     sub: "Over het pension na de overname door Familie Sluijter" },
@@ -134,16 +152,16 @@ const GalerijVilla = () => {
     return (
         <main className="galerij-villa-page">
             <Helmet>
-                <title>Galerij — Villa Vredestein</title>
+                <title>Galerij & Historisch Archief — Villa Vredestein</title>
                 <meta
                     name="description"
-                    content="Fotogalerij van Villa Vredestein: interieur, exterieur, tuin en historische krantenartikelen van 1912 tot nu."
+                    content="Fotogalerij en historisch archief van Villa Vredestein: interieur, exterieur, tuin, kadasterkaarten en krantenartikelen van 1906 tot nu."
                 />
-                <link rel="canonical" href="https://villavredestein.nl/galerij-villa" />
+                <link rel="canonical" href="https://villavredestein.nl/galerij" />
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://villavredestein.nl/galerij-villa" />
-                <meta property="og:title" content="De Villa in Beeld — Villa Vredestein" />
-                <meta property="og:description" content="Fotogalerij van Villa Vredestein: interieur, exterieur en tuin van een historisch pand uit 1906 in Driebergen-Rijsenburg." />
+                <meta property="og:url" content="https://villavredestein.nl/galerij" />
+                <meta property="og:title" content="Galerij & Historisch Archief — Villa Vredestein" />
+                <meta property="og:description" content="Fotogalerij en historisch archief van Villa Vredestein. Interieur, exterieur, kadasterkaarten en een eeuw krantenartikelen." />
                 <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />

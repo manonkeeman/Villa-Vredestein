@@ -23,7 +23,7 @@ const VERDIEPINGEN = [
         status: "beschikbaar",
         ruimtes: [
             { naam: "Thailand (Desmond)", icon: "🇹🇭", afm: "~17 m²", info: "Airco, goed licht, rustig" },
-            { naam: "Japan",              icon: "🇯🇵", afm: "~16 m²", info: "Airco, balkon (uitsluitend nooduitgang), daklichten" },
+            { naam: "Japan",              icon: "🇯🇵", afm: "~16 m²", info: "Airco, balkon (uitsluitend nooduitgang)" },
             { naam: "Argentinië",         icon: "🇦🇷", afm: "~16 m²", info: "Airco, compact en stil" },
             { naam: "Gedeelde badkamer", icon: "🚿", afm: "~8 m²", info: "1 badkamer voor 3 kamers" },
             { naam: "Studentenkeuken", icon: "🍳", afm: "~12 m²", info: "Eigen keuken, gedeeld" },

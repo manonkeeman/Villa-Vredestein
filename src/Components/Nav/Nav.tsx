@@ -136,7 +136,7 @@ const Nav = () => {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/galerij-villa" className="default-link" onClick={closeAll}>
+                    <NavLink to="/galerij" className="default-link" onClick={closeAll}>
                         Galerij
                     </NavLink>
                 </li>
@@ -158,11 +158,6 @@ const Nav = () => {
                 <li>
                     <NavLink to="/tijdlijn" className="default-link" onClick={closeAll}>
                         Tijdlijn
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to="/galerij" className="default-link" onClick={closeAll}>
-                        Historisch archief
                     </NavLink>
                 </li>
                 <li>
