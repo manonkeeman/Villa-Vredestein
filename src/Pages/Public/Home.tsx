@@ -12,12 +12,12 @@ import WoonkamerImg2 from "../../Assets/Images/int-woonkamer2.jpg";
 import LuchtballonImg from "../../Assets/Images/ext-luchtballon.png";
 
 const KENMERKEN = [
-    { icon: "🏛️", label: "1906", sub: "Bouwjaar" },
-    { icon: "🛏️", label: "6", sub: "Slaapkamers" },
-    { icon: "🌳", label: "Heuvelrug", sub: "Op de stoep" },
-    { icon: "🚂", label: "15 min", sub: "Utrecht CS" },
-    { icon: "✈️", label: "50 min", sub: "Schiphol" },
-    { icon: "🌿", label: "680 m²", sub: "Perceel" },
+    { icon: "🏛️", label: "1906", sub: "gebouwd" },
+    { icon: "🛏️", label: "6", sub: "slaapkamers" },
+    { icon: "🌳", label: "Heuvelrug", sub: "voor de deur" },
+    { icon: "🚂", label: "15 min", sub: "naar Utrecht CS" },
+    { icon: "✈️", label: "50 min", sub: "naar Schiphol" },
+    { icon: "🌿", label: "680 m²", sub: "grond" },
 ];
 
 const HIGHLIGHTS = [
