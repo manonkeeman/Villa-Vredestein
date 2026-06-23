@@ -37,6 +37,10 @@ import ImgRotiq           from "../../Assets/Images/omg-rotiq.jpg";
 import ImgCafeOlivier     from "../../Assets/Images/omg-cafe-olivier.jpg";
 import ImgCafetariaToGo   from "../../Assets/Images/omg-cafetaria-to-go.jpg";
 import ImgHuisDoorn       from "../../Assets/Images/omg-huis-doorn.jpg";
+import ImgCentrumZeist    from "../../Assets/Images/omg-centrum-zeist.jpg";
+import ImgCentrumUtrecht  from "../../Assets/Images/omg-centrum-utrecht.jpg";
+import ImgCentrumWijk     from "../../Assets/Images/omg-centrum-wijk.jpg";
+import ImgCentrumAmersfoort from "../../Assets/Images/omg-centrum-amersfoort.jpg";
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -166,10 +170,10 @@ const CAFE: Venue[] = [
     { naam: "Roose Restobar",            desc: "Sfeervolle restobar in Amersfoort. Goede wijnen, cocktails en een wisselend menu in een warm interieur.",          adres: "Amersfoort",                     web: "rooseresobar.nl",            photo: ImgRoose },
     { naam: "Wapen van Rijsenburg",      desc: "Eten, drinken, netwerken, dansen en zingen. Voor van alles en iedereen.",       adres: "Hoofdstraat 83, Driebergen",           web: "wapenvandriebergen.nl",   photo: ImgWapenRijsenburg },
     { naam: "Brouwerij Brasser",         desc: "Ambachtelijk gebrouwen bier uit Zeist. Wo–zo 16:00–00:00.",                     adres: "Slotlaan 314, Zeist",                  web: "brouwerijbrasser.nl",     photo: ImgBuiten   },
-    { naam: "Centrum Zeist",             desc: "Gezellig centrum met terrassen, wijncafés en bierspecialiteiten. Op 20 min fietsen of 10 min rijden.", adres: "Slotlaan, Zeist",   web: "zeist.nl",                photo: ImgSfeer    },
-    { naam: "Centrum Utrecht",           desc: "Bruisende binnenstad langs de Oudegracht met cocktailbars, wijnbars en levendige terrassen. 15 min per trein.", adres: "Oudegracht, Utrecht", web: "visit-utrecht.nl",  photo: ImgDiner    },
-    { naam: "Centrum Wijk bij Duurstede",desc: "Historisch stadje direct aan de Rijn. Sfeervolle terrassen rondom het kasteel en langs het water. 25 min fietsen.", adres: "Markt, Wijk bij Duurstede", web: "vvvutrechtheuvelrug.nl", photo: ImgSfeer },
-    { naam: "Centrum Amersfoort",        desc: "Levendige binnenstad met terrassen, restaurants en cultuur. 35 min met de auto of trein.", adres: "Hof 10, Amersfoort", web: "vvvamersfoort.nl", photo: ImgDiner    },
+    { naam: "Centrum Zeist",             desc: "Gezellig centrum met terrassen, wijncafés en bierspecialiteiten. Op 20 min fietsen of 10 min rijden.", adres: "Slotlaan, Zeist",   web: "zeist.nl",                photo: ImgCentrumZeist     },
+    { naam: "Centrum Utrecht",           desc: "Bruisende binnenstad langs de Oudegracht met cocktailbars, wijnbars en levendige terrassen. 15 min per trein.", adres: "Oudegracht, Utrecht", web: "visit-utrecht.nl",  photo: ImgCentrumUtrecht   },
+    { naam: "Centrum Wijk bij Duurstede",desc: "Historisch stadje direct aan de Rijn. Sfeervolle terrassen rondom het kasteel en langs het water. 25 min fietsen.", adres: "Markt, Wijk bij Duurstede", web: "vvvutrechtheuvelrug.nl", photo: ImgCentrumWijk },
+    { naam: "Centrum Amersfoort",        desc: "Levendige binnenstad met terrassen, restaurants en cultuur. 35 min met de auto of trein.", adres: "Hof 10, Amersfoort", web: "vvvamersfoort.nl", photo: ImgCentrumAmersfoort },
 ];
 
 const BOODSCHAPPEN: Boodschap[] = [
