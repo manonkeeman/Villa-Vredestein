@@ -142,7 +142,7 @@ const ONTBIJT: Venue[] = [
 const AFHAAL_DINNER: Venue[] = [
     { naam: "De Sluis Gaarde", desc: "Chinees-Oriëntaals restaurant. Di–zo vanaf 16:00. €–€€.",   adres: "De Sluis 36-37, Driebergen", web: "desluisgaarde.nl",      photo: ImgSluisGaarde },
     { naam: "Mi Piace",        desc: "Pizzeria en wijn. Dagelijks 17:00–22:00. €5–20.",            adres: "Traaij 1C, Driebergen",      web: "mipiacedriegergen.nl",  photo: ImgBuiten   },
-    { naam: "Kwalitaria",      desc: "Snackbar met groot assortiment. Di–zo 11:30–21:00. €1–10.", adres: "Traaij 62, Driebergen",      web: "kwalitaria.nl",         photo: ImgTuinfeest},
+    { naam: "Cafetaria To Go", desc: "Op het station. Echte lekkere patat in schil, bubble tea en een uitgebreide kaart. Vriendelijke bediening.", adres: "Stationsweg, Driebergen-Zeist", web: "cafetariatogo.nl",    photo: ImgTuinfeest},
     { naam: "Rotiq",           desc: "Surinaamse gerechten. Dagelijks 11:30–20:00. €6–20.",        adres: "Traaij 70, Driebergen",      web: "rotiq.nl",              photo: ImgDiner    },
     { naam: "Restaurant Hoog Beek",    desc: "Panoramarestaurant op de Utrechtse Heuvelrug. Seizoensgebonden menu met weidse vergezichten over de polder. 20 min fietsen.",     adres: "Boschzicht 1, Zeist",              web: "hoogbeek.nl",           photo: ImgBuiten   },
     { naam: "Herberg De Zon",          desc: "Klassieke herberg in hartje Doorn. Huiselijk koken, een vaste schare trouwe gasten en een zonnig terras aan de Dorpsstraat. 15 min fietsen.", adres: "Dorpsstraat 2, Doorn",  web: "herbergdezon.nl",       photo: ImgDiner    },
