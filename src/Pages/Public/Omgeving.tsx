@@ -25,7 +25,7 @@ import ImgChaletHelenaheuvel from "../../Assets/Images/omg-chalet-helenaheuvel.j
 import ImgKoffieZoZeist    from "../../Assets/Images/omg-koffie-zo-zeist.jpg";
 import ImgBagelsBeans      from "../../Assets/Images/omg-bagels-beans.jpg";
 import ImgSpotDoorn        from "../../Assets/Images/omg-spot-doorn.jpg";
-import ImgSluisGaarde      from "../../Assets/Images/omg-sluis-gaarde.jpg";
+import ImgJagershuis       from "../../Assets/Images/omg-jagershuis.jpg";
 import ImgWapenRijsenburg  from "../../Assets/Images/omg-wapen-rijsenburg.jpg";
 import ImgFatItalian       from "../../Assets/Images/omg-fat-italian.jpg";
 import ImgNio              from "../../Assets/Images/omg-nio.jpg";
@@ -36,7 +36,7 @@ import ImgRoose           from "../../Assets/Images/omg-roose.webp";
 import ImgMiPiace         from "../../Assets/Images/omg-mi-piace.webp";
 import ImgRotiq           from "../../Assets/Images/omg-rotiq.jpg";
 import ImgCafeOlivier     from "../../Assets/Images/omg-cafe-olivier.jpg";
-import ImgCafetariaToGo   from "../../Assets/Images/omg-cafetaria-to-go.jpg";
+import ImgBrasserieButt   from "../../Assets/Images/omg-brasserie-buut.jpg";
 import ImgHuisDoorn       from "../../Assets/Images/omg-huis-doorn.jpg";
 import ImgCentrumZeist    from "../../Assets/Images/omg-centrum-zeist.jpg";
 import ImgCentrumUtrecht  from "../../Assets/Images/omg-centrum-utrecht.jpg";
@@ -55,6 +55,8 @@ import ImgAmelisweerd           from "../../Assets/Images/omg-amelisweerd.jpg";
 import ImgPaleisSoestdijk       from "../../Assets/Images/omg-paleis-soestdijk.jpg";
 import ImgVliegbasis            from "../../Assets/Images/omg-vliegbasis-soesterberg.jpg";
 import ImgPatheCinema           from "../../Assets/Images/omg-pathe-cinema.jpg";
+import ImgFigi                 from "../../Assets/Images/omg-figi.jpg";
+import ImgKraaybeek            from "../../Assets/Images/omg-kraaybeek.jpg";
 import ImgMarktDriebergen      from "../../Assets/Images/omg-markt-driebergen.webp";
 import ImgMarktDoorn           from "../../Assets/Images/omg-markt-doorn.webp";
 import ImgMarktLeersum         from "../../Assets/Images/omg-markt-leersum.webp";
@@ -171,9 +173,10 @@ const ONTBIJT: Venue[] = [
 ];
 
 const AFHAAL_DINNER: Venue[] = [
-    { naam: "De Sluis Gaarde", desc: "Chinees-Oriëntaals restaurant. Di–zo vanaf 16:00. €–€€.",   adres: "De Sluis 36-37, Driebergen", web: "http://www.desluisgaarde.nl/",          photo: ImgSluisGaarde },
+    { naam: "Pannekoekenrestaurant Het Jagershuis Lage Vuursche", desc: "Karakteristiek pannekoekenrestaurant op het mooie landgoed Lage Vuursche. Ruime kaart, fijn terras en een prachtige bosomgeving. Aanrader voor het hele gezin.", adres: "Lage Vuursche",        web: "https://jagershuislagevuursche.nl/",     photo: ImgJagershuis },
+    { naam: "Het Jagershuys Zeist",                               desc: "Sfeervolle pannekoekenherberg in een historisch pand in Zeist. Grote kaart met zoet en hartig, open haarden en een oud-Hollands interieur.",                 adres: "Zeist",                web: "https://www.hetjagershuyszeist.nl/",     photo: ImgJagershuis },
     { naam: "Mi Piace",        desc: "Pizzeria en wijn. Dagelijks 17:00–22:00. €5–20.",            adres: "Traaij 1C, Driebergen",      web: "https://www.mipiacedriebergen.nl/",      photo: ImgMiPiace  },
-    { naam: "Cafetaria To Go", desc: "Op het station. Echte lekkere patat in schil, bubble tea en een uitgebreide kaart. Vriendelijke bediening.", adres: "Stationsweg, Driebergen-Zeist", web: "https://www.cafetariatogo.nl/", photo: ImgCafetariaToGo },
+    { naam: "Brasserie Buut",  desc: "Moderne brasserie in Driebergen. Verse seizoensgerechten, een mooie wijn- en cocktailkaart en een warm terras. Zowel lunch als diner.",   adres: "Driebergen",           web: "https://www.brasseriebuut.nl/",          photo: ImgBrasserieButt },
     { naam: "Rotiq",           desc: "Surinaamse gerechten. Dagelijks 11:30–20:00. €6–20.",        adres: "Traaij 70, Driebergen",      web: "https://www.rotiq.nl/",                  photo: ImgRotiq    },
     { naam: "Restaurant NIO",          desc: "Modern restaurant in het centrum van Driebergen. Creatieve gerechten, mooie wijnen en een sfeervolle ambiance.",               adres: "Hoofdstraat, Driebergen",          web: "https://nio-driebergen.nl/",            photo: ImgNio      },
     { naam: "Bistro Paul",             desc: "Frans-geïnspireerde bistro met een eerlijke keuken. Dagverse gerechten, goede wijn en een warm terras.",                         adres: "Doorn",                            web: "https://www.bistropaul.nl/",            photo: ImgBistroPaul },
@@ -208,6 +211,7 @@ const BEZIENSWAARDIGHEDEN: BzItem[] = [
     { emoji: "✈️", naam: "Park Vliegbasis Soesterberg", desc: "Nationaal park op een voormalige militaire vliegbasis. Uitgestrekte natuur, bunkers en het Nationaal Militair Museum. Gratis toegankelijk.", adres: "Kampweg 5, Soesterberg",              photo: ImgVliegbasis,    web: null },
     { emoji: "⛴️", naam: "Fiets & Voetveer Rhenen",   desc: "Schilderachtige veerpont voor fietsers en voetgangers die de Rijn oversteekt bij Rhenen. Uniek uitje langs de rivier met mooi uitzicht.", adres: "Rijnkade, Rhenen",                    photo: ImgVoetveer,      web: null },
     { emoji: "🌄", naam: "Amerongse Berg",             desc: "Het hoogste punt van de Utrechtse Heuvelrug op 69 meter. Prachtige wandelpaden door het bos en weidse vergezichten. Vrij toegankelijk.", adres: "Amerongse Berg, Amerongen",   photo: ImgAmerongseBerg, web: null },
+    { emoji: "🌿", naam: "Tuinen van Kraaybeekerhof", desc: "Biologische tuinen op het landgoed Kraaybeekerhof in Driebergen. Prachtige moestuin, kruidentuin en rondleidingen. Een rustpunt vol kleur en geur midden op de Heuvelrug.", adres: "Kraaijbeeklaan 1, Driebergen", photo: ImgKraaybeek, web: "https://kraaybeekerhof.nl/tuinen/" },
 ];
 
 const KASTELEN: Venue[] = [
@@ -226,6 +230,7 @@ const ACTIVITEITEN: BzItem[] = [
     { emoji: "📚", naam: "Bibliotheek Driebergen", desc: "Ma–vr 10:00–17:00, zaterdag 10:00–13:00.",                                                                                    adres: "Hoofdstraat 164, Driebergen",   web: "bibliotheekzout.nl", photo: ImgBibliotheek   },
     { emoji: "💪", naam: "Sport & Fitness",         desc: "Fitline (Hoofdstraat 166) · Health Center Hoenderdaal (De Hoendersteeg 7) · Laco Sportcentrum De Zwoer (Schellingerlaan 20).", adres: "Driebergen",                   web: null,                 photo: ImgSportFitness  },
     { emoji: "🎬", naam: "Pathé Cinema",            desc: "Meerdere locaties in de regio: Utrecht Leidsche Rijn, Utrecht centrum, Amersfoort en Ede.",                                  adres: "o.a. Berlijnplein 100, Utrecht",web: null,                 photo: ImgPatheCinema   },
+    { emoji: "🎭", naam: "Restaurant Theater Figi", desc: "Iconisch theater en restaurant in het hart van Zeist. Uitstekende keuken, grandioze zalen en een gevarieerd cultureel programma het hele jaar door.", adres: "Canadaplein 1, Zeist", web: "https://www.figi.nl/", photo: ImgFigi },
 ];
 
 
@@ -248,6 +253,8 @@ const VenueCard = ({ v }: { v: Venue }) => {
 };
 
 const BzCard = ({ b }: { b: BzItem }) => {
+    let displayWeb = b.web ?? "";
+    try { if (b.web) displayWeb = new URL(b.web).hostname.replace(/^www\./, ""); } catch {}
     const inner = (
         <>
             <div className="venue-photo venue-photo--bz">
@@ -258,12 +265,12 @@ const BzCard = ({ b }: { b: BzItem }) => {
                 <strong className="venue-naam">{b.naam}</strong>
                 <p className="venue-desc">{b.desc}</p>
                 <span className="venue-adres">{b.adres}</span>
-                {b.web && <span className="venue-web">{b.web} →</span>}
+                {b.web && <span className="venue-web">{displayWeb} →</span>}
             </div>
         </>
     );
     return b.web
-        ? <a href={`https://www.${b.web}`} target="_blank" rel="noreferrer" className="venue-card">{inner}</a>
+        ? <a href={b.web} target="_blank" rel="noreferrer" className="venue-card">{inner}</a>
         : <div className="venue-card venue-card--nolink">{inner}</div>;
 };
 
