@@ -84,6 +84,7 @@ const POIS: Poi[] = [
     { pos: [52.1557, 5.3877],                         label: "Onze Lieve Vrouwentoren",   sub: "35 min auto · Amersfoort",     emoji: "🔔", color: "#5a8a40", link: "https://maps.google.com/?q=Onze+Lieve+Vrouwentoren+Amersfoort",   linkLabel: "Google Maps →"                },
 
     // Kastelen & Landgoederen
+    { pos: [52.0846, 5.1470],                         label: "Kasteel Rhijnauwen",        sub: "20 min fiets · Bunnik",        emoji: "🏰", color: "#7a6080", link: "https://www.kasteelrhijnauwen.nl",                                linkLabel: "kasteelrhijnauwen.nl"         },
     { pos: [51.9934, 5.4200],                         label: "Parc Broekhuizen",          sub: "30 min fiets · Leersum",       emoji: "🏰", color: "#7a6080", link: "https://www.parcbroekhuizen.nl",                                  linkLabel: "parcbroekhuizen.nl"           },
     { pos: [52.0273, 5.3514],                         label: "Huis Doorn",                sub: "20 min fiets · Doorn",         emoji: "🏛️", color: "#7a6080", link: "https://www.huisdoorn.nl",                                        linkLabel: "huisdoorn.nl"                 },
     { pos: [52.0846, 5.1547],                         label: "Landgoed Oud-Amelisweerd",  sub: "25 min auto · Bunnik",         emoji: "🏡", color: "#7a6080", link: "https://www.veldkeuken.nl",                                       linkLabel: "veldkeuken.nl"                },
@@ -167,7 +168,7 @@ const BEZIENSWAARDIGHEDEN: BzItem[] = [
     { emoji: "🌬️", naam: "Windmolen aan de Rijn",     desc: "Historische molen op het punt waar de Rijn en de Lek samenkomen. Karakteristiek landschap en mooi startpunt voor een wandeling langs het water.", adres: "Rijnkade, Wijk bij Duurstede", photo: OmgevingImg, web: null },
     { emoji: "⚓", naam: "Koppelpoort Amersfoort",     desc: "Middeleeuwse water- en landpoort uit 1425. Een van de best bewaard gebleven stadspoorten van Nederland en icoon van Amersfoort.", adres: "Koppelpoort, Amersfoort",             photo: ImgVilla1910, web: null },
     { emoji: "🔔", naam: "Onze Lieve Vrouwentoren",   desc: "Iconische scheefstaande gotische toren uit 1444. Symbool van Amersfoort en zichtbaar van heel ver.",                      adres: "Lieve Vrouwenkerkhof, Amersfoort",           photo: ImgBloemen,   web: null },
-    { emoji: "🏰", naam: "Kasteel Rhijnauwen",        desc: "Monumentale buitenplaats bij Bunnik met een van de grootste terrassen van Nederland. Perfecte fietsstop langs de Kromme Rijn. 20 min fietsen.", adres: "Rhijnauwenselaan 14, Bunnik",  photo: ImgVilla1910, web: null },
+    { emoji: "🌄", naam: "Amerongse Berg",             desc: "Het hoogste punt van de Utrechtse Heuvelrug op 69 meter. Prachtige wandelpaden door het bos en weidse vergezichten. Vrij toegankelijk.", adres: "Amerongse Berg, Amerongen",   photo: OmgevingImg,  web: null },
 ];
 
 const KASTELEN: Venue[] = [
@@ -177,6 +178,7 @@ const KASTELEN: Venue[] = [
     { naam: "Kasteel Amerongen",           desc: "Een tipje van de kastelengeschiedenis van de Heuvelrug. Vlakbij boscafé Mas Montagne.",        adres: "Drostestraat 20, Amerongen",        web: "kasteelamerongen.nl", photo: ImgVilla1910 },
     { naam: "Kasteel Duurstede",           desc: "Indrukwekkende middeleeuwse kasteelruïne direct aan de Rijn in Wijk bij Duurstede. Museum met eeuwenoude geschiedenis. Op 25 minuten fietsen.", adres: "Kasteel 1, Wijk bij Duurstede", web: "kasteelduurstede.nl", photo: ImgVilla1910 },
     { naam: "Slot Zeist",                  desc: "Prachtig 17e-eeuws kasteel midden in Zeist, omgeven door een monumentaal park. Regelmatig evenementen en markten.",                    adres: "Zinzendorflaan 1, Zeist",           web: "slotzeist.nl",        photo: ImgBloemen   },
+    { naam: "Kasteel Rhijnauwen",          desc: "Monumentale buitenplaats bij Bunnik met een van de grootste terrassen van Nederland. Perfecte fietsstop langs de Kromme Rijn. 20 min fietsen.",           adres: "Rhijnauwenselaan 14, Bunnik",  web: "kasteelrhijnauwen.nl", photo: ImgBloemen   },
     { naam: "Kasteel de Haar",             desc: "Het meest complete middeleeuwse kasteel van Nederland. Gerestaureerd eind 19e eeuw door Pierre Cuypers. Prachtige torens, staatsievertrekken en tuinen. 30 min auto.", adres: "Kasteellaan 1, Haarzuilens", web: "kasteeldehaar.nl", photo: ImgVilla1910 },
     { naam: "Paleis Soestdijk",            desc: "Voormalig zomerverblijf van koningin Juliana en prins Bernhard. Nu opengesteld als museum en evenementenlocatie in het bos van Baarn. 25 min auto.", adres: "Amsterdamsestraatweg 1, Baarn", web: "paleis-soestdijk.nl", photo: ImgBloemen },
 ];
