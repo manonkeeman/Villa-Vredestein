@@ -5,17 +5,24 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import "./Omgeving.css";
 
-import OmgevingImg   from "../../Assets/Images/DeOmgevingVillaVredestein.jpg";
-import ImgGrot       from "../../Assets/Images/omg-grot.jpg";
-import ImgPannen     from "../../Assets/Images/PannenkoekenAvondVillaVredestein.jpg";
-import ImgDiner      from "../../Assets/Images/life-diner.jpg";
-import ImgSfeer      from "../../Assets/Images/life-sfeer.jpg";
-import ImgFiets      from "../../Assets/Images/life-bloemen-fiets.jpg";
-import ImgBuiten     from "../../Assets/Images/life-buiten-eten.jpg";
-import ImgTuinfeest  from "../../Assets/Images/ext-tuinfeest.jpg";
-import ImgVilla1910  from "../../Assets/Images/VillaVredestein1910.jpg";
-import ImgBloemen    from "../../Assets/Images/ext-villa-bloemen.jpg";
-import ImgMoestuin   from "../../Assets/Images/life-moestuin.jpg";
+import OmgevingImg        from "../../Assets/Images/DeOmgevingVillaVredestein.jpg";
+import ImgGrot             from "../../Assets/Images/omg-grot.jpg";
+import ImgPannen           from "../../Assets/Images/PannenkoekenAvondVillaVredestein.jpg";
+import ImgDiner            from "../../Assets/Images/life-diner.jpg";
+import ImgSfeer            from "../../Assets/Images/life-sfeer.jpg";
+import ImgFiets            from "../../Assets/Images/life-bloemen-fiets.jpg";
+import ImgBuiten           from "../../Assets/Images/life-buiten-eten.jpg";
+import ImgTuinfeest        from "../../Assets/Images/ext-tuinfeest.jpg";
+import ImgVilla1910        from "../../Assets/Images/VillaVredestein1910.jpg";
+import ImgBloemen          from "../../Assets/Images/ext-villa-bloemen.jpg";
+import ImgMoestuin         from "../../Assets/Images/life-moestuin.jpg";
+import ImgHuiskamer        from "../../Assets/Images/omg-huiskamer.jpg";
+import ImgVroeg            from "../../Assets/Images/omg-vroeg.jpg";
+import ImgKoekei           from "../../Assets/Images/omg-koekei.jpg";
+import ImgLouwietje        from "../../Assets/Images/omg-louwietje.jpg";
+import ImgMasMontagne      from "../../Assets/Images/omg-mas-montagne.webp";
+import ImgChaletHelenaheuvel from "../../Assets/Images/omg-chalet-helenaheuvel.jpg";
+import ImgKoffieZoZeist    from "../../Assets/Images/omg-koffie-zo-zeist.jpg";
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -119,14 +126,14 @@ type BzItem = { emoji: string; naam: string; desc: string; adres: string; web?: 
 type Boodschap = { naam: string; sub: string };
 
 const ONTBIJT: Venue[] = [
-    { naam: "Huiskamer van Driebergen", desc: "Knus koffiehuis voor ontbijt en brunch. Doordeweeks v.a. 8:30, weekend v.a. 9:00 tot 17:00.", adres: "Traaij 84b, Driebergen",       web: "dehuiskamervandriebergen.nl", photo: ImgPannen  },
-    { naam: "Restaurant Vroeg",         desc: "Boerderij met bakkerij en landwinkel. De hele dag welkom, ma–zo 8:00–23:00.",                    adres: "Achterdijk 1, Bunnik",         web: "vroeg.nl",                    photo: ImgBuiten  },
-    { naam: "Koek & Ei",                desc: "Klein en gezellig lunchrestaurant. Personeel met een hart voor de arbeidsmarkt. Ma–za 10:00–16:00.", adres: "Hoofdstraat 113, Driebergen", web: "koekeneidriebergen.nl",     photo: ImgPannen  },
-    { naam: "Eetcafé Louwietje",        desc: "Bruin eetcafé voor lunch, een borrel of gewoon een drankje. 5 min fietsen van de villa.",        adres: "Traaij 56, Driebergen",        web: "louwietje.nl",               photo: ImgDiner   },
-    { naam: "Boscafé Mas Montagne",     desc: "Verborgen boscafé in het groen bij Kasteel Amerongen. Perfect rustpunt op de fietsroute langs de kastelen. Di–zo 10:00–17:00.", adres: "Maarsbergseweg 2, Amerongen", web: "masmontagne.nl",              photo: ImgBuiten  },
-    { naam: "Koffiehuis de Beuken",    desc: "Rustige koffiebar aan de rand van de Heuvelrug in Driebergen. Specialty coffee, huisgemaakte koek en een terras in de bomen. Ma–za 8:30–17:00.", adres: "Bergweg 12, Driebergen",  web: "koffiehuisdebeuken.nl",        photo: ImgBloemen },
-    { naam: "Theehuis Doorn",          desc: "Sfeervolle theetuin en koffiehuis in het centrum van Doorn. Homemade taart, verse lunch en een zonnige binnentuin. Di–zo 10:00–17:00.", adres: "Dorpsstraat 38, Doorn",      web: "theehuisdoorn.nl",             photo: ImgPannen  },
-    { naam: "Koffie & Zo Zeist",       desc: "Specialty coffeebar aan de Slotlaan in Zeist. Filterkoffie, flat white en een kleine brunchkaart. Ma–za 7:30–17:00.",               adres: "Slotlaan 46, Zeist",           web: "koffieenzozeist.nl",           photo: ImgBuiten  },
+    { naam: "Huiskamer van Driebergen", desc: "Knus koffiehuis voor ontbijt en brunch. Doordeweeks v.a. 8:30, weekend v.a. 9:00 tot 17:00.", adres: "Traaij 84b, Driebergen",       web: "dehuiskamervandriebergen.nl", photo: ImgHuiskamer        },
+    { naam: "Restaurant Vroeg",         desc: "Boerderij met bakkerij en landwinkel. De hele dag welkom, ma–zo 8:00–23:00.",                    adres: "Achterdijk 1, Bunnik",         web: "vroeg.nl",                    photo: ImgVroeg            },
+    { naam: "Koek & Ei",                desc: "Klein en gezellig lunchrestaurant. Personeel met een hart voor de arbeidsmarkt. Ma–za 10:00–16:00.", adres: "Hoofdstraat 113, Driebergen", web: "koekeneidriebergen.nl",     photo: ImgKoekei           },
+    { naam: "Eetcafé Louwietje",        desc: "Bruin eetcafé voor lunch, een borrel of gewoon een drankje. 5 min fietsen van de villa.",        adres: "Traaij 56, Driebergen",        web: "louwietje.nl",               photo: ImgLouwietje        },
+    { naam: "Boscafé Mas Montagne",     desc: "Verborgen boscafé in het groen bij Kasteel Amerongen. Perfect rustpunt op de fietsroute langs de kastelen. Di–zo 10:00–17:00.", adres: "Maarsbergseweg 2, Amerongen", web: "masmontagne.nl",     photo: ImgMasMontagne      },
+    { naam: "Koffiehuis de Beuken",     desc: "Rustige koffiebar aan de rand van de Heuvelrug in Driebergen. Specialty coffee, huisgemaakte koek en een terras in de bomen. Ma–za 8:30–17:00.", adres: "Bergweg 12, Driebergen", web: "koffiehuisdebeuken.nl", photo: ImgBloemen        },
+    { naam: "Chalet St. Helenaheuvel",  desc: "Sfeervolle theetuin en koffiehuis verscholen in het bos bij Doorn. Homemade taart, verse lunch en een terras tussen de bomen. Di–zo 10:00–17:00.", adres: "St. Helenaheuvellaan, Doorn", web: "chaletsinthelenah.nl", photo: ImgChaletHelenaheuvel },
+    { naam: "Koffie & Zo Zeist",        desc: "Specialty coffeebar aan de Slotlaan in Zeist. Filterkoffie, flat white en een kleine brunchkaart. Ma–za 7:30–17:00.",              adres: "Slotlaan 46, Zeist",           web: "koffieenzozeist.nl",  photo: ImgKoffieZoZeist    },
 ];
 
 const AFHAAL_DINNER: Venue[] = [
@@ -157,7 +164,7 @@ const BOODSCHAPPEN: Boodschap[] = [
     { naam: "Aldi",            sub: "Traaij 99-101 · ma–za 8:00–18:00"                  },
     { naam: "Jumbo",             sub: "Palmlaan 2, Driebergen · ma–za 8:00–22:00, zo 12:00–18:00" },
     { naam: "Woensdagmarkt",   sub: "Traaij, Driebergen · wekelijks 11:00–17:00"         },
-    { naam: "Donderdagmarkt Doorn", sub: "Dorpsstraat, Doorn · donderdag 9:00–13:00, 15 min fietsen" },
+    { naam: "Donderdagmarkt Doorn", sub: "Dorpsstraat, Doorn · donderdag 9:00–13:00" },
 ];
 
 const BEZIENSWAARDIGHEDEN: BzItem[] = [
