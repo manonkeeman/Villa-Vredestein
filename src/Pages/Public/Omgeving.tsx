@@ -59,7 +59,8 @@ const POIS: Poi[] = [
     { pos: [52.0464, 5.2841],                         label: "Rotiq",                     sub: "5 min fiets",                  emoji: "🍛", color: "#c05040", link: "https://www.rotiq.nl",                                            linkLabel: "rotiq.nl"                     },
 
     // Bier, Wijn & Cocktails
-    { pos: [52.0875, 5.2255],                         label: "De Schavuit",               sub: "20 min fiets · Zeist",         emoji: "🍺", color: "#8b5e3c", link: "https://www.deschavuit.nl",                                       linkLabel: "deschavuit.nl"                },
+    { pos: [52.0888, 5.1185],                         label: "Café Olivier",              sub: "15 min trein · Utrecht",       emoji: "🍺", color: "#8b5e3c", link: "https://www.cafeolivier.nl",                                      linkLabel: "cafeolivier.nl"               },
+    { pos: [52.1538, 5.3798],                         label: "De Kleine Winst",           sub: "35 min auto · Amersfoort",     emoji: "🍺", color: "#8b5e3c", link: "https://maps.google.com/?q=De+Kleine+Winst+Amersfoort",            linkLabel: "Google Maps →"                },
     { pos: [52.0462, 5.2844],                         label: "Eetcafé Louwietje",         sub: "5 min fiets",                  emoji: "🍺", color: "#8b5e3c", link: "https://www.louwietje.nl",                                        linkLabel: "louwietje.nl"                 },
     { pos: [52.0884, 5.2157],                         label: "Brouwerij Brasser",         sub: "25 min fiets · Zeist",         emoji: "🍺", color: "#8b5e3c", link: "https://www.brouwerijbrasser.nl",                                 linkLabel: "brouwerijbrasser.nl"          },
     { pos: [51.9770, 5.4522],                         label: "Boscafé Mas Montagne",      sub: "35 min fiets · Amerongen",     emoji: "🌲", color: "#8b5e3c", link: "https://www.masmontagne.nl",                                      linkLabel: "masmontagne.nl"               },
@@ -130,7 +131,8 @@ const AFHAAL_DINNER: Venue[] = [
 ];
 
 const CAFE: Venue[] = [
-    { naam: "De Schavuit",               desc: "Muziek & bierspecialiteiten café. Pool, darten, pubquiz. Dagelijks 16:00–2:00.", adres: "Steynlaan 21, Zeist",                  web: "deschavuit.nl",           photo: ImgSfeer    },
+    { naam: "Café Olivier",              desc: "Belgisch biercafé in een voormalige gotische kerk. Meer dan 200 bieren, overdekt terras. Ma–zo 11:00–01:00.", adres: "Achter Clarenburg 9A, Utrecht",   web: "cafeolivier.nl",          photo: ImgSfeer    },
+    { naam: "De Kleine Winst",           desc: "Sfeervolle grand café in het centrum van Amersfoort. Goede wijnen, lokale bieren en een fijn terras.",             adres: "Kleine Spui 12, Amersfoort",     web: "dekleinewinstamersfoort.nl", photo: ImgDiner },
     { naam: "Wapen van Rijsenburg",      desc: "Eten, drinken, netwerken, dansen en zingen. Voor van alles en iedereen.",       adres: "Hoofdstraat 83, Driebergen",           web: "wapenvandriebergen.nl",   photo: ImgTuinfeest},
     { naam: "Brouwerij Brasser",         desc: "Ambachtelijk gebrouwen bier uit Zeist. Wo–zo 16:00–00:00.",                     adres: "Slotlaan 314, Zeist",                  web: "brouwerijbrasser.nl",     photo: ImgBuiten   },
     { naam: "Centrum Zeist",             desc: "Gezellig centrum met terrassen, wijncafés en bierspecialiteiten. Op 20 min fietsen of 10 min rijden.", adres: "Slotlaan, Zeist",   web: "zeist.nl",                photo: ImgSfeer    },
