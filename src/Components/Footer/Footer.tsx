@@ -36,7 +36,7 @@ const Footer = () => {
                         <p className="footer-name">Villa Vredestein</p>
                         <p className="footer-tagline">{t("footer.tagline")}</p>
                         <p className="footer-brand-desc">
-                            Historische villa uit 1906 aan de Utrechtse Heuvelrug. Verblijf, restauratie en een open deur.
+                            Een historische villa uit 1906 in het hart van Driebergen-Rijsenburg, op de Utrechtse Heuvelrug. Verblijf, restauratie en een open deur.
                         </p>
                     </div>
                 </div>

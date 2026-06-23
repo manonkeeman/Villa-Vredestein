@@ -5,19 +5,19 @@ import { Helmet } from "react-helmet-async";
 import "./Home.css";
 
 import HeroImg from "../../Assets/Images/int-woonkamer.jpg";
-import VillaImg from "../../Assets/Images/VillaVredestein2024.jpg";
+import VillaImg from "../../Assets/Images/ext-villa-voorkant.jpg";
 import TuinImg from "../../Assets/Images/ext-tuinfeest.jpg";
 import KroonluchterImg from "../../Assets/Images/int-kroonluchter.jpg";
 import WoonkamerImg2 from "../../Assets/Images/int-woonkamer2.jpg";
 import LuchtballonImg from "../../Assets/Images/ext-luchtballon.png";
 
 const KENMERKEN = [
-    { icon: "🏛️", label: "1906", sub: "gebouwd" },
-    { icon: "🛏️", label: "6", sub: "slaapkamers" },
-    { icon: "🌳", label: "Heuvelrug", sub: "voor de deur" },
-    { icon: "🚂", label: "15 min", sub: "naar Utrecht CS" },
-    { icon: "✈️", label: "50 min", sub: "naar Schiphol" },
-    { icon: "🌿", label: "680 m²", sub: "grond" },
+    { label: "1906", sub: "Gebouwd" },
+    { label: "6", sub: "Slaapkamers" },
+    { label: "Heuvelrug", sub: "Voor de deur" },
+    { label: "15 min", sub: "Utrecht Centraal" },
+    { label: "50 min", sub: "Schiphol" },
+    { label: "680 m²", sub: "Grond" },
 ];
 
 const HIGHLIGHTS = [
@@ -108,8 +108,8 @@ const Home = () => {
                     <span className="hero-eyebrow">Driebergen-Rijsenburg · Utrechtse Heuvelrug</span>
                     <h1 className="hero-title">Villa Vredestein</h1>
                     <p className="hero-sub">
-                        Een historische villa uit 1906. Hoge plafonds, authentieke details
-                        en een ziel die je voelt zodra je binnenstapt.
+                        Een historische villa uit 1906 in het hart van Driebergen-Rijsenburg.
+                        Hoge plafonds, authentieke details en een ziel die je voelt zodra je binnenstapt.
                     </p>
                     <div className="hero-ctas">
                         <button className="hero-btn-primary" onClick={() => navigate("/verhaal")}>
@@ -129,7 +129,6 @@ const Home = () => {
             <section className="kenmerken-bar reveal-row" ref={addRef} aria-label="Kenmerken">
                 {KENMERKEN.map((k) => (
                     <div key={k.label} className="kenmerk-item">
-                        <span className="kenmerk-icon" aria-hidden="true">{k.icon}</span>
                         <strong className="kenmerk-val">{k.label}</strong>
                         <span className="kenmerk-sub">{k.sub}</span>
                     </div>
@@ -155,8 +154,8 @@ const Home = () => {
                         sierstucwerk en een kroonluchter die het midden houdt tussen musea en
                         thuis. Manon en Maxim restaureerden het pand met respect voor wat het altijd was.
                     </p>
-                    <button className="text-link-btn" onClick={() => navigate("/verhaal")}>
-                        Lees het volledige verhaal →
+                    <button className="text-link-btn" onClick={() => navigate("/tijdlijn")}>
+                        Volg het verhaal op de tijdlijn →
                     </button>
                 </div>
             </section>
