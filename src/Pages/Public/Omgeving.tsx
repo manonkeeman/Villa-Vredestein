@@ -24,6 +24,8 @@ import ImgMasMontagne      from "../../Assets/Images/omg-mas-montagne.webp";
 import ImgChaletHelenaheuvel from "../../Assets/Images/omg-chalet-helenaheuvel.jpg";
 import ImgKoffieZoZeist    from "../../Assets/Images/omg-koffie-zo-zeist.jpg";
 import ImgSpotDoorn        from "../../Assets/Images/omg-spot-doorn.jpg";
+import ImgSluisGaarde      from "../../Assets/Images/omg-sluis-gaarde.jpg";
+import ImgWapenRijsenburg  from "../../Assets/Images/omg-wapen-rijsenburg.jpg";
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -138,7 +140,7 @@ const ONTBIJT: Venue[] = [
 ];
 
 const AFHAAL_DINNER: Venue[] = [
-    { naam: "De Sluis Gaarde", desc: "Chinees-Oriëntaals restaurant. Di–zo vanaf 16:00. €–€€.",   adres: "De Sluis 36-37, Driebergen", web: "desluisgaarde.nl",      photo: ImgDiner    },
+    { naam: "De Sluis Gaarde", desc: "Chinees-Oriëntaals restaurant. Di–zo vanaf 16:00. €–€€.",   adres: "De Sluis 36-37, Driebergen", web: "desluisgaarde.nl",      photo: ImgSluisGaarde },
     { naam: "Mi Piace",        desc: "Pizzeria en wijn. Dagelijks 17:00–22:00. €5–20.",            adres: "Traaij 1C, Driebergen",      web: "mipiacedriegergen.nl",  photo: ImgBuiten   },
     { naam: "Kwalitaria",      desc: "Snackbar met groot assortiment. Di–zo 11:30–21:00. €1–10.", adres: "Traaij 62, Driebergen",      web: "kwalitaria.nl",         photo: ImgTuinfeest},
     { naam: "Rotiq",           desc: "Surinaamse gerechten. Dagelijks 11:30–20:00. €6–20.",        adres: "Traaij 70, Driebergen",      web: "rotiq.nl",              photo: ImgDiner    },
@@ -151,7 +153,7 @@ const AFHAAL_DINNER: Venue[] = [
 const CAFE: Venue[] = [
     { naam: "Café Olivier",              desc: "Belgisch biercafé in een voormalige gotische kerk. Meer dan 200 bieren, overdekt terras. Ma–zo 11:00–01:00.", adres: "Achter Clarenburg 9A, Utrecht",   web: "cafeolivier.nl",          photo: ImgSfeer    },
     { naam: "De Kleine Winst",           desc: "Sfeervolle grand café in het centrum van Amersfoort. Goede wijnen, lokale bieren en een fijn terras.",             adres: "Kleine Spui 12, Amersfoort",     web: "dekleinewinstamersfoort.nl", photo: ImgDiner },
-    { naam: "Wapen van Rijsenburg",      desc: "Eten, drinken, netwerken, dansen en zingen. Voor van alles en iedereen.",       adres: "Hoofdstraat 83, Driebergen",           web: "wapenvandriebergen.nl",   photo: ImgTuinfeest},
+    { naam: "Wapen van Rijsenburg",      desc: "Eten, drinken, netwerken, dansen en zingen. Voor van alles en iedereen.",       adres: "Hoofdstraat 83, Driebergen",           web: "wapenvandriebergen.nl",   photo: ImgWapenRijsenburg },
     { naam: "Brouwerij Brasser",         desc: "Ambachtelijk gebrouwen bier uit Zeist. Wo–zo 16:00–00:00.",                     adres: "Slotlaan 314, Zeist",                  web: "brouwerijbrasser.nl",     photo: ImgBuiten   },
     { naam: "Centrum Zeist",             desc: "Gezellig centrum met terrassen, wijncafés en bierspecialiteiten. Op 20 min fietsen of 10 min rijden.", adres: "Slotlaan, Zeist",   web: "zeist.nl",                photo: ImgSfeer    },
     { naam: "Centrum Utrecht",           desc: "Bruisende binnenstad langs de Oudegracht met cocktailbars, wijnbars en levendige terrassen. 15 min per trein.", adres: "Oudegracht, Utrecht", web: "visit-utrecht.nl",  photo: ImgDiner    },
