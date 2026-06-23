@@ -3,11 +3,6 @@ import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import "./Plattegrond.css";
 
-import ImgPercelen      from "../../Assets/Images/archief-kadaster-percelen.jpg";
-import ImgHoofdstraat   from "../../Assets/Images/archief-kadaster-hoofdstraat.jpg";
-import ImgKaartBlauw    from "../../Assets/Images/archief-kadasterkaart-blauw-1.jpg";
-import ImgRegister      from "../../Assets/Images/archief-register-1.jpg";
-import ImgBouwreg       from "../../Assets/Images/archief-bouwregister-1.jpg";
 
 /* ─────────────────────────────────────────────
    Verdiepingen (visueel overzicht)
@@ -93,7 +88,6 @@ const STATS = [
 const Plattegrond = () => {
     const navigate = useNavigate();
     const [actief, setActief] = React.useState<string | null>(null);
-    const [lightboxDoc, setLightboxDoc] = useState<string | null>(null);
     const revealRefs = useRef<HTMLElement[]>([]);
     const addRef = (el: HTMLElement | null) => {
         if (el && !revealRefs.current.includes(el)) revealRefs.current.push(el);
@@ -107,17 +101,6 @@ const Plattegrond = () => {
         revealRefs.current.forEach((el) => el && observer.observe(el));
         return () => observer.disconnect();
     }, []);
-
-    useEffect(() => {
-        if (!lightboxDoc) return;
-        const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setLightboxDoc(null); };
-        document.addEventListener("keydown", onKey);
-        document.body.style.overflow = "hidden";
-        return () => {
-            document.removeEventListener("keydown", onKey);
-            document.body.style.overflow = "";
-        };
-    }, [lightboxDoc]);
 
     return (
         <main className="plattegrond-page">
@@ -205,43 +188,6 @@ const Plattegrond = () => {
                 </section>
             ))}
 
-            {/* ── Historisch archief ── */}
-            <section className="pg-archief reveal-section" ref={addRef as any}>
-                <div className="pg-inner">
-                    <h2 className="pg-section-title">Historische documenten</h2>
-                    <p className="pg-archief-sub">
-                        Kadasterkaarten en handgeschreven registers uit het gemeentearchief.
-                        Ze bevatten de oorspronkelijke maatvoering en perceelligging van Hoofdstraat 147 —
-                        vóór de huidige verbouwing.
-                    </p>
-                    <div className="pg-archief-grid">
-                        {[
-                            { src: ImgPercelen,    titel: "Kadastrale perceelkaart",        sub: "Bouwnummers 2253-2256, Hoofdstraat" },
-                            { src: ImgHoofdstraat, titel: "Situatiekaart Hoofdstraat",      sub: "Historische bebouwingskaart" },
-                            { src: ImgKaartBlauw,  titel: "Blauwdrukkaart Driebergen",      sub: "Historische kadasterkaart" },
-                            { src: ImgRegister,    titel: "Kamerafmetingen (register)",     sub: "Handgeschreven archiefregister" },
-                            { src: ImgBouwreg,     titel: "Bouwregister Hfdstr. 147",       sub: "Oppervlakten & aantekeningen" },
-                        ].map((doc) => (
-                            <figure
-                                key={doc.titel}
-                                className="pg-archief-item"
-                                onClick={() => setLightboxDoc(doc.src)}
-                                role="button"
-                                tabIndex={0}
-                                onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && setLightboxDoc(doc.src)}
-                                aria-label={`${doc.titel} — klik om te vergroten`}
-                            >
-                                <img src={doc.src} alt={doc.titel} loading="lazy" />
-                                <figcaption>
-                                    <strong>{doc.titel}</strong>
-                                    <span>{doc.sub}</span>
-                                </figcaption>
-                            </figure>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
             {/* ── CTA ── */}
             <section className="pg-cta reveal-section" ref={addRef as any}>
                 <div className="pg-inner pg-cta-inner">
@@ -255,30 +201,6 @@ const Plattegrond = () => {
                 </div>
             </section>
 
-            {/* ── Lightbox historische documenten ── */}
-            {lightboxDoc && (
-                <div
-                    className="pg-lightbox"
-                    onClick={() => setLightboxDoc(null)}
-                    role="dialog"
-                    aria-modal="true"
-                    aria-label="Document vergroot"
-                >
-                    <button
-                        className="pg-lightbox-close"
-                        onClick={() => setLightboxDoc(null)}
-                        aria-label="Sluiten"
-                    >
-                        ✕
-                    </button>
-                    <img
-                        src={lightboxDoc}
-                        alt="Historisch document"
-                        className="pg-lightbox-img"
-                        onClick={(e) => e.stopPropagation()}
-                    />
-                </div>
-            )}
         </main>
     );
 };

@@ -116,9 +116,10 @@ type Boodschap = { naam: string; sub: string };
 
 const ONTBIJT: Venue[] = [
     { naam: "Huiskamer van Driebergen", desc: "Knus koffiehuis voor ontbijt en brunch. Doordeweeks v.a. 8:30, weekend v.a. 9:00 tot 17:00.", adres: "Traaij 84b, Driebergen",       web: "dehuiskamervandriebergen.nl", photo: ImgPannen  },
-    { naam: "Het Wapen van Driebergen", desc: "Van koffie tot lunch en diner. Dagelijks geopend vanaf 10:00.",                                  adres: "Hoofdstraat 83, Driebergen",  web: "wapenvandriebergen.nl",       photo: ImgSfeer   },
     { naam: "Restaurant Vroeg",         desc: "Boerderij met bakkerij en landwinkel. De hele dag welkom, ma–zo 8:00–23:00.",                    adres: "Achterdijk 1, Bunnik",         web: "vroeg.nl",                    photo: ImgBuiten  },
     { naam: "Koek & Ei",                desc: "Klein en gezellig lunchrestaurant. Personeel met een hart voor de arbeidsmarkt. Ma–za 10:00–16:00.", adres: "Hoofdstraat 113, Driebergen", web: "koekeneidriebergen.nl",     photo: ImgPannen  },
+    { naam: "Eetcafé Louwietje",        desc: "Bruin eetcafé voor lunch, een borrel of gewoon een drankje. 5 min fietsen van de villa.",        adres: "Traaij 56, Driebergen",        web: "louwietje.nl",               photo: ImgDiner   },
+    { naam: "Boscafé Mas Montagne",     desc: "Verborgen boscafé in het groen bij Kasteel Amerongen. Perfect rustpunt op de fietsroute langs de kastelen. Di–zo 10:00–17:00.", adres: "Maarsbergseweg 2, Amerongen", web: "masmontagne.nl", photo: ImgBuiten },
 ];
 
 const AFHAAL_DINNER: Venue[] = [
@@ -129,13 +130,13 @@ const AFHAAL_DINNER: Venue[] = [
 ];
 
 const CAFE: Venue[] = [
-    { naam: "De Schavuit",          desc: "Muziek & bierspecialiteiten café. Pool, darten, pubquiz. Dagelijks 16:00–2:00.", adres: "Steynlaan 21, Zeist",                web: "deschavuit.nl",           photo: ImgSfeer    },
-    { naam: "Eetcafe Louwietje",    desc: "Bruin eetcafe voor lunch, een borrel of gewoon een drankje.",                    adres: "Traaij 56, Driebergen",              web: "louwietje.nl",            photo: ImgDiner    },
-    { naam: "Wapen van Rijsenburg", desc: "Eten, drinken, netwerken, dansen en zingen. Voor van alles en iedereen.",       adres: "Hoofdstraat 83, Driebergen",         web: "wapenvandriebergen.nl",   photo: ImgTuinfeest},
-    { naam: "Brouwerij Brasser",    desc: "Ambachtelijk gebrouwen bier uit Zeist. Wo–zo 16:00–00:00.",                     adres: "Slotlaan 314, Zeist",                web: "brouwerijbrasser.nl",     photo: ImgBuiten   },
-    { naam: "Boscafé Mas Montagne", desc: "Verborgen boscafé in het groen bij Kasteel Amerongen. Perfect rustpunt op de fietsroute langs de kastelen. Di–zo 10:00–17:00.", adres: "Maarsbergseweg 2, Amerongen", web: "masmontagne.nl", photo: ImgBuiten },
-    { naam: "Centrum Wijk bij Duurstede", desc: "Historisch stadje direct aan de Rijn. Sfeervolle terrassen rondom het kasteel en langs het water. Op 25 minuten fietsen van de villa.", adres: "Markt, Wijk bij Duurstede", web: "vvvutrechtheuvelrug.nl", photo: ImgSfeer },
-    { naam: "Centrum Amersfoort",   desc: "Levendige binnenstad met terrassen, restaurants en cultuur. Bereikbaar in 35 minuten met de auto of trein.", adres: "Hof 10, Amersfoort",         web: "vvvamersfoort.nl",        photo: ImgDiner    },
+    { naam: "De Schavuit",               desc: "Muziek & bierspecialiteiten café. Pool, darten, pubquiz. Dagelijks 16:00–2:00.", adres: "Steynlaan 21, Zeist",                  web: "deschavuit.nl",           photo: ImgSfeer    },
+    { naam: "Wapen van Rijsenburg",      desc: "Eten, drinken, netwerken, dansen en zingen. Voor van alles en iedereen.",       adres: "Hoofdstraat 83, Driebergen",           web: "wapenvandriebergen.nl",   photo: ImgTuinfeest},
+    { naam: "Brouwerij Brasser",         desc: "Ambachtelijk gebrouwen bier uit Zeist. Wo–zo 16:00–00:00.",                     adres: "Slotlaan 314, Zeist",                  web: "brouwerijbrasser.nl",     photo: ImgBuiten   },
+    { naam: "Centrum Zeist",             desc: "Gezellig centrum met terrassen, wijncafés en bierspecialiteiten. Op 20 min fietsen of 10 min rijden.", adres: "Slotlaan, Zeist",   web: "zeist.nl",                photo: ImgSfeer    },
+    { naam: "Centrum Utrecht",           desc: "Bruisende binnenstad langs de Oudegracht met cocktailbars, wijnbars en levendige terrassen. 15 min per trein.", adres: "Oudegracht, Utrecht", web: "visit-utrecht.nl",  photo: ImgDiner    },
+    { naam: "Centrum Wijk bij Duurstede",desc: "Historisch stadje direct aan de Rijn. Sfeervolle terrassen rondom het kasteel en langs het water. 25 min fietsen.", adres: "Markt, Wijk bij Duurstede", web: "vvvutrechtheuvelrug.nl", photo: ImgSfeer },
+    { naam: "Centrum Amersfoort",        desc: "Levendige binnenstad met terrassen, restaurants en cultuur. 35 min met de auto of trein.", adres: "Hof 10, Amersfoort", web: "vvvamersfoort.nl", photo: ImgDiner    },
 ];
 
 const BOODSCHAPPEN: Boodschap[] = [
