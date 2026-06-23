@@ -55,6 +55,10 @@ import ImgAmelisweerd           from "../../Assets/Images/omg-amelisweerd.jpg";
 import ImgPaleisSoestdijk       from "../../Assets/Images/omg-paleis-soestdijk.jpg";
 import ImgVliegbasis            from "../../Assets/Images/omg-vliegbasis-soesterberg.jpg";
 import ImgPatheCinema           from "../../Assets/Images/omg-pathe-cinema.jpg";
+import ImgMarktDriebergen      from "../../Assets/Images/omg-markt-driebergen.webp";
+import ImgMarktDoorn           from "../../Assets/Images/omg-markt-doorn.webp";
+import ImgMarktLeersum         from "../../Assets/Images/omg-markt-leersum.webp";
+import ImgMarktGroeneveld      from "../../Assets/Images/omg-markt-groeneveld.webp";
 import ImgWindmolen             from "../../Assets/Images/omg-windmolen-rijn.jpg";
 import ImgKartbaan              from "../../Assets/Images/omg-kartbaan.jpg";
 import ImgRhijnauwen            from "../../Assets/Images/omg-rhijnauwen.jpg";
@@ -154,7 +158,6 @@ const AFSTANDEN = [
 
 type Venue = { naam: string; desc: string; adres: string; web: string; photo: string };
 type BzItem = { emoji: string; naam: string; desc: string; adres: string; web?: string | null; photo: string };
-type Boodschap = { naam: string; sub: string };
 
 const ONTBIJT: Venue[] = [
     { naam: "Huiskamer van Driebergen", desc: "Knus koffiehuis voor ontbijt en brunch. Doordeweeks v.a. 8:30, weekend v.a. 9:00 tot 17:00.", adres: "Traaij 84b, Driebergen",       web: "https://www.dehuiskamervandriebergen.nl/", photo: ImgHuiskamer        },
@@ -189,13 +192,11 @@ const CAFE: Venue[] = [
     { naam: "Centrum Amersfoort",        desc: "Levendige binnenstad met terrassen, restaurants en cultuur. 35 min met de auto of trein.", adres: "Hof 10, Amersfoort", web: "https://www.vvvamersfoort.nl/", photo: ImgCentrumAmersfoort },
 ];
 
-const BOODSCHAPPEN: Boodschap[] = [
-    { naam: "Albert Heijn",    sub: "Hoofdstraat 162 & Binnenhof 1 · ma–za 8:00–22:00, zo 12:00–18:00" },
-    { naam: "Lidl",            sub: "Traaij 153a · ma–za 8:00–21:00, zo 12:00–18:00"    },
-    { naam: "Aldi",            sub: "Traaij 99-101 · ma–za 8:00–18:00"                  },
-    { naam: "Jumbo",             sub: "Palmlaan 2, Driebergen · ma–za 8:00–22:00, zo 12:00–18:00" },
-    { naam: "Woensdagmarkt",   sub: "Traaij, Driebergen · wekelijks 11:00–17:00"         },
-    { naam: "Donderdagmarkt Doorn", sub: "Dorpsstraat, Doorn · donderdag 9:00–13:00" },
+const MARKTEN: Venue[] = [
+    { naam: "Weekmarkt Driebergen",           desc: "Gezellige wekelijkse markt op de Traaij met groente, fruit, kaas, bloemen en lokale producten. Elke woensdag 11:00–17:00.", adres: "Traaij, Driebergen",                  web: "https://www.opdeheuvelrug.nl/agenda/4130532773/weekmarkt-driebergen",             photo: ImgMarktDriebergen },
+    { naam: "Weekmarkt Doorn",                desc: "Verse markt in het hart van Doorn. Buurtgevoel, eerlijke producten en een fijn terras erbij. Elke donderdag 9:00–13:00.",  adres: "Dorpsstraat, Doorn",                   web: "https://www.opdeheuvelrug.nl/agenda/1415645051/weekmarkt-doorn",                  photo: ImgMarktDoorn },
+    { naam: "Weekmarkt Leersum",              desc: "Kleine maar fijne weekmarkt in Leersum met lokale standhouders en een dorps karakter. Elke vrijdag 10:00–13:00.",           adres: "Dorpsplein, Leersum",                  web: "https://www.opdeheuvelrug.nl/agenda/593901549/weekmarkt-leersum",                 photo: ImgMarktLeersum },
+    { naam: "Trotsmarkt Kasteel Groeneveld", desc: "Sfeervol seizoensmarkt op het landgoed van Kasteel Groeneveld in Baarn. Ambacht, streekproducten en een koninklijke omgeving.", adres: "Groeneveld 1, Baarn",              web: "https://www.opdeheuvelrug.nl/agenda/2991085050/trotsmarkt-kasteel-groeneveld-baarn-1", photo: ImgMarktGroeneveld },
 ];
 
 const BEZIENSWAARDIGHEDEN: BzItem[] = [
@@ -422,21 +423,13 @@ const Omgeving = () => {
                 </div>
             </section>
 
-            {/* Boodschappen */}
-            <section className="omg-boodschappen reveal-section" ref={addRef} aria-label="Boodschappen">
+            {/* Markten */}
+            <section className="omg-boodschappen reveal-section" ref={addRef} aria-label="Markten">
                 <div className="omg-section-inner">
-                    <h2 className="omg-section-title">Dagelijkse boodschappen</h2>
-                    <p className="omg-section-sub">Alles op loopafstand of een korte fietsrit.</p>
-                    <div className="boodschappen-grid">
-                        {BOODSCHAPPEN.map((b, i) => (
-                            <div key={i} className="boodschappen-card">
-                                <span className="boodschappen-icon" aria-hidden="true">🛒</span>
-                                <div>
-                                    <strong>{b.naam}</strong>
-                                    <span>{b.sub}</span>
-                                </div>
-                            </div>
-                        ))}
+                    <h2 className="omg-section-title">Markten</h2>
+                    <p className="omg-section-sub">Wekelijkse en seizoensmarkten in de omgeving.</p>
+                    <div className="omg-venues-grid">
+                        {MARKTEN.map((v) => <VenueCard key={v.naam} v={v} />)}
                     </div>
                 </div>
             </section>
