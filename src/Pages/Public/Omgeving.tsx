@@ -90,6 +90,8 @@ const POIS: Poi[] = [
     { pos: [51.9749, 5.4519],                         label: "Kasteel Amerongen",         sub: "35 min fiets · Amerongen",     emoji: "🏰", color: "#7a6080", link: "https://www.kasteelamerongen.nl",                                 linkLabel: "kasteelamerongen.nl"          },
     { pos: [51.9726, 5.3340],                         label: "Kasteel Duurstede",         sub: "25 min fiets · Wijk bij Duurstede", emoji: "🏯", color: "#7a6080", link: "https://www.kasteelduurstede.nl",                            linkLabel: "kasteelduurstede.nl"          },
     { pos: [52.0888, 5.2363],                         label: "Slot Zeist",                sub: "25 min fiets · Zeist",         emoji: "🏰", color: "#7a6080", link: "https://www.slotzeist.nl",                                        linkLabel: "slotzeist.nl"                 },
+    { pos: [52.0910, 4.9790],                         label: "Kasteel de Haar",           sub: "30 min auto · Haarzuilens",    emoji: "🏰", color: "#7a6080", link: "https://www.kasteeldehaar.nl",                                   linkLabel: "kasteeldehaar.nl"             },
+    { pos: [52.1975, 5.2835],                         label: "Paleis Soestdijk",          sub: "25 min auto · Baarn",          emoji: "🏛️", color: "#7a6080", link: "https://www.paleis-soestdijk.nl",                                 linkLabel: "paleis-soestdijk.nl"          },
 
     // Activiteiten
     { pos: [52.0356, 5.2722],                         label: "Kartcircuit Driebergen",    sub: "10 min fiets",                 emoji: "🏎️", color: "#4a6080", link: "https://www.kartbaan.com",                                        linkLabel: "kartbaan.com"                 },
@@ -120,7 +122,10 @@ const ONTBIJT: Venue[] = [
     { naam: "Restaurant Vroeg",         desc: "Boerderij met bakkerij en landwinkel. De hele dag welkom, ma–zo 8:00–23:00.",                    adres: "Achterdijk 1, Bunnik",         web: "vroeg.nl",                    photo: ImgBuiten  },
     { naam: "Koek & Ei",                desc: "Klein en gezellig lunchrestaurant. Personeel met een hart voor de arbeidsmarkt. Ma–za 10:00–16:00.", adres: "Hoofdstraat 113, Driebergen", web: "koekeneidriebergen.nl",     photo: ImgPannen  },
     { naam: "Eetcafé Louwietje",        desc: "Bruin eetcafé voor lunch, een borrel of gewoon een drankje. 5 min fietsen van de villa.",        adres: "Traaij 56, Driebergen",        web: "louwietje.nl",               photo: ImgDiner   },
-    { naam: "Boscafé Mas Montagne",     desc: "Verborgen boscafé in het groen bij Kasteel Amerongen. Perfect rustpunt op de fietsroute langs de kastelen. Di–zo 10:00–17:00.", adres: "Maarsbergseweg 2, Amerongen", web: "masmontagne.nl", photo: ImgBuiten },
+    { naam: "Boscafé Mas Montagne",     desc: "Verborgen boscafé in het groen bij Kasteel Amerongen. Perfect rustpunt op de fietsroute langs de kastelen. Di–zo 10:00–17:00.", adres: "Maarsbergseweg 2, Amerongen", web: "masmontagne.nl",              photo: ImgBuiten  },
+    { naam: "Koffiehuis de Beuken",    desc: "Rustige koffiebar aan de rand van de Heuvelrug in Driebergen. Specialty coffee, huisgemaakte koek en een terras in de bomen. Ma–za 8:30–17:00.", adres: "Bergweg 12, Driebergen",  web: "koffiehuisdebeuken.nl",        photo: ImgBloemen },
+    { naam: "Theehuis Doorn",          desc: "Sfeervolle theetuin en koffiehuis in het centrum van Doorn. Homemade taart, verse lunch en een zonnige binnentuin. Di–zo 10:00–17:00.", adres: "Dorpsstraat 38, Doorn",      web: "theehuisdoorn.nl",             photo: ImgPannen  },
+    { naam: "Koffie & Zo Zeist",       desc: "Specialty coffeebar aan de Slotlaan in Zeist. Filterkoffie, flat white en een kleine brunchkaart. Ma–za 7:30–17:00.",               adres: "Slotlaan 46, Zeist",           web: "koffieenzozeist.nl",           photo: ImgBuiten  },
 ];
 
 const AFHAAL_DINNER: Venue[] = [
@@ -128,6 +133,10 @@ const AFHAAL_DINNER: Venue[] = [
     { naam: "Mi Piace",        desc: "Pizzeria en wijn. Dagelijks 17:00–22:00. €5–20.",            adres: "Traaij 1C, Driebergen",      web: "mipiacedriegergen.nl",  photo: ImgBuiten   },
     { naam: "Kwalitaria",      desc: "Snackbar met groot assortiment. Di–zo 11:30–21:00. €1–10.", adres: "Traaij 62, Driebergen",      web: "kwalitaria.nl",         photo: ImgTuinfeest},
     { naam: "Rotiq",           desc: "Surinaamse gerechten. Dagelijks 11:30–20:00. €6–20.",        adres: "Traaij 70, Driebergen",      web: "rotiq.nl",              photo: ImgDiner    },
+    { naam: "Restaurant Hoog Beek",    desc: "Panoramarestaurant op de Utrechtse Heuvelrug. Seizoensgebonden menu met weidse vergezichten over de polder. 20 min fietsen.",     adres: "Boschzicht 1, Zeist",              web: "hoogbeek.nl",           photo: ImgBuiten   },
+    { naam: "Herberg De Zon",          desc: "Klassieke herberg in hartje Doorn. Huiselijk koken, een vaste schare trouwe gasten en een zonnig terras aan de Dorpsstraat. 15 min fietsen.", adres: "Dorpsstraat 2, Doorn",  web: "herbergdezon.nl",       photo: ImgDiner    },
+    { naam: "Grand Café Schoonoord",   desc: "Historisch grand café aan de Slotlaan in Zeist. Lunch, diner en borrel, met terras schuin tegenover Slot Zeist.",                adres: "Slotlaan 28, Zeist",               web: "hotelschoonoord.nl",    photo: ImgSfeer    },
+    { naam: "De Peppermolen",          desc: "Bistro in het centrum van Driebergen. Dagschotels, pasta en een wisselende seizoenskaart. Gezellig en betaalbaar.",              adres: "Hoofdstraat 133, Driebergen",      web: "depeppermolen.nl",      photo: ImgDiner    },
 ];
 
 const CAFE: Venue[] = [
@@ -145,7 +154,9 @@ const BOODSCHAPPEN: Boodschap[] = [
     { naam: "Albert Heijn",    sub: "Hoofdstraat 162 & Binnenhof 1 · ma–za 8:00–22:00, zo 12:00–18:00" },
     { naam: "Lidl",            sub: "Traaij 153a · ma–za 8:00–21:00, zo 12:00–18:00"    },
     { naam: "Aldi",            sub: "Traaij 99-101 · ma–za 8:00–18:00"                  },
+    { naam: "Jumbo",             sub: "Palmlaan 2, Driebergen · ma–za 8:00–22:00, zo 12:00–18:00" },
     { naam: "Woensdagmarkt",   sub: "Traaij, Driebergen · wekelijks 11:00–17:00"         },
+    { naam: "Donderdagmarkt Doorn", sub: "Dorpsstraat, Doorn · donderdag 9:00–13:00, 15 min fietsen" },
 ];
 
 const BEZIENSWAARDIGHEDEN: BzItem[] = [
@@ -166,6 +177,8 @@ const KASTELEN: Venue[] = [
     { naam: "Kasteel Amerongen",           desc: "Een tipje van de kastelengeschiedenis van de Heuvelrug. Vlakbij boscafé Mas Montagne.",        adres: "Drostestraat 20, Amerongen",        web: "kasteelamerongen.nl", photo: ImgVilla1910 },
     { naam: "Kasteel Duurstede",           desc: "Indrukwekkende middeleeuwse kasteelruïne direct aan de Rijn in Wijk bij Duurstede. Museum met eeuwenoude geschiedenis. Op 25 minuten fietsen.", adres: "Kasteel 1, Wijk bij Duurstede", web: "kasteelduurstede.nl", photo: ImgVilla1910 },
     { naam: "Slot Zeist",                  desc: "Prachtig 17e-eeuws kasteel midden in Zeist, omgeven door een monumentaal park. Regelmatig evenementen en markten.",                    adres: "Zinzendorflaan 1, Zeist",           web: "slotzeist.nl",        photo: ImgBloemen   },
+    { naam: "Kasteel de Haar",             desc: "Het meest complete middeleeuwse kasteel van Nederland. Gerestaureerd eind 19e eeuw door Pierre Cuypers. Prachtige torens, staatsievertrekken en tuinen. 30 min auto.", adres: "Kasteellaan 1, Haarzuilens", web: "kasteeldehaar.nl", photo: ImgVilla1910 },
+    { naam: "Paleis Soestdijk",            desc: "Voormalig zomerverblijf van koningin Juliana en prins Bernhard. Nu opengesteld als museum en evenementenlocatie in het bos van Baarn. 25 min auto.", adres: "Amsterdamsestraatweg 1, Baarn", web: "paleis-soestdijk.nl", photo: ImgBloemen },
 ];
 
 const ACTIVITEITEN: BzItem[] = [
