@@ -176,7 +176,7 @@ const NIGHTLIFE: Venue[] = [
     { naam: "Club Poema",       desc: "Een van de oudste clubs van Utrecht. Elektronische muziek en techno, speciale studentenavonden. Vanaf 18 jaar.", adres: "Drieharingstraat 22, Utrecht",          web: "clubpoema.nl",       photo: ImgTuinfeest },
     { naam: "EKKO",             desc: "Concerten en clubavonden, alternatief clubben. Toegankelijk vanaf 14 jaar.",                                      adres: "Bemuurde Weerd Westzijde 3, Utrecht",   web: "ekko.nl",            photo: ImgSfeer     },
     { naam: "Tivoli Vredenburg",desc: "Alle muziekgenres onder één dak, midden in het centrum van Utrecht.",                                             adres: "Vredenburg 11, Utrecht",                web: "tivolivredenburg.nl", photo: ImgBuiten    },
-    { naam: "Club Basis",       desc: "Donkere club met Berlijnse vibe — voornamelijk techno.",                                                          adres: "Oudegracht aan de Werf 9, Utrecht",     web: "clubbasis.nl",       photo: ImgTuinfeest },
+    { naam: "Club Basis",       desc: "Donkere club met Berlijnse vibe, voornamelijk techno.",                                                          adres: "Oudegracht aan de Werf 9, Utrecht",     web: "clubbasis.nl",       photo: ImgTuinfeest },
 ];
 
 const VenueCard = ({ v }: { v: Venue }) => (
@@ -293,8 +293,8 @@ const Omgeving = () => {
             {/* Getting Around */}
             <section className="omg-transport reveal-section" ref={addRef} aria-label="Vervoer">
                 <div className="omg-section-inner">
-                    <h2 className="omg-section-title">Getting around</h2>
-                    <p className="omg-section-sub">Train, bus, bike — Driebergen moves smoothly.</p>
+                    <h2 className="omg-section-title">Vervoer & Bereikbaarheid</h2>
+                    <p className="omg-section-sub">Trein, bus of fiets. Driebergen is goed bereikbaar.</p>
                     <div className="transport-grid">
                         <div className="transport-card">
                             <span className="transport-icon">🚂</span>
@@ -323,7 +323,7 @@ const Omgeving = () => {
                             <p className="transport-loc">Bij het station beschikbaar</p>
                             <ul className="transport-list">
                                 <li>OV E-bike: €10 (eerste 24 uur)</li>
-                                <li>OV Fiets: €4,65 — na 3 dagen €9,65 p.d.</li>
+                                <li>OV Fiets: €4,65 (na 3 dagen €9,65 p.d.)</li>
                                 <li><a href="https://www.ovfietsbeschikbaar.nl" target="_blank" rel="noreferrer" className="transport-web-item">ovfietsbeschikbaar.nl</a></li>
                             </ul>
                         </div>
@@ -403,7 +403,7 @@ const Omgeving = () => {
             <section className="omg-kastelen reveal-section" ref={addRef} aria-label="Kastelen en landgoederen">
                 <div className="omg-section-inner">
                     <h2 className="omg-section-title">Kastelen & Landgoederen</h2>
-                    <p className="omg-section-sub">Culture is calling — allemaal op fietsafstand.</p>
+                    <p className="omg-section-sub">Kastelen, landgoederen en een rijke geschiedenis op fietsafstand.</p>
                     <div className="omg-venues-grid">
                         {KASTELEN.map((v) => <VenueCard key={v.naam} v={v} />)}
                     </div>
@@ -425,7 +425,7 @@ const Omgeving = () => {
             <section className="omg-nightlife reveal-section" ref={addRef} aria-label="Clubs en uitgaan">
                 <div className="omg-section-inner">
                     <h2 className="omg-section-title">Clubs & Nightlife</h2>
-                    <p className="omg-section-sub">Dance like no one is watching — Utrecht is vlakbij.</p>
+                    <p className="omg-section-sub">Een avond uit? Utrecht is op 15 minuten.</p>
                     <div className="omg-venues-grid omg-venues-grid--last">
                         {NIGHTLIFE.map((v) => <VenueCard key={v.naam} v={v} />)}
                     </div>

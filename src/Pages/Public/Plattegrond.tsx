@@ -68,7 +68,7 @@ const VERDIEPINGEN = [
         status: "deels beschikbaar",
         ruimtes: [
             { naam: "Terras",                     icon: "☀️", afm: "~40 m²", info: "Achtertuin, barbecue, zitgelegenheid" },
-            { naam: "Moestuin",                   icon: "🥦", afm: "",        info: "Al aangelegd — eigen groenten" },
+            { naam: "Moestuin",                   icon: "🥦", afm: "",        info: "Al aangelegd, eigen groenten" },
             { naam: "Sauna",                      icon: "🧖", afm: "~15 m²", info: "In aanbouw", aanbouw: true },
             { naam: "Dompelbad",                  icon: "🛁", afm: "",        info: "In aanbouw naast sauna", aanbouw: true },
             { naam: "Buitenkeuken",               icon: "🔥", afm: "",        info: "In aanbouw", aanbouw: true },
@@ -193,7 +193,7 @@ const Plattegrond = () => {
                 <div className="pg-inner pg-cta-inner">
                     <div>
                         <h2>Interesse in verblijven?</h2>
-                        <p>Studenten, korte verhuur of langdurig wonen — vraag beschikbaarheid op.</p>
+                        <p>Studenten, korte verhuur of langdurig wonen. Vraag beschikbaarheid op.</p>
                     </div>
                     <button className="pg-cta-btn" onClick={() => navigate("/verblijven")}>
                         Bekijk verblijfsopties
