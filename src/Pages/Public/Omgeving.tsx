@@ -26,6 +26,11 @@ import ImgKoffieZoZeist    from "../../Assets/Images/omg-koffie-zo-zeist.jpg";
 import ImgSpotDoorn        from "../../Assets/Images/omg-spot-doorn.jpg";
 import ImgSluisGaarde      from "../../Assets/Images/omg-sluis-gaarde.jpg";
 import ImgWapenRijsenburg  from "../../Assets/Images/omg-wapen-rijsenburg.jpg";
+import ImgFatItalian       from "../../Assets/Images/omg-fat-italian.jpg";
+import ImgNio              from "../../Assets/Images/omg-nio.jpg";
+import ImgBistroPaul       from "../../Assets/Images/omg-bistro-paul.jpg";
+import ImgVagabond         from "../../Assets/Images/omg-vagabond.jpg";
+import ImgKleinZwitserland from "../../Assets/Images/omg-klein-zwitserland.jpg";
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -131,7 +136,7 @@ type Boodschap = { naam: string; sub: string };
 const ONTBIJT: Venue[] = [
     { naam: "Huiskamer van Driebergen", desc: "Knus koffiehuis voor ontbijt en brunch. Doordeweeks v.a. 8:30, weekend v.a. 9:00 tot 17:00.", adres: "Traaij 84b, Driebergen",       web: "dehuiskamervandriebergen.nl", photo: ImgHuiskamer        },
     { naam: "Restaurant Vroeg",         desc: "Boerderij met bakkerij en landwinkel. De hele dag welkom, ma–zo 8:00–23:00.",                    adres: "Achterdijk 1, Bunnik",         web: "vroeg.nl",                    photo: ImgVroeg            },
-    { naam: "Koek & Ei",                desc: "Klein en gezellig lunchrestaurant. Personeel met een hart voor de arbeidsmarkt. Ma–za 10:00–16:00.", adres: "Hoofdstraat 113, Driebergen", web: "koekeneidriebergen.nl",     photo: ImgKoekei           },
+    { naam: "The Fat Italian",           desc: "Authentieke Italiaanse trattoria in Driebergen. Verse pasta, pizza uit de houtoven en antipasti. Hartelijk en gezellig.", adres: "Hoofdstraat, Driebergen", web: "thefatitalian.nl",         photo: ImgFatItalian       },
     { naam: "Eetcafé Louwietje",        desc: "Bruin eetcafé voor lunch, een borrel of gewoon een drankje. 5 min fietsen van de villa.",        adres: "Traaij 56, Driebergen",        web: "louwietje.nl",               photo: ImgLouwietje        },
     { naam: "Boscafé Mas Montagne",     desc: "Verborgen boscafé in het groen bij Kasteel Amerongen. Perfect rustpunt op de fietsroute langs de kastelen. Di–zo 10:00–17:00.", adres: "Maarsbergseweg 2, Amerongen", web: "masmontagne.nl",     photo: ImgMasMontagne      },
     { naam: "Café Spot Doorn",           desc: "Gezellig café in het centrum van Doorn. Koffie, lunch en een fijn terras. Perfect tussenstop op de fietsroute door de Heuvelrug.",              adres: "Dorpsstraat, Doorn",     web: "spotdoorn.nl",         photo: ImgSpotDoorn       },
@@ -144,10 +149,10 @@ const AFHAAL_DINNER: Venue[] = [
     { naam: "Mi Piace",        desc: "Pizzeria en wijn. Dagelijks 17:00–22:00. €5–20.",            adres: "Traaij 1C, Driebergen",      web: "mipiacedriegergen.nl",  photo: ImgBuiten   },
     { naam: "Cafetaria To Go", desc: "Op het station. Echte lekkere patat in schil, bubble tea en een uitgebreide kaart. Vriendelijke bediening.", adres: "Stationsweg, Driebergen-Zeist", web: "cafetariatogo.nl",    photo: ImgTuinfeest},
     { naam: "Rotiq",           desc: "Surinaamse gerechten. Dagelijks 11:30–20:00. €6–20.",        adres: "Traaij 70, Driebergen",      web: "rotiq.nl",              photo: ImgDiner    },
-    { naam: "Restaurant Hoog Beek",    desc: "Panoramarestaurant op de Utrechtse Heuvelrug. Seizoensgebonden menu met weidse vergezichten over de polder. 20 min fietsen.",     adres: "Boschzicht 1, Zeist",              web: "hoogbeek.nl",           photo: ImgBuiten   },
-    { naam: "Herberg De Zon",          desc: "Klassieke herberg in hartje Doorn. Huiselijk koken, een vaste schare trouwe gasten en een zonnig terras aan de Dorpsstraat. 15 min fietsen.", adres: "Dorpsstraat 2, Doorn",  web: "herbergdezon.nl",       photo: ImgDiner    },
-    { naam: "Grand Café Schoonoord",   desc: "Historisch grand café aan de Slotlaan in Zeist. Lunch, diner en borrel, met terras schuin tegenover Slot Zeist.",                adres: "Slotlaan 28, Zeist",               web: "hotelschoonoord.nl",    photo: ImgSfeer    },
-    { naam: "De Peppermolen",          desc: "Bistro in het centrum van Driebergen. Dagschotels, pasta en een wisselende seizoenskaart. Gezellig en betaalbaar.",              adres: "Hoofdstraat 133, Driebergen",      web: "depeppermolen.nl",      photo: ImgDiner    },
+    { naam: "Restaurant NIO",          desc: "Modern restaurant in het centrum van Driebergen. Creatieve gerechten, mooie wijnen en een sfeervolle ambiance.",               adres: "Hoofdstraat, Driebergen",          web: "restaurantnio.nl",      photo: ImgNio      },
+    { naam: "Bistro Paul",             desc: "Frans-geïnspireerde bistro met een eerlijke keuken. Dagverse gerechten, goede wijn en een warm terras.",                         adres: "Doorn",                            web: "bistropaul.nl",         photo: ImgBistroPaul },
+    { naam: "Vagabond Driebergen",     desc: "Café-restaurant in Driebergen. Ontspannen sfeer, mooie drankkaart en een wisselend menu van ontbijt tot diner.",                adres: "Driebergen",                       web: "vagabonddriebergen.nl", photo: ImgVagabond },
+    { naam: "Klein Zwitserland",       desc: "Sfeervol restaurant op de Heuvelrug in Driebergen. Terrasdiner in het groen, seizoensgebonden keuken.",                         adres: "Driebergen",                       web: "kleinzwitserland.nl",   photo: ImgKleinZwitserland },
 ];
 
 const CAFE: Venue[] = [
