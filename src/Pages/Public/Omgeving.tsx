@@ -23,6 +23,7 @@ import ImgLouwietje        from "../../Assets/Images/omg-louwietje.jpg";
 import ImgMasMontagne      from "../../Assets/Images/omg-mas-montagne.webp";
 import ImgChaletHelenaheuvel from "../../Assets/Images/omg-chalet-helenaheuvel.jpg";
 import ImgKoffieZoZeist    from "../../Assets/Images/omg-koffie-zo-zeist.jpg";
+import ImgSpotDoorn        from "../../Assets/Images/omg-spot-doorn.jpg";
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -131,7 +132,7 @@ const ONTBIJT: Venue[] = [
     { naam: "Koek & Ei",                desc: "Klein en gezellig lunchrestaurant. Personeel met een hart voor de arbeidsmarkt. Ma–za 10:00–16:00.", adres: "Hoofdstraat 113, Driebergen", web: "koekeneidriebergen.nl",     photo: ImgKoekei           },
     { naam: "Eetcafé Louwietje",        desc: "Bruin eetcafé voor lunch, een borrel of gewoon een drankje. 5 min fietsen van de villa.",        adres: "Traaij 56, Driebergen",        web: "louwietje.nl",               photo: ImgLouwietje        },
     { naam: "Boscafé Mas Montagne",     desc: "Verborgen boscafé in het groen bij Kasteel Amerongen. Perfect rustpunt op de fietsroute langs de kastelen. Di–zo 10:00–17:00.", adres: "Maarsbergseweg 2, Amerongen", web: "masmontagne.nl",     photo: ImgMasMontagne      },
-    { naam: "Koffiehuis de Beuken",     desc: "Rustige koffiebar aan de rand van de Heuvelrug in Driebergen. Specialty coffee, huisgemaakte koek en een terras in de bomen. Ma–za 8:30–17:00.", adres: "Bergweg 12, Driebergen", web: "koffiehuisdebeuken.nl", photo: ImgBloemen        },
+    { naam: "Café Spot Doorn",           desc: "Gezellig café in het centrum van Doorn. Koffie, lunch en een fijn terras. Perfect tussenstop op de fietsroute door de Heuvelrug.",              adres: "Dorpsstraat, Doorn",     web: "spotdoorn.nl",         photo: ImgSpotDoorn       },
     { naam: "Chalet St. Helenaheuvel",  desc: "Sfeervolle theetuin en koffiehuis verscholen in het bos bij Doorn. Homemade taart, verse lunch en een terras tussen de bomen. Di–zo 10:00–17:00.", adres: "St. Helenaheuvellaan, Doorn", web: "chaletsinthelenah.nl", photo: ImgChaletHelenaheuvel },
     { naam: "Koffie & Zo Zeist",        desc: "Specialty coffeebar aan de Slotlaan in Zeist. Filterkoffie, flat white en een kleine brunchkaart. Ma–za 7:30–17:00.",              adres: "Slotlaan 46, Zeist",           web: "koffieenzozeist.nl",  photo: ImgKoffieZoZeist    },
 ];
