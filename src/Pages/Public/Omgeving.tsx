@@ -156,6 +156,7 @@ const BEZIENSWAARDIGHEDEN: BzItem[] = [
     { emoji: "🌬️", naam: "Windmolen aan de Rijn",     desc: "Historische molen op het punt waar de Rijn en de Lek samenkomen. Karakteristiek landschap en mooi startpunt voor een wandeling langs het water.", adres: "Rijnkade, Wijk bij Duurstede", photo: OmgevingImg, web: null },
     { emoji: "⚓", naam: "Koppelpoort Amersfoort",     desc: "Middeleeuwse water- en landpoort uit 1425. Een van de best bewaard gebleven stadspoorten van Nederland en icoon van Amersfoort.", adres: "Koppelpoort, Amersfoort",             photo: ImgVilla1910, web: null },
     { emoji: "🔔", naam: "Onze Lieve Vrouwentoren",   desc: "Iconische scheefstaande gotische toren uit 1444. Symbool van Amersfoort en zichtbaar van heel ver.",                      adres: "Lieve Vrouwenkerkhof, Amersfoort",           photo: ImgBloemen,   web: null },
+    { emoji: "🏰", naam: "Kasteel Rhijnauwen",        desc: "Monumentale buitenplaats bij Bunnik met een van de grootste terrassen van Nederland. Perfecte fietsstop langs de Kromme Rijn. 20 min fietsen.", adres: "Rhijnauwenselaan 14, Bunnik",  photo: ImgVilla1910, web: null },
 ];
 
 const KASTELEN: Venue[] = [
