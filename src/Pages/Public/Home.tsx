@@ -108,8 +108,8 @@ const Home = () => {
                     <span className="hero-eyebrow">Driebergen-Rijsenburg · Utrechtse Heuvelrug</span>
                     <h1 className="hero-title">Villa Vredestein</h1>
                     <p className="hero-sub">
-                        Een historische villa uit 1906 in het hart van Driebergen-Rijsenburg.
-                        Hoge plafonds, authentieke details en een ziel die je voelt zodra je binnenstapt.
+                        Een historische villa uit 1906 in het hart van Driebergen-Rijsenburg,
+                        op de Utrechtse Heuvelrug. Verblijf, restauratie en een open deur.
                     </p>
                     <div className="hero-ctas">
                         <button className="hero-btn-primary" onClick={() => navigate("/verhaal")}>
