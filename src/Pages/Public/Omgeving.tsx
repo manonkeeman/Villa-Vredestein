@@ -23,6 +23,7 @@ import ImgLouwietje        from "../../Assets/Images/omg-louwietje.jpg";
 import ImgMasMontagne      from "../../Assets/Images/omg-mas-montagne.webp";
 import ImgChaletHelenaheuvel from "../../Assets/Images/omg-chalet-helenaheuvel.jpg";
 import ImgKoffieZoZeist    from "../../Assets/Images/omg-koffie-zo-zeist.jpg";
+import ImgBagelsBeans      from "../../Assets/Images/omg-bagels-beans.jpg";
 import ImgSpotDoorn        from "../../Assets/Images/omg-spot-doorn.jpg";
 import ImgSluisGaarde      from "../../Assets/Images/omg-sluis-gaarde.jpg";
 import ImgWapenRijsenburg  from "../../Assets/Images/omg-wapen-rijsenburg.jpg";
@@ -156,36 +157,36 @@ type BzItem = { emoji: string; naam: string; desc: string; adres: string; web?: 
 type Boodschap = { naam: string; sub: string };
 
 const ONTBIJT: Venue[] = [
-    { naam: "Huiskamer van Driebergen", desc: "Knus koffiehuis voor ontbijt en brunch. Doordeweeks v.a. 8:30, weekend v.a. 9:00 tot 17:00.", adres: "Traaij 84b, Driebergen",       web: "dehuiskamervandriebergen.nl", photo: ImgHuiskamer        },
-    { naam: "Restaurant Vroeg",         desc: "Boerderij met bakkerij en landwinkel. De hele dag welkom, ma–zo 8:00–23:00.",                    adres: "Achterdijk 1, Bunnik",         web: "vroeg.nl",                    photo: ImgVroeg            },
-    { naam: "The Fat Italian",           desc: "Authentieke Italiaanse trattoria in Driebergen. Verse pasta, pizza uit de houtoven en antipasti. Hartelijk en gezellig.", adres: "Hoofdstraat, Driebergen", web: "thefatitalian.nl",         photo: ImgFatItalian       },
-    { naam: "Eetcafé Louwietje",        desc: "Bruin eetcafé voor lunch, een borrel of gewoon een drankje. 5 min fietsen van de villa.",        adres: "Traaij 56, Driebergen",        web: "louwietje.nl",               photo: ImgLouwietje        },
-    { naam: "Boscafé Mas Montagne",     desc: "Verborgen boscafé in het groen bij Kasteel Amerongen. Perfect rustpunt op de fietsroute langs de kastelen. Di–zo 10:00–17:00.", adres: "Maarsbergseweg 2, Amerongen", web: "masmontagne.nl",     photo: ImgMasMontagne      },
-    { naam: "Café Spot Doorn",           desc: "Gezellig café in het centrum van Doorn. Koffie, lunch en een fijn terras. Perfect tussenstop op de fietsroute door de Heuvelrug.",              adres: "Dorpsstraat, Doorn",     web: "spotdoorn.nl",         photo: ImgSpotDoorn       },
-    { naam: "Chalet St. Helenaheuvel",  desc: "Sfeervolle theetuin en koffiehuis verscholen in het bos bij Doorn. Homemade taart, verse lunch en een terras tussen de bomen. Di–zo 10:00–17:00.", adres: "St. Helenaheuvellaan, Doorn", web: "chaletsinthelenah.nl", photo: ImgChaletHelenaheuvel },
-    { naam: "Koffie & Zo Zeist",        desc: "Specialty coffeebar aan de Slotlaan in Zeist. Filterkoffie, flat white en een kleine brunchkaart. Ma–za 7:30–17:00.",              adres: "Slotlaan 46, Zeist",           web: "koffieenzozeist.nl",  photo: ImgKoffieZoZeist    },
+    { naam: "Huiskamer van Driebergen", desc: "Knus koffiehuis voor ontbijt en brunch. Doordeweeks v.a. 8:30, weekend v.a. 9:00 tot 17:00.", adres: "Traaij 84b, Driebergen",       web: "https://www.dehuiskamervandriebergen.nl/", photo: ImgHuiskamer        },
+    { naam: "Restaurant Vroeg",         desc: "Boerderij met bakkerij en landwinkel. De hele dag welkom, ma–zo 8:00–23:00.",                    adres: "Achterdijk 1, Bunnik",         web: "https://www.vroeg.nl/",                    photo: ImgVroeg            },
+    { naam: "The Fat Italian",           desc: "Authentieke Italiaanse trattoria in Driebergen. Verse pasta, pizza uit de houtoven en antipasti. Hartelijk en gezellig.", adres: "Hoofdstraat, Driebergen", web: "https://fatitalian.nl/",           photo: ImgFatItalian       },
+    { naam: "Eetcafé Louwietje",        desc: "Bruin eetcafé voor lunch, een borrel of gewoon een drankje. 5 min fietsen van de villa.",        adres: "Traaij 56, Driebergen",        web: "https://www.louwietje.nl/",               photo: ImgLouwietje        },
+    { naam: "Boscafé Mas Montagne",     desc: "Verborgen boscafé in het groen bij Kasteel Amerongen. Perfect rustpunt op de fietsroute langs de kastelen. Di–zo 10:00–17:00.", adres: "Maarsbergseweg 2, Amerongen", web: "https://www.masmontagne.nl/",     photo: ImgMasMontagne      },
+    { naam: "Café Spot Doorn",           desc: "Gezellig café in het centrum van Doorn. Koffie, lunch en een fijn terras. Perfect tussenstop op de fietsroute door de Heuvelrug.",              adres: "Dorpsstraat, Doorn",     web: "https://www.spottdoorn.nl/",       photo: ImgSpotDoorn       },
+    { naam: "Chalet St. Helenaheuvel",  desc: "Sfeervolle theetuin en koffiehuis verscholen in het bos bij Doorn. Homemade taart, verse lunch en een terras tussen de bomen. Di–zo 10:00–17:00.", adres: "St. Helenaheuvellaan, Doorn", web: "https://helenaheuvel.nl/", photo: ImgChaletHelenaheuvel },
+    { naam: "Bagels & Beans Zeist",     desc: "Verse bagels, goede koffie en een fijne brunchkaart in het centrum van Zeist. Ma–za 8:00–17:00, zo 9:00–17:00.",              adres: "1e Hogeweg, Zeist",            web: "https://www.bagelsbeans.nl/vestigingen/zeist-1e-hogeweg/", photo: ImgBagelsBeans },
 ];
 
 const AFHAAL_DINNER: Venue[] = [
-    { naam: "De Sluis Gaarde", desc: "Chinees-Oriëntaals restaurant. Di–zo vanaf 16:00. €–€€.",   adres: "De Sluis 36-37, Driebergen", web: "desluisgaarde.nl",      photo: ImgSluisGaarde },
-    { naam: "Mi Piace",        desc: "Pizzeria en wijn. Dagelijks 17:00–22:00. €5–20.",            adres: "Traaij 1C, Driebergen",      web: "mipiacedriegergen.nl",  photo: ImgMiPiace  },
-    { naam: "Cafetaria To Go", desc: "Op het station. Echte lekkere patat in schil, bubble tea en een uitgebreide kaart. Vriendelijke bediening.", adres: "Stationsweg, Driebergen-Zeist", web: "cafetariatogo.nl",    photo: ImgCafetariaToGo },
-    { naam: "Rotiq",           desc: "Surinaamse gerechten. Dagelijks 11:30–20:00. €6–20.",        adres: "Traaij 70, Driebergen",      web: "rotiq.nl",              photo: ImgRotiq    },
-    { naam: "Restaurant NIO",          desc: "Modern restaurant in het centrum van Driebergen. Creatieve gerechten, mooie wijnen en een sfeervolle ambiance.",               adres: "Hoofdstraat, Driebergen",          web: "restaurantnio.nl",      photo: ImgNio      },
-    { naam: "Bistro Paul",             desc: "Frans-geïnspireerde bistro met een eerlijke keuken. Dagverse gerechten, goede wijn en een warm terras.",                         adres: "Doorn",                            web: "bistropaul.nl",         photo: ImgBistroPaul },
-    { naam: "Vagabond Driebergen",     desc: "Café-restaurant in Driebergen. Ontspannen sfeer, mooie drankkaart en een wisselend menu van ontbijt tot diner.",                adres: "Driebergen",                       web: "vagabonddriebergen.nl", photo: ImgVagabond },
-    { naam: "Klein Zwitserland",       desc: "Sfeervol restaurant op de Heuvelrug in Driebergen. Terrasdiner in het groen, seizoensgebonden keuken.",                         adres: "Driebergen",                       web: "kleinzwitserland.nl",   photo: ImgKleinZwitserland },
+    { naam: "De Sluis Gaarde", desc: "Chinees-Oriëntaals restaurant. Di–zo vanaf 16:00. €–€€.",   adres: "De Sluis 36-37, Driebergen", web: "http://www.desluisgaarde.nl/",          photo: ImgSluisGaarde },
+    { naam: "Mi Piace",        desc: "Pizzeria en wijn. Dagelijks 17:00–22:00. €5–20.",            adres: "Traaij 1C, Driebergen",      web: "https://www.mipiacedriebergen.nl/",      photo: ImgMiPiace  },
+    { naam: "Cafetaria To Go", desc: "Op het station. Echte lekkere patat in schil, bubble tea en een uitgebreide kaart. Vriendelijke bediening.", adres: "Stationsweg, Driebergen-Zeist", web: "https://www.cafetariatogo.nl/", photo: ImgCafetariaToGo },
+    { naam: "Rotiq",           desc: "Surinaamse gerechten. Dagelijks 11:30–20:00. €6–20.",        adres: "Traaij 70, Driebergen",      web: "https://www.rotiq.nl/",                  photo: ImgRotiq    },
+    { naam: "Restaurant NIO",          desc: "Modern restaurant in het centrum van Driebergen. Creatieve gerechten, mooie wijnen en een sfeervolle ambiance.",               adres: "Hoofdstraat, Driebergen",          web: "https://nio-driebergen.nl/",            photo: ImgNio      },
+    { naam: "Bistro Paul",             desc: "Frans-geïnspireerde bistro met een eerlijke keuken. Dagverse gerechten, goede wijn en een warm terras.",                         adres: "Doorn",                            web: "https://www.bistropaul.nl/",            photo: ImgBistroPaul },
+    { naam: "Vagabond Driebergen",     desc: "Café-restaurant in Driebergen. Ontspannen sfeer, mooie drankkaart en een wisselend menu van ontbijt tot diner.",                adres: "Driebergen",                       web: "https://devagebond.nl/",               photo: ImgVagabond },
+    { naam: "Klein Zwitserland",       desc: "Sfeervol restaurant op de Heuvelrug in Driebergen. Terrasdiner in het groen, seizoensgebonden keuken.",                         adres: "Driebergen",                       web: "https://kleinzwitserlanddriebergen.nl/", photo: ImgKleinZwitserland },
 ];
 
 const CAFE: Venue[] = [
-    { naam: "Café Olivier",              desc: "Belgisch biercafé in een voormalige gotische kerk. Meer dan 200 bieren, overdekt terras. Ma–zo 11:00–01:00.", adres: "Achter Clarenburg 9A, Utrecht",   web: "cafeolivier.nl",          photo: ImgCafeOlivier },
-    { naam: "Roose Restobar",            desc: "Sfeervolle restobar in Amersfoort. Goede wijnen, cocktails en een wisselend menu in een warm interieur.",          adres: "Amersfoort",                     web: "rooseresobar.nl",            photo: ImgRoose },
-    { naam: "Wapen van Rijsenburg",      desc: "Eten, drinken, netwerken, dansen en zingen. Voor van alles en iedereen.",       adres: "Hoofdstraat 83, Driebergen",           web: "wapenvandriebergen.nl",   photo: ImgWapenRijsenburg },
-    { naam: "Brouwerij Brasser",         desc: "Ambachtelijk gebrouwen bier uit Zeist. Wo–zo 16:00–00:00.",                     adres: "Slotlaan 314, Zeist",                  web: "brouwerijbrasser.nl",     photo: ImgBrouwerijBrasser },
-    { naam: "Centrum Zeist",             desc: "Gezellig centrum met terrassen, wijncafés en bierspecialiteiten. Op 20 min fietsen of 10 min rijden.", adres: "Slotlaan, Zeist",   web: "zeist.nl",                photo: ImgCentrumZeist     },
-    { naam: "Centrum Utrecht",           desc: "Bruisende binnenstad langs de Oudegracht met cocktailbars, wijnbars en levendige terrassen. 15 min per trein.", adres: "Oudegracht, Utrecht", web: "visit-utrecht.nl",  photo: ImgCentrumUtrecht   },
-    { naam: "Centrum Wijk bij Duurstede",desc: "Historisch stadje direct aan de Rijn. Sfeervolle terrassen rondom het kasteel en langs het water. 25 min fietsen.", adres: "Markt, Wijk bij Duurstede", web: "vvvutrechtheuvelrug.nl", photo: ImgCentrumWijk },
-    { naam: "Centrum Amersfoort",        desc: "Levendige binnenstad met terrassen, restaurants en cultuur. 35 min met de auto of trein.", adres: "Hof 10, Amersfoort", web: "vvvamersfoort.nl", photo: ImgCentrumAmersfoort },
+    { naam: "Café Olivier",              desc: "Belgisch biercafé in een voormalige gotische kerk. Meer dan 200 bieren, overdekt terras. Ma–zo 11:00–01:00.", adres: "Achter Clarenburg 9A, Utrecht",   web: "https://www.cafe-olivier.be/nl/",             photo: ImgCafeOlivier },
+    { naam: "Roose Restobar",            desc: "Sfeervolle restobar in Amersfoort. Goede wijnen, cocktails en een wisselend menu in een warm interieur.",          adres: "Amersfoort",                     web: "https://www.rooserestobar.nl/",               photo: ImgRoose },
+    { naam: "Wapen van Rijsenburg",      desc: "Eten, drinken, netwerken, dansen en zingen. Voor van alles en iedereen.",       adres: "Hoofdstraat 83, Driebergen",           web: "https://wapenvanrijsenburg.nl/",              photo: ImgWapenRijsenburg },
+    { naam: "Brouwerij Brasser",         desc: "Ambachtelijk gebrouwen bier uit Zeist. Wo–zo 16:00–00:00.",                     adres: "Slotlaan 314, Zeist",                  web: "https://www.brouwerijbrasser.nl/",            photo: ImgBrouwerijBrasser },
+    { naam: "Centrum Zeist",             desc: "Gezellig centrum met terrassen, wijncafés en bierspecialiteiten. Op 20 min fietsen of 10 min rijden.", adres: "Slotlaan, Zeist",   web: "https://www.zeist.nl/",               photo: ImgCentrumZeist     },
+    { naam: "Centrum Utrecht",           desc: "Bruisende binnenstad langs de Oudegracht met cocktailbars, wijnbars en levendige terrassen. 15 min per trein.", adres: "Oudegracht, Utrecht", web: "https://centrumutrecht.nl/",  photo: ImgCentrumUtrecht   },
+    { naam: "Centrum Wijk bij Duurstede",desc: "Historisch stadje direct aan de Rijn. Sfeervolle terrassen rondom het kasteel en langs het water. 25 min fietsen.", adres: "Markt, Wijk bij Duurstede", web: "https://www.wijkbijduurstede.nl/informatie-voor-toeristen", photo: ImgCentrumWijk },
+    { naam: "Centrum Amersfoort",        desc: "Levendige binnenstad met terrassen, restaurants en cultuur. 35 min met de auto of trein.", adres: "Hof 10, Amersfoort", web: "https://www.vvvamersfoort.nl/", photo: ImgCentrumAmersfoort },
 ];
 
 const BOODSCHAPPEN: Boodschap[] = [
@@ -209,14 +210,14 @@ const BEZIENSWAARDIGHEDEN: BzItem[] = [
 ];
 
 const KASTELEN: Venue[] = [
-    { naam: "Huis Doorn",                  desc: "Beroemd als het voormalige verblijf van de Duitse ex-keizer Wilhelm II.",                       adres: "Langbroekerweg 10, Doorn",          web: "huisdoorn.nl",        photo: ImgHuisDoorn },
-    { naam: "Landgoed Oud-Amelisweerd",    desc: "Prachtig natuurgebied met fijn restaurant, bakkerij en landwinkel De Veldkeuken.",             adres: "Koningslaan 11A, Bunnik",           web: "veldkeuken.nl",       photo: ImgAmelisweerd      },
-    { naam: "Kasteel Amerongen",           desc: "Een tipje van de kastelengeschiedenis van de Heuvelrug. Vlakbij boscafé Mas Montagne.",        adres: "Drostestraat 20, Amerongen",        web: "kasteelamerongen.nl", photo: ImgKasteelAmerongen },
-    { naam: "Kasteel Duurstede",           desc: "Indrukwekkende middeleeuwse kasteelruïne direct aan de Rijn in Wijk bij Duurstede. Museum met eeuwenoude geschiedenis. Op 25 minuten fietsen.", adres: "Kasteel 1, Wijk bij Duurstede", web: "kasteelduurstede.nl", photo: ImgKasteelDuurstede },
-    { naam: "Slot Zeist",                  desc: "Prachtig 17e-eeuws kasteel midden in Zeist, omgeven door een monumentaal park. Regelmatig evenementen en markten.",                    adres: "Zinzendorflaan 1, Zeist",           web: "slotzeist.nl",        photo: ImgSlotZeist },
-    { naam: "Kasteel Rhijnauwen",          desc: "Monumentale buitenplaats bij Bunnik met een van de grootste terrassen van Nederland. Perfecte fietsstop langs de Kromme Rijn. 20 min fietsen.",           adres: "Rhijnauwenselaan 14, Bunnik",  web: "kasteelrhijnauwen.nl", photo: ImgRhijnauwen },
-    { naam: "Kasteel de Haar",             desc: "Het meest complete middeleeuwse kasteel van Nederland. Gerestaureerd eind 19e eeuw door Pierre Cuypers. Prachtige torens, staatsievertrekken en tuinen. 30 min auto.", adres: "Kasteellaan 1, Haarzuilens", web: "kasteeldehaar.nl", photo: ImgDeHaar },
-    { naam: "Paleis Soestdijk",            desc: "Voormalig zomerverblijf van koningin Juliana en prins Bernhard. Nu opengesteld als museum en evenementenlocatie in het bos van Baarn. 25 min auto.", adres: "Amsterdamsestraatweg 1, Baarn", web: "paleis-soestdijk.nl", photo: ImgPaleisSoestdijk },
+    { naam: "Huis Doorn",                  desc: "Beroemd als het voormalige verblijf van de Duitse ex-keizer Wilhelm II.",                       adres: "Langbroekerweg 10, Doorn",          web: "https://www.huisdoorn.nl/",   photo: ImgHuisDoorn },
+    { naam: "Landgoed Oud-Amelisweerd",    desc: "Prachtig natuurgebied met fijn restaurant, bakkerij en landwinkel De Veldkeuken.",             adres: "Koningslaan 11A, Bunnik",           web: "https://www.veldkeuken.nl/",          photo: ImgAmelisweerd      },
+    { naam: "Kasteel Amerongen",           desc: "Een tipje van de kastelengeschiedenis van de Heuvelrug. Vlakbij boscafé Mas Montagne.",        adres: "Drostestraat 20, Amerongen",        web: "https://www.kasteelamerongen.nl/",    photo: ImgKasteelAmerongen },
+    { naam: "Kasteel Duurstede",           desc: "Indrukwekkende middeleeuwse kasteelruïne direct aan de Rijn in Wijk bij Duurstede. Museum met eeuwenoude geschiedenis. Op 25 minuten fietsen.", adres: "Kasteel 1, Wijk bij Duurstede", web: "https://www.kasteelduurstede.nl/", photo: ImgKasteelDuurstede },
+    { naam: "Slot Zeist",                  desc: "Prachtig 17e-eeuws kasteel midden in Zeist, omgeven door een monumentaal park. Regelmatig evenementen en markten.",                    adres: "Zinzendorflaan 1, Zeist",           web: "https://www.slotzeist.nl/",            photo: ImgSlotZeist },
+    { naam: "Kasteel Rhijnauwen",          desc: "Monumentale buitenplaats bij Bunnik met een van de grootste terrassen van Nederland. Perfecte fietsstop langs de Kromme Rijn. 20 min fietsen.",           adres: "Rhijnauwenselaan 14, Bunnik",  web: "https://geheimvandegraaf.nl/locaties/kasteel-rhijnauwen/", photo: ImgRhijnauwen },
+    { naam: "Kasteel de Haar",             desc: "Het meest complete middeleeuwse kasteel van Nederland. Gerestaureerd eind 19e eeuw door Pierre Cuypers. Prachtige torens, staatsievertrekken en tuinen. 30 min auto.", adres: "Kasteellaan 1, Haarzuilens", web: "https://www.kasteeldehaar.nl/", photo: ImgDeHaar },
+    { naam: "Paleis Soestdijk",            desc: "Voormalig zomerverblijf van koningin Juliana en prins Bernhard. Nu opengesteld als museum en evenementenlocatie in het bos van Baarn. 25 min auto.", adres: "Amsterdamsestraatweg 1, Baarn", web: "https://www.paleissoestdijk.nl/", photo: ImgPaleisSoestdijk },
 ];
 
 const ACTIVITEITEN: BzItem[] = [
@@ -227,19 +228,23 @@ const ACTIVITEITEN: BzItem[] = [
 ];
 
 
-const VenueCard = ({ v }: { v: Venue }) => (
-    <a href={`https://www.${v.web}`} target="_blank" rel="noreferrer" className="venue-card">
-        <div className="venue-photo">
-            <img src={v.photo} alt={v.naam} loading="lazy" />
-        </div>
-        <div className="venue-body">
-            <strong className="venue-naam">{v.naam}</strong>
-            <p className="venue-desc">{v.desc}</p>
-            <span className="venue-adres">{v.adres}</span>
-            <span className="venue-web">{v.web} →</span>
-        </div>
-    </a>
-);
+const VenueCard = ({ v }: { v: Venue }) => {
+    let displayDomain = v.web;
+    try { displayDomain = new URL(v.web).hostname.replace(/^www\./, ""); } catch {}
+    return (
+        <a href={v.web} target="_blank" rel="noreferrer" className="venue-card">
+            <div className="venue-photo">
+                <img src={v.photo} alt={v.naam} loading="lazy" />
+            </div>
+            <div className="venue-body">
+                <strong className="venue-naam">{v.naam}</strong>
+                <p className="venue-desc">{v.desc}</p>
+                <span className="venue-adres">{v.adres}</span>
+                <span className="venue-web">{displayDomain} →</span>
+            </div>
+        </a>
+    );
+};
 
 const BzCard = ({ b }: { b: BzItem }) => {
     const inner = (
