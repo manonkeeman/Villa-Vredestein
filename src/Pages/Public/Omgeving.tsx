@@ -41,8 +41,24 @@ import ImgCentrumZeist    from "../../Assets/Images/omg-centrum-zeist.jpg";
 import ImgCentrumUtrecht  from "../../Assets/Images/omg-centrum-utrecht.jpg";
 import ImgCentrumWijk     from "../../Assets/Images/omg-centrum-wijk.jpg";
 import ImgCentrumAmersfoort  from "../../Assets/Images/omg-centrum-amersfoort.jpg";
-import ImgBrouwerijBrasser  from "../../Assets/Images/omg-brouwerij-brasser.jpg";
-import ImgKaapseBossen      from "../../Assets/Images/omg-kaapse-bossen.jpg";
+import ImgBrouwerijBrasser      from "../../Assets/Images/omg-brouwerij-brasser.jpg";
+import ImgKaapseBossen          from "../../Assets/Images/omg-kaapse-bossen.jpg";
+import ImgAmerongseBerg         from "../../Assets/Images/omg-amerongse-berg.jpg";
+import ImgBibliotheek           from "../../Assets/Images/omg-bibliotheek.jpg";
+import ImgDeHaar                from "../../Assets/Images/omg-de-haar.jpg";
+import ImgSportFitness          from "../../Assets/Images/omg-sport-fitness.jpg";
+import ImgHeidetuin             from "../../Assets/Images/omg-heidetuin.webp";
+import ImgKasteelAmerongen      from "../../Assets/Images/omg-kasteel-amerongen.jpg";
+import ImgKasteelDuurstede      from "../../Assets/Images/omg-kasteel-duurstede.jpg";
+import ImgAmelisweerd           from "../../Assets/Images/omg-amelisweerd.jpg";
+import ImgPaleisSoestdijk       from "../../Assets/Images/omg-paleis-soestdijk.jpg";
+import ImgVliegbasis            from "../../Assets/Images/omg-vliegbasis-soesterberg.jpg";
+import ImgPatheCinema           from "../../Assets/Images/omg-pathe-cinema.jpg";
+import ImgWindmolen             from "../../Assets/Images/omg-windmolen-rijn.jpg";
+import ImgKartbaan              from "../../Assets/Images/omg-kartbaan.jpg";
+import ImgRhijnauwen            from "../../Assets/Images/omg-rhijnauwen.jpg";
+import ImgSlotZeist             from "../../Assets/Images/omg-slot-zeist.jpg";
+import ImgVoetveer              from "../../Assets/Images/omg-voetveer-rhenen.jpg";
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -182,32 +198,32 @@ const BOODSCHAPPEN: Boodschap[] = [
 ];
 
 const BEZIENSWAARDIGHEDEN: BzItem[] = [
-    { emoji: "🌿", naam: "Heidetuin Driebergen",       desc: "500 soorten heide achter de beuken en dennen. Elk seizoen de moeite waard.",                                                adres: "Wethouder Verhaarlaan 1, Driebergen",        photo: OmgevingImg,  web: null },
+    { emoji: "🌿", naam: "Heidetuin Driebergen",       desc: "500 soorten heide achter de beuken en dennen. Elk seizoen de moeite waard.",                                                adres: "Wethouder Verhaarlaan 1, Driebergen",        photo: ImgHeidetuin,    web: null },
     { emoji: "🗼", naam: "Kaapse Bossen Uitkijktoren", desc: "Bij Doorn. Beklim de toren voor een weids uitzicht over vrijwel de hele Utrechtse Heuvelrug.",                             adres: "St. Helenaheuvellaan 2, Doorn",              photo: ImgKaapseBossen, web: null },
     { emoji: "🔺", naam: "Pyramide van Austerlitz",    desc: "Bijzondere bezienswaardigheid van de Heuvelrug met bos, wandelingen en een groot terras.",                                 adres: "Zeisterweg 98, Woudenberg",                  photo: OmgevingImg,  web: null },
     { emoji: "⛪", naam: "De Lourdesgrot",             desc: "Circa 120 jaar oud. De opening ligt richting Jeruzalem. Rustige plek om een kaarsje te branden.",                         adres: "Park Seminarie 61, Driebergen",              photo: ImgGrot,      web: null },
-    { emoji: "🌬️", naam: "Windmolen aan de Rijn",     desc: "Historische molen op het punt waar de Rijn en de Lek samenkomen. Karakteristiek landschap en mooi startpunt voor een wandeling langs het water.", adres: "Rijnkade, Wijk bij Duurstede", photo: OmgevingImg, web: null },
-    { emoji: "✈️", naam: "Park Vliegbasis Soesterberg", desc: "Nationaal park op een voormalige militaire vliegbasis. Uitgestrekte natuur, bunkers en het Nationaal Militair Museum. Gratis toegankelijk.", adres: "Kampweg 5, Soesterberg",              photo: ImgVilla1910, web: null },
-    { emoji: "⛴️", naam: "Fiets & Voetveer Rhenen",   desc: "Schilderachtige veerpont voor fietsers en voetgangers die de Rijn oversteekt bij Rhenen. Uniek uitje langs de rivier met mooi uitzicht.", adres: "Rijnkade, Rhenen",                    photo: OmgevingImg,  web: null },
-    { emoji: "🌄", naam: "Amerongse Berg",             desc: "Het hoogste punt van de Utrechtse Heuvelrug op 69 meter. Prachtige wandelpaden door het bos en weidse vergezichten. Vrij toegankelijk.", adres: "Amerongse Berg, Amerongen",   photo: OmgevingImg,  web: null },
+    { emoji: "🌬️", naam: "Windmolen aan de Rijn",     desc: "Historische molen op het punt waar de Rijn en de Lek samenkomen. Karakteristiek landschap en mooi startpunt voor een wandeling langs het water.", adres: "Rijnkade, Wijk bij Duurstede", photo: ImgWindmolen, web: null },
+    { emoji: "✈️", naam: "Park Vliegbasis Soesterberg", desc: "Nationaal park op een voormalige militaire vliegbasis. Uitgestrekte natuur, bunkers en het Nationaal Militair Museum. Gratis toegankelijk.", adres: "Kampweg 5, Soesterberg",              photo: ImgVliegbasis,    web: null },
+    { emoji: "⛴️", naam: "Fiets & Voetveer Rhenen",   desc: "Schilderachtige veerpont voor fietsers en voetgangers die de Rijn oversteekt bij Rhenen. Uniek uitje langs de rivier met mooi uitzicht.", adres: "Rijnkade, Rhenen",                    photo: ImgVoetveer,      web: null },
+    { emoji: "🌄", naam: "Amerongse Berg",             desc: "Het hoogste punt van de Utrechtse Heuvelrug op 69 meter. Prachtige wandelpaden door het bos en weidse vergezichten. Vrij toegankelijk.", adres: "Amerongse Berg, Amerongen",   photo: ImgAmerongseBerg, web: null },
 ];
 
 const KASTELEN: Venue[] = [
     { naam: "Huis Doorn",                  desc: "Beroemd als het voormalige verblijf van de Duitse ex-keizer Wilhelm II.",                       adres: "Langbroekerweg 10, Doorn",          web: "huisdoorn.nl",        photo: ImgHuisDoorn },
-    { naam: "Landgoed Oud-Amelisweerd",    desc: "Prachtig natuurgebied met fijn restaurant, bakkerij en landwinkel De Veldkeuken.",             adres: "Koningslaan 11A, Bunnik",           web: "veldkeuken.nl",       photo: ImgMoestuin  },
-    { naam: "Kasteel Amerongen",           desc: "Een tipje van de kastelengeschiedenis van de Heuvelrug. Vlakbij boscafé Mas Montagne.",        adres: "Drostestraat 20, Amerongen",        web: "kasteelamerongen.nl", photo: ImgVilla1910 },
-    { naam: "Kasteel Duurstede",           desc: "Indrukwekkende middeleeuwse kasteelruïne direct aan de Rijn in Wijk bij Duurstede. Museum met eeuwenoude geschiedenis. Op 25 minuten fietsen.", adres: "Kasteel 1, Wijk bij Duurstede", web: "kasteelduurstede.nl", photo: ImgVilla1910 },
-    { naam: "Slot Zeist",                  desc: "Prachtig 17e-eeuws kasteel midden in Zeist, omgeven door een monumentaal park. Regelmatig evenementen en markten.",                    adres: "Zinzendorflaan 1, Zeist",           web: "slotzeist.nl",        photo: ImgBloemen   },
-    { naam: "Kasteel Rhijnauwen",          desc: "Monumentale buitenplaats bij Bunnik met een van de grootste terrassen van Nederland. Perfecte fietsstop langs de Kromme Rijn. 20 min fietsen.",           adres: "Rhijnauwenselaan 14, Bunnik",  web: "kasteelrhijnauwen.nl", photo: ImgBloemen   },
-    { naam: "Kasteel de Haar",             desc: "Het meest complete middeleeuwse kasteel van Nederland. Gerestaureerd eind 19e eeuw door Pierre Cuypers. Prachtige torens, staatsievertrekken en tuinen. 30 min auto.", adres: "Kasteellaan 1, Haarzuilens", web: "kasteeldehaar.nl", photo: ImgVilla1910 },
-    { naam: "Paleis Soestdijk",            desc: "Voormalig zomerverblijf van koningin Juliana en prins Bernhard. Nu opengesteld als museum en evenementenlocatie in het bos van Baarn. 25 min auto.", adres: "Amsterdamsestraatweg 1, Baarn", web: "paleis-soestdijk.nl", photo: ImgBloemen },
+    { naam: "Landgoed Oud-Amelisweerd",    desc: "Prachtig natuurgebied met fijn restaurant, bakkerij en landwinkel De Veldkeuken.",             adres: "Koningslaan 11A, Bunnik",           web: "veldkeuken.nl",       photo: ImgAmelisweerd      },
+    { naam: "Kasteel Amerongen",           desc: "Een tipje van de kastelengeschiedenis van de Heuvelrug. Vlakbij boscafé Mas Montagne.",        adres: "Drostestraat 20, Amerongen",        web: "kasteelamerongen.nl", photo: ImgKasteelAmerongen },
+    { naam: "Kasteel Duurstede",           desc: "Indrukwekkende middeleeuwse kasteelruïne direct aan de Rijn in Wijk bij Duurstede. Museum met eeuwenoude geschiedenis. Op 25 minuten fietsen.", adres: "Kasteel 1, Wijk bij Duurstede", web: "kasteelduurstede.nl", photo: ImgKasteelDuurstede },
+    { naam: "Slot Zeist",                  desc: "Prachtig 17e-eeuws kasteel midden in Zeist, omgeven door een monumentaal park. Regelmatig evenementen en markten.",                    adres: "Zinzendorflaan 1, Zeist",           web: "slotzeist.nl",        photo: ImgSlotZeist },
+    { naam: "Kasteel Rhijnauwen",          desc: "Monumentale buitenplaats bij Bunnik met een van de grootste terrassen van Nederland. Perfecte fietsstop langs de Kromme Rijn. 20 min fietsen.",           adres: "Rhijnauwenselaan 14, Bunnik",  web: "kasteelrhijnauwen.nl", photo: ImgRhijnauwen },
+    { naam: "Kasteel de Haar",             desc: "Het meest complete middeleeuwse kasteel van Nederland. Gerestaureerd eind 19e eeuw door Pierre Cuypers. Prachtige torens, staatsievertrekken en tuinen. 30 min auto.", adres: "Kasteellaan 1, Haarzuilens", web: "kasteeldehaar.nl", photo: ImgDeHaar },
+    { naam: "Paleis Soestdijk",            desc: "Voormalig zomerverblijf van koningin Juliana en prins Bernhard. Nu opengesteld als museum en evenementenlocatie in het bos van Baarn. 25 min auto.", adres: "Amsterdamsestraatweg 1, Baarn", web: "paleis-soestdijk.nl", photo: ImgPaleisSoestdijk },
 ];
 
 const ACTIVITEITEN: BzItem[] = [
-    { emoji: "🏎️", naam: "Kartcircuit Driebergen", desc: "Uniek kartcircuit van 750 meter lang. Prijzen vanaf €15.",                                                                    adres: "De Woerd 7, Driebergen",        web: "kartbaan.com",       photo: ImgTuinfeest },
-    { emoji: "📚", naam: "Bibliotheek Driebergen", desc: "Ma–vr 10:00–17:00, zaterdag 10:00–13:00.",                                                                                    adres: "Hoofdstraat 164, Driebergen",   web: "bibliotheekzout.nl", photo: ImgSfeer     },
-    { emoji: "💪", naam: "Sport & Fitness",         desc: "Fitline (Hoofdstraat 166) · Health Center Hoenderdaal (De Hoendersteeg 7) · Laco Sportcentrum De Zwoer (Schellingerlaan 20).", adres: "Driebergen",                   web: null,                 photo: ImgFiets     },
-    { emoji: "🎬", naam: "Pathé Cinema",            desc: "Meerdere locaties in de regio: Utrecht Leidsche Rijn, Utrecht centrum, Amersfoort en Ede.",                                  adres: "o.a. Berlijnplein 100, Utrecht",web: null,                 photo: ImgBuiten    },
+    { emoji: "🏎️", naam: "Kartcircuit Driebergen", desc: "Uniek kartcircuit van 750 meter lang. Prijzen vanaf €15.",                                                                    adres: "De Woerd 7, Driebergen",        web: "kartbaan.com",       photo: ImgKartbaan      },
+    { emoji: "📚", naam: "Bibliotheek Driebergen", desc: "Ma–vr 10:00–17:00, zaterdag 10:00–13:00.",                                                                                    adres: "Hoofdstraat 164, Driebergen",   web: "bibliotheekzout.nl", photo: ImgBibliotheek   },
+    { emoji: "💪", naam: "Sport & Fitness",         desc: "Fitline (Hoofdstraat 166) · Health Center Hoenderdaal (De Hoendersteeg 7) · Laco Sportcentrum De Zwoer (Schellingerlaan 20).", adres: "Driebergen",                   web: null,                 photo: ImgSportFitness  },
+    { emoji: "🎬", naam: "Pathé Cinema",            desc: "Meerdere locaties in de regio: Utrecht Leidsche Rijn, Utrecht centrum, Amersfoort en Ede.",                                  adres: "o.a. Berlijnplein 100, Utrecht",web: null,                 photo: ImgPatheCinema   },
 ];
 
 
