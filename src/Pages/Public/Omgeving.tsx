@@ -40,7 +40,9 @@ import ImgHuisDoorn       from "../../Assets/Images/omg-huis-doorn.jpg";
 import ImgCentrumZeist    from "../../Assets/Images/omg-centrum-zeist.jpg";
 import ImgCentrumUtrecht  from "../../Assets/Images/omg-centrum-utrecht.jpg";
 import ImgCentrumWijk     from "../../Assets/Images/omg-centrum-wijk.jpg";
-import ImgCentrumAmersfoort from "../../Assets/Images/omg-centrum-amersfoort.jpg";
+import ImgCentrumAmersfoort  from "../../Assets/Images/omg-centrum-amersfoort.jpg";
+import ImgBrouwerijBrasser  from "../../Assets/Images/omg-brouwerij-brasser.jpg";
+import ImgKaapseBossen      from "../../Assets/Images/omg-kaapse-bossen.jpg";
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -110,7 +112,6 @@ const POIS: Poi[] = [
 
     // Kastelen & Landgoederen
     { pos: [52.0846, 5.1470],                         label: "Kasteel Rhijnauwen",        sub: "20 min fiets · Bunnik",        emoji: "🏰", color: "#7a6080", link: "https://www.kasteelrhijnauwen.nl",                                linkLabel: "kasteelrhijnauwen.nl"         },
-    { pos: [51.9934, 5.4200],                         label: "Parc Broekhuizen",          sub: "30 min fiets · Leersum",       emoji: "🏰", color: "#7a6080", link: "https://www.parcbroekhuizen.nl",                                  linkLabel: "parcbroekhuizen.nl"           },
     { pos: [52.0273, 5.3514],                         label: "Huis Doorn",                sub: "20 min fiets · Doorn",         emoji: "🏛️", color: "#7a6080", link: "https://www.huisdoorn.nl",                                        linkLabel: "huisdoorn.nl"                 },
     { pos: [52.0846, 5.1547],                         label: "Landgoed Oud-Amelisweerd",  sub: "25 min auto · Bunnik",         emoji: "🏡", color: "#7a6080", link: "https://www.veldkeuken.nl",                                       linkLabel: "veldkeuken.nl"                },
     { pos: [51.9749, 5.4519],                         label: "Kasteel Amerongen",         sub: "35 min fiets · Amerongen",     emoji: "🏰", color: "#7a6080", link: "https://www.kasteelamerongen.nl",                                 linkLabel: "kasteelamerongen.nl"          },
@@ -123,11 +124,6 @@ const POIS: Poi[] = [
     { pos: [52.0356, 5.2722],                         label: "Kartcircuit Driebergen",    sub: "10 min fiets",                 emoji: "🏎️", color: "#4a6080", link: "https://www.kartbaan.com",                                        linkLabel: "kartbaan.com"                 },
     { pos: [52.0434, 5.2871],                         label: "Bibliotheek Driebergen",    sub: "2 min te voet",                emoji: "📚", color: "#4a6080", link: "https://www.bibliotheekzout.nl",                                  linkLabel: "bibliotheekzout.nl"           },
 
-    // Nightlife Utrecht
-    { pos: [52.0920, 5.1189],                         label: "Club Poema",                sub: "40 min trein · Utrecht",       emoji: "🎶", color: "#443355", link: "https://www.clubpoema.nl",                                        linkLabel: "clubpoema.nl"                 },
-    { pos: [52.0934, 5.1239],                         label: "EKKO",                      sub: "40 min trein · Utrecht",       emoji: "🎸", color: "#443355", link: "https://www.ekko.nl",                                             linkLabel: "ekko.nl"                      },
-    { pos: [52.0921, 5.1155],                         label: "Tivoli Vredenburg",         sub: "40 min trein · Utrecht",       emoji: "🎤", color: "#443355", link: "https://www.tivolivredenburg.nl",                                 linkLabel: "tivolivredenburg.nl"          },
-    { pos: [52.0903, 5.1197],                         label: "Club Basis",                sub: "40 min trein · Utrecht",       emoji: "🎛️", color: "#443355", link: "https://www.clubbasis.nl",                                        linkLabel: "clubbasis.nl"                 },
 ];
 
 const AFSTANDEN = [
@@ -169,7 +165,7 @@ const CAFE: Venue[] = [
     { naam: "Café Olivier",              desc: "Belgisch biercafé in een voormalige gotische kerk. Meer dan 200 bieren, overdekt terras. Ma–zo 11:00–01:00.", adres: "Achter Clarenburg 9A, Utrecht",   web: "cafeolivier.nl",          photo: ImgCafeOlivier },
     { naam: "Roose Restobar",            desc: "Sfeervolle restobar in Amersfoort. Goede wijnen, cocktails en een wisselend menu in een warm interieur.",          adres: "Amersfoort",                     web: "rooseresobar.nl",            photo: ImgRoose },
     { naam: "Wapen van Rijsenburg",      desc: "Eten, drinken, netwerken, dansen en zingen. Voor van alles en iedereen.",       adres: "Hoofdstraat 83, Driebergen",           web: "wapenvandriebergen.nl",   photo: ImgWapenRijsenburg },
-    { naam: "Brouwerij Brasser",         desc: "Ambachtelijk gebrouwen bier uit Zeist. Wo–zo 16:00–00:00.",                     adres: "Slotlaan 314, Zeist",                  web: "brouwerijbrasser.nl",     photo: ImgBuiten   },
+    { naam: "Brouwerij Brasser",         desc: "Ambachtelijk gebrouwen bier uit Zeist. Wo–zo 16:00–00:00.",                     adres: "Slotlaan 314, Zeist",                  web: "brouwerijbrasser.nl",     photo: ImgBrouwerijBrasser },
     { naam: "Centrum Zeist",             desc: "Gezellig centrum met terrassen, wijncafés en bierspecialiteiten. Op 20 min fietsen of 10 min rijden.", adres: "Slotlaan, Zeist",   web: "zeist.nl",                photo: ImgCentrumZeist     },
     { naam: "Centrum Utrecht",           desc: "Bruisende binnenstad langs de Oudegracht met cocktailbars, wijnbars en levendige terrassen. 15 min per trein.", adres: "Oudegracht, Utrecht", web: "visit-utrecht.nl",  photo: ImgCentrumUtrecht   },
     { naam: "Centrum Wijk bij Duurstede",desc: "Historisch stadje direct aan de Rijn. Sfeervolle terrassen rondom het kasteel en langs het water. 25 min fietsen.", adres: "Markt, Wijk bij Duurstede", web: "vvvutrechtheuvelrug.nl", photo: ImgCentrumWijk },
@@ -187,7 +183,7 @@ const BOODSCHAPPEN: Boodschap[] = [
 
 const BEZIENSWAARDIGHEDEN: BzItem[] = [
     { emoji: "🌿", naam: "Heidetuin Driebergen",       desc: "500 soorten heide achter de beuken en dennen. Elk seizoen de moeite waard.",                                                adres: "Wethouder Verhaarlaan 1, Driebergen",        photo: OmgevingImg,  web: null },
-    { emoji: "🗼", naam: "Kaapse Bossen Uitkijktoren", desc: "Bij Doorn. Beklim de toren voor een weids uitzicht over vrijwel de hele Utrechtse Heuvelrug.",                             adres: "St. Helenaheuvellaan 2, Doorn",              photo: ImgBloemen,   web: null },
+    { emoji: "🗼", naam: "Kaapse Bossen Uitkijktoren", desc: "Bij Doorn. Beklim de toren voor een weids uitzicht over vrijwel de hele Utrechtse Heuvelrug.",                             adres: "St. Helenaheuvellaan 2, Doorn",              photo: ImgKaapseBossen, web: null },
     { emoji: "🔺", naam: "Pyramide van Austerlitz",    desc: "Bijzondere bezienswaardigheid van de Heuvelrug met bos, wandelingen en een groot terras.",                                 adres: "Zeisterweg 98, Woudenberg",                  photo: OmgevingImg,  web: null },
     { emoji: "⛪", naam: "De Lourdesgrot",             desc: "Circa 120 jaar oud. De opening ligt richting Jeruzalem. Rustige plek om een kaarsje te branden.",                         adres: "Park Seminarie 61, Driebergen",              photo: ImgGrot,      web: null },
     { emoji: "🌬️", naam: "Windmolen aan de Rijn",     desc: "Historische molen op het punt waar de Rijn en de Lek samenkomen. Karakteristiek landschap en mooi startpunt voor een wandeling langs het water.", adres: "Rijnkade, Wijk bij Duurstede", photo: OmgevingImg, web: null },
@@ -197,7 +193,6 @@ const BEZIENSWAARDIGHEDEN: BzItem[] = [
 ];
 
 const KASTELEN: Venue[] = [
-    { naam: "Landgoed Parc Broekhuizen",   desc: "Imposant landgoed verscholen in de natuur. Restaurant Voltaire, bistro LOF en boetiek hotel.", adres: "Broekhuizerlaan 2, Leersum",        web: "parcbroekhuizen.nl",  photo: ImgVilla1910 },
     { naam: "Huis Doorn",                  desc: "Beroemd als het voormalige verblijf van de Duitse ex-keizer Wilhelm II.",                       adres: "Langbroekerweg 10, Doorn",          web: "huisdoorn.nl",        photo: ImgHuisDoorn },
     { naam: "Landgoed Oud-Amelisweerd",    desc: "Prachtig natuurgebied met fijn restaurant, bakkerij en landwinkel De Veldkeuken.",             adres: "Koningslaan 11A, Bunnik",           web: "veldkeuken.nl",       photo: ImgMoestuin  },
     { naam: "Kasteel Amerongen",           desc: "Een tipje van de kastelengeschiedenis van de Heuvelrug. Vlakbij boscafé Mas Montagne.",        adres: "Drostestraat 20, Amerongen",        web: "kasteelamerongen.nl", photo: ImgVilla1910 },
@@ -215,12 +210,6 @@ const ACTIVITEITEN: BzItem[] = [
     { emoji: "🎬", naam: "Pathé Cinema",            desc: "Meerdere locaties in de regio: Utrecht Leidsche Rijn, Utrecht centrum, Amersfoort en Ede.",                                  adres: "o.a. Berlijnplein 100, Utrecht",web: null,                 photo: ImgBuiten    },
 ];
 
-const NIGHTLIFE: Venue[] = [
-    { naam: "Club Poema",       desc: "Een van de oudste clubs van Utrecht. Elektronische muziek en techno, speciale studentenavonden. Vanaf 18 jaar.", adres: "Drieharingstraat 22, Utrecht",          web: "clubpoema.nl",       photo: ImgTuinfeest },
-    { naam: "EKKO",             desc: "Concerten en clubavonden, alternatief clubben. Toegankelijk vanaf 14 jaar.",                                      adres: "Bemuurde Weerd Westzijde 3, Utrecht",   web: "ekko.nl",            photo: ImgSfeer     },
-    { naam: "Tivoli Vredenburg",desc: "Alle muziekgenres onder één dak, midden in het centrum van Utrecht.",                                             adres: "Vredenburg 11, Utrecht",                web: "tivolivredenburg.nl", photo: ImgBuiten    },
-    { naam: "Club Basis",       desc: "Donkere club met Berlijnse vibe, voornamelijk techno.",                                                          adres: "Oudegracht aan de Werf 9, Utrecht",     web: "clubbasis.nl",       photo: ImgTuinfeest },
-];
 
 const VenueCard = ({ v }: { v: Venue }) => (
     <a href={`https://www.${v.web}`} target="_blank" rel="noreferrer" className="venue-card">
@@ -464,16 +453,6 @@ const Omgeving = () => {
                 </div>
             </section>
 
-            {/* Nightlife */}
-            <section className="omg-nightlife reveal-section" ref={addRef} aria-label="Clubs en uitgaan">
-                <div className="omg-section-inner">
-                    <h2 className="omg-section-title">Clubs & Nightlife</h2>
-                    <p className="omg-section-sub">Een avond uit? Utrecht is op 15 minuten.</p>
-                    <div className="omg-venues-grid omg-venues-grid--last">
-                        {NIGHTLIFE.map((v) => <VenueCard key={v.naam} v={v} />)}
-                    </div>
-                </div>
-            </section>
         </main>
     );
 };
