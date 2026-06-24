@@ -36,7 +36,7 @@
 }
 
 .footer-logo {
-    height: 52px;
+    height: 72px;
     width: auto;
     opacity: 0.88;
     transition: opacity 0.2s ease;
@@ -226,6 +226,6 @@ a.footer-address-row:hover svg {
     }
 
     .footer-logo {
-        height: 44px;
+        height: 60px;
     }
 }
