@@ -57,6 +57,7 @@ import ImgVliegbasis            from "../../Assets/Images/omg-vliegbasis-soester
 import ImgPatheCinema           from "../../Assets/Images/omg-pathe-cinema.jpg";
 import ImgFigi                 from "../../Assets/Images/omg-figi.jpg";
 import ImgKraaybeek            from "../../Assets/Images/omg-kraaybeek.jpg";
+import ImgWijngaardZeist      from "../../Assets/Images/omg-wijngaard-zeist.jpg";
 import ImgMarktDriebergen      from "../../Assets/Images/omg-markt-driebergen.webp";
 import ImgMarktDoorn           from "../../Assets/Images/omg-markt-doorn.webp";
 import ImgMarktLeersum         from "../../Assets/Images/omg-markt-leersum.webp";
@@ -211,6 +212,7 @@ const BEZIENSWAARDIGHEDEN: BzItem[] = [
     { emoji: "⛴️", naam: "Fiets & Voetveer Rhenen",   desc: "Schilderachtige veerpont voor fietsers en voetgangers die de Rijn oversteekt bij Rhenen. Uniek uitje langs de rivier met mooi uitzicht.", adres: "Rijnkade, Rhenen",                    photo: ImgVoetveer,      web: null },
     { emoji: "🌄", naam: "Amerongse Berg",             desc: "Het hoogste punt van de Utrechtse Heuvelrug op 69 meter. Prachtige wandelpaden door het bos en weidse vergezichten. Vrij toegankelijk.", adres: "Amerongse Berg, Amerongen",   photo: ImgAmerongseBerg, web: null },
     { emoji: "🌿", naam: "Tuinen van Kraaybeekerhof", desc: "Biologische tuinen op het landgoed Kraaybeekerhof in Driebergen. Prachtige moestuin, kruidentuin en rondleidingen. Een rustpunt vol kleur en geur midden op de Heuvelrug.", adres: "Kraaijbeeklaan 1, Driebergen", photo: ImgKraaybeek, web: "https://kraaybeekerhof.nl/tuinen/" },
+    { emoji: "🍇", naam: "Wijngaard Zeist",           desc: "Verrassende wijngaard midden in het Stichtse Landschap bij Zeist. Proef lokale wijnen, geniet van het uitzicht over de wijngaardpercelen en ontdek het verhaal achter de druiven.", adres: "Zeist", photo: ImgWijngaardZeist, web: "https://wijngaardzeist.nl/" },
 ];
 
 const KASTELEN: Venue[] = [
