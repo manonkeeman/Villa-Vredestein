@@ -48,13 +48,12 @@
 }
 
 .priv-section h2 {
-    font-size: 1rem;
+    font-size: 0.82rem;
     font-weight: 700;
-    color: #c8b8a0;
+    color: #e0d0b8;
     margin: 0 0 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    font-size: 0.82rem;
 }
 
 .priv-section p,

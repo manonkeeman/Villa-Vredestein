@@ -7,14 +7,13 @@ import {
     FiUpload, FiDownload, FiUser, FiX, FiUsers,
     FiEdit2, FiSave,
 } from "react-icons/fi";
-import api from "../../Helpers/AxiosHelper";
+import api, { BASE_URL } from "../../Helpers/AxiosHelper";
 import DashboardLayout from "./DashboardLayout";
 import { AdminSidebar } from "./AdminBetalingenMatrix";
 import "./StudentDashboard.css";
 import "./AdminPages.css";
 import "../../Styles/Global.css";
 
-const BASE_URL = (import.meta.env.VITE_API_BASE_URL || "http://localhost:8080").replace(/\/$/, "");
 const ROOM_OPTIONS = ["Argentinië", "Frankrijk", "Italië", "Japan", "Thailand"];
 const OVERRIDES_KEY = "villa_contract_overrides";
 

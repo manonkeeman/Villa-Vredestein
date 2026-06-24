@@ -1,7 +1,7 @@
 import "./Button.css";
 import { FaArrowRight } from "react-icons/fa";
 
-type ButtonVariant = "primary" | "secondary" | "secundary" | "link" | "round";
+type ButtonVariant = "primary" | "secondary" | "link" | "round";
 
 interface ButtonProps {
     text?: string;
@@ -22,11 +22,10 @@ const Button = ({
 }: ButtonProps) => {
     const getClassName = (): string => {
         switch (variant) {
-            case "link":       return "btn-link";
-            case "secundary":
-            case "secondary":  return "btn-secundary";
-            case "round":      return "btn-round";
-            default:           return "btn-primary";
+            case "link":      return "btn-link";
+            case "secondary": return "btn-secundary";
+            case "round":     return "btn-round";
+            default:          return "btn-primary";
         }
     };
 
@@ -37,7 +36,7 @@ const Button = ({
             type={type}
             disabled={disabled}
         >
-            {variant === "secundary" || variant === "secondary" ? (
+            {variant === "secondary" ? (
                 <>{text} <FaArrowRight size={16} className="btn-arrow" /></>
             ) : variant === "round" ? "→" : text}
         </button>

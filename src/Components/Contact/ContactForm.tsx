@@ -75,7 +75,7 @@ const ContactForm = ({ onSuccess }) => {
                 <textarea
                     id="cf-bericht"
                     name="bericht"
-                    rows="5"
+                    rows={5}
                     placeholder={t("contact.form.message")}
                     required
                 />

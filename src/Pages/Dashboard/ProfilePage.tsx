@@ -6,14 +6,12 @@ import Spinner from "../../Components/Spinner/Spinner";
 import {
     FiUser, FiUpload, FiSave, FiTrash2, FiLock,
 } from "react-icons/fi";
-import api from "../../Helpers/AxiosHelper";
+import api, { BASE_URL } from "../../Helpers/AxiosHelper";
 import DashboardLayout from "./DashboardLayout";
 import StudentSidebar from "../../Components/StudentSidebar/StudentSidebar";
 import "./StudentDashboard.css";
 import "./ProfilePage.css";
 import "../../Styles/Global.css";
-
-const BASE_URL = (import.meta.env.VITE_API_BASE_URL || "http://localhost:8080").replace(/\/$/, "");
 
 const SOCIAL_OPTIONS = [
     { value: "", label: "— Kies voorkeur —" },
