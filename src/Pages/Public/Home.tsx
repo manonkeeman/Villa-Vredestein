@@ -6,6 +6,7 @@ import "./Home.css";
 
 import HeroImg from "../../Assets/Images/int-woonkamer.jpg";
 import VillaImg from "../../Assets/Images/ext-villa-voorkant.jpg";
+import VerbouwingVid from "../../Assets/Videos/home-verbouwing.mp4";
 import TuinImg from "../../Assets/Images/ext-tuinfeest.jpg";
 import KroonluchterImg from "../../Assets/Images/int-kroonluchter.jpg";
 import WoonkamerImg2 from "../../Assets/Images/int-woonkamer2.jpg";
@@ -138,7 +139,14 @@ const Home = () => {
             {/* ── Intro split ── */}
             <section className="intro-split reveal-section" ref={addRef}>
                 <div className="intro-img-col">
-                    <img src={VillaImg} alt="Villa Vredestein gevel" loading="lazy" />
+                    <video
+                        src={VerbouwingVid}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        aria-label="Verbouwing Villa Vredestein"
+                    />
                 </div>
                 <div className="intro-text-col">
                     <span className="section-eyebrow">Gebouwd in 1906</span>
