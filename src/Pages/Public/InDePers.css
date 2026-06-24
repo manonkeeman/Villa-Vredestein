@@ -152,10 +152,14 @@
     inset: 0;
     background: #000;
     z-index: 9999;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
 }
+.idp-viewer::-webkit-scrollbar { display: none; }
 
 .idp-viewer-bar {
     position: fixed;
@@ -197,6 +201,8 @@
 .idp-viewer-close:hover { background: rgba(255,255,255,0.2); }
 
 .idp-viewer-slide {
+    flex: 0 0 100vw;
+    width: 100vw;
     height: 100vh;
     scroll-snap-align: start;
     display: flex;
