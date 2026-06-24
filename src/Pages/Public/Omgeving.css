@@ -23,13 +23,48 @@
     z-index: 2;
     pointer-events: none;
     display: flex;
-    align-items: flex-end;
-    background: linear-gradient(to top, rgba(12,10,7,0.92) 0%, rgba(12,10,7,0.35) 42%, transparent 65%);
+    flex-direction: column;
+    justify-content: flex-end;
+    background: linear-gradient(to top, rgba(12,10,7,0.95) 0%, rgba(12,10,7,0.35) 48%, transparent 70%);
 }
 
 .omg-hero-map-text {
-    padding: 2.5rem 3rem;
+    padding: 2.5rem 3rem 1.25rem;
     max-width: 620px;
+    pointer-events: none;
+}
+
+/* Quick-nav cards in hero */
+.omg-hero-quicknav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0 3rem 2rem;
+    pointer-events: auto;
+}
+
+.omg-qnav-card {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 1rem;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 100px;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+    backdrop-filter: blur(6px);
+    white-space: nowrap;
+}
+
+.omg-qnav-card:hover {
+    background: rgba(252,188,45,0.15);
+    border-color: rgba(252,188,45,0.5);
+    color: #fcbc2d;
 }
 
 .omg-eyebrow {
@@ -357,7 +392,8 @@
 
 @media (max-width: 900px) {
     .omg-hero-map { height: 55vh; min-height: 420px; }
-    .omg-hero-map-text { padding: 2rem 1.5rem; }
+    .omg-hero-map-text { padding: 2rem 1.5rem 1rem; }
+    .omg-hero-quicknav { padding: 0 1.5rem 1.75rem; }
     .afstand-grid { grid-template-columns: 1fr 1fr; }
     .boodschappen-grid { grid-template-columns: 1fr 1fr; }
     .venue-photo { height: 150px; }
@@ -365,7 +401,9 @@
 
 @media (max-width: 600px) {
     .omg-hero-map { height: 50vh; min-height: 360px; }
-    .omg-hero-map-text { padding: 1.5rem 1.25rem; }
+    .omg-hero-map-text { padding: 1.5rem 1.25rem 0.75rem; }
+    .omg-hero-quicknav { padding: 0 1.25rem 1.5rem; gap: 0.4rem; }
+    .omg-qnav-card { font-size: 0.72rem; padding: 0.4rem 0.8rem; }
     .afstand-grid { grid-template-columns: 1fr; }
     .omg-section-inner { padding: 0 1.25rem; }
     .omg-venues-grid { grid-template-columns: 1fr 1fr; }

@@ -325,12 +325,20 @@ const Omgeving = () => {
                         <Polyline positions={[VILLA, [52.0894, 5.1101]]} color="rgba(252,188,45,0.3)" weight={2} dashArray="6 6" />
                     </MapContainer>
                 </div>
-                <div className="omg-hero-map-overlay" aria-hidden="true">
+                <div className="omg-hero-map-overlay">
                     <div className="omg-hero-map-text">
                         <span className="omg-eyebrow">Locatie</span>
                         <h1>Midden in het groen,<br />vlak bij alles</h1>
                         <p>Driebergen-Rijsenburg op de Utrechtse Heuvelrug. Bos op de stoep. Utrecht in een kwartier. Amsterdam in veertig minuten.</p>
                     </div>
+                    <nav className="omg-hero-quicknav" aria-label="Snelnavigatie">
+                        <a href="#eten"              className="omg-qnav-card">🍽️ <span>Eten & Drinken</span></a>
+                        <a href="#markten"           className="omg-qnav-card">🛍️ <span>Markten</span></a>
+                        <a href="#bezienswaardigheden" className="omg-qnav-card">🌿 <span>Ontdekken</span></a>
+                        <a href="#kastelen"          className="omg-qnav-card">🏰 <span>Kastelen</span></a>
+                        <a href="#activiteiten"      className="omg-qnav-card">🎭 <span>Activiteiten</span></a>
+                        <a href="#vervoer"           className="omg-qnav-card">🚂 <span>Vervoer</span></a>
+                    </nav>
                 </div>
             </header>
 
@@ -353,7 +361,7 @@ const Omgeving = () => {
             </section>
 
             {/* Getting Around */}
-            <section className="omg-transport reveal-section" ref={addRef} aria-label="Vervoer">
+            <section id="vervoer" className="omg-transport reveal-section" ref={addRef} aria-label="Vervoer">
                 <div className="omg-section-inner">
                     <h2 className="omg-section-title">Vervoer & Bereikbaarheid</h2>
                     <p className="omg-section-sub">Trein, bus of fiets. Driebergen is goed bereikbaar.</p>
@@ -403,7 +411,7 @@ const Omgeving = () => {
             </section>
 
             {/* Eten & Drinken */}
-            <section className="omg-eten reveal-section" ref={addRef} aria-label="Eten en drinken">
+            <section id="eten" className="omg-eten reveal-section" ref={addRef} aria-label="Eten en drinken">
                 <div className="omg-section-inner">
                     <h2 className="omg-section-title">Eten & drinken</h2>
                     <p className="omg-section-sub">Proef de lokale smaken van Driebergen en omgeving.</p>
@@ -432,7 +440,7 @@ const Omgeving = () => {
             </section>
 
             {/* Markten */}
-            <section className="omg-boodschappen reveal-section" ref={addRef} aria-label="Markten">
+            <section id="markten" className="omg-boodschappen reveal-section" ref={addRef} aria-label="Markten">
                 <div className="omg-section-inner">
                     <h2 className="omg-section-title">Markten</h2>
                     <p className="omg-section-sub">Wekelijkse en seizoensmarkten in de omgeving.</p>
@@ -443,7 +451,7 @@ const Omgeving = () => {
             </section>
 
             {/* Bezienswaardigheden */}
-            <section className="omg-bz reveal-section" ref={addRef} aria-label="Bezienswaardigheden">
+            <section id="bezienswaardigheden" className="omg-bz reveal-section" ref={addRef} aria-label="Bezienswaardigheden">
                 <div className="omg-section-inner">
                     <h2 className="omg-section-title">Things to see</h2>
                     <p className="omg-section-sub">Dompel jezelf onder in de schatten van de Utrechtse Heuvelrug.</p>
@@ -454,7 +462,7 @@ const Omgeving = () => {
             </section>
 
             {/* Kastelen */}
-            <section className="omg-kastelen reveal-section" ref={addRef} aria-label="Kastelen en landgoederen">
+            <section id="kastelen" className="omg-kastelen reveal-section" ref={addRef} aria-label="Kastelen en landgoederen">
                 <div className="omg-section-inner">
                     <h2 className="omg-section-title">Kastelen & Landgoederen</h2>
                     <p className="omg-section-sub">Kastelen, landgoederen en een rijke geschiedenis op fietsafstand.</p>
@@ -465,7 +473,7 @@ const Omgeving = () => {
             </section>
 
             {/* Ontdekken */}
-            <section className="omg-ontdekken reveal-section" ref={addRef} aria-label="Activiteiten">
+            <section id="activiteiten" className="omg-ontdekken reveal-section" ref={addRef} aria-label="Activiteiten">
                 <div className="omg-section-inner">
                     <h2 className="omg-section-title">Ontdekken</h2>
                     <p className="omg-section-sub">Rondom en in Driebergen.</p>
