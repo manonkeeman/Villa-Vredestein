@@ -60,7 +60,7 @@ const InDePers = () => {
     useEffect(() => {
         if (!viewer) return;
         const el = slidesRef.current[viewer.startIndex];
-        if (el) el.scrollIntoView({ behavior: "instant" });
+        if (el) el.scrollIntoView({ behavior: "instant", inline: "start", block: "nearest" });
     }, [viewer]);
 
     // Track which slide is visible via IntersectionObserver
