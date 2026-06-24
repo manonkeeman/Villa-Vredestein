@@ -220,6 +220,39 @@
     box-shadow: 0 8px 60px rgba(0,0,0,0.5);
 }
 
+.idp-viewer-arrow {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10001;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #fff;
+    font-size: 2.2rem;
+    line-height: 1;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, transform 0.2s;
+    backdrop-filter: blur(4px);
+}
+.idp-viewer-arrow:hover {
+    background: rgba(252,188,45,0.25);
+    border-color: rgba(252,188,45,0.6);
+}
+.idp-viewer-arrow--prev { left: 1.25rem; }
+.idp-viewer-arrow--next { right: 1.25rem; }
+
+@media (max-width: 600px) {
+    .idp-viewer-arrow { width: 2.4rem; height: 2.4rem; font-size: 1.7rem; }
+    .idp-viewer-arrow--prev { left: 0.75rem; }
+    .idp-viewer-arrow--next { right: 0.75rem; }
+}
+
 /* ── Artikel tekst ── */
 .idp-article-body {
     padding: 2.5rem 2.5rem;

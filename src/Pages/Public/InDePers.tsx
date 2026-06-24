@@ -194,6 +194,21 @@ const InDePers = () => {
                             <img src={src} alt={`Foto ${idx + 1}`} className="idp-viewer-img" />
                         </div>
                     ))}
+
+                    {activeSlide > 0 && (
+                        <button
+                            className="idp-viewer-arrow idp-viewer-arrow--prev"
+                            aria-label="Vorige foto"
+                            onClick={() => slidesRef.current[activeSlide - 1]?.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" })}
+                        >‹</button>
+                    )}
+                    {activeSlide < viewer.imgs.length - 1 && (
+                        <button
+                            className="idp-viewer-arrow idp-viewer-arrow--next"
+                            aria-label="Volgende foto"
+                            onClick={() => slidesRef.current[activeSlide + 1]?.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" })}
+                        >›</button>
+                    )}
                 </div>
             )}
 
