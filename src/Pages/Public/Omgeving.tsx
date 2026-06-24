@@ -180,7 +180,7 @@ const AFHAAL_DINNER: Venue[] = [
     { naam: "Restaurant NIO",          desc: "Modern restaurant in het centrum van Driebergen. Creatieve gerechten, mooie wijnen en een sfeervolle ambiance.",               adres: "Hoofdstraat, Driebergen",          web: "https://nio-driebergen.nl/",            photo: ImgNio      },
     { naam: "Bistro Paul",             desc: "Frans-geïnspireerde bistro met een eerlijke keuken. Dagverse gerechten, goede wijn en een warm terras.",                         adres: "Doorn",                            web: "https://www.bistropaul.nl/",            photo: ImgBistroPaul },
     { naam: "Vagabond Driebergen",     desc: "Café-restaurant in Driebergen. Ontspannen sfeer, mooie drankkaart en een wisselend menu van ontbijt tot diner.",                adres: "Driebergen",                       web: "https://devagebond.nl/",               photo: ImgVagabond },
-    { naam: "Pannekoekenrestaurant Het Jagershuis Lage Vuursche", desc: "Karakteristiek pannekoekenrestaurant op het mooie landgoed Lage Vuursche. Ruime kaart, fijn terras en een prachtige bosomgeving. Aanrader voor het hele gezin.", adres: "Lage Vuursche", web: "https://jagershuislagevuursche.nl/", photo: ImgJagershuis },
+    { naam: "Klein Zwitserland",       desc: "Sfeervol restaurant op de Heuvelrug in Driebergen. Terrasdiner in het groen, seizoensgebonden keuken.",                         adres: "Driebergen",                       web: "https://kleinzwitserlanddriebergen.nl/", photo: ImgKleinZwitserland },
 ];
 
 const CAFE: Venue[] = [
