@@ -146,14 +146,14 @@ const Home = () => {
                     <p>
                         Villa Vredestein werd gebouwd als buitenverblijf voor de burgemeester
                         van Krimpen aan den IJssel. Sindsdien heeft het pand talloze bewoners
-                        verwelkomd: van christelijk pension tot studentenhuis. En nu? Een verbouwproject
-                        van tien jaar, waar Manon en Maxim gewoon in wonen terwijl de schop er in gaat.
+                        verwelkomd. Van christelijk pension tot studentenhuis, van verbouwproject
+                        tot wat het wordt: een plek om trots op te zijn.
                     </p>
                     <p>
-                        Het pand is geen monument en werd in de jaren 70 flink verbouwd. De originele
-                        details zijn grotendeels verdwenen, maar komen stap voor stap terug: glas-in-lood
-                        ramen, openslaande deuren, houtkachels. De vloeren zijn industrieel gietwerk beneden
-                        en gebrand grenenhout boven. Geen restauratie, maar een eerlijke modernisering.
+                        Achter de originele gevel schuilen hoge plafonds, een industriële gietvloer
+                        beneden en gebrand grenenhout boven. Originele details komen stap voor stap
+                        terug: glas-in-lood ramen, openslaande deuren, houtkachels. Manon en Maxim
+                        wonen er midden in, terwijl het plan langzaam vorm krijgt.
                     </p>
                     <button className="text-link-btn" onClick={() => navigate("/tijdlijn")}>
                         Volg het verhaal op de tijdlijn →
