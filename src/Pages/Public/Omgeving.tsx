@@ -173,7 +173,6 @@ const ONTBIJT: Venue[] = [
 ];
 
 const AFHAAL_DINNER: Venue[] = [
-    { naam: "Pannekoekenrestaurant Het Jagershuis Lage Vuursche", desc: "Karakteristiek pannekoekenrestaurant op het mooie landgoed Lage Vuursche. Ruime kaart, fijn terras en een prachtige bosomgeving. Aanrader voor het hele gezin.", adres: "Lage Vuursche",        web: "https://jagershuislagevuursche.nl/",     photo: ImgJagershuis },
     { naam: "Het Jagershuys Zeist",                               desc: "Sfeervolle pannekoekenherberg in een historisch pand in Zeist. Grote kaart met zoet en hartig, open haarden en een oud-Hollands interieur.",                 adres: "Zeist",                web: "https://www.hetjagershuyszeist.nl/",     photo: ImgJagershuis },
     { naam: "Mi Piace",        desc: "Pizzeria en wijn. Dagelijks 17:00–22:00. €5–20.",            adres: "Traaij 1C, Driebergen",      web: "https://www.mipiacedriebergen.nl/",      photo: ImgMiPiace  },
     { naam: "Brasserie Buut",  desc: "Moderne brasserie in Driebergen. Verse seizoensgerechten, een mooie wijn- en cocktailkaart en een warm terras. Zowel lunch als diner.",   adres: "Driebergen",           web: "https://www.brasseriebuut.nl/",          photo: ImgBrasserieButt },
@@ -181,7 +180,7 @@ const AFHAAL_DINNER: Venue[] = [
     { naam: "Restaurant NIO",          desc: "Modern restaurant in het centrum van Driebergen. Creatieve gerechten, mooie wijnen en een sfeervolle ambiance.",               adres: "Hoofdstraat, Driebergen",          web: "https://nio-driebergen.nl/",            photo: ImgNio      },
     { naam: "Bistro Paul",             desc: "Frans-geïnspireerde bistro met een eerlijke keuken. Dagverse gerechten, goede wijn en een warm terras.",                         adres: "Doorn",                            web: "https://www.bistropaul.nl/",            photo: ImgBistroPaul },
     { naam: "Vagabond Driebergen",     desc: "Café-restaurant in Driebergen. Ontspannen sfeer, mooie drankkaart en een wisselend menu van ontbijt tot diner.",                adres: "Driebergen",                       web: "https://devagebond.nl/",               photo: ImgVagabond },
-    { naam: "Klein Zwitserland",       desc: "Sfeervol restaurant op de Heuvelrug in Driebergen. Terrasdiner in het groen, seizoensgebonden keuken.",                         adres: "Driebergen",                       web: "https://kleinzwitserlanddriebergen.nl/", photo: ImgKleinZwitserland },
+    { naam: "Pannekoekenrestaurant Het Jagershuis Lage Vuursche", desc: "Karakteristiek pannekoekenrestaurant op het mooie landgoed Lage Vuursche. Ruime kaart, fijn terras en een prachtige bosomgeving. Aanrader voor het hele gezin.", adres: "Lage Vuursche", web: "https://jagershuislagevuursche.nl/", photo: ImgJagershuis },
 ];
 
 const CAFE: Venue[] = [
