@@ -27,7 +27,7 @@ const HIGHLIGHTS = [
         img: KroonluchterImg,
         label: "Interieur",
         titel: "Elk detail telt",
-        sub: "Kristallen kroonluchters, eiken vloeren, hoge plafonds.",
+        sub: "Kristallen kroonluchters, hoge plafonds en originele details die stap voor stap terugkomen.",
     },
     {
         to: "/ruimtes",
