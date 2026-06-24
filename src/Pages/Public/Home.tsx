@@ -55,6 +55,8 @@ const Home = () => {
     const [parallaxY, setParallaxY] = useState(0);
 
     useEffect(() => {
+        // Parallax uitgeschakeld op mobiel (voorkomt re-render jank en scroll-problemen)
+        if (window.matchMedia("(max-width: 768px)").matches) return;
         const onScroll = () => {
             setParallaxY(window.scrollY * 0.3);
         };

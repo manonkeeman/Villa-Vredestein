@@ -13,7 +13,10 @@
 .home-lux {
     background: #0c0a07;
     color: #fff;
-    overflow-x: hidden;
+    /* overflow-x: hidden verwijderd — creëert scroll-container op iOS Safari */
+    padding: 0;       /* override Global.css main padding */
+    max-width: none;  /* override Global.css main max-width */
+    width: 100%;
 }
 
 /* ══════════════════════════════════════
@@ -27,6 +30,7 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    touch-action: pan-y; /* sta verticaal scrollen toe op touch-apparaten */
 }
 
 .hero-bg {
@@ -36,6 +40,7 @@
     background-position: center;
     will-change: transform;
     filter: brightness(0.5) saturate(0.7);
+    pointer-events: none; /* voorkom touch-event-onderschepping */
 }
 
 .hero-overlay {
@@ -500,18 +505,37 @@
         padding: 4rem 1.5rem;
     }
 
-    .intro-img-col img { height: 320px; }
+    .intro-img-col img,
+    .intro-img-col video { height: 280px; }
 
     .highlights-grid {
         grid-template-columns: 1fr;
-        max-width: 480px;
+        max-width: 520px;
         margin: 0 auto;
     }
 
     .sfeer-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
+@media (max-width: 768px) {
+    .hero-bg {
+        will-change: auto; /* geen compositing layer op mobiel */
+        transform: none !important; /* parallax uitschakelen */
+    }
+}
+
 @media (max-width: 600px) {
+    .hero-ctas {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-btn-primary,
+    .hero-btn-ghost {
+        width: 100%;
+        max-width: 300px;
+    }
+
     .kenmerken-bar {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -526,7 +550,14 @@
     .kenmerk-item:nth-child(3), .kenmerk-item:nth-child(6) { border-right: none; }
 
     .booking-strip-inner { flex-direction: column; text-align: center; }
+    .booking-strip-actions { width: 100%; justify-content: center; }
     .booking-strip-text p { max-width: 100%; }
 
     .intro-split { padding: 3rem 1.25rem; }
+
+    .intro-img-col video { height: 220px; }
+
+    .highlights-grid { max-width: 100%; }
+
+    .sfeer-grid { grid-template-columns: repeat(2, 1fr); }
 }
