@@ -5,7 +5,7 @@ import { useAuth } from "../Auth/AuthContext";
 import {
     FiDollarSign, FiDownload, FiExternalLink, FiCheckCircle, FiClock, FiAlertTriangle, FiFileText,
 } from "react-icons/fi";
-import api from "../../Helpers/AxiosHelper";
+import api, { BASE_URL } from "../../Helpers/AxiosHelper";
 import DashboardLayout from "./DashboardLayout";
 import StudentSidebar from "../../Components/StudentSidebar/StudentSidebar";
 import "./StudentDashboard.css";
@@ -51,8 +51,6 @@ const StatusBadge = ({ status }) => {
         </span>
     );
 };
-
-const BASE_URL = (import.meta.env.VITE_API_BASE_URL || "http://localhost:8080").replace(/\/$/, "");
 
 const BetalingenPage = () => {
     const { isLoggedIn, logout, user } = useAuth();

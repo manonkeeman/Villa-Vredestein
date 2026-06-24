@@ -34,12 +34,12 @@
     cursor: pointer;
     padding: 0.5rem;
     text-decoration: underline;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, opacity 0.2s;
 }
 
 .btn-link:hover {
-    color: #f8c93c;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s, color 0.3s;
+    color: #FCBC2D;
+    opacity: 0.75;
 }
 
 /* SECUNDAIRE / OUTLINE BUTTON */
@@ -84,8 +84,18 @@
 }
 
 .btn-round:hover {
-    background-color: #f8c93c;
-    box-shadow: 0 0 10px rgba(252, 188, 45, 0.6);
+    background-color: #FCBC2D;
+    box-shadow: 0 0 10px rgba(252, 188, 45, 0.7);
+}
+
+/* Focus-visible (keyboard navigatie) */
+.btn-primary:focus-visible,
+.btn-secundary:focus-visible,
+.btn-link:focus-visible,
+.btn-round:focus-visible,
+.custom-button:focus-visible {
+    outline: 2px solid #FCBC2D;
+    outline-offset: 3px;
 }
 
 /* Disabled state */

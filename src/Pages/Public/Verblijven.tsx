@@ -152,7 +152,7 @@ const Verblijven = () => {
                             We vertellen je alles over de beschikbaarheid, voorwaarden en prijs.
                         </p>
                         <div className="verb-form-img">
-                            <img src={TuinImg} alt="Villa tuin" loading="lazy" />
+                            <img src={TuinImg} alt="Achtertuin Villa Vredestein met terras en hangmat" loading="lazy" />
                         </div>
                         <div className="verb-garanties">
                             {["Persoonlijk antwoord binnen 24u", "Geen verborgen kosten", "Flexibele annulering bespreekbaar"].map((g) => (

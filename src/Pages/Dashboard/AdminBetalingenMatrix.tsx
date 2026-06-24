@@ -3,8 +3,8 @@ import { Helmet } from "react-helmet-async";
 import { Navigate, Link } from "react-router-dom";
 import { useAuth } from "../Auth/AuthContext";
 import {
-    FiLogOut, FiHome, FiUsers, FiDollarSign, FiClipboard,
-    FiFileText, FiShield, FiTool, FiMessageSquare, FiGrid,
+    FiLogOut, FiUsers, FiDollarSign, FiClipboard,
+    FiFileText, FiShield, FiMessageSquare, FiGrid,
     FiRefreshCw, FiMail, FiAlertTriangle, FiCheckCircle, FiClock,
     FiX, FiSettings, FiCalendar, FiAlertCircle,
 } from "react-icons/fi";
