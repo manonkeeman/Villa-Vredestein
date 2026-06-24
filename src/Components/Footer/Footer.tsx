@@ -30,7 +30,7 @@ const Footer = () => {
                 {/* Brand */}
                 <div className="footer-brand">
                     <NavLink to="/" aria-label="Villa Vredestein – naar homepage" className="footer-brand-logo-link">
-                        <img src="/VVLogo.png" alt="Villa Vredestein logo" className="footer-logo" width="52" height="52" />
+                        <img src="/VVLogo.png" alt="Villa Vredestein logo" className="footer-logo" width="72" height="72" />
                     </NavLink>
                     <div className="footer-brand-text">
                         <p className="footer-name">Villa Vredestein</p>
