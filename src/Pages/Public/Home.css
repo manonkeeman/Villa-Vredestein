@@ -561,3 +561,11 @@
 
     .sfeer-grid { grid-template-columns: repeat(2, 1fr); }
 }
+
+@media (max-width: 480px) {
+    .booking-strip { padding: 2.5rem 1.25rem; }
+    .booking-strip-text h2 { font-size: clamp(1.2rem, 5vw, 1.5rem); }
+    .sfeer-strip { padding: 3rem 1.25rem 2.5rem; }
+    .sfeer-strip-header h2 { font-size: clamp(1.2rem, 5vw, 1.5rem); }
+    .highlights { padding: 2rem 1.25rem 3.5rem; }
+}

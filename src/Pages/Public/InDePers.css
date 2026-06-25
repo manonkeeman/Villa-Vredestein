@@ -464,6 +464,7 @@
 
     .idp-articles-section {
         padding: 3rem 1.25rem;
+        gap: 2.5rem;
     }
 
     .idp-thumb-btn {
@@ -476,5 +477,20 @@
 
     .idp-cta {
         padding: 4rem 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .idp-hero {
+        padding: 5rem 1rem 2.5rem;
+    }
+
+    .idp-articles-section {
+        padding: 2.5rem 1rem;
+        gap: 2rem;
+    }
+
+    .idp-cta {
+        padding: 3rem 1rem;
     }
 }

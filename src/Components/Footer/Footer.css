@@ -219,10 +219,11 @@ a.footer-address-row:hover svg {
     }
 }
 
-/* ── Small mobile ── */
-@media (max-width: 380px) {
+/* ── Small mobile — alles op 1 kolom ── */
+@media (max-width: 480px) {
     .footer-inner {
         grid-template-columns: 1fr;
+        gap: 1.75rem;
     }
 
     .footer-logo {

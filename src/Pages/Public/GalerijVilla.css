@@ -176,9 +176,15 @@
 
 .gvlb-counter { position: absolute; bottom: -2.25rem; left: 50%; transform: translateX(-50%); font-size: 0.68rem; color: #5a4e3e; white-space: nowrap; }
 
-@media (max-width: 700px) {
+@media (max-width: 720px) {
     .gvlb-prev { left: 0.25rem; top: auto; bottom: 5rem; transform: none; }
     .gvlb-next { right: 0.25rem; top: auto; bottom: 5rem; transform: none; }
     .gvlb-img-wrap { max-height: 52vh; }
     .gvlb-img { max-height: 52vh; }
+}
+
+@media (max-width: 480px) {
+    .gv-header { padding: 2.5rem 1.25rem 1.5rem; }
+    .gv-filter { padding: 0 1.25rem 1.75rem; }
+    .gv-grid { padding: 0 1rem; column-gap: 0.4rem; }
 }
