@@ -6,8 +6,19 @@ import "./InDePers.css";
 import PersAdFoto from "../../Assets/Images/pers-ad-foto.jpeg";
 import PersAdArtikel from "../../Assets/Images/pers-ad-artikel.jpeg";
 import PersImg4594 from "../../Assets/Images/pers-img4594.jpg";
+import PersBoek from "../../Assets/Images/pers-vredestein-in-boek.jpg";
 
 const PERS_ITEMS = [
+    {
+        medium: "Publicatie",
+        sectie: "BOEK",
+        datum: "2024",
+        kop: "Villa Vredestein in een boek",
+        samenvatting: "Villa Vredestein heeft een plek gekregen in een publicatie. Het historische pand aan de Hoofdstraat 147 in Driebergen-Rijsenburg, gebouwd in 1906, wordt beschreven als een bijzonder voorbeeld van villabouw uit het begin van de twintigste eeuw.",
+        url: null,
+        tag: "Publicatie",
+        imgs: [PersBoek],
+    },
     {
         medium: "Algemeen Dagblad",
         sectie: "GELD",

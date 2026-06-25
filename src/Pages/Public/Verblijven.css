@@ -226,11 +226,101 @@ input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1) opacit
 }
 .verb-btn-secondary:hover { color: #f5d8c8; border-color: #8b3a3a; }
 
+/* De Ruimtes sectie */
+.verb-ruimtes { padding: 5rem 0; border-top: 1px solid #1e1812; }
+
+.verb-ruimtes-intro { font-size: 0.95rem; color: #988068; line-height: 1.75; margin: -1rem 0 2.5rem; }
+
+.verb-ruimtes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+
+.verb-ruimte-card {
+    background: #120f09;
+    border: 1px solid #221b12;
+    border-radius: 14px;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+}
+.verb-ruimte-card:hover { border-color: #382e1e; transform: translateY(-4px); }
+
+.verb-ruimte-verd {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #fff;
+}
+
+.verb-ruimte-body { padding: 1.5rem 1.5rem 1.75rem; }
+.verb-ruimte-body h3 { font-size: 1rem; font-weight: 700; color: #fff; margin: 0 0 0.6rem; }
+.verb-ruimte-body p { font-size: 0.82rem; color: #988068; line-height: 1.65; margin: 0 0 1rem; }
+
+.verb-ruimte-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.3rem; }
+.verb-ruimte-list li { font-size: 0.78rem; color: #786050; padding-left: 1rem; position: relative; }
+.verb-ruimte-list li::before { content: "·"; position: absolute; left: 0; color: #FCBC2D; }
+
+.verb-ruimtes-cta { margin-top: 2.5rem; text-align: center; }
+.verb-ruimtes-btn {
+    background: transparent;
+    color: #FCBC2D;
+    border: 1px solid #FCBC2D;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    letter-spacing: 0.02em;
+}
+.verb-ruimtes-btn:hover { background: #FCBC2D; color: #000; }
+
+/* Reviews sectie */
+.verb-reviews { padding: 5rem 0; border-top: 1px solid #1e1812; }
+
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+
+.review-card {
+    background: #120f09;
+    border: 1px solid #221b12;
+    border-radius: 14px;
+    padding: 2rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: border-color 0.3s;
+}
+.review-card:hover { border-color: #382e1e; }
+
+.review-sterren { color: #FCBC2D; font-size: 1rem; letter-spacing: 0.1em; }
+
+.review-tekst { font-size: 0.87rem; color: #988068; line-height: 1.75; margin: 0; flex: 1; font-style: italic; }
+
+.review-auteur { display: flex; align-items: center; gap: 0.85rem; margin-top: auto; }
+
+.review-avatar {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: #FCBC2D;
+    color: #000;
+    font-size: 0.9rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.review-auteur strong { display: block; font-size: 0.85rem; color: #fff; }
+.review-auteur span { display: block; font-size: 0.73rem; color: #5a4e3e; margin-top: 0.1rem; }
+
 /* Responsive */
 @media (max-width: 900px) {
     .opties-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
     .verb-form-grid { grid-template-columns: 1fr; gap: 3rem; }
     .verb-form-img { display: none; }
+    .verb-ruimtes-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+    .reviews-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
 }
 
 @media (max-width: 600px) {
