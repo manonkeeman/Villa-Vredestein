@@ -27,7 +27,6 @@ import ImgGroente           from "../../Assets/Images/tuin-groente.jpg";
 import ImgKlaproos          from "../../Assets/Images/tuin-klaproos.jpg";
 
 // Leven
-import ImgMoestuin          from "../../Assets/Images/life-moestuin.jpg";
 import ImgRommertBram       from "../../Assets/Images/life-rommert-bram.jpg";
 import ImgPannenkoeken2025  from "../../Assets/Images/life-pannenkoeken-2025.jpg";
 import ImgKoken             from "../../Assets/Images/life-koken.jpg";
@@ -35,9 +34,17 @@ import ImgEtenOekrainers    from "../../Assets/Images/life-eten-oekrainers.jpg";
 import ImgEtenBuren         from "../../Assets/Images/life-eten-buren.jpg";
 import ImgKLM               from "../../Assets/Images/life-klm.jpg";
 
-// Geschiedenis — ansichtkaarten & familie
-import ImgAnsichtPension    from "../../Assets/Images/hist-ansichtkaart-pension.jpg";
-import ImgAnsichtHfdstr     from "../../Assets/Images/hist-ansichtkaart-hfdstr.jpg";
+// Ansichtkaarten
+import ImgAnsichtPension         from "../../Assets/Images/hist-ansichtkaart-pension.jpg";
+import ImgAnsichtHfdstr          from "../../Assets/Images/hist-ansichtkaart-hfdstr.jpg";
+import ImgAnsichtDorpsstraat     from "../../Assets/Images/hist-ansicht-dorpsstraat.jpg";
+import ImgAnsichtHoofdweg        from "../../Assets/Images/hist-ansicht-hoofdweg.jpeg";
+import ImgAnsichtVredesteinP     from "../../Assets/Images/hist-ansicht-vredestein-pension.jpg";
+import ImgAnsichtVredesteinDrb   from "../../Assets/Images/hist-ansicht-vredestein-driebergen.jpg";
+import ImgAnsichtHfdstrKleur     from "../../Assets/Images/hist-ansicht-hoofdstraat-kleur.jpg";
+import ImgAnsichtRustoord        from "../../Assets/Images/hist-ansicht-rustoord.jpg";
+
+// Geschiedenis — familie
 import ImgFamilieRoelofsen  from "../../Assets/Images/hist-familie-roelofsen.jpg";
 import ImgZustersPension    from "../../Assets/Images/hist-zusters-pension.jpg";
 import ImgTuinVroeger       from "../../Assets/Images/hist-tuin-vroeger.jpg";
@@ -89,7 +96,7 @@ import ImgGietvloer         from "../../Assets/Images/rest-gietvloer.jpg";
 import ImgTerrasAanleg      from "../../Assets/Images/rest-terras.jpg";
 import ImgKroonluchtersVerv from "../../Assets/Images/rest-kroonluchters.jpg";
 
-const CATEGORIEEN = ["Alles", "Interieur", "Exterieur", "Tuin", "Leven", "Geschiedenis", "Restauratie"];
+const CATEGORIEEN = ["Alles", "Interieur", "Exterieur", "Tuin", "Leven", "Geschiedenis", "Ansichtkaarten", "Restauratie"];
 
 const FOTOS = [
     // ── Interieur ──────────────────────────────────────────────────────────
@@ -148,11 +155,25 @@ const FOTOS = [
     { src: ImgKLM,               cat: "Leven", caption: "KLM fotoshoot",               sub: "Villa Vredestein als decor voor een KLM-fotoshoot",
       verhaal: "KLM koos Villa Vredestein als decor voor een interne fotoshoot. De hoge plafonds, de kroonluchters, de sfeer — het paste precies bij wat ze zochten. Een bijzondere dag in de lange geschiedenis van dit pand." },
 
-    // ── Geschiedenis ──────────────────────────────────────────────────────
-    { src: ImgAnsichtPension,    cat: "Geschiedenis", caption: "Ansichtkaart pension Vredestein", sub: "Het pension zoals het begin 1900 werd geadverteerd",
+    // ── Ansichtkaarten ────────────────────────────────────────────────────
+    { src: ImgAnsichtPension,      cat: "Ansichtkaarten", caption: "Pension Villa Vredestein",            sub: "Het pension zoals het begin 1900 werd geadverteerd",
       verhaal: "Een ansichtkaart uit het begin van de twintigste eeuw, waarop Vredestein als pension werd aangeprezen. 'Rustig gelegen, christelijk pension' — dat was de boodschap. Toeristen kwamen van ver voor de lucht van de Heuvelrug." },
-    { src: ImgAnsichtHfdstr,     cat: "Geschiedenis", caption: "Ansichtkaart Hoofdstraat",        sub: "Historische ansichtkaart van de Hoofdstraat in Driebergen",
-      verhaal: "De Hoofdstraat van Driebergen zoals hij er rond 1910 uitzag. Minder auto's, meer rust. Villa Vredestein is ergens op dit beeld — maar de Hoofdstraat herkent u ongetwijfeld nog." },
+    { src: ImgAnsichtHfdstr,       cat: "Ansichtkaarten", caption: "Ansichtkaart Hoofdstraat",            sub: "Historische ansichtkaart van de Hoofdstraat in Driebergen",
+      verhaal: "De Hoofdstraat van Driebergen zoals hij er rond 1910 uitzag. Minder auto's, meer rust. Villa Vredestein staat rechts in beeld — herkenbaar aan het karakteristieke dak en de erker." },
+    { src: ImgAnsichtDorpsstraat,  cat: "Ansichtkaarten", caption: "Driebergen Dorpstraat",              sub: "De Dorpsstraat van Driebergen, begin twintigste eeuw",
+      verhaal: "De Dorpsstraat van Driebergen rond 1910. Een man met zijn fiets, rails in het midden van de weg, hoge villa's aan weerszijden. De rust en deftigheid van Driebergen ademen uit elk detail van deze kaart." },
+    { src: ImgAnsichtHoofdweg,     cat: "Ansichtkaarten", caption: "Driebergen Hoofdweg",                sub: "Vroeg twintigste-eeuwse ansichtkaart van de Hoofdweg",
+      verhaal: "De Driebergse Hoofdweg in sepia, vermoedelijk rond 1905–1915. De tramrails zijn nog aanwezig, de bebouwing herkenbaar. Links in beeld het begin van het perceel van Villa Vredestein." },
+    { src: ImgAnsichtVredesteinP,  cat: "Ansichtkaarten", caption: "Pension Villa \"Vredestein\"",        sub: "Portretansichtkaart van het pension aan de Hoofdstraat",
+      verhaal: "Een verticale ansichtkaart met voluit de tekst 'Pension Villa Vredestein, Driebergen'. De villa in zijn beste kleren — vol klimop, elegant en uitnodigend. Zo presenteerde het pension zich aan de buitenwereld." },
+    { src: ImgAnsichtVredesteinDrb, cat: "Ansichtkaarten", caption: "Vredestein — Driebergen",           sub: "Vroege ansichtkaart van de villa zelf",
+      verhaal: "Een vroege ansichtkaart met het opschrift 'Vredestein — Driebergen'. De villa staat er nog kaler bij dan nu — de beplanting had nog jaren te groeien. Maar de contouren zijn onmiskenbaar hetzelfde als vandaag." },
+    { src: ImgAnsichtHfdstrKleur,  cat: "Ansichtkaarten", caption: "Driebergen Hoofdstraat (kleur)",     sub: "Gekleurde ansichtkaart, vermoedelijk jaren tien of twintig",
+      verhaal: "Een gekleurde ansichtkaart van de Hoofdstraat in Driebergen, vermoedelijk uit de jaren tien of twintig. Rechts in beeld staat Villa Vredestein in zijn vroege jaren — in een pastelpalette dat die tijd zo goed typeert." },
+    { src: ImgAnsichtRustoord,     cat: "Ansichtkaarten", caption: "Dorpstraat met Rustoord Vredestein", sub: "Het pand aangeduid als rustoord aan de Dorpstraat",
+      verhaal: "Opschrift: 'Driebergen, Dorpstraat met Rustoord Vredestein'. Het pand werd door de jaren heen ook als rustoord aangeduid — een rustpunt langs de Heuvelrug. Een herinnering aan de vele gedaanten die dit huis in een eeuw heeft aangenomen." },
+
+    // ── Geschiedenis ──────────────────────────────────────────────────────
     { src: ImgVilla1910,         cat: "Geschiedenis", caption: "Vredestein circa 1910",           sub: "Historische foto van de villa kort na de bouw in 1906",
       verhaal: "Een van de vroegste bekende foto's van de villa, gemaakt enkele jaren na de bouw in 1906. De gevel is bijna identiek aan hoe hij er nu uitziet — het pand heeft zijn karakter door de eeuwen bewaard." },
     { src: ImgVoorkantRoelofsen, cat: "Geschiedenis", caption: "Villa in het tijdperk Roelofsen", sub: "De voorkant van de villa zoals de familie Roelofsen hem kende",
