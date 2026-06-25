@@ -17,7 +17,7 @@ import ImgMiddenverdieping  from "../../Assets/Images/int-middenverdieping.jpg";
 // Exterieur
 import ImgVillaFront        from "../../Assets/Images/ext-villa-voorkant.jpg";
 import ImgVredesteinBord    from "../../Assets/Images/ext-vredestein-bord.jpg";
-import ImgVillaBloemen      from "../../Assets/Images/ext-villa-bloemen.jpg";
+
 import ImgNight             from "../../Assets/Images/VredesteineByNight.jpg";
 import ImgVillaNight2       from "../../Assets/Images/ext-villa-night-2.jpg";
 import ImgBallon            from "../../Assets/Images/ext-ballon.png";
@@ -117,7 +117,7 @@ const FOTOS = [
     { src: ImgVillaFront,     cat: "Exterieur", caption: "De voorkant",               sub: "Balkon en erker, karakteristiek voor 1906" },
     { src: ImgBloeiVoorkant,  cat: "Exterieur", caption: "Villa in volle bloei",      sub: "De gevel in de zomer, kleurrijk en uitnodigend" },
     { src: ImgGevel,          cat: "Exterieur", caption: "De gevel",                  sub: "Hoofdstraat 147, Driebergen-Rijsenburg" },
-    { src: ImgVillaBloemen,   cat: "Exterieur", caption: "Hortensia's voor de gevel", sub: "Zomerse bloemen langs de voorkant van de villa" },
+
     { src: ImgVredesteinBord, cat: "Exterieur", caption: "Vredestein",                sub: "Het originele naambordje in de boogvorm boven de ingang" },
     { src: ImgHoogte,         cat: "Exterieur", caption: "Villa vanuit de hoogte",    sub: "Luchtfoto van het perceel en de omgeving" },
     { src: ImgBallon,         cat: "Exterieur", caption: "Luchtballon boven Vredestein", sub: "Een bijzonder gezicht boven de Hoofdstraat" },
