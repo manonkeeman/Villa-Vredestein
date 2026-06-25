@@ -41,7 +41,7 @@ import ImgAnsichtDorpsstraat     from "../../Assets/Images/hist-ansicht-dorpsstr
 import ImgAnsichtHoofdweg        from "../../Assets/Images/hist-ansicht-hoofdweg.jpeg";
 import ImgAnsichtVredesteinP     from "../../Assets/Images/hist-ansicht-vredestein-pension.jpg";
 import ImgAnsichtVredesteinDrb   from "../../Assets/Images/hist-ansicht-vredestein-driebergen.jpg";
-import ImgAnsichtHfdstrKleur     from "../../Assets/Images/hist-ansicht-hoofdstraat-kleur.jpg";
+
 import ImgAnsichtRustoord        from "../../Assets/Images/hist-ansicht-rustoord.jpg";
 
 // Geschiedenis — familie
@@ -168,8 +168,7 @@ const FOTOS = [
       verhaal: "Een verticale ansichtkaart met voluit de tekst 'Pension Villa Vredestein, Driebergen'. De villa in zijn beste kleren — vol klimop, elegant en uitnodigend. Zo presenteerde het pension zich aan de buitenwereld." },
     { src: ImgAnsichtVredesteinDrb, cat: "Ansichtkaarten", caption: "Vredestein — Driebergen",           sub: "Vroege ansichtkaart van de villa zelf",
       verhaal: "Een vroege ansichtkaart met het opschrift 'Vredestein — Driebergen'. De villa staat er nog kaler bij dan nu — de beplanting had nog jaren te groeien. Maar de contouren zijn onmiskenbaar hetzelfde als vandaag." },
-    { src: ImgAnsichtHfdstrKleur,  cat: "Ansichtkaarten", caption: "Driebergen Hoofdstraat (kleur)",     sub: "Gekleurde ansichtkaart, vermoedelijk jaren tien of twintig",
-      verhaal: "Een gekleurde ansichtkaart van de Hoofdstraat in Driebergen, vermoedelijk uit de jaren tien of twintig. Rechts in beeld staat Villa Vredestein in zijn vroege jaren — in een pastelpalette dat die tijd zo goed typeert." },
+
     { src: ImgAnsichtRustoord,     cat: "Ansichtkaarten", caption: "Dorpstraat met Rustoord Vredestein", sub: "Het pand aangeduid als rustoord aan de Dorpstraat",
       verhaal: "Opschrift: 'Driebergen, Dorpstraat met Rustoord Vredestein'. Het pand werd door de jaren heen ook als rustoord aangeduid — een rustpunt langs de Heuvelrug. Een herinnering aan de vele gedaanten die dit huis in een eeuw heeft aangenomen." },
 
