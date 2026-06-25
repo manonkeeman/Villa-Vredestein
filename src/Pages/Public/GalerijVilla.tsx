@@ -19,8 +19,13 @@ import ImgVillaBloemen from "../../Assets/Images/ext-villa-bloemen.jpg";
 import ImgTuin         from "../../Assets/Images/ext-tuinfeest.jpg";
 import ImgTuinTerras   from "../../Assets/Images/tuin-terras.jpg";
 
-// Interieur extra (glas-in-lood)
+// Restauratie
 import ImgRestauratie  from "../../Assets/Images/VillaVredesteinRestauratie.jpg";
+import ImgVilla2024    from "../../Assets/Images/VillaVredestein2024.jpg";
+import ImgDetail1      from "../../Assets/Images/int-detail.jpg";
+import ImgDetail2      from "../../Assets/Images/int-detail2.jpg";
+import ImgTrap         from "../../Assets/Images/int-trap.jpg";
+import ImgWoonkamer2   from "../../Assets/Images/int-woonkamer2.jpg";
 
 // Leven
 import ImgDiner        from "../../Assets/Images/life-diner.jpg";
@@ -54,14 +59,16 @@ import ImgK1954 from "../../Assets/Images/Krant1954.jpg";
 import ImgK1959 from "../../Assets/Images/Krant1959.jpg";
 import ImgK1965 from "../../Assets/Images/Krant1965.jpg";
 
-const CATEGORIEEN = ["Alles", "Interieur", "Exterieur", "Tuin", "Leven", "Geschiedenis"];
+const CATEGORIEEN = ["Alles", "Interieur", "Exterieur", "Tuin", "Leven", "Geschiedenis", "Restauratie"];
 
 const FOTOS = [
     // ── Interieur ──────────────────────────────────────────────────────────
     { src: ImgWoonkamer,    cat: "Interieur",   caption: "De woonkamer",              sub: "Hoge plafonds, authentieke stoelen, veel licht" },
-    { src: ImgKroonluchter, cat: "Interieur",   caption: "Kristallen kroonluchter",   sub: "Origineel, meer dan een eeuw oud" },
-    { src: ImgWijnkamer,    cat: "Interieur",   caption: "Oude woonkamer (voor renovatie)", sub: "De woonkamer zoals die er uitzag vóór de restauratie" },
-    { src: ImgRestauratie,  cat: "Interieur",   caption: "Glas-in-lood",             sub: "Het originele glas-in-loodraam tijdens de restauratie" },
+    { src: ImgWoonkamer2,  cat: "Interieur",   caption: "Woonkamer na restauratie",  sub: "De vernieuwde woonkamer met originele details" },
+    { src: ImgKroonluchter, cat: "Interieur",  caption: "Kristallen kroonluchter",   sub: "Origineel, meer dan een eeuw oud" },
+    { src: ImgDetail1,     cat: "Interieur",   caption: "Historisch detail",         sub: "Een van de authentieke ornamenten in het pand" },
+    { src: ImgDetail2,     cat: "Interieur",   caption: "Historisch detail II",      sub: "Originele afwerking bewaard uit 1906" },
+    { src: ImgTrap,        cat: "Interieur",   caption: "De trap",                   sub: "De statige trap die de verdiepingen verbindt" },
 
     // ── Exterieur ──────────────────────────────────────────────────────────
     { src: ImgVilla1910,      cat: "Exterieur", caption: "Vredestein circa 1910",    sub: "Historische foto van de villa kort na de bouw in 1906" },
@@ -107,6 +114,15 @@ const FOTOS = [
     { src: ImgK1954,  cat: "Geschiedenis", caption: "Te huur-advertentie, 1954", sub: "Tijdperk mevrouw Elings, naoorlogse periode" },
     { src: ImgK1959,  cat: "Geschiedenis", caption: "Krantenartikel, 1959",      sub: "Nieuws uit de periode van mevrouw Elings" },
     { src: ImgK1965,  cat: "Geschiedenis", caption: "Vacature verpleeghulp, 1965", sub: "Villa Vredestein had in deze periode een zorgende functie" },
+
+    // ── Restauratie ────────────────────────────────────────────────────────
+    { src: ImgWijnkamer,   cat: "Restauratie", caption: "Voor de restauratie",           sub: "De woonkamer zoals die er uitzag vóór de restauratiewerkzaamheden" },
+    { src: ImgRestauratie, cat: "Restauratie", caption: "Glas-in-lood tijdens restauratie", sub: "Het originele glas-in-loodraam tijdens de restauratie" },
+    { src: ImgDetail1,     cat: "Restauratie", caption: "Historisch detail hersteld",    sub: "Authentiek ornament teruggebracht in originele staat" },
+    { src: ImgDetail2,     cat: "Restauratie", caption: "Afwerking in originele stijl",  sub: "Details die de restaurateurs trouw bewaarden aan 1906" },
+    { src: ImgTrap,        cat: "Restauratie", caption: "De trap opgeknapt",             sub: "De statige trap na restauratie, volledig in de originele staat" },
+    { src: ImgWoonkamer2,  cat: "Restauratie", caption: "Woonkamer na restauratie",      sub: "Het resultaat: licht, ruimte en historisch karakter" },
+    { src: ImgVilla2024,   cat: "Restauratie", caption: "Villa Vredestein in 2024",      sub: "De villa zoals ze er vandaag bij staat — volledig gerestaureerd" },
 ];
 
 const GalerijVilla = () => {

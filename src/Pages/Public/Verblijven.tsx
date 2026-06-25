@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./Verblijven.css";
 
 import WoonkamerImg from "../../Assets/Images/int-woonkamer.jpg";
-import TuinImg from "../../Assets/Images/ext-tuinfeest.jpg";
+import VillaVoorImg from "../../Assets/Images/ext-villa-voorkant.jpg";
 
 const OPTIES = [
     {
@@ -141,6 +141,103 @@ const Verblijven = () => {
                 </div>
             </section>
 
+            {/* De Ruimtes */}
+            <section className="verb-ruimtes reveal-section" ref={addRef}>
+                <div className="verb-inner">
+                    <h2 className="verb-section-title">De ruimtes</h2>
+                    <p className="verb-ruimtes-intro">
+                        Villa Vredestein telt drie verdiepingen met elk een eigen karakter.
+                        292 m² woonoppervlak op een perceel van 680 m².
+                    </p>
+                    <div className="verb-ruimtes-grid">
+                        <article className="verb-ruimte-card">
+                            <div className="verb-ruimte-verd" style={{ background: "#d4804a" }}>Bovenste verdieping</div>
+                            <div className="verb-ruimte-body">
+                                <h3>🎓 Studenten</h3>
+                                <p>Drie privékamers (16–17 m²) met eigen keuken, badkamer en zitruimte. Airco aanwezig.</p>
+                                <ul className="verb-ruimte-list">
+                                    <li>Thailand · Japan · Argentinië</li>
+                                    <li>Gedeelde studentenkeuken</li>
+                                    <li>Eigen badkamer & zitruimte</li>
+                                </ul>
+                            </div>
+                        </article>
+                        <article className="verb-ruimte-card">
+                            <div className="verb-ruimte-verd" style={{ background: "#FCBC2D", color: "#000" }}>Middelste verdieping</div>
+                            <div className="verb-ruimte-body">
+                                <h3>✨ Luxe kamers</h3>
+                                <p>Twee ruime kamers (18–22 m²) met balkon, airco en eigen ingang. Kitchenette & badkamer in aanbouw.</p>
+                                <ul className="verb-ruimte-list">
+                                    <li>Italië (22 m², balkon tuin)</li>
+                                    <li>Frankrijk (18 m², balkon straat)</li>
+                                    <li>Eigen ingang · Airco</li>
+                                </ul>
+                            </div>
+                        </article>
+                        <article className="verb-ruimte-card">
+                            <div className="verb-ruimte-verd" style={{ background: "#c8a46e" }}>Onderste verdieping</div>
+                            <div className="verb-ruimte-body">
+                                <h3>🏡 Woonverdieping</h3>
+                                <p>Grote woonkamer met houtkachel, open keukeneiland met bar en aparte eetkamer. Gedeelde ruimtes.</p>
+                                <ul className="verb-ruimte-list">
+                                    <li>Woonkamer 45 m² · Erker</li>
+                                    <li>Keukeneiland met bar</li>
+                                    <li>Terras & moestuin</li>
+                                </ul>
+                            </div>
+                        </article>
+                    </div>
+                    <div className="verb-ruimtes-cta">
+                        <button className="verb-ruimtes-btn" onClick={() => navigate("/ruimtes")}>
+                            Bekijk alle ruimtes in detail →
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            {/* Reviews */}
+            <section className="verb-reviews reveal-section" ref={addRef}>
+                <div className="verb-inner">
+                    <h2 className="verb-section-title">Wat bewoners zeggen</h2>
+                    <div className="reviews-grid">
+                        {[
+                            {
+                                naam: "Bram",
+                                rol: "Student · Bovenste verdieping",
+                                tekst: "Ik had niet verwacht dat wonen in een historische villa zo ontspannen zou zijn. De kamers zijn ruim, de tuin is een plek om echt bij te komen en Manon en Maxim zijn de beste huisbazen die je je kunt wensen.",
+                                sterren: 5,
+                            },
+                            {
+                                naam: "Simon",
+                                rol: "Student · Bovenste verdieping",
+                                tekst: "De sfeer hier is echt uniek. Een pand met zoveel karakter, midden in de natuur van Driebergen — en toch op fietsafstand van alles. De eigen keuken en zitruimte op onze verdieping zijn een groot pluspunt.",
+                                sterren: 5,
+                            },
+                            {
+                                naam: "Rommert",
+                                rol: "Student · Bovenste verdieping",
+                                tekst: "Al snel voelde het als mijn eigen thuis. De historische details in het pand, de grote tuin en het samenleven met een fijne groep mensen maakt Villa Vredestein echt bijzonder. Absoluut aan te raden.",
+                                sterren: 5,
+                            },
+                        ].map((r) => (
+                            <article key={r.naam} className="review-card">
+                                <div className="review-sterren">
+                                    {"★".repeat(r.sterren)}
+                                </div>
+                                <p className="review-tekst">"{r.tekst}"</p>
+                                <div className="review-auteur">
+                                    <div className="review-avatar">{r.naam.charAt(0)}</div>
+                                    <div>
+                                        <strong>{r.naam}</strong>
+                                        <span>{r.rol}</span>
+                                    </div>
+                                </div>
+                            </article>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
             {/* Boekingsformulier */}
             <section className="verb-form-section reveal-section" ref={addRef}>
                 <div className="verb-inner verb-form-grid">
@@ -152,7 +249,7 @@ const Verblijven = () => {
                             We vertellen je alles over de beschikbaarheid, voorwaarden en prijs.
                         </p>
                         <div className="verb-form-img">
-                            <img src={TuinImg} alt="Achtertuin Villa Vredestein met terras en hangmat" loading="lazy" />
+                            <img src={VillaVoorImg} alt="Voorgevel van Villa Vredestein in Driebergen-Rijsenburg" loading="lazy" />
                         </div>
                         <div className="verb-garanties">
                             {["Persoonlijk antwoord binnen 24u", "Geen verborgen kosten", "Flexibele annulering bespreekbaar"].map((g) => (
