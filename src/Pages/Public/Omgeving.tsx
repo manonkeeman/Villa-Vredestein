@@ -291,22 +291,22 @@ const Omgeving = () => {
     return (
         <main className="omgeving-page">
             <Helmet>
-                <title>Omgeving & Locatie — Villa Vredestein</title>
-                <meta name="description" content="Restaurants, boodschappen, kastelen en tips voor Driebergen-Rijsenburg. Villa Vredestein op de Utrechtse Heuvelrug — Utrecht in 15 min, Amsterdam in 40." />
+                <title>Omgeving & Locatie, Villa Vredestein</title>
+                <meta name="description" content="Restaurants, boodschappen, kastelen en tips voor Driebergen-Rijsenburg. Villa Vredestein op de Utrechtse Heuvelrug, Utrecht in 15 min, Amsterdam in 40." />
                 <link rel="canonical" href="https://villavredestein.nl/omgeving" />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://villavredestein.nl/omgeving" />
-                <meta property="og:title" content="Omgeving & Locatie — Villa Vredestein" />
+                <meta property="og:title" content="Omgeving & Locatie, Villa Vredestein" />
                 <meta property="og:description" content="Bos op de stoep, Utrecht in een kwartier. Villa Vredestein ligt op de Utrechtse Heuvelrug in Driebergen-Rijsenburg." />
                 <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Omgeving & Locatie — Villa Vredestein" />
+                <meta name="twitter:title" content="Omgeving & Locatie, Villa Vredestein" />
                 <meta name="twitter:description" content="Bos op de stoep, Utrecht in een kwartier. Villa Vredestein ligt op de Utrechtse Heuvelrug in Driebergen-Rijsenburg." />
                 <meta name="twitter:image" content="https://villavredestein.nl/og-image.jpg" />
             </Helmet>
 
-            {/* Hero — kaart als header */}
+            {/* Hero, kaart als header */}
             <header className="omg-hero-map" aria-label="Locatie kaart">
                 <div className="omg-hero-map-inner">
                     <MapContainer center={VILLA} zoom={11} scrollWheelZoom={false} style={{ width: "100%", height: "100%" }} aria-label="Interactieve kaart van de omgeving">

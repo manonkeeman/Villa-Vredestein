@@ -157,7 +157,7 @@ function NieuwBewoner({ onCreated, onClose }) {
             const status = ex.response?.status;
             let msg = raw?.message || raw?.error || raw?.detail
                 || (typeof raw === "string" ? raw : null)
-                || `HTTP ${status ?? "?"} — aanmaken mislukt.`;
+                || `HTTP ${status ?? "?"}, aanmaken mislukt.`;
             if (status === 409) msg = "Dit e-mailadres bestaat al in het systeem.";
             setErr(msg);
         } finally {
@@ -359,7 +359,7 @@ const AdminBewonersPage = () => {
     return (
         <DashboardLayout sidebar={sidebar} mainClass="admin-main">
             <Helmet>
-                <title>Bewoners — Villa Vredestein</title>
+                <title>Bewoners, Villa Vredestein</title>
                 <meta name="robots" content="noindex, nofollow" />
             </Helmet>
 

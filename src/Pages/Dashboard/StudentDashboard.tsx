@@ -133,7 +133,7 @@ const StudentDashboard = () => {
     return (
         <DashboardLayout sidebar={sidebar} mainClass="dashboard-grid">
             <Helmet>
-                <title>Mijn Dashboard — Villa Vredestein</title>
+                <title>Mijn Dashboard, Villa Vredestein</title>
                 <meta name="robots" content="noindex, nofollow" />
             </Helmet>
 
@@ -154,7 +154,7 @@ const StudentDashboard = () => {
             }`}>
                 <h2><FiDollarSign /> Betalingen</h2>
 
-                {/* This month's status — most prominent */}
+                {/* This month's status, most prominent */}
                 {!invoicesLoading && (
                     <div className="dash-month-status">
                         {thisMonthInvoice?.status === "PAID" && (

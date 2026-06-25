@@ -71,7 +71,7 @@ const MOCK_TEMPLATES = [
 ];
 
 // Client-side status override: months 1–4 of 2026 are past/current.
-// Backend still shows OPEN because it hasn't processed payments — fix on the frontend.
+// Backend still shows OPEN because it hasn't processed payments, fix on the frontend.
 const fixStatus = (inv) => {
     const year  = Number(inv.invoiceYear);
     const month = Number(inv.invoiceMonth);
@@ -239,7 +239,7 @@ const AdminBetalingenPage = () => {
                     dueDate:   manualDueDate || undefined,
                     sendEmail: true,
                 });
-                setManualMsg("Factuur aangemaakt — e-mail met Mollie-betaallink verstuurd!");
+                setManualMsg("Factuur aangemaakt, e-mail met Mollie-betaallink verstuurd!");
                 fetchInvoices();
             } else {
                 await api.post("/api/admin/email/send", {
@@ -295,7 +295,7 @@ const AdminBetalingenPage = () => {
             const detail = ex.response?.data?.message || ex.response?.data || ex.message || "";
             setSendMsg({
                 type: templateType,
-                text: `Fout bij versturen${detail ? `: ${detail}` : " — controleer of de backend actief is."}`,
+                text: `Fout bij versturen${detail ? `: ${detail}` : ", controleer of de backend actief is."}`,
                 ok: false,
             });
         } finally {
@@ -318,7 +318,7 @@ const AdminBetalingenPage = () => {
     return (
         <DashboardLayout sidebar={sidebar} mainClass="admin-main">
             <Helmet>
-                <title>Betalingen beheer — Villa Vredestein</title>
+                <title>Betalingen beheer, Villa Vredestein</title>
                 <meta name="robots" content="noindex, nofollow" />
             </Helmet>
 
@@ -330,7 +330,7 @@ const AdminBetalingenPage = () => {
                             <FiChevronLeft />
                         </button>
                         <h2 className="admin-month-title">
-                            <FiDollarSign /> Betalingen — <span className="month-label">{monthHeader}</span>
+                            <FiDollarSign /> Betalingen, <span className="month-label">{monthHeader}</span>
                         </h2>
                         <button type="button" onClick={nextMonth} className="month-nav-btn" aria-label="Volgende maand">
                             <FiChevronRight />
@@ -401,7 +401,7 @@ const AdminBetalingenPage = () => {
 
                     {/* ── Automatisch: alle bewoners ── */}
                     <div className="factuur-blok">
-                        <p className="factuur-blok-label"><FiRefreshCw /> Automatisch — alle bewoners</p>
+                        <p className="factuur-blok-label"><FiRefreshCw /> Automatisch, alle bewoners</p>
                         <p className="factuur-blok-hint">
                             Voer de maandelijkse job uit. De backend maakt facturen aan voor
                             {" "}{sendStudents.map(s => s.username).join(", ")} en stuurt ze per e-mail.
@@ -446,7 +446,7 @@ const AdminBetalingenPage = () => {
 
                     {/* ── Handmatig: één student ── */}
                     <div className="factuur-blok">
-                        <p className="factuur-blok-label"><FiPlus /> Handmatig — één student</p>
+                        <p className="factuur-blok-label"><FiPlus /> Handmatig, één student</p>
                         <p className="factuur-blok-hint">
                             Kies een student en het type bericht. Bij "Nieuwe factuur" wordt ook een Mollie-betaallink aangemaakt.
                         </p>
@@ -542,7 +542,7 @@ const AdminBetalingenPage = () => {
                             <option value="">— Kies student —</option>
                             {sendStudents.map(s => (
                                 <option key={s.id} value={s.id}>
-                                    {s.username} — {s.email}
+                                    {s.username}, {s.email}
                                 </option>
                             ))}
                         </select>
@@ -602,7 +602,7 @@ const AdminBetalingenPage = () => {
                                     </p>
                                     <pre className="template-body-preview">{tpl.body}</pre>
 
-                                    {/* Verstuur-knop — werkt met de centrale selector hierboven */}
+                                    {/* Verstuur-knop, werkt met de centrale selector hierboven */}
                                     <div className="tpl-send-row">
                                         <button
                                             type="button"

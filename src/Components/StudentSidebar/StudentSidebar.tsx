@@ -1,12 +1,12 @@
 /**
- * Gedeelde student-sidebar — één bron voor alle student-pagina's.
+ * Gedeelde student-sidebar, één bron voor alle student-pagina's.
  * Props:
- *   user        — authUser object
- *   logout      — logout functie
- *   active      — sleutelwoord voor actieve link:
+ *   user       , authUser object
+ *   logout     , logout functie
+ *   active     , sleutelwoord voor actieve link:
  *                 "dashboard" | "profiel" | "noodlijst" | "huisregels" |
  *                 "schema"    | "betalingen" | "events" | "meldingen"
- *   contractFile — bestandsnaam van huurcontract (of null)
+ *   contractFile, bestandsnaam van huurcontract (of null)
  */
 import React from "react";
 import { Link } from "react-router-dom";

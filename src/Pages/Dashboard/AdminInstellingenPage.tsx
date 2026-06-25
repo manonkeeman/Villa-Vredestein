@@ -75,7 +75,7 @@ const AdminInstellingenPage = () => {
     return (
         <DashboardLayout sidebar={sidebar} mainClass="admin-main">
             <Helmet>
-                <title>Instellingen — Villa Vredestein</title>
+                <title>Instellingen, Villa Vredestein</title>
                 <meta name="robots" content="noindex, nofollow" />
             </Helmet>
 

@@ -173,7 +173,7 @@ const Login = () => {
         } catch (err) {
             const isTimeout = err?.code === "ECONNABORTED" || err?.message?.includes("timeout");
             setError(isTimeout
-                ? "De server reageert niet — wacht even en probeer opnieuw."
+                ? "De server reageert niet, wacht even en probeer opnieuw."
                 : "Er ging iets mis. Probeer het opnieuw."
             );
         } finally {
@@ -186,7 +186,7 @@ const Login = () => {
     return (
         <main className="login-page">
             <Helmet>
-                <title>Inloggen — Villa Vredestein</title>
+                <title>Inloggen, Villa Vredestein</title>
                 <meta name="robots" content="noindex, nofollow" />
             </Helmet>
             {/* Video kant */}

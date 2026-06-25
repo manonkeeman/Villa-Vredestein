@@ -18,7 +18,7 @@ import "../../Styles/Global.css";
 const STATIC_ANNOUNCEMENTS = [
     { id: 1, type: "mededeling", title: "WiFi snelheid verhoogd",       body: "We hebben de WiFi geüpgraded naar 500 Mbit/s. Meld problemen bij de beheerder.",        createdAt: "2026-04-01T10:00:00", author: "Beheerder" },
     { id: 2, type: "onderhoud",  title: "CV-onderhoud 22 april",         body: "Een monteur controleert op 22 april de CV-ketel. Bewoners hoeven niets te doen.",       createdAt: "2026-04-10T09:00:00", author: "Beheerder" },
-    { id: 3, type: "evenement",  title: "Villa BBQ — 18 juni",           body: "Zomerse BBQ in de tuin! Meld je aan via de Events-pagina of via Samen eten.",           createdAt: "2026-04-15T14:00:00", author: "Beheerder" },
+    { id: 3, type: "evenement",  title: "Villa BBQ, 18 juni",           body: "Zomerse BBQ in de tuin! Meld je aan via de Events-pagina of via Samen eten.",           createdAt: "2026-04-15T14:00:00", author: "Beheerder" },
 ];
 
 const TYPE_META = {
@@ -136,7 +136,7 @@ const AdminCommunicatiePage = () => {
     return (
         <DashboardLayout sidebar={sidebar} mainClass="admin-main">
             <Helmet>
-                <title>Communicatie — Villa Vredestein</title>
+                <title>Communicatie, Villa Vredestein</title>
                 <meta name="robots" content="noindex, nofollow" />
             </Helmet>
 
@@ -149,7 +149,7 @@ const AdminCommunicatiePage = () => {
 
             {isMock && (
                 <div className="admin-alert admin-alert--amber">
-                    <FiAlertTriangle /> Backend niet beschikbaar — voorbeelddata wordt getoond.
+                    <FiAlertTriangle /> Backend niet beschikbaar, voorbeelddata wordt getoond.
                 </div>
             )}
 

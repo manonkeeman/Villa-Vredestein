@@ -6,7 +6,7 @@ import "./Privacy.css";
 const Privacy = () => (
     <main className="privacy-page">
         <Helmet>
-            <title>Privacybeleid — Villa Vredestein</title>
+            <title>Privacybeleid, Villa Vredestein</title>
             <meta name="description" content="Privacybeleid van Villa Vredestein. Hoe wij omgaan met persoonsgegevens die via het contactformulier of verblijfsaanvraag worden verstrekt." />
             <link rel="canonical" href="https://villavredestein.nl/privacy" />
             <meta name="robots" content="noindex, follow" />

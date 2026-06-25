@@ -108,7 +108,7 @@ const BetalingenPage = () => {
     return (
         <>
             <Helmet>
-                <title>Betalingen — Villa Vredestein</title>
+                <title>Betalingen, Villa Vredestein</title>
                 <meta name="robots" content="noindex, nofollow" />
             </Helmet>
 

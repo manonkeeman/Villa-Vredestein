@@ -128,7 +128,7 @@ export default function RegisterUser() {
     return (
         <div className="register-wrapper">
             <Helmet>
-                <title>Registreren — Villa Vredestein</title>
+                <title>Registreren, Villa Vredestein</title>
                 <meta name="robots" content="noindex, nofollow" />
             </Helmet>
             <div className="register-box">

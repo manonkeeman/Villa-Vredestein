@@ -64,7 +64,7 @@ export default function NoodlijstPage() {
     return (
         <>
             <Helmet>
-                <title>Noodlijst — Villa Vredestein</title>
+                <title>Noodlijst, Villa Vredestein</title>
                 <meta name="robots" content="noindex, nofollow" />
             </Helmet>
 
@@ -167,7 +167,7 @@ export default function NoodlijstPage() {
                         </div>
                         <ul className="nood-icon-list">
                             <li><span>🧯</span><span>Blusser & deken in keuken + elke verdieping naast de trap</span></li>
-                            <li><span>🔔</span><span>Rookmelders in elke gang — test maandelijks</span></li>
+                            <li><span>🔔</span><span>Rookmelders in elke gang, test maandelijks</span></li>
                             <li><span>🚪</span><span>Nooduitgangen: hoofdingang, achterdeur, noodtrap tuinzijde</span></li>
                             <li><span>📍</span><span>Verzamelpunt: parkeerplaats bij de grote poort</span></li>
                             <li><span>⚠️</span><span>Gasgeur? Geen licht · ramen open · bel 112 + beheerder</span></li>
@@ -180,7 +180,7 @@ export default function NoodlijstPage() {
                             <h2>Stroom & Water</h2>
                         </div>
                         <ul className="nood-icon-list">
-                            <li><span>⚡</span><span>Stroomkast: zekeringen & aardlek — 1e verdieping</span></li>
+                            <li><span>⚡</span><span>Stroomkast: zekeringen & aardlek, 1e verdieping</span></li>
                             <li><span>🚿</span><span>Hoofdwaterkraan afsluiten: badkamer beneden in het gat</span></li>
                             <li><span>📱</span><span>Meld direct via WhatsApp aan beheerder</span></li>
                             <li><span>🔌</span><span>Geen elektrische apparaten bij vocht of overstroming</span></li>

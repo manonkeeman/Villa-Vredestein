@@ -307,7 +307,7 @@ function CreateTaskForm({ weekNumber, onCreated }) {
 
     return (
         <form className="create-task-form" onSubmit={handleSubmit}>
-            <h4><FiPlus /> Nieuwe taak — rotatieweek {weekNumber}</h4>
+            <h4><FiPlus /> Nieuwe taak, rotatieweek {weekNumber}</h4>
             {error && <p className="form-error">{error}</p>}
             <input
                 type="text"
@@ -450,7 +450,7 @@ export default function SchoonmaakschemaPage() {
             setTasks(prev => prev.map(t => t.id === taskId ? updated : t));
             updateCache(rotationWeek, prev => prev.map(t => t.id === taskId ? updated : t));
         } catch {
-            // Backend not available — update locally
+            // Backend not available, update locally
             setTasks(prev => prev.map(t => t.id === taskId ? { ...t, ...patch } : t));
             updateCache(rotationWeek, prev => prev.map(t => t.id === taskId ? { ...t, ...patch } : t));
         }
@@ -488,7 +488,7 @@ export default function SchoonmaakschemaPage() {
     return (
         <>
             <Helmet>
-                <title>Schoonmaakschema — Villa Vredestein</title>
+                <title>Schoonmaakschema, Villa Vredestein</title>
                 <meta name="robots" content="noindex, nofollow" />
             </Helmet>
 

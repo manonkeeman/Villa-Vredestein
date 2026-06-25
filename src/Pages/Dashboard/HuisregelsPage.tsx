@@ -17,7 +17,7 @@ const DEFAULT_RULES = [
     { id: "gedrag", icon: "🤝", title: "Gedrag & Samenleven", color: "gold", items: [
         "Behandel elkaar met respect, ongeacht achtergrond, geslacht of overtuiging",
         "Gebruik gemeenschappelijke ruimtes op een manier die rekening houdt met anderen",
-        "Houd de toon vriendelijk — conflicten bespreek je rustig, nooit via berichten of roddels",
+        "Houd de toon vriendelijk, conflicten bespreek je rustig, nooit via berichten of roddels",
     ]},
     { id: "rust", icon: "🔇", title: "Rust & Geluid", color: "purple", items: [
         "Geluidsstilte: 22:00 – 07:00",
@@ -36,7 +36,7 @@ const DEFAULT_RULES = [
         "Insecten, schimmel of stank door nalatigheid = bewoners verantwoordelijkheid",
     ]},
     { id: "veiligheid", icon: "🛡️", title: "Veiligheid", color: "red", items: [
-        "Brandmelders aanwezig — test maandelijks",
+        "Brandmelders aanwezig, test maandelijks",
         "Vluchtwegen & gangen te allen tijde vrij",
         "Alleen goedgekeurde elektrische apparaten",
         "Open vuur, kaarsen en roken verboden",
@@ -49,7 +49,7 @@ const DEFAULT_RULES = [
     { id: "onderhoud", icon: "🔧", title: "Onderhoud & Schade", color: "orange", items: [
         "Meld schade of defecten direct via de app of bij de beheerder",
         "Kleine schade door nalatigheid wordt verhaald op de huurder",
-        "Houd je kamer in goede staat — inspectie kan plaatsvinden",
+        "Houd je kamer in goede staat, inspectie kan plaatsvinden",
     ]},
     { id: "communicatie", icon: "📞", title: "Communicatie & Overlast", color: "dark", items: [
         "Vragen & meldingen via de app of telefonisch",
@@ -196,7 +196,7 @@ export default function HuisregelsPage() {
     return (
         <>
             <Helmet>
-                <title>Huisregels — Villa Vredestein</title>
+                <title>Huisregels, Villa Vredestein</title>
                 <meta name="robots" content="noindex, nofollow" />
             </Helmet>
             <DashboardLayout sidebar={sidebar} mainClass="huis-main">
@@ -206,7 +206,7 @@ export default function HuisregelsPage() {
                     <span className="huis-hero-icon">🏛️</span>
                     <div>
                         <strong>Huisregels Villa Vredestein 2025</strong>
-                        <p>Rust · Verantwoordelijkheid · Respect — de basis van ons samenleven</p>
+                        <p>Rust · Verantwoordelijkheid · Respect, de basis van ons samenleven</p>
                     </div>
                 </div>
 
@@ -246,7 +246,7 @@ export default function HuisregelsPage() {
                 )}
 
                 <p className="huis-footer">
-                    Villa Vredestein 2025 — Door in te trekken ga je akkoord met deze huisregels.
+                    Villa Vredestein 2025, Door in te trekken ga je akkoord met deze huisregels.
                 </p>
 
             </DashboardLayout>

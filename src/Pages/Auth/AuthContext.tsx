@@ -109,7 +109,7 @@ export const AuthProvider = ({ children }) => {
 
             return normalizedUser;
         } catch (e) {
-            // Silently fail — do NOT logout here. If called after login the
+            // Silently fail, do NOT logout here. If called after login the
             // immediateUser is already set; if called as a background refresh
             // the cached user stays valid. Only the bootstrap path (no stored
             // user at all) should logout on failure.
@@ -147,7 +147,7 @@ export const AuthProvider = ({ children }) => {
                 if (room) localStorage.setItem(ROOM_KEY, room);
                 else localStorage.removeItem(ROOM_KEY);
 
-                // Stap 1: zet user DIRECT vanuit token of embedded user — geen wachten
+                // Stap 1: zet user DIRECT vanuit token of embedded user, geen wachten
                 const loginUser = res.data?.user;
                 const decoded = decodeToken(token);
 
@@ -156,7 +156,7 @@ export const AuthProvider = ({ children }) => {
                     const roles = normalizeRoles(loginUser?.roles ?? loginUser?.role ?? loginUser?.authorities);
                     immediateUser = { ...loginUser, roles, _lastFetched: 0 };
                 } else {
-                    // Haal basis-info uit het JWT token zelf — direct beschikbaar
+                    // Haal basis-info uit het JWT token zelf, direct beschikbaar
                     const roles = normalizeRoles(decoded?.roles ?? decoded?.authorities ?? decoded?.role);
                     immediateUser = {
                         email: cleanEmail,
@@ -169,7 +169,7 @@ export const AuthProvider = ({ children }) => {
                 localStorage.setItem(USER_KEY, JSON.stringify(immediateUser));
                 setUser(immediateUser);
 
-                // Stap 2: haal volledig profiel op de achtergrond — blokkeert NIET
+                // Stap 2: haal volledig profiel op de achtergrond, blokkeert NIET
                 loadMe();
 
                 return true;
@@ -225,7 +225,7 @@ export const AuthProvider = ({ children }) => {
                     loadMe(); // fire-and-forget: updates context when response arrives
                 }
             } else {
-                // No cached user — must fetch before rendering
+                // No cached user, must fetch before rendering
                 try {
                     const result = await loadMe();
                     if (!result) logout(); // No data at all → clear token

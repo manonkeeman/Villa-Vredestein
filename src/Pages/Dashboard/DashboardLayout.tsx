@@ -6,10 +6,10 @@ import { FiMenu, FiX } from "react-icons/fi";
  * Handles the mobile sidebar hamburger → dropdown.
  *
  * Props:
- *   sidebar   — the <aside> JSX to render as the sidebar
- *   mainClass — extra CSS class(es) to add to <main> (e.g. "ev-main")
- *   rootClass — extra CSS class(es) to add to the root wrapper
- *   children  — the main page content (no need to wrap in <main>)
+ *   sidebar  , the <aside> JSX to render as the sidebar
+ *   mainClass, extra CSS class(es) to add to <main> (e.g. "ev-main")
+ *   rootClass, extra CSS class(es) to add to the root wrapper
+ *   children , the main page content (no need to wrap in <main>)
  */
 export default function DashboardLayout({ sidebar, mainClass = "", rootClass = "", children }) {
     const [open, setOpen] = useState(false);
@@ -17,7 +17,7 @@ export default function DashboardLayout({ sidebar, mainClass = "", rootClass = "
 
     return (
         <div className={`StudentDashboard${open ? " sidebar-open" : ""}${rootClass ? ` ${rootClass}` : ""}`}>
-            {/* Mobile hamburger — hidden on desktop via CSS */}
+            {/* Mobile hamburger, hidden on desktop via CSS */}
             <button
                 type="button"
                 className={`sidebar-mobile-toggle${open ? " sidebar-mobile-toggle--open" : ""}`}
@@ -31,7 +31,7 @@ export default function DashboardLayout({ sidebar, mainClass = "", rootClass = "
                 </span>
             </button>
 
-            {/* Overlay — closes menu on tap outside */}
+            {/* Overlay, closes menu on tap outside */}
             {open && (
                 <div
                     className="sidebar-overlay"
@@ -40,7 +40,7 @@ export default function DashboardLayout({ sidebar, mainClass = "", rootClass = "
                 />
             )}
 
-            {/* Sidebar — any link click also closes the menu */}
+            {/* Sidebar, any link click also closes the menu */}
             <div style={{ display: "contents" }} onClick={close}>
                 {sidebar}
             </div>

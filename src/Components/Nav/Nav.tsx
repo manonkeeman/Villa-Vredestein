@@ -201,7 +201,7 @@ const Nav = () => {
                     )}
                 </li>
 
-                {/* User icon — login of uitloggen */}
+                {/* User icon, login of uitloggen */}
                 <li ref={userRef}>
                     {isLoggedIn ? (
                         <div className="user-icon-wrapper">

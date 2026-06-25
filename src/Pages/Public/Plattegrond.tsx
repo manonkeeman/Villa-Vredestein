@@ -105,7 +105,7 @@ const Plattegrond = () => {
     return (
         <main className="plattegrond-page">
             <Helmet>
-                <title>De Ruimtes — Villa Vredestein</title>
+                <title>De Ruimtes, Villa Vredestein</title>
                 <meta
                     name="description"
                     content="Villa Vredestein heeft drie verdiepingen: studenten (boven), kinderen Desmond/Arwen/Medoc (midden), woonkamer + keuken (onder). Sauna en sportkamer in aanbouw."
@@ -113,12 +113,12 @@ const Plattegrond = () => {
                 <link rel="canonical" href="https://villavredestein.nl/ruimtes" />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://villavredestein.nl/ruimtes" />
-                <meta property="og:title" content="De Ruimtes — Villa Vredestein" />
+                <meta property="og:title" content="De Ruimtes, Villa Vredestein" />
                 <meta property="og:description" content="Drie verdiepingen, elk met eigen karakter. 292 m² wonen op 680 m² perceel in Driebergen-Rijsenburg." />
                 <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="De Ruimtes — Villa Vredestein" />
+                <meta name="twitter:title" content="De Ruimtes, Villa Vredestein" />
                 <meta name="twitter:description" content="Drie verdiepingen, elk met eigen karakter. 292 m² wonen op 680 m² perceel in Driebergen-Rijsenburg." />
                 <meta name="twitter:image" content="https://villavredestein.nl/og-image.jpg" />
             </Helmet>

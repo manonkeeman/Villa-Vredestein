@@ -19,7 +19,7 @@ import "../../Styles/Global.css";
 const NL_MONTHS_SHORT = ["jan","feb","mrt","apr","mei","jun","jul","aug","sep","okt","nov","dec"];
 const NL_DAYS_SHORT   = ["zo","ma","di","wo","do","vr","za"];
 
-// ── Static events — swap for an API call when backend is ready ──────────
+// ── Static events, swap for an API call when backend is ready ──────────
 const EVENTS = [
     {
         id: 1,
@@ -29,7 +29,7 @@ const EVENTS = [
         date: new Date(2026, 5, 18),   // 18 juni 2026
         time: "17:00",
         location: "Tuin",
-        description: "Zomerse BBQ in de villa-tuin! Vlees, groenten en drankjes worden geregeld — jij hoeft alleen maar te komen genieten. Meld je aan via Samen eten en geef aan of je iemand meeneemt.",
+        description: "Zomerse BBQ in de villa-tuin! Vlees, groenten en drankjes worden geregeld, jij hoeft alleen maar te komen genieten. Meld je aan via Samen eten en geef aan of je iemand meeneemt.",
         color: "#f97316",
         bg: "#1a0e00",
     },
@@ -132,7 +132,7 @@ const EventsPage = () => {
     return (
         <>
             <Helmet>
-                <title>Events — Villa Vredestein</title>
+                <title>Events, Villa Vredestein</title>
                 <meta name="robots" content="noindex, nofollow" />
             </Helmet>
             <DashboardLayout sidebar={<StudentSidebar user={user} logout={logout} active="events" contractFile={contractFile} />} mainClass="ev-main">
@@ -143,7 +143,7 @@ const EventsPage = () => {
                         <span className="ev-hero-icon">🎉</span>
                         <div>
                             <strong>Events & Activiteiten</strong>
-                            <p>Borrels, etentjes, schoonmaakdagen en meer — alles wat er speelt in Villa Vredestein.</p>
+                            <p>Borrels, etentjes, schoonmaakdagen en meer, alles wat er speelt in Villa Vredestein.</p>
                         </div>
                     </div>
 

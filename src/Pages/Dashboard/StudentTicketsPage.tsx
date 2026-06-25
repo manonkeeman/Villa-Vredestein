@@ -137,7 +137,7 @@ const StudentTicketsPage = () => {
     return (
         <DashboardLayout sidebar={sidebar} mainClass="sticket-main">
             <Helmet>
-                <title>Iets melden — Villa Vredestein</title>
+                <title>Iets melden, Villa Vredestein</title>
                 <meta name="robots" content="noindex, nofollow" />
             </Helmet>
 

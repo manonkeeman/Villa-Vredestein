@@ -32,7 +32,7 @@ const videoMap: Record<string, string> = {
 
 const inlineMediaMap: Record<string, { afterParagraph: number; src: string; alt: string }[]> = {
     "carpe-diem-design": [
-        { afterParagraph: 2, src: CafeRacer1, alt: "De cafe racer van Maxim — gebouwd van onderdelen uit de hele wereld" },
+        { afterParagraph: 2, src: CafeRacer1, alt: "De cafe racer van Maxim, gebouwd van onderdelen uit de hele wereld" },
     ],
 };
 
@@ -83,17 +83,17 @@ const Blog = () => {
         <main className="blog-page" role="main">
             <Helmet>
                 <html lang={langCode} />
-                <title>{blog.title} — Villa Vredestein</title>
+                <title>{blog.title}, Villa Vredestein</title>
                 <meta name="description" content={blog.summary} />
                 <link rel="canonical" href={canonicalUrl} />
-                <meta property="og:title" content={`${blog.title} — Villa Vredestein`} />
+                <meta property="og:title" content={`${blog.title}, Villa Vredestein`} />
                 <meta property="og:description" content={blog.summary} />
                 <meta property="og:image" content={ogImage} />
                 <meta property="og:type" content="article" />
                 <meta property="og:url" content={canonicalUrl} />
                 <meta property="article:published_time" content={blog.date} />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={`${blog.title} — Villa Vredestein`} />
+                <meta name="twitter:title" content={`${blog.title}, Villa Vredestein`} />
                 <meta name="twitter:description" content={blog.summary} />
                 <meta name="twitter:image" content={ogImage} />
                 <script type="application/ld+json">{articleSchema}</script>
