@@ -104,9 +104,6 @@ const Verblijven = () => {
                     <h1>Jouw plek in de villa</h1>
                     <p>Een nacht, een maand of langer. Villa Vredestein verwelkomt je.</p>
                 </div>
-                <a href="#verblijf-opties" className="verb-hero-scroll" aria-label="Scroll naar verblijfsopties">
-                    <span />
-                </a>
             </header>
 
             {/* Stats strip */}

@@ -6,7 +6,7 @@ import "leaflet/dist/leaflet.css";
 import "./Omgeving.css";
 
 import OmgevingImg        from "../../Assets/Images/DeOmgevingVillaVredestein.jpg";
-import ImgGrot             from "../../Assets/Images/omg-grot.jpg";
+
 import ImgPannen           from "../../Assets/Images/PannenkoekenAvondVillaVredestein.jpg";
 import ImgDiner            from "../../Assets/Images/life-diner.jpg";
 import ImgSfeer            from "../../Assets/Images/life-sfeer.jpg";
@@ -129,7 +129,7 @@ const POIS: Poi[] = [
     { pos: [52.0459, 5.2884],                         label: "Heidetuin Driebergen",      sub: "5 min te voet",                emoji: "🌿", color: "#5a8a40", link: "https://maps.google.com/?q=Wethouder+Verhaarlaan+1+Driebergen",   linkLabel: "Google Maps →"                },
     { pos: [52.0188, 5.3316],                         label: "Kaapse Bossen Uitkijktoren",sub: "20 min fiets · Doorn",         emoji: "🗼", color: "#5a8a40", link: "https://maps.google.com/?q=St.+Helenaheuvellaan+2+Doorn",         linkLabel: "Google Maps →"                },
     { pos: [52.0620, 5.3490],                         label: "Pyramide van Austerlitz",   sub: "20 min fiets",                 emoji: "🔺", color: "#5a8a40", link: "https://maps.google.com/?q=Pyramide+van+Austerlitz",              linkLabel: "Google Maps →"                },
-    { pos: [52.0420, 5.2862],                         label: "De Lourdesgrot",            sub: "5 min te voet",                emoji: "⛪", color: "#5a8a40", link: "https://maps.google.com/?q=Park+Seminarie+61+Driebergen",         linkLabel: "Google Maps →"                },
+
     { pos: [51.9762, 5.3338],                         label: "Windmolen aan de Rijn",     sub: "25 min fiets · Wijk bij Duurstede", emoji: "🌬️", color: "#5a8a40", link: "https://maps.google.com/?q=Windmolen+Wijk+bij+Duurstede",   linkLabel: "Google Maps →"                },
     { pos: [52.1240, 5.2840],                         label: "Park Vliegbasis Soesterberg",sub: "20 min auto · Soesterberg",    emoji: "✈️", color: "#5a8a40", link: "https://maps.google.com/?q=Nationaal+Militair+Museum+Soesterberg", linkLabel: "Google Maps →"               },
     { pos: [51.9624, 5.5659],                         label: "Fiets & Voetveer Rhenen",   sub: "30 min fiets · Rhenen",        emoji: "⛴️", color: "#5a8a40", link: "https://maps.google.com/?q=Voetveer+Rhenen",                      linkLabel: "Google Maps →"                },
@@ -206,7 +206,7 @@ const BEZIENSWAARDIGHEDEN: BzItem[] = [
     { emoji: "🌿", naam: "Heidetuin Driebergen",       desc: "500 soorten heide achter de beuken en dennen. Elk seizoen de moeite waard.",                                                adres: "Wethouder Verhaarlaan 1, Driebergen",        photo: ImgHeidetuin,    web: "https://www.utrechtslandschap.nl/gebied/natuur/heidetuin-en-seminarieterrein" },
     { emoji: "🗼", naam: "Kaapse Bossen Uitkijktoren", desc: "Bij Doorn. Beklim de toren voor een weids uitzicht over vrijwel de hele Utrechtse Heuvelrug.",                             adres: "St. Helenaheuvellaan 2, Doorn",              photo: ImgKaapseBossen, web: "https://www.natuurmonumenten.nl/natuurgebieden/kaapse-bossen" },
     { emoji: "🔺", naam: "Pyramide van Austerlitz",    desc: "Bijzondere bezienswaardigheid van de Heuvelrug met bos, wandelingen en een groot terras.",                                 adres: "Zeisterweg 98, Woudenberg",                  photo: OmgevingImg,  web: "https://nl.wikipedia.org/wiki/Pyramide_van_Austerlitz" },
-    { emoji: "⛪", naam: "De Lourdesgrot",             desc: "Circa 120 jaar oud. De opening ligt richting Jeruzalem. Rustige plek om een kaarsje te branden.",                         adres: "Park Seminarie 61, Driebergen",              photo: ImgGrot,      web: "https://nl.wikipedia.org/wiki/Lourdesgrot_(Driebergen-Rijsenburg)" },
+
     { emoji: "🌬️", naam: "Molen Rijn en Lek",        desc: "Historische molen op het punt waar de Rijn en de Lek samenkomen. Karakteristiek landschap en mooi startpunt voor een wandeling langs het water.", adres: "Rijnkade, Wijk bij Duurstede", photo: ImgWindmolen, web: "https://www.molenrijnenlek.nl/en/" },
     { emoji: "✈️", naam: "Park Vliegbasis Soesterberg", desc: "Nationaal park op een voormalige militaire vliegbasis. Uitgestrekte natuur, bunkers en het Nationaal Militair Museum. Gratis toegankelijk.", adres: "Kampweg 5, Soesterberg",              photo: ImgVliegbasis,    web: "https://www.nmm.nl/nl/zien-en-doen/buiten/park-vliegbasis-soesterberg/" },
     { emoji: "⛴️", naam: "Fiets & Voetveer Rhenen",   desc: "Schilderachtige veerpont voor fietsers en voetgangers die de Rijn oversteekt bij Rhenen. Uniek uitje langs de rivier met mooi uitzicht.", adres: "Rijnkade, Rhenen",                    photo: ImgVoetveer,      web: "https://www.uiterwaarde.nl/pontjes/rhenen-lienden/" },
