@@ -185,7 +185,6 @@ const Verblijven = () => {
                                 { icon: "🌿", label: "Moestuin" },
                                 { icon: "🏛️", label: "Historisch pand (1906)" },
                                 { icon: "🔑", label: "Eigen sleutel" },
-                                { icon: "📍", label: "Driebergen-Rijsenburg" },
                                 { icon: "🤝", label: "Persoonlijk contact" },
                             ].map((c) => (
                                 <div key={c.label} className="verb-chip">
