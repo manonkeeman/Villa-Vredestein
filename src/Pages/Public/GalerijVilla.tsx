@@ -4,13 +4,10 @@ import "./GalerijVilla.css";
 
 // Interieur
 import ImgWoonkamer         from "../../Assets/Images/int-woonkamer.jpg";
-import ImgWoonkamer2        from "../../Assets/Images/int-woonkamer2.jpg";
 import ImgKroonluchter      from "../../Assets/Images/int-kroonluchter.jpg";
 import ImgKroonluchterBloemen from "../../Assets/Images/int-kroonluchter-bloemen.jpg";
-import ImgDetail1           from "../../Assets/Images/int-detail.jpg";
 import ImgDetail2           from "../../Assets/Images/int-detail2.jpg";
 import ImgTrap              from "../../Assets/Images/int-trap.jpg";
-import ImgBank              from "../../Assets/Images/int-bank.jpg";
 import ImgKachel            from "../../Assets/Images/int-kachel.jpg";
 import ImgMiddenverdieping  from "../../Assets/Images/int-middenverdieping.jpg";
 
@@ -27,14 +24,11 @@ import ImgGevel             from "../../Assets/Images/ext-gevel.jpg";
 
 // Tuin
 import ImgTuinFeest         from "../../Assets/Images/ext-tuinfeest.jpg";
-import ImgTuinTerras        from "../../Assets/Images/tuin-terras.jpg";
 import ImgMoestuinBloei     from "../../Assets/Images/tuin-moestuin-bloei.jpg";
 import ImgGroente           from "../../Assets/Images/tuin-groente.jpg";
-import ImgLogeren           from "../../Assets/Images/tuin-logeren.jpg";
 import ImgKlaproos          from "../../Assets/Images/tuin-klaproos.jpg";
 
 // Leven
-import ImgDiner             from "../../Assets/Images/life-diner.jpg";
 import ImgMoestuin          from "../../Assets/Images/life-moestuin.jpg";
 import ImgRommertBram       from "../../Assets/Images/life-rommert-bram.jpg";
 import ImgPannenkoeken2025  from "../../Assets/Images/life-pannenkoeken-2025.jpg";
@@ -42,7 +36,6 @@ import ImgKoken             from "../../Assets/Images/life-koken.jpg";
 import ImgEtenOekrainers    from "../../Assets/Images/life-eten-oekrainers.jpg";
 import ImgEtenBuren         from "../../Assets/Images/life-eten-buren.jpg";
 import ImgKLM               from "../../Assets/Images/life-klm.jpg";
-import ImgTerrasfeest       from "../../Assets/Images/life-terrasfeest.jpg";
 
 // Geschiedenis — ansichtkaarten & familie
 import ImgAnsichtPension    from "../../Assets/Images/hist-ansichtkaart-pension.jpg";
@@ -87,7 +80,7 @@ import ImgK1965 from "../../Assets/Images/Krant1965.jpg";
 // Restauratie
 import ImgWijnkamer         from "../../Assets/Images/int-wijnkamer.jpg";
 import ImgRestauratie       from "../../Assets/Images/VillaVredesteinRestauratie.jpg";
-import ImgVilla2024         from "../../Assets/Images/VillaVredestein2024.jpg";
+
 import ImgGlasLood2         from "../../Assets/Images/rest-glas-lood-2.jpg";
 import ImgVerbouwen         from "../../Assets/Images/rest-verbouwen.jpg";
 import ImgSlopen            from "../../Assets/Images/rest-slopen.jpg";
@@ -103,20 +96,17 @@ const CATEGORIEEN = ["Alles", "Interieur", "Exterieur", "Tuin", "Leven", "Geschi
 const FOTOS = [
     // ── Interieur ──────────────────────────────────────────────────────────
     { src: ImgWoonkamer,            cat: "Interieur", caption: "De woonkamer",              sub: "Hoge plafonds, authentieke stoelen, veel licht" },
-    { src: ImgWoonkamer2,           cat: "Interieur", caption: "Woonkamer na restauratie",  sub: "De vernieuwde woonkamer met originele details" },
-    { src: ImgBank,                 cat: "Interieur", caption: "Woonkamer met Indiase bank",sub: "De bank bracht Maxim mee vanuit een van zijn vluchten" },
     { src: ImgKroonluchter,         cat: "Interieur", caption: "Kristallen kroonluchter",   sub: "Origineel, meer dan een eeuw oud" },
-    { src: ImgKroonluchterBloemen,  cat: "Interieur", caption: "Kroonluchter met bloemen",  sub: "De kroonluchter opgemaakt voor een bijzondere gelegenheid" },
     { src: ImgKachel,               cat: "Interieur", caption: "De houtkachel",             sub: "Carpe Diem — het hart van de woonkamer" },
     { src: ImgMiddenverdieping,     cat: "Interieur", caption: "Middenverdieping",           sub: "De luxe verdieping met eigen ingang" },
-    { src: ImgDetail1,              cat: "Interieur", caption: "Historisch detail",          sub: "Een van de authentieke ornamenten in het pand" },
-    { src: ImgDetail2,              cat: "Interieur", caption: "Historisch detail II",       sub: "Originele afwerking bewaard uit 1906" },
+    { src: ImgDetail2,              cat: "Interieur", caption: "Historisch detail",          sub: "Originele afwerking bewaard uit 1906" },
     { src: ImgTrap,                 cat: "Interieur", caption: "De trap",                    sub: "De statige trap die de verdiepingen verbindt" },
 
     // ── Exterieur ──────────────────────────────────────────────────────────
     { src: ImgVillaFront,     cat: "Exterieur", caption: "De voorkant",               sub: "Balkon en erker, karakteristiek voor 1906" },
     { src: ImgBloeiVoorkant,  cat: "Exterieur", caption: "Villa in volle bloei",      sub: "De gevel in de zomer, kleurrijk en uitnodigend" },
     { src: ImgGevel,          cat: "Exterieur", caption: "De gevel",                  sub: "Hoofdstraat 147, Driebergen-Rijsenburg" },
+    { src: ImgKroonluchterBloemen, cat: "Exterieur", caption: "Kroonluchter met bloemen", sub: "De kroonluchter opgemaakt voor een bijzondere gelegenheid" },
 
     { src: ImgVredesteinBord, cat: "Exterieur", caption: "Vredestein",                sub: "Het originele naambordje in de boogvorm boven de ingang" },
     { src: ImgHoogte,         cat: "Exterieur", caption: "Villa vanuit de hoogte",    sub: "Luchtfoto van het perceel en de omgeving" },
@@ -126,16 +116,11 @@ const FOTOS = [
 
     // ── Tuin ───────────────────────────────────────────────────────────────
     { src: ImgTuinFeest,      cat: "Tuin", caption: "Tuinfeest",               sub: "Buiten eten op het terras" },
-    { src: ImgTuinTerras,     cat: "Tuin", caption: "Terras in de zomer",      sub: "De achtertuin met stoelen, bank en hangmat" },
-    { src: ImgTerrasfeest,    cat: "Tuin", caption: "Terrasfeest Vredestein",  sub: "Samen genieten op het terras" },
     { src: ImgMoestuinBloei,  cat: "Tuin", caption: "Moestuin in bloei",       sub: "De moestuin op het perceel in volle pracht" },
     { src: ImgGroente,        cat: "Tuin", caption: "Oogst uit de moestuin",   sub: "Eigen groenten gekweekt op het perceel" },
     { src: ImgKlaproos,       cat: "Tuin", caption: "Klaproos bij Vredestein", sub: "Natuur die vrij opkomt in de tuin" },
-    { src: ImgLogeren,        cat: "Tuin", caption: "Logeren in de tuin",      sub: "Een nacht onder de sterren in de achtertuin" },
 
     // ── Leven ──────────────────────────────────────────────────────────────
-    { src: ImgDiner,            cat: "Leven", caption: "Diner aan de grote tafel",    sub: "Gedeeld eten zoals het hoort" },
-    { src: ImgMoestuin,         cat: "Leven", caption: "Van moestuin naar bord",      sub: "Eigen groenten van het perceel" },
     { src: ImgRommertBram,      cat: "Leven", caption: "Rommert & Bram",             sub: "Twee van de studenten die de bovenverdieping bewonen" },
     { src: ImgPannenkoeken2025, cat: "Leven", caption: "Pannenkoekenvaond 2025",     sub: "De jaarlijkse pannenkoekentraditie in Villa Vredestein" },
     { src: ImgKoken,            cat: "Leven", caption: "Koken in Vredestein",         sub: "De open keuken als ontmoetingsplek" },
@@ -148,7 +133,7 @@ const FOTOS = [
     { src: ImgAnsichtHfdstr,     cat: "Geschiedenis", caption: "Ansichtkaart Hoofdstraat",        sub: "Historische ansichtkaart van de Hoofdstraat in Driebergen" },
     { src: ImgVilla1910,         cat: "Geschiedenis", caption: "Vredestein circa 1910",           sub: "Historische foto van de villa kort na de bouw in 1906" },
     { src: ImgVoorkantRoelofsen, cat: "Geschiedenis", caption: "Villa in het tijdperk Roelofsen", sub: "De voorkant van de villa zoals de familie Roelofsen hem kende" },
-    { src: ImgFamilieRoelofsen,  cat: "Geschiedenis", caption: "Familie Roelofsen",              sub: "De familie die lang de bewoners van Villa Vredestein waren" },
+    { src: ImgFamilieRoelofsen,  cat: "Leven",        caption: "Familie Roelofsen",              sub: "De familie die lang de bewoners van Villa Vredestein waren" },
     { src: ImgZustersPension,    cat: "Geschiedenis", caption: "Zusters van het pension",        sub: "Het personeel van het christelijk pension Vredestein" },
     { src: ImgTuinVroeger,       cat: "Geschiedenis", caption: "De tuin vroeger",                sub: "De achtertuin zoals die er uitzag in het tijdperk Roelofsen" },
     { src: ImgKrantReclame,      cat: "Geschiedenis", caption: "Krantenadvertentie pension",     sub: "Het pension adverteerde regelmatig in de regionale pers" },
@@ -191,7 +176,6 @@ const FOTOS = [
     { src: ImgGietvloer,         cat: "Restauratie", caption: "Gietvloer — gevierd!",         sub: "De legdag van de gietvloer werd feestelijk gevierd" },
     { src: ImgTerrasAanleg,      cat: "Restauratie", caption: "Terras aanleggen",             sub: "Het terras werd aangelegd en het perceel ingericht" },
     { src: ImgVerbouwen,         cat: "Restauratie", caption: "Verbouwen met Manon & Maxim",  sub: "Samen aan de slag in het historische pand" },
-    { src: ImgVilla2024,         cat: "Restauratie", caption: "Villa Vredestein in 2024",     sub: "Het eindresultaat — volledig gerestaureerd en bewoond" },
 ];
 
 const GalerijVilla = () => {
