@@ -208,7 +208,7 @@ export default function ProfilePage() {
     return (
         <>
             <Helmet>
-                <title>Mijn profiel — Villa Vredestein</title>
+                <title>Mijn profiel, Villa Vredestein</title>
                 <meta name="robots" content="noindex, nofollow" />
             </Helmet>
             <DashboardLayout rootClass="profile-page" mainClass="profile-content" sidebar={<StudentSidebar user={authUser} logout={logout} active="profiel" contractFile={profile?.contractFile} />}>

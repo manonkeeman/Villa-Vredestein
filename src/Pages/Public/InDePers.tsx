@@ -24,7 +24,7 @@ const PERS_ITEMS = [
         sectie: "GELD",
         datum: "2024",
         kop: "Motorfiets van onderdelen uit de hele wereld",
-        samenvatting: "Maxim Staal (49), piloot uit Driebergen, tilt het repareren naar een hoger niveau. Als piloot reist hij de wereld over en neemt hij overal onderdelen mee — een zadel uit Bogota, een tank uit Kuala Lumpur, onderdelen uit Shanghai. Zijn grootste reparatieproject: samen met zijn vriendin kocht hij een oud pension in Driebergen — het herenhuis Vredestein — om eigenhandig te renoveren en terug te brengen in de stijl van rond 1900.",
+        samenvatting: "Maxim Staal (49), piloot uit Driebergen, tilt het repareren naar een hoger niveau. Als piloot reist hij de wereld over en neemt hij overal onderdelen mee, een zadel uit Bogota, een tank uit Kuala Lumpur, onderdelen uit Shanghai. Zijn grootste reparatieproject: samen met zijn vriendin kocht hij een oud pension in Driebergen, het herenhuis Vredestein, om eigenhandig te renoveren en terug te brengen in de stijl van rond 1900.",
         url: null,
         tag: "Nationaal",
         imgs: [PersAdVilla3, PersAdVilla1, PersAdVilla2],
@@ -95,7 +95,7 @@ const InDePers = () => {
     return (
         <main className="idp-page">
             <Helmet>
-                <title>In de Pers — Villa Vredestein</title>
+                <title>In de Pers, Villa Vredestein</title>
                 <meta
                     name="description"
                     content="Villa Vredestein in het nieuws. Kranten, tijdschriften en online media over dit bijzondere historische pand in Driebergen-Rijsenburg."
@@ -103,12 +103,12 @@ const InDePers = () => {
                 <link rel="canonical" href="https://villavredestein.nl/in-de-pers" />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://villavredestein.nl/in-de-pers" />
-                <meta property="og:title" content="In de Pers — Villa Vredestein" />
+                <meta property="og:title" content="In de Pers, Villa Vredestein" />
                 <meta property="og:description" content="Villa Vredestein in het nieuws. Artikelen in kranten en magazines over dit bijzondere historische pand in Driebergen-Rijsenburg." />
                 <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="In de Pers — Villa Vredestein" />
+                <meta name="twitter:title" content="In de Pers, Villa Vredestein" />
                 <meta name="twitter:description" content="Villa Vredestein in het nieuws. Artikelen in kranten en magazines over dit bijzondere historische pand in Driebergen-Rijsenburg." />
                 <meta name="twitter:image" content="https://villavredestein.nl/og-image.jpg" />
             </Helmet>

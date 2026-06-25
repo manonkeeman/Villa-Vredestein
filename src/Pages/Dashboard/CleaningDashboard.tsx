@@ -328,7 +328,7 @@ function SupplyCard() {
     return (
         <div className="cl-section-card">
             <h3 className="cl-card-title"><FiPackage /> Voorraad melden</h3>
-            <p className="cl-card-sub">Selecteer wat bijna op is — admin wordt direct gewaarschuwd.</p>
+            <p className="cl-card-sub">Selecteer wat bijna op is, admin wordt direct gewaarschuwd.</p>
 
             <div className="cl-supply-grid">
                 {SUPPLY_ITEMS.map(item => (
@@ -533,7 +533,7 @@ const CleaningDashboard = () => {
     return (
         <DashboardLayout sidebar={sidebar} mainClass="cl-main">
             <Helmet>
-                <title>Schoonmaak — Villa Vredestein</title>
+                <title>Schoonmaak, Villa Vredestein</title>
                 <meta name="robots" content="noindex, nofollow" />
             </Helmet>
 

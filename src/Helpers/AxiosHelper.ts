@@ -13,7 +13,7 @@ const instance = axios.create({
         Accept: "application/json",
     },
     withCredentials: false,
-    timeout: 45000, // 45s — genoeg voor Render cold start; voorkomt eindeloos hangen
+    timeout: 45000, // 45s, genoeg voor Render cold start; voorkomt eindeloos hangen
 });
 
 instance.interceptors.request.use(
@@ -33,7 +33,7 @@ instance.interceptors.request.use(
     (error) => Promise.reject(error)
 );
 
-// Decode JWT expiry without an import — avoids circular deps
+// Decode JWT expiry without an import, avoids circular deps
 const getTokenExp = (token) => {
     try { return JSON.parse(atob(token.split(".")[1])).exp; }
     catch { return null; }
@@ -51,7 +51,7 @@ instance.interceptors.response.use(
 
             // Only force-logout when the token is truly gone or expired.
             // A 401 on an admin endpoint with a valid token = permission error,
-            // not a session failure — don't kick the user out.
+            // not a session failure, don't kick the user out.
             if (isExpiredOrMissing) {
                 localStorage.removeItem(TOKEN_STORAGE_KEY);
                 localStorage.removeItem("user");

@@ -59,7 +59,7 @@ const AdminDashboard = () => {
     return (
         <DashboardLayout sidebar={sidebar} mainClass="dashboard-grid">
             <Helmet>
-                <title>Beheer — Villa Vredestein</title>
+                <title>Beheer, Villa Vredestein</title>
                 <meta name="robots" content="noindex, nofollow" />
             </Helmet>
 

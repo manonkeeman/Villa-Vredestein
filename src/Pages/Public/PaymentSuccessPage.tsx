@@ -8,7 +8,7 @@ const PaymentSuccessPage = () => {
     return (
         <div className="payment-success-page">
             <Helmet>
-                <title>Betaling verwerkt — Villa Vredestein</title>
+                <title>Betaling verwerkt, Villa Vredestein</title>
                 <meta name="robots" content="noindex, nofollow" />
             </Helmet>
 

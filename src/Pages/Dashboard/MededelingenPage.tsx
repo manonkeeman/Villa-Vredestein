@@ -68,7 +68,7 @@ const MededelingenPage = () => {
     return (
         <DashboardLayout sidebar={sidebar} mainClass="admin-main">
             <Helmet>
-                <title>Mededelingen — Villa Vredestein</title>
+                <title>Mededelingen, Villa Vredestein</title>
                 <meta name="robots" content="noindex, nofollow" />
             </Helmet>
 

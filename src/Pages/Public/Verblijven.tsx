@@ -80,17 +80,17 @@ const Verblijven = () => {
     return (
         <main className="verblijven-page">
             <Helmet>
-                <title>Verblijven & Boeken — Villa Vredestein</title>
+                <title>Verblijven & Boeken, Villa Vredestein</title>
                 <meta name="description" content="Verblijf in Villa Vredestein in Driebergen-Rijsenburg. Privékamer, volledige villa of tijdelijk verblijf. Vraag beschikbaarheid op." />
                 <link rel="canonical" href="https://villavredestein.nl/verblijven" />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://villavredestein.nl/verblijven" />
-                <meta property="og:title" content="Verblijven in Villa Vredestein — Driebergen-Rijsenburg" />
+                <meta property="og:title" content="Verblijven in Villa Vredestein, Driebergen-Rijsenburg" />
                 <meta property="og:description" content="Privékamer, volledige villa of tijdelijk verblijf in een historisch pand uit 1906. Vraag beschikbaarheid op." />
                 <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Verblijven in Villa Vredestein — Driebergen-Rijsenburg" />
+                <meta name="twitter:title" content="Verblijven in Villa Vredestein, Driebergen-Rijsenburg" />
                 <meta name="twitter:description" content="Privékamer, volledige villa of tijdelijk verblijf in een historisch pand uit 1906. Vraag beschikbaarheid op." />
                 <meta name="twitter:image" content="https://villavredestein.nl/og-image.jpg" />
             </Helmet>
@@ -158,7 +158,7 @@ const Verblijven = () => {
                 </div>
             </section>
 
-            {/* Sfeer — beeld + inbegrepen */}
+            {/* Sfeer, beeld + inbegrepen */}
             <section className="verb-sfeer reveal-section" ref={addRef}>
                 <div className="verb-sfeer-img-wrap">
                     <img src={TuinTerrasImg} alt="Het terras van Villa Vredestein" className="verb-sfeer-img" loading="lazy" />
@@ -168,7 +168,7 @@ const Verblijven = () => {
                             "Wonen in Villa Vredestein is meer dan een kamer huren.<br />
                             Het is deel worden van een levend verhaal."
                         </blockquote>
-                        <cite className="verb-sfeer-cite">— Manon &amp; Maxim, eigenaren</cite>
+                        <cite className="verb-sfeer-cite">Manon &amp; Maxim, eigenaren</cite>
                     </div>
                 </div>
                 <div className="verb-inbegrepen">
@@ -225,7 +225,7 @@ const Verblijven = () => {
                                     <li>Frankrijk (18 m², balkon straat)</li>
                                     <li>Oekraïne (15 m², airco)</li>
                                     <li>Eigen ingang · Airco</li>
-                                    <li className="verb-ruimte-aanbouw">Badkamer · Sportruimte · Kitchenette — in aanbouw</li>
+                                    <li className="verb-ruimte-aanbouw">Badkamer · Sportruimte · Kitchenette, in aanbouw</li>
                                 </ul>
                             </div>
                         </article>
@@ -238,7 +238,7 @@ const Verblijven = () => {
                                     <li>Woonkamer 45 m² · Erker</li>
                                     <li>Keukeneiland met bar</li>
                                     <li>Terras &amp; moestuin</li>
-                                    <li className="verb-ruimte-aanbouw">Slaapkamer · Badkamer — in aanbouw</li>
+                                    <li className="verb-ruimte-aanbouw">Slaapkamer · Badkamer, in aanbouw</li>
                                 </ul>
                             </div>
                         </article>
@@ -266,7 +266,7 @@ const Verblijven = () => {
                             {
                                 naam: "Simon",
                                 rol: "Student · Bovenste verdieping",
-                                tekst: "De sfeer hier is echt uniek. Een pand met zoveel karakter, midden in de natuur van Driebergen — en toch op fietsafstand van alles. De eigen keuken en zitruimte op onze verdieping zijn een groot pluspunt.",
+                                tekst: "De sfeer hier is echt uniek. Een pand met zoveel karakter, midden in de natuur van Driebergen, en toch op fietsafstand van alles. De eigen keuken en zitruimte op onze verdieping zijn een groot pluspunt.",
                                 sterren: 5,
                             },
                             {

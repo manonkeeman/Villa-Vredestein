@@ -12,14 +12,14 @@ const historisch = [
         detail: "Koker koos voor vakmanschap dat generaties zou meegaan: sierstucwerk aan de plafonds, hoge paneeldeuren, een imposante schouw en forse houten balken. De locatie aan de Hoofdstraat was geen toeval. Driebergen was in die tijd een geliefde villawijk voor gegoede burgers uit de steden.",
     },
     {
-        datum: "1906 — 1912",
+        datum: "1906, 1912",
         titel: "Gezusters van de Bosch",
         emoji: "🏨",
         status: "historisch",
         tekst: "De eerste bewoners zijn de Gezusters van de Bosch, die het pand inrichten als hervormd-christelijk logement. De villa opent haar deuren voor gasten die rust en bezinning zoeken in de bossen van Driebergen.",
     },
     {
-        datum: "1912 — 1935",
+        datum: "1912, 1935",
         titel: "Familie Sluijter",
         emoji: "📰",
         status: "historisch",
@@ -34,28 +34,28 @@ const historisch = [
         tekst: "Over de oorlogsjaren van Vredestein is weinig gedocumenteerd. Driebergen-Rijsenburg bleef relatief gespaard, maar de bezettingsjaren lieten overal hun sporen na.",
     },
     {
-        datum: "1945 — 1963",
+        datum: "1945, 1963",
         titel: "Mevrouw Elings",
         emoji: "🌺",
         status: "historisch",
         tekst: "Na de bevrijding neemt mevrouw Elings het pand over. Bijna twee decennia lang is Vredestein onder haar hoede een vertrouwde plek. Krantenberichten uit 1959 en een vacature voor verpleegdames uit 1965 getuigen van een actief huis.",
     },
     {
-        datum: "1964 — 1971",
+        datum: "1964, 1971",
         titel: "Familie Roelofsen",
         emoji: "🏡",
         status: "historisch",
         tekst: "Familie Roelofsen bewoont de villa gedurende bijna een decennium. Het pand blijft een vertrouwd gezicht aan de Hoofdstraat in Driebergen.",
     },
     {
-        datum: "1971 — 1972",
+        datum: "1971, 1972",
         titel: "Ortholab",
         emoji: "🔬",
         status: "historisch",
         tekst: "Ortholab betrekt de villa voor korte tijd. Een bijzondere wending in het leven van het pand: na bijna vijf decennia residentieel gebruik wordt het gebouw even iets anders.",
     },
     {
-        datum: "1973 — 2019",
+        datum: "1973, 2019",
         titel: "Familie Blooij",
         emoji: "🎓",
         status: "historisch",
@@ -74,7 +74,7 @@ const renovatie = [
         detail: "De villa was in de jaren zeventig rigoureus verbouwd: kersenhout overal, karrenwielen verwerkt in de muren en bronzen deurhendels die losvielen zodra je ze openmaakte. De begane grondvloer was verrot en we hebben de kruipkelder opgeheven voor een industriële betonnen gietvloer, geïsoleerd met kleikorrels en daarna gevlinderd tot een mooie industriële basis. Op de verdiepingen werken we met een gebrande grenenvloer en brengen we de panelen terug in oude glorie. Het sierstucwerk was helaas verdwenen en dat hebben we opgelost met kroonluchters. We willen wel de markiezen, de openslaande deuren en de ramen met glas in lood terugbrengen. Via contact met de familie Roelofsen kregen we in 2022 de kans heel veel foto's te zien van vóór de radicale jaren zeventig verbouwing. We mochten de hele familie uitnodigen en hoorden alle jeugdverhalen: het roetsjen van de trapleuning, de schuurfeesten en de gaarkeuken met de kolenkachel. De meest waardevolle foto die we ooit van dit huis hebben gezien. Er is nog steeds contact en ze houden graag de verbouwing bij van hun jeugdhuis.",
     },
     {
-        datum: "2021 — 2022",
+        datum: "2021, 2022",
         titel: "De restauratie begint",
         emoji: "🔨",
         status: "gedaan",
@@ -190,18 +190,18 @@ const Tijdlijn = () => {
     return (
         <main className="tijdlijn-page">
             <Helmet>
-                <title>Tijdlijn — Villa Vredestein</title>
+                <title>Tijdlijn, Villa Vredestein</title>
                 <meta name="description" content="Van 1906 tot nu: de volledige geschiedenis van Villa Vredestein. De bewoners, de restauratie en de plannen voor de toekomst." />
                 <link rel="canonical" href="https://villavredestein.nl/tijdlijn" />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://villavredestein.nl/tijdlijn" />
-                <meta property="og:title" content="Tijdlijn — Villa Vredestein" />
+                <meta property="og:title" content="Tijdlijn, Villa Vredestein" />
                 <meta property="og:description" content="Van 1906 tot nu: de volledige geschiedenis van Villa Vredestein. De bewoners, de restauratie en de plannen voor de toekomst." />
                 <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
-                <meta property="og:image:alt" content="Villa Vredestein — historische villa in Driebergen-Rijsenburg" />
+                <meta property="og:image:alt" content="Villa Vredestein, historische villa in Driebergen-Rijsenburg" />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Tijdlijn — Villa Vredestein" />
+                <meta name="twitter:title" content="Tijdlijn, Villa Vredestein" />
                 <meta name="twitter:description" content="Van 1906 tot nu: de volledige geschiedenis van Villa Vredestein. De bewoners, de restauratie en de plannen voor de toekomst." />
                 <meta name="twitter:image" content="https://villavredestein.nl/og-image.jpg" />
             </Helmet>

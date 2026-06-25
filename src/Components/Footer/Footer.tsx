@@ -88,7 +88,7 @@ const Footer = () => {
 
             {/* Bottombar */}
             <div className="footer-bottom">
-                <p>© {year} Villa Vredestein — {t("footer.copyright")}</p>
+                <p>© {year} Villa Vredestein, {t("footer.copyright")}</p>
                 <p>
                     <NavLink to="/privacy" className="footer-privacy-link">Privacybeleid</NavLink>
                     {" · "}

@@ -304,7 +304,7 @@ const AdminContractenPage = () => {
     return (
         <DashboardLayout sidebar={sidebar} mainClass="admin-main">
             <Helmet>
-                <title>Contracten — Villa Vredestein</title>
+                <title>Contracten, Villa Vredestein</title>
                 <meta name="robots" content="noindex, nofollow" />
             </Helmet>
 
@@ -317,7 +317,7 @@ const AdminContractenPage = () => {
 
             {isMock && (
                 <div className="admin-alert admin-alert--amber">
-                    <FiAlertTriangle /> Backend niet beschikbaar — voorbeelddata wordt getoond.
+                    <FiAlertTriangle /> Backend niet beschikbaar, voorbeelddata wordt getoond.
                 </div>
             )}
 

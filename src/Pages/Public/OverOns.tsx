@@ -76,7 +76,7 @@ const OverOns = () => {
     return (
         <main className="over-ons-page">
             <Helmet>
-                <title>Ons Verhaal — Villa Vredestein</title>
+                <title>Ons Verhaal, Villa Vredestein</title>
                 <meta
                     name="description"
                     content="De mensen achter Villa Vredestein. Het verhaal van Manon & Maxim, Carpe Diem Design en de open deur voor bezoekers en gelijkgestemden."
@@ -84,12 +84,12 @@ const OverOns = () => {
                 <link rel="canonical" href="https://villavredestein.nl/verhaal" />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://villavredestein.nl/verhaal" />
-                <meta property="og:title" content="Ons Verhaal — Villa Vredestein" />
+                <meta property="og:title" content="Ons Verhaal, Villa Vredestein" />
                 <meta property="og:description" content="De mensen achter Villa Vredestein. Het verhaal van Manon & Maxim, Carpe Diem Design en de open deur voor bezoekers." />
                 <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Ons Verhaal — Villa Vredestein" />
+                <meta name="twitter:title" content="Ons Verhaal, Villa Vredestein" />
                 <meta name="twitter:description" content="De mensen achter Villa Vredestein. Het verhaal van Manon & Maxim, Carpe Diem Design en de open deur voor bezoekers." />
                 <meta name="twitter:image" content="https://villavredestein.nl/og-image.jpg" />
             </Helmet>

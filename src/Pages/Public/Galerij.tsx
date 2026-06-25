@@ -142,7 +142,7 @@ const FOTOS = [
         src: ImgKaartBlauw2,
         jaar: "Oud Kadaster",
         caption: "Kadasterkaart Driebergen (blauwdruk II)",
-        beschrijving: "Tweede blauwdrukkaart van het gebied rond Driebergen-Rijsenburg — een zeldzaam historisch document.",
+        beschrijving: "Tweede blauwdrukkaart van het gebied rond Driebergen-Rijsenburg, een zeldzaam historisch document.",
     },
     {
         src: ImgPercelen,
@@ -154,12 +154,12 @@ const FOTOS = [
         src: ImgHoofdstraat,
         jaar: "Oud Kadaster",
         caption: "Situatiekaart Hoofdstraat",
-        beschrijving: "Overzichtskaart van de bebouwing langs de Hoofdstraat in Driebergen — de villa is herkenbaar in de rij panden.",
+        beschrijving: "Overzichtskaart van de bebouwing langs de Hoofdstraat in Driebergen, de villa is herkenbaar in de rij panden.",
     },
     {
         src: ImgRegister1,
         jaar: "Oud Archief",
-        caption: "Historisch register — kamerafmetingen",
+        caption: "Historisch register, kamerafmetingen",
         beschrijving: "Handgeschreven archiefregister met ruimtematen en perceelgegevens van Hoofdstraat 147. Bevat de oorspronkelijke oppervlakten.",
     },
     {
@@ -178,7 +178,7 @@ const FOTOS = [
         src: ImgBouwreg2,
         jaar: "Oud Archief",
         caption: "Bouwregister Hoofdstraat 147 (II)",
-        beschrijving: "Vervolg van het bouwregister — bevat aanvullende data over de historische indeling en oppervlakten van de villa.",
+        beschrijving: "Vervolg van het bouwregister, bevat aanvullende data over de historische indeling en oppervlakten van de villa.",
     },
 ];
 
@@ -228,7 +228,7 @@ const Galerij = () => {
     return (
         <main className="galerij-page">
             <Helmet>
-                <title>Historische Galerij — Villa Vredestein</title>
+                <title>Historische Galerij, Villa Vredestein</title>
                 <meta
                     name="description"
                     content="Krantenartikelen en historische foto's van Villa Vredestein van 1912 tot nu. Een visueel archief van meer dan een eeuw Hoofdstraat 147."
@@ -236,7 +236,7 @@ const Galerij = () => {
                 <link rel="canonical" href="https://villavredestein.nl/galerij" />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://villavredestein.nl/galerij" />
-                <meta property="og:title" content="Historische Galerij — Villa Vredestein" />
+                <meta property="og:title" content="Historische Galerij, Villa Vredestein" />
                 <meta property="og:description" content="Krantenartikelen en historische foto's van Villa Vredestein van 1912 tot nu." />
                 <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
                 <meta property="og:site_name" content="Villa Vredestein" />
@@ -261,7 +261,7 @@ const Galerij = () => {
                         onClick={() => open(i)}
                         onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && open(i)}
                         tabIndex={0}
-                        aria-label={`${foto.caption} — klik om te vergroten`}
+                        aria-label={`${foto.caption}, klik om te vergroten`}
                     >
                         <div className="galerij-img-wrap">
                             <img

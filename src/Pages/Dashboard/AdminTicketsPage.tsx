@@ -61,7 +61,7 @@ function TicketCard({ ticket, onUpdate }) {
             setComment("");
             onUpdate?.();
         } catch {
-            // offline fallback — just clear
+            // offline fallback, just clear
             setComment("");
         } finally {
             setSending(false);
@@ -193,7 +193,7 @@ const AdminTicketsPage = () => {
     return (
         <DashboardLayout sidebar={sidebar} mainClass="admin-main">
             <Helmet>
-                <title>Meldingen — Villa Vredestein</title>
+                <title>Meldingen, Villa Vredestein</title>
                 <meta name="robots" content="noindex, nofollow" />
             </Helmet>
 
@@ -206,7 +206,7 @@ const AdminTicketsPage = () => {
 
             {isMock && (
                 <div className="admin-alert admin-alert--amber">
-                    <FiAlertTriangle /> Backend niet beschikbaar — voorbeelddata wordt getoond.
+                    <FiAlertTriangle /> Backend niet beschikbaar, voorbeelddata wordt getoond.
                 </div>
             )}
 

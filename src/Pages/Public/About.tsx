@@ -33,21 +33,21 @@ const About = () => {
         <main className="about-page">
             <Helmet>
                 <html lang={langCode} />
-                <title>{t("about.title")} — Villa Vredestein</title>
+                <title>{t("about.title")}, Villa Vredestein</title>
                 <meta
                     name="description"
                     content="Ontdek de verhalen achter Villa Vredestein: de geschiedenis, restauratie, het boek van Manon Keeman, Carpe Diem Design en de mensen achter dit bijzondere woonproject in Driebergen."
                 />
                 <link rel="canonical" href="https://villavredestein.nl/about" />
-                <meta property="og:title" content={`${t("about.title")} — Villa Vredestein`} />
+                <meta property="og:title" content={`${t("about.title")}, Villa Vredestein`} />
                 <meta property="og:description" content="Ontdek de verhalen achter Villa Vredestein: de geschiedenis, restauratie, het boek van Manon Keeman, Carpe Diem Design en de mensen achter dit bijzondere woonproject in Driebergen." />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://villavredestein.nl/about" />
                 <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
-                <meta property="og:image:alt" content="Villa Vredestein — historische villa in Driebergen-Rijsenburg" />
+                <meta property="og:image:alt" content="Villa Vredestein, historische villa in Driebergen-Rijsenburg" />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={`${t("about.title")} — Villa Vredestein`} />
+                <meta name="twitter:title" content={`${t("about.title")}, Villa Vredestein`} />
                 <meta name="twitter:description" content="Ontdek de verhalen achter Villa Vredestein: de geschiedenis, restauratie, het boek van Manon Keeman, Carpe Diem Design en de mensen achter dit bijzondere woonproject in Driebergen." />
                 <meta name="twitter:image" content="https://villavredestein.nl/og-image.jpg" />
             </Helmet>

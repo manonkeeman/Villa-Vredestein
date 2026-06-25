@@ -148,7 +148,7 @@ const AdminBetalingenMatrix = () => {
             const res = await api.get("/api/invoices");
             setInvoices(res.data || []);
         } catch {
-            setError("Kon facturen niet laden — mock-data wordt getoond.");
+            setError("Kon facturen niet laden, mock-data wordt getoond.");
         } finally {
             setLoading(false);
         }
@@ -178,7 +178,7 @@ const AdminBetalingenMatrix = () => {
     return (
         <DashboardLayout sidebar={sidebar} mainClass="admin-main">
             <Helmet>
-                <title>Betaal-matrix — Villa Vredestein</title>
+                <title>Betaal-matrix, Villa Vredestein</title>
                 <meta name="robots" content="noindex, nofollow" />
             </Helmet>
 
@@ -192,7 +192,7 @@ const AdminBetalingenMatrix = () => {
 
             {isMock && (
                 <div className="admin-alert admin-alert--amber">
-                    <FiAlertTriangle /> Backend niet beschikbaar — voorbeelddata wordt getoond.
+                    <FiAlertTriangle /> Backend niet beschikbaar, voorbeelddata wordt getoond.
                 </div>
             )}
 

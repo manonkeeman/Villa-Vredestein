@@ -9,14 +9,14 @@ import "./StudentDashboard.css";
 import "./SamenEtenPage.css";
 import "../../Styles/Global.css";
 
-// ── Static dinner data — swap for API when backend is ready ────────────
+// ── Static dinner data, swap for API when backend is ready ────────────
 const UPCOMING_DINNER = {
     date: new Date(2026, 5, 18),       // 18 juni 2026
     time: "17:00",
     theme: "BBQ 🔥",
     location: "Tuin",
     description:
-        "Zomerse BBQ in de villa-tuin! Vlees, groenten en drankjes worden geregeld — jij hoeft alleen maar te komen genieten. Geef aan of je er bij bent, en of je iemand meeneemt zodat we genoeg inkopen.",
+        "Zomerse BBQ in de villa-tuin! Vlees, groenten en drankjes worden geregeld, jij hoeft alleen maar te komen genieten. Geef aan of je er bij bent, en of je iemand meeneemt zodat we genoeg inkopen.",
     maxPersons: 20,
     signups: [
         { name: "Manon", guests: 0, emoji: "👩" },
@@ -56,7 +56,7 @@ const SamenEtenPage = () => {
     return (
         <>
             <Helmet>
-                <title>Samen eten — Villa Vredestein</title>
+                <title>Samen eten, Villa Vredestein</title>
                 <meta name="robots" content="noindex, nofollow" />
             </Helmet>
             <DashboardLayout sidebar={<StudentSidebar user={user} logout={logout} contractFile={contractFile} />} mainClass="se-main">
@@ -65,7 +65,7 @@ const SamenEtenPage = () => {
                 <div className="se-hero">
                     <span className="se-hero-icon">🔥</span>
                     <div className="se-hero-text">
-                        <strong>Villa BBQ — samen genieten!</strong>
+                        <strong>Villa BBQ, samen genieten!</strong>
                         <p>Vlees, groenten en drankjes zijn geregeld. Kom gezellig langs en neem gerust iemand mee!</p>
                     </div>
                     <div className="se-hero-date">
@@ -82,7 +82,7 @@ const SamenEtenPage = () => {
                     <section className="se-block se-block--gold">
                         <div className="se-block-header">
                             <span>🔥</span>
-                            <h2>Details — {dinner.theme}</h2>
+                            <h2>Details, {dinner.theme}</h2>
                         </div>
 
                         <div className="se-detail-row">
@@ -196,8 +196,8 @@ const SamenEtenPage = () => {
                                     <p>We zien je op {formatDate(dinner.date)} om {dinner.time} in de tuin.</p>
                                     <p className="se-success-dish">
                                         {guests === 0
-                                            ? "Je komt alleen — tot dan! 🔥"
-                                            : `Je neemt ${guests} gast${guests > 1 ? "en" : ""} mee — hoe gezellig!`}
+                                            ? "Je komt alleen, tot dan! 🔥"
+                                            : `Je neemt ${guests} gast${guests > 1 ? "en" : ""} mee, hoe gezellig!`}
                                     </p>
                                     <button
                                         type="button"
@@ -221,10 +221,10 @@ const SamenEtenPage = () => {
                     <div className="se-rules-grid">
                         {[
                             { icon: "🔥", rule: "Vlees, groenten en drankjes worden geregeld" },
-                            { icon: "👥", rule: "Je mag gerust iemand meenemen — meld het wel even aan" },
+                            { icon: "👥", rule: "Je mag gerust iemand meenemen, meld het wel even aan" },
                             { icon: "📅", rule: "Aanmelden vóór 14 juni zodat we genoeg inkopen" },
                             { icon: "🧹", rule: "Na afloop ruimen we de tuin samen op" },
-                            { icon: "🤝", rule: "Gezelligheid boven alles — telefoon weg!" },
+                            { icon: "🤝", rule: "Gezelligheid boven alles, telefoon weg!" },
                             { icon: "🔔", rule: "Afmelden kan tot 24 uur van tevoren" },
                         ].map(({ icon, rule }) => (
                             <div key={rule} className="se-rule-tile">
