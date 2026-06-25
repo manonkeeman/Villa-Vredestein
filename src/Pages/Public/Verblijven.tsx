@@ -3,8 +3,9 @@ import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import "./Verblijven.css";
 
-import WoonkamerImg from "../../Assets/Images/int-woonkamer.jpg";
-import VillaVoorImg from "../../Assets/Images/ext-villa-voorkant.jpg";
+import VillaVoorImg   from "../../Assets/Images/ext-villa-voorkant.jpg";
+import VillaBloeiImg  from "../../Assets/Images/ext-villa-bloei.jpg";
+import TuinTerrasImg  from "../../Assets/Images/tuin-terras.jpg";
 
 const OPTIES = [
     {
@@ -96,17 +97,36 @@ const Verblijven = () => {
 
             {/* Hero */}
             <header className="verb-hero">
-                <div className="verb-hero-bg" style={{ backgroundImage: `url(${WoonkamerImg})` }} />
+                <div className="verb-hero-bg" style={{ backgroundImage: `url(${VillaBloeiImg})` }} />
                 <div className="verb-hero-overlay" />
                 <div className="verb-hero-content">
                     <span className="verb-eyebrow">Verblijven</span>
                     <h1>Jouw plek in de villa</h1>
                     <p>Een nacht, een maand of langer. Villa Vredestein verwelkomt je.</p>
                 </div>
+                <a href="#verblijf-opties" className="verb-hero-scroll" aria-label="Scroll naar verblijfsopties">
+                    <span />
+                </a>
             </header>
 
+            {/* Stats strip */}
+            <div className="verb-stats-strip">
+                {[
+                    { num: "1906", label: "Gebouwd" },
+                    { num: "292 m²", label: "Woonoppervlak" },
+                    { num: "6", label: "Slaapkamers" },
+                    { num: "680 m²", label: "Perceel" },
+                    { num: "3", label: "Verdiepingen" },
+                ].map((s) => (
+                    <div key={s.label} className="verb-stat">
+                        <strong>{s.num}</strong>
+                        <span>{s.label}</span>
+                    </div>
+                ))}
+            </div>
+
             {/* Opties */}
-            <section className="verb-opties reveal-section" ref={addRef}>
+            <section id="verblijf-opties" className="verb-opties reveal-section" ref={addRef}>
                 <div className="verb-inner">
                     <h2 className="verb-section-title">Kies jouw verblijf</h2>
                     <div className="opties-grid">
@@ -141,6 +161,43 @@ const Verblijven = () => {
                 </div>
             </section>
 
+            {/* Sfeer — beeld + inbegrepen */}
+            <section className="verb-sfeer reveal-section" ref={addRef}>
+                <div className="verb-sfeer-img-wrap">
+                    <img src={TuinTerrasImg} alt="Het terras van Villa Vredestein" className="verb-sfeer-img" loading="lazy" />
+                    <div className="verb-sfeer-overlay" />
+                    <div className="verb-sfeer-quote-wrap">
+                        <blockquote className="verb-sfeer-quote">
+                            "Wonen in Villa Vredestein is meer dan een kamer huren.<br />
+                            Het is deel worden van een levend verhaal."
+                        </blockquote>
+                        <cite className="verb-sfeer-cite">— Manon &amp; Maxim, eigenaren</cite>
+                    </div>
+                </div>
+                <div className="verb-inbegrepen">
+                    <div className="verb-inner">
+                        <h3 className="verb-inbegrepen-titel">Altijd inbegrepen</h3>
+                        <div className="verb-chips">
+                            {[
+                                { icon: "📶", label: "Snel internet" },
+                                { icon: "🚗", label: "Parkeerplaats" },
+                                { icon: "🌳", label: "Tuin & terras" },
+                                { icon: "🌿", label: "Moestuin" },
+                                { icon: "🏛️", label: "Historisch pand (1906)" },
+                                { icon: "🔑", label: "Eigen sleutel" },
+                                { icon: "📍", label: "Driebergen-Rijsenburg" },
+                                { icon: "🤝", label: "Persoonlijk contact" },
+                            ].map((c) => (
+                                <div key={c.label} className="verb-chip">
+                                    <span aria-hidden="true">{c.icon}</span>
+                                    {c.label}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* De Ruimtes */}
             <section className="verb-ruimtes reveal-section" ref={addRef}>
                 <div className="verb-inner">
@@ -166,11 +223,13 @@ const Verblijven = () => {
                             <div className="verb-ruimte-verd" style={{ background: "#FCBC2D", color: "#000" }}>Middelste verdieping</div>
                             <div className="verb-ruimte-body">
                                 <h3>✨ Luxe kamers</h3>
-                                <p>Twee ruime kamers (18–22 m²) met balkon, airco en eigen ingang. Kitchenette & badkamer in aanbouw.</p>
+                                <p>Drie ruime kamers met balkon, airco en eigen ingang. Kitchenette, badkamer en sportruimte in aanbouw.</p>
                                 <ul className="verb-ruimte-list">
                                     <li>Italië (22 m², balkon tuin)</li>
                                     <li>Frankrijk (18 m², balkon straat)</li>
+                                    <li>Oekraïne (15 m², airco)</li>
                                     <li>Eigen ingang · Airco</li>
+                                    <li className="verb-ruimte-aanbouw">Badkamer · Sportruimte · Kitchenette — in aanbouw</li>
                                 </ul>
                             </div>
                         </article>
@@ -182,7 +241,8 @@ const Verblijven = () => {
                                 <ul className="verb-ruimte-list">
                                     <li>Woonkamer 45 m² · Erker</li>
                                     <li>Keukeneiland met bar</li>
-                                    <li>Terras & moestuin</li>
+                                    <li>Terras &amp; moestuin</li>
+                                    <li className="verb-ruimte-aanbouw">Slaapkamer · Badkamer — in aanbouw</li>
                                 </ul>
                             </div>
                         </article>
