@@ -150,7 +150,8 @@
 .gvlb-info { padding: 0 0.5rem; }
 .gvlb-cat { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #FCBC2D; display: block; margin-bottom: 0.35rem; }
 .gvlb-caption { font-size: 1rem; font-weight: 600; color: #fff; margin: 0 0 0.5rem; }
-.gvlb-sub { font-size: 0.82rem; color: #988068; line-height: 1.55; margin: 0; }
+.gvlb-sub { font-size: 0.82rem; color: #988068; line-height: 1.55; margin: 0 0 0.75rem; }
+.gvlb-verhaal { font-size: 0.83rem; color: #c8a87a; line-height: 1.72; margin: 0; padding-top: 0.75rem; border-top: 1px solid #1e1812; }
 
 .gvlb-nav {
     position: absolute;
