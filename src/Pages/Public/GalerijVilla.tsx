@@ -6,8 +6,6 @@ import "./GalerijVilla.css";
 import ImgWoonkamer         from "../../Assets/Images/int-woonkamer.jpg";
 import ImgKroonluchter      from "../../Assets/Images/int-kroonluchter.jpg";
 import ImgKroonluchterBloemen from "../../Assets/Images/int-kroonluchter-bloemen.jpg";
-import ImgDetail2           from "../../Assets/Images/int-detail2.jpg";
-import ImgTrap              from "../../Assets/Images/int-trap.jpg";
 import ImgKachel            from "../../Assets/Images/int-kachel.jpg";
 import ImgMiddenverdieping  from "../../Assets/Images/int-middenverdieping.jpg";
 
@@ -103,10 +101,6 @@ const FOTOS = [
       verhaal: "Kachel 'Carpe Diem' — de naam staat in het ijzer gegraveerd. Maxim heeft hem eigenhandig geplaatst en ingemetseld. Op koude avonden trekt iedereen vanzelf naar de woonkamer." },
     { src: ImgMiddenverdieping, cat: "Interieur", caption: "Middenverdieping",       sub: "De luxe verdieping met eigen ingang",
       verhaal: "De middenverdieping is de meest zelfstandige plek van de villa. Eigen ingang, ruim balkon en airco. Hier wonen gasten die de rust van de villa willen zonder de drukte van het studentenleven erboven." },
-    { src: ImgDetail2,          cat: "Interieur", caption: "Historisch detail",      sub: "Originele afwerking bewaard uit 1906",
-      verhaal: "Elke hoek van Villa Vredestein bevat originele ornamenten uit 1906. Tijdens de restauratie werden ze één voor één ontdekt, gereinigd en bewaard. Dit soort details zijn precies waarom Manon & Maxim voor dit pand kozen." },
-    { src: ImgTrap,             cat: "Interieur", caption: "De trap",                sub: "De statige trap die de verdiepingen verbindt",
-      verhaal: "De grote houten trap verbindt de drie verdiepingen van de villa. In het tijdperk van het pension liepen er dagelijks gasten op en neer. Nu is het de route van studenten, bezoekers en altijd iemand met een kop koffie in de hand." },
 
     // ── Exterieur ──────────────────────────────────────────────────────────
     { src: ImgVillaFront,          cat: "Exterieur", caption: "De voorkant",                  sub: "Balkon en erker, karakteristiek voor 1906",

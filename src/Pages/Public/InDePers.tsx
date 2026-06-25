@@ -3,10 +3,10 @@ import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import "./InDePers.css";
 
-import PersAdFoto from "../../Assets/Images/pers-ad-foto.jpeg";
-import PersAdArtikel from "../../Assets/Images/pers-ad-artikel.jpeg";
-import PersImg4594 from "../../Assets/Images/pers-img4594.jpg";
-import PersBoek from "../../Assets/Images/pers-vredestein-in-boek.jpg";
+import PersBoek    from "../../Assets/Images/pers-vredestein-in-boek.jpg";
+import PersAdVilla1 from "../../Assets/Images/pers-ad-villa-1.jpeg";
+import PersAdVilla2 from "../../Assets/Images/pers-ad-villa-2.jpeg";
+import PersAdVilla3 from "../../Assets/Images/pers-ad-villa-3.jpeg";
 
 const PERS_ITEMS = [
     {
@@ -24,10 +24,10 @@ const PERS_ITEMS = [
         sectie: "GELD",
         datum: "2024",
         kop: "Motorfiets van onderdelen uit de hele wereld",
-        samenvatting: "Maxim Staal (49), piloot uit Driebergen, tilt het repareren naar een hoger niveau. Als piloot reist hij de wereld over en neemt hij overal onderdelen mee. Een zadel uit Bogota, een tank uit Kuala Lumpur, onderdelen uit Shanghai.",
+        samenvatting: "Maxim Staal (49), piloot uit Driebergen, tilt het repareren naar een hoger niveau. Als piloot reist hij de wereld over en neemt hij overal onderdelen mee — een zadel uit Bogota, een tank uit Kuala Lumpur, onderdelen uit Shanghai. Zijn grootste reparatieproject: samen met zijn vriendin kocht hij een oud pension in Driebergen — het herenhuis Vredestein — om eigenhandig te renoveren en terug te brengen in de stijl van rond 1900.",
         url: null,
         tag: "Nationaal",
-        imgs: [PersAdFoto, PersAdArtikel, PersImg4594],
+        imgs: [PersAdVilla3, PersAdVilla1, PersAdVilla2],
     },
 ];
 
