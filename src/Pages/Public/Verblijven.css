@@ -457,14 +457,33 @@ input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1) opacit
     .verb-sfeer-img-wrap { height: 42vh; }
 }
 
-@media (max-width: 480px) {
-    .verb-stats-strip { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; scrollbar-width: none; }
-    .verb-stats-strip::-webkit-scrollbar { display: none; }
-    .verb-stat { min-width: 100px; border-right: 1px solid #1e1812; }
-    .verb-hero-scroll { display: none; }
+@media (max-width: 768px) {
+    /* iOS Safari zoomt in op inputs met font-size < 16px */
+    .form-field input,
+    .form-field select,
+    .form-field textarea,
+    .form-field-select select { font-size: 16px; }
 }
 
 @media (max-width: 600px) {
     .form-row { grid-template-columns: 1fr; }
     .verb-inner { padding: 0 1.25rem; }
+}
+
+@media (max-width: 480px) {
+    .verb-stats-strip {
+        justify-content: flex-start;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        scrollbar-width: none;
+        -webkit-mask-image: linear-gradient(to right, #000 80%, transparent 100%);
+        mask-image: linear-gradient(to right, #000 80%, transparent 100%);
+    }
+    .verb-stats-strip::-webkit-scrollbar { display: none; }
+    .verb-stat { min-width: 110px; border-right: 1px solid #1e1812; }
+    .verb-hero-scroll { display: none; }
+    .verb-opties { padding: 3rem 0; }
+    .verb-form-section { padding: 3rem 0 4rem; }
+    .verb-ruimtes { padding: 3rem 0; }
+    .verb-reviews { padding: 3rem 0; }
 }

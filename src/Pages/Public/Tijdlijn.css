@@ -167,3 +167,8 @@
     .tijdlijn-kaart { width: 100%; }
     .tijdlijn-header h1 { font-size: 1.8rem; }
 }
+
+@media (max-width: 480px) {
+    .tijdlijn-header h1 { font-size: clamp(1.3rem, 6vw, 1.6rem); }
+    .tijdlijn-page { padding: 2rem 1rem 4rem; }
+}
