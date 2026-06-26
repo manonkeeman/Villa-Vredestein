@@ -4,13 +4,25 @@ import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet-async";
 import "./Home.css";
 
+import { MapContainer, TileLayer, Marker } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import L from "leaflet";
+
 import HeroImg from "../../Assets/Images/int-woonkamer.jpg";
 import VillaImg from "../../Assets/Images/ext-villa-voorkant.jpg";
 import VerbouwingVid from "../../Assets/Videos/home-verbouwing.mp4";
-import TuinImg from "../../Assets/Images/ext-tuinfeest.jpg";
-import KroonluchterImg from "../../Assets/Images/int-kroonluchter.jpg";
-import WoonkamerImg2 from "../../Assets/Images/int-woonkamer2.jpg";
+import ImgVerbouwen from "../../Assets/Images/rest-verbouwen.jpg";
+import ImgVerblijven from "../../Assets/Images/tuin-logeren.jpg";
 import LuchtballonImg from "../../Assets/Images/ext-luchtballon.png";
+
+const VILLA_POS: [number, number] = [52.0431, 5.287];
+
+const villaCardIcon = L.divIcon({
+    className: "",
+    html: `<div style="background:#FCBC2D;border-radius:50%;width:22px;height:22px;border:3px solid rgba(255,255,255,0.75);box-shadow:0 2px 14px rgba(252,188,45,0.75);"></div>`,
+    iconSize: [22, 22],
+    iconAnchor: [11, 11],
+});
 
 const KENMERKEN = [
     { label: "1906", sub: "Gebouwd" },
@@ -24,24 +36,25 @@ const KENMERKEN = [
 const HIGHLIGHTS = [
     {
         to: "/galerij-villa",
-        img: KroonluchterImg,
-        label: "Interieur",
-        titel: "Elk detail telt",
-        sub: "Kristallen kroonluchters, hoge plafonds en originele details die stap voor stap terugkomen.",
+        toState: { cat: "De Verbouwing" },
+        img: ImgVerbouwen,
+        label: "De Verbouwing",
+        titel: "De transformatie",
+        sub: "Van verwaarloosde studentenhuis tot gerestaureerde trots. Stap voor stap, laag voor laag.",
     },
     {
-        to: "/ruimtes",
-        img: WoonkamerImg2,
-        label: "De kamers",
-        titel: "Zes slaapkamers",
-        sub: "Drie verdiepingen, elk met eigen karakter. Rustig, licht, historisch.",
+        to: "/omgeving",
+        map: true,
+        label: "De Omgeving",
+        titel: "Alles om de hoek",
+        sub: "Bos, heuvelrug, dorpskern en Utrecht op een kwartiertje.",
     },
     {
         to: "/verblijven",
-        img: TuinImg,
+        img: ImgVerblijven,
         label: "Verblijven",
         titel: "Boek jouw verblijf",
-        sub: "Korte of langere logeerpartij in een bijzonder huis.",
+        sub: "Een kort of lang verblijf in een bijzonder huis.",
     },
 ];
 
@@ -175,21 +188,40 @@ const Home = () => {
             <section className="highlights reveal-section" ref={addRef} aria-label="Hoogtepunten">
                 <div className="highlights-header">
                     <h2>Ontdek de villa</h2>
-                    <p>Interieur, kamers en hoe je er kunt verblijven.</p>
+                    <p>De verbouwing, de kamers en de omgeving.</p>
                 </div>
                 <div className="highlights-grid">
                     {HIGHLIGHTS.map((h) => (
                         <article
                             key={h.to}
                             className="hl-card"
-                            onClick={() => navigate(h.to)}
+                            onClick={() => navigate(h.to, (h as any).toState ? { state: (h as any).toState } : undefined)}
                             role="button"
                             tabIndex={0}
-                            onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && navigate(h.to)}
+                            onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && navigate(h.to, (h as any).toState ? { state: (h as any).toState } : undefined)}
                             aria-label={h.titel}
                         >
                             <div className="hl-img-wrap">
-                                <img src={h.img} alt={h.titel} loading="lazy" />
+                                {(h as any).map ? (
+                                    <MapContainer
+                                        center={VILLA_POS}
+                                        zoom={14}
+                                        zoomControl={false}
+                                        dragging={false}
+                                        scrollWheelZoom={false}
+                                        doubleClickZoom={false}
+                                        touchZoom={false}
+                                        keyboard={false}
+                                        style={{ width: "100%", height: "100%" }}
+                                        attributionControl={false}
+                                        aria-label="Kaart omgeving Villa Vredestein"
+                                    >
+                                        <TileLayer url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png" />
+                                        <Marker position={VILLA_POS} icon={villaCardIcon} />
+                                    </MapContainer>
+                                ) : (
+                                    <img src={(h as any).img} alt={h.titel} loading="lazy" />
+                                )}
                                 <div className="hl-overlay" />
                             </div>
                             <div className="hl-body">

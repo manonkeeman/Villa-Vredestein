@@ -84,6 +84,20 @@ const makeIcon = (emoji: string, color = "#FCBC2D") =>
         popupAnchor: [0, -20],
     });
 
+const makeVillaMarker = () =>
+    L.divIcon({
+        className: "",
+        html: `<div style="position:relative;display:inline-block;">
+            <div style="background:#FCBC2D;color:#0c0a07;padding:7px 14px;border-radius:10px;font-size:13px;font-weight:800;white-space:nowrap;box-shadow:0 4px 24px rgba(252,188,45,0.55);border:2px solid rgba(255,255,255,0.4);letter-spacing:0.02em;">
+                📍 Villa Vredestein
+            </div>
+            <div style="position:absolute;bottom:-7px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-top:7px solid #FCBC2D;"></div>
+        </div>`,
+        iconSize: [162, 42],
+        iconAnchor: [81, 49],
+        popupAnchor: [0, -52],
+    });
+
 const VILLA: [number, number] = [52.0431, 5.2870];
 
 type Poi = { pos: [number, number]; label: string; sub: string; emoji: string; color: string; link: string; linkLabel: string };
@@ -91,6 +105,7 @@ type Poi = { pos: [number, number]; label: string; sub: string; emoji: string; c
 const POIS: Poi[] = [
     // Villa & Vervoer
     { pos: VILLA,                                     label: "Villa Vredestein",          sub: "Hoofdstraat 147",              emoji: "🏛️", color: "#FCBC2D", link: "https://www.villavredestein.nl",                                  linkLabel: "villavredestein.nl"           },
+    { pos: [52.0448, 5.2818],                         label: "IVA Driebergen",            sub: "Hogeschool · Hoofdstraat 25",  emoji: "🎓", color: "#4a70b0", link: "https://maps.google.com/?q=IVA+Driebergen+Hoofdstraat+25",         linkLabel: "Google Maps →"                },
     { pos: [52.0317, 5.2447],                         label: "NS Driebergen-Zeist",       sub: "5 min met de auto",            emoji: "🚂", color: "#d4804a", link: "https://maps.google.com/?q=NS+Station+Driebergen-Zeist",           linkLabel: "Google Maps →"                },
     { pos: [52.0543, 5.3211],                         label: "Utrechtse Heuvelrug NP",    sub: "Op loopafstand",               emoji: "🌲", color: "#6a9050", link: "https://www.np-utrechtse-heuvelrug.nl",                           linkLabel: "np-utrechtse-heuvelrug.nl"    },
     { pos: [52.0894, 5.1101],                         label: "Utrecht Centraal",           sub: "15 min per trein",             emoji: "🏙️", color: "#888",    link: "https://maps.google.com/?q=Utrecht+Centraal",                     linkLabel: "Google Maps →"                },
@@ -309,9 +324,20 @@ const Omgeving = () => {
             {/* Hero, kaart als header */}
             <header className="omg-hero-map" aria-label="Locatie kaart">
                 <div className="omg-hero-map-inner">
-                    <MapContainer center={VILLA} zoom={13} scrollWheelZoom={false} style={{ width: "100%", height: "100%" }} aria-label="Interactieve kaart van de omgeving">
+                    <MapContainer center={VILLA} zoom={15} scrollWheelZoom={false} style={{ width: "100%", height: "100%" }} aria-label="Interactieve kaart van de omgeving">
                         <TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>' url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png" />
-                        {POIS.map((poi) => (
+                        {/* Villa Vredestein — prominente marker */}
+                        <Marker position={VILLA} icon={makeVillaMarker()}>
+                            <Popup>
+                                <div className="map-popup">
+                                    <strong>Villa Vredestein</strong>
+                                    <span>Hoofdstraat 147, Driebergen-Rijsenburg</span>
+                                    <a href="https://www.villavredestein.nl" target="_blank" rel="noreferrer" className="map-popup-link">villavredestein.nl</a>
+                                </div>
+                            </Popup>
+                        </Marker>
+                        {/* Overige POIs */}
+                        {POIS.filter((poi) => poi.pos !== VILLA).map((poi) => (
                             <Marker key={poi.label} position={poi.pos} icon={makeIcon(poi.emoji, poi.color)}>
                                 <Popup>
                                     <div className="map-popup">
@@ -341,41 +367,6 @@ const Omgeving = () => {
                     </nav>
                 </div>
             </header>
-
-            {/* Vind ons */}
-            <section className="omg-vindons reveal-section" ref={addRef} aria-label="Locatie Villa Vredestein">
-                <div className="omg-section-inner omg-vindons-inner">
-                    <div className="omg-vindons-map">
-                        <iframe
-                            title="Villa Vredestein op Google Maps"
-                            src="https://maps.google.com/maps?q=Hoofdstraat+147,+Driebergen-Rijsenburg,+Nederland&z=17&output=embed"
-                            width="100%"
-                            height="100%"
-                            style={{ border: 0 }}
-                            allowFullScreen
-                            loading="lazy"
-                            referrerPolicy="no-referrer-when-downgrade"
-                        />
-                    </div>
-                    <div className="omg-vindons-info">
-                        <span className="omg-eyebrow">Vind ons</span>
-                        <h2>Villa Vredestein</h2>
-                        <address className="omg-vindons-address">
-                            Hoofdstraat 147<br />
-                            3971 KE Driebergen-Rijsenburg<br />
-                            Nederland
-                        </address>
-                        <a
-                            href="https://www.google.com/maps/dir/?api=1&destination=Hoofdstraat+147,+Driebergen-Rijsenburg"
-                            target="_blank"
-                            rel="noreferrer"
-                            className="omg-vindons-btn"
-                        >
-                            Routebeschrijving openen →
-                        </a>
-                    </div>
-                </div>
-            </section>
 
             {/* Afstandstabel */}
             <section className="omg-afstanden reveal-section" ref={addRef} aria-label="Afstanden">

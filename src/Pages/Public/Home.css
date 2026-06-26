@@ -320,6 +320,18 @@
     position: absolute;
     inset: 0;
     background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.7));
+    z-index: 2;
+}
+
+/* Mini-map in card: non-interactive, overlay must sit on top */
+.hl-img-wrap .leaflet-container {
+    pointer-events: none;
+    filter: brightness(0.8);
+    transition: filter 0.4s;
+}
+
+.hl-card:hover .hl-img-wrap .leaflet-container {
+    filter: brightness(0.65);
 }
 
 .hl-body {

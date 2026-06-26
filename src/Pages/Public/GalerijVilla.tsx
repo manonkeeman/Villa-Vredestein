@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { Helmet } from "react-helmet-async";
+import { useLocation } from "react-router-dom";
 import "./GalerijVilla.css";
 
 
@@ -162,7 +163,9 @@ const FOTOS = [
 ];
 
 const GalerijVilla = () => {
-    const [actieveCat, setActieveCat] = useState("Alles");
+    const location = useLocation();
+    const initCat = CATEGORIEEN.includes(location.state?.cat) ? location.state.cat : "Alles";
+    const [actieveCat, setActieveCat] = useState(initCat);
     const [lightbox, setLightbox] = useState<number | null>(null);
     const lightboxRef = useRef<HTMLDivElement>(null);
     const prevFocusRef = useRef<HTMLElement | null>(null);

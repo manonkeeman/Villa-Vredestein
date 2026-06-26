@@ -214,6 +214,21 @@
     transform: scale(1.03);
 }
 
+.oo-img-wrap--contain {
+    background: #5a0a0a;
+    aspect-ratio: 16 / 9;
+}
+
+.oo-img-wrap--contain .oo-img {
+    object-fit: contain;
+    object-position: center;
+    padding: 1.5rem;
+}
+
+.oo-section:hover .oo-img-wrap--contain .oo-img {
+    transform: scale(1.02);
+}
+
 .oo-img-overlay {
     position: absolute;
     inset: 0;
@@ -402,7 +417,7 @@
     margin-top: 1.5rem;
     padding: 0.75rem 1.75rem;
     background: var(--btn-accent, var(--accent));
-    color: #fff;
+    color: #0c0a07;
     font-size: 0.85rem;
     font-weight: 700;
     letter-spacing: 0.04em;
