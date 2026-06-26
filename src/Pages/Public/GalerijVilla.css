@@ -177,14 +177,28 @@
 .gvlb-counter { position: absolute; bottom: -2.25rem; left: 50%; transform: translateX(-50%); font-size: 0.68rem; color: #5a4e3e; white-space: nowrap; }
 
 @media (max-width: 720px) {
-    .gvlb-prev { left: 0.25rem; top: auto; bottom: 5rem; transform: none; }
-    .gvlb-next { right: 0.25rem; top: auto; bottom: 5rem; transform: none; }
-    .gvlb-img-wrap { max-height: 52vh; }
-    .gvlb-img { max-height: 52vh; }
+    /* Overlay scrollbaar zodat lange verhaal-teksten bereikbaar zijn */
+    .gvlb-overlay {
+        align-items: flex-start;
+        overflow-y: auto;
+        padding: 3.5rem 1rem 2rem;
+    }
+    .gvlb-box {
+        margin: 0 auto;
+        max-width: 100%;
+    }
+    .gvlb-close { top: -2rem; }
+    .gvlb-prev { left: 0.25rem; top: auto; bottom: 1rem; transform: none; width: 38px; height: 38px; font-size: 1.5rem; }
+    .gvlb-next { right: 0.25rem; top: auto; bottom: 1rem; transform: none; width: 38px; height: 38px; font-size: 1.5rem; }
+    .gvlb-img-wrap { max-height: 50vh; }
+    .gvlb-img { max-height: 50vh; }
+    .gvlb-counter { bottom: -1.5rem; }
 }
 
 @media (max-width: 480px) {
     .gv-header { padding: 2.5rem 1.25rem 1.5rem; }
     .gv-filter { padding: 0 1.25rem 1.75rem; }
     .gv-grid { padding: 0 1rem; column-gap: 0.4rem; }
+    .gvlb-caption { font-size: 0.9rem; }
+    .gvlb-verhaal { font-size: 0.78rem; }
 }
