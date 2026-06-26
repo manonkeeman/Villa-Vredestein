@@ -12,7 +12,7 @@ import HeroImg from "../../Assets/Images/int-woonkamer.jpg";
 import VillaImg from "../../Assets/Images/ext-villa-voorkant.jpg";
 import VerbouwingVid from "../../Assets/Videos/home-verbouwing.mp4";
 import ImgVerbouwen from "../../Assets/Images/rest-verbouwen.jpg";
-import ImgVerblijven from "../../Assets/Images/tuin-logeren.jpg";
+import ImgGlasLood2 from "../../Assets/Images/rest-glas-lood-2.jpg";
 import TuinImg from "../../Assets/Images/ext-tuinfeest.jpg";
 import KroonluchterImg from "../../Assets/Images/int-kroonluchter.jpg";
 import LuchtballonImg from "../../Assets/Images/ext-luchtballon.png";
@@ -39,7 +39,7 @@ const HIGHLIGHTS = [
     {
         to: "/galerij-villa",
         toState: { cat: "De Verbouwing" },
-        img: ImgVerbouwen,
+        img: ImgGlasLood2,
         label: "De Verbouwing",
         titel: "De transformatie",
         sub: "Van verwaarloosde studentenhuis tot gerestaureerde trots. Stap voor stap, laag voor laag.",
@@ -50,10 +50,11 @@ const HIGHLIGHTS = [
         label: "De Omgeving",
         titel: "Alles om de hoek",
         sub: "Bos, heuvelrug, dorpskern en Utrecht op een kwartiertje.",
+        cta: "Bekijk op de kaart →",
     },
     {
         to: "/verblijven",
-        img: ImgVerblijven,
+        img: VillaImg,
         label: "Verblijven",
         titel: "Boek jouw verblijf",
         sub: "Een kort of lang verblijf in een bijzonder huis.",
@@ -207,7 +208,7 @@ const Home = () => {
                                 {(h as any).map ? (
                                     <MapContainer
                                         center={VILLA_POS}
-                                        zoom={14}
+                                        zoom={13}
                                         zoomControl={false}
                                         dragging={false}
                                         scrollWheelZoom={false}
@@ -225,12 +226,15 @@ const Home = () => {
                                     <img src={(h as any).img} alt={h.titel} loading="lazy" />
                                 )}
                                 <div className="hl-overlay" />
+                                {(h as any).map && (
+                                    <div className="hl-map-badge" aria-hidden="true">📍 Interactieve kaart</div>
+                                )}
                             </div>
                             <div className="hl-body">
                                 <span className="hl-label">{h.label}</span>
                                 <h3 className="hl-title">{h.titel}</h3>
                                 <p className="hl-sub">{h.sub}</p>
-                                <span className="hl-cta">Bekijk meer →</span>
+                                <span className="hl-cta">{(h as any).cta || "Bekijk meer →"}</span>
                             </div>
                         </article>
                     ))}
