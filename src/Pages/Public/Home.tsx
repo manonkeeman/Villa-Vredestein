@@ -13,6 +13,8 @@ import VillaImg from "../../Assets/Images/ext-villa-voorkant.jpg";
 import VerbouwingVid from "../../Assets/Videos/home-verbouwing.mp4";
 import ImgVerbouwen from "../../Assets/Images/rest-verbouwen.jpg";
 import ImgVerblijven from "../../Assets/Images/tuin-logeren.jpg";
+import TuinImg from "../../Assets/Images/ext-tuinfeest.jpg";
+import KroonluchterImg from "../../Assets/Images/int-kroonluchter.jpg";
 import LuchtballonImg from "../../Assets/Images/ext-luchtballon.png";
 
 const VILLA_POS: [number, number] = [52.0431, 5.287];
