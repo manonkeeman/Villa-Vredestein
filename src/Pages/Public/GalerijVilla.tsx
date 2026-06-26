@@ -11,6 +11,13 @@ import ImgKoken             from "../../Assets/Images/life-koken.jpg";
 import ImgEtenOekrainers    from "../../Assets/Images/life-eten-oekrainers.jpg";
 import ImgEtenBuren         from "../../Assets/Images/life-eten-buren.jpg";
 import ImgKLM               from "../../Assets/Images/life-klm.jpg";
+import ImgFeestje           from "../../Assets/Images/life-feestje.jpg";
+import ImgImg1070           from "../../Assets/Images/life-img1070.jpeg";
+import ImgKattensporenbeton from "../../Assets/Images/life-kattensporenbeton.jpeg";
+import ImgKokenVredestein   from "../../Assets/Images/life-koken-vredestein.jpg";
+import ImgMaximCarpediem    from "../../Assets/Images/life-maxim-carpediem.jpg";
+import ImgMotorrijden       from "../../Assets/Images/life-motorrijden.jpg";
+import ImgTanteMaximBloemen from "../../Assets/Images/life-tante-maxim-bloemen.jpg";
 
 // Ansichtkaarten
 import ImgAnsichtPension         from "../../Assets/Images/hist-ansichtkaart-pension.jpg";
@@ -80,6 +87,20 @@ const FOTOS = [
       verhaal: "Na het uitbreken van de oorlog in Oekraïne opende Villa Vredestein zijn deuren voor vluchtelingen. Samen eten, samen verhalen delen, taal was soms een barrière, maar gastvrijheid niet." },
     { src: ImgKLM,               cat: "Samenleven", caption: "KLM fotoshoot",               sub: "Villa Vredestein als decor voor een KLM-fotoshoot",
       verhaal: "KLM koos Villa Vredestein als decor voor een interne fotoshoot. De hoge plafonds, de kroonluchters, de sfeer, het paste precies bij wat ze zochten. Een bijzondere dag in de lange geschiedenis van dit pand." },
+    { src: ImgFeestje,           cat: "Samenleven", caption: "Feestje Vredestein",           sub: "Samen vieren in Villa Vredestein",
+      verhaal: "Een avond die vanzelf uitliep op een feestje. Dat is Villa Vredestein op zijn best: mensen die samenkomen, de grote eettafel vol, en buiten de tijd even stilstaat." },
+    { src: ImgImg1070,           cat: "Samenleven", caption: "Moment in de villa",            sub: "Een alledaags moment in een bijzonder huis",
+      verhaal: "Niet elk moment hoeft groots te zijn. Juist die gewone momenten, de ochtendkoffie, het gesprek aan tafel, de stilte in de gang, maken dit huis echt." },
+    { src: ImgKattensporenbeton, cat: "Samenleven", caption: "Kattensporenbeton",             sub: "Sporen van een kat in het verse beton",
+      verhaal: "Tijdens het storten van het beton had niet iedereen rekening gehouden met de kat. Die liep er gewoon overheen. De afdrukken zitten er nu voor altijd in. Een onbedoelde handtekening van het leven in Villa Vredestein." },
+    { src: ImgKokenVredestein,   cat: "Samenleven", caption: "Koken in Vredestein",           sub: "Samen koken in de grote keuken",
+      verhaal: "De keuken is de kern van het huis. Wie kookt, trekt mensen aan. Dat werkt hier altijd." },
+    { src: ImgMaximCarpediem,    cat: "Samenleven", caption: "Maxim & Carpe Diem",            sub: "Maxim aan het werk aan het Carpe Diem project",
+      verhaal: "Maxim in zijn element. Handen vuil, hoofd helder, bezig met iets wat pas klaar is als het klaar is. Carpe Diem is geen spreuk meer, het is een manier van werken." },
+    { src: ImgMotorrijden,       cat: "Samenleven", caption: "Motorrijden",                   sub: "Maxim op de motor",
+      verhaal: "Vrijheid op twee wielen. De cafe racer die Maxim zelf heeft opgebouwd rijdt nu echt. Hier neemt hij hem mee naar buiten." },
+    { src: ImgTanteMaximBloemen, cat: "Samenleven", caption: "Tante Maxim & bloemen",         sub: "Bloemen van de markt, gezelligheid in de keuken",
+      verhaal: "Bloemen op tafel, tante op bezoek. De gewoonste dingen kunnen hier thuiskomen en dat is precies waarom het hier fijn is." },
 
     // ── Ansichtkaarten ────────────────────────────────────────────────────
     { src: ImgAnsichtPension,      cat: "Ansichtkaarten", caption: "Pension Villa Vredestein",            sub: "Het pension zoals het begin 1900 werd geadverteerd",
