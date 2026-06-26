@@ -24,12 +24,12 @@ const SECTIONS = [
     {
         slug: "carpe-diem-design",
         img: ImgCarpeDiem,
-        imgAlt: "Carpe Diem Design werkplaats",
+        imgAlt: "Project Carpe Diem werkplaats",
         video: CarpeDiemVideo,
         theme: "dark",
         accent: "#e0853a",
         imgSide: "right",
-        pullQuote: "Sindsdien is het geen spreuk meer voor hem.",
+        pullQuote: "Bring worlds together in one.",
     },
     {
         slug: "manonit",
@@ -38,9 +38,10 @@ const SECTIONS = [
         theme: "dark",
         accent: "#FCBC2D",
         imgSide: "left",
+        showAll: true,
         pullQuote: "Geen twee rechterhanden, maar wel een verhaal te vertellen.",
         link: "https://www.manonit.com",
-        linkLabel: "Bekijk ManonIT.com →",
+        linkLabel: "Bekijk ManonIT →",
     },
     {
         slug: "bezoek-inspiratie",
@@ -197,7 +198,7 @@ const OverOns = () => {
 
                                 <div className="oo-body-text">
                                     {Array.isArray(blog.content) &&
-                                        (expanded[sec.slug]
+                                        (sec.showAll || expanded[sec.slug]
                                             ? blog.content
                                             : blog.content.slice(0, PREVIEW_PARAGRAPHS)
                                         ).map((paragraph, j) => (
@@ -205,7 +206,7 @@ const OverOns = () => {
                                         ))}
                                 </div>
 
-                                {Array.isArray(blog.content) && blog.content.length > PREVIEW_PARAGRAPHS && (
+                                {!sec.showAll && Array.isArray(blog.content) && blog.content.length > PREVIEW_PARAGRAPHS && (
                                     <button
                                         className="oo-lees-meer-btn"
                                         onClick={() => toggleExpanded(sec.slug)}

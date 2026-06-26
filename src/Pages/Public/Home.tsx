@@ -13,8 +13,6 @@ import VillaImg from "../../Assets/Images/ext-villa-voorkant.jpg";
 import VerbouwingVid from "../../Assets/Videos/home-verbouwing.mp4";
 import ImgVerbouwen from "../../Assets/Images/rest-verbouwen.jpg";
 import ImgGlasLood2 from "../../Assets/Images/rest-glas-lood-2.jpg";
-import TuinImg from "../../Assets/Images/ext-tuinfeest.jpg";
-import KroonluchterImg from "../../Assets/Images/int-kroonluchter.jpg";
 import LuchtballonImg from "../../Assets/Images/ext-luchtballon.png";
 
 const VILLA_POS: [number, number] = [52.0431, 5.287];
@@ -263,28 +261,6 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* ── Instagram-achtige sfeer strip ── */}
-            <section className="sfeer-strip reveal-section" ref={addRef} aria-label="Sfeerbeelden">
-                <div className="sfeer-strip-header">
-                    <span>@villa.vredestein</span>
-                    <h2>Het leven in de villa</h2>
-                </div>
-                <div className="sfeer-grid">
-                    {[HeroImg, TuinImg, KroonluchterImg, LuchtballonImg].map((src, i) => (
-                        <div key={i} className="sfeer-item">
-                            <img src={src} alt="Villa sfeer" loading="lazy" />
-                        </div>
-                    ))}
-                </div>
-                <a
-                    href="https://www.instagram.com/villa.vredestein"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="sfeer-ig-link"
-                >
-                    Volg ons op Instagram
-                </a>
-            </section>
         </main>
     );
 };
