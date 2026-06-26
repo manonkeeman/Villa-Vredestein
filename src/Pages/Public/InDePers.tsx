@@ -8,6 +8,24 @@ import PersAdVilla1 from "../../Assets/Images/pers-ad-villa-1.jpeg";
 import PersAdVilla2 from "../../Assets/Images/pers-ad-villa-2.jpeg";
 import PersAdVilla3 from "../../Assets/Images/pers-ad-villa-3.jpeg";
 
+import KrantReclame from "../../Assets/Images/hist-krant-reclame.jpg";
+import Krant1912    from "../../Assets/Images/Krant1912.jpg";
+import Krant1913    from "../../Assets/Images/Krant1913.jpg";
+import Krant1916    from "../../Assets/Images/Krant1916.jpg";
+import Krant1918    from "../../Assets/Images/Krant1918.jpg";
+import Krant1919    from "../../Assets/Images/Krant1919.jpg";
+import Krant1921    from "../../Assets/Images/Krant1921.jpg";
+import Krant1926    from "../../Assets/Images/Krant1926.jpg";
+import Krant1927    from "../../Assets/Images/Krant1927.png";
+import Krant1928    from "../../Assets/Images/Krant1928.jpg";
+import Krant1930    from "../../Assets/Images/Krant1930.jpg";
+import Krant1932    from "../../Assets/Images/Krant1932.jpg";
+import Krant1934    from "../../Assets/Images/Krant1934.png";
+import Krant1935    from "../../Assets/Images/Krant1935.jpg";
+import Krant1954    from "../../Assets/Images/Krant1954.jpg";
+import Krant1959    from "../../Assets/Images/Krant1959.jpg";
+import Krant1965    from "../../Assets/Images/Krant1965.jpg";
+
 const PERS_ITEMS = [
     {
         medium: "Publicatie",
@@ -28,6 +46,26 @@ const PERS_ITEMS = [
         url: null,
         tag: "Nationaal",
         imgs: [PersAdVilla3, PersAdVilla1, PersAdVilla2],
+    },
+    {
+        medium: "Regionale pers",
+        sectie: "ARCHIEF",
+        datum: "1912-1935",
+        kop: "Pension Vredestein in de krant",
+        samenvatting: "Pension Vredestein adverteerde trouw in de regionale krant en werd regelmatig vermeld in nieuws en ingezonden stukken. Van vacatures voor personeel tot gidsen voor herstellingsoorden: het pension was een begrip in Driebergen. De advertenties, vacatures en vermeldingen uit deze periode geven een levendig beeld van hoe het er hier meer dan een eeuw geleden aan toe ging.",
+        url: null,
+        tag: "Historisch",
+        imgs: [KrantReclame, Krant1912, Krant1913, Krant1916, Krant1918, Krant1919, Krant1921, Krant1926, Krant1927, Krant1928, Krant1930, Krant1932, Krant1934, Krant1935],
+    },
+    {
+        medium: "Regionale pers",
+        sectie: "ARCHIEF",
+        datum: "1954-1965",
+        kop: "Villa Vredestein na de oorlog",
+        samenvatting: "Ook in de naoorlogse jaren bleef Villa Vredestein in de krant. Van te-huur-advertenties tot personeelsvacatures: het pand had in die periode ook een zorgende functie en bleef een bekend adres in Driebergen.",
+        url: null,
+        tag: "Historisch",
+        imgs: [Krant1954, Krant1959, Krant1965],
     },
 ];
 
