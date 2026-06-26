@@ -296,6 +296,28 @@
 }
 .pg-cta-btn:hover { background: #e5a920; transform: translateY(-2px); }
 
+/* Plattegrond gallerij-link per verdieping */
+.pg-platt-link-wrap {
+    margin-top: 1.5rem;
+}
+.pg-platt-link {
+    background: transparent;
+    border: 1.5px solid var(--vkleur, #FCBC2D);
+    color: var(--vkleur, #FCBC2D);
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 0.55rem 1.25rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.pg-platt-link:hover {
+    background: var(--vkleur, #FCBC2D);
+    color: #0c0a07;
+}
+
 /* ── Responsive ── */
 @media (max-width: 900px) {
     .pg-ruimte-grid { grid-template-columns: 1fr 1fr; }
