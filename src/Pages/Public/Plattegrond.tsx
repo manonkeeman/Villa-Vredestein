@@ -16,6 +16,7 @@ const VERDIEPINGEN = [
         kleur: "#d4804a",
         beschrijving: "Drie studentenkamers met eigen gedeelde keuken, badkamer en woonruimte. Toekomstige eigen ingang gepland.",
         status: "beschikbaar",
+        plattegrondCaption: "Tweede verdieping",
         ruimtes: [
             { naam: "Thailand (Desmond)", icon: "🇹🇭", afm: "~17 m²", info: "Airco, goed licht, rustig" },
             { naam: "Japan",              icon: "🇯🇵", afm: "~16 m²", info: "Airco, balkon (uitsluitend nooduitgang)" },
@@ -33,6 +34,7 @@ const VERDIEPINGEN = [
         kleur: "#FCBC2D",
         beschrijving: "Drie luxe slaapkamers waarvan twee met balkon, eigen badkamer, kitchenette en eigen ingang. Oekraïne is nu de slaapkamer van Manon & Maxim, wordt straks logeerkamer. Sportkamer in aanbouw.",
         status: "eigen ingang",
+        plattegrondCaption: "Eerste verdieping",
         ruimtes: [
             { naam: "Italië (Arwen 2006)",               icon: "🇮🇹", afm: "~22 m²", info: "Airco, balkon tuinzijde, grootste kamer" },
             { naam: "Frankrijk (Medoc 2005)",             icon: "🇫🇷", afm: "~18 m²", info: "Airco, balkon straatzijde" },
@@ -50,6 +52,7 @@ const VERDIEPINGEN = [
         kleur: "#c8a46e",
         beschrijving: "Woonkamer met keukeneiland en bar, aparte eetkamer. Slaapkamer en badkamer zijn nog in aanbouw.",
         status: "in ontwikkeling",
+        plattegrondCaption: "Begane grond",
         ruimtes: [
             { naam: "Woonkamer",           icon: "🛋️", afm: "~45 m²", info: "Hoge plafonds, erker, houtkachel" },
             { naam: "Keukeneiland met bar", icon: "🍳", afm: "~28 m²", info: "Open keuken met bar" },
@@ -184,6 +187,16 @@ const Plattegrond = () => {
                                 </div>
                             ))}
                         </div>
+                        {(verd as any).plattegrondCaption && (
+                            <div className="pg-platt-link-wrap">
+                                <button
+                                    className="pg-platt-link"
+                                    onClick={() => navigate("/galerij-villa", { state: { cat: "Plattegrond" } })}
+                                >
+                                    Bekijk plattegrond {(verd as any).plattegrondCaption} →
+                                </button>
+                            </div>
+                        )}
                     </div>
                 </section>
             ))}

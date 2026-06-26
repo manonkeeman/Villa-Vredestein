@@ -7,6 +7,25 @@ function ScrollToTop() {
     useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
     return null;
 }
+
+function BackToTopBtn() {
+    const [visible, setVisible] = React.useState(false);
+    useEffect(() => {
+        const onScroll = () => setVisible(window.scrollY > 300);
+        window.addEventListener("scroll", onScroll, { passive: true });
+        return () => window.removeEventListener("scroll", onScroll);
+    }, []);
+    if (!visible) return null;
+    return (
+        <button
+            className="back-to-top"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            aria-label="Naar boven"
+        >
+            ↑
+        </button>
+    );
+}
 import { AuthProvider } from "./Pages/Auth/AuthContext";
 import ProtectedRoute from "./Pages/Auth/ProtectedRoute";
 import Nav from "./Components/Nav/Nav";
@@ -52,6 +71,7 @@ function App() {
         <BrowserRouter>
             <AuthProvider>
                 <ScrollToTop />
+                <BackToTopBtn />
                 <Nav />
 
                 <Routes>
