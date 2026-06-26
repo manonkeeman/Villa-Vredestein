@@ -120,7 +120,7 @@ const OverOns = () => {
                     <span className="oo-hero-eyebrow">Veel verhalen. Één huis.</span>
                     <h1 className="oo-hero-title">De mensen achter de villa</h1>
                     <p className="oo-hero-sub">
-                        Manon & Maxim, Carpe Diem Design en een open deur voor iedereen die het wil zien.
+                        Manon & Maxim, Project Carpe Diem, ManonIT en een open deur voor iedereen die het wil zien.
                     </p>
                     <div className="oo-hero-scroll" aria-hidden="true">
                         <span>Scroll</span>
