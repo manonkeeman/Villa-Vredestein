@@ -2,29 +2,6 @@ import React, { useState, useEffect, useCallback, useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import "./GalerijVilla.css";
 
-// Interieur
-import ImgWoonkamer         from "../../Assets/Images/int-woonkamer.jpg";
-import ImgKroonluchter      from "../../Assets/Images/int-kroonluchter.jpg";
-import ImgKroonluchterBloemen from "../../Assets/Images/int-kroonluchter-bloemen.jpg";
-import ImgKachel            from "../../Assets/Images/int-kachel.jpg";
-import ImgMiddenverdieping  from "../../Assets/Images/int-middenverdieping.jpg";
-
-// Exterieur
-import ImgVillaFront        from "../../Assets/Images/ext-villa-voorkant.jpg";
-import ImgVredesteinBord    from "../../Assets/Images/ext-vredestein-bord.jpg";
-
-import ImgNight             from "../../Assets/Images/VredesteineByNight.jpg";
-import ImgVillaNight2       from "../../Assets/Images/ext-villa-night-2.jpg";
-import ImgBallon            from "../../Assets/Images/ext-ballon.png";
-import ImgBloeiVoorkant     from "../../Assets/Images/ext-villa-bloei.jpg";
-import ImgHoogte            from "../../Assets/Images/ext-hoogte.jpg";
-import ImgGevel             from "../../Assets/Images/ext-gevel.jpg";
-
-// Tuin
-import ImgTuinFeest         from "../../Assets/Images/ext-tuinfeest.jpg";
-import ImgMoestuinBloei     from "../../Assets/Images/tuin-moestuin-bloei.jpg";
-import ImgGroente           from "../../Assets/Images/tuin-groente.jpg";
-import ImgKlaproos          from "../../Assets/Images/tuin-klaproos.jpg";
 
 // Leven
 import ImgRommertBram       from "../../Assets/Images/life-rommert-bram.jpg";
@@ -87,47 +64,7 @@ import ImgKroonluchtersVerv from "../../Assets/Images/rest-kroonluchters.jpg";
 const CATEGORIEEN = ["Alles", "Samenleven", "Geschiedenis", "Ansichtkaarten", "De Verbouwing", "Plattegrond"];
 
 const FOTOS = [
-    // ── Interieur ──────────────────────────────────────────────────────────
-    { src: ImgWoonkamer,        cat: "Interieur", caption: "De woonkamer",          sub: "Hoge plafonds, authentieke stoelen, veel licht",
-      verhaal: "De woonkamer is het kloppend hart van de villa. Hoge plafonds, originele architraven en een mix van verhalen, van pensiongenoten uit 1912 tot studenten van nu. Elke stoel heeft hier zijn eigen plek gevonden." },
-    { src: ImgKroonluchter,     cat: "Interieur", caption: "Kristallen kroonluchter", sub: "Origineel, meer dan een eeuw oud",
-      verhaal: "Deze kroonluchter hangt hier al meer dan honderd jaar. Door brandjes, oorlogen en verbouwingen bleef hij hangen, een stille getuige van alles wat er onder hem is gezegd en gevierd." },
-    { src: ImgKachel,           cat: "Interieur", caption: "De houtkachel",         sub: "Carpe Diem, het hart van de woonkamer",
-      verhaal: "Kachel 'Carpe Diem', de naam staat in het ijzer gegraveerd. Maxim heeft hem eigenhandig geplaatst en ingemetseld. Op koude avonden trekt iedereen vanzelf naar de woonkamer." },
-    { src: ImgMiddenverdieping, cat: "Interieur", caption: "Middenverdieping",       sub: "De luxe verdieping met eigen ingang",
-      verhaal: "De middenverdieping is de meest zelfstandige plek van de villa. Eigen ingang, ruim balkon en airco. Hier wonen gasten die de rust van de villa willen zonder de drukte van het studentenleven erboven." },
-
-    // ── Exterieur ──────────────────────────────────────────────────────────
-    { src: ImgVillaFront,          cat: "Exterieur", caption: "De voorkant",                  sub: "Balkon en erker, karakteristiek voor 1906",
-      verhaal: "De erker en het balkon zijn beeldbepalend voor Hoofdstraat 147, en al meer dan een eeuw ongewijzigd. In 1906 was dit een van de meest opvallende nieuwbouwvilla's van Driebergen." },
-    { src: ImgBloeiVoorkant,       cat: "Exterieur", caption: "Villa in volle bloei",         sub: "De gevel in de zomer, kleurrijk en uitnodigend",
-      verhaal: "In de zomer verandert de gevel in een bloemenmuur. De planten groeien elk jaar iets hoger. Voorbijgangers stoppen regelmatig om een foto te maken van dit stukje Hoofdstraat." },
-    { src: ImgGevel,               cat: "Exterieur", caption: "De gevel",                     sub: "Hoofdstraat 147, Driebergen-Rijsenburg",
-      verhaal: "Dezelfde gevel als in 1906, op een grondige restauratie na. De bakstenen zijn origineel, de ramen zijn deels vervangen maar passen bij de stijl. 'Vredestein' staat nog altijd in steen boven de deur." },
-    { src: ImgKroonluchterBloemen, cat: "Exterieur", caption: "Kroonluchter met bloemen",     sub: "De kroonluchter opgemaakt voor een bijzondere gelegenheid",
-      verhaal: "Voor bijzondere gelegenheden wordt de hal versierd met bloemen, groen en licht. De kristallen kroonluchter doet dan extra zijn best, honderd jaar oud, maar nooit moe." },
-    { src: ImgVredesteinBord,      cat: "Exterieur", caption: "Vredestein",                   sub: "Het originele naambordje in de boogvorm boven de ingang",
-      verhaal: "Het naambordje boven de ingang is origineel. 'Vredestein', een naam die rust en geborgenheid uitstraalt. In het tijdperk van het pension stond dit bord bekend in de hele regio." },
-    { src: ImgHoogte,              cat: "Exterieur", caption: "Villa vanuit de hoogte",        sub: "Luchtfoto van het perceel en de omgeving",
-      verhaal: "Vanuit de lucht zie je hoe groot het perceel eigenlijk is: 680 m². De moestuin, het terras, de villa zelf, alles geordend langs de Hoofdstraat in Driebergen-Rijsenburg." },
-    { src: ImgBallon,              cat: "Exterieur", caption: "Luchtballon boven Vredestein",  sub: "Een bijzonder gezicht boven de Hoofdstraat",
-      verhaal: "Op een vroege ochtend dreef er een luchtballon langs de Hoofdstraat. Net boven de dakrand van Villa Vredestein. Een voorbijganger ving het moment op, en het is sindsdien een van onze lievelingsfoto's." },
-    { src: ImgNight,               cat: "Exterieur", caption: "Vredestein by night",           sub: "Sfeer als de zon ondergaat",
-      verhaal: "Als de lichten aangaan en de zon zakt, toont de villa zijn avondgezicht. De sfeer is anders, stiller, warmer. Dit is het Vredestein dat de bewoners elke avond zien als ze thuiskomen." },
-    { src: ImgVillaNight2,         cat: "Exterieur", caption: "Nacht na restauratie",          sub: "De villa na voltooiing, verlicht in het donker",
-      verhaal: "De villa verlicht in het donker, na de grote restauratie. Voor Manon & Maxim was dit het moment waarop het allemaal echt werd, na maanden bouwen, eindelijk thuiskomen." },
-
-    // ── Tuin ───────────────────────────────────────────────────────────────
-    { src: ImgTuinFeest,    cat: "Tuin", caption: "Tuinfeest",               sub: "Buiten eten op het terras",
-      verhaal: "Een zomeravond in de tuin van Vredestein. Lange tafels, kaarsen en de geur van vers eten. Zo gaat dat hier, iemand begint, en voor je het weet zitten er twintig mensen buiten." },
-    { src: ImgMoestuinBloei, cat: "Tuin", caption: "Moestuin in bloei",      sub: "De moestuin op het perceel in volle pracht",
-      verhaal: "De moestuin groeit elk jaar verder uit. Tomaten, courgettes, kruiden, zonnebloemen. Het idee was eenvoudig: zaaien, zorgen en eten wat de tuin geeft." },
-    { src: ImgGroente,       cat: "Tuin", caption: "Oogst uit de moestuin",  sub: "Eigen groenten gekweekt op het perceel",
-      verhaal: "Geen supermarkt, maar de eigen tuin. Courgettes die te groot worden als je even niet oplet, sla die sneller groeit dan je hem kunt eten. De moestuin leert je anders kijken naar eten." },
-    { src: ImgKlaproos,      cat: "Tuin", caption: "Klaproos bij Vredestein",sub: "Natuur die vrij opkomt in de tuin",
-      verhaal: "Klaprozen komen hier vanzelf op, elk jaar op een andere plek. Ze groeien gewoon langs het pad, tussen de stenen. Een vriendelijk teken dat de tuin zijn eigen gang gaat." },
-
-    // ── Leven ──────────────────────────────────────────────────────────────
+    // ── Samenleven ────────────────────────────────────────────────────────
     { src: ImgFamilieRoelofsen,  cat: "Samenleven", caption: "Familie Roelofsen",          sub: "De familie die lang de bewoners van Villa Vredestein waren",
       verhaal: "De familie Roelofsen woonde hier decennialang. Op dit portret zijn ze zo alledaags en vertrouwd, midden in een huis dat nu zo anders aanvoelt, maar toch hetzelfde is. Dit is de menselijke continuïteit van Villa Vredestein." },
     { src: ImgRommertBram,       cat: "Samenleven", caption: "Rommert & Bram",             sub: "Twee van de studenten die de bovenverdieping bewonen",
@@ -274,12 +211,12 @@ const GalerijVilla = () => {
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://villavredestein.nl/galerij" />
                 <meta property="og:title" content="Galerij & Historisch Archief, Villa Vredestein" />
-                <meta property="og:description" content="Fotogalerij en historisch archief van Villa Vredestein. Interieur, exterieur, kadasterkaarten en een eeuw krantenartikelen." />
+                <meta property="og:description" content="Fotogalerij en historisch archief van Villa Vredestein. Ansichtkaarten, plattegronden, de verbouwing en een eeuw geschiedenis." />
                 <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Galerij & Historisch Archief, Villa Vredestein" />
-                <meta name="twitter:description" content="Fotogalerij en historisch archief van Villa Vredestein. Interieur, exterieur, kadasterkaarten en een eeuw krantenartikelen." />
+                <meta name="twitter:description" content="Fotogalerij en historisch archief van Villa Vredestein. Ansichtkaarten, plattegronden, de verbouwing en een eeuw geschiedenis." />
                 <meta name="twitter:image" content="https://villavredestein.nl/og-image.jpg" />
             </Helmet>
 
