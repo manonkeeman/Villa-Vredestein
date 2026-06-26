@@ -24,7 +24,7 @@ const OPTIES = [
         sub: "Kort of lang",
         beschrijving: "Op zoek naar tijdelijk onderdak tijdens je studie, of een IVA-student op zoek naar een kamer op loopafstand? We denken graag mee.",
         vanaf: "Op aanvraag",
-        kenmerken: ["Flexibele duur", "Gemeubileerd", "Inclusief internet", "IVA-studenten welkom", "Parkeerplaats", "Beschikbaarheid in overleg"],
+        kenmerken: ["Flexibele duur", "Gemeubileerd", "Inclusief internet", "Gedeelde keuken, badkamer en woonruimte", "Parkeerplaats", "Beschikbaarheid in overleg"],
         featured: true,
     },
     {
@@ -259,7 +259,7 @@ const Verblijven = () => {
                         {[
                             {
                                 naam: "Bram",
-                                rol: "Student · Bovenste verdieping",
+                                rol: "IVA Student 2022-2024",
                                 tekst: "Ik had niet verwacht dat wonen in een historische villa zo ontspannen zou zijn. De kamers zijn ruim, de tuin is een plek om echt bij te komen en Manon en Maxim zijn de beste huisbazen die je je kunt wensen.",
                                 sterren: 5,
                             },
@@ -271,7 +271,7 @@ const Verblijven = () => {
                             },
                             {
                                 naam: "Rommert",
-                                rol: "Student · Bovenste verdieping",
+                                rol: "IVA Student 2023-2024",
                                 tekst: "Al snel voelde het als mijn eigen thuis. De historische details in het pand, de grote tuin en het samenleven met een fijne groep mensen maakt Villa Vredestein echt bijzonder. Absoluut aan te raden.",
                                 sterren: 5,
                             },
