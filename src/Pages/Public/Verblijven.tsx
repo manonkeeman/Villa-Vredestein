@@ -265,8 +265,8 @@ const Verblijven = () => {
                             },
                             {
                                 naam: "Simon",
-                                rol: "Student · Bovenste verdieping",
-                                tekst: "De sfeer hier is echt uniek. Een pand met zoveel karakter, midden in de natuur van Driebergen, en toch op fietsafstand van alles. De eigen keuken en zitruimte op onze verdieping zijn een groot pluspunt.",
+                                rol: "Voormalig student · Bovenste verdieping",
+                                tekst: "Een super leuke en gezellige periode gehad in Villa Vredestein. Ondanks de verbouwing nam Maxim me toch in huis, wat erg gewaardeerd werd. Wat een leuke lieve mensen zijn Maxim en Manon, altijd in voor een praatje en een paar keer een hele leuke pannenkoekennavond. Midden in het 2e jaar was de verbouwing af en wat is het mooi geworden: een luxe keuken met een luxe badkamer. Ik zou het huis, Maxim en Manon een 10 geven voor de gastvrijheid. Beter kan je het niet treffen als je het vergelijkt met andere studentenhuizen!",
                                 sterren: 5,
                             },
                             {
