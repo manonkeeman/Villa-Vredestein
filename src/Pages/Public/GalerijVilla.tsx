@@ -14,7 +14,6 @@ import ImgKLM               from "../../Assets/Images/life-klm.jpg";
 import ImgFeestje           from "../../Assets/Images/life-feestje.jpg";
 import ImgImg1070           from "../../Assets/Images/life-img1070.jpeg";
 import ImgKattensporenbeton from "../../Assets/Images/life-kattensporenbeton.jpeg";
-import ImgKokenVredestein   from "../../Assets/Images/life-koken-vredestein.jpg";
 import ImgMaximCarpediem    from "../../Assets/Images/life-maxim-carpediem.jpg";
 import ImgMotorrijden       from "../../Assets/Images/life-motorrijden.jpg";
 import ImgTanteMaximBloemen from "../../Assets/Images/life-tante-maxim-bloemen.jpg";
@@ -57,7 +56,6 @@ import ImgPlattE2   from "../../Assets/Images/plattegrond-tweede-verd.jpg";
 
 // Restauratie
 import ImgWijnkamer         from "../../Assets/Images/int-wijnkamer.jpg";
-import ImgRestauratie       from "../../Assets/Images/VillaVredesteinRestauratie.jpg";
 
 import ImgGlasLood2         from "../../Assets/Images/rest-glas-lood-2.jpg";
 import ImgVerbouwen         from "../../Assets/Images/rest-verbouwen.jpg";
@@ -93,8 +91,6 @@ const FOTOS = [
       verhaal: "Het schooljaar zit erop, en dat vieren we zoals het hoort: met de grill aan, ijskoude drankjes en iedereen samen op het terrein. Vega of glutenvrij, onze BBQ-master draait er zijn hand niet voor om. Een avond die altijd langer duurt dan gepland." },
     { src: ImgKattensporenbeton, cat: "Samenleven", caption: "Kattensporenbeton",           sub: "Er woont ook nog een kat bij ons",
       verhaal: "Er woont ook nog een kat bij ons. Na het storten van het beton bleek hij ook even gekeken te hebben wat we aan het doen waren. En zo liet ook hij zijn sporen na in Villa Vredestein." },
-    { src: ImgKokenVredestein,   cat: "Samenleven", caption: "Koken in Vredestein",         sub: "Samen koken in de grote keuken",
-      verhaal: "De keuken is de kern van het huis. Wie kookt, trekt mensen aan. Dat werkt hier altijd." },
     { src: ImgMaximCarpediem,    cat: "Samenleven", caption: "Maxim & Carpe Diem",          sub: "Pannenkoeken bakken als Carpe Diem",
       verhaal: "Maxim in zijn element. Handen vuil, hoofd helder, bezig met iets wat pas klaar is als het klaar is. Al was het deze keer gewoon pannenkoeken bakken. Carpe Diem is geen spreuk meer, het is een manier van werken." },
     { src: ImgMotorrijden,       cat: "Samenleven", caption: "Samen motorrijden",            sub: "Maxim & Manon delen een passie voor twee wielen",
@@ -165,8 +161,6 @@ const FOTOS = [
       verhaal: "Het begin was radicaal: alles eruit wat niet kon blijven. Slopen is een daad van vertrouwen, je vernietigt iets in de hoop dat wat eronder zit beter is. Dat bleek inderdaad zo te zijn." },
     { src: ImgIsoleren,          cat: "De Verbouwing", caption: "Isoleren",                    sub: "Maanden isolatiewerk voor een energiezuinig pand",
       verhaal: "Maanden van isolatiewerk. Muren, vloeren, daken, alles werd gelaagd en gedicht. Het is het onzichtbare werk dat je later nooit ziet, maar altijd voelt op een koude winteravond." },
-    { src: ImgRestauratie,       cat: "De Verbouwing", caption: "Glas-in-lood",                sub: "Het originele glas-in-loodraam tijdens de restauratie",
-      verhaal: "De glas-in-loodramen zijn origineel en werden met de grootst mogelijke zorg behandeld. Elk paneel werd geïnspecteerd, gerepareerd en teruggeplaatst. Ze geven de villa zijn onmiskenbare karakter." },
     { src: ImgGlasLood2,         cat: "De Verbouwing", caption: "Glas-in-lood werkzaamheden",  sub: "Het herstelwerk aan de historische ramen",
       verhaal: "Het herstelwerk aan de ramen was precisiewerk. Glazenmakers werkten dagenlang aan elk raam, kleur voor kleur, lood voor lood. Het resultaat is te zien in het licht dat nu door de hal valt." },
     { src: ImgKachelBouw,        cat: "De Verbouwing", caption: "De kachel bouwen",            sub: "De houtkachel werd vakkundig geplaatst en ingemetseld",
