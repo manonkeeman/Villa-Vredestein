@@ -18,7 +18,6 @@ const SECTIONS = [
         imgAlt: "Manon & Maxim bij hun Chevrolet Suburban",
         theme: "dark",
         accent: "#FCBC2D",
-        imgSide: "right",
         pullQuote: "Verre horizonten en een stevige basis. Dat is wat ze samen bouwen.",
     },
     {
@@ -28,7 +27,7 @@ const SECTIONS = [
         video: CarpeDiemVideo,
         theme: "dark",
         accent: "#e0853a",
-        imgSide: "right",
+        showAll: true,
         pullQuote: "Bring worlds together in one.",
     },
     {
@@ -37,7 +36,6 @@ const SECTIONS = [
         imgAlt: "Manon Keeman — schrijft en bouwt verhalen",
         theme: "dark",
         accent: "#FCBC2D",
-        imgSide: "left",
         showAll: true,
         pullQuote: "Geen twee rechterhanden, maar wel een verhaal te vertellen.",
         link: "https://www.manonit.com",
@@ -49,7 +47,6 @@ const SECTIONS = [
         imgAlt: "Bezoek Villa Vredestein",
         theme: "light",
         accent: "#b89a5e",
-        imgSide: "left",
         pullQuote: "Villa Vredestein is meer dan een adres. Het is een open deur.",
     },
 ];
@@ -149,11 +146,12 @@ const OverOns = () => {
             {SECTIONS.map((sec, i) => {
                 const blog = getBlog(sec.slug);
                 if (!blog) return null;
+                const imgSide = i % 2 === 0 ? "right" : "left";
 
                 return (
                     <section
                         key={sec.slug}
-                        className={`oo-section oo-section--${sec.imgSide} oo-theme--${sec.theme} oo-reveal${sec.video ? " oo-section--video" : ""}`}
+                        className={`oo-section oo-section--${imgSide} oo-theme--${sec.theme} oo-reveal${sec.video ? " oo-section--video" : ""}`}
                         ref={(el) => (sectionRefs.current[i] = el)}
                         data-slug={sec.slug}
                         style={{ "--accent": sec.accent }}
