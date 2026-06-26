@@ -397,6 +397,25 @@
     opacity: 0.75;
 }
 
+.oo-external-link {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.75rem;
+    background: var(--btn-accent, var(--accent));
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.oo-external-link:hover {
+    opacity: 0.85;
+    transform: translateY(-2px);
+}
+
 /* ── Responsive ── */
 @media (max-width: 900px) {
     .oo-section {

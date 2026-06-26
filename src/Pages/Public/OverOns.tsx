@@ -9,6 +9,7 @@ import LuchtballonImg from "../../Assets/Images/ext-luchtballon.png";
 import ImgCarpeDiem from "../../Assets/Images/PannenkoekenAvondVillaVredestein.jpg";
 import CarpeDiemVideo from "../../Assets/Videos/carpe-diem.mp4";
 import ImgBezoek from "../../Assets/Images/BezoekOnsVillaVredestein.jpg";
+import ImgManonIT from "../../Assets/Images/manonit-og.jpg";
 
 const SECTIONS = [
     {
@@ -29,6 +30,17 @@ const SECTIONS = [
         accent: "#e0853a",
         imgSide: "right",
         pullQuote: "Sindsdien is het geen spreuk meer voor hem.",
+    },
+    {
+        slug: "manonit",
+        img: ImgManonIT,
+        imgAlt: "ManonIT — webdesign en development door Manon Keeman",
+        theme: "dark",
+        accent: "#c0392b",
+        imgSide: "left",
+        pullQuote: "Van idee vastlopen op uitvoering naar: ik bouw het gewoon zelf.",
+        link: "https://www.manonit.com",
+        linkLabel: "Bekijk ManonIT.com →",
     },
     {
         slug: "bezoek-inspiratie",
@@ -203,6 +215,17 @@ const OverOns = () => {
                                     </button>
                                 )}
 
+                                {sec.link && (
+                                    <a
+                                        href={sec.link}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="oo-external-link"
+                                        style={{ "--btn-accent": sec.accent }}
+                                    >
+                                        {sec.linkLabel || sec.link}
+                                    </a>
+                                )}
 
                             </div>
                         </div>
