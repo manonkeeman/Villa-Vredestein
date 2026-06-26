@@ -36,8 +36,9 @@ const SECTIONS = [
         img: ImgManonIT,
         imgAlt: "ManonIT — webdesign en development door Manon Keeman",
         theme: "dark",
-        accent: "#c0392b",
+        accent: "#FCBC2D",
         imgSide: "left",
+        imgContain: true,
         pullQuote: "Van idee vastlopen op uitvoering naar: ik bouw het gewoon zelf.",
         link: "https://www.manonit.com",
         linkLabel: "Bekijk ManonIT.com →",
@@ -159,7 +160,7 @@ const OverOns = () => {
                     >
                         {/* Image / Video column */}
                         <div className="oo-img-col">
-                            <figure className="oo-img-wrap">
+                            <figure className={`oo-img-wrap${sec.imgContain ? " oo-img-wrap--contain" : ""}`}>
                                 {sec.video ? (
                                     <video
                                         src={sec.video}
