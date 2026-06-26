@@ -53,7 +53,7 @@ const HIGHLIGHTS = [
     {
         to: "/verblijven",
         img: VillaImg,
-        imgPosition: "center bottom",
+        imgPosition: "center top",
         label: "Verblijven",
         titel: "Boek jouw verblijf",
         sub: "Een kort of lang verblijf in een bijzonder huis.",
@@ -240,26 +240,6 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* ── Booking strip ── */}
-            <section className="booking-strip reveal-section" ref={addRef}>
-                <div className="booking-strip-inner">
-                    <div className="booking-strip-text">
-                        <h2>Interesse in een verblijf?</h2>
-                        <p>
-                            Schrijf je in of vraag beschikbaarheid op. We vertellen je graag
-                            meer over de mogelijkheden.
-                        </p>
-                    </div>
-                    <div className="booking-strip-actions">
-                        <button className="book-btn" onClick={() => navigate("/verblijven")}>
-                            Check beschikbaarheid
-                        </button>
-                        <button className="contact-btn" onClick={() => navigate("/contact")}>
-                            Stuur een bericht
-                        </button>
-                    </div>
-                </div>
-            </section>
 
         </main>
     );
