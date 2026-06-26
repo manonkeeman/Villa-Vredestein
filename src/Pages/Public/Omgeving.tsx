@@ -309,7 +309,7 @@ const Omgeving = () => {
             {/* Hero, kaart als header */}
             <header className="omg-hero-map" aria-label="Locatie kaart">
                 <div className="omg-hero-map-inner">
-                    <MapContainer center={VILLA} zoom={11} scrollWheelZoom={false} style={{ width: "100%", height: "100%" }} aria-label="Interactieve kaart van de omgeving">
+                    <MapContainer center={VILLA} zoom={13} scrollWheelZoom={false} style={{ width: "100%", height: "100%" }} aria-label="Interactieve kaart van de omgeving">
                         <TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>' url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png" />
                         {POIS.map((poi) => (
                             <Marker key={poi.label} position={poi.pos} icon={makeIcon(poi.emoji, poi.color)}>
@@ -341,6 +341,41 @@ const Omgeving = () => {
                     </nav>
                 </div>
             </header>
+
+            {/* Vind ons */}
+            <section className="omg-vindons reveal-section" ref={addRef} aria-label="Locatie Villa Vredestein">
+                <div className="omg-section-inner omg-vindons-inner">
+                    <div className="omg-vindons-map">
+                        <iframe
+                            title="Villa Vredestein op Google Maps"
+                            src="https://maps.google.com/maps?q=Hoofdstraat+147,+Driebergen-Rijsenburg,+Nederland&z=17&output=embed"
+                            width="100%"
+                            height="100%"
+                            style={{ border: 0 }}
+                            allowFullScreen
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                        />
+                    </div>
+                    <div className="omg-vindons-info">
+                        <span className="omg-eyebrow">Vind ons</span>
+                        <h2>Villa Vredestein</h2>
+                        <address className="omg-vindons-address">
+                            Hoofdstraat 147<br />
+                            3971 KE Driebergen-Rijsenburg<br />
+                            Nederland
+                        </address>
+                        <a
+                            href="https://www.google.com/maps/dir/?api=1&destination=Hoofdstraat+147,+Driebergen-Rijsenburg"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="omg-vindons-btn"
+                        >
+                            Routebeschrijving openen →
+                        </a>
+                    </div>
+                </div>
+            </section>
 
             {/* Afstandstabel */}
             <section className="omg-afstanden reveal-section" ref={addRef} aria-label="Afstanden">
