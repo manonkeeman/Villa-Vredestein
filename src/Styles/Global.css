@@ -102,12 +102,12 @@ a:hover {
     h2 { font-size: 1.1rem; }
 }
 
-/* Back-to-top button — alleen mobiel */
+/* Back-to-top button — responsive (mobiel & tablet) */
 .back-to-top {
     display: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .back-to-top {
         display: flex;
         position: fixed;

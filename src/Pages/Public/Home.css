@@ -25,7 +25,8 @@
 .hero-lux {
     position: relative;
     height: 100vh;
-    min-height: 640px;
+    height: 100svh; /* iOS Safari: sluit browser-chrome uit */
+    min-height: 580px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -553,6 +554,19 @@
         will-change: auto; /* geen compositing layer op mobiel */
         transform: none !important; /* parallax uitschakelen */
     }
+
+    .hero-lux {
+        height: 100svh;
+        min-height: unset;
+    }
+
+    /* Hero-content iets naar beneden zodat het niet achter de nav valt */
+    .hero-content {
+        padding-top: 4rem;
+        padding-bottom: 2rem;
+    }
+
+    .hero-scroll-hint { display: none; }
 }
 
 @media (max-width: 600px) {
@@ -599,4 +613,6 @@
     .sfeer-strip { padding: 3rem 1.25rem 2.5rem; }
     .sfeer-strip-header h2 { font-size: clamp(1.2rem, 5vw, 1.5rem); }
     .highlights { padding: 2rem 1.25rem 3.5rem; }
+    .sfeer-grid { grid-template-columns: repeat(2, 1fr); gap: 0.35rem; }
+    .hl-img-wrap { height: 200px; }
 }

@@ -469,9 +469,11 @@
 
 @media (max-width: 600px) {
     .oo-hero {
-        min-height: 80vh;
+        min-height: 70vh;
         padding: 5rem 1.25rem 3rem;
     }
+
+    .oo-hero-scroll { display: none; }
 
     .oo-img-col {
         padding: 2rem 1.25rem 0.5rem;
