@@ -9,7 +9,7 @@ import LuchtballonImg from "../../Assets/Images/ext-luchtballon.png";
 import ImgCarpeDiem from "../../Assets/Images/PannenkoekenAvondVillaVredestein.jpg";
 import CarpeDiemVideo from "../../Assets/Videos/carpe-diem.mp4";
 import ImgBezoek from "../../Assets/Images/BezoekOnsVillaVredestein.jpg";
-import ImgManonIT from "../../Assets/Images/manonit-og.jpg";
+import ImgManonIT from "../../Assets/Images/manonit-portrait.webp";
 
 const SECTIONS = [
     {
@@ -34,12 +34,11 @@ const SECTIONS = [
     {
         slug: "manonit",
         img: ImgManonIT,
-        imgAlt: "ManonIT — webdesign en development door Manon Keeman",
+        imgAlt: "Manon Keeman — schrijft en bouwt verhalen",
         theme: "dark",
         accent: "#FCBC2D",
         imgSide: "left",
-        imgContain: true,
-        pullQuote: "Van idee vastlopen op uitvoering naar: ik bouw het gewoon zelf.",
+        pullQuote: "Geen twee rechterhanden, maar wel een verhaal te vertellen.",
         link: "https://www.manonit.com",
         linkLabel: "Bekijk ManonIT.com →",
     },

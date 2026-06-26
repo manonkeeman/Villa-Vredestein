@@ -55,6 +55,7 @@ const HIGHLIGHTS = [
     {
         to: "/verblijven",
         img: VillaImg,
+        imgPosition: "center bottom",
         label: "Verblijven",
         titel: "Boek jouw verblijf",
         sub: "Een kort of lang verblijf in een bijzonder huis.",
@@ -223,7 +224,7 @@ const Home = () => {
                                         <Marker position={VILLA_POS} icon={villaCardIcon} />
                                     </MapContainer>
                                 ) : (
-                                    <img src={(h as any).img} alt={h.titel} loading="lazy" />
+                                    <img src={(h as any).img} alt={h.titel} loading="lazy" style={(h as any).imgPosition ? { objectPosition: (h as any).imgPosition } : undefined} />
                                 )}
                                 <div className="hl-overlay" />
                                 {(h as any).map && (
