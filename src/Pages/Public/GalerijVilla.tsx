@@ -51,7 +51,7 @@ import ImgTuinVroeger       from "../../Assets/Images/hist-tuin-vroeger.jpg";
 import ImgVerhuiskaart      from "../../Assets/Images/hist-verhuiskaart.jpg";
 import ImgGekocht2020       from "../../Assets/Images/hist-gekocht-2020.jpg";
 import ImgVoorkantRoelofsen from "../../Assets/Images/hist-voorkant-roelofsen.jpg";
-import ImgKrantReclame      from "../../Assets/Images/hist-krant-reclame.jpg";
+
 
 // Geschiedenis, kadasterdocumenten
 import ImgVilla1910         from "../../Assets/Images/VillaVredestein1910.jpg";
@@ -64,23 +64,11 @@ import ImgRegister2         from "../../Assets/Images/archief-register-2.jpg";
 import ImgBouwreg1          from "../../Assets/Images/archief-bouwregister-1.jpg";
 import ImgBouwreg2          from "../../Assets/Images/archief-bouwregister-2.jpg";
 
-// Geschiedenis, krantenartikelen
-import ImgK1912 from "../../Assets/Images/Krant1912.jpg";
-import ImgK1913 from "../../Assets/Images/Krant1913.jpg";
-import ImgK1916 from "../../Assets/Images/Krant1916.jpg";
-import ImgK1918 from "../../Assets/Images/Krant1918.jpg";
-import ImgK1919 from "../../Assets/Images/Krant1919.jpg";
-import ImgK1921 from "../../Assets/Images/Krant1921.jpg";
-import ImgK1926 from "../../Assets/Images/Krant1926.jpg";
-import ImgK1927 from "../../Assets/Images/Krant1927.png";
-import ImgK1928 from "../../Assets/Images/Krant1928.jpg";
-import ImgK1930 from "../../Assets/Images/Krant1930.jpg";
-import ImgK1932 from "../../Assets/Images/Krant1932.jpg";
-import ImgK1934 from "../../Assets/Images/Krant1934.png";
-import ImgK1935 from "../../Assets/Images/Krant1935.jpg";
-import ImgK1954 from "../../Assets/Images/Krant1954.jpg";
-import ImgK1959 from "../../Assets/Images/Krant1959.jpg";
-import ImgK1965 from "../../Assets/Images/Krant1965.jpg";
+// Plattegronden
+import ImgPlattBG   from "../../Assets/Images/plattegrond-begane-grond.jpg";
+import ImgPlattE1   from "../../Assets/Images/plattegrond-eerste-verd.jpg";
+import ImgPlattE1b  from "../../Assets/Images/plattegrond-eerste-verd-optie.jpg";
+import ImgPlattE2   from "../../Assets/Images/plattegrond-tweede-verd.jpg";
 
 // Restauratie
 import ImgWijnkamer         from "../../Assets/Images/int-wijnkamer.jpg";
@@ -96,7 +84,7 @@ import ImgGietvloer         from "../../Assets/Images/rest-gietvloer.jpg";
 import ImgTerrasAanleg      from "../../Assets/Images/rest-terras.jpg";
 import ImgKroonluchtersVerv from "../../Assets/Images/rest-kroonluchters.jpg";
 
-const CATEGORIEEN = ["Alles", "Interieur", "Exterieur", "Tuin", "Leven", "Geschiedenis", "Ansichtkaarten", "Restauratie"];
+const CATEGORIEEN = ["Alles", "Samenleven", "Geschiedenis", "Ansichtkaarten", "De Verbouwing", "Plattegrond"];
 
 const FOTOS = [
     // ── Interieur ──────────────────────────────────────────────────────────
@@ -140,19 +128,19 @@ const FOTOS = [
       verhaal: "Klaprozen komen hier vanzelf op, elk jaar op een andere plek. Ze groeien gewoon langs het pad, tussen de stenen. Een vriendelijk teken dat de tuin zijn eigen gang gaat." },
 
     // ── Leven ──────────────────────────────────────────────────────────────
-    { src: ImgFamilieRoelofsen,  cat: "Leven", caption: "Familie Roelofsen",          sub: "De familie die lang de bewoners van Villa Vredestein waren",
+    { src: ImgFamilieRoelofsen,  cat: "Samenleven", caption: "Familie Roelofsen",          sub: "De familie die lang de bewoners van Villa Vredestein waren",
       verhaal: "De familie Roelofsen woonde hier decennialang. Op dit portret zijn ze zo alledaags en vertrouwd, midden in een huis dat nu zo anders aanvoelt, maar toch hetzelfde is. Dit is de menselijke continuïteit van Villa Vredestein." },
-    { src: ImgRommertBram,       cat: "Leven", caption: "Rommert & Bram",             sub: "Twee van de studenten die de bovenverdieping bewonen",
+    { src: ImgRommertBram,       cat: "Samenleven", caption: "Rommert & Bram",             sub: "Twee van de studenten die de bovenverdieping bewonen",
       verhaal: "Rommert en Bram zijn twee van de studenten op de bovenste verdieping. Ze hebben elk een eigen kamer, een gedeelde keuken en, belangrijker, een gedeeld gevoel van thuis. Dat is precies de bedoeling van Villa Vredestein." },
-    { src: ImgPannenkoeken2025,  cat: "Leven", caption: "Pannenkoekenavaond 2025",    sub: "De jaarlijkse pannenkoekentraditie in Villa Vredestein",
+    { src: ImgPannenkoeken2025,  cat: "Samenleven", caption: "Pannenkoekenavaond 2025",    sub: "De jaarlijkse pannenkoekentraditie in Villa Vredestein",
       verhaal: "Elk jaar is er een pannenkoekenavaond. Iedereen staat mee te bakken, de keuken staat vol, en niemand telt het aantal opgestapelde pannenkoeken. Het is een van die tradities die vanzelf zijn ontstaan." },
-    { src: ImgKoken,             cat: "Leven", caption: "Koken in Vredestein",         sub: "De open keuken als ontmoetingsplek",
+    { src: ImgKoken,             cat: "Samenleven", caption: "Koken in Vredestein",         sub: "De open keuken als ontmoetingsplek",
       verhaal: "De open keuken is meer dan een plek om eten te bereiden, het is de plek waar de dag begint en eindigt. Iemand zet koffie, iemand anders begint over wat er is. Zo werkt het hier." },
-    { src: ImgEtenBuren,         cat: "Leven", caption: "Eten met de buren",           sub: "De deur staat altijd open in Villa Vredestein",
+    { src: ImgEtenBuren,         cat: "Samenleven", caption: "Eten met de buren",           sub: "De deur staat altijd open in Villa Vredestein",
       verhaal: "Bij Villa Vredestein staat de deur letterlijk open. De buren weten dat. Soms is het toeval, soms is het gepland, maar een tafel vol mensen is hier nooit een uitzondering." },
-    { src: ImgEtenOekrainers,    cat: "Leven", caption: "Oekraïense gasten",           sub: "Gastvrij onthaal van Oekraïense bezoekers",
+    { src: ImgEtenOekrainers,    cat: "Samenleven", caption: "Oekraïense gasten",           sub: "Gastvrij onthaal van Oekraïense bezoekers",
       verhaal: "Na het uitbreken van de oorlog in Oekraïne opende Villa Vredestein zijn deuren voor vluchtelingen. Samen eten, samen verhalen delen, taal was soms een barrière, maar gastvrijheid niet." },
-    { src: ImgKLM,               cat: "Leven", caption: "KLM fotoshoot",               sub: "Villa Vredestein als decor voor een KLM-fotoshoot",
+    { src: ImgKLM,               cat: "Samenleven", caption: "KLM fotoshoot",               sub: "Villa Vredestein als decor voor een KLM-fotoshoot",
       verhaal: "KLM koos Villa Vredestein als decor voor een interne fotoshoot. De hoge plafonds, de kroonluchters, de sfeer, het paste precies bij wat ze zochten. Een bijzondere dag in de lange geschiedenis van dit pand." },
 
     // ── Ansichtkaarten ────────────────────────────────────────────────────
@@ -181,8 +169,6 @@ const FOTOS = [
       verhaal: "De vrouwen die het christelijk pension Vredestein draaiende hielden. Ze staan hier zo vertrouwelijk, alsof ze zo weer naar binnen gaan om thee te zetten voor de gasten." },
     { src: ImgTuinVroeger,       cat: "Geschiedenis", caption: "De tuin vroeger",                sub: "De achtertuin zoals die er uitzag in het tijdperk Roelofsen",
       verhaal: "De achtertuin in de tijd van het pension. Geen moestuin, maar een nette siertuin die paste bij een respectabel logeeradres. Nu is het een wilder, levendiger plek geworden." },
-    { src: ImgKrantReclame,      cat: "Geschiedenis", caption: "Krantenadvertentie pension",     sub: "Het pension adverteerde regelmatig in de regionale pers",
-      verhaal: "Pension Vredestein adverteerde trouw in de regionale krant. 'Aangename omgeving, goede tafel, christelijke huishouding.' Zo klonk het in die tijd. De gasten kwamen van heinde en verre." },
     { src: ImgGekocht2020,       cat: "Geschiedenis", caption: "Gekocht in 2020",               sub: "Het moment dat Manon & Maxim de sleutels in ontvangst nemen",
       verhaal: "17 december 2020. Manon & Maxim ontvangen de sleutels van Hoofdstraat 147. Achter hen een leeg, enigszins verwaarloosd pand. Voor hen: jaren werk en een droom die ze niet van plan waren los te laten." },
     { src: ImgVerhuiskaart,      cat: "Geschiedenis", caption: "De verhuiskaart",               sub: "De officiële aankondiging van het nieuwe hoofdstuk van Vredestein",
@@ -203,61 +189,38 @@ const FOTOS = [
       verhaal: "Het officiële bouwregister uit de archieven. Hier staat wanneer de villa is gebouwd, wie de eigenaar was en wat de bouwdata zijn. Het begin van het verhaal in drie regels zwarte inkt." },
     { src: ImgBouwreg2,          cat: "Geschiedenis", caption: "Bouwregister Hfdstr. 147 (II)", sub: "Vervolg van het bouwregister, historische indeling",
       verhaal: "Het vervolg van het bouwregister, aanvullingen, correcties, aantekeningen. Dit soort documenten zijn de ruggengraat van de geschiedenis van Villa Vredestein." },
-    { src: ImgK1912, cat: "Geschiedenis", caption: "Ingezonden stuk, 1912",             sub: "Over het pension na de overname door Familie Sluijter",
-      verhaal: "In 1912 nam Familie Sluijter het pension over. Dit ingezonden stuk kondigt dat nieuwe tijdperk aan, met dankbetuigingen en goede wensen in de hoffelijke stijl van die tijd." },
-    { src: ImgK1913, cat: "Geschiedenis", caption: "Vacature keukenmeid, 1913",         sub: "Het pension adverteert voor personeel",
-      verhaal: "Pension Vredestein was een degelijke werkgever. In 1913 werd er een keukenmeid gevraagd, 'flink en van goede beginselen'. De advertentie zegt veel over hoe het er hier aan toe ging." },
-    { src: ImgK1916, cat: "Geschiedenis", caption: "Ingezonden stuk, 1916",             sub: "Midden in de Eerste Wereldoorlog",
-      verhaal: "Midden in de Eerste Wereldoorlog. Nederland was neutraal, maar de onrust was voelbaar. Dit stuk uit Driebergen geeft een inkijk in het dagelijks leven van die onzekere jaren." },
-    { src: ImgK1918, cat: "Geschiedenis", caption: "Vacature juffrouw, 1918",           sub: "Gezocht: hulp voor huishoudelijke werkzaamheden",
-      verhaal: "Het einde van de oorlog nadert, maar het pension draait door. Een 'flinke juffrouw' gezocht voor de huishouding. De dagelijkse bedrijvigheid van Vredestein, vastgelegd in een paar woorden." },
-    { src: ImgK1919, cat: "Geschiedenis", caption: "Rust- en herstellingsoorden, 1919", sub: "Vredestein vermeld als gerenommeerde bestemming",
-      verhaal: "Na de oorlogsjaren adverteert een gids voor rust- en herstellingsoorden, en Vredestein staat erbij. Mensen uit de steden zochten rust op de Heuvelrug. Driebergen was een geliefde bestemming." },
-    { src: ImgK1921, cat: "Geschiedenis", caption: "Krantenartikel, 1921",              sub: "Nieuws uit Driebergen in de jaren twintig",
-      verhaal: "De jaren twintig beginnen. Driebergen is een bedrijvig dorp en het pension bloeit. Dit krantenartikel geeft een kijkje in het dagelijkse leven van Vredestein en zijn omgeving." },
-    { src: ImgK1926, cat: "Geschiedenis", caption: "Familie Van de Bosch, 1926",        sub: "Bericht over de oorspronkelijke bewoners",
-      verhaal: "Een bericht over de familie Van de Bosch, vroege bewoners van de villa. Namen die je terugvindt in de archieven, mensen van wie de sporen langzaam verdwijnen, maar hier nog zichtbaar zijn." },
-    { src: ImgK1927, cat: "Geschiedenis", caption: "25 november 1927",                  sub: "Nieuws uit Driebergen-Rijsenburg",
-      verhaal: "Een gewone nieuwsdag in Driebergen, vastgelegd in de krant. Maar de villa staat erin, een kleine vermelding, een bewijs dat Vredestein ook toen al een bekende naam was in het dorp." },
-    { src: ImgK1928, cat: "Geschiedenis", caption: "Nieuws over inbraak, 1928",         sub: "Zelfs in rustig Driebergen bleef de wereld niet buiten",
-      verhaal: "Zelfs in het rustige Driebergen van 1928 bleef de wereld niet buiten. Dit krantenartikel meldt een inbraak in de omgeving, en laat zien dat het leven hier ook zijn schaduwkanten had." },
-    { src: ImgK1930, cat: "Geschiedenis", caption: "Advertentie, 1930",                 sub: "Bloeitijd van het christelijk pension",
-      verhaal: "Bloeitijd van het christelijk pension onder Familie Sluijter. De advertentie is trots en uitnodigend, 'aangenaam gelegen, goede tafel'. Het pension trok gasten van heinde en verre." },
-    { src: ImgK1932, cat: "Geschiedenis", caption: "Krantenartikel, 1932",              sub: "Driebergen in de zomer van 1932",
-      verhaal: "Een zomers bericht uit Driebergen, 1932. Midden in de crisisjaren, maar het pension houdt stand. De villa was een constante in een turbulente tijd." },
-    { src: ImgK1934, cat: "Geschiedenis", caption: "Krantenartikel, 1934",              sub: "Einde van het tijdperk-Sluijter nadert",
-      verhaal: "Het einde van het tijdperk-Sluijter nadert. Na meer dan twintig jaar zoekt het pension nieuwe eigenaren. Een nieuwe bladzijde in het boek van Villa Vredestein." },
-    { src: ImgK1935, cat: "Geschiedenis", caption: "Krantenartikel, 1935",              sub: "Na 23 jaar zoekt de villa nieuwe bewoners",
-      verhaal: "Na 23 jaar verlaat Familie Sluijter het pension. De villa gaat opnieuw over naar nieuwe bewoners. Zo is de geschiedenis van Vredestein, een opeenvolging van hoofdstukken, elk met zijn eigen gezichten." },
-    { src: ImgK1954, cat: "Geschiedenis", caption: "Te huur-advertentie, 1954",         sub: "Tijdperk mevrouw Elings, naoorlogse periode",
-      verhaal: "Naoorlogs Nederland. Villa Vredestein wordt aangeboden als huurwoning, een nieuw hoofdstuk onder mevrouw Elings. De villa past zich aan, zoals hij dat altijd heeft gedaan." },
-    { src: ImgK1959, cat: "Geschiedenis", caption: "Krantenartikel, 1959",              sub: "Nieuws uit de periode van mevrouw Elings",
-      verhaal: "Een bericht uit de tijd van mevrouw Elings, die Vredestein haar thuis maakte. De villa was inmiddels een begrip in Driebergen, oud genoeg om als historisch te gelden." },
-    { src: ImgK1965, cat: "Geschiedenis", caption: "Vacature verpleeghulp, 1965",       sub: "Villa Vredestein had in deze periode een zorgende functie",
-      verhaal: "In de jaren zestig had Villa Vredestein een verzorgende functie. Er werd gezocht naar een verpleeghulp, een aanwijzing dat het pand in die periode ook voor kwetsbare bewoners een thuis bood." },
+    // ── Plattegrond ────────────────────────────────────────────────────────
+    { src: ImgPlattBG,  cat: "Plattegrond", caption: "Begane grond",              sub: "Hoofdstraat 147, Driebergen",
+      verhaal: "De begane grond van Villa Vredestein: woonkamer, keuken, hal en twee slaapkamers. De grote woonkamer met hoge plafonds vormt het hart van de villa." },
+    { src: ImgPlattE1,  cat: "Plattegrond", caption: "Eerste verdieping",         sub: "Middenverdieping met vier zit-slaapkamers",
+      verhaal: "De eerste verdieping telt vier zit-slaapkamers, een eetkamer, een gang en balkon aan de voorkant. Dit is de middenverdieping voor langere verhuur." },
+    { src: ImgPlattE1b, cat: "Plattegrond", caption: "Eerste verdieping, optie B", sub: "Alternatieve indeling met extra badkamer",
+      verhaal: "Een alternatieve indeling van de eerste verdieping waarbij een extra badkamer is ingepast. Toont de flexibiliteit van de ruimte voor toekomstige verbouwingsfases." },
+    { src: ImgPlattE2,  cat: "Plattegrond", caption: "Tweede verdieping",          sub: "Bovenste verdieping met vier studentenkamers",
+      verhaal: "De bovenste verdieping: vier zit-slaapkamers, een gang, badkamer en berging. Dit is de verdieping waar de studenten wonen, elk met een eigen kamer." },
 
     // ── Restauratie ────────────────────────────────────────────────────────
-    { src: ImgWijnkamer,         cat: "Restauratie", caption: "Vóór de restauratie",         sub: "De woonkamer zoals die er uitzag vóór de werkzaamheden",
+    { src: ImgWijnkamer,         cat: "De Verbouwing", caption: "Vóór de restauratie",         sub: "De woonkamer zoals die er uitzag vóór de werkzaamheden",
       verhaal: "Zo zag de woonkamer eruit voordat Manon & Maxim de handen uit de mouwen staken. Verouderde afwerking, gedateerde kleuren, maar onder dat alles: dezelfde ruimte, dezelfde proporties, dezelfde magie." },
-    { src: ImgSlopen,            cat: "Restauratie", caption: "Slopen",                      sub: "Het begin van de grote transformatie in 2020",
+    { src: ImgSlopen,            cat: "De Verbouwing", caption: "Slopen",                      sub: "Het begin van de grote transformatie in 2020",
       verhaal: "Het begin was radicaal: alles eruit wat niet kon blijven. Slopen is een daad van vertrouwen, je vernietigt iets in de hoop dat wat eronder zit beter is. Dat bleek inderdaad zo te zijn." },
-    { src: ImgIsoleren,          cat: "Restauratie", caption: "Isoleren",                    sub: "Maanden isolatiewerk voor een energiezuinig pand",
+    { src: ImgIsoleren,          cat: "De Verbouwing", caption: "Isoleren",                    sub: "Maanden isolatiewerk voor een energiezuinig pand",
       verhaal: "Maanden van isolatiewerk. Muren, vloeren, daken, alles werd gelaagd en gedicht. Het is het onzichtbare werk dat je later nooit ziet, maar altijd voelt op een koude winteravond." },
-    { src: ImgRestauratie,       cat: "Restauratie", caption: "Glas-in-lood",                sub: "Het originele glas-in-loodraam tijdens de restauratie",
+    { src: ImgRestauratie,       cat: "De Verbouwing", caption: "Glas-in-lood",                sub: "Het originele glas-in-loodraam tijdens de restauratie",
       verhaal: "De glas-in-loodramen zijn origineel en werden met de grootst mogelijke zorg behandeld. Elk paneel werd geïnspecteerd, gerepareerd en teruggeplaatst. Ze geven de villa zijn onmiskenbare karakter." },
-    { src: ImgGlasLood2,         cat: "Restauratie", caption: "Glas-in-lood werkzaamheden",  sub: "Het herstelwerk aan de historische ramen",
+    { src: ImgGlasLood2,         cat: "De Verbouwing", caption: "Glas-in-lood werkzaamheden",  sub: "Het herstelwerk aan de historische ramen",
       verhaal: "Het herstelwerk aan de ramen was precisiewerk. Glazenmakers werkten dagenlang aan elk raam, kleur voor kleur, lood voor lood. Het resultaat is te zien in het licht dat nu door de hal valt." },
-    { src: ImgKachelBouw,        cat: "Restauratie", caption: "De kachel bouwen",            sub: "De houtkachel werd vakkundig geplaatst en ingemetseld",
+    { src: ImgKachelBouw,        cat: "De Verbouwing", caption: "De kachel bouwen",            sub: "De houtkachel werd vakkundig geplaatst en ingemetseld",
       verhaal: "Maxim heeft de houtkachel met eigen handen geplaatst en ingemetseld. 'Carpe Diem' heet hij, en dat gevoel gaf hij de woonkamer meteen mee. Nu is de kachel het eerste wat mensen opvalt als ze binnenkomen." },
-    { src: ImgKroonluchtersVerv, cat: "Restauratie", caption: "Kroonluchters vervoeren",     sub: "De originele kristallen kroonluchters werden met zorg verplaatst",
+    { src: ImgKroonluchtersVerv, cat: "De Verbouwing", caption: "Kroonluchters vervoeren",     sub: "De originele kristallen kroonluchters werden met zorg verplaatst",
       verhaal: "De originele kristallen kroonluchters konden niet blijven hangen tijdens de werkzaamheden. Ze werden voorzichtig gedemonteerd, ingepakt en opgeslagen, en na de restauratie weer opgehangen op precies dezelfde plek." },
-    { src: ImgSchatvondsten,     cat: "Restauratie", caption: "Schatvondsten",               sub: "Bijzondere vondsten tijdens de verbouwingswerkzaamheden",
+    { src: ImgSchatvondsten,     cat: "De Verbouwing", caption: "Schatvondsten",               sub: "Bijzondere vondsten tijdens de verbouwingswerkzaamheden",
       verhaal: "Tijdens het slopen kwamen er bijzondere vondsten tevoorschijn: oude munten, een brief, verborgen decoratieve elementen. Elke verbouwing in een oud pand is een beetje archeologie." },
-    { src: ImgGietvloer,         cat: "Restauratie", caption: "Gietvloer, gevierd!",        sub: "De legdag van de gietvloer werd feestelijk gevierd",
+    { src: ImgGietvloer,         cat: "De Verbouwing", caption: "Gietvloer, gevierd!",        sub: "De legdag van de gietvloer werd feestelijk gevierd",
       verhaal: "De dag dat de gietvloer werd gelegd, werd gevierd. Dat klinkt overdreven, maar wie wekenlang op zand heeft gelopen, begrijpt het. Het was een mijlpaal in de restauratie van de begane grond." },
-    { src: ImgTerrasAanleg,      cat: "Restauratie", caption: "Terras aanleggen",            sub: "Het terras werd aangelegd en het perceel ingericht",
+    { src: ImgTerrasAanleg,      cat: "De Verbouwing", caption: "Terras aanleggen",            sub: "Het terras werd aangelegd en het perceel ingericht",
       verhaal: "Het terras en de tuin werden als laatste aangepakt. Tegels leggen, beplanting aanbrengen, de moestuin indelen. Na de binnenkant eindelijk ook de buitenkant, het geheel werd compleet." },
-    { src: ImgVerbouwen,         cat: "Restauratie", caption: "Verbouwen met Manon & Maxim", sub: "Samen aan de slag in het historische pand",
+    { src: ImgVerbouwen,         cat: "De Verbouwing", caption: "Verbouwen met Manon & Maxim", sub: "Samen aan de slag in het historische pand",
       verhaal: "Niet alles is uitbesteed. Manon & Maxim hebben zelf meegebouwd, geschilderd, geschroefd, gesleept. Het is hun pand in de letterlijkste zin van het woord, en dat is aan elke kamer te zien." },
 ];
 
