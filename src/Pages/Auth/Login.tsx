@@ -86,61 +86,6 @@ const Login = () => {
         return () => clearTimeout(slowTimer);
     }, [API_BASE]);
 
-    const [showResetPanel, setShowResetPanel] = useState(false);
-    const [resetEmail, setResetEmail] = useState("");
-    const [resetToken, setResetToken] = useState("");
-    const [newPassword, setNewPassword] = useState("");
-    const [showNewPassword, setShowNewPassword] = useState(false);
-    const [resetInfo, setResetInfo] = useState("");
-    const [resetError, setResetError] = useState("");
-    const [devToken] = useState("");
-    const [resetLoading, setResetLoading] = useState(false);
-
-    const handleForgotPassword = async (e) => {
-        if (e?.preventDefault) e.preventDefault();
-        setResetInfo(""); setResetError(""); setDevToken("");
-        const emailToUse = (resetEmail || email).trim();
-        if (!emailToUse) { setResetError("Vul je e-mailadres in."); return; }
-        try {
-            setResetLoading(true);
-            const res = await fetch(`${API_BASE}/api/auth/forgot-password`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email: emailToUse }),
-            });
-            if (!res.ok) {
-                const data = await res.json().catch(() => ({}));
-                setResetError(data?.message || "Reset aanvragen is niet gelukt."); return;
-            }
-            setResetInfo("Als dit e-mailadres bestaat, ontvang je een e-mail met een resetlink.");
-        } catch { setResetError("Netwerkfout bij reset aanvragen."); }
-        finally { setResetLoading(false); }
-    };
-
-    const handleResetPassword = async (e) => {
-        if (e?.preventDefault) e.preventDefault();
-        setResetInfo(""); setResetError("");
-        if (!resetToken.trim()) { setResetError("Vul je token in."); return; }
-        if (!newPassword || newPassword.length < 8) { setResetError("Wachtwoord moet minimaal 8 tekens zijn."); return; }
-        try {
-            setResetLoading(true);
-            const res = await fetch(`${API_BASE}/api/auth/reset-password`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ token: resetToken.trim(), newPassword }),
-            });
-            if (!res.ok) {
-                const data = await res.json().catch(() => ({}));
-                setResetError(data?.message || "Wachtwoord resetten is niet gelukt."); return;
-            }
-            setResetInfo("Wachtwoord aangepast. Je kunt nu inloggen.");
-            if (resetEmail) setEmail(resetEmail);
-            setShowResetPanel(false);
-            setPassword(""); setNewPassword(""); setResetToken("");
-        } catch { setResetError("Netwerkfout bij wachtwoord resetten."); }
-        finally { setResetLoading(false); }
-    };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError("");
@@ -271,8 +216,7 @@ const Login = () => {
                         </p>
                     )}
 
-                    {!showResetPanel ? (
-                        <form onSubmit={handleSubmit} noValidate>
+                    <form onSubmit={handleSubmit} noValidate>
                             {/* Mode selector */}
                             <div className="login-modes" role="group" aria-label="Kies je rol">
                                 {MODES.map((m) => (
@@ -352,15 +296,6 @@ const Login = () => {
                                 </div>
                             </div>
 
-                            <button
-                                type="button"
-                                className="forgot-link"
-                                onClick={() => { setShowResetPanel(true); setResetEmail(email.trim()); setResetError(""); setResetInfo(""); }}
-                                disabled={submitting}
-                            >
-                                Wachtwoord vergeten?
-                            </button>
-
                             {error && <p className="login-error" role="alert">{error}</p>}
 
                             <button
@@ -389,96 +324,6 @@ const Login = () => {
                             </button>
 
                         </form>
-                    ) : (
-                        <div className="reset-panel" aria-live="polite">
-                            <h2 className="reset-heading">Wachtwoord resetten</h2>
-
-                            <div className="reset-section">
-                                <label htmlFor="resetEmail" className="login-label">E-mailadres</label>
-                                <div className="login-input-wrap">
-                                    <FiMail className="login-icon" aria-hidden="true" />
-                                    <input
-                                        id="resetEmail"
-                                        type="email"
-                                        value={resetEmail}
-                                        onChange={(e) => setResetEmail(e.target.value)}
-                                        placeholder="jij@voorbeeld.nl"
-                                        autoComplete="email"
-                                    />
-                                </div>
-                                <button
-                                    type="button"
-                                    className="login-submit-btn"
-                                    onClick={handleForgotPassword}
-                                    disabled={resetLoading}
-                                >
-                                    {resetLoading ? "Bezig…" : "Stuur reset-link"}
-                                </button>
-                            </div>
-
-                            {isDev && devToken && (
-                                <div className="dev-token">
-                                    <label className="login-label">Dev token</label>
-                                    <input type="text" value={devToken} readOnly onFocus={(e) => e.target.select()} />
-                                </div>
-                            )}
-
-                            <div className="reset-divider" />
-
-                            <div className="reset-section">
-                                <label htmlFor="resetToken" className="login-label">Token</label>
-                                <input
-                                    id="resetToken"
-                                    type="text"
-                                    value={resetToken}
-                                    onChange={(e) => setResetToken(e.target.value)}
-                                    placeholder="Plak je token hier…"
-                                    className="login-plain-input"
-                                />
-
-                                <label htmlFor="newPassword" className="login-label">Nieuw wachtwoord</label>
-                                <div className="login-input-wrap">
-                                    <FiLock className="login-icon" aria-hidden="true" />
-                                    <input
-                                        id="newPassword"
-                                        type={showNewPassword ? "text" : "password"}
-                                        value={newPassword}
-                                        onChange={(e) => setNewPassword(e.target.value)}
-                                        placeholder="Minimaal 8 tekens"
-                                        autoComplete="new-password"
-                                    />
-                                    <button
-                                        type="button"
-                                        className="pw-toggle"
-                                        onClick={() => setShowNewPassword(!showNewPassword)}
-                                        aria-label="Toon nieuw wachtwoord"
-                                    >
-                                        {showNewPassword ? <FiEyeOff /> : <FiEye />}
-                                    </button>
-                                </div>
-
-                                <button
-                                    type="button"
-                                    className="login-submit-btn"
-                                    onClick={handleResetPassword}
-                                    disabled={resetLoading}
-                                >
-                                    {resetLoading ? "Bezig…" : "Wachtwoord instellen"}
-                                </button>
-                            </div>
-
-                            {resetError && <p className="login-error" role="alert">{resetError}</p>}
-                            {resetInfo && <p className="reset-success" role="status">{resetInfo}</p>}
-
-                            <button
-                                type="button"
-                                className="forgot-link"
-                                onClick={() => { setShowResetPanel(false); setResetError(""); setResetInfo(""); }}
-                            >
-                                ← Terug naar inloggen
-                            </button>
-                        </div>
-                    )}
                 </div>
             </div>
         </main>
