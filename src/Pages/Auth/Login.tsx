@@ -193,9 +193,9 @@ const Login = () => {
             <div className="login-media">
                 <iframe
                     className="login-video"
-                    src="https://www.youtube.com/embed/p_YEM_X8QQs"
+                    src="https://www.youtube-nocookie.com/embed/p_YEM_X8QQs?rel=0&playsinline=1"
                     title="Een dag op kamers bij IVA"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen
                 />
             </div>
