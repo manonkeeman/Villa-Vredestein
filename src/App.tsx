@@ -26,6 +26,7 @@ function BackToTopBtn() {
         </button>
     );
 }
+import { GoogleOAuthProvider } from "@react-oauth/google";
 import { AuthProvider } from "./Pages/Auth/AuthContext";
 import ProtectedRoute from "./Pages/Auth/ProtectedRoute";
 import Nav from "./Components/Nav/Nav";
@@ -66,8 +67,11 @@ import Plattegrond from "./Pages/Public/Plattegrond";
 import InDePers from "./Pages/Public/InDePers";
 import Privacy from "./Pages/Public/Privacy";
 
+const GOOGLE_CLIENT_ID = (import.meta as any)?.env?.VITE_GOOGLE_CLIENT_ID ?? "";
+
 function App() {
     return (
+        <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
         <BrowserRouter>
             <AuthProvider>
                 <ScrollToTop />
@@ -293,6 +297,7 @@ function App() {
 
             </AuthProvider>
         </BrowserRouter>
+        </GoogleOAuthProvider>
     );
 }
 
