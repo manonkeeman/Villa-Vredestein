@@ -202,11 +202,11 @@ const Login = () => {
                 />
                 <a
                     className="login-tiktok-link"
-                    href="https://www.tiktok.com/@ivabusinessschool/video/7486828995728723233"
+                    href="https://www.youtube.com/watch?v=p_YEM_X8QQs"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    ▶ Bekijk IVA op TikTok
+                    ▶ Een dag op kamers bij IVA
                 </a>
             </div>
 
