@@ -1,12 +1,13 @@
 import React, { useMemo, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Navigate, Link } from "react-router-dom";
+import { Navigate, Link, useLocation } from "react-router-dom";
 import { useAuth } from "../Auth/AuthContext";
 import {
     FiCalendar, FiMapPin, FiClock, FiChevronDown, FiChevronUp, FiRadio,
 } from "react-icons/fi";
 import DashboardLayout from "./DashboardLayout";
 import StudentSidebar from "../../Components/StudentSidebar/StudentSidebar";
+import { AdminSidebar } from "./AdminBetalingenMatrix";
 const NEWS_ITEMS = [
     { id: 1, date: "15 apr 2026", emoji: "📶", title: "WiFi-wachtwoord vernieuwd", body: "Het netwerk Villa_VR heeft een nieuw wachtwoord. Vraag het op via de beheerder of WhatsApp-groep." },
     { id: 2, date: "10 apr 2026", emoji: "🔧", title: "Onderhoud CV-ketel – 22 april", body: "Op dinsdag 22 april voert Scholman Servicebedrijf onderhoud uit. Warm water kan tijdelijk uitvallen." },
@@ -108,7 +109,11 @@ function EventCard({ event, past }) {
 // ── Page ─────────────────────────────────────────────────────────────────
 const EventsPage = () => {
     const { isLoggedIn, logout, user } = useAuth();
+    const location = useLocation();
     if (!isLoggedIn) return <Navigate to="/login" replace />;
+
+    const isAdmin = location.pathname.startsWith("/admin") ||
+        (user?.roles || []).includes("ROLE_ADMIN");
 
     const contractFile = user?.contractFile || null;
 
@@ -135,7 +140,14 @@ const EventsPage = () => {
                 <title>Events, Villa Vredestein</title>
                 <meta name="robots" content="noindex, nofollow" />
             </Helmet>
-            <DashboardLayout sidebar={<StudentSidebar user={user} logout={logout} active="events" contractFile={contractFile} />} mainClass="ev-main">
+            <DashboardLayout
+            sidebar={
+                isAdmin
+                    ? <AdminSidebar active="events" logout={logout} username={user?.username} />
+                    : <StudentSidebar user={user} logout={logout} active="events" contractFile={contractFile} />
+            }
+            mainClass="ev-main"
+        >
 
                 {/* Hero */}
                 <div className="ev-hero">

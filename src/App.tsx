@@ -252,6 +252,15 @@ function App() {
                     />
 
                     <Route
+                        path="/admin/events"
+                        element={
+                            <ProtectedRoute allowedRoles={["ROLE_ADMIN"]}>
+                                <EventsPage />
+                            </ProtectedRoute>
+                        }
+                    />
+
+                    <Route
                         path="/student/samen-eten"
                         element={
                             <ProtectedRoute allowedRoles={["ROLE_STUDENT", "ROLE_ADMIN"]}>

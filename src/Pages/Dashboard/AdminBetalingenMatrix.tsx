@@ -33,7 +33,7 @@ export function AdminSidebar({ active, logout, username }) {
                     <li><Link to="/admin/berichten" className={cls("berichten")}><FiMessageSquare /> Berichten &amp; Meldingen</Link></li>
                     <li><Link to="/student/noodlijst" className={cls("noodlijst")}><FiAlertCircle /> Noodlijst</Link></li>
                     <li><Link to="/student/huisregels" className={cls("huisregels")}><FiFileText /> Huisregels</Link></li>
-                    <li><Link to="/student/events" className={cls("events")}><FiCalendar /> Events &amp; Nieuws</Link></li>
+                    <li><Link to="/admin/events" className={cls("events")}><FiCalendar /> Events &amp; Nieuws</Link></li>
                     <li><Link to="/schoonmaakschema" className={cls("schema")}><FiClipboard /> Schoonmaakschema</Link></li>
                     <li><Link to="/admin/instellingen" className={cls("instellingen")}><FiSettings /> Instellingen</Link></li>
                     <li>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { Helmet } from "react-helmet-async";
-import { Navigate, Link } from "react-router-dom";
+import { Navigate, Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../Auth/AuthContext";
 import {
     FiLogOut, FiHome, FiClipboard, FiAlertCircle,
@@ -57,6 +57,8 @@ const ROOMS = [
 
 // ── Sidebar ───────────────────────────────────────────────────────────────
 function CleanerSidebar({ user, logout }) {
+    const navigate = useNavigate();
+    const handleLogout = () => { logout(); navigate("/login"); };
     return (
         <aside className="dashboard-sidebar" aria-label="Navigatie zijbalk">
             <header className="sidebar-profile"><FiUser className="profile-icon" /></header>
@@ -66,7 +68,7 @@ function CleanerSidebar({ user, logout }) {
                     <li><Link to="/cleaning" className="active-nav-link"><FiHome /> Dashboard</Link></li>
                     <li><Link to="/schoonmaakschema"><FiClipboard /> Mijn taken</Link></li>
                     <li>
-                        <button onClick={logout} type="button" className="logout-button">
+                        <button onClick={handleLogout} type="button" className="logout-button">
                             <FiLogOut /> Log uit
                         </button>
                     </li>
