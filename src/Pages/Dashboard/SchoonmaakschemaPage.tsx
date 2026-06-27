@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { Helmet } from "react-helmet-async";
-import { Navigate } from "react-router-dom";
+import { Navigate, Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../Auth/AuthContext";
 import Spinner from "../../Components/Spinner/Spinner";
 import {
     FiAlertCircle, FiClipboard,
-    FiUser, FiCalendar,
+    FiUser, FiCalendar, FiHome, FiLogOut,
     FiCheckSquare, FiSquare, FiPlus, FiTrash2,
     FiChevronLeft, FiChevronRight,
     FiMessageSquare, FiAlertTriangle, FiEdit2, FiSave, FiX,
@@ -73,14 +73,17 @@ const toRotationWeek = (isoWeek) => ((isoWeek - 1) % 5) + 1;
 // ─── CleanerSidebar (only for cleaners, not shown to admin/student) ──────────
 
 function CleanerSidebar({ user, logout }) {
+    const navigate = useNavigate();
+    const handleLogout = () => { logout(); navigate("/login"); };
     return (
         <aside className="dashboard-sidebar" aria-label="Navigatie zijbalk">
             <header className="sidebar-profile"><FiUser className="profile-icon" /></header>
             <h3 className="sidebar-title">Welkom {user?.username || "Schoonmaker"}</h3>
             <nav className="sidebar-nav">
                 <ul>
-                    <li><span className="active"><FiClipboard /> Mijn taken</span></li>
-                    <li><button onClick={logout} type="button" className="logout-button">Log uit</button></li>
+                    <li><Link to="/cleaning" className=""><FiHome /> Dashboard</Link></li>
+                    <li><span className="active-nav-link"><FiClipboard /> Mijn taken</span></li>
+                    <li><button onClick={handleLogout} type="button" className="logout-button"><FiLogOut /> Log uit</button></li>
                 </ul>
             </nav>
         </aside>
