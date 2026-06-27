@@ -4,7 +4,6 @@ import { useAuth } from "./AuthContext";
 import { FiEye, FiEyeOff, FiMail, FiLock } from "react-icons/fi";
 import { Helmet } from "react-helmet-async";
 import Spinner from "../../Components/Spinner/Spinner";
-import LoginVideo from "../../Assets/Videos/home-verbouwing.mp4";
 import "./Login.css";
 
 const hasRole = (user, role) => {
@@ -190,24 +189,15 @@ const Login = () => {
                 <title>Inloggen, Villa Vredestein</title>
                 <meta name="robots" content="noindex, nofollow" />
             </Helmet>
-            {/* Video kant */}
+            {/* Video kant — IVA: een dag op kamers */}
             <div className="login-media">
-                <video
+                <iframe
                     className="login-video"
-                    src={LoginVideo}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
+                    src="https://www.youtube.com/embed/p_YEM_X8QQs"
+                    title="Een dag op kamers bij IVA"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
                 />
-                <a
-                    className="login-tiktok-link"
-                    href="https://www.youtube.com/watch?v=p_YEM_X8QQs"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    ▶ Een dag op kamers bij IVA
-                </a>
             </div>
 
             {/* Formulier kant */}
