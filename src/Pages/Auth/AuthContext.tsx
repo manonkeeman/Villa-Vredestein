@@ -189,7 +189,7 @@ export const AuthProvider = ({ children }) => {
                 username: String(data.username ?? data.email ?? "").trim().toLowerCase(),
             };
 
-            const res = await axios.post("/api/auth/register", cleanData);
+            const res = await axios.post("/api/users", cleanData);
             return res.status === 201 || res.status === 200;
         } catch (error) {
             console.error("❌ Register error:", error.response?.data || error.message);
