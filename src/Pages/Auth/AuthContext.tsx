@@ -174,8 +174,13 @@ export const AuthProvider = ({ children }) => {
 
                 return true;
             } catch (error) {
-                console.error("❌ Login error:", error.response?.data || error.message);
-                return false;
+                const data = error.response?.data;
+                const msg =
+                    (typeof data === "string" ? data : null) ||
+                    data?.message ||
+                    error.message ||
+                    null;
+                throw new Error(msg || "Ongeldige gegevens of geen toegang.");
             }
         },
         [loadMe]
