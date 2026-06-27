@@ -4,6 +4,7 @@ import { useAuth } from "./AuthContext";
 import { FiEye, FiEyeOff, FiMail, FiLock } from "react-icons/fi";
 import { Helmet } from "react-helmet-async";
 import Spinner from "../../Components/Spinner/Spinner";
+import LoginVideo from "../../Assets/Videos/home-verbouwing.mp4";
 import "./Login.css";
 
 const hasRole = (user, role) => {
@@ -191,12 +192,13 @@ const Login = () => {
             </Helmet>
             {/* Video kant */}
             <div className="login-media">
-                <iframe
+                <video
                     className="login-video"
-                    src="https://www.youtube.com/embed/PoQdedhOXwI?autoplay=1&mute=1&loop=1&playlist=PoQdedhOXwI"
-                    title="Villa Vredestein sfeer"
-                    allow="autoplay; encrypted-media"
-                    allowFullScreen
+                    src={LoginVideo}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
                 />
             </div>
 
