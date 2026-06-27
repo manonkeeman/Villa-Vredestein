@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback, useRef } from "react";
 import { Helmet } from "react-helmet-async";
-import { Navigate, Link } from "react-router-dom";
+import { Navigate, Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../Auth/AuthContext";
 import {
     FiLogOut, FiUsers, FiDollarSign, FiClipboard,
@@ -18,7 +18,9 @@ const NL_MONTHS_SHORT = ["jan","feb","mrt","apr","mei","jun","jul","aug","sep","
 
 // ── Shared admin sidebar ─────────────────────────────────────────────────
 export function AdminSidebar({ active, logout, username }) {
+    const navigate = useNavigate();
     const cls = (key) => active === key ? "active-nav-link" : undefined;
+    const handleLogout = () => { logout(); navigate("/login"); };
     return (
         <aside className="dashboard-sidebar" aria-label="Navigatie zijbalk">
             <header className="sidebar-profile"><FiShield className="profile-icon" /></header>
@@ -35,7 +37,7 @@ export function AdminSidebar({ active, logout, username }) {
                     <li><Link to="/schoonmaakschema" className={cls("schema")}><FiClipboard /> Schoonmaakschema</Link></li>
                     <li><Link to="/admin/instellingen" className={cls("instellingen")}><FiSettings /> Instellingen</Link></li>
                     <li>
-                        <button onClick={logout} type="button" className="logout-button">
+                        <button onClick={handleLogout} type="button" className="logout-button">
                             <FiLogOut /> Log uit
                         </button>
                     </li>
@@ -75,16 +77,18 @@ const fixStatus = (inv) => {
 function buildMatrix(invoices) {
     if (!invoices.length) return null;
     const studentMap = {};
+    const emailMap   = {};
     const monthSet   = {};
     for (const inv of invoices.map(fixStatus)) {
         const key = `${inv.invoiceYear}-${inv.invoiceMonth}`;
         studentMap[inv.studentName] = studentMap[inv.studentName] || {};
         studentMap[inv.studentName][key] = inv.status;
         monthSet[key] = { year: inv.invoiceYear, month: inv.invoiceMonth };
+        if (inv.studentEmail) emailMap[inv.studentName] = inv.studentEmail;
     }
     const months   = Object.values(monthSet).sort((a, b) => a.year !== b.year ? a.year - b.year : a.month - b.month);
     const students = Object.keys(studentMap).sort();
-    return { students, months, cells: studentMap };
+    return { students, months, cells: studentMap, emailMap };
 }
 
 const STATUS_META = {
@@ -95,6 +99,7 @@ const STATUS_META = {
 };
 
 // ── Reminder panel (slide-in) ────────────────────────────────────────────
+// student = { name: string, email: string }
 function ReminderPanel({ student, onClose }) {
     const [sending, setSending] = useState(false);
     const [msg, setMsg]         = useState(null);
@@ -102,7 +107,10 @@ function ReminderPanel({ student, onClose }) {
     const send = async () => {
         setSending(true);
         try {
-            await api.post(`/api/invoices/reminder`, { studentName: student });
+            const userRes = await api.get(`/api/users/email/${encodeURIComponent(student.email)}`);
+            const userId  = userRes.data?.id;
+            if (!userId) throw new Error("Gebruiker niet gevonden");
+            await api.post("/api/admin/email/send", { userId, templateType: "PAYMENT_REMINDER_1" });
             setMsg({ ok: true, text: "Herinnering verstuurd!" });
         } catch {
             setMsg({ ok: false, text: "Kon herinnering niet versturen." });
@@ -117,7 +125,7 @@ function ReminderPanel({ student, onClose }) {
                 <strong><FiMail /> Herinnering sturen</strong>
                 <button type="button" onClick={onClose} aria-label="Sluiten"><FiX /></button>
             </div>
-            <p>Stuur een betalingsherinnering naar <strong>{student}</strong>.</p>
+            <p>Stuur een betalingsherinnering naar <strong>{student.name}</strong>.</p>
             {msg && <p style={{ color: msg.ok ? "#2ecc71" : "#e74c3c", fontSize: 13 }}>{msg.text}</p>}
             {!msg && (
                 <button type="button" className="admin-btn" onClick={send} disabled={sending}>
@@ -136,7 +144,7 @@ const AdminBetalingenMatrix = () => {
     const [invoices, setInvoices] = useState([]);
     const [loading,  setLoading]  = useState(true);
     const [error,    setError]    = useState(null);
-    const [reminder, setReminder] = useState(null); // student name
+    const [reminder, setReminder] = useState(null); // { name, email }
     const panelRef = useRef(null);
 
     const now = new Date();
@@ -268,7 +276,7 @@ const AdminBetalingenMatrix = () => {
                                                 <button
                                                     type="button"
                                                     className="admin-btn admin-btn--small admin-btn--ghost"
-                                                    onClick={() => setReminder(student)}
+                                                    onClick={() => setReminder({ name: student, email: matrix.emailMap?.[student] ?? "" })}
                                                 >
                                                     <FiMail />
                                                 </button>

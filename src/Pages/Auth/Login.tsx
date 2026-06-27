@@ -93,7 +93,7 @@ const Login = () => {
     const [showNewPassword, setShowNewPassword] = useState(false);
     const [resetInfo, setResetInfo] = useState("");
     const [resetError, setResetError] = useState("");
-    const [devToken, setDevToken] = useState("");
+    const [devToken] = useState("");
     const [resetLoading, setResetLoading] = useState(false);
 
     const handleForgotPassword = async (e) => {
@@ -103,15 +103,16 @@ const Login = () => {
         if (!emailToUse) { setResetError("Vul je e-mailadres in."); return; }
         try {
             setResetLoading(true);
-            const res = await fetch(`${API_BASE}/api/password-reset/forgot`, {
+            const res = await fetch(`${API_BASE}/api/auth/forgot-password`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email: emailToUse }),
             });
-            const data = await res.json().catch(() => ({}));
-            if (!res.ok) { setResetError(data?.message || "Reset aanvragen is niet gelukt."); return; }
-            if (data?.token) { setDevToken(String(data.token)); setResetToken(String(data.token)); }
-            setResetInfo("Als dit e-mailadres bestaat, is een reset gestart. Vul je token en nieuw wachtwoord in.");
+            if (!res.ok) {
+                const data = await res.json().catch(() => ({}));
+                setResetError(data?.message || "Reset aanvragen is niet gelukt."); return;
+            }
+            setResetInfo("Als dit e-mailadres bestaat, ontvang je een e-mail met een resetlink.");
         } catch { setResetError("Netwerkfout bij reset aanvragen."); }
         finally { setResetLoading(false); }
     };
@@ -123,13 +124,15 @@ const Login = () => {
         if (!newPassword || newPassword.length < 8) { setResetError("Wachtwoord moet minimaal 8 tekens zijn."); return; }
         try {
             setResetLoading(true);
-            const res = await fetch(`${API_BASE}/api/password-reset/reset`, {
+            const res = await fetch(`${API_BASE}/api/auth/reset-password`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ token: resetToken.trim(), newPassword }),
             });
-            const data = await res.json().catch(() => ({}));
-            if (!res.ok) { setResetError(data?.message || "Wachtwoord resetten is niet gelukt."); return; }
+            if (!res.ok) {
+                const data = await res.json().catch(() => ({}));
+                setResetError(data?.message || "Wachtwoord resetten is niet gelukt."); return;
+            }
             setResetInfo("Wachtwoord aangepast. Je kunt nu inloggen.");
             if (resetEmail) setEmail(resetEmail);
             setShowResetPanel(false);
