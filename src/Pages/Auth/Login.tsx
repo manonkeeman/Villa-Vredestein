@@ -97,8 +97,7 @@ const Login = () => {
             if (!cleanEmail || !password) { setError("Vul e-mail en wachtwoord in."); return; }
             if (loginMode === "STUDENT" && !room) { setError("Kies eerst je kamer."); return; }
 
-            const success = await login(cleanEmail, password, { loginMode, room });
-            if (!success) { setError("Ongeldige gegevens of geen toegang."); return; }
+            await login(cleanEmail, password, { loginMode, room });
 
             // login() already called loadMe() internally, so localStorage is fresh
             const user = safeParseUser();
@@ -121,10 +120,13 @@ const Login = () => {
             );
         } catch (err) {
             const isTimeout = err?.code === "ECONNABORTED" || err?.message?.includes("timeout");
-            setError(isTimeout
-                ? "De server reageert niet, wacht even en probeer opnieuw."
-                : "Er ging iets mis. Probeer het opnieuw."
-            );
+            if (isTimeout) {
+                setError("De server reageert niet, wacht even en probeer opnieuw.");
+            } else if (err?.message) {
+                setError(err.message);
+            } else {
+                setError("Er ging iets mis. Probeer het opnieuw.");
+            }
         } finally {
             clearTimeout(slowTimer);
             setSubmitSlow(false);
