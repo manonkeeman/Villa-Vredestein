@@ -4,6 +4,7 @@ import { useAuth } from "./AuthContext";
 import { FiEye, FiEyeOff, FiMail, FiLock } from "react-icons/fi";
 import { Helmet } from "react-helmet-async";
 import Spinner from "../../Components/Spinner/Spinner";
+import LoginVideo from "../../Assets/Videos/home-verbouwing.mp4";
 import "./Login.css";
 
 const hasRole = (user, role) => {
@@ -189,15 +190,24 @@ const Login = () => {
                 <title>Inloggen, Villa Vredestein</title>
                 <meta name="robots" content="noindex, nofollow" />
             </Helmet>
-            {/* Video kant — IVA Business School TikTok */}
+            {/* Video kant */}
             <div className="login-media">
-                <iframe
+                <video
                     className="login-video"
-                    src="https://www.tiktok.com/embed/v2/7486828995728723233"
-                    title="IVA Business School"
-                    allow="encrypted-media"
-                    allowFullScreen
+                    src={LoginVideo}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
                 />
+                <a
+                    className="login-tiktok-link"
+                    href="https://www.tiktok.com/@ivabusinessschool/video/7486828995728723233"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    ▶ Bekijk IVA op TikTok
+                </a>
             </div>
 
             {/* Formulier kant */}
