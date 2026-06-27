@@ -361,6 +361,57 @@
 
 .login-register a:hover { color: #e5a10f; }
 
+/* ── OAuth divider ──────────────────────────────────── */
+.login-divider {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #4a3e2e;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 0.25rem 0;
+}
+.login-divider::before,
+.login-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #222;
+}
+
+/* ── Google login knop ──────────────────────────────── */
+.login-google-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.7rem 1rem;
+    background: #1a1a1a;
+    border: 1px solid #2e2418;
+    border-radius: 8px;
+    color: #e8d8c0;
+    font-family: inherit;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+    letter-spacing: 0.02em;
+}
+.login-google-btn:hover:not(:disabled) {
+    background: #242424;
+    border-color: #4a3e2e;
+    color: #fff;
+}
+.login-google-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.login-google-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
 /* ── Reset panel ────────────────────────────────────── */
 .reset-panel {
     display: flex;
