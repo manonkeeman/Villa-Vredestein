@@ -30,8 +30,7 @@ const TEMPLATE_LABELS = {
 const MOCK_STUDENTS = [
     { id: 1, username: "Desmond",  email: "desmondstaal@gmail.com",    room: "Thailand" },
     { id: 2, username: "Medoc",    email: "medocstaal@gmail.com",      room: "Frankrijk" },
-    { id: 3, username: "Simon",    email: "simontalsma2@gmail.com",    room: "Argentinië" },
-    { id: 4, username: "Arwen",    email: "arwenleonor@gmail.com",     room: "Italië" },
+    { id: 3, username: "Arwen",    email: "arwenleonor@gmail.com",     room: "Italië" },
 ];
 
 // ── Mock facturen: €350/mnd, jan t/m jul 2026; Desmond OVERDUE, rest PAID ──
