@@ -9,7 +9,7 @@
  *   contractFile, bestandsnaam van huurcontract (of null)
  */
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
     FiLogOut, FiHome, FiAlertCircle, FiFileText,
     FiUser, FiDollarSign, FiClipboard,
@@ -25,7 +25,9 @@ const hasRole = (user, role) => {
 };
 
 export default function StudentSidebar({ user, logout, active = "", contractFile = null }) {
+    const navigate = useNavigate();
     const cls = (key) => active === key ? "active-nav-link" : undefined;
+    const handleLogout = () => { logout(); navigate("/login"); };
 
     return (
         <aside className="dashboard-sidebar" aria-label="Navigatie zijbalk">
@@ -50,7 +52,7 @@ export default function StudentSidebar({ user, logout, active = "", contractFile
                     )}
                     <li><Link to="/student/profiel" className={cls("profiel")}><FiSettings /> Instellingen</Link></li>
                     <li>
-                        <button onClick={logout} type="button" className="logout-button">
+                        <button onClick={handleLogout} type="button" className="logout-button">
                             <FiLogOut /> Log uit
                         </button>
                     </li>

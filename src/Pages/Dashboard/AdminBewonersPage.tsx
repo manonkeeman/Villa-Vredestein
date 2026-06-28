@@ -5,7 +5,7 @@ import { useAuth } from "../Auth/AuthContext";
 import {
     FiUsers, FiRefreshCw, FiAlertTriangle, FiPlus,
     FiTrash2, FiUser, FiMail, FiHome, FiShield,
-    FiX, FiSave, FiEye, FiEyeOff, FiTool, FiCheckCircle,
+    FiX, FiSave, FiEye, FiEyeOff, FiTool, FiCheckCircle, FiKey, FiEdit2,
 } from "react-icons/fi";
 import api from "../../Helpers/AxiosHelper";
 import DashboardLayout from "./DashboardLayout";
@@ -40,10 +40,18 @@ function resolveRoom(u) {
 }
 
 // ── Bewoner-kaart ─────────────────────────────────────────────────────────
-function BewonerCard({ bewoner, onDelete }) {
-    const [confirming, setConfirming] = useState(false);
-    const [deleting,   setDeleting]   = useState(false);
-    const [deleteErr,  setDeleteErr]  = useState(null);
+function BewonerCard({ bewoner, onDelete, onUpdated }) {
+    const [confirming,  setConfirming]  = useState(false);
+    const [deleting,    setDeleting]    = useState(false);
+    const [deleteErr,   setDeleteErr]   = useState(null);
+    const [resetPw,     setResetPw]     = useState(false);
+    const [newPw,       setNewPw]       = useState("");
+    const [pwMsg,       setPwMsg]       = useState(null);
+    const [pwSaving,    setPwSaving]    = useState(false);
+    const [editRent,    setEditRent]    = useState(false);
+    const [newRent,     setNewRent]     = useState(bewoner.rentAmount?.toString() || "350");
+    const [rentMsg,     setRentMsg]     = useState(null);
+    const [rentSaving,  setRentSaving]  = useState(false);
 
     const roles = resolveRoles(bewoner);
     const role  = primaryRole(roles);
@@ -63,48 +71,98 @@ function BewonerCard({ bewoner, onDelete }) {
         }
     };
 
+    const handleResetPw = async (e) => {
+        e.preventDefault();
+        if (!newPw || newPw.length < 8) { setPwMsg({ ok: false, text: "Min. 8 tekens." }); return; }
+        setPwSaving(true); setPwMsg(null);
+        try {
+            await api.patch(`/api/admin/students/${bewoner.id}/password`, { newPassword: newPw });
+            setPwMsg({ ok: true, text: "Wachtwoord gewijzigd." });
+            setNewPw("");
+        } catch {
+            setPwMsg({ ok: false, text: "Wijzigen mislukt." });
+        } finally { setPwSaving(false); }
+    };
+
+    const handleSaveRent = async (e) => {
+        e.preventDefault();
+        if (!newRent || isNaN(Number(newRent))) { setRentMsg({ ok: false, text: "Ongeldig bedrag." }); return; }
+        setRentSaving(true); setRentMsg(null);
+        try {
+            const res = await api.patch(`/api/admin/students/${bewoner.id}`, { rentAmount: Number(newRent) });
+            setRentMsg({ ok: true, text: "Huurprijs bijgewerkt." });
+            if (onUpdated) onUpdated(res.data);
+            setEditRent(false);
+        } catch {
+            setRentMsg({ ok: false, text: "Opslaan mislukt." });
+        } finally { setRentSaving(false); }
+    };
+
     return (
-        <div className="bew-card">
-            <div className="bew-card-avatar">{role.icon}</div>
-            <div className="bew-card-info">
-                <strong className="bew-card-name">{bewoner.username}</strong>
-                <span className="bew-card-email"><FiMail /> {bewoner.email}</span>
-                {room && <span className="bew-card-room"><FiHome /> {room}</span>}
+        <div className="bew-card" style={{ flexDirection: "column", alignItems: "stretch" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+                <div className="bew-card-avatar">{role.icon}</div>
+                <div className="bew-card-info" style={{ flex: 1 }}>
+                    <strong className="bew-card-name">{bewoner.username}</strong>
+                    <span className="bew-card-email"><FiMail /> {bewoner.email}</span>
+                    {room && <span className="bew-card-room"><FiHome /> {room}</span>}
+                    {bewoner.rentAmount && (
+                        <span style={{ fontSize: 12, color: "#aaa" }}>
+                            Huur: €{Number(bewoner.rentAmount).toFixed(2)}/mnd
+                        </span>
+                    )}
+                </div>
+                <span className={`bew-role-badge ${role.cls}`}>{role.label}</span>
+                <div style={{ display: "flex", gap: "0.35rem" }}>
+                    <button type="button" className="admin-btn admin-btn--small"
+                        onClick={() => { setResetPw(v => !v); setEditRent(false); setPwMsg(null); }}
+                        title="Wachtwoord resetten"><FiKey /></button>
+                    <button type="button" className="admin-btn admin-btn--small"
+                        onClick={() => { setEditRent(v => !v); setResetPw(false); setRentMsg(null); }}
+                        title="Huurprijs aanpassen"><FiEdit2 /></button>
+                    <button type="button" className="admin-btn admin-btn--small admin-btn--danger"
+                        onClick={() => setConfirming(true)} title="Bewoner verwijderen"><FiTrash2 /></button>
+                </div>
             </div>
-            <span className={`bew-role-badge ${role.cls}`}>{role.label}</span>
 
-            {deleteErr && (
-                <span className="bew-delete-err" title={deleteErr}><FiAlertTriangle /></span>
-            )}
+            {deleteErr && <span className="bew-delete-err" title={deleteErr}><FiAlertTriangle /> {deleteErr}</span>}
 
-            {confirming ? (
-                <div className="bew-confirm-row">
+            {confirming && (
+                <div className="bew-confirm-row" style={{ marginTop: "0.5rem" }}>
                     <span className="bew-confirm-text">Zeker weten?</span>
-                    <button
-                        type="button"
-                        className="admin-btn admin-btn--small admin-btn--danger"
-                        onClick={handleDelete}
-                        disabled={deleting}
-                    >
+                    <button type="button" className="admin-btn admin-btn--small admin-btn--danger"
+                        onClick={handleDelete} disabled={deleting}>
                         {deleting ? "Verwijderen…" : "Ja, verwijder"}
                     </button>
-                    <button
-                        type="button"
-                        className="admin-btn admin-btn--small admin-btn--ghost"
-                        onClick={() => { setConfirming(false); setDeleteErr(null); }}
-                    >
+                    <button type="button" className="admin-btn admin-btn--small admin-btn--ghost"
+                        onClick={() => { setConfirming(false); setDeleteErr(null); }}>
                         <FiX /> Annuleer
                     </button>
                 </div>
-            ) : (
-                <button
-                    type="button"
-                    className="admin-btn admin-btn--small admin-btn--danger"
-                    onClick={() => setConfirming(true)}
-                    title="Bewoner verwijderen"
-                >
-                    <FiTrash2 />
-                </button>
+            )}
+
+            {resetPw && (
+                <form onSubmit={handleResetPw} style={{ marginTop: "0.75rem", display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
+                    <input type="password" placeholder="Nieuw wachtwoord (min. 8)" value={newPw}
+                        onChange={e => setNewPw(e.target.value)} minLength={8}
+                        style={{ flex: 1, minWidth: 180 }} autoComplete="new-password" />
+                    <button type="submit" className="admin-btn admin-btn--small" disabled={pwSaving}>
+                        <FiKey /> {pwSaving ? "…" : "Instellen"}
+                    </button>
+                    {pwMsg && <span style={{ width: "100%", fontSize: 12, color: pwMsg.ok ? "#2ecc71" : "#e74c3c" }}>{pwMsg.text}</span>}
+                </form>
+            )}
+
+            {editRent && (
+                <form onSubmit={handleSaveRent} style={{ marginTop: "0.75rem", display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
+                    <input type="number" min="1" step="0.01" value={newRent}
+                        onChange={e => setNewRent(e.target.value)}
+                        style={{ width: 120 }} placeholder="bijv. 350" />
+                    <button type="submit" className="admin-btn admin-btn--small" disabled={rentSaving}>
+                        <FiSave /> {rentSaving ? "…" : "Opslaan"}
+                    </button>
+                    {rentMsg && <span style={{ width: "100%", fontSize: 12, color: rentMsg.ok ? "#2ecc71" : "#e74c3c" }}>{rentMsg.text}</span>}
+                </form>
             )}
         </div>
     );
@@ -267,7 +325,7 @@ function NieuwBewoner({ onCreated, onClose }) {
 
                     <p className="bew-info-msg">
                         De student ontvangt een welkomstmail met inloggegevens, kamernummer en info over Villa Vredestein.
-                        Er wordt direct een factuur + Mollie betaallink aangemaakt. Het schoonmaakrooster wordt automatisch bijgewerkt.
+                        Er wordt direct een factuur aangemaakt. Het schoonmaakrooster wordt automatisch bijgewerkt.
                     </p>
 
                     {err && (
@@ -336,8 +394,10 @@ const AdminBewonersPage = () => {
         load(); // herlaad om backend-state te spiegelen
     };
 
-    const handleDelete = () => {
-        load(); // herlaad na verwijdering
+    const handleDelete = () => { load(); };
+
+    const handleUpdated = (updated) => {
+        setBewoners(prev => prev.map(b => b.id === updated.id ? { ...updated, roles: resolveRoles(updated) } : b));
     };
 
     const filtered = bewoners.filter(b => {
@@ -430,7 +490,7 @@ const AdminBewonersPage = () => {
                 )}
                 <div className="bew-list">
                     {filtered.map(b => (
-                        <BewonerCard key={b.id} bewoner={b} onDelete={handleDelete} />
+                        <BewonerCard key={b.id} bewoner={b} onDelete={handleDelete} onUpdated={handleUpdated} />
                     ))}
                 </div>
             </div>
