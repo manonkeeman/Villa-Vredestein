@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../Auth/AuthContext";
 import {
-    FiSettings, FiSave, FiUser, FiLock, FiBell, FiRefreshCw, FiEye, FiEyeOff,
+    FiSettings, FiSave, FiUser, FiLock, FiBell, FiRefreshCw, FiEye, FiEyeOff, FiPhone, FiKey, FiUsers,
 } from "react-icons/fi";
 import api from "../../Helpers/AxiosHelper";
 import DashboardLayout from "./DashboardLayout";
@@ -33,6 +33,58 @@ const AdminInstellingenPage = () => {
     const [pwMsg,      setPwMsg]      = useState(null);
     const [showCur,    setShowCur]    = useState(false);
     const [showNew,    setShowNew]    = useState(false);
+
+    // Phone number
+    const [phoneNumber, setPhoneNumber] = useState(user?.phoneNumber || "");
+    const [phoneMsg,    setPhoneMsg]    = useState(null);
+
+    // Student password reset
+    const [students,    setStudents]    = useState([]);
+    const [selStudent,  setSelStudent]  = useState("");
+    const [newStudPw,   setNewStudPw]   = useState("");
+    const [studPwMsg,   setStudPwMsg]   = useState(null);
+    const [studPwSaving, setStudPwSaving] = useState(false);
+
+    useEffect(() => {
+        api.get("/api/users").then(res => {
+            const studs = (res.data || []).filter(u => {
+                const roles = u.roles || u.authorities || [];
+                return roles.some(r => (typeof r === "string" ? r : r?.authority || "").includes("STUDENT"));
+            });
+            setStudents(studs);
+            if (studs.length > 0) setSelStudent(String(studs[0].id));
+        }).catch(() => {});
+    }, []);
+
+    const handleSavePhone = async (e) => {
+        e.preventDefault();
+        setPhoneMsg(null);
+        try {
+            await api.put("/api/users/me/profile", { phoneNumber });
+            setPhoneMsg({ ok: true, text: "Telefoonnummer opgeslagen." });
+        } catch {
+            setPhoneMsg({ ok: false, text: "Opslaan mislukt." });
+        }
+    };
+
+    const handleResetStudentPw = async (e) => {
+        e.preventDefault();
+        if (!selStudent || !newStudPw || newStudPw.length < 8) {
+            setStudPwMsg({ ok: false, text: "Kies een student en vul min. 8 tekens in." });
+            return;
+        }
+        setStudPwSaving(true);
+        setStudPwMsg(null);
+        try {
+            await api.patch(`/api/admin/students/${selStudent}/password`, { newPassword: newStudPw });
+            setStudPwMsg({ ok: true, text: "Wachtwoord succesvol gewijzigd." });
+            setNewStudPw("");
+        } catch {
+            setStudPwMsg({ ok: false, text: "Wijzigen mislukt." });
+        } finally {
+            setStudPwSaving(false);
+        }
+    };
 
     // Notification toggles
     const defaults = getNotifSettings();
@@ -131,6 +183,60 @@ const AdminInstellingenPage = () => {
                     {notifSaved && <p style={{ fontSize: 13, color: "#2ecc71", marginBottom: "0.5rem" }}>Instellingen opgeslagen!</p>}
                     <button type="submit" className="admin-btn">
                         <FiSave /> Opslaan
+                    </button>
+                </form>
+            </section>
+
+            {/* Telefoonnummer */}
+            <section className="admin-section" style={{ marginBottom: "2rem" }}>
+                <h2 style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "1rem" }}>
+                    <FiPhone /> Telefoonnummer
+                </h2>
+                <form className="comm-form" onSubmit={handleSavePhone} style={{ maxWidth: 420 }}>
+                    <div className="comm-field">
+                        <label>Telefoonnummer (bijv. +31625015299)</label>
+                        <input
+                            type="tel"
+                            value={phoneNumber}
+                            onChange={e => setPhoneNumber(e.target.value)}
+                            placeholder="+31612345678"
+                        />
+                    </div>
+                    {phoneMsg && <p style={{ fontSize: 13, color: phoneMsg.ok ? "#2ecc71" : "#e74c3c", marginBottom: "0.5rem" }}>{phoneMsg.text}</p>}
+                    <button type="submit" className="admin-btn"><FiSave /> Opslaan</button>
+                </form>
+            </section>
+
+            {/* Wachtwoord bewoner resetten */}
+            <section className="admin-section" style={{ marginBottom: "2rem" }}>
+                <h2 style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "1rem" }}>
+                    <FiKey /> Wachtwoord bewoner resetten
+                </h2>
+                <form className="comm-form" onSubmit={handleResetStudentPw} style={{ maxWidth: 420 }}>
+                    <div className="comm-field">
+                        <label><FiUsers style={{ marginRight: 4 }} />Bewoner</label>
+                        <select value={selStudent} onChange={e => setSelStudent(e.target.value)}>
+                            {students.map(s => (
+                                <option key={s.id} value={String(s.id)}>
+                                    {s.username} ({s.email})
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className="comm-field">
+                        <label>Nieuw wachtwoord</label>
+                        <input
+                            type="password"
+                            value={newStudPw}
+                            onChange={e => setNewStudPw(e.target.value)}
+                            minLength={8}
+                            placeholder="Minimaal 8 tekens"
+                            autoComplete="new-password"
+                        />
+                    </div>
+                    {studPwMsg && <p style={{ fontSize: 13, color: studPwMsg.ok ? "#2ecc71" : "#e74c3c", marginBottom: "0.5rem" }}>{studPwMsg.text}</p>}
+                    <button type="submit" className="admin-btn" disabled={studPwSaving}>
+                        <FiKey /> {studPwSaving ? "Bezig…" : "Wachtwoord instellen"}
                     </button>
                 </form>
             </section>

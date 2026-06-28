@@ -204,16 +204,10 @@ const BetalingenPage = () => {
                                             </td>
                                             <td><StatusBadge status={inv.status} /></td>
                                             <td className="payment-actions">
-                                                {(inv.status === "OPEN" || inv.status === "OVERDUE") && inv.checkoutUrl && (
-                                                    <a
-                                                        href={inv.checkoutUrl}
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        className="payment-btn payment-btn-pay"
-                                                        title="Betaal via iDEAL"
-                                                    >
-                                                        <FiExternalLink /> Betaal
-                                                    </a>
+                                                {(inv.status === "OPEN" || inv.status === "OVERDUE") && (
+                                                    <span className="payment-transfer-info" title="Maak een overboeking naar M. Staal">
+                                                        M. Staal · NL94 INGB 0660 8510 83
+                                                    </span>
                                                 )}
                                                 {inv.status === "PAID" && (
                                                     <button
