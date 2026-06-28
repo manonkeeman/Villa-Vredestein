@@ -233,15 +233,11 @@ function PhotoCard() {
             sessionStorage.setItem("cleaning_uploads", JSON.stringify(newUploads));
             setUploads(newUploads);
             setMsg({ ok: true, text: `Foto van ${room} geüpload!` });
-        } catch {
-            // Store locally as fallback
-            const entry = { room, time: new Date().toLocaleTimeString("nl-NL", { hour: "2-digit", minute: "2-digit" }) };
-            const newUploads = [entry, ...uploads].slice(0, 20);
-            sessionStorage.setItem("cleaning_uploads", JSON.stringify(newUploads));
-            setUploads(newUploads);
-            setMsg({ ok: true, text: `Foto van ${room} opgeslagen (offline).` });
-        } finally {
             setPhoto(null); setPreview(null);
+        } catch (err) {
+            const detail = err?.response?.data?.message || err?.response?.data || "Upload mislukt.";
+            setMsg({ ok: false, text: `Fout: ${detail}` });
+        } finally {
             setUploading(false);
         }
     };
@@ -315,14 +311,15 @@ function SupplyCard() {
     const send = async () => {
         if (selected.length === 0 && !note.trim()) return;
         setSending(true); setMsg(null);
-        const payload = { items: selected, note, timestamp: new Date().toISOString() };
+        const itemName = selected.length > 0 ? selected.join(", ") : "Overig";
         try {
-            await api.post("/api/supply-reports", payload);
+            await api.post("/api/supply-reports", { itemName, notes: note || null, urgency: "MEDIUM" });
             setMsg({ ok: true, text: "Voorraadmelding verstuurd!" });
-        } catch {
-            setMsg({ ok: true, text: "Melding opgeslagen (wordt verstuurd als er verbinding is)." });
-        } finally {
             setSelected([]); setNote("");
+        } catch (err) {
+            const detail = err?.response?.data?.message || err?.response?.data || "Probeer het opnieuw.";
+            setMsg({ ok: false, text: `Versturen mislukt: ${detail}` });
+        } finally {
             setSending(false);
         }
     };
@@ -397,10 +394,11 @@ function ProblemCard() {
         try {
             await api.post("/api/tickets", form, { headers: { "Content-Type": "multipart/form-data" } });
             setMsg({ ok: true, text: "Melding verstuurd! Beheerder is gewaarschuwd." });
-        } catch {
-            setMsg({ ok: true, text: "Melding opgeslagen. Wordt verstuurd bij herstel verbinding." });
-        } finally {
             setTitle(""); setDescription(""); setPhoto(null); setPreview(null);
+        } catch (err) {
+            const detail = err?.response?.data?.message || err?.response?.data || "Probeer het opnieuw.";
+            setMsg({ ok: false, text: `Versturen mislukt: ${detail}` });
+        } finally {
             setSending(false);
         }
     };

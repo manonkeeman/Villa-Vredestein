@@ -33,7 +33,7 @@ const TYPE_META = {
 const MOCK_TICKETS = [
     { id: 1, title: "Lekkende kraan badkamer", category: "loodgieterswerk", priority: "hoog",   status: "OPEN",        createdBy: "Desmond", createdAt: "2026-04-10T09:00:00", description: "De kraan in de badkamer druppelt continu.", comments: [] },
     { id: 2, title: "Verwarming doet het niet", category: "verwarming",     priority: "hoog",   status: "IN_PROGRESS", createdBy: "Medoc",   createdAt: "2026-04-12T14:30:00", description: "Radiator kamer Japan geeft geen warmte.", comments: [{ author: "Beheerder", text: "Monteur gepland voor 15 april.", createdAt: "2026-04-13T10:00:00" }] },
-    { id: 3, title: "Kapotte lamp gang",        category: "elektra",        priority: "laag",   status: "RESOLVED",    createdBy: "Simon",   createdAt: "2026-04-05T11:00:00", description: "Lamp in de gang is kapot.", comments: [{ author: "Beheerder", text: "Vervangen.", createdAt: "2026-04-06T08:00:00" }] },
+    { id: 3, title: "Kapotte lamp gang",        category: "elektra",        priority: "laag",   status: "RESOLVED",    createdBy: "Arwen",   createdAt: "2026-04-05T11:00:00", description: "Lamp in de gang is kapot.", comments: [{ author: "Beheerder", text: "Vervangen.", createdAt: "2026-04-06T08:00:00" }] },
     { id: 4, title: "Wifi valt uit",            category: "overig",         priority: "middel", status: "OPEN",        createdBy: "Desmond", createdAt: "2026-04-14T20:00:00", description: "Wifi valt regelmatig uit op de bovenverdieping.", comments: [] },
 ];
 

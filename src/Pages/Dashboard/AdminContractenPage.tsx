@@ -42,10 +42,9 @@ function applyOverrides(list) {
 
 // ── Mock data ─────────────────────────────────────────────────────────────
 const MOCK_USERS = [
-    { id: 1, username: "Desmond", email: "desmondstaal@gmail.com",  room: "Thailand",   contractStart: "2025-09-01", contractEnd: "2026-08-31", deposit: 750, contractFile: null },
-    { id: 2, username: "Medoc",   email: "medocstaal@gmail.com",    room: "Frankrijk",  contractStart: "2025-09-01", contractEnd: "2026-08-31", deposit: 750, contractFile: null },
-    { id: 3, username: "Simon",   email: "simontalsma2@gmail.com",  room: "Argentinië", contractStart: "2025-09-01", contractEnd: "2026-08-31", deposit: 750, contractFile: null },
-    { id: 4, username: "Arwen",   email: "arwenleonor@gmail.com",   room: "Italië",     contractStart: "2025-09-01", contractEnd: "2026-08-31", deposit: 750, contractFile: null },
+    { id: 1, username: "Desmond", email: "desmondstaal@gmail.com",  room: "Thailand",  contractStart: "2025-09-01", contractEnd: "2026-08-31", deposit: 750, contractFile: null },
+    { id: 2, username: "Medoc",   email: "medocstaal@gmail.com",    room: "Frankrijk", contractStart: "2025-09-01", contractEnd: "2026-08-31", deposit: 750, contractFile: null },
+    { id: 3, username: "Arwen",   email: "arwenleonor@gmail.com",   room: "Italië",    contractStart: "2025-09-01", contractEnd: "2026-08-31", deposit: 750, contractFile: null },
 ];
 
 const getDeletedIds = () => {

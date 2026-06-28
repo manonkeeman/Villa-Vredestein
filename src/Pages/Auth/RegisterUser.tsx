@@ -14,7 +14,6 @@ const EMAIL_TO_ROOM = {
     "ikheetalvar@gmail.com": "Oekraïne",
     "medocstaal@gmail.com": "Frankrijk",
     "desmondstaal@gmail.com": "Thailand",
-    "simontalsma2@gmail.com": "Argentinie",
 };
 
 const ROOM_OPTIONS = [
@@ -22,7 +21,7 @@ const ROOM_OPTIONS = [
     { value: "Oekraïne", label: "Oekraïne" },
     { value: "Frankrijk", label: "Frankrijk" },
     { value: "Thailand", label: "Thailand" },
-    { value: "Argentinie", label: "Argentinie" },
+    { value: "Argentinië", label: "Argentinië (beschikbaar)" },
     { value: "Japan", label: "Japan (beschikbaar)" },
 ];
 
