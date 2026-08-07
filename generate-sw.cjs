@@ -47,14 +47,14 @@ generateSW({
     },
     {
       urlPattern: /\/api\/.*/i,
-      handler: 'NetworkFirst',
+      handler: 'StaleWhileRevalidate',
       options: {
         cacheName: 'api-cache',
-        networkTimeoutSeconds: 10,
         expiration: {
           maxEntries: 50,
-          maxAgeSeconds: 5 * 60,
+          maxAgeSeconds: 7 * 24 * 60 * 60,
         },
+        cacheableResponse: { statuses: [0, 200] },
       },
     },
   ],
