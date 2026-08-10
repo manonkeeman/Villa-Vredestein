@@ -7,13 +7,13 @@ export default function Unauthorized() {
     return (
         <main className="not-found">
             <Helmet>
-                <title>403, Geen toegang | Villa Vredestein</title>
+                <title>404, Pagina niet gevonden | Villa Vredestein</title>
                 <meta name="robots" content="noindex, nofollow" />
             </Helmet>
             <div className="not-found-content">
-                <h1>403</h1>
-                <h2>Geen toegang</h2>
-                <p>Je hebt niet de juiste rechten om deze pagina te bekijken.</p>
+                <h1>404</h1>
+                <h2>Pagina niet gevonden</h2>
+                <p>Deze pagina bestaat niet (meer).</p>
                 <Link to="/" className="not-found-button">Terug naar home</Link>
             </div>
         </main>

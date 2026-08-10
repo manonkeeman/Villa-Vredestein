@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import { NavLink, Link, useNavigate, useLocation } from "react-router-dom";
-import { FaInstagram, FaWhatsapp, FaUser } from "react-icons/fa";
+import { NavLink, useLocation } from "react-router-dom";
+import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
-import { useAuth } from "../../Pages/Auth/AuthContext";
 import "./Nav.css";
 
 const LANGUAGES = [
@@ -14,19 +13,10 @@ const LANGUAGES = [
     { code: "it", label: "IT" },
 ];
 
-const hasRole = (user, role) => {
-    const roles = user?.roles || [];
-    const normalized = role.startsWith("ROLE_") ? role : `ROLE_${role}`;
-    return roles.includes(normalized);
-};
-
 const Nav = () => {
-    const { isLoggedIn, logout, user } = useAuth();
-    const navigate = useNavigate();
     const location = useLocation();
     const { t, i18n } = useTranslation();
 
-    const [dropdownOpen, setDropdownOpen] = useState(false);
     const [langOpen, setLangOpen] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
     const [logoClicked, setLogoClicked] = useState(false);
@@ -39,22 +29,14 @@ const Nav = () => {
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
 
-    const userRef = useRef(null);
     const langRef = useRef(null);
     const navLinksId = "nav-links-menu";
 
     const currentLang = i18n.language?.split("-")[0] || "nl";
 
-    const dashboardHome = hasRole(user, "ADMIN")
-        ? "/admin"
-        : hasRole(user, "CLEANER")
-            ? "/cleaning"
-            : "/student";
-
-    // Close all dropdowns on outside click
+    // Close dropdown on outside click
     useEffect(() => {
         const handleClick = (e) => {
-            if (userRef.current && !userRef.current.contains(e.target)) setDropdownOpen(false);
             if (langRef.current && !langRef.current.contains(e.target)) setLangOpen(false);
         };
         document.addEventListener("mousedown", handleClick);
@@ -65,7 +47,6 @@ const Nav = () => {
     useEffect(() => {
         const handleKeyDown = (e) => {
             if (e.key === "Escape") {
-                setDropdownOpen(false);
                 setLangOpen(false);
                 setMenuOpen(false);
             }
@@ -77,12 +58,6 @@ const Nav = () => {
     // Close mobile menu on route change
     useEffect(() => { setMenuOpen(false); }, [location.pathname]);
 
-    const handleLogout = () => {
-        logout();
-        setDropdownOpen(false);
-        navigate("/login");
-    };
-
     const handleLangChange = (code) => {
         i18n.changeLanguage(code);
         setLangOpen(false);
@@ -93,7 +68,7 @@ const Nav = () => {
         setTimeout(() => setLogoClicked(false), 1000);
     };
 
-    const closeAll = () => { setMenuOpen(false); setDropdownOpen(false); };
+    const closeAll = () => { setMenuOpen(false); };
 
     return (
         <nav className={`navigatie-container ${scrolled ? "nav-scrolled" : "nav-transparent"}`} aria-label="Hoofdnavigatie">
@@ -198,29 +173,6 @@ const Nav = () => {
                                 </li>
                             ))}
                         </ul>
-                    )}
-                </li>
-
-                {/* User icon, login of uitloggen */}
-                <li ref={userRef}>
-                    {isLoggedIn ? (
-                        <div className="user-icon-wrapper">
-                            <button className="user-icon-btn" onClick={() => setDropdownOpen(o => !o)}
-                                aria-expanded={dropdownOpen} aria-label="Gebruikersmenu">
-                                <FaUser aria-hidden="true" />
-                            </button>
-                            {dropdownOpen && (
-                                <div className="dropdown-menu" role="menu">
-                                    <button className="logout-button" role="menuitem" onClick={handleLogout}>
-                                        Uitloggen
-                                    </button>
-                                </div>
-                            )}
-                        </div>
-                    ) : (
-                        <NavLink to="/login" className="icon-link" onClick={closeAll} aria-label="Inloggen">
-                            <FaUser aria-hidden="true" />
-                        </NavLink>
                     )}
                 </li>
             </ul>

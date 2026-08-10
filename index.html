@@ -57,16 +57,6 @@
   <link rel="alternate" hreflang="it" href="https://villavredestein.nl" />
   <link rel="alternate" hreflang="x-default" href="https://villavredestein.nl" />
 
-  <!-- PWA -->
-  <meta name="theme-color" content="#5a3e2b" />
-  <meta name="mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="Villa VV" />
-  <meta name="application-name" content="Villa VV" />
-  <meta name="msapplication-TileColor" content="#5a3e2b" />
-  <meta name="msapplication-TileImage" content="/icons/icon-144x144.png" />
-
   <!-- Favicon & Apple icons -->
   <link rel="icon" type="image/png" sizes="512x512" href="/icons/icon-512x512.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192x192.png" />
@@ -159,16 +149,6 @@
 </head>
 <body>
 <div id="root"></div>
-
-<!-- Capture beforeinstallprompt before React mounts (fires early on Android Chrome) -->
-<script>
-  window.__pwaInstallPrompt = null;
-  window.addEventListener('beforeinstallprompt', function(e) {
-    e.preventDefault();
-    window.__pwaInstallPrompt = e;
-    window.dispatchEvent(new Event('pwa-prompt-ready'));
-  });
-</script>
 
 <script type="module" src="/src/main.jsx"></script>
 
