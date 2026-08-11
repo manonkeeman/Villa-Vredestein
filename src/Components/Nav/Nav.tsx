@@ -136,6 +136,11 @@ const Nav = () => {
                     </NavLink>
                 </li>
                 <li>
+                    <NavLink to="/faq" className="default-link" onClick={closeAll}>
+                        FAQ
+                    </NavLink>
+                </li>
+                <li>
                     <NavLink to="/contact" className="default-link" onClick={closeAll}>
                         {t("nav.contact")}
                     </NavLink>

@@ -225,9 +225,9 @@ const GalerijVilla = () => {
                     name="description"
                     content="Fotogalerij en historisch archief van Villa Vredestein: interieur, exterieur, tuin, kadasterkaarten en krantenartikelen van 1906 tot nu."
                 />
-                <link rel="canonical" href="https://villavredestein.nl/galerij" />
+                <link rel="canonical" href="https://villavredestein.nl/galerij-villa" />
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://villavredestein.nl/galerij" />
+                <meta property="og:url" content="https://villavredestein.nl/galerij-villa" />
                 <meta property="og:title" content="Galerij & Historisch Archief, Villa Vredestein" />
                 <meta property="og:description" content="Fotogalerij en historisch archief van Villa Vredestein. Ansichtkaarten, plattegronden, de verbouwing en een eeuw geschiedenis." />
                 <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />

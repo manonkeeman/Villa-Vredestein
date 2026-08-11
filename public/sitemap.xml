@@ -123,6 +123,16 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://villavredestein.nl/tijdlijn" />
   </url>
 
+  <!-- FAQ -->
+  <url>
+    <loc>https://villavredestein.nl/faq</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.nl/faq" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://villavredestein.nl/faq" />
+  </url>
+
   <!-- Contact -->
   <url>
     <loc>https://villavredestein.nl/contact</loc>

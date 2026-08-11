@@ -63,7 +63,7 @@ const Privacy = () => (
 
             <section className="priv-section">
                 <h2>7. Cookies</h2>
-                <p>Villa Vredestein maakt geen gebruik van tracking- of analytische cookies. Er worden alleen technisch noodzakelijke cookies geplaatst die de website laten functioneren (sessie en PWA-cache). Er worden geen advertentiecookies of cookies van derden geplaatst.</p>
+                <p>Villa Vredestein maakt geen gebruik van tracking- of analytische cookies. Er worden geen advertentiecookies of cookies van derden geplaatst.</p>
             </section>
 
             <section className="priv-section">
