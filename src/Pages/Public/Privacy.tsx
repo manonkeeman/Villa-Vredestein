@@ -23,7 +23,7 @@ const Privacy = () => (
         <div className="priv-body">
             <section className="priv-section">
                 <h2>1. Wie zijn wij</h2>
-                <p>Villa Vredestein is een particuliere woning en kleinschalig verblijfsadres, gevestigd op Hoofdstraat 147, 3975 ED Driebergen-Rijsenburg. Verantwoordelijk voor de verwerking van persoonsgegevens zijn Manon Keeman en Maxim Staal (hierna: "wij" of "Villa Vredestein"). Vragen over dit beleid kunnen worden gestuurd naar <a href="mailto:villavredestein@gmail.com">villavredestein@gmail.com</a>.</p>
+                <p>Villa Vredestein is een particuliere woning en kleinschalig verblijfsadres, gevestigd op Hoofdstraat 147, 3975 ED Driebergen-Rijsenburg. Verantwoordelijk voor de verwerking van persoonsgegevens zijn Manon Keeman en Maxim Staal (hierna: &quot;wij&quot; of &quot;Villa Vredestein&quot;). Vragen over dit beleid kunnen worden gestuurd naar <a href="mailto:villavredestein@gmail.com">villavredestein@gmail.com</a>.</p>
             </section>
 
             <section className="priv-section">

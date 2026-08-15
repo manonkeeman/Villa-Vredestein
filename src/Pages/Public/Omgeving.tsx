@@ -8,22 +8,11 @@ import "./Omgeving.css";
 
 import OmgevingImg        from "../../Assets/Images/DeOmgevingVillaVredestein.jpg";
 
-import ImgPannen           from "../../Assets/Images/PannenkoekenAvondVillaVredestein.jpg";
-import ImgDiner            from "../../Assets/Images/life-diner.jpg";
-import ImgSfeer            from "../../Assets/Images/life-sfeer.jpg";
-import ImgFiets            from "../../Assets/Images/life-bloemen-fiets.jpg";
-import ImgBuiten           from "../../Assets/Images/life-buiten-eten.jpg";
-import ImgTuinfeest        from "../../Assets/Images/ext-tuinfeest.jpg";
-import ImgVilla1910        from "../../Assets/Images/VillaVredestein1910.jpg";
-import ImgBloemen          from "../../Assets/Images/ext-villa-bloemen.jpg";
-import ImgMoestuin         from "../../Assets/Images/life-moestuin.jpg";
 import ImgHuiskamer        from "../../Assets/Images/omg-huiskamer.jpg";
 import ImgVroeg            from "../../Assets/Images/omg-vroeg.jpg";
-import ImgKoekei           from "../../Assets/Images/omg-koekei.jpg";
 import ImgLouwietje        from "../../Assets/Images/omg-louwietje.jpg";
 import ImgMasMontagne      from "../../Assets/Images/omg-mas-montagne.webp";
 import ImgChaletHelenaheuvel from "../../Assets/Images/omg-chalet-helenaheuvel.jpg";
-import ImgKoffieZoZeist    from "../../Assets/Images/omg-koffie-zo-zeist.jpg";
 import ImgBagelsBeans      from "../../Assets/Images/omg-bagels-beans.jpg";
 import ImgSpotDoorn        from "../../Assets/Images/omg-spot-doorn.jpg";
 import ImgJagershuis       from "../../Assets/Images/omg-jagershuis.jpg";
@@ -253,7 +242,7 @@ const ACTIVITEITEN: BzItem[] = [
 
 const VenueCard = ({ v }: { v: Venue }) => {
     let displayDomain = v.web;
-    try { displayDomain = new URL(v.web).hostname.replace(/^www\./, ""); } catch {}
+    try { displayDomain = new URL(v.web).hostname.replace(/^www\./, ""); } catch { /* invalid URL, fall back to raw value */ }
     return (
         <a href={v.web} target="_blank" rel="noreferrer" className="venue-card">
             <div className="venue-photo">
@@ -271,7 +260,7 @@ const VenueCard = ({ v }: { v: Venue }) => {
 
 const BzCard = ({ b }: { b: BzItem }) => {
     let displayWeb = b.web ?? "";
-    try { if (b.web) displayWeb = new URL(b.web).hostname.replace(/^www\./, ""); } catch {}
+    try { if (b.web) displayWeb = new URL(b.web).hostname.replace(/^www\./, ""); } catch { /* invalid URL, fall back to raw value */ }
     const inner = (
         <>
             <div className="venue-photo venue-photo--bz">

@@ -10,7 +10,6 @@ import Villa2 from "../../Assets/Images/VillaVredestein1910.jpg";
 import Villa3 from "../../Assets/Images/VillaVredesteinRestauratie.jpg";
 import Villa6 from "../../Assets/Images/DeOmgevingVillaVredestein.jpg";
 import Villa7 from "../../Assets/Images/PannenkoekenAvondVillaVredestein.jpg";
-import Villa8 from "../../Assets/Images/Maxim_Manon_ChevroletSuburban.jpg";
 import LuchtballonImg from "../../Assets/Images/ext-luchtballon.png";
 import Villa9 from "../../Assets/Images/BezoekOnsVillaVredestein.jpg";
 import CarpeDiemVideo from "../../Assets/Videos/carpe-diem.mp4";
@@ -50,7 +49,7 @@ const Blog = () => {
             <main className="blog-page">
                 <div className="blog-not-found">
                     <h1>{t("about.back")}</h1>
-                    <Button text={t("about.back")} variant="primary" onClick={() => navigate(-1 as any)} />
+                    <Button text={t("about.back")} variant="primary" onClick={() => navigate(-1)} />
                 </div>
             </main>
         );
@@ -107,7 +106,7 @@ const Blog = () => {
                 <header className="blog-header">
                     <button
                         className="blog-back-btn"
-                        onClick={() => navigate(-1 as any)}
+                        onClick={() => navigate(-1)}
                         aria-label={t("about.back")}
                     >
                         {t("about.back")}
@@ -157,7 +156,7 @@ const Blog = () => {
                     <Button
                         text={t("about.back")}
                         variant="primary"
-                        onClick={() => navigate(-1 as any)}
+                        onClick={() => navigate(-1)}
                     />
                 </footer>
             </article>

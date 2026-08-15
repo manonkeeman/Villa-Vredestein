@@ -173,8 +173,8 @@ const Verblijven = () => {
                     <div className="verb-sfeer-overlay" />
                     <div className="verb-sfeer-quote-wrap">
                         <blockquote className="verb-sfeer-quote">
-                            "Wonen in Villa Vredestein is meer dan een kamer huren.<br />
-                            Het is deel worden van een levend verhaal."
+                            &quot;Wonen in Villa Vredestein is meer dan een kamer huren.<br />
+                            Het is deel worden van een levend verhaal.&quot;
                         </blockquote>
                         <cite className="verb-sfeer-cite">Manon &amp; Maxim, eigenaren</cite>
                     </div>
@@ -290,7 +290,7 @@ const Verblijven = () => {
                                 <div className="review-sterren">
                                     {"★".repeat(r.sterren)}
                                 </div>
-                                <p className="review-tekst">"{r.tekst}"</p>
+                                <p className="review-tekst">&quot;{r.tekst}&quot;</p>
                                 <div className="review-auteur">
                                     <div className="review-avatar">{r.naam.charAt(0)}</div>
                                     <div>
@@ -343,7 +343,7 @@ const Verblijven = () => {
                                 onSubmit={handleSubmit}
                                 name="verblijven"
                                 data-netlify="true"
-                                netlify-honeypot="bot-field"
+                                data-netlify-honeypot="bot-field"
                             >
                                 <input type="hidden" name="form-name" value="verblijven" />
                                 <input type="hidden" name="bot-field" style={{ display: "none" }} />

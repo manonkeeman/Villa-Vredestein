@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -8,7 +8,27 @@ import "./Plattegrond.css";
 /* ─────────────────────────────────────────────
    Verdiepingen (visueel overzicht)
 ───────────────────────────────────────────── */
-const VERDIEPINGEN = [
+type Ruimte = {
+    naam: string;
+    icon: string;
+    afm: string;
+    info: string;
+    aanbouw?: boolean;
+};
+
+type Verdieping = {
+    id: string;
+    label: string;
+    bewoners: string;
+    icon: string;
+    kleur: string;
+    beschrijving: string;
+    status: string;
+    plattegrondCaption?: string;
+    ruimtes: Ruimte[];
+};
+
+const VERDIEPINGEN: Verdieping[] = [
     {
         id: "boven",
         label: "Bovenste verdieping",
@@ -93,7 +113,6 @@ const Plattegrond = () => {
     const { i18n } = useTranslation();
     const langCode = i18n.language?.split("-")[0] || "nl";
     const navigate = useNavigate();
-    const [actief, setActief] = React.useState<string | null>(null);
     const revealRefs = useRef<HTMLElement[]>([]);
     const addRef = (el: HTMLElement | null) => {
         if (el && !revealRefs.current.includes(el)) revealRefs.current.push(el);
@@ -135,7 +154,7 @@ const Plattegrond = () => {
             </Helmet>
 
             {/* ── Hero ── */}
-            <header className="pg-hero reveal-section" ref={addRef as any}>
+            <header className="pg-hero reveal-section" ref={addRef}>
                 <div className="pg-hero-inner">
                     <span className="pg-eyebrow">De ruimtes</span>
                     <h1>Drie verdiepingen. Elk met eigen leven.</h1>
@@ -159,11 +178,11 @@ const Plattegrond = () => {
             </header>
 
             {/* ── Verdiepingen (visuele cards) ── */}
-            {VERDIEPINGEN.map((verd, vi) => (
+            {VERDIEPINGEN.map((verd) => (
                 <section
                     key={verd.id}
                     className="pg-verd reveal-section"
-                    ref={addRef as any}
+                    ref={addRef}
                     style={{ "--vkleur": verd.kleur } as React.CSSProperties}
                 >
                     <div className="pg-inner">
@@ -195,13 +214,13 @@ const Plattegrond = () => {
                                 </div>
                             ))}
                         </div>
-                        {(verd as any).plattegrondCaption && (
+                        {verd.plattegrondCaption && (
                             <div className="pg-platt-link-wrap">
                                 <button
                                     className="pg-platt-link"
                                     onClick={() => navigate("/galerij-villa", { state: { cat: "Plattegrond" } })}
                                 >
-                                    Bekijk plattegrond {(verd as any).plattegrondCaption} →
+                                    Bekijk plattegrond {verd.plattegrondCaption} →
                                 </button>
                             </div>
                         )}
@@ -210,7 +229,7 @@ const Plattegrond = () => {
             ))}
 
             {/* ── CTA ── */}
-            <section className="pg-cta reveal-section" ref={addRef as any}>
+            <section className="pg-cta reveal-section" ref={addRef}>
                 <div className="pg-inner pg-cta-inner">
                     <div>
                         <h2>Interesse in verblijven?</h2>

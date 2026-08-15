@@ -256,7 +256,7 @@ const Galerij = () => {
                 <h1>Historische Galerij</h1>
                 <p>
                     Meer dan een eeuw bewaard gebleven. Krantenartikelen, advertenties en
-                    foto's die het leven op Hoofdstraat 147 vastleggen, van 1912 tot nu.
+                    foto&apos;s die het leven op Hoofdstraat 147 vastleggen, van 1912 tot nu.
                 </p>
             </header>
 

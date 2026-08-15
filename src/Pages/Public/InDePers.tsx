@@ -199,7 +199,7 @@ const InDePers = () => {
                                     />
                                     {item.imgs.length > 1 && (
                                         <span className="idp-foto-count">
-                                            📷 {item.imgs.length} foto's
+                                            📷 {item.imgs.length} foto&apos;s
                                         </span>
                                     )}
                                 </div>

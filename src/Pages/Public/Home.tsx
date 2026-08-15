@@ -11,9 +11,7 @@ import L from "leaflet";
 import HeroImg from "../../Assets/Images/int-woonkamer.jpg";
 import VillaImg from "../../Assets/Images/ext-villa-voorkant.jpg";
 import VerbouwingVid from "../../Assets/Videos/home-verbouwing.mp4";
-import ImgVerbouwen from "../../Assets/Images/rest-verbouwen.jpg";
 import ImgGlasLood2 from "../../Assets/Images/rest-glas-lood-2.jpg";
-import LuchtballonImg from "../../Assets/Images/ext-luchtballon.png";
 
 const VILLA_POS: [number, number] = [52.0431, 5.287];
 
@@ -33,7 +31,19 @@ const KENMERKEN = [
     { label: "680 m²", sub: "Grond" },
 ];
 
-const HIGHLIGHTS = [
+type Highlight = {
+    to: string;
+    toState?: { cat: string };
+    img?: string;
+    imgPosition?: string;
+    map?: boolean;
+    label: string;
+    titel: string;
+    sub: string;
+    cta?: string;
+};
+
+const HIGHLIGHTS: Highlight[] = [
     {
         to: "/galerij-villa",
         toState: { cat: "De Verbouwing" },
@@ -62,9 +72,8 @@ const HIGHLIGHTS = [
 
 const Home = () => {
     const navigate = useNavigate();
-    const { t, i18n } = useTranslation();
+    const { i18n } = useTranslation();
     const langCode = i18n.language?.split("-")[0] || "nl";
-    const parallaxRef = useRef(null);
     const revealRefs = useRef([]);
 
     const [parallaxY, setParallaxY] = useState(0);
@@ -199,14 +208,14 @@ const Home = () => {
                         <article
                             key={h.to}
                             className="hl-card"
-                            onClick={() => navigate(h.to, (h as any).toState ? { state: (h as any).toState } : undefined)}
+                            onClick={() => navigate(h.to, h.toState ? { state: h.toState } : undefined)}
                             role="button"
                             tabIndex={0}
-                            onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && navigate(h.to, (h as any).toState ? { state: (h as any).toState } : undefined)}
+                            onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && navigate(h.to, h.toState ? { state: h.toState } : undefined)}
                             aria-label={h.titel}
                         >
                             <div className="hl-img-wrap">
-                                {(h as any).map ? (
+                                {h.map ? (
                                     <MapContainer
                                         center={VILLA_POS}
                                         zoom={13}
@@ -224,10 +233,10 @@ const Home = () => {
                                         <Marker position={VILLA_POS} icon={villaCardIcon} />
                                     </MapContainer>
                                 ) : (
-                                    <img src={(h as any).img} alt={h.titel} loading="lazy" style={(h as any).imgPosition ? { objectPosition: (h as any).imgPosition } : undefined} />
+                                    <img src={h.img} alt={h.titel} loading="lazy" style={h.imgPosition ? { objectPosition: h.imgPosition } : undefined} />
                                 )}
                                 <div className="hl-overlay" />
-                                {(h as any).map && (
+                                {h.map && (
                                     <div className="hl-map-badge" aria-hidden="true">📍 Interactieve kaart</div>
                                 )}
                             </div>
@@ -235,7 +244,7 @@ const Home = () => {
                                 <span className="hl-label">{h.label}</span>
                                 <h3 className="hl-title">{h.titel}</h3>
                                 <p className="hl-sub">{h.sub}</p>
-                                <span className="hl-cta">{(h as any).cta || "Bekijk meer →"}</span>
+                                <span className="hl-cta">{h.cta || "Bekijk meer →"}</span>
                             </div>
                         </article>
                     ))}
