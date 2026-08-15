@@ -209,7 +209,9 @@ const Verblijven = () => {
                                 <h3>🎓 Studenten</h3>
                                 <p>Drie privékamers (16–17 m²) met eigen keuken, badkamer en zitruimte. Airco aanwezig.</p>
                                 <ul className="verb-ruimte-list">
-                                    <li>Thailand · Japan · Argentinië</li>
+                                    <li>Thailand, 17 m²</li>
+                                    <li>Japan, 16 m²</li>
+                                    <li>Argentinië, 16 m²</li>
                                     <li>Gedeelde studentenkeuken</li>
                                     <li>Eigen badkamer & zitruimte</li>
                                 </ul>
