@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
+import { useTranslation } from "react-i18next";
 import { MapContainer, TileLayer, Marker, Popup, Polyline } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -291,6 +292,8 @@ const BzCard = ({ b }: { b: BzItem }) => {
 };
 
 const Omgeving = () => {
+    const { i18n } = useTranslation();
+    const langCode = i18n.language?.split("-")[0] || "nl";
     const revealRefs = useRef<(HTMLElement | null)[]>([]);
     const addRef = (el: HTMLElement | null) => { if (el && !revealRefs.current.includes(el)) revealRefs.current.push(el); };
 
@@ -306,6 +309,7 @@ const Omgeving = () => {
     return (
         <main className="omgeving-page">
             <Helmet>
+                <html lang={langCode} />
                 <title>Omgeving & Locatie, Villa Vredestein</title>
                 <meta name="description" content="Restaurants, boodschappen, kastelen en tips voor Driebergen-Rijsenburg. Villa Vredestein op de Utrechtse Heuvelrug, Utrecht in 15 min, Amsterdam in 40." />
                 <link rel="canonical" href="https://villavredestein.nl/omgeving" />
@@ -314,6 +318,10 @@ const Omgeving = () => {
                 <meta property="og:title" content="Omgeving & Locatie, Villa Vredestein" />
                 <meta property="og:description" content="Bos op de stoep, Utrecht in een kwartier. Villa Vredestein ligt op de Utrechtse Heuvelrug in Driebergen-Rijsenburg." />
                 <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
+                <meta property="og:image:type" content="image/jpeg" />
+                <meta property="og:image:alt" content="Villa Vredestein, historische villa uit 1906 in Driebergen-Rijsenburg" />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Omgeving & Locatie, Villa Vredestein" />

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
+import { useTranslation } from "react-i18next";
 import "./Tijdlijn.css";
 
 import ImgVilla1910 from "../../Assets/Images/VillaVredestein1910.jpg";
@@ -214,6 +215,8 @@ function TijdlijnItem({ item, index, globalIndex, expanded, onKlik, innerRef }) 
 }
 
 const Tijdlijn = () => {
+    const { i18n } = useTranslation();
+    const langCode = i18n.language?.split("-")[0] || "nl";
     const itemsRef = useRef([]);
     const [expanded, setExpanded] = useState(null);
 
@@ -231,6 +234,7 @@ const Tijdlijn = () => {
     return (
         <main className="tijdlijn-page">
             <Helmet>
+                <html lang={langCode} />
                 <title>Tijdlijn, Villa Vredestein</title>
                 <meta name="description" content="Van 1906 tot nu: de volledige geschiedenis van Villa Vredestein. De bewoners, de restauratie en de plannen voor de toekomst." />
                 <link rel="canonical" href="https://villavredestein.nl/tijdlijn" />
@@ -239,6 +243,9 @@ const Tijdlijn = () => {
                 <meta property="og:title" content="Tijdlijn, Villa Vredestein" />
                 <meta property="og:description" content="Van 1906 tot nu: de volledige geschiedenis van Villa Vredestein. De bewoners, de restauratie en de plannen voor de toekomst." />
                 <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
+                <meta property="og:image:type" content="image/jpeg" />
                 <meta property="og:image:alt" content="Villa Vredestein, historische villa in Driebergen-Rijsenburg" />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />

@@ -24,6 +24,9 @@ const Contact = () => {
                 <meta property="og:title" content={`${t("contact.title")}, Villa Vredestein`} />
                 <meta property="og:description" content="Neem contact op met Villa Vredestein in Driebergen-Rijsenburg. Stuur een bericht of bezoek ons op Hoofdstraat 147." />
                 <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
+                <meta property="og:image:type" content="image/jpeg" />
                 <meta property="og:image:alt" content="Villa Vredestein, Driebergen-Rijsenburg" />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />

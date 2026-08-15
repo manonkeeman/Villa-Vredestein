@@ -56,7 +56,8 @@ const SECTIONS = [
 const PREVIEW_PARAGRAPHS = 2;
 
 const OverOns = () => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
+    const langCode = i18n.language?.split("-")[0] || "nl";
     const navigate = useNavigate();
     const blogs = t("blogs", { returnObjects: true });
     const sectionRefs = useRef([]);
@@ -88,6 +89,7 @@ const OverOns = () => {
     return (
         <main className="over-ons-page">
             <Helmet>
+                <html lang={langCode} />
                 <title>Over ons, Villa Vredestein</title>
                 <meta
                     name="description"
@@ -99,6 +101,10 @@ const OverOns = () => {
                 <meta property="og:title" content="Over ons, Villa Vredestein" />
                 <meta property="og:description" content="De mensen achter Villa Vredestein. Het verhaal van Manon & Maxim, Carpe Diem Design en de open deur voor bezoekers." />
                 <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
+                <meta property="og:image:type" content="image/jpeg" />
+                <meta property="og:image:alt" content="Villa Vredestein, historische villa uit 1906 in Driebergen-Rijsenburg" />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Over ons, Villa Vredestein" />

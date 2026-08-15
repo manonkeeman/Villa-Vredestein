@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import "./InDePers.css";
 
 import PersBoek    from "../../Assets/Images/pers-vredestein-in-boek.jpg";
@@ -70,6 +71,8 @@ const PERS_ITEMS = [
 ];
 
 const InDePers = () => {
+    const { i18n } = useTranslation();
+    const langCode = i18n.language?.split("-")[0] || "nl";
     const navigate = useNavigate();
     const cardRefs = useRef<(HTMLElement | null)[]>([]);
     const [viewer, setViewer] = useState<{ imgs: string[]; startIndex: number } | null>(null);
@@ -133,6 +136,7 @@ const InDePers = () => {
     return (
         <main className="idp-page">
             <Helmet>
+                <html lang={langCode} />
                 <title>In de Pers, Villa Vredestein</title>
                 <meta
                     name="description"
@@ -144,6 +148,10 @@ const InDePers = () => {
                 <meta property="og:title" content="In de Pers, Villa Vredestein" />
                 <meta property="og:description" content="Villa Vredestein in het nieuws. Artikelen in kranten en magazines over dit bijzondere historische pand in Driebergen-Rijsenburg." />
                 <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
+                <meta property="og:image:type" content="image/jpeg" />
+                <meta property="og:image:alt" content="Villa Vredestein, historische villa uit 1906 in Driebergen-Rijsenburg" />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="In de Pers, Villa Vredestein" />

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import "./Plattegrond.css";
 
 
@@ -89,6 +90,8 @@ const STATS = [
 ];
 
 const Plattegrond = () => {
+    const { i18n } = useTranslation();
+    const langCode = i18n.language?.split("-")[0] || "nl";
     const navigate = useNavigate();
     const [actief, setActief] = React.useState<string | null>(null);
     const revealRefs = useRef<HTMLElement[]>([]);
@@ -108,6 +111,7 @@ const Plattegrond = () => {
     return (
         <main className="plattegrond-page">
             <Helmet>
+                <html lang={langCode} />
                 <title>De Ruimtes, Villa Vredestein</title>
                 <meta
                     name="description"
@@ -119,6 +123,10 @@ const Plattegrond = () => {
                 <meta property="og:title" content="De Ruimtes, Villa Vredestein" />
                 <meta property="og:description" content="Drie verdiepingen, elk met eigen karakter. 292 m² wonen op 680 m² perceel in Driebergen-Rijsenburg." />
                 <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
+                <meta property="og:image:type" content="image/jpeg" />
+                <meta property="og:image:alt" content="Villa Vredestein, historische villa uit 1906 in Driebergen-Rijsenburg" />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="De Ruimtes, Villa Vredestein" />

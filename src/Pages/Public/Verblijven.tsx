@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import "./Verblijven.css";
 
 import VillaVoorImg   from "../../Assets/Images/ext-villa-voorkant.jpg";
@@ -39,6 +40,8 @@ const OPTIES = [
 ];
 
 const Verblijven = () => {
+    const { i18n } = useTranslation();
+    const langCode = i18n.language?.split("-")[0] || "nl";
     const navigate = useNavigate();
     const [selectedOptie, setSelectedOptie] = useState("kamer");
     const [form, setForm] = useState({
@@ -80,6 +83,7 @@ const Verblijven = () => {
     return (
         <main className="verblijven-page">
             <Helmet>
+                <html lang={langCode} />
                 <title>Verblijven & Boeken, Villa Vredestein</title>
                 <meta name="description" content="Verblijf in Villa Vredestein in Driebergen-Rijsenburg. Privékamer, volledige villa of tijdelijk verblijf. Vraag beschikbaarheid op." />
                 <link rel="canonical" href="https://villavredestein.nl/verblijven" />
@@ -88,6 +92,10 @@ const Verblijven = () => {
                 <meta property="og:title" content="Verblijven in Villa Vredestein, Driebergen-Rijsenburg" />
                 <meta property="og:description" content="Privékamer, volledige villa of tijdelijk verblijf in een historisch pand uit 1906. Vraag beschikbaarheid op." />
                 <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
+                <meta property="og:image:type" content="image/jpeg" />
+                <meta property="og:image:alt" content="Villa Vredestein, historische villa uit 1906 in Driebergen-Rijsenburg" />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Verblijven in Villa Vredestein, Driebergen-Rijsenburg" />

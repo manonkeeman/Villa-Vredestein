@@ -89,6 +89,10 @@ const Blog = () => {
                 <meta property="og:title" content={`${blog.title}, Villa Vredestein`} />
                 <meta property="og:description" content={blog.summary} />
                 <meta property="og:image" content={ogImage} />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
+                <meta property="og:image:type" content="image/jpeg" />
+                <meta property="og:image:alt" content="Villa Vredestein, historische villa uit 1906 in Driebergen-Rijsenburg" />
                 <meta property="og:type" content="article" />
                 <meta property="og:url" content={canonicalUrl} />
                 <meta property="article:published_time" content={blog.date} />

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { Helmet } from "react-helmet-async";
+import { useTranslation } from "react-i18next";
 import "./Galerij.css";
 
 import Img1912 from "../../Assets/Images/Krant1912.jpg";
@@ -183,6 +184,8 @@ const FOTOS = [
 ];
 
 const Galerij = () => {
+    const { i18n } = useTranslation();
+    const langCode = i18n.language?.split("-")[0] || "nl";
     const [lightbox, setLightbox] = useState(null);
     const lightboxRef = useRef(null);
     const previousFocusRef = useRef(null);
@@ -228,6 +231,7 @@ const Galerij = () => {
     return (
         <main className="galerij-page">
             <Helmet>
+                <html lang={langCode} />
                 <title>Historische Galerij, Villa Vredestein</title>
                 <meta
                     name="description"
@@ -239,6 +243,10 @@ const Galerij = () => {
                 <meta property="og:title" content="Historische Galerij, Villa Vredestein" />
                 <meta property="og:description" content="Krantenartikelen en historische foto's van Villa Vredestein van 1912 tot nu." />
                 <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
+                <meta property="og:image:type" content="image/jpeg" />
+                <meta property="og:image:alt" content="Villa Vredestein, historische villa uit 1906 in Driebergen-Rijsenburg" />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:image" content="https://villavredestein.nl/og-image.jpg" />
