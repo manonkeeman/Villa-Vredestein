@@ -9,7 +9,6 @@ import About from "./Pages/Public/About";
 import Blog from "./Pages/Public/Blog";
 import Tijdlijn from "./Pages/Public/Tijdlijn";
 import OverOns from "./Pages/Public/OverOns";
-import Galerij from "./Pages/Public/Galerij";
 import GalerijVilla from "./Pages/Public/GalerijVilla";
 import Omgeving from "./Pages/Public/Omgeving";
 import Verblijven from "./Pages/Public/Verblijven";
@@ -58,7 +57,7 @@ function App() {
                 <Route path="/over-ons" element={<OverOns />} />
                 <Route path="/verhaal" element={<OverOns />} />
                 <Route path="/in-de-pers" element={<InDePers />} />
-                <Route path="/galerij" element={<Galerij />} />
+                <Route path="/galerij" element={<GalerijVilla />} />
                 <Route path="/galerij-villa" element={<GalerijVilla />} />
                 <Route path="/omgeving" element={<Omgeving />} />
                 <Route path="/verblijven" element={<Verblijven />} />
