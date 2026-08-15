@@ -27,7 +27,7 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://villavredestein.nl/verblijven" />
   </url>
 
-  <!-- Het Verhaal (canonical slug) -->
+  <!-- Over ons (canonical slug: /verhaal) -->
   <url>
     <loc>https://villavredestein.nl/verhaal</loc>
     <lastmod>2026-06-22</lastmod>
@@ -57,12 +57,12 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://villavredestein.nl/about" />
   </url>
 
-  <!-- Villa Galerij -->
+  <!-- Villa Galerij (alias van /galerij, canonical wijst naar /galerij) -->
   <url>
     <loc>https://villavredestein.nl/galerij-villa</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.nl/galerij-villa" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://villavredestein.nl/galerij-villa" />
   </url>
@@ -98,12 +98,12 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://villavredestein.nl/in-de-pers" />
   </url>
 
-  <!-- Historische Galerij -->
+  <!-- Villa Galerij (hoofdnavigatie: Galerij) -->
   <url>
     <loc>https://villavredestein.nl/galerij</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.nl/galerij" />
     <xhtml:link rel="alternate" hreflang="en" href="https://villavredestein.nl/galerij" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://villavredestein.nl/galerij" />

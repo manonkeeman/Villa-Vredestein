@@ -412,6 +412,12 @@
     opacity: 0.75;
 }
 
+.oo-links-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
 .oo-external-link,
 .oo-external-link:visited {
     display: inline-block;

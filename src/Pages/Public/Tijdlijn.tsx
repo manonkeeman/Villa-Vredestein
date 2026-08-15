@@ -2,6 +2,17 @@ import React, { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import "./Tijdlijn.css";
 
+import ImgVilla1910 from "../../Assets/Images/VillaVredestein1910.jpg";
+import ImgAnsichtVredesteinP from "../../Assets/Images/hist-ansicht-vredestein-pension.jpg";
+import ImgKrant1912 from "../../Assets/Images/Krant1912.jpg";
+import ImgKrant1954 from "../../Assets/Images/Krant1954.jpg";
+import ImgFamilieRoelofsen from "../../Assets/Images/hist-familie-roelofsen.jpg";
+import ImgGekocht2020 from "../../Assets/Images/hist-gekocht-2020.jpg";
+import ImgSlopen from "../../Assets/Images/rest-slopen.jpg";
+import ImgAmelisweerd from "../../Assets/Images/omg-amelisweerd.jpg";
+import ImgKachelBouw from "../../Assets/Images/rest-kachel-bouw.jpg";
+import ImgMoestuinBloei from "../../Assets/Images/tuin-moestuin-bloei.jpg";
+
 const historisch = [
     {
         datum: "1906",
@@ -10,6 +21,8 @@ const historisch = [
         status: "historisch",
         tekst: "Burgemeester Baltus Koker van Krimpen aan den IJssel laat aan de Hoofdstraat in Driebergen-Rijsenburg een statig buitenhuis bouwen. Hoge plafonds, dikke muren en een ziel die meer dan een eeuw later nog voelbaar is.",
         detail: "Koker koos voor vakmanschap dat generaties zou meegaan: sierstucwerk aan de plafonds, hoge paneeldeuren, een imposante schouw en forse houten balken. De locatie aan de Hoofdstraat was geen toeval. Driebergen was in die tijd een geliefde villawijk voor gegoede burgers uit de steden.",
+        afbeelding: ImgVilla1910,
+        afbeeldingAlt: "Villa Vredestein circa 1910, een van de vroegste bekende foto's",
     },
     {
         datum: "1906, 1912",
@@ -17,6 +30,8 @@ const historisch = [
         emoji: "🏨",
         status: "historisch",
         tekst: "De eerste bewoners zijn de Gezusters van de Bosch, die het pand inrichten als hervormd-christelijk logement. De villa opent haar deuren voor gasten die rust en bezinning zoeken in de bossen van Driebergen.",
+        afbeelding: ImgAnsichtVredesteinP,
+        afbeeldingAlt: "Ansichtkaart van Pension Villa Vredestein",
     },
     {
         datum: "1912, 1935",
@@ -25,6 +40,8 @@ const historisch = [
         status: "historisch",
         tekst: "Familie Sluijter zet de traditie voort als protestants christelijk pension. Krantenartikelen uit die periode getuigen van een druk en actief huis: vacatures voor keukenmeiden, ingezonden stukken en advertenties.",
         detail: "De krantenknipsels lopen van 1912 tot diep in de jaren dertig. Vacatures, bijeenkomsten en af en toe nieuws over de inbraak in 1928 schilderen een levendig beeld van het pension in zijn bloeitijd.",
+        afbeelding: ImgKrant1912,
+        afbeeldingAlt: "Krantenbericht over het pension, oktober 1912",
     },
     {
         datum: "Tweede Wereldoorlog",
@@ -39,6 +56,8 @@ const historisch = [
         emoji: "🌺",
         status: "historisch",
         tekst: "Na de bevrijding neemt mevrouw Elings het pand over. Bijna twee decennia lang is Vredestein onder haar hoede een vertrouwde plek. Krantenberichten uit 1959 en een vacature voor verpleegdames uit 1965 getuigen van een actief huis.",
+        afbeelding: ImgKrant1954,
+        afbeeldingAlt: "Te huur-advertentie uit april 1954, tijdens het beheer van mevrouw Elings",
     },
     {
         datum: "1964, 1971",
@@ -46,6 +65,8 @@ const historisch = [
         emoji: "🏡",
         status: "historisch",
         tekst: "Familie Roelofsen bewoont de villa gedurende bijna een decennium. Het pand blijft een vertrouwd gezicht aan de Hoofdstraat in Driebergen.",
+        afbeelding: ImgFamilieRoelofsen,
+        afbeeldingAlt: "Familie Roelofsen, die opgroeide in Vredestein in de jaren zestig en zeventig",
     },
     {
         datum: "1971, 1972",
@@ -72,6 +93,8 @@ const renovatie = [
         status: "gedaan",
         tekst: "Maxim groeide op in Driebergen. Na zijn scheiding bleef hij verbonden aan de buurt voor zijn kinderen en kocht een pand vlak bij zijn ouderlijk huis. Hij zag de grootte, de ruimte en de schuur. Als oud-IVA-student vond hij het mooi dit studentenhuis in stand te houden. Manon ruilde Amsterdam en de zee voor de Utrechtse Heuvelrug. Ze mist het strand, maar werkt nu in Culemborg en is er stilletjes fan van geworden.",
         detail: "De villa was in de jaren zeventig rigoureus verbouwd: kersenhout overal, karrenwielen verwerkt in de muren en bronzen deurhendels die losvielen zodra je ze openmaakte. De begane grondvloer was verrot en we hebben de kruipkelder opgeheven voor een industriële betonnen gietvloer, geïsoleerd met kleikorrels en daarna gevlinderd tot een mooie industriële basis. Op de verdiepingen werken we met een gebrande grenenvloer en brengen we de panelen terug in oude glorie. Het sierstucwerk was helaas verdwenen en dat hebben we opgelost met kroonluchters. We willen wel de markiezen, de openslaande deuren en de ramen met glas in lood terugbrengen. Via contact met de familie Roelofsen kregen we in 2022 de kans heel veel foto's te zien van vóór de radicale jaren zeventig verbouwing. We mochten de hele familie uitnodigen en hoorden alle jeugdverhalen: het roetsjen van de trapleuning, de schuurfeesten en de gaarkeuken met de kolenkachel. De meest waardevolle foto die we ooit van dit huis hebben gezien. Er is nog steeds contact en ze houden graag de verbouwing bij van hun jeugdhuis.",
+        afbeelding: ImgGekocht2020,
+        afbeeldingAlt: "Oktober 2020, Maxim ontvangt de sleutels van Hoofdstraat 147",
     },
     {
         datum: "2021, 2022",
@@ -80,6 +103,8 @@ const renovatie = [
         status: "gedaan",
         tekst: "Van kelder tot zolder gestript en opnieuw opgebouwd. 15 cm isolatie, volledig gestuct, vloerverwarming in de betonnen gietvloer en airco's op de verdiepingen. Alle elektriciteit en leidingwerk vernieuwd. Van 11 kamers naar 7, met 3 badkamers, twee keukens, een kitchenette en een sportkamer.",
         detail: "Elke ruimte werd teruggestript naar de basis. De wanden zijn voorzien van 15 centimeter isolatie en daarna volledig opnieuw gestuct. In de industriële betonnen gietvloer op de begane grond is vloerverwarming aangebracht. Op de tweede en derde verdieping hangen airco's: de voorkant van het huis staat recht op de zon en warmt in de zomer flink op. Vroeger plantten bewoners lindenbomen voor de deur voor schaduw. Wij kozen voor een open tuin met zicht op de straat. Alle elektriciteit is vernieuwd en aangepast aan de moderne eisen. Hetzelfde geldt voor het leidingwerk. Dhr. Blooij was loodgieter en had door de jaren heen veel zelf aan elkaar geplakt. Het totaaloverzicht was verloren gegaan: bij het uitgraven vonden we gasleidingen in de tuin en andere gevaarlijke aansluitingen. Alles is veiliggesteld en opnieuw aangelegd. Het doel blijft het huis in oude glorie terugbrengen, maar naar de moderne eisen van duurzaamheid en klimaat.",
+        afbeelding: ImgSlopen,
+        afbeeldingAlt: "Slopen, het begin van de grote transformatie",
     },
     {
         datum: "2023",
@@ -88,6 +113,8 @@ const renovatie = [
         status: "gedaan",
         tekst: "De villa staat niet op zichzelf. Driebergen-Rijsenburg biedt bos, rust en architectuur die je nergens anders vindt. De omgeving werd een bewuste keuze.",
         detail: "Het Nationaal Park Utrechtse Heuvelrug begint letterlijk aan de achterdeur. Utrecht ligt op een kwartier, Amsterdam op veertig minuten. Driebergen was geen compromis, maar een bewuste keuze. En dat verschil voel je.",
+        afbeelding: ImgAmelisweerd,
+        afbeeldingAlt: "Landgoed Amelisweerd, onderdeel van de groene omgeving rond de villa",
     },
     {
         datum: "2024",
@@ -96,6 +123,8 @@ const renovatie = [
         status: "gedaan",
         tekst: "Een houtkachel brengt de warmte van vroeger terug. De woonkamer is ingericht met vintage vondsten: van veilingen, van reizen, soms gerepareerd en opnieuw gestoffeerd in India. Elk meubelstuk heeft een verhaal.",
         detail: "We hebben een houtkachel teruggebracht in het huis. Het vuur geeft de woonkamer precies de warmte die een pand van deze leeftijd verdient. De inrichting is samengesteld uit vintage vondsten: soms trekken we een dag door Nederland op zoek naar iets bijzonders, soms repareren we een oude bank en laten die herstofferen in India. Op veilingen vinden we prachtige Eicholtz-meubels en passen de rest van de inrichting daarop aan. Elk meubelstuk heeft een verhaal. Wij wonen in principe beneden, de studenten en de kinderen delen de ruimtes boven. Ze zijn volwassen en hebben zo hun eigen leefwereld. Je hoeft hier niet per se samen te komen, maar dat doe je toch.",
+        afbeelding: ImgKachelBouw,
+        afbeeldingAlt: "De houtkachel 'Carpe Diem' wordt geplaatst en ingemetseld",
     },
     {
         datum: "Vroegejaar 2025",
@@ -104,6 +133,8 @@ const renovatie = [
         status: "bezig",
         tekst: "De sauna met dompelbad zet de toon. Passieflora, jasmijn en kruiden in potten voor geur en kleur. Een moestuin om uit te eten. En achteraan de schuur van 110 m² met werkplaats, veranda en buitenkeuken.",
         detail: "De tuin komt als laatste aan de beurt maar heeft de meeste plannen. Een sauna met dompelbad wordt het rustpunt in de buitenruimte. Daaromheen een kleine urban tuin met passieflora, jasmijn en kruiden in potten. Een moestuin voor het eigen eten. Helemaal achteraan de schuur van 110 m²: ruimte om te klussen aan auto's en andere projecten, een veranda en een buitenkeuken. Voor zowel ons als de studenten.",
+        afbeelding: ImgMoestuinBloei,
+        afbeeldingAlt: "De moestuin in bloei",
     },
     {
         datum: "Zomer 2025",
@@ -142,6 +173,16 @@ function TijdlijnItem({ item, index, globalIndex, expanded, onKlik, innerRef }) 
             <div className="tijdlijn-dot"><span>{item.emoji}</span></div>
 
             <div className={`tijdlijn-kaart ${item.detail ? "kaart-expandable" : ""} ${isOpen ? "kaart-open" : ""}`}>
+                {item.afbeelding && (
+                    <div className="tijdlijn-kaart-img-wrap">
+                        <img
+                            src={item.afbeelding}
+                            alt={item.afbeeldingAlt || item.titel}
+                            loading="lazy"
+                            className="tijdlijn-kaart-img"
+                        />
+                    </div>
+                )}
                 <div className="tijdlijn-kaart-header">
                     <span className="tijdlijn-datum">{item.datum}</span>
                     <span className={`tijdlijn-badge badge-${item.status}`}>{statusLabel[item.status]}</span>

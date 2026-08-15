@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import "./Nav.css";
 
@@ -106,51 +105,39 @@ const Nav = () => {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/verhaal" className="default-link" onClick={closeAll}>
-                        Het Verhaal
+                    <NavLink to="/tijdlijn" className="default-link" onClick={closeAll}>
+                        {t("nav.tijdlijn")}
                     </NavLink>
                 </li>
                 <li>
                     <NavLink to="/galerij" className="default-link" onClick={closeAll}>
-                        Galerij
+                        {t("nav.galerij")}
                     </NavLink>
                 </li>
                 <li>
                     <NavLink to="/omgeving" className="default-link" onClick={closeAll}>
-                        Omgeving
+                        {t("nav.omgeving")}
                     </NavLink>
                 </li>
                 <li>
                     <NavLink to="/verblijven" className="default-link nav-highlight" onClick={closeAll}>
-                        Verblijven
+                        {t("nav.verblijven")}
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/tijdlijn" className="default-link" onClick={closeAll}>
-                        Tijdlijn
+                    <NavLink to="/verhaal" className="default-link" onClick={closeAll}>
+                        {t("nav.overons")}
                     </NavLink>
                 </li>
                 <li>
                     <NavLink to="/in-de-pers" className="default-link" onClick={closeAll}>
-                        In de pers
+                        {t("nav.indepers")}
                     </NavLink>
                 </li>
                 <li>
                     <NavLink to="/contact" className="default-link" onClick={closeAll}>
                         {t("nav.contact")}
                     </NavLink>
-                </li>
-                <li>
-                    <a href="https://www.instagram.com/villa.vredestein" target="_blank" rel="noreferrer"
-                        className="icon-link" aria-label="Villa Vredestein op Instagram">
-                        <FaInstagram aria-hidden="true" />
-                    </a>
-                </li>
-                <li>
-                    <a href="https://wa.me/31625015299" target="_blank" rel="noreferrer"
-                        className="icon-link" aria-label="Contact via WhatsApp">
-                        <FaWhatsapp aria-hidden="true" />
-                    </a>
                 </li>
 
                 {/* Taalkiezer */}

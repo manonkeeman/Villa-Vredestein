@@ -2,7 +2,12 @@
   "nav": {
     "home": "Startseite",
     "about": "Geschichten",
-    "overons": "Unsere Geschichte",
+    "overons": "Über uns",
+    "tijdlijn": "Zeitleiste",
+    "galerij": "Galerie",
+    "omgeving": "Umgebung",
+    "verblijven": "Übernachten",
+    "indepers": "In der Presse",
     "contact": "Kontakt"
   },
   "home": {
@@ -129,7 +134,8 @@
       "content": [
         "Maxim baut mit den Händen. Manon baut mit Worten und Code. Keine zwei Hände für Zement und Balken, aber reichlich Geschick für eine Geschichte, die irgendwohin führt.",
         "ManonIT ist das Unternehmen, mit dem sie das tut. Websites, die etwas sagen, gut aussehen und die Geschichte erzählen, die du zu erzählen hast. Webdesign, Development und Text aus einer Hand.",
-        "Villa Vredestein.nl war ihr erstes großes eigenes Projekt. Die Website, die Sie gerade besuchen, stammt von ihr."
+        "Villa Vredestein.nl war ihr erstes großes eigenes Projekt. Die Website, die Sie gerade besuchen, stammt von ihr.",
+        "Außerdem entwickelt sie SaaS-Apps. Wie CasaCrew: eine App für Kontakt, Wartung und Verwaltung, gebaut, um die Vermietung an Studierende zu automatisieren. Alles, was einfacher gemacht werden kann, automatisiert sie am liebsten."
       ]
     },
     {
