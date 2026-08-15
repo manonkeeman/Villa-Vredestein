@@ -33,7 +33,7 @@ const SECTIONS = [
     {
         slug: "manonit",
         img: ImgManonIT,
-        imgAlt: "Manon Keeman — schrijft en bouwt verhalen",
+        imgAlt: "Manon Keeman, schrijft en bouwt verhalen",
         theme: "dark",
         accent: "#FCBC2D",
         showAll: true,
