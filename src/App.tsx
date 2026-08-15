@@ -16,7 +16,6 @@ import Verblijven from "./Pages/Public/Verblijven";
 import Plattegrond from "./Pages/Public/Plattegrond";
 import InDePers from "./Pages/Public/InDePers";
 import Privacy from "./Pages/Public/Privacy";
-import FAQ from "./Pages/Public/FAQ";
 
 function ScrollToTop() {
     const { pathname } = useLocation();
@@ -65,7 +64,6 @@ function App() {
                 <Route path="/verblijven" element={<Verblijven />} />
                 <Route path="/ruimtes" element={<Plattegrond />} />
                 <Route path="/privacy" element={<Privacy />} />
-                <Route path="/faq" element={<FAQ />} />
 
                 <Route path="*" element={<Unauthorized />} />
             </Routes>
