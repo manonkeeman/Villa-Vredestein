@@ -103,6 +103,21 @@
     color: #FCBC2D;
 }
 
+.ct-info-block--icon-only {
+    align-items: center;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.ct-info-block--icon-only:hover {
+    opacity: 0.75;
+}
+
+.ct-info-icon--lg {
+    font-size: 1.6rem;
+    margin-top: 0;
+}
+
 /* ── Form wrapper ── */
 .ct-form-wrap h2 {
     font-size: 1.3rem;

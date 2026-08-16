@@ -54,13 +54,15 @@ const Contact = () => {
                             <p>Hoofdstraat 147<br />3975 ED Driebergen-Rijsenburg</p>
                         </div>
                     </div>
-                    <div className="ct-info-block">
-                        <FaWhatsapp className="ct-info-icon" aria-hidden="true" />
-                        <div>
-                            <h3>WhatsApp</h3>
-                            <a href="https://wa.me/31625015299" target="_blank" rel="noreferrer">+31 6 25 01 52 99</a>
-                        </div>
-                    </div>
+                    <a
+                        href="https://wa.me/31625015299"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="ct-info-block ct-info-block--icon-only"
+                        aria-label="Contact via WhatsApp"
+                    >
+                        <FaWhatsapp className="ct-info-icon ct-info-icon--lg" aria-hidden="true" />
+                    </a>
                     <div className="ct-info-block">
                         <FaInstagram className="ct-info-icon" aria-hidden="true" />
                         <div>
