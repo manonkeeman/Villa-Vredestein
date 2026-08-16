@@ -174,7 +174,7 @@
 .gvlb-prev { left: -3.75rem; }
 .gvlb-next { right: -3.75rem; }
 
-.gvlb-counter { position: absolute; bottom: -2.25rem; left: 50%; transform: translateX(-50%); font-size: 0.68rem; color: #5a4e3e; white-space: nowrap; }
+.gvlb-counter { position: absolute; bottom: -2.25rem; left: 50%; transform: translateX(-50%); font-size: 0.68rem; color: #988068; white-space: nowrap; }
 
 @media (max-width: 720px) {
     /* Overlay scrollbaar zodat lange verhaal-teksten bereikbaar zijn */

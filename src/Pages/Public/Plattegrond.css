@@ -34,7 +34,7 @@
 .pg-stat:last-child { border-right: none; }
 .pg-stat strong { font-size: 1.4rem; font-weight: 700; color: #FCBC2D; }
 .pg-stat span { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #988068; }
-.pg-stat small { font-size: 0.62rem; color: #5a4e3e; }
+.pg-stat small { font-size: 0.62rem; color: #988068; }
 .pg-stat-div { width: 1px; background: #1e1812; }
 
 /* ── Verdiepingen ── */
@@ -299,6 +299,9 @@
 /* Plattegrond gallerij-link per verdieping */
 .pg-platt-link-wrap {
     margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
 }
 .pg-platt-link {
     background: transparent;

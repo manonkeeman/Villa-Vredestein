@@ -182,7 +182,7 @@
     letter-spacing: 0.06em;
 }
 
-.form-field label span, .form-field-select label span { color: #5a4e3e; font-weight: 400; text-transform: none; letter-spacing: 0; }
+.form-field label span, .form-field-select label span { color: #988068; font-weight: 400; text-transform: none; letter-spacing: 0; }
 
 .form-field input,
 .form-field select,
@@ -306,7 +306,7 @@ input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1) opacit
 .verb-ruimte-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.3rem; }
 .verb-ruimte-list li { font-size: 0.78rem; color: #786050; padding-left: 1rem; position: relative; }
 .verb-ruimte-list li::before { content: "·"; position: absolute; left: 0; color: #FCBC2D; }
-.verb-ruimte-aanbouw { color: #5a4e3e !important; font-style: italic; }
+.verb-ruimte-aanbouw { color: #988068 !important; font-style: italic; }
 .verb-ruimte-aanbouw::before { color: #3a3028 !important; }
 
 .verb-ruimtes-cta { margin-top: 2.5rem; text-align: center; }
@@ -443,7 +443,7 @@ input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1) opacit
 }
 
 .review-auteur strong { display: block; font-size: 0.85rem; color: #fff; }
-.review-auteur span { display: block; font-size: 0.73rem; color: #5a4e3e; margin-top: 0.1rem; }
+.review-auteur span { display: block; font-size: 0.73rem; color: #988068; margin-top: 0.1rem; }
 
 /* Responsive */
 @media (max-width: 900px) {

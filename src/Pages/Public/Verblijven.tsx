@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import GoogleReviews from "../../Components/GoogleReviews/GoogleReviews";
 import "./Verblijven.css";
@@ -15,9 +15,9 @@ const OPTIES = [
         icon: "🛏️",
         titel: "Privékamer",
         sub: "In de villa",
-        beschrijving: "Eigen ruimte in een historisch pand. Gedeelde woonkamer, keuken en tuin.",
+        beschrijving: "Eigen kamer op de middelste verdieping, met of zonder balkon — dezelfde opzet als de studentenkamers, maar dan op aanvraag.",
         vanaf: "Op aanvraag",
-        kenmerken: ["Eigen kamer", "Gedeelde woonkamer", "Gemeenschappelijke keuken", "Tuin & terras", "Parkeerplaats", "Historisch pand"],
+        kenmerken: ["Eigen kamer", "Middelste verdieping", "Met of zonder balkon", "Gedeelde woonkamer & keuken", "Tuin & terras", "Parkeerplaats"],
     },
     {
         id: "tijdelijk",
@@ -25,7 +25,7 @@ const OPTIES = [
         titel: "Tijdelijk verblijf",
         sub: "Kort of lang",
         beschrijving: "Op zoek naar tijdelijk onderdak tijdens je studie, of een IVA-student op zoek naar een kamer op loopafstand? We denken graag mee.",
-        vanaf: "Op aanvraag",
+        vanaf: "€550 / maand",
         kenmerken: ["Flexibele duur", "Gemeubileerd", "Inclusief internet", "Gedeelde keuken, badkamer en woonruimte", "Parkeerplaats", "Beschikbaarheid in overleg"],
         featured: true,
     },
@@ -34,9 +34,9 @@ const OPTIES = [
         icon: "🏛️",
         titel: "Volledige villa",
         sub: "Exclusief gebruik",
-        beschrijving: "De gehele Villa Vredestein voor jouw familie. Alle zes slaapkamers, alle gemeenschappelijke ruimtes en de volledige tuin. Ook ideaal voor expats of als tijdelijk thuis tijdens een verbouwing.",
+        beschrijving: "De gehele Villa Vredestein voor jouw familie. Alle gemeenschappelijke ruimtes en de volledige tuin. Ook ideaal voor expats of als tijdelijk thuis tijdens een verbouwing.",
         vanaf: "Op aanvraag",
-        kenmerken: ["6 slaapkamers", "Volledige woonkamer", "Keukens", "Grote tuin & terras", "Parkeerplaats"],
+        kenmerken: ["6 slaapkamers (7e in aanbouw)", "Volledige woonkamer", "3 keukens", "3 badkamers (derde in aanbouw)", "Grote tuin & terras", "Oprit met parkeerplaats"],
     },
 ];
 
@@ -44,6 +44,7 @@ const Verblijven = () => {
     const { i18n } = useTranslation();
     const langCode = i18n.language?.split("-")[0] || "nl";
     const navigate = useNavigate();
+    const location = useLocation();
     const [selectedOptie, setSelectedOptie] = useState("kamer");
     const [form, setForm] = useState({
         naam: "", email: "", telefoon: "",
@@ -63,6 +64,17 @@ const Verblijven = () => {
         revealRefs.current.forEach((el) => el && observer.observe(el));
         return () => observer.disconnect();
     }, []);
+
+    useEffect(() => {
+        const optieVanRuimte = location.state?.optie;
+        if (optieVanRuimte && OPTIES.some((o) => o.id === optieVanRuimte)) {
+            setSelectedOptie(optieVanRuimte);
+            setForm((f) => ({ ...f, optie: optieVanRuimte }));
+            requestAnimationFrame(() => {
+                document.getElementById("verblijf-opties")?.scrollIntoView({ behavior: "smooth", block: "start" });
+            });
+        }
+    }, [location.state]);
 
     const handleChange = (e) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
@@ -199,65 +211,6 @@ const Verblijven = () => {
                                 </div>
                             ))}
                         </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* De Ruimtes */}
-            <section className="verb-ruimtes reveal-section" ref={addRef}>
-                <div className="verb-inner">
-                    <h2 className="verb-section-title">De ruimtes</h2>
-                    <p className="verb-ruimtes-intro">
-                        Villa Vredestein telt drie verdiepingen met elk een eigen karakter.
-                        292 m² woonoppervlak op een perceel van 680 m².
-                    </p>
-                    <div className="verb-ruimtes-grid">
-                        <article className="verb-ruimte-card">
-                            <div className="verb-ruimte-verd" style={{ background: "#d4804a" }}>Bovenste verdieping</div>
-                            <div className="verb-ruimte-body">
-                                <h3>🎓 Studenten</h3>
-                                <p>Drie privékamers (16–17 m²) met eigen keuken, badkamer en zitruimte. Airco aanwezig.</p>
-                                <ul className="verb-ruimte-list">
-                                    <li>Thailand, 17 m²</li>
-                                    <li>Japan, 16 m²</li>
-                                    <li>Argentinië, 16 m²</li>
-                                    <li>Gedeelde studentenkeuken</li>
-                                    <li>Eigen badkamer & zitruimte</li>
-                                </ul>
-                            </div>
-                        </article>
-                        <article className="verb-ruimte-card">
-                            <div className="verb-ruimte-verd" style={{ background: "#FCBC2D", color: "#000" }}>Middelste verdieping</div>
-                            <div className="verb-ruimte-body">
-                                <h3>✨ Luxe kamers</h3>
-                                <p>Drie ruime kamers met balkon, airco en eigen ingang. Kitchenette, badkamer en sportruimte in aanbouw.</p>
-                                <ul className="verb-ruimte-list">
-                                    <li>Italië (22 m², balkon tuin)</li>
-                                    <li>Frankrijk (18 m², balkon straat)</li>
-                                    <li>Oekraïne (15 m², airco)</li>
-                                    <li>Eigen ingang · Airco</li>
-                                    <li className="verb-ruimte-aanbouw">Badkamer · Sportruimte · Kitchenette, in aanbouw</li>
-                                </ul>
-                            </div>
-                        </article>
-                        <article className="verb-ruimte-card">
-                            <div className="verb-ruimte-verd" style={{ background: "#c8a46e" }}>Onderste verdieping</div>
-                            <div className="verb-ruimte-body">
-                                <h3>🏡 Woonverdieping</h3>
-                                <p>Grote woonkamer met houtkachel, open keukeneiland met bar en aparte eetkamer. Gedeelde ruimtes.</p>
-                                <ul className="verb-ruimte-list">
-                                    <li>Woonkamer 45 m² · Erker</li>
-                                    <li>Keukeneiland met bar</li>
-                                    <li>Terras &amp; moestuin</li>
-                                    <li className="verb-ruimte-aanbouw">Slaapkamer · Badkamer, in aanbouw</li>
-                                </ul>
-                            </div>
-                        </article>
-                    </div>
-                    <div className="verb-ruimtes-cta">
-                        <button className="verb-ruimtes-btn" onClick={() => navigate("/ruimtes")}>
-                            Bekijk alle ruimtes in detail →
-                        </button>
                     </div>
                 </div>
             </section>
