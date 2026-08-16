@@ -11,9 +11,12 @@ Marketing- en informatiesite voor Villa Vredestein, een historische villa uit 19
 - react-i18next voor de taalkiezer (NL, EN, FR, DE, ES, IT)
 - react-helmet-async voor per-pagina SEO-tags
 - Netlify Forms voor het contact- en verblijfsformulier (geen eigen backend)
+- Google Analytics (GA4), laadt pas na toestemming via de cookiemelding
 - Deploy via Netlify, gebouwd vanaf de `main`-branch
 
-Geen environment variables nodig — de site heeft geen API's of secrets.
+De site draait zonder environment variables. Optioneel: de Google reviews-sectie op
+`/verblijven` heeft `VITE_GOOGLE_MAPS_API_KEY` en `VITE_GOOGLE_PLACE_ID` nodig — zie
+`.env.example` voor hoe je daaraan komt. Zonder die twee blijft de sectie gewoon verborgen.
 
 ## Installatie
 

@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import GoogleReviews from "../../Components/GoogleReviews/GoogleReviews";
 import "./Verblijven.css";
 
 import VillaVoorImg   from "../../Assets/Images/ext-villa-voorkant.jpg";
@@ -303,6 +304,8 @@ const Verblijven = () => {
                     </div>
                 </div>
             </section>
+
+            <GoogleReviews />
 
             {/* Boekingsformulier */}
             <section className="verb-form-section reveal-section" ref={addRef}>

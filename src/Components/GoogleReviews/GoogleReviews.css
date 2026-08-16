@@ -1,0 +1,147 @@
+.gr-section {
+    padding: 5rem 0;
+    border-top: 1px solid #1e1812;
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.gr-section.gr-in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.gr-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.gr-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.gr-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+}
+
+.gr-aggregate {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.gr-stars {
+    color: #FCBC2D;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+}
+
+.gr-score {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.gr-count {
+    font-size: 0.8rem;
+    color: #5a4e3e;
+}
+
+.gr-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+}
+
+.gr-card {
+    background: #120f09;
+    border: 1px solid #221b12;
+    border-radius: 14px;
+    padding: 2rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: border-color 0.3s;
+}
+
+.gr-card:hover { border-color: #382e1e; }
+
+.gr-card-sterren { color: #FCBC2D; font-size: 1rem; letter-spacing: 0.1em; }
+
+.gr-card-tekst { font-size: 0.87rem; color: #988068; line-height: 1.75; margin: 0; flex: 1; font-style: italic; }
+
+.gr-card-auteur { display: flex; align-items: center; gap: 0.85rem; margin-top: auto; }
+
+.gr-avatar {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: #FCBC2D;
+    color: #000;
+    font-size: 0.9rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.gr-avatar--photo {
+    background: none;
+    object-fit: cover;
+}
+
+.gr-card-auteur strong { display: block; font-size: 0.85rem; color: #fff; }
+.gr-card-auteur span { display: block; font-size: 0.73rem; color: #5a4e3e; margin-top: 0.1rem; }
+
+.gr-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin-top: 2.5rem;
+}
+
+.gr-cta-btn {
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #382e1e;
+    color: #e0d0b8;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s, background 0.2s, opacity 0.2s;
+}
+
+.gr-cta-btn:hover {
+    border-color: #6a5a48;
+    color: #fff;
+}
+
+.gr-cta-btn--primary {
+    background: #FCBC2D;
+    border-color: #FCBC2D;
+    color: #0c0a07;
+}
+
+.gr-cta-btn--primary:hover {
+    background: #e5a920;
+    border-color: #e5a920;
+    color: #0c0a07;
+}
+
+@media (max-width: 900px) {
+    .gr-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+}
+
+@media (max-width: 600px) {
+    .gr-inner { padding: 0 1.25rem; }
+    .gr-section { padding: 3rem 0; }
+}
