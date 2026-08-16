@@ -63,7 +63,8 @@ const Privacy = () => (
 
             <section className="priv-section">
                 <h2>7. Cookies</h2>
-                <p>Villa Vredestein maakt geen gebruik van tracking- of analytische cookies. Er worden geen advertentiecookies of cookies van derden geplaatst.</p>
+                <p>Deze website gebruikt Google Analytics (GA4) om geanonimiseerde bezoekersstatistieken bij te houden: welke pagina&apos;s bezocht worden, hoe lang bezoekers blijven en via welke bron ze de site vinden. Hiervoor plaatst Google cookies. Deze gegevens worden verwerkt door Google Ireland Limited. Meer informatie: <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">policies.google.com/privacy</a>.</p>
+                <p>Er worden geen advertentiecookies of cookies van derden voor marketingdoeleinden geplaatst.</p>
             </section>
 
             <section className="priv-section">

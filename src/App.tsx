@@ -22,6 +22,19 @@ function ScrollToTop() {
     return null;
 }
 
+function TrackPageView() {
+    const location = useLocation();
+    useEffect(() => {
+        if (typeof window.gtag === "function") {
+            window.gtag("event", "page_view", {
+                page_path: location.pathname + location.search,
+                page_location: window.location.href,
+            });
+        }
+    }, [location]);
+    return null;
+}
+
 function BackToTopBtn() {
     const [visible, setVisible] = React.useState(false);
     useEffect(() => {
@@ -45,6 +58,7 @@ function App() {
     return (
         <BrowserRouter>
             <ScrollToTop />
+            <TrackPageView />
             <BackToTopBtn />
             <Nav />
 
