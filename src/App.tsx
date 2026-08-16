@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Nav from "./Components/Nav/Nav";
 import Footer from "./Components/Footer/Footer";
+import CookieConsent from "./Components/CookieConsent/CookieConsent";
 import Home from "./Pages/Public/Home";
 import Contact from "./Pages/Public/Contact";
 import Unauthorized from "./Pages/Public/Unauthorized";
@@ -82,6 +83,7 @@ function App() {
             </Routes>
 
             <Footer />
+            <CookieConsent />
         </BrowserRouter>
     );
 }
