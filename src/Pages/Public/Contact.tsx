@@ -59,7 +59,7 @@ const Contact = () => {
                         target="_blank"
                         rel="noreferrer"
                         className="ct-info-block ct-info-block--icon-only"
-                        aria-label="Contact via WhatsApp"
+                        aria-label="Contact via WhatsApp: +31 6 25 01 52 99"
                     >
                         <FaWhatsapp className="ct-info-icon ct-info-icon--lg" aria-hidden="true" />
                     </a>
