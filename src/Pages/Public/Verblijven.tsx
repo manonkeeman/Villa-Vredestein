@@ -53,6 +53,7 @@ const Verblijven = () => {
     });
     const [sent, setSent] = useState(false);
     const [sending, setSending] = useState(false);
+    const [error, setError] = useState("");
     const revealRefs = useRef([]);
     const addRef = (el) => { if (el && !revealRefs.current.includes(el)) revealRefs.current.push(el); };
 
@@ -83,14 +84,25 @@ const Verblijven = () => {
         setForm((f) => ({ ...f, optie: id }));
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
+        setError("");
         setSending(true);
-        // Endpoint: POST /api/verblijf/aanvraag (Spring Boot)
-        // Voor nu: simulate
-        await new Promise((r) => setTimeout(r, 1200));
-        setSent(true);
-        setSending(false);
+        const formEl = e.target;
+        const data = new FormData(formEl);
+
+        fetch("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(data).toString(),
+        })
+            .then(() => {
+                setSent(true);
+            })
+            .catch(() => {
+                setError("Er ging iets mis bij het versturen. Probeer het later opnieuw of neem direct contact op.");
+            })
+            .finally(() => setSending(false));
     };
 
     return (
@@ -410,6 +422,8 @@ const Verblijven = () => {
                                 <button type="submit" className="verb-submit" disabled={sending}>
                                     {sending ? "Versturen..." : "Stuur aanvraag"}
                                 </button>
+
+                                {error && <p className="verb-form-error" role="alert">❌ {error}</p>}
 
                                 <p className="form-privacy">
                                     Je gegevens worden alleen gebruikt om contact met je op te nemen.

@@ -86,6 +86,16 @@ a:hover {
     color: #e5a10f;
 }
 
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+    outline: 2px solid #FCBC2D;
+    outline-offset: 2px;
+}
+
 @media (max-width: 768px) {
     main {
         padding-top: 1.5rem;

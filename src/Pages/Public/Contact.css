@@ -160,7 +160,7 @@
 
 .input-icon-wrapper input::placeholder,
 .textarea-icon-wrapper textarea::placeholder {
-    color: #4a3e2e;
+    color: #786050;
 }
 
 .input-icon {
@@ -168,7 +168,7 @@
     right: 1rem;
     top: 50%;
     transform: translateY(-50%);
-    color: #4a3e2e;
+    color: #786050;
     font-size: 1rem;
     pointer-events: none;
 }
