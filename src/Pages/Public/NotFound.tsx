@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import "./Unauthorized.css";
+import "./NotFound.css";
 
-export default function Unauthorized() {
+export default function NotFound() {
     return (
         <main className="not-found">
             <Helmet>

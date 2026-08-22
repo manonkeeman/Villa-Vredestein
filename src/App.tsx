@@ -5,7 +5,7 @@ import Footer from "./Components/Footer/Footer";
 import CookieConsent from "./Components/CookieConsent/CookieConsent";
 import Home from "./Pages/Public/Home";
 import Contact from "./Pages/Public/Contact";
-import Unauthorized from "./Pages/Public/Unauthorized";
+import NotFound from "./Pages/Public/NotFound";
 import About from "./Pages/Public/About";
 import Blog from "./Pages/Public/Blog";
 import Tijdlijn from "./Pages/Public/Tijdlijn";
@@ -79,7 +79,7 @@ function App() {
                 <Route path="/ruimtes" element={<Plattegrond />} />
                 <Route path="/privacy" element={<Privacy />} />
 
-                <Route path="*" element={<Unauthorized />} />
+                <Route path="*" element={<NotFound />} />
             </Routes>
 
             <Footer />
