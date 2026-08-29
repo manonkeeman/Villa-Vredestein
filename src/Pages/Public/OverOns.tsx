@@ -6,12 +6,18 @@ import "./OverOns.css";
 
 import ImgManonMaxim from "../../Assets/Images/Maxim_Manon_ChevroletSuburban.jpg";
 import ImgMotorrijden from "../../Assets/Images/life-motorrijden.jpg";
-import ImgSleutels2020 from "../../Assets/Images/hist-gekocht-2020.jpg";
+import ImgPannenkoeken from "../../Assets/Images/life-pannenkoeken-2025.jpg";
 import LuchtballonImg from "../../Assets/Images/ext-luchtballon.png";
 import ImgCarpeDiem from "../../Assets/Images/PannenkoekenAvondVillaVredestein.jpg";
 import CarpeDiemVideo from "../../Assets/Videos/carpe-diem.mp4";
+import ImgCafeRacer from "../../Assets/Images/cafe-racer-1.jpg";
+import ImgMaximCarpeDiemShirt from "../../Assets/Images/life-maxim-carpediem.jpg";
 import ImgBezoek from "../../Assets/Images/BezoekOnsVillaVredestein.jpg";
+import ImgVillaBloei from "../../Assets/Images/ext-villa-bloei.jpg";
+import ImgTuinTerras from "../../Assets/Images/tuin-terras.jpg";
 import ImgManonIT from "../../Assets/Images/manonit-portrait.webp";
+import ImgManonITBrand from "../../Assets/Images/manonit-og.jpg";
+import ImgKoken from "../../Assets/Images/life-koken.jpg";
 
 const SECTIONS = [
     {
@@ -22,7 +28,7 @@ const SECTIONS = [
         accent: "#FCBC2D",
         pullQuote: "Verre horizonten en een stevige basis. Dat is wat ze samen bouwen.",
         extraImages: [
-            { src: ImgSleutels2020, alt: "Maxim ontvangt de sleutels van Hoofdstraat 147, oktober 2020" },
+            { src: ImgPannenkoeken, alt: "Manon & Maxim tijdens een pannenkoekenavond met studenten" },
             { src: ImgMotorrijden, alt: "Manon & Maxim delen een passie voor motorrijden" },
         ],
     },
@@ -35,6 +41,10 @@ const SECTIONS = [
         accent: "#e0853a",
         showAll: true,
         pullQuote: "Bring worlds together in one.",
+        extraImages: [
+            { src: ImgCafeRacer, alt: "De cafe racer van Maxim, gebouwd van onderdelen uit de hele wereld" },
+            { src: ImgMaximCarpeDiemShirt, alt: "Maxim in zijn Carpe Diem shirt" },
+        ],
     },
     {
         slug: "manonit",
@@ -48,6 +58,10 @@ const SECTIONS = [
             { href: "https://www.manonit.com", label: "Bekijk ManonIT →" },
             { href: "https://www.casacrew.nl", label: "Bekijk CasaCrew →" },
         ],
+        extraImages: [
+            { src: ImgManonITBrand, alt: "ManonIT, ik bouw mooie websites" },
+            { src: ImgKoken, alt: "Manon aan het koken in Villa Vredestein" },
+        ],
     },
     {
         slug: "bezoek-inspiratie",
@@ -56,6 +70,10 @@ const SECTIONS = [
         theme: "light",
         accent: "#b89a5e",
         pullQuote: "Villa Vredestein is meer dan een adres. Het is een open deur.",
+        extraImages: [
+            { src: ImgVillaBloei, alt: "Villa Vredestein in bloei" },
+            { src: ImgTuinTerras, alt: "Tuin en terras van Villa Vredestein" },
+        ],
     },
 ];
 
