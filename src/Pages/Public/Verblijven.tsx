@@ -25,7 +25,7 @@ const OPTIES = [
         titel: "Tijdelijk verblijf",
         sub: "Kort of lang",
         beschrijving: "Op zoek naar tijdelijk onderdak tijdens je studie, of een IVA-student op zoek naar een kamer op loopafstand? We denken graag mee.",
-        vanaf: "€550 / maand",
+        vanaf: "Op aanvraag",
         kenmerken: ["Flexibele duur", "Gemeubileerd", "Inclusief internet", "Gedeelde keuken, badkamer en woonruimte", "Parkeerplaats", "Beschikbaarheid in overleg"],
         featured: true,
     },

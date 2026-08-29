@@ -1,53 +1,45 @@
-const SCRIPT_ID = "google-maps-script";
+interface RawGoogleReview {
+    rating?: number;
+    text?: { text: string };
+    relativePublishTimeDescription?: string;
+    authorAttribution?: { displayName?: string; photoUri?: string };
+}
 
-function loadGoogleMapsScript(apiKey: string): Promise<void> {
-    return new Promise((resolve, reject) => {
-        if (window.google?.maps?.places) {
-            resolve();
-            return;
-        }
-
-        const existing = document.getElementById(SCRIPT_ID) as HTMLScriptElement | null;
-        if (existing) {
-            existing.addEventListener("load", () => resolve());
-            existing.addEventListener("error", () => reject(new Error("Kon Google Maps script niet laden")));
-            return;
-        }
-
-        const script = document.createElement("script");
-        script.id = SCRIPT_ID;
-        script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places`;
-        script.async = true;
-        script.onload = () => resolve();
-        script.onerror = () => reject(new Error("Kon Google Maps script niet laden"));
-        document.head.appendChild(script);
-    });
+interface RawGooglePlace {
+    displayName?: { text: string };
+    rating?: number;
+    userRatingCount?: number;
+    googleMapsUri?: string;
+    reviews?: RawGoogleReview[];
 }
 
 export async function fetchPlaceDetails(apiKey: string, placeId: string): Promise<GooglePlaceResult> {
-    await loadGoogleMapsScript(apiKey);
+    const res = await fetch(
+        `https://places.googleapis.com/v1/places/${placeId}?fields=displayName,rating,userRatingCount,googleMapsUri,reviews`,
+        { headers: { "X-Goog-Api-Key": apiKey } }
+    );
 
-    return new Promise((resolve, reject) => {
-        if (!window.google) {
-            reject(new Error("Google Maps niet beschikbaar"));
-            return;
-        }
+    if (!res.ok) {
+        throw new Error(`Places API-fout: ${res.status}`);
+    }
 
-        const container = document.createElement("div");
-        container.style.display = "none";
-        document.body.appendChild(container);
+    const data: RawGooglePlace = await res.json();
 
-        const service = new window.google.maps.places.PlacesService(container);
-        service.getDetails(
-            { placeId, fields: ["name", "rating", "user_ratings_total", "reviews", "url"] },
-            (place, status) => {
-                document.body.removeChild(container);
-                if (status === window.google!.maps.places.PlacesServiceStatus.OK && place) {
-                    resolve(place);
-                } else {
-                    reject(new Error(`Places API-fout: ${status}`));
-                }
-            }
-        );
-    });
+    const reviews: GooglePlaceReview[] = (data.reviews ?? [])
+        .filter((r): r is RawGoogleReview & { text: { text: string } } => Boolean(r.text?.text))
+        .map((r) => ({
+            author_name: r.authorAttribution?.displayName ?? "Google-gebruiker",
+            rating: Math.round(r.rating ?? 5),
+            text: r.text.text,
+            relative_time_description: r.relativePublishTimeDescription ?? "",
+            profile_photo_url: r.authorAttribution?.photoUri,
+        }));
+
+    return {
+        name: data.displayName?.text,
+        rating: data.rating,
+        user_ratings_total: data.userRatingCount,
+        url: data.googleMapsUri,
+        reviews,
+    };
 }

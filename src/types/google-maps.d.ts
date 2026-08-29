@@ -1,22 +1,6 @@
 export {};
 
 declare global {
-    interface Window {
-        google?: {
-            maps: {
-                places: {
-                    PlacesService: new (attrContainer: HTMLDivElement) => {
-                        getDetails: (
-                            request: { placeId: string; fields: string[] },
-                            callback: (result: GooglePlaceResult | null, status: string) => void
-                        ) => void;
-                    };
-                    PlacesServiceStatus: { OK: string };
-                };
-            };
-        };
-    }
-
     interface GooglePlaceReview {
         author_name: string;
         rating: number;
