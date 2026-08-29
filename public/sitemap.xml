@@ -30,6 +30,32 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://villavredestein.nl/verblijven" />
   </url>
 
+  <!-- Verblijven detailpagina's -->
+  <url>
+    <loc>https://villavredestein.nl/verblijven/kamer</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.nl/verblijven/kamer" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://villavredestein.nl/verblijven/kamer" />
+  </url>
+  <url>
+    <loc>https://villavredestein.nl/verblijven/tijdelijk</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.nl/verblijven/tijdelijk" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://villavredestein.nl/verblijven/tijdelijk" />
+  </url>
+  <url>
+    <loc>https://villavredestein.nl/verblijven/villa</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.nl/verblijven/villa" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://villavredestein.nl/verblijven/villa" />
+  </url>
+
   <!-- Over ons (canonical slug: /verhaal) -->
   <url>
     <loc>https://villavredestein.nl/verhaal</loc>

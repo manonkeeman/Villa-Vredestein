@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { FaInstagram, FaWhatsapp, FaStar } from "react-icons/fa";
 import { FiMapPin } from "react-icons/fi";
 import "./Footer.css";
 
@@ -81,6 +81,15 @@ const Footer = () => {
                         >
                             <FaWhatsapp aria-hidden="true" />
                             <span>WhatsApp</span>
+                        </a>
+                        <a
+                            href="/review"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="footer-address-row footer-review-link"
+                        >
+                            <FaStar aria-hidden="true" />
+                            <span>{t("footer.reviewCta")}</span>
                         </a>
                     </address>
                 </div>

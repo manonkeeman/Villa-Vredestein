@@ -148,6 +148,20 @@ a.footer-address-row:hover svg {
     opacity: 1;
 }
 
+.footer-review-link {
+    color: #fcbc2d !important;
+    font-weight: 600;
+}
+
+.footer-review-link svg {
+    opacity: 1 !important;
+    transition: transform 0.25s ease;
+}
+
+.footer-review-link:hover svg {
+    transform: scale(1.2) rotate(-8deg);
+}
+
 /* ── Bottombar ── */
 .footer-bottom {
     border-top: 1px solid #181410;

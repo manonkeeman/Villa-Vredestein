@@ -13,6 +13,7 @@ import OverOns from "./Pages/Public/OverOns";
 import GalerijVilla from "./Pages/Public/GalerijVilla";
 import Omgeving from "./Pages/Public/Omgeving";
 import Verblijven from "./Pages/Public/Verblijven";
+import VerblijfDetail from "./Pages/Public/VerblijfDetail";
 import Plattegrond from "./Pages/Public/Plattegrond";
 import InDePers from "./Pages/Public/InDePers";
 import Privacy from "./Pages/Public/Privacy";
@@ -76,6 +77,7 @@ function App() {
                 <Route path="/galerij-villa" element={<GalerijVilla />} />
                 <Route path="/omgeving" element={<Omgeving />} />
                 <Route path="/verblijven" element={<Verblijven />} />
+                <Route path="/verblijven/:id" element={<VerblijfDetail />} />
                 <Route path="/ruimtes" element={<Plattegrond />} />
                 <Route path="/privacy" element={<Privacy />} />
 

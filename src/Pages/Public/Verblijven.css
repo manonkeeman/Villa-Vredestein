@@ -118,6 +118,8 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    text-decoration: none;
+    color: inherit;
 }
 
 .optie-card:hover { border-color: #382e1e; transform: translateY(-4px); }
@@ -149,8 +151,18 @@
 .optie-features li { font-size: 0.8rem; color: #887060; display: flex; align-items: center; gap: 0.5rem; }
 .optie-features li span { color: #FCBC2D; font-size: 0.75rem; }
 
-.optie-prijs { margin-top: auto; padding-top: 1rem; border-top: 1px solid #1e1812; }
-.optie-prijs span { font-size: 0.82rem; color: #FCBC2D; font-weight: 600; }
+.optie-footer {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid #1e1812;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+.optie-prijs { font-size: 0.82rem; color: #FCBC2D; font-weight: 600; }
+.optie-meer { font-size: 0.75rem; color: #786050; white-space: nowrap; transition: color 0.25s; }
+.optie-card:hover .optie-meer { color: #FCBC2D; }
 
 /* Form section */
 .verb-form-section { padding: 5rem 0 6rem; border-top: 1px solid #1e1812; }

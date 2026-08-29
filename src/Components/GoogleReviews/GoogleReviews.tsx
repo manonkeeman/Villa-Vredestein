@@ -33,7 +33,7 @@ export default function GoogleReviews() {
     const reviews = place?.reviews ?? [];
     if (!place || reviews.length === 0) return null;
 
-    const writeReviewUrl = `https://search.google.com/local/writereview?placeid=${PLACE_ID}`;
+    const writeReviewUrl = "/review";
 
     return (
         <section className="gr-section" ref={sectionRef}>

@@ -1,44 +1,14 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
-import { useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import GoogleReviews from "../../Components/GoogleReviews/GoogleReviews";
+import { OPTIES } from "../../Data/verblijfOpties";
 import "./Verblijven.css";
 
 import VillaVoorImg   from "../../Assets/Images/ext-villa-voorkant.jpg";
 import VillaBloeiImg  from "../../Assets/Images/ext-villa-bloei.jpg";
 import TuinTerrasImg  from "../../Assets/Images/tuin-terras.jpg";
-
-const OPTIES = [
-    {
-        id: "kamer",
-        icon: "🛏️",
-        titel: "Privékamer",
-        sub: "In de villa",
-        beschrijving: "Eigen kamer op de middelste verdieping, met of zonder balkon — dezelfde opzet als de studentenkamers, maar dan op aanvraag.",
-        vanaf: "Op aanvraag",
-        kenmerken: ["Eigen kamer", "Middelste verdieping", "Met of zonder balkon", "Gedeelde woonkamer & keuken", "Tuin & terras", "Parkeerplaats"],
-    },
-    {
-        id: "tijdelijk",
-        icon: "📅",
-        titel: "Tijdelijk verblijf",
-        sub: "Kort of lang",
-        beschrijving: "Op zoek naar tijdelijk onderdak tijdens je studie, of een IVA-student op zoek naar een kamer op loopafstand? We denken graag mee.",
-        vanaf: "Op aanvraag",
-        kenmerken: ["Flexibele duur", "Gemeubileerd", "Inclusief internet", "Gedeelde keuken, badkamer en woonruimte", "Parkeerplaats", "Beschikbaarheid in overleg"],
-        featured: true,
-    },
-    {
-        id: "villa",
-        icon: "🏛️",
-        titel: "Volledige villa",
-        sub: "Exclusief gebruik",
-        beschrijving: "De gehele Villa Vredestein voor jouw familie. Alle gemeenschappelijke ruimtes en de volledige tuin. Ook ideaal voor expats of als tijdelijk thuis tijdens een verbouwing.",
-        vanaf: "Op aanvraag",
-        kenmerken: ["6 slaapkamers (7e in aanbouw)", "Volledige woonkamer", "3 keukens", "3 badkamers (derde in aanbouw)", "Grote tuin & terras", "Oprit met parkeerplaats"],
-    },
-];
 
 const Verblijven = () => {
     const { i18n } = useTranslation();
@@ -71,8 +41,9 @@ const Verblijven = () => {
         if (optieVanRuimte && OPTIES.some((o) => o.id === optieVanRuimte)) {
             setSelectedOptie(optieVanRuimte);
             setForm((f) => ({ ...f, optie: optieVanRuimte }));
+            const targetId = location.state?.scrollTo === "formulier" ? "verblijf-formulier" : "verblijf-opties";
             requestAnimationFrame(() => {
-                document.getElementById("verblijf-opties")?.scrollIntoView({ behavior: "smooth", block: "start" });
+                document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth", block: "start" });
             });
         }
     }, [location.state]);
@@ -161,14 +132,10 @@ const Verblijven = () => {
                     <h2 className="verb-section-title">Kies jouw verblijf</h2>
                     <div className="opties-grid">
                         {OPTIES.map((o) => (
-                            <article
+                            <Link
                                 key={o.id}
+                                to={`/verblijven/${o.id}`}
                                 className={`optie-card ${o.featured ? "optie-featured" : ""} ${selectedOptie === o.id ? "optie-selected" : ""}`}
-                                onClick={() => handleOptieSelect(o.id)}
-                                role="button"
-                                tabIndex={0}
-                                onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && handleOptieSelect(o.id)}
-                                aria-pressed={selectedOptie === o.id}
                             >
                                 {o.featured && <div className="optie-badge">Populair</div>}
                                 <div className="optie-icon">{o.icon}</div>
@@ -182,10 +149,11 @@ const Verblijven = () => {
                                         </li>
                                     ))}
                                 </ul>
-                                <div className="optie-prijs">
-                                    <span>{o.vanaf}</span>
+                                <div className="optie-footer">
+                                    <span className="optie-prijs">{o.vanaf}</span>
+                                    <span className="optie-meer">Bekijk details &amp; foto&apos;s →</span>
                                 </div>
-                            </article>
+                            </Link>
                         ))}
                     </div>
                 </div>
@@ -261,7 +229,7 @@ const Verblijven = () => {
             <GoogleReviews />
 
             {/* Boekingsformulier */}
-            <section className="verb-form-section reveal-section" ref={addRef}>
+            <section id="verblijf-formulier" className="verb-form-section reveal-section" ref={addRef}>
                 <div className="verb-inner verb-form-grid">
 
                     <div className="verb-form-left">

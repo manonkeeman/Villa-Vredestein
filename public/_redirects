@@ -1,5 +1,8 @@
 # Canonical redirect: old slug → new slug
 /over-ons /verhaal 301
 
+# Korte, deelbare link naar het Google review-formulier
+/review https://search.google.com/local/writereview?placeid=ChIJD5u4jR9dxkcRXgit8eiqcxw 302
+
 # SPA fallback — must be last
 /* /index.html 200
