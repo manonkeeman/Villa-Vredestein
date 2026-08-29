@@ -46,17 +46,17 @@ const VerblijfDetail = () => {
         <main className="vd-page">
             <Helmet>
                 <html lang={langCode} />
-                <title>{optie.titel} — Verblijven, Villa Vredestein</title>
+                <title>{optie.titel}, Verblijven, Villa Vredestein</title>
                 <meta name="description" content={optie.beschrijving} />
                 <link rel="canonical" href={canonicalUrl} />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content={canonicalUrl} />
-                <meta property="og:title" content={`${optie.titel} — Villa Vredestein`} />
+                <meta property="og:title" content={`${optie.titel}, Villa Vredestein`} />
                 <meta property="og:description" content={optie.beschrijving} />
                 <meta property="og:image" content={hero.src} />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={`${optie.titel} — Villa Vredestein`} />
+                <meta name="twitter:title" content={`${optie.titel}, Villa Vredestein`} />
                 <meta name="twitter:description" content={optie.beschrijving} />
                 <meta name="twitter:image" content={hero.src} />
             </Helmet>

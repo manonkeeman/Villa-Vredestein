@@ -58,7 +58,6 @@ const VERDIEPINGEN: Verdieping[] = [
         beschrijving: "Drie luxe slaapkamers waarvan twee met balkon, eigen badkamer, kitchenette en eigen ingang. Oekraïne is nu de slaapkamer van Manon & Maxim, wordt straks logeerkamer. Sportkamer in aanbouw.",
         status: "eigen ingang",
         plattegrondCaption: "Eerste verdieping",
-        optieId: "kamer",
         ruimtes: [
             { naam: "Italië (Arwen 2006)",               icon: "🇮🇹", afm: "~22 m²", info: "Airco, balkon tuinzijde, grootste kamer" },
             { naam: "Frankrijk (Medoc 2005)",             icon: "🇫🇷", afm: "~18 m²", info: "Airco, balkon straatzijde" },

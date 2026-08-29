@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import "./OverOns.css";
 
 import ImgManonMaxim from "../../Assets/Images/Maxim_Manon_ChevroletSuburban.jpg";
+import ImgMotorrijden from "../../Assets/Images/life-motorrijden.jpg";
+import ImgSleutels2020 from "../../Assets/Images/hist-gekocht-2020.jpg";
 import LuchtballonImg from "../../Assets/Images/ext-luchtballon.png";
 import ImgCarpeDiem from "../../Assets/Images/PannenkoekenAvondVillaVredestein.jpg";
 import CarpeDiemVideo from "../../Assets/Videos/carpe-diem.mp4";
@@ -19,6 +21,10 @@ const SECTIONS = [
         theme: "dark",
         accent: "#FCBC2D",
         pullQuote: "Verre horizonten en een stevige basis. Dat is wat ze samen bouwen.",
+        extraImages: [
+            { src: ImgSleutels2020, alt: "Maxim ontvangt de sleutels van Hoofdstraat 147, oktober 2020" },
+            { src: ImgMotorrijden, alt: "Manon & Maxim delen een passie voor motorrijden" },
+        ],
     },
     {
         slug: "carpe-diem-design",
@@ -166,29 +172,41 @@ const OverOns = () => {
                     >
                         {/* Image / Video column */}
                         <div className="oo-img-col">
-                            <figure className={`oo-img-wrap${sec.imgContain ? " oo-img-wrap--contain" : ""}`}>
-                                {sec.video ? (
-                                    <video
-                                        src={sec.video}
-                                        className="oo-img"
-                                        autoPlay
-                                        muted
-                                        loop
-                                        playsInline
-                                        preload="metadata"
-                                        poster={sec.img}
-                                        aria-label={sec.imgAlt}
-                                    />
-                                ) : (
-                                    <img
-                                        src={sec.img}
-                                        alt={sec.imgAlt}
-                                        loading="lazy"
-                                        className="oo-img"
-                                    />
+                            <div className="oo-img-block">
+                                <figure className={`oo-img-wrap${sec.imgContain ? " oo-img-wrap--contain" : ""}`}>
+                                    {sec.video ? (
+                                        <video
+                                            src={sec.video}
+                                            className="oo-img"
+                                            autoPlay
+                                            muted
+                                            loop
+                                            playsInline
+                                            preload="metadata"
+                                            poster={sec.img}
+                                            aria-label={sec.imgAlt}
+                                        />
+                                    ) : (
+                                        <img
+                                            src={sec.img}
+                                            alt={sec.imgAlt}
+                                            loading="lazy"
+                                            className="oo-img"
+                                        />
+                                    )}
+                                    <div className="oo-img-overlay" aria-hidden="true" />
+                                </figure>
+
+                                {Array.isArray(sec.extraImages) && sec.extraImages.length > 0 && (
+                                    <div className="oo-extra-images">
+                                        {sec.extraImages.map((extra) => (
+                                            <div key={extra.src} className="oo-extra-img-wrap">
+                                                <img src={extra.src} alt={extra.alt} loading="lazy" />
+                                            </div>
+                                        ))}
+                                    </div>
                                 )}
-                                <div className="oo-img-overlay" aria-hidden="true" />
-                            </figure>
+                            </div>
                         </div>
 
                         {/* Text column */}
