@@ -13,11 +13,9 @@ import CarpeDiemVideo from "../../Assets/Videos/carpe-diem.mp4";
 import ImgCafeRacer from "../../Assets/Images/cafe-racer-1.jpg";
 import ImgCarpeDiemBord from "../../Assets/Images/life-carpediem-bord.jpg";
 import ImgBezoek from "../../Assets/Images/BezoekOnsVillaVredestein.jpg";
-import ImgVillaBloei from "../../Assets/Images/ext-villa-bloei.jpg";
-import ImgManonTractor from "../../Assets/Images/life-manon-tractor.jpg";
 import ImgManonIT from "../../Assets/Images/manonit-portrait.webp";
 import ImgManonITBrand from "../../Assets/Images/manonit-og.jpg";
-import ImgKoken from "../../Assets/Images/life-koken.jpg";
+import ImgManonITWebsite from "../../Assets/Images/manonit-website.png";
 
 const SECTIONS = [
     {
@@ -60,7 +58,7 @@ const SECTIONS = [
         ],
         extraImages: [
             { src: ImgManonITBrand, alt: "ManonIT, ik bouw mooie websites" },
-            { src: ImgKoken, alt: "Manon aan het koken in Villa Vredestein" },
+            { src: ImgManonITWebsite, alt: "De website van ManonIT" },
         ],
     },
     {
@@ -70,10 +68,6 @@ const SECTIONS = [
         theme: "light",
         accent: "#b89a5e",
         pullQuote: "Villa Vredestein is meer dan een adres. Het is een open deur.",
-        extraImages: [
-            { src: ImgVillaBloei, alt: "Villa Vredestein in bloei" },
-            { src: ImgManonTractor, alt: "Manon aan het werk op het terrein van Villa Vredestein" },
-        ],
     },
 ];
 
