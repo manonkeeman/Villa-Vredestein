@@ -105,8 +105,8 @@ const Verblijven = () => {
                 <div className="verb-hero-overlay" />
                 <div className="verb-hero-content">
                     <span className="verb-eyebrow">Verblijven</span>
-                    <h1>Jouw plek in de villa</h1>
-                    <p>Een nacht, een maand of langer. Villa Vredestein verwelkomt je.</p>
+                    <h1>Een nacht, een maand of langer. Villa Vredestein verwelkomt je.</h1>
+                    <p>Een nacht, je studieperiode bij de IVA of een verbouwing en een tijdelijke oplossing nodig?</p>
                 </div>
             </header>
 
