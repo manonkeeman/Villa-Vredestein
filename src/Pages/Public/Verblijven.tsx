@@ -234,21 +234,9 @@ const Verblijven = () => {
                     <div className="reviews-grid">
                         {[
                             {
-                                naam: "Bram",
-                                rol: "IVA Student 2022-2024",
-                                tekst: "Ik had niet verwacht dat wonen in een historische villa zo ontspannen zou zijn. De kamers zijn ruim, de tuin is een plek om echt bij te komen en Manon en Maxim zijn de beste huisbazen die je je kunt wensen.",
-                                sterren: 5,
-                            },
-                            {
                                 naam: "Simon",
                                 rol: "IVA Student 2024-2026",
                                 tekst: "Een super leuke en gezellige periode gehad in Villa Vredestein. Ondanks de verbouwing nam Maxim me toch in huis, wat erg gewaardeerd werd. Wat een leuke lieve mensen zijn Maxim en Manon, altijd in voor een praatje en een paar keer een hele leuke pannenkoekennavond. Midden in het 2e jaar was de verbouwing af en wat is het mooi geworden: een luxe keuken met een luxe badkamer. Ik zou het huis, Maxim en Manon een 10 geven voor de gastvrijheid. Beter kan je het niet treffen als je het vergelijkt met andere studentenhuizen!",
-                                sterren: 5,
-                            },
-                            {
-                                naam: "Rommert",
-                                rol: "IVA Student 2023-2024",
-                                tekst: "Al snel voelde het als mijn eigen thuis. De historische details in het pand, de grote tuin en het samenleven met een fijne groep mensen maakt Villa Vredestein echt bijzonder. Absoluut aan te raden.",
                                 sterren: 5,
                             },
                         ].map((r) => (
