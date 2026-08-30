@@ -116,17 +116,11 @@
 .vd-cta-btn:hover { background: #e5a920; transform: translateY(-2px); }
 
 /* Galerij */
-.vd-galerij { padding: 4rem 0; border-bottom: 1px solid #1e1812; }
+.vd-galerij { padding: 4rem 0 5rem; }
 .vd-galerij-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
 .vd-galerij-item { border-radius: 12px; overflow: hidden; aspect-ratio: 4/3; }
 .vd-galerij-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
 .vd-galerij-item:hover img { transform: scale(1.05); }
-
-/* Onderaan CTA */
-.vd-onderaan-cta { padding: 4rem 0 5rem; }
-.vd-onderaan-cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
-.vd-onderaan-cta h2 { font-size: 1.4rem; font-weight: 700; color: #fff; margin: 0 0 0.4rem; }
-.vd-onderaan-cta p { font-size: 0.88rem; color: #887060; margin: 0; }
 
 /* Responsive */
 @media (max-width: 900px) {

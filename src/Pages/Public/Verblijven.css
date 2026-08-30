@@ -110,14 +110,14 @@
 .optie-card {
     background: #120f09;
     border: 1px solid #221b12;
-    border-radius: 14px;
-    padding: 2rem 1.75rem;
+    border-radius: 12px;
+    padding: 1.4rem 1.25rem;
     cursor: pointer;
     transition: border-color 0.3s, transform 0.3s, background 0.3s;
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.35rem;
     text-decoration: none;
     color: inherit;
 }
@@ -141,27 +141,27 @@
     border-radius: 20px;
 }
 
-.optie-icon { font-size: 2rem; margin-bottom: 0.25rem; }
+.optie-icon { font-size: 1.5rem; margin-bottom: 0.15rem; }
 
-.optie-card h3 { font-size: 1.1rem; font-weight: 700; color: #fff; margin: 0; }
-.optie-sub { font-size: 0.75rem; color: #786050; text-transform: uppercase; letter-spacing: 0.08em; }
-.optie-card p { font-size: 0.85rem; color: #988068; line-height: 1.6; margin: 0.5rem 0 0; flex: 1; }
+.optie-card h3 { font-size: 0.98rem; font-weight: 700; color: #fff; margin: 0; }
+.optie-sub { font-size: 0.68rem; color: #786050; text-transform: uppercase; letter-spacing: 0.08em; }
+.optie-card p { font-size: 0.78rem; color: #988068; line-height: 1.5; margin: 0.35rem 0 0; flex: 1; }
 
-.optie-features { list-style: none; padding: 0; margin: 1rem 0 0; display: flex; flex-direction: column; gap: 0.35rem; }
-.optie-features li { font-size: 0.8rem; color: #887060; display: flex; align-items: center; gap: 0.5rem; }
-.optie-features li span { color: #FCBC2D; font-size: 0.75rem; }
+.optie-features { list-style: none; padding: 0; margin: 0.65rem 0 0; display: flex; flex-direction: column; gap: 0.25rem; }
+.optie-features li { font-size: 0.73rem; color: #887060; display: flex; align-items: center; gap: 0.4rem; }
+.optie-features li span { color: #FCBC2D; font-size: 0.68rem; }
 
 .optie-footer {
     margin-top: auto;
-    padding-top: 1rem;
+    padding-top: 0.75rem;
     border-top: 1px solid #1e1812;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 0.75rem;
 }
-.optie-prijs { font-size: 0.82rem; color: #FCBC2D; font-weight: 600; }
-.optie-meer { font-size: 0.75rem; color: #786050; white-space: nowrap; transition: color 0.25s; }
+.optie-prijs { font-size: 0.75rem; color: #FCBC2D; font-weight: 600; }
+.optie-meer { font-size: 0.68rem; color: #786050; white-space: nowrap; transition: color 0.25s; }
 .optie-card:hover .optie-meer { color: #FCBC2D; }
 
 /* Form section */
@@ -288,62 +288,13 @@ input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1) opacit
 }
 .verb-btn-secondary:hover { color: #f5d8c8; border-color: #8b3a3a; }
 
-/* Sfeer & inbegrepen */
-.verb-sfeer { border-top: 1px solid #1e1812; }
-
-.verb-sfeer-img-wrap {
-    position: relative;
-    height: 52vh;
-    min-height: 300px;
-    overflow: hidden;
-    display: flex;
-    align-items: flex-end;
-}
-.verb-sfeer-img {
-    position: absolute;
-    inset: 0;
-    width: 100%; height: 100%;
-    object-fit: cover;
-    object-position: center 40%;
-    filter: brightness(0.45) saturate(0.7);
-}
-.verb-sfeer-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, transparent 30%, rgba(12,10,7,0.85) 100%);
-}
-.verb-sfeer-quote-wrap {
-    position: relative;
-    z-index: 2;
-    padding: 2.5rem 2rem 3rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-}
-.verb-sfeer-quote {
-    font-size: clamp(1rem, 2.2vw, 1.45rem);
-    color: #fff;
-    font-style: italic;
-    font-weight: 300;
-    line-height: 1.65;
-    margin: 0 0 0.75rem;
-    max-width: 680px;
-    border: none;
-    padding: 0;
-}
-.verb-sfeer-cite {
-    display: block;
-    font-size: 0.72rem;
-    color: #FCBC2D;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    font-style: normal;
-}
-
-.verb-inbegrepen {
+/* Altijd inbegrepen */
+.verb-inbegrepen-section {
     background: #0e0b07;
     border-top: 1px solid #1e1812;
-    padding: 2rem 0;
+    border-bottom: 1px solid #1e1812;
+    padding: 3rem 0;
+    text-align: center;
 }
 .verb-inbegrepen-titel {
     font-size: 0.7rem;
@@ -353,7 +304,7 @@ input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1) opacit
     color: #786050;
     margin: 0 0 1.25rem;
 }
-.verb-chips { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.verb-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; }
 .verb-chip {
     display: flex;
     align-items: center;
@@ -440,7 +391,6 @@ input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1) opacit
     .verb-form-img { display: none; }
     .verb-stat { padding: 1rem 1.5rem; }
     .verb-stat strong { font-size: 1.2rem; }
-    .verb-sfeer-img-wrap { height: 42vh; }
 }
 
 @media (max-width: 768px) {

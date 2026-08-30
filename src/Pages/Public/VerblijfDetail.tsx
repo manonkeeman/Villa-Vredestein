@@ -63,7 +63,10 @@ const VerblijfDetail = () => {
 
             {/* Hero */}
             <header className="vd-hero">
-                <div className="vd-hero-bg" style={{ backgroundImage: `url(${hero.src})` }} />
+                <div
+                    className="vd-hero-bg"
+                    style={{ backgroundImage: `url(${hero.src})`, backgroundPosition: hero.pos || "center" }}
+                />
                 <div className="vd-hero-overlay" />
                 <div className="vd-hero-content">
                     <Link to="/verblijven" className="vd-back">← Alle verblijfsopties</Link>
@@ -113,26 +116,18 @@ const VerblijfDetail = () => {
                         <div className="vd-galerij-grid">
                             {rest.map((img) => (
                                 <div key={img.src} className="vd-galerij-item">
-                                    <img src={img.src} alt={img.alt} loading="lazy" />
+                                    <img
+                                        src={img.src}
+                                        alt={img.alt}
+                                        loading="lazy"
+                                        style={img.pos ? { objectPosition: img.pos } : undefined}
+                                    />
                                 </div>
                             ))}
                         </div>
                     </div>
                 </section>
             )}
-
-            {/* CTA onderaan */}
-            <section className="vd-onderaan-cta reveal-section" ref={addRef}>
-                <div className="vd-inner vd-onderaan-cta-inner">
-                    <div>
-                        <h2>Interesse in {optie.titel.toLowerCase()}?</h2>
-                        <p>Vul het formulier in en we nemen binnen 24 uur contact met je op.</p>
-                    </div>
-                    <button className="vd-cta-btn" onClick={vraagBeschikbaarheid}>
-                        Vraag beschikbaarheid aan
-                    </button>
-                </div>
-            </section>
         </main>
     );
 };

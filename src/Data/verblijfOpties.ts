@@ -10,7 +10,7 @@ import FotoSchuurdeur2     from "../Assets/Images/fotoproductie-schuurdeur-2.jpg
 import FotoBackstage1      from "../Assets/Images/fotoproductie-backstage-1.jpg";
 import FotoBackstage2      from "../Assets/Images/fotoproductie-backstage-2.jpg";
 
-export type VerblijfAfbeelding = { src: string; alt: string };
+export type VerblijfAfbeelding = { src: string; alt: string; pos?: string };
 
 export type VerblijfOptie = {
     id: string;
@@ -47,6 +47,26 @@ export const OPTIES: VerblijfOptie[] = [
         ],
     },
     {
+        id: "villa",
+        icon: "🏛️",
+        titel: "Volledige villa",
+        sub: "Exclusief gebruik",
+        beschrijving: "De gehele Villa Vredestein voor jouw familie. Alle gemeenschappelijke ruimtes en de volledige tuin. Ook ideaal voor expats of als tijdelijk thuis tijdens een verbouwing.",
+        langeBeschrijving: [
+            "Voor wie de hele villa wil: zes slaapkamers (een zevende in aanbouw), drie keukens en een grote tuin met terras, allemaal voor jouw familie of groep alleen.",
+            "De benedenverdieping heeft een riante woonkamer met houtkachel, een keukeneiland met bar en een aparte eetkamer, perfect voor een langer verblijf met meerdere gezinsleden.",
+            "Deze optie is geliefd bij expats die net in Nederland zijn, en bij gezinnen die tijdelijk een thuis zoeken tijdens een eigen verbouwing.",
+        ],
+        vanaf: "Op aanvraag",
+        kenmerken: ["6 slaapkamers (7e in aanbouw)", "Volledige woonkamer", "3 keukens", "3 badkamers (derde in aanbouw)", "Grote tuin & terras", "Oprit met parkeerplaats"],
+        afbeeldingen: [
+            { src: IntWoonkamer, alt: "Woonkamer van Villa Vredestein" },
+            { src: IntKroonluchter, alt: "Kristallen kroonluchter in Villa Vredestein" },
+            { src: ExtVillaVoorkant, alt: "Voorgevel van Villa Vredestein" },
+            { src: TuinTerras, alt: "Tuin en terras van Villa Vredestein" },
+        ],
+    },
+    {
         id: "tijdelijk",
         icon: "📅",
         titel: "Tijdelijk verblijf",
@@ -69,26 +89,6 @@ export const OPTIES: VerblijfOptie[] = [
         ],
     },
     {
-        id: "villa",
-        icon: "🏛️",
-        titel: "Volledige villa",
-        sub: "Exclusief gebruik",
-        beschrijving: "De gehele Villa Vredestein voor jouw familie. Alle gemeenschappelijke ruimtes en de volledige tuin. Ook ideaal voor expats of als tijdelijk thuis tijdens een verbouwing.",
-        langeBeschrijving: [
-            "Voor wie de hele villa wil: zes slaapkamers (een zevende in aanbouw), drie keukens en een grote tuin met terras, allemaal voor jouw familie of groep alleen.",
-            "De benedenverdieping heeft een riante woonkamer met houtkachel, een keukeneiland met bar en een aparte eetkamer, perfect voor een langer verblijf met meerdere gezinsleden.",
-            "Deze optie is geliefd bij expats die net in Nederland zijn, en bij gezinnen die tijdelijk een thuis zoeken tijdens een eigen verbouwing.",
-        ],
-        vanaf: "Op aanvraag",
-        kenmerken: ["6 slaapkamers (7e in aanbouw)", "Volledige woonkamer", "3 keukens", "3 badkamers (derde in aanbouw)", "Grote tuin & terras", "Oprit met parkeerplaats"],
-        afbeeldingen: [
-            { src: IntWoonkamer, alt: "Woonkamer van Villa Vredestein" },
-            { src: IntKroonluchter, alt: "Kristallen kroonluchter in Villa Vredestein" },
-            { src: ExtVillaVoorkant, alt: "Voorgevel van Villa Vredestein" },
-            { src: TuinTerras, alt: "Tuin en terras van Villa Vredestein" },
-        ],
-    },
-    {
         id: "fotoproductie",
         icon: "📸",
         titel: "Fotoproducties",
@@ -102,11 +102,11 @@ export const OPTIES: VerblijfOptie[] = [
         vanaf: "Op aanvraag",
         kenmerken: ["Historische gevel", "Sfeervolle tuin", "Rustieke schuurdeur als decor", "Eerder gebruikt voor fotoshoots", "In overleg beschikbaar"],
         afbeeldingen: [
-            { src: FotoSchuurdeur, alt: "Fotoshoot bij de rustieke schuurdeur van Villa Vredestein" },
-            { src: FotoBackstage1, alt: "Achter de schermen bij een professionele fotoshoot in Villa Vredestein" },
-            { src: FotoBackstage2, alt: "De fotograaf aan het werk tijdens een shoot in Villa Vredestein" },
-            { src: FotoOprijlaan, alt: "Fotoshoot op de oprijlaan van Villa Vredestein" },
-            { src: FotoSchuurdeur2, alt: "Fotoshoot bij Villa Vredestein" },
+            { src: FotoSchuurdeur, alt: "Fotoshoot bij de rustieke schuurdeur van Villa Vredestein", pos: "center 15%" },
+            { src: FotoBackstage1, alt: "Achter de schermen bij een professionele fotoshoot in Villa Vredestein", pos: "center 10%" },
+            { src: FotoBackstage2, alt: "De fotograaf aan het werk tijdens een shoot in Villa Vredestein", pos: "center 10%" },
+            { src: FotoOprijlaan, alt: "Fotoshoot op de oprijlaan van Villa Vredestein", pos: "center 15%" },
+            { src: FotoSchuurdeur2, alt: "Fotoshoot bij Villa Vredestein", pos: "center 15%" },
             { src: ExtVillaVoorkant, alt: "Voorgevel van Villa Vredestein" },
         ],
     },

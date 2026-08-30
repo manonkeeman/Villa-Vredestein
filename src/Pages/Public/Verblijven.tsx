@@ -8,7 +8,6 @@ import "./Verblijven.css";
 
 import VillaVoorImg   from "../../Assets/Images/ext-villa-voorkant.jpg";
 import VillaBloeiImg  from "../../Assets/Images/ext-villa-bloei.jpg";
-import TuinTerrasImg  from "../../Assets/Images/tuin-terras.jpg";
 
 const Verblijven = () => {
     const { i18n } = useTranslation();
@@ -159,38 +158,25 @@ const Verblijven = () => {
                 </div>
             </section>
 
-            {/* Sfeer, beeld + inbegrepen */}
-            <section className="verb-sfeer reveal-section" ref={addRef}>
-                <div className="verb-sfeer-img-wrap">
-                    <img src={TuinTerrasImg} alt="Het terras van Villa Vredestein" className="verb-sfeer-img" loading="lazy" />
-                    <div className="verb-sfeer-overlay" />
-                    <div className="verb-sfeer-quote-wrap">
-                        <blockquote className="verb-sfeer-quote">
-                            &quot;Wonen in Villa Vredestein is meer dan een kamer huren.<br />
-                            Het is deel worden van een levend verhaal.&quot;
-                        </blockquote>
-                        <cite className="verb-sfeer-cite">Manon &amp; Maxim, eigenaren</cite>
-                    </div>
-                </div>
-                <div className="verb-inbegrepen">
-                    <div className="verb-inner">
-                        <h3 className="verb-inbegrepen-titel">Altijd inbegrepen</h3>
-                        <div className="verb-chips">
-                            {[
-                                { icon: "📶", label: "Snel internet" },
-                                { icon: "🚗", label: "Parkeerplaats" },
-                                { icon: "🌳", label: "Tuin & terras" },
-                                { icon: "🌿", label: "Moestuin" },
-                                { icon: "🏛️", label: "Historisch pand (1906)" },
-                                { icon: "🔑", label: "Eigen sleutel" },
-                                { icon: "🤝", label: "Persoonlijk contact" },
-                            ].map((c) => (
-                                <div key={c.label} className="verb-chip">
-                                    <span aria-hidden="true">{c.icon}</span>
-                                    {c.label}
-                                </div>
-                            ))}
-                        </div>
+            {/* Altijd inbegrepen */}
+            <section className="verb-inbegrepen-section reveal-section" ref={addRef}>
+                <div className="verb-inner">
+                    <h3 className="verb-inbegrepen-titel">Altijd inbegrepen</h3>
+                    <div className="verb-chips">
+                        {[
+                            { icon: "📶", label: "Snel internet" },
+                            { icon: "🚗", label: "Parkeerplaats" },
+                            { icon: "🌳", label: "Tuin & terras" },
+                            { icon: "🌿", label: "Moestuin" },
+                            { icon: "🏛️", label: "Historisch pand (1906)" },
+                            { icon: "🔑", label: "Eigen sleutel" },
+                            { icon: "🤝", label: "Persoonlijk contact" },
+                        ].map((c) => (
+                            <div key={c.label} className="verb-chip">
+                                <span aria-hidden="true">{c.icon}</span>
+                                {c.label}
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
@@ -198,7 +184,7 @@ const Verblijven = () => {
             {/* Reviews */}
             <section className="verb-reviews reveal-section" ref={addRef}>
                 <div className="verb-inner">
-                    <h2 className="verb-section-title">Wat bewoners zeggen</h2>
+                    <h2 className="verb-section-title">Wat bewoners &amp; bezoekers zeggen</h2>
                     <div className="reviews-grid">
                         {[
                             {
