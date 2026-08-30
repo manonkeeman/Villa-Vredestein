@@ -5,7 +5,6 @@ import IntKroonluchter     from "../Assets/Images/int-kroonluchter.jpg";
 import TuinTerras          from "../Assets/Images/tuin-terras.jpg";
 import ExtVillaVoorkant    from "../Assets/Images/ext-villa-voorkant.jpg";
 import FotoSchuurdeur      from "../Assets/Images/fotoproductie-schuurdeur.jpg";
-import FotoOprijlaan       from "../Assets/Images/fotoproductie-oprijlaan.jpg";
 import FotoSchuurdeur2     from "../Assets/Images/fotoproductie-schuurdeur-2.jpg";
 import FotoBackstage1      from "../Assets/Images/fotoproductie-backstage-1.jpg";
 import FotoBackstage2      from "../Assets/Images/fotoproductie-backstage-2.jpg";
@@ -100,14 +99,12 @@ export const OPTIES: VerblijfOptie[] = [
             "Neem contact op om de mogelijkheden, beschikbaarheid en voorwaarden te bespreken.",
         ],
         vanaf: "Op aanvraag",
-        kenmerken: ["Historische gevel", "Sfeervolle tuin", "Rustieke schuurdeur als decor", "Eerder gebruikt voor fotoshoots", "In overleg beschikbaar"],
+        kenmerken: ["Historische gevel", "Sfeervolle tuin", "Rustieke schuurdeur als decor", "In overleg beschikbaar"],
         afbeeldingen: [
             { src: FotoSchuurdeur, alt: "Fotoshoot bij de rustieke schuurdeur van Villa Vredestein", pos: "center 15%" },
             { src: FotoBackstage1, alt: "Achter de schermen bij een professionele fotoshoot in Villa Vredestein", pos: "center 10%" },
             { src: FotoBackstage2, alt: "De fotograaf aan het werk tijdens een shoot in Villa Vredestein", pos: "center 10%" },
-            { src: FotoOprijlaan, alt: "Fotoshoot op de oprijlaan van Villa Vredestein", pos: "center 15%" },
             { src: FotoSchuurdeur2, alt: "Fotoshoot bij Villa Vredestein", pos: "center 15%" },
-            { src: ExtVillaVoorkant, alt: "Voorgevel van Villa Vredestein" },
         ],
     },
 ];
