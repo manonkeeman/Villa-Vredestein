@@ -92,14 +92,14 @@ export const OPTIES: VerblijfOptie[] = [
         icon: "📸",
         titel: "Fotoproducties",
         sub: "Villa als decor",
-        beschrijving: "Villa Vredestein is ook te huren als decor voor fotoshoots en (kleinschalige) producties.",
+        beschrijving: "Historische gevel, rustieke details en kamers van vintage tot modern — Villa Vredestein is te huren als decor voor fotoshoots en (kleinschalige) producties.",
         langeBeschrijving: [
-            "Met zijn karakteristieke gevel, sfeervolle tuin en authentieke details leent Villa Vredestein zich uitstekend als locatie voor fotoshoots en producties.",
-            "De villa is al eerder gebruikt als decor voor een professionele fotoshoot. Van de statige voorgevel tot de rustieke schuurdeur: er is genoeg sfeer en variatie voor een geslaagde shoot.",
+            "Met zijn historische gevel, rustieke details en een mix van vintage, rustieke en modern gerenoveerde kamers biedt Villa Vredestein volop variatie als decor voor fotoshoots en producties.",
+            "De villa is al eerder gebruikt als decor voor een professionele fotoshoot. Van de rustieke schuurdeur tot sfeervolle vintage kamers en modern gerenoveerde ruimtes: er is voor elke shoot een passende setting.",
             "Neem contact op om de mogelijkheden, beschikbaarheid en voorwaarden te bespreken.",
         ],
         vanaf: "Op aanvraag",
-        kenmerken: ["Historische gevel", "Sfeervolle tuin", "Rustieke schuurdeur als decor", "In overleg beschikbaar"],
+        kenmerken: ["Historische gevel", "Rustieke details", "Keuze uit vintage, rustieke en moderne kamers", "In overleg beschikbaar"],
         afbeeldingen: [
             { src: FotoSchuurdeur, alt: "Fotoshoot bij de rustieke schuurdeur van Villa Vredestein", pos: "center 15%" },
             { src: FotoBackstage1, alt: "Achter de schermen bij een professionele fotoshoot in Villa Vredestein", pos: "center 10%" },
