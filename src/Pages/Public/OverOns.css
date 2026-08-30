@@ -9,6 +9,23 @@
     transform: translateY(0);
 }
 
+@media (prefers-reduced-motion: reduce) {
+    .oo-reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+    .oo-img:hover,
+    .oo-section:hover .oo-img,
+    .oo-section:hover .oo-img-wrap--contain .oo-img,
+    .oo-extra-img-wrap:hover img {
+        transform: none;
+    }
+    * {
+        scroll-behavior: auto !important;
+    }
+}
+
 /* ── Pagina ── */
 .over-ons-page {
     width: 100%;

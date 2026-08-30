@@ -7,7 +7,7 @@ import "./OverOns.css";
 import ImgChineseMuur from "../../Assets/Images/life-chinese-muur.jpg";
 import ImgKLMCockpit from "../../Assets/Images/life-klm-cockpit.jpg";
 import ImgRoadtrip from "../../Assets/Images/life-roadtrip-auto.jpg";
-import LuchtballonImg from "../../Assets/Images/ext-luchtballon.png";
+import LuchtballonImg from "../../Assets/Images/ext-luchtballon.jpg";
 import CarpeDiemVideo from "../../Assets/Videos/carpe-diem.mp4";
 import ImgCafeRacerStaand from "../../Assets/Images/life-carpediem-cafe-racer.jpg";
 import ImgCarpeDiemTekening from "../../Assets/Images/life-carpediem-tekening.jpg";
@@ -90,6 +90,9 @@ const OverOns = () => {
     const heroRef = useRef(null);
     const [activeSection, setActiveSection] = useState(null);
     const [expanded, setExpanded] = useState({});
+    const [reduceMotion] = useState(
+        () => typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
+    );
 
     const toggleExpanded = (slug) =>
         setExpanded((prev) => ({ ...prev, [slug]: !prev[slug] }));
@@ -112,6 +115,42 @@ const OverOns = () => {
         return () => observer.disconnect();
     }, []);
 
+    const aboutSchema = JSON.stringify({
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "AboutPage",
+                "@id": "https://villavredestein.nl/verhaal#page",
+                "url": "https://villavredestein.nl/verhaal",
+                "name": "Over ons, Villa Vredestein",
+                "description": "De mensen achter Villa Vredestein: het verhaal van Manon & Maxim, Project Carpe Diem en ManonIT.",
+                "inLanguage": langCode,
+                "isPartOf": { "@id": "https://villavredestein.nl/#website" },
+                "about": { "@id": "https://villavredestein.nl/#business" },
+                "mainEntity": [
+                    { "@id": "https://villavredestein.nl/verhaal#manon" },
+                    { "@id": "https://villavredestein.nl/verhaal#maxim" },
+                ],
+            },
+            {
+                "@type": "Person",
+                "@id": "https://villavredestein.nl/verhaal#manon",
+                "name": "Manon Keeman",
+                "description": "Mede-eigenaar van Villa Vredestein en oprichter van ManonIT, een webdesign- en ontwikkelbedrijf.",
+                "worksFor": { "@type": "Organization", "name": "ManonIT", "url": "https://www.manonit.com" },
+                "affiliation": { "@id": "https://villavredestein.nl/#business" },
+                "sameAs": ["https://www.manonit.com", "https://www.casacrew.nl"],
+            },
+            {
+                "@type": "Person",
+                "@id": "https://villavredestein.nl/verhaal#maxim",
+                "name": "Maxim Staal",
+                "description": "Mede-eigenaar van Villa Vredestein, intercontinentaal piloot en oprichter van Project Carpe Diem.",
+                "affiliation": { "@id": "https://villavredestein.nl/#business" },
+            },
+        ],
+    });
+
     return (
         <main className="over-ons-page">
             <Helmet>
@@ -122,6 +161,7 @@ const OverOns = () => {
                     content="De mensen achter Villa Vredestein. Het verhaal van Manon & Maxim, Carpe Diem Design en de open deur voor bezoekers en gelijkgestemden."
                 />
                 <link rel="canonical" href="https://villavredestein.nl/verhaal" />
+                <link rel="preload" as="image" href={LuchtballonImg} {...{ fetchpriority: "high" }} />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://villavredestein.nl/verhaal" />
                 <meta property="og:title" content="Over ons, Villa Vredestein" />
@@ -136,6 +176,7 @@ const OverOns = () => {
                 <meta name="twitter:title" content="Over ons, Villa Vredestein" />
                 <meta name="twitter:description" content="De mensen achter Villa Vredestein. Het verhaal van Manon & Maxim, Carpe Diem Design en de open deur voor bezoekers." />
                 <meta name="twitter:image" content="https://villavredestein.nl/og-image.jpg" />
+                <script type="application/ld+json">{aboutSchema}</script>
             </Helmet>
 
             {/* Hero */}
@@ -198,7 +239,8 @@ const OverOns = () => {
                                         <video
                                             src={sec.video}
                                             className="oo-img"
-                                            autoPlay
+                                            autoPlay={!reduceMotion}
+                                            controls={reduceMotion}
                                             muted
                                             loop
                                             playsInline

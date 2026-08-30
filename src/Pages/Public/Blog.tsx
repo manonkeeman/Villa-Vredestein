@@ -10,7 +10,7 @@ import Villa2 from "../../Assets/Images/VillaVredestein1910.jpg";
 import Villa3 from "../../Assets/Images/VillaVredesteinRestauratie.jpg";
 import Villa6 from "../../Assets/Images/DeOmgevingVillaVredestein.jpg";
 import Villa7 from "../../Assets/Images/PannenkoekenAvondVillaVredestein.jpg";
-import LuchtballonImg from "../../Assets/Images/ext-luchtballon.png";
+import LuchtballonImg from "../../Assets/Images/ext-luchtballon.jpg";
 import Villa9 from "../../Assets/Images/BezoekOnsVillaVredestein.jpg";
 import CarpeDiemVideo from "../../Assets/Videos/carpe-diem.mp4";
 import CafeRacer1 from "../../Assets/Images/cafe-racer-1.jpg";
