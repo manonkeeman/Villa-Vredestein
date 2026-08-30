@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 import "./OverOns.css";
 
 import ImgChineseMuur from "../../Assets/Images/life-chinese-muur.jpg";
-import ImgSuburban from "../../Assets/Images/Maxim_Manon_ChevroletSuburban.jpg";
-import ImgMotor from "../../Assets/Images/life-motorrijden-samen.jpg";
+import ImgKLMCockpit from "../../Assets/Images/life-klm-cockpit.jpg";
+import ImgRoadtrip from "../../Assets/Images/life-roadtrip-auto.jpg";
 import LuchtballonImg from "../../Assets/Images/ext-luchtballon.png";
 import CarpeDiemVideo from "../../Assets/Videos/carpe-diem.mp4";
 import ImgCafeRacer from "../../Assets/Images/cafe-racer-1.jpg";
@@ -26,8 +26,8 @@ const SECTIONS = [
         accent: "#FCBC2D",
         pullQuote: "Verre horizonten en een stevige basis. Dat is wat ze samen bouwen.",
         extraImages: [
-            { src: ImgSuburban, alt: "Manon & Maxim bij hun Chevrolet Suburban" },
-            { src: ImgMotor, alt: "Manon & Maxim tijdens een motorrit", pos: "center 22%" },
+            { src: ImgKLMCockpit, alt: "Manon & Maxim aan het werk bij KLM, in de cockpit" },
+            { src: ImgRoadtrip, alt: "Manon & Maxim onderweg tijdens een roadtrip" },
         ],
     },
     {

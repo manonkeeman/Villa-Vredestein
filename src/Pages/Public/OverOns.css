@@ -236,6 +236,7 @@
 .oo-extra-images {
     display: flex;
     flex-wrap: nowrap;
+    justify-content: space-between;
     gap: 0.85rem;
     height: 110px;
 }
