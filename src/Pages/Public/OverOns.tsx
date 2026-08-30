@@ -7,6 +7,7 @@ import "./OverOns.css";
 import ImgChineseMuur from "../../Assets/Images/life-chinese-muur.jpg";
 import ImgKLMCockpit from "../../Assets/Images/life-klm-cockpit.jpg";
 import ImgRoadtrip from "../../Assets/Images/life-roadtrip-auto.jpg";
+import ImgSuburban from "../../Assets/Images/Maxim_Manon_ChevroletSuburban.jpg";
 import LuchtballonImg from "../../Assets/Images/ext-luchtballon.png";
 import CarpeDiemVideo from "../../Assets/Videos/carpe-diem.mp4";
 import ImgCafeRacer from "../../Assets/Images/cafe-racer-1.jpg";
@@ -26,8 +27,9 @@ const SECTIONS = [
         accent: "#FCBC2D",
         pullQuote: "Verre horizonten en een stevige basis. Dat is wat ze samen bouwen.",
         extraImages: [
-            { src: ImgKLMCockpit, alt: "Manon & Maxim aan het werk bij KLM, in de cockpit" },
-            { src: ImgRoadtrip, alt: "Manon & Maxim onderweg tijdens een roadtrip" },
+            { src: ImgKLMCockpit, alt: "Manon & Maxim aan het werk bij KLM, in de cockpit", ar: 1600 / 1200 },
+            { src: ImgRoadtrip, alt: "Manon & Maxim onderweg tijdens een roadtrip", ar: 4032 / 3024 },
+            { src: ImgSuburban, alt: "Manon & Maxim bij hun Chevrolet Suburban", ar: 1 },
         ],
     },
     {
@@ -40,8 +42,9 @@ const SECTIONS = [
         showAll: true,
         pullQuote: "Bring worlds together in one.",
         extraImages: [
-            { src: ImgCafeRacer, alt: "De cafe racer van Maxim, gebouwd van onderdelen uit de hele wereld" },
-            { src: ImgKachelCarpeDiem, alt: "Manon & Maxim met hun Carpe Diem-mokken bij de kachel", pos: "center 20%" },
+            { src: ImgCafeRacer, alt: "De cafe racer van Maxim, gebouwd van onderdelen uit de hele wereld", ar: 4032 / 3024 },
+            { src: ImgCarpeDiemTekening, alt: "Carpe Diem, handgetekend", ar: 3024 / 4032 },
+            { src: ImgKachelCarpeDiem, alt: "Manon & Maxim met hun Carpe Diem-mokken bij de kachel", ar: 1600 / 1200, pos: "center 20%" },
         ],
     },
     {
@@ -212,7 +215,11 @@ const OverOns = () => {
                                 {Array.isArray(sec.extraImages) && sec.extraImages.length > 0 && (
                                     <div className="oo-extra-images">
                                         {sec.extraImages.map((extra) => (
-                                            <div key={extra.src} className="oo-extra-img-wrap">
+                                            <div
+                                                key={extra.src}
+                                                className="oo-extra-img-wrap"
+                                                style={{ flexGrow: extra.ar || 1.33 }}
+                                            >
                                                 <img
                                                     src={extra.src}
                                                     alt={extra.alt}
