@@ -9,7 +9,7 @@ import ImgKLMCockpit from "../../Assets/Images/life-klm-cockpit.jpg";
 import ImgRoadtrip from "../../Assets/Images/life-roadtrip-auto.jpg";
 import LuchtballonImg from "../../Assets/Images/ext-luchtballon.png";
 import CarpeDiemVideo from "../../Assets/Videos/carpe-diem.mp4";
-import ImgMotorStaand from "../../Assets/Images/life-motorrijden-samen.jpg";
+import ImgCafeRacerStaand from "../../Assets/Images/life-carpediem-cafe-racer.jpg";
 import ImgCarpeDiemTekening from "../../Assets/Images/life-carpediem-tekening.jpg";
 import ImgBezoek from "../../Assets/Images/BezoekOnsVillaVredestein.jpg";
 import ImgManonIT from "../../Assets/Images/manonit-portrait.webp";
@@ -40,7 +40,7 @@ const SECTIONS = [
         pullQuote: "Bring worlds together in one.",
         extraImages: [
             { src: ImgCarpeDiemTekening, alt: "Carpe Diem, handgetekend", ar: 3024 / 4032 },
-            { src: ImgMotorStaand, alt: "Manon & Maxim tijdens een motorrit", ar: 2316 / 3088 },
+            { src: ImgCafeRacerStaand, alt: "Maxims cafe racer", ar: 828 / 1472 },
         ],
     },
     {

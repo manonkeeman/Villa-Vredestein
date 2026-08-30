@@ -125,16 +125,17 @@
     color: #fff;
 }
 
-.gr-cta-btn--primary {
+.gr-cta-btn--primary,
+.gr-cta-btn--primary:visited {
     background: #FCBC2D;
     border-color: #FCBC2D;
-    color: #0c0a07;
+    color: #0c0a07 !important;
 }
 
 .gr-cta-btn--primary:hover {
     background: #e5a920;
     border-color: #e5a920;
-    color: #0c0a07;
+    color: #0c0a07 !important;
 }
 
 @media (max-width: 900px) {

@@ -417,10 +417,11 @@ input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1) opacit
 .review-cta-card .review-cta-icon { font-size: 1.5rem; color: #FCBC2D; }
 .review-cta-card h3 { font-size: 1.15rem; font-weight: 700; color: #fff; margin: 0; }
 .review-cta-card .review-tekst { font-style: normal; }
-.review-cta-btn {
+.review-cta-btn,
+.review-cta-btn:visited {
     display: inline-block;
     background: #FCBC2D;
-    color: #000;
+    color: #000 !important;
     font-size: 0.88rem;
     font-weight: 700;
     padding: 0.75rem 1.5rem;
@@ -430,7 +431,7 @@ input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1) opacit
     transition: background 0.2s, transform 0.2s;
     margin-top: auto;
 }
-.review-cta-btn:hover { background: #e5a920; transform: translateY(-2px); }
+.review-cta-btn:hover { background: #e5a920; color: #000 !important; transform: translateY(-2px); }
 
 /* Responsive */
 @media (max-width: 900px) {
