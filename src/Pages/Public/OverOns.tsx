@@ -73,12 +73,16 @@ const SECTIONS = [
 const PREVIEW_PARAGRAPHS = 2;
 const EXTRA_ROW_GAP = 13.6;
 
+const EXTRA_ROW_MIN_HEIGHT = 140;
+const EXTRA_ROW_MAX_HEIGHT = 200;
+
 const getExtraRowHeight = (sec) => {
     const extras = sec.extraImages;
     if (!Array.isArray(extras) || extras.length === 0) return undefined;
     const rowWidth = sec.video ? 480 : 460;
     const arSum = extras.reduce((sum, e) => sum + (e.ar || 1.33), 0);
-    return Math.round((rowWidth - EXTRA_ROW_GAP * (extras.length - 1)) / arSum);
+    const ideal = (rowWidth - EXTRA_ROW_GAP * (extras.length - 1)) / arSum;
+    return Math.round(Math.min(EXTRA_ROW_MAX_HEIGHT, Math.max(EXTRA_ROW_MIN_HEIGHT, ideal)));
 };
 
 const OverOns = () => {
