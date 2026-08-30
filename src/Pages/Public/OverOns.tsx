@@ -60,8 +60,8 @@ const SECTIONS = [
             { href: "https://www.casacrew.nl", label: "Bekijk CasaCrew →" },
         ],
         extraImages: [
-            { src: ImgManonITBrand, alt: "ManonIT, ik bouw mooie websites" },
-            { src: ImgManonITWebsite, alt: "De website van ManonIT" },
+            { src: ImgManonITBrand, alt: "ManonIT, ik bouw mooie websites", ar: 1200 / 630 },
+            { src: ImgManonITWebsite, alt: "De website van ManonIT", ar: 1600 / 878 },
         ],
     },
     {
