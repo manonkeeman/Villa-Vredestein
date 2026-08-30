@@ -18,6 +18,7 @@ import ImgKattensporenbeton from "../../Assets/Images/life-kattensporenbeton.jpe
 import ImgMaximCarpediem    from "../../Assets/Images/life-maxim-carpediem.jpg";
 import ImgMotorrijden       from "../../Assets/Images/life-motorrijden.jpg";
 import ImgTanteMaximBloemen from "../../Assets/Images/life-tante-maxim-bloemen.jpg";
+import ImgAvondsfeer        from "../../Assets/Images/life-avondsfeer.jpg";
 
 // Ansichtkaarten
 import ImgAnsichtPension         from "../../Assets/Images/hist-ansichtkaart-pension.jpg";
@@ -98,6 +99,8 @@ const FOTOS = [
       verhaal: "Naast het verbouwen houden we van die andere vrijheid: de weg open, de motor onder ons. Want het leven is er niet alleen om aan te werken, maar ook om van te genieten." },
     { src: ImgTanteMaximBloemen, cat: "Samenleven", caption: "Maxims tante & bloemen",      sub: "Altijd fijn als zij langskomt",
       verhaal: "Bloemen op tafel, tante op bezoek. Altijd fijn als zij langskomt, en altijd laat ze haar bloemensporen achter." },
+    { src: ImgAvondsfeer,        cat: "Samenleven", caption: "Avondsfeer op het erf",        sub: "Verlichte ramen, het haardhout klaar voor de winter",
+      verhaal: "Aan het einde van de dag, als het licht binnen aangaat en het haardhout voor de winter alvast op de kar staat. Fietsen tegen de schuur, de motoren op de oprit: gewoon een avond thuis in Villa Vredestein." },
 
     // ── Ansichtkaarten ────────────────────────────────────────────────────
     { src: ImgAnsichtPension,      cat: "Ansichtkaarten", caption: "Pension Villa Vredestein",            sub: "Het pension zoals het begin 1900 werd geadverteerd",

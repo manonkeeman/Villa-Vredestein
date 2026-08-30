@@ -4,14 +4,13 @@ import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import "./OverOns.css";
 
-import ImgManonMaxim from "../../Assets/Images/Maxim_Manon_ChevroletSuburban.jpg";
-import ImgPannenkoekenGroep from "../../Assets/Images/life-pannenkoeken-groep.jpg";
 import ImgChineseMuur from "../../Assets/Images/life-chinese-muur.jpg";
+import ImgSuburban from "../../Assets/Images/Maxim_Manon_ChevroletSuburban.jpg";
+import ImgMotor from "../../Assets/Images/life-motorrijden-samen.jpg";
 import LuchtballonImg from "../../Assets/Images/ext-luchtballon.png";
-import ImgCarpeDiem from "../../Assets/Images/PannenkoekenAvondVillaVredestein.jpg";
 import CarpeDiemVideo from "../../Assets/Videos/carpe-diem.mp4";
 import ImgCafeRacer from "../../Assets/Images/cafe-racer-1.jpg";
-import ImgCarpeDiemBord from "../../Assets/Images/life-carpediem-bord.jpg";
+import ImgCarpeDiemTekening from "../../Assets/Images/life-carpediem-tekening.jpg";
 import ImgBezoek from "../../Assets/Images/BezoekOnsVillaVredestein.jpg";
 import ImgManonIT from "../../Assets/Images/manonit-portrait.webp";
 import ImgManonITBrand from "../../Assets/Images/manonit-og.jpg";
@@ -20,20 +19,20 @@ import ImgManonITWebsite from "../../Assets/Images/manonit-website.png";
 const SECTIONS = [
     {
         slug: "over-ons",
-        img: ImgManonMaxim,
-        imgAlt: "Manon & Maxim bij hun Chevrolet Suburban",
+        img: ImgChineseMuur,
+        imgAlt: "Manon & Maxim op de Chinese Muur",
         theme: "dark",
         accent: "#FCBC2D",
         pullQuote: "Verre horizonten en een stevige basis. Dat is wat ze samen bouwen.",
         extraImages: [
-            { src: ImgPannenkoekenGroep, alt: "Manon & Maxim tijdens een pannenkoekenavond met studenten" },
-            { src: ImgChineseMuur, alt: "Manon & Maxim op de Chinese Muur" },
+            { src: ImgSuburban, alt: "Manon & Maxim bij hun Chevrolet Suburban" },
+            { src: ImgMotor, alt: "Manon & Maxim tijdens een motorrit" },
         ],
     },
     {
         slug: "carpe-diem-design",
-        img: ImgCarpeDiem,
-        imgAlt: "Project Carpe Diem werkplaats",
+        img: ImgCarpeDiemTekening,
+        imgAlt: "Carpe Diem, handgetekend",
         video: CarpeDiemVideo,
         theme: "dark",
         accent: "#e0853a",
@@ -41,7 +40,6 @@ const SECTIONS = [
         pullQuote: "Bring worlds together in one.",
         extraImages: [
             { src: ImgCafeRacer, alt: "De cafe racer van Maxim, gebouwd van onderdelen uit de hele wereld" },
-            { src: ImgCarpeDiemBord, alt: "Het Carpe Diem-bord op het terras" },
         ],
     },
     {

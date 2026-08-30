@@ -222,6 +222,16 @@ const Verblijven = () => {
                                 </div>
                             </article>
                         ))}
+                        <article className="review-card review-cta-card">
+                            <div className="review-cta-icon" aria-hidden="true">★★★★★</div>
+                            <h3>Zelf bij ons gewoond of gelogeerd?</h3>
+                            <p className="review-tekst">
+                                Laat een Google review achter en help andere (aankomende) bewoners op weg.
+                            </p>
+                            <a href="/review" target="_blank" rel="noreferrer" className="review-cta-btn">
+                                Schrijf een Google review →
+                            </a>
+                        </article>
                     </div>
                 </div>
             </section>

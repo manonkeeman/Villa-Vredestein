@@ -235,14 +235,15 @@
 
 .oo-extra-images {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 0.85rem;
-    height: 160px;
+    height: 110px;
 }
 
 .oo-extra-img-wrap {
     height: 100%;
-    flex: 0 0 auto;
+    aspect-ratio: 4 / 3;
+    flex: 1 1 0;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
@@ -250,7 +251,9 @@
 
 .oo-extra-img-wrap img {
     height: 100%;
-    width: auto;
+    width: 100%;
+    object-fit: cover;
+    object-position: center 30%;
     display: block;
     filter: brightness(0.88) saturate(0.9);
     transition: filter 0.4s ease, transform 0.4s ease;
@@ -497,7 +500,7 @@
     }
 
     .oo-extra-images {
-        height: 120px;
+        height: 90px;
     }
 
     .oo-img-block {

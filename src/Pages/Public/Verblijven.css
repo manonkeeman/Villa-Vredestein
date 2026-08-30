@@ -372,7 +372,7 @@ input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1) opacit
 /* Reviews sectie */
 .verb-reviews { padding: 5rem 0; border-top: 1px solid #1e1812; }
 
-.reviews-grid { display: grid; grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; gap: 1.25rem; }
+.reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); max-width: 900px; margin: 0 auto; gap: 1.25rem; align-items: stretch; }
 
 .review-card {
     background: #120f09;
@@ -407,6 +407,30 @@ input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1) opacit
 
 .review-auteur strong { display: block; font-size: 0.85rem; color: #fff; }
 .review-auteur span { display: block; font-size: 0.73rem; color: #988068; margin-top: 0.1rem; }
+
+.review-cta-card {
+    align-items: flex-start;
+    justify-content: center;
+    border-color: #FCBC2D;
+    background: linear-gradient(160deg, #1a140a, #120f09);
+}
+.review-cta-card .review-cta-icon { font-size: 1.5rem; color: #FCBC2D; }
+.review-cta-card h3 { font-size: 1.15rem; font-weight: 700; color: #fff; margin: 0; }
+.review-cta-card .review-tekst { font-style: normal; }
+.review-cta-btn {
+    display: inline-block;
+    background: #FCBC2D;
+    color: #000;
+    font-size: 0.88rem;
+    font-weight: 700;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: background 0.2s, transform 0.2s;
+    margin-top: auto;
+}
+.review-cta-btn:hover { background: #e5a920; transform: translateY(-2px); }
 
 /* Responsive */
 @media (max-width: 900px) {
