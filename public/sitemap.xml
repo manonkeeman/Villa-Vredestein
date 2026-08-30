@@ -55,6 +55,14 @@
     <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.nl/verblijven/villa" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://villavredestein.nl/verblijven/villa" />
   </url>
+  <url>
+    <loc>https://villavredestein.nl/verblijven/fotoproductie</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.nl/verblijven/fotoproductie" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://villavredestein.nl/verblijven/fotoproductie" />
+  </url>
 
   <!-- Over ons (canonical slug: /verhaal) -->
   <url>

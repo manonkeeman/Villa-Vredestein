@@ -30,7 +30,7 @@ export const OPTIES: VerblijfOptie[] = [
         icon: "🛏️",
         titel: "Logeerkamer",
         sub: "Kort of voor langer",
-        beschrijving: "Gastvrije kamer op de bovenste verdieping, tussen de studenten in — van een nacht tot een langer verblijf.",
+        beschrijving: "Gastvrije kamer op de bovenste verdieping, tussen de studenten in, van een nacht tot een langer verblijf.",
         langeBeschrijving: [
             "Op doorreis, een feestje in de buurt, of een langer verblijf: deze kamer op de bovenste verdieping van Villa Vredestein is flexibel te boeken, van één nacht tot een langere periode.",
             "Je hebt een eigen kamer en deelt de badkamer, keuken en zitruimte met de andere bewoners van deze verdieping. Vrij gebruik van de tuin en het terras, en een parkeerplaats op de oprit, zijn ook inbegrepen.",
@@ -92,7 +92,7 @@ export const OPTIES: VerblijfOptie[] = [
         icon: "📸",
         titel: "Fotoproducties",
         sub: "Villa als decor",
-        beschrijving: "Historische gevel, rustieke details, veel daglicht en kamers van vintage tot modern — Villa Vredestein is te huren als decor voor fotoshoots en (kleinschalige) producties.",
+        beschrijving: "Historische gevel, rustieke details, veel daglicht en kamers van vintage tot modern: Villa Vredestein is te huren als decor voor fotoshoots en (kleinschalige) producties.",
         langeBeschrijving: [
             "Met zijn historische gevel, rustieke details en een mix van vintage, rustieke en modern gerenoveerde kamers biedt Villa Vredestein volop variatie als decor voor fotoshoots en producties.",
             "Grote ramen zorgen voor veel natuurlijk licht, en de sfeervolle tuin en oprit bieden ruimte voor buitenopnames en voor de crew om op te stellen.",

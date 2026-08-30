@@ -75,17 +75,40 @@ const Verblijven = () => {
             .finally(() => setSending(false));
     };
 
+    const verblijfSchema = JSON.stringify({
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "ItemList",
+                "@id": "https://villavredestein.nl/verblijven#opties",
+                "name": "Verblijfsopties bij Villa Vredestein",
+                "itemListElement": OPTIES.map((o, i) => ({
+                    "@type": "ListItem",
+                    "position": i + 1,
+                    "item": {
+                        "@type": "Offer",
+                        "name": o.titel,
+                        "description": o.beschrijving,
+                        "url": `https://villavredestein.nl/verblijven/${o.id}`,
+                        "availability": "https://schema.org/InStock",
+                        "seller": { "@id": "https://villavredestein.nl/#business" },
+                    },
+                })),
+            },
+        ],
+    });
+
     return (
         <main className="verblijven-page">
             <Helmet>
                 <html lang={langCode} />
                 <title>Verblijven & Boeken, Villa Vredestein</title>
-                <meta name="description" content="Verblijf in Villa Vredestein in Driebergen-Rijsenburg. Privékamer, volledige villa of tijdelijk verblijf. Vraag beschikbaarheid op." />
+                <meta name="description" content="Verblijf in Villa Vredestein in Driebergen-Rijsenburg: logeerkamer, tijdelijk verblijf voor IVA-studenten, de volledige villa, of huur als decor voor fotoproducties. Vraag beschikbaarheid op." />
                 <link rel="canonical" href="https://villavredestein.nl/verblijven" />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://villavredestein.nl/verblijven" />
                 <meta property="og:title" content="Verblijven in Villa Vredestein, Driebergen-Rijsenburg" />
-                <meta property="og:description" content="Privékamer, volledige villa of tijdelijk verblijf in een historisch pand uit 1906. Vraag beschikbaarheid op." />
+                <meta property="og:description" content="Logeerkamer, tijdelijk verblijf voor IVA-studenten, de volledige villa, of huur als decor voor fotoproducties. Vraag beschikbaarheid op." />
                 <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
@@ -94,8 +117,9 @@ const Verblijven = () => {
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Verblijven in Villa Vredestein, Driebergen-Rijsenburg" />
-                <meta name="twitter:description" content="Privékamer, volledige villa of tijdelijk verblijf in een historisch pand uit 1906. Vraag beschikbaarheid op." />
+                <meta name="twitter:description" content="Logeerkamer, tijdelijk verblijf voor IVA-studenten, de volledige villa, of huur als decor voor fotoproducties. Vraag beschikbaarheid op." />
                 <meta name="twitter:image" content="https://villavredestein.nl/og-image.jpg" />
+                <script type="application/ld+json">{verblijfSchema}</script>
             </Helmet>
 
             {/* Hero */}
