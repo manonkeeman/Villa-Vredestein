@@ -9,7 +9,7 @@ import ImgKLMCockpit from "../../Assets/Images/life-klm-cockpit.jpg";
 import ImgRoadtrip from "../../Assets/Images/life-roadtrip-auto.jpg";
 import LuchtballonImg from "../../Assets/Images/ext-luchtballon.png";
 import CarpeDiemVideo from "../../Assets/Videos/carpe-diem.mp4";
-import ImgCafeRacer from "../../Assets/Images/cafe-racer-1.jpg";
+import ImgMotorStaand from "../../Assets/Images/life-motorrijden-samen.jpg";
 import ImgCarpeDiemTekening from "../../Assets/Images/life-carpediem-tekening.jpg";
 import ImgBezoek from "../../Assets/Images/BezoekOnsVillaVredestein.jpg";
 import ImgManonIT from "../../Assets/Images/manonit-portrait.webp";
@@ -40,7 +40,7 @@ const SECTIONS = [
         pullQuote: "Bring worlds together in one.",
         extraImages: [
             { src: ImgCarpeDiemTekening, alt: "Carpe Diem, handgetekend", ar: 3024 / 4032 },
-            { src: ImgCafeRacer, alt: "De cafe racer van Maxim, gebouwd van onderdelen uit de hele wereld", ar: 4032 / 3024 },
+            { src: ImgMotorStaand, alt: "Manon & Maxim tijdens een motorrit", ar: 2316 / 3088 },
         ],
     },
     {
@@ -71,6 +71,15 @@ const SECTIONS = [
 ];
 
 const PREVIEW_PARAGRAPHS = 2;
+const EXTRA_ROW_GAP = 13.6;
+
+const getExtraRowHeight = (sec) => {
+    const extras = sec.extraImages;
+    if (!Array.isArray(extras) || extras.length === 0) return undefined;
+    const rowWidth = sec.video ? 480 : 460;
+    const arSum = extras.reduce((sum, e) => sum + (e.ar || 1.33), 0);
+    return Math.round((rowWidth - EXTRA_ROW_GAP * (extras.length - 1)) / arSum);
+};
 
 const OverOns = () => {
     const { t, i18n } = useTranslation();
@@ -209,7 +218,7 @@ const OverOns = () => {
                                 </figure>
 
                                 {Array.isArray(sec.extraImages) && sec.extraImages.length > 0 && (
-                                    <div className="oo-extra-images">
+                                    <div className="oo-extra-images" style={{ height: getExtraRowHeight(sec) }}>
                                         {sec.extraImages.map((extra) => (
                                             <div
                                                 key={extra.src}

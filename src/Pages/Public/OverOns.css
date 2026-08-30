@@ -501,7 +501,7 @@
     }
 
     .oo-extra-images {
-        height: 90px;
+        height: 90px !important;
     }
 
     .oo-img-block {
