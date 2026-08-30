@@ -25,7 +25,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    background: linear-gradient(to top, rgba(12,10,7,0.95) 0%, rgba(12,10,7,0.35) 48%, transparent 70%);
+    background: linear-gradient(to top, rgba(12,10,7,0.95) 0%, rgba(12,10,7,0.6) 65%, transparent 92%);
 }
 
 .omg-hero-map-text {
@@ -391,7 +391,7 @@
 }
 
 @media (max-width: 900px) {
-    .omg-hero-map { height: 55vh; min-height: 420px; }
+    .omg-hero-map { height: 55vh; min-height: 480px; }
     .omg-hero-map-text { padding: 2rem 1.5rem 1rem; }
     .omg-hero-quicknav { padding: 0 1.5rem 1.75rem; }
     .afstand-grid { grid-template-columns: 1fr 1fr; }
@@ -400,7 +400,7 @@
 }
 
 @media (max-width: 600px) {
-    .omg-hero-map { height: 50vh; min-height: 360px; }
+    .omg-hero-map { height: 50vh; min-height: 560px; }
     .omg-hero-map-text { padding: 1.5rem 1.25rem 0.75rem; }
     .omg-hero-quicknav { padding: 0 1.25rem 1.5rem; gap: 0.4rem; }
     .omg-qnav-card { font-size: 0.72rem; padding: 0.4rem 0.8rem; }

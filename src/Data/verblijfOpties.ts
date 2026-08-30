@@ -7,6 +7,8 @@ import ExtVillaVoorkant    from "../Assets/Images/ext-villa-voorkant.jpg";
 import FotoSchuurdeur      from "../Assets/Images/fotoproductie-schuurdeur.jpg";
 import FotoOprijlaan       from "../Assets/Images/fotoproductie-oprijlaan.jpg";
 import FotoSchuurdeur2     from "../Assets/Images/fotoproductie-schuurdeur-2.jpg";
+import FotoBackstage1      from "../Assets/Images/fotoproductie-backstage-1.jpg";
+import FotoBackstage2      from "../Assets/Images/fotoproductie-backstage-2.jpg";
 
 export type VerblijfAfbeelding = { src: string; alt: string };
 
@@ -101,6 +103,8 @@ export const OPTIES: VerblijfOptie[] = [
         kenmerken: ["Historische gevel", "Sfeervolle tuin", "Rustieke schuurdeur als decor", "Eerder gebruikt voor fotoshoots", "In overleg beschikbaar"],
         afbeeldingen: [
             { src: FotoSchuurdeur, alt: "Fotoshoot bij de rustieke schuurdeur van Villa Vredestein" },
+            { src: FotoBackstage1, alt: "Achter de schermen bij een professionele fotoshoot in Villa Vredestein" },
+            { src: FotoBackstage2, alt: "De fotograaf aan het werk tijdens een shoot in Villa Vredestein" },
             { src: FotoOprijlaan, alt: "Fotoshoot op de oprijlaan van Villa Vredestein" },
             { src: FotoSchuurdeur2, alt: "Fotoshoot bij Villa Vredestein" },
             { src: ExtVillaVoorkant, alt: "Voorgevel van Villa Vredestein" },
