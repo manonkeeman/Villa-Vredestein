@@ -4,6 +4,9 @@ import IntBank             from "../Assets/Images/int-bank.jpg";
 import IntKroonluchter     from "../Assets/Images/int-kroonluchter.jpg";
 import TuinTerras          from "../Assets/Images/tuin-terras.jpg";
 import ExtVillaVoorkant    from "../Assets/Images/ext-villa-voorkant.jpg";
+import FotoSchuurdeur      from "../Assets/Images/fotoproductie-schuurdeur.jpg";
+import FotoOprijlaan       from "../Assets/Images/fotoproductie-oprijlaan.jpg";
+import FotoSchuurdeur2     from "../Assets/Images/fotoproductie-schuurdeur-2.jpg";
 
 export type VerblijfAfbeelding = { src: string; alt: string };
 
@@ -25,15 +28,15 @@ export const OPTIES: VerblijfOptie[] = [
         id: "kamer",
         icon: "🛏️",
         titel: "Logeerkamer",
-        sub: "Voor één nacht",
-        beschrijving: "Gastvrije logeerkamer voor een nacht, op de bovenste verdieping tussen de studenten in.",
+        sub: "Kort of voor langer",
+        beschrijving: "Gastvrije kamer op de bovenste verdieping, tussen de studenten in — van een nacht tot een langer verblijf.",
         langeBeschrijving: [
-            "Op doorreis, een feestje in de buurt, of gewoon zin om een nachtje te logeren? Deze kamer op de bovenste verdieping van Villa Vredestein is te boeken voor één nacht.",
+            "Op doorreis, een feestje in de buurt, of een langer verblijf: deze kamer op de bovenste verdieping van Villa Vredestein is flexibel te boeken, van één nacht tot een langere periode.",
             "Je hebt een eigen kamer en deelt de badkamer, keuken en zitruimte met de andere bewoners van deze verdieping. Vrij gebruik van de tuin en het terras, en een parkeerplaats op de oprit, zijn ook inbegrepen.",
-            "Boek eenvoudig via het formulier hieronder, we laten je snel weten of de kamer die nacht beschikbaar is.",
+            "Boek eenvoudig via het formulier hieronder, we bespreken de gewenste duur en beschikbaarheid graag persoonlijk.",
         ],
         vanaf: "Op aanvraag",
-        kenmerken: ["Voor één nacht", "Eigen kamer", "Gedeelde badkamer & keuken", "Gedeelde zitruimte", "Tuin & terras", "Parkeerplaats"],
+        kenmerken: ["Vanaf één nacht", "Eigen kamer", "Gedeelde badkamer & keuken", "Gedeelde zitruimte", "Tuin & terras", "Parkeerplaats"],
         afbeeldingen: [
             { src: ExtVillaVoorkant, alt: "Voorgevel van Villa Vredestein, met de kamers op de bovenste verdieping" },
             { src: IntWoonkamer2, alt: "Gedeelde woonkamer in Villa Vredestein" },
@@ -49,11 +52,12 @@ export const OPTIES: VerblijfOptie[] = [
         beschrijving: "Gemeubileerde kamer voor de duur van je studie bij de IVA, op loopafstand van school.",
         langeBeschrijving: [
             "Onze studentenverdieping, bovenin de villa, bestaat uit gemeubileerde kamers met een gedeelde badkamer, keuken en zitruimte. Ideaal voor een tijdelijk verblijf tijdens je studie bij de IVA.",
-            "Dit verblijf is uitsluitend voor IVA-studenten.",
+            "Dit verblijf is uitsluitend voor IVA-studenten. Maxim heeft zelf de IVA-opleiding gevolgd en is nog steeds bij de IVA-club betrokken, dus de band met de school is nooit ver weg.",
+            "Praktische zaken regelen we digitaal via een eigen app: het schoonmaakrooster, de huisregels en betalingsherinneringen staan daar overzichtelijk bij elkaar.",
             "Internet, een parkeerplaats en toegang tot de tuin zijn altijd inbegrepen. De exacte duur en voorwaarden stemmen we in overleg af.",
         ],
         vanaf: "Op aanvraag",
-        kenmerken: ["Flexibele duur", "Gemeubileerd", "Inclusief internet", "Gedeelde badkamer, keuken en zitruimte", "Parkeerplaats"],
+        kenmerken: ["Flexibele duur", "Gemeubileerd", "Inclusief internet", "Digitaal rooster & huisregels via app", "Gedeelde badkamer, keuken en zitruimte", "Parkeerplaats"],
         featured: true,
         afbeeldingen: [
             { src: IntBank, alt: "Gedeelde zitruimte in Villa Vredestein" },
@@ -80,6 +84,26 @@ export const OPTIES: VerblijfOptie[] = [
             { src: IntKroonluchter, alt: "Kristallen kroonluchter in Villa Vredestein" },
             { src: ExtVillaVoorkant, alt: "Voorgevel van Villa Vredestein" },
             { src: TuinTerras, alt: "Tuin en terras van Villa Vredestein" },
+        ],
+    },
+    {
+        id: "fotoproductie",
+        icon: "📸",
+        titel: "Fotoproducties",
+        sub: "Villa als decor",
+        beschrijving: "Villa Vredestein is ook te huren als decor voor fotoshoots en (kleinschalige) producties.",
+        langeBeschrijving: [
+            "Met zijn karakteristieke gevel, sfeervolle tuin en authentieke details leent Villa Vredestein zich uitstekend als locatie voor fotoshoots en producties.",
+            "De villa is al eerder gebruikt als decor voor een professionele fotoshoot. Van de statige voorgevel tot de rustieke schuurdeur: er is genoeg sfeer en variatie voor een geslaagde shoot.",
+            "Neem contact op om de mogelijkheden, beschikbaarheid en voorwaarden te bespreken.",
+        ],
+        vanaf: "Op aanvraag",
+        kenmerken: ["Historische gevel", "Sfeervolle tuin", "Rustieke schuurdeur als decor", "Eerder gebruikt voor fotoshoots", "In overleg beschikbaar"],
+        afbeeldingen: [
+            { src: FotoSchuurdeur, alt: "Fotoshoot bij de rustieke schuurdeur van Villa Vredestein" },
+            { src: FotoOprijlaan, alt: "Fotoshoot op de oprijlaan van Villa Vredestein" },
+            { src: FotoSchuurdeur2, alt: "Fotoshoot bij Villa Vredestein" },
+            { src: ExtVillaVoorkant, alt: "Voorgevel van Villa Vredestein" },
         ],
     },
 ];

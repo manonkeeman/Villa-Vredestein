@@ -105,7 +105,7 @@
 /* Opties */
 .verb-opties { padding: 5rem 0; border-top: 1px solid #1e1812; }
 
-.opties-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.opties-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
 
 .optie-card {
     background: #120f09;
