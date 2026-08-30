@@ -243,7 +243,7 @@
 .oo-extra-img-wrap {
     height: 100%;
     aspect-ratio: 4 / 3;
-    flex: 1 1 0;
+    flex: 0 0 auto;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);

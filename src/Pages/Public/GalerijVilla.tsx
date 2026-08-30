@@ -60,12 +60,12 @@ import ImgPlattE2   from "../../Assets/Images/plattegrond-tweede-verd.jpg";
 import ImgWijnkamer         from "../../Assets/Images/int-wijnkamer.jpg";
 
 import ImgGlasLood2         from "../../Assets/Images/rest-glas-lood-2.jpg";
-import ImgVerbouwen         from "../../Assets/Images/rest-verbouwen.jpg";
+import ImgVerbouwen         from "../../Assets/Images/life-verbouwen-samen.jpg";
 import ImgSlopen            from "../../Assets/Images/rest-slopen.jpg";
 import ImgIsoleren          from "../../Assets/Images/rest-isoleren.jpg";
 import ImgKachelBouw        from "../../Assets/Images/rest-kachel-bouw.jpg";
 import ImgSchatvondsten     from "../../Assets/Images/rest-schatvondsten.jpg";
-import ImgGietvloer         from "../../Assets/Images/rest-gietvloer.jpg";
+import ImgGietvloer         from "../../Assets/Images/life-gietvloer-feest.jpg";
 import ImgTerrasAanleg      from "../../Assets/Images/rest-terras.jpg";
 import ImgKroonluchtersVerv from "../../Assets/Images/rest-kroonluchters.jpg";
 

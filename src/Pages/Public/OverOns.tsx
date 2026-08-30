@@ -11,6 +11,7 @@ import LuchtballonImg from "../../Assets/Images/ext-luchtballon.png";
 import CarpeDiemVideo from "../../Assets/Videos/carpe-diem.mp4";
 import ImgCafeRacer from "../../Assets/Images/cafe-racer-1.jpg";
 import ImgCarpeDiemTekening from "../../Assets/Images/life-carpediem-tekening.jpg";
+import ImgKachelCarpeDiem from "../../Assets/Images/life-kachel-carpediem.jpg";
 import ImgBezoek from "../../Assets/Images/BezoekOnsVillaVredestein.jpg";
 import ImgManonIT from "../../Assets/Images/manonit-portrait.webp";
 import ImgManonITBrand from "../../Assets/Images/manonit-og.jpg";
@@ -26,7 +27,7 @@ const SECTIONS = [
         pullQuote: "Verre horizonten en een stevige basis. Dat is wat ze samen bouwen.",
         extraImages: [
             { src: ImgSuburban, alt: "Manon & Maxim bij hun Chevrolet Suburban" },
-            { src: ImgMotor, alt: "Manon & Maxim tijdens een motorrit" },
+            { src: ImgMotor, alt: "Manon & Maxim tijdens een motorrit", pos: "center 22%" },
         ],
     },
     {
@@ -40,6 +41,7 @@ const SECTIONS = [
         pullQuote: "Bring worlds together in one.",
         extraImages: [
             { src: ImgCafeRacer, alt: "De cafe racer van Maxim, gebouwd van onderdelen uit de hele wereld" },
+            { src: ImgKachelCarpeDiem, alt: "Manon & Maxim met hun Carpe Diem-mokken bij de kachel", pos: "center 20%" },
         ],
     },
     {
@@ -211,7 +213,12 @@ const OverOns = () => {
                                     <div className="oo-extra-images">
                                         {sec.extraImages.map((extra) => (
                                             <div key={extra.src} className="oo-extra-img-wrap">
-                                                <img src={extra.src} alt={extra.alt} loading="lazy" />
+                                                <img
+                                                    src={extra.src}
+                                                    alt={extra.alt}
+                                                    loading="lazy"
+                                                    style={extra.pos ? { objectPosition: extra.pos } : undefined}
+                                                />
                                             </div>
                                         ))}
                                     </div>
