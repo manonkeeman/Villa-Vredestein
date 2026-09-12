@@ -94,6 +94,22 @@ const Footer = () => {
                     </address>
                 </div>
 
+                {/* Instagram */}
+                <div className="footer-col footer-instagram">
+                    <h3 className="footer-heading">Instagram</h3>
+                    <div className="footer-instagram-frame">
+                        <iframe
+                            src="https://snapwidget.com/embed/1091840"
+                            className="snapwidget-widget"
+                            allowTransparency={true}
+                            frameBorder="0"
+                            scrolling="no"
+                            style={{ border: "none", overflow: "hidden", width: "100%" }}
+                            title="VredesteinInsta"
+                        />
+                    </div>
+                </div>
+
             </div>
 
             {/* Bottombar */}
