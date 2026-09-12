@@ -18,8 +18,8 @@
     margin: 0 auto;
     padding: 3.5rem 2rem 3rem;
     display: grid;
-    grid-template-columns: 1.3fr 0.9fr 0.9fr 1fr;
-    gap: 2.25rem;
+    grid-template-columns: 1.6fr 1fr 1fr;
+    gap: 3rem;
     align-items: start;
 }
 
@@ -162,15 +162,6 @@ a.footer-address-row:hover svg {
     transform: scale(1.2) rotate(-8deg);
 }
 
-/* ── Instagram-kolom ── */
-.footer-instagram-frame {
-    border: 1px solid #1e1810;
-    border-radius: 8px;
-    overflow: hidden;
-    background: #120f0a;
-    line-height: 0;
-}
-
 /* ── Bottombar ── */
 .footer-bottom {
     border-top: 1px solid #181410;
@@ -219,11 +210,6 @@ a.footer-address-row:hover svg {
     .footer-brand-desc {
         max-width: 100%;
     }
-
-    .footer-instagram {
-        grid-column: 1 / -1;
-        max-width: 260px;
-    }
 }
 
 /* ── Mobile ── */
@@ -256,9 +242,5 @@ a.footer-address-row:hover svg {
 
     .footer-logo {
         height: 60px;
-    }
-
-    .footer-instagram {
-        max-width: 100%;
     }
 }
