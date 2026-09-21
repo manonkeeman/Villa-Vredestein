@@ -5,13 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
   <!-- Primary SEO -->
-  <title>Villa Vredestein, Driebergen-Rijsenburg</title>
-  <meta name="description" content="Villa Vredestein is een historische villa uit 1906 in Driebergen-Rijsenburg. Ontdek de geschiedenis, restauratie en het unieke woonproject van Manon en Maxim op de Utrechtse Heuvelrug." />
+  <!-- title/description/canonical/og:*/twitter:* worden per pagina gezet door
+       react-helmet-async (zie src/Pages/**). react-helmet-async verwijdert
+       geen bestaande statische tags, dus deze mogen hier NIET ook staan
+       (anders krijgt elke pagina twee <title>/canonical/og-tags). Deze
+       index.html wordt door scripts/prerender.mjs per route overschreven
+       met de volledig gerenderde, pagina-specifieke HTML. -->
   <meta name="keywords" content="Villa Vredestein, Driebergen, Utrechtse Heuvelrug, historische villa, wonen, restauratie, Manon Keeman, Driebergen-Rijsenburg, pension 1906, studentenhuis" />
   <meta name="author" content="Manon Keeman & Maxim" />
   <meta name="robots" content="index, follow" />
   <meta name="google-site-verification" content="Y3k_uiM48c2TJEsFtfqZldlB8ARHRTtNDGXe8Jsn9m8" />
-  <link rel="canonical" href="https://villavredestein.com/" />
 
   <!-- GEO targeting -->
   <meta name="geo.region" content="NL-UT" />
@@ -22,32 +25,6 @@
   <!-- Preconnect for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://villavredestein.com/" />
-  <meta property="og:title" content="Villa Vredestein, Driebergen-Rijsenburg" />
-  <meta property="og:description" content="Villa Vredestein is een historische villa uit 1906 in Driebergen-Rijsenburg. Ontdek de geschiedenis, restauratie en het unieke woonproject." />
-  <meta property="og:image" content="https://villavredestein.com/og-image.jpg" />
-  <meta property="og:image:secure_url" content="https://villavredestein.com/og-image.jpg" />
-  <meta property="og:image:type" content="image/jpeg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Villa Vredestein, historische villa uit 1906 in Driebergen-Rijsenburg" />
-  <meta property="og:locale" content="nl_NL" />
-  <meta property="og:locale:alternate" content="en_US" />
-  <meta property="og:locale:alternate" content="fr_FR" />
-  <meta property="og:locale:alternate" content="de_DE" />
-  <meta property="og:locale:alternate" content="es_ES" />
-  <meta property="og:locale:alternate" content="it_IT" />
-  <meta property="og:site_name" content="Villa Vredestein" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Villa Vredestein, Driebergen-Rijsenburg" />
-  <meta name="twitter:description" content="Historische villa uit 1906 in Driebergen-Rijsenburg. Ontdek de unieke plek van Manon en Maxim op de Utrechtse Heuvelrug." />
-  <meta name="twitter:image" content="https://villavredestein.com/og-image.jpg" />
-  <meta name="twitter:image:alt" content="Villa Vredestein, historische villa uit 1906 in Driebergen-Rijsenburg" />
 
   <!-- Favicon & Apple icons -->
   <link rel="icon" type="image/png" sizes="512x512" href="/icons/icon-512x512.png" />

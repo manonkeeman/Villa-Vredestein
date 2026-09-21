@@ -82,7 +82,7 @@ const Blog = () => {
         <main className="blog-page" role="main">
             <Helmet>
                 <html lang={langCode} />
-                <title>{blog.title}, Villa Vredestein</title>
+                <title>{`${blog.title}, Villa Vredestein`}</title>
                 <meta name="description" content={blog.summary} />
                 <link rel="canonical" href={canonicalUrl} />
                 <meta property="og:title" content={`${blog.title}, Villa Vredestein`} />

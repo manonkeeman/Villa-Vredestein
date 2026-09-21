@@ -46,7 +46,7 @@ const VerblijfDetail = () => {
         <main className="vd-page">
             <Helmet>
                 <html lang={langCode} />
-                <title>{optie.titel}, Verblijven, Villa Vredestein</title>
+                <title>{`${optie.titel}, Verblijven, Villa Vredestein`}</title>
                 <meta name="description" content={optie.beschrijving} />
                 <link rel="canonical" href={canonicalUrl} />
                 <meta property="og:type" content="website" />

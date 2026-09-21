@@ -33,7 +33,7 @@ const About = () => {
         <main className="about-page">
             <Helmet>
                 <html lang={langCode} />
-                <title>{t("about.title")}, Villa Vredestein</title>
+                <title>{`${t("about.title")}, Villa Vredestein`}</title>
                 <meta
                     name="description"
                     content="Ontdek de verhalen achter Villa Vredestein: de geschiedenis, restauratie, het boek van Manon Keeman, Carpe Diem Design en de mensen achter dit bijzondere woonproject in Driebergen."

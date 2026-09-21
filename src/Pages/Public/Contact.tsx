@@ -16,7 +16,7 @@ const Contact = () => {
         <main className="contact-page">
             <Helmet>
                 <html lang={langCode} />
-                <title>{t("contact.title")}, Villa Vredestein</title>
+                <title>{`${t("contact.title")}, Villa Vredestein`}</title>
                 <meta name="description" content="Neem contact op met Villa Vredestein in Driebergen-Rijsenburg. Stuur een bericht via het formulier of bezoek ons op Hoofdstraat 147." />
                 <link rel="canonical" href="https://villavredestein.com/contact" />
                 <meta property="og:type" content="website" />
