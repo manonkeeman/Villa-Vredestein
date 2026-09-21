@@ -139,12 +139,12 @@ const Plattegrond = () => {
                     name="description"
                     content="Villa Vredestein heeft drie verdiepingen: studenten (boven), kinderen Desmond/Arwen/Medoc (midden), woonkamer + keuken (onder). Sauna en sportkamer in aanbouw."
                 />
-                <link rel="canonical" href="https://villavredestein.nl/ruimtes" />
+                <link rel="canonical" href="https://villavredestein.com/ruimtes" />
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://villavredestein.nl/ruimtes" />
+                <meta property="og:url" content="https://villavredestein.com/ruimtes" />
                 <meta property="og:title" content="De Ruimtes, Villa Vredestein" />
                 <meta property="og:description" content="Drie verdiepingen, elk met eigen karakter. 292 m² wonen op 680 m² perceel in Driebergen-Rijsenburg." />
-                <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
+                <meta property="og:image" content="https://villavredestein.com/og-image.jpg" />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
                 <meta property="og:image:type" content="image/jpeg" />
@@ -153,7 +153,7 @@ const Plattegrond = () => {
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="De Ruimtes, Villa Vredestein" />
                 <meta name="twitter:description" content="Drie verdiepingen, elk met eigen karakter. 292 m² wonen op 680 m² perceel in Driebergen-Rijsenburg." />
-                <meta name="twitter:image" content="https://villavredestein.nl/og-image.jpg" />
+                <meta name="twitter:image" content="https://villavredestein.com/og-image.jpg" />
             </Helmet>
 
             {/* ── Hero ── */}

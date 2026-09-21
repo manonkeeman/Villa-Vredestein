@@ -56,8 +56,8 @@ const Blog = () => {
     }
 
     const langCode = i18n.language?.split("-")[0] || "nl";
-    const canonicalUrl = `https://villavredestein.nl/blog/${slug}`;
-    const ogImage = `https://villavredestein.nl/og-image.jpg`;
+    const canonicalUrl = `https://villavredestein.com/blog/${slug}`;
+    const ogImage = `https://villavredestein.com/og-image.jpg`;
     const video = videoMap[slug] || null;
     const inlineMedia = inlineMediaMap[slug] || [];
 
@@ -71,7 +71,7 @@ const Blog = () => {
         "publisher": {
             "@type": "Organization",
             "name": "Villa Vredestein",
-            "logo": { "@type": "ImageObject", "url": "https://villavredestein.nl/VVLogo.png" }
+            "logo": { "@type": "ImageObject", "url": "https://villavredestein.com/VVLogo.png" }
         },
         "url": canonicalUrl,
         "image": ogImage,

@@ -237,12 +237,12 @@ const Tijdlijn = () => {
                 <html lang={langCode} />
                 <title>Tijdlijn, Villa Vredestein</title>
                 <meta name="description" content="Van 1906 tot nu: de volledige geschiedenis van Villa Vredestein. De bewoners, de restauratie en de plannen voor de toekomst." />
-                <link rel="canonical" href="https://villavredestein.nl/tijdlijn" />
+                <link rel="canonical" href="https://villavredestein.com/tijdlijn" />
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://villavredestein.nl/tijdlijn" />
+                <meta property="og:url" content="https://villavredestein.com/tijdlijn" />
                 <meta property="og:title" content="Tijdlijn, Villa Vredestein" />
                 <meta property="og:description" content="Van 1906 tot nu: de volledige geschiedenis van Villa Vredestein. De bewoners, de restauratie en de plannen voor de toekomst." />
-                <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
+                <meta property="og:image" content="https://villavredestein.com/og-image.jpg" />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
                 <meta property="og:image:type" content="image/jpeg" />
@@ -251,7 +251,7 @@ const Tijdlijn = () => {
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Tijdlijn, Villa Vredestein" />
                 <meta name="twitter:description" content="Van 1906 tot nu: de volledige geschiedenis van Villa Vredestein. De bewoners, de restauratie en de plannen voor de toekomst." />
-                <meta name="twitter:image" content="https://villavredestein.nl/og-image.jpg" />
+                <meta name="twitter:image" content="https://villavredestein.com/og-image.jpg" />
             </Helmet>
 
             <header className="tijdlijn-header">

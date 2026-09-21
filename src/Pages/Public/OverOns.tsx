@@ -124,33 +124,33 @@ const OverOns = () => {
         "@graph": [
             {
                 "@type": "AboutPage",
-                "@id": "https://villavredestein.nl/verhaal#page",
-                "url": "https://villavredestein.nl/verhaal",
+                "@id": "https://villavredestein.com/verhaal#page",
+                "url": "https://villavredestein.com/verhaal",
                 "name": "Over ons, Villa Vredestein",
                 "description": "De mensen achter Villa Vredestein: het verhaal van Manon & Maxim, Project Carpe Diem en ManonIT.",
                 "inLanguage": langCode,
-                "isPartOf": { "@id": "https://villavredestein.nl/#website" },
-                "about": { "@id": "https://villavredestein.nl/#business" },
+                "isPartOf": { "@id": "https://villavredestein.com/#website" },
+                "about": { "@id": "https://villavredestein.com/#business" },
                 "mainEntity": [
-                    { "@id": "https://villavredestein.nl/verhaal#manon" },
-                    { "@id": "https://villavredestein.nl/verhaal#maxim" },
+                    { "@id": "https://villavredestein.com/verhaal#manon" },
+                    { "@id": "https://villavredestein.com/verhaal#maxim" },
                 ],
             },
             {
                 "@type": "Person",
-                "@id": "https://villavredestein.nl/verhaal#manon",
+                "@id": "https://villavredestein.com/verhaal#manon",
                 "name": "Manon Keeman",
                 "description": "Mede-eigenaar van Villa Vredestein en oprichter van ManonIT, een webdesign- en ontwikkelbedrijf.",
                 "worksFor": { "@type": "Organization", "name": "ManonIT", "url": "https://www.manonit.com" },
-                "affiliation": { "@id": "https://villavredestein.nl/#business" },
+                "affiliation": { "@id": "https://villavredestein.com/#business" },
                 "sameAs": ["https://www.manonit.com", "https://www.casacrew.nl"],
             },
             {
                 "@type": "Person",
-                "@id": "https://villavredestein.nl/verhaal#maxim",
+                "@id": "https://villavredestein.com/verhaal#maxim",
                 "name": "Maxim Staal",
                 "description": "Mede-eigenaar van Villa Vredestein, intercontinentaal piloot en oprichter van Project Carpe Diem.",
-                "affiliation": { "@id": "https://villavredestein.nl/#business" },
+                "affiliation": { "@id": "https://villavredestein.com/#business" },
             },
         ],
     });
@@ -164,13 +164,13 @@ const OverOns = () => {
                     name="description"
                     content="De mensen achter Villa Vredestein. Het verhaal van Manon & Maxim, Carpe Diem Design en de open deur voor bezoekers en gelijkgestemden."
                 />
-                <link rel="canonical" href="https://villavredestein.nl/verhaal" />
+                <link rel="canonical" href="https://villavredestein.com/verhaal" />
                 <link rel="preload" as="image" href={LuchtballonImg} {...{ fetchpriority: "high" }} />
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://villavredestein.nl/verhaal" />
+                <meta property="og:url" content="https://villavredestein.com/verhaal" />
                 <meta property="og:title" content="Over ons, Villa Vredestein" />
                 <meta property="og:description" content="De mensen achter Villa Vredestein. Het verhaal van Manon & Maxim, Carpe Diem Design en de open deur voor bezoekers." />
-                <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
+                <meta property="og:image" content="https://villavredestein.com/og-image.jpg" />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
                 <meta property="og:image:type" content="image/jpeg" />
@@ -179,7 +179,7 @@ const OverOns = () => {
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Over ons, Villa Vredestein" />
                 <meta name="twitter:description" content="De mensen achter Villa Vredestein. Het verhaal van Manon & Maxim, Carpe Diem Design en de open deur voor bezoekers." />
-                <meta name="twitter:image" content="https://villavredestein.nl/og-image.jpg" />
+                <meta name="twitter:image" content="https://villavredestein.com/og-image.jpg" />
                 <script type="application/ld+json">{aboutSchema}</script>
             </Helmet>
 

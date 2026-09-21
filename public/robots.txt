@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://villavredestein.nl/sitemap.xml
+Sitemap: https://villavredestein.com/sitemap.xml

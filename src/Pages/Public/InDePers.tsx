@@ -142,12 +142,12 @@ const InDePers = () => {
                     name="description"
                     content="Villa Vredestein in het nieuws. Kranten, tijdschriften en online media over dit bijzondere historische pand in Driebergen-Rijsenburg."
                 />
-                <link rel="canonical" href="https://villavredestein.nl/in-de-pers" />
+                <link rel="canonical" href="https://villavredestein.com/in-de-pers" />
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://villavredestein.nl/in-de-pers" />
+                <meta property="og:url" content="https://villavredestein.com/in-de-pers" />
                 <meta property="og:title" content="In de Pers, Villa Vredestein" />
                 <meta property="og:description" content="Villa Vredestein in het nieuws. Artikelen in kranten en magazines over dit bijzondere historische pand in Driebergen-Rijsenburg." />
-                <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
+                <meta property="og:image" content="https://villavredestein.com/og-image.jpg" />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
                 <meta property="og:image:type" content="image/jpeg" />
@@ -156,7 +156,7 @@ const InDePers = () => {
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="In de Pers, Villa Vredestein" />
                 <meta name="twitter:description" content="Villa Vredestein in het nieuws. Artikelen in kranten en magazines over dit bijzondere historische pand in Driebergen-Rijsenburg." />
-                <meta name="twitter:image" content="https://villavredestein.nl/og-image.jpg" />
+                <meta name="twitter:image" content="https://villavredestein.com/og-image.jpg" />
             </Helmet>
 
             {/* Hero */}

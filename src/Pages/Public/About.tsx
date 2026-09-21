@@ -38,12 +38,12 @@ const About = () => {
                     name="description"
                     content="Ontdek de verhalen achter Villa Vredestein: de geschiedenis, restauratie, het boek van Manon Keeman, Carpe Diem Design en de mensen achter dit bijzondere woonproject in Driebergen."
                 />
-                <link rel="canonical" href="https://villavredestein.nl/about" />
+                <link rel="canonical" href="https://villavredestein.com/about" />
                 <meta property="og:title" content={`${t("about.title")}, Villa Vredestein`} />
                 <meta property="og:description" content="Ontdek de verhalen achter Villa Vredestein: de geschiedenis, restauratie, het boek van Manon Keeman, Carpe Diem Design en de mensen achter dit bijzondere woonproject in Driebergen." />
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://villavredestein.nl/about" />
-                <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
+                <meta property="og:url" content="https://villavredestein.com/about" />
+                <meta property="og:image" content="https://villavredestein.com/og-image.jpg" />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
                 <meta property="og:image:type" content="image/jpeg" />
@@ -52,7 +52,7 @@ const About = () => {
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={`${t("about.title")}, Villa Vredestein`} />
                 <meta name="twitter:description" content="Ontdek de verhalen achter Villa Vredestein: de geschiedenis, restauratie, het boek van Manon Keeman, Carpe Diem Design en de mensen achter dit bijzondere woonproject in Driebergen." />
-                <meta name="twitter:image" content="https://villavredestein.nl/og-image.jpg" />
+                <meta name="twitter:image" content="https://villavredestein.com/og-image.jpg" />
             </Helmet>
 
             <header>

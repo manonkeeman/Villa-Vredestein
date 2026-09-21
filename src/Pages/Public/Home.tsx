@@ -107,12 +107,12 @@ const Home = () => {
                 <html lang={langCode} />
                 <title>Villa Vredestein, Driebergen-Rijsenburg</title>
                 <meta name="description" content="Villa Vredestein is een historische villa uit 1906 in het hart van Driebergen-Rijsenburg. Verblijf in een bijzonder pand op de Utrechtse Heuvelrug." />
-                <link rel="canonical" href="https://villavredestein.nl/" />
+                <link rel="canonical" href="https://villavredestein.com/" />
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://villavredestein.nl/" />
+                <meta property="og:url" content="https://villavredestein.com/" />
                 <meta property="og:title" content="Villa Vredestein, Driebergen-Rijsenburg" />
                 <meta property="og:description" content="Historische villa uit 1906 op de Utrechtse Heuvelrug. Verblijf, verhuur en restauratie in het hart van Driebergen-Rijsenburg." />
-                <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
+                <meta property="og:image" content="https://villavredestein.com/og-image.jpg" />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
                 <meta property="og:image:type" content="image/jpeg" />
@@ -121,7 +121,7 @@ const Home = () => {
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Villa Vredestein, Driebergen-Rijsenburg" />
                 <meta name="twitter:description" content="Historische villa uit 1906. Verblijf op de Utrechtse Heuvelrug." />
-                <meta name="twitter:image" content="https://villavredestein.nl/og-image.jpg" />
+                <meta name="twitter:image" content="https://villavredestein.com/og-image.jpg" />
             </Helmet>
 
             {/* ── Hero met parallax ── */}

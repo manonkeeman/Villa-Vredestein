@@ -232,12 +232,12 @@ const GalerijVilla = () => {
                     name="description"
                     content="Fotogalerij en historisch archief van Villa Vredestein: interieur, exterieur, tuin, kadasterkaarten en krantenartikelen van 1906 tot nu."
                 />
-                <link rel="canonical" href="https://villavredestein.nl/galerij" />
+                <link rel="canonical" href="https://villavredestein.com/galerij" />
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://villavredestein.nl/galerij" />
+                <meta property="og:url" content="https://villavredestein.com/galerij" />
                 <meta property="og:title" content="Galerij & Historisch Archief, Villa Vredestein" />
                 <meta property="og:description" content="Fotogalerij en historisch archief van Villa Vredestein. Ansichtkaarten, plattegronden, de verbouwing en een eeuw geschiedenis." />
-                <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
+                <meta property="og:image" content="https://villavredestein.com/og-image.jpg" />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
                 <meta property="og:image:type" content="image/jpeg" />
@@ -246,7 +246,7 @@ const GalerijVilla = () => {
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Galerij & Historisch Archief, Villa Vredestein" />
                 <meta name="twitter:description" content="Fotogalerij en historisch archief van Villa Vredestein. Ansichtkaarten, plattegronden, de verbouwing en een eeuw geschiedenis." />
-                <meta name="twitter:image" content="https://villavredestein.nl/og-image.jpg" />
+                <meta name="twitter:image" content="https://villavredestein.com/og-image.jpg" />
             </Helmet>
 
             <header className="gv-header">

@@ -35,7 +35,7 @@ const VerblijfDetail = () => {
         );
     }
 
-    const canonicalUrl = `https://villavredestein.nl/verblijven/${optie.id}`;
+    const canonicalUrl = `https://villavredestein.com/verblijven/${optie.id}`;
     const [hero, ...rest] = optie.afbeeldingen;
 
     const vraagBeschikbaarheid = () => {

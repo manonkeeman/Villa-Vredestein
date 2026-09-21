@@ -94,7 +94,7 @@ type Poi = { pos: [number, number]; label: string; sub: string; emoji: string; c
 
 const POIS: Poi[] = [
     // Villa & Vervoer
-    { pos: VILLA,                                     label: "Villa Vredestein",          sub: "Hoofdstraat 147",              emoji: "🏛️", color: "#FCBC2D", link: "https://www.villavredestein.nl",                                  linkLabel: "villavredestein.nl"           },
+    { pos: VILLA,                                     label: "Villa Vredestein",          sub: "Hoofdstraat 147",              emoji: "🏛️", color: "#FCBC2D", link: "https://www.villavredestein.com",                                  linkLabel: "villavredestein.com"           },
     { pos: [52.0448, 5.2818],                         label: "IVA Driebergen",            sub: "Hogeschool · Hoofdstraat 25",  emoji: "🎓", color: "#4a70b0", link: "https://maps.google.com/?q=IVA+Driebergen+Hoofdstraat+25",         linkLabel: "Google Maps →"                },
     { pos: [52.0317, 5.2447],                         label: "NS Driebergen-Zeist",       sub: "5 min met de auto",            emoji: "🚂", color: "#d4804a", link: "https://maps.google.com/?q=NS+Station+Driebergen-Zeist",           linkLabel: "Google Maps →"                },
     { pos: [52.0543, 5.3211],                         label: "Utrechtse Heuvelrug NP",    sub: "Op loopafstand",               emoji: "🌲", color: "#6a9050", link: "https://www.np-utrechtse-heuvelrug.nl",                           linkLabel: "np-utrechtse-heuvelrug.nl"    },
@@ -301,12 +301,12 @@ const Omgeving = () => {
                 <html lang={langCode} />
                 <title>Omgeving & Locatie, Villa Vredestein</title>
                 <meta name="description" content="Restaurants, boodschappen, kastelen en tips voor Driebergen-Rijsenburg. Villa Vredestein op de Utrechtse Heuvelrug, Utrecht in 15 min, Amsterdam in 40." />
-                <link rel="canonical" href="https://villavredestein.nl/omgeving" />
+                <link rel="canonical" href="https://villavredestein.com/omgeving" />
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://villavredestein.nl/omgeving" />
+                <meta property="og:url" content="https://villavredestein.com/omgeving" />
                 <meta property="og:title" content="Omgeving & Locatie, Villa Vredestein" />
                 <meta property="og:description" content="Bos op de stoep, Utrecht in een kwartier. Villa Vredestein ligt op de Utrechtse Heuvelrug in Driebergen-Rijsenburg." />
-                <meta property="og:image" content="https://villavredestein.nl/og-image.jpg" />
+                <meta property="og:image" content="https://villavredestein.com/og-image.jpg" />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
                 <meta property="og:image:type" content="image/jpeg" />
@@ -315,7 +315,7 @@ const Omgeving = () => {
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Omgeving & Locatie, Villa Vredestein" />
                 <meta name="twitter:description" content="Bos op de stoep, Utrecht in een kwartier. Villa Vredestein ligt op de Utrechtse Heuvelrug in Driebergen-Rijsenburg." />
-                <meta name="twitter:image" content="https://villavredestein.nl/og-image.jpg" />
+                <meta name="twitter:image" content="https://villavredestein.com/og-image.jpg" />
             </Helmet>
 
             {/* Hero, kaart als header */}
@@ -329,7 +329,7 @@ const Omgeving = () => {
                                 <div className="map-popup">
                                     <strong>Villa Vredestein</strong>
                                     <span>Hoofdstraat 147, Driebergen-Rijsenburg</span>
-                                    <a href="https://www.villavredestein.nl" target="_blank" rel="noreferrer" className="map-popup-link">villavredestein.nl</a>
+                                    <a href="https://www.villavredestein.com" target="_blank" rel="noreferrer" className="map-popup-link">villavredestein.com</a>
                                 </div>
                             </Popup>
                         </Marker>
