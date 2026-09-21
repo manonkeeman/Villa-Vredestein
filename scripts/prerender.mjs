@@ -34,7 +34,21 @@ async function main() {
         headless: true,
         args: ["--no-sandbox", "--disable-setuid-sandbox"],
     });
-    let page = await browser.newPage();
+
+    // De CI-omgeving detecteert soms een andere browsertaal dan Nederlands
+    // (i18next's LanguageDetector valt dan terug op "navigator" i.p.v. "nl"),
+    // waardoor de geprerenderde pagina's in het Engels terechtkomen. i18next
+    // checkt eerst localStorage — die hier vóór elke page-load forceren naar
+    // "nl" zorgt dat elke prerender altijd in de standaardtaal van de site is.
+    async function newDutchPage() {
+        const p = await browser.newPage();
+        await p.evaluateOnNewDocument(() => {
+            localStorage.setItem("i18nextLng", "nl");
+        });
+        return p;
+    }
+
+    let page = await newDutchPage();
 
     const failed = [];
     // Eerst alles in het geheugen opbouwen, pas na de hele crawl wegschrijven.
@@ -84,7 +98,7 @@ async function main() {
             // pagina/frame kan corrupt zijn na een crash — begin vers voor de
             // volgende route zodat één kapotte pagina de rest niet meesleurt
             await page.close().catch(() => {});
-            page = await browser.newPage();
+            page = await newDutchPage();
         }
     }
 
