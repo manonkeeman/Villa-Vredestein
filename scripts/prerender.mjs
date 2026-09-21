@@ -6,7 +6,7 @@
 
 import { preview } from "vite";
 import puppeteer from "puppeteer";
-import { readFileSync, mkdirSync, writeFileSync, appendFileSync, existsSync } from "node:fs";
+import { readFileSync, mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -93,13 +93,21 @@ async function main() {
         server.httpServer.close((err) => (err ? reject(err) : resolve()));
     });
 
+    // Platte .html-bestanden i.p.v. dist/<route>/index.html: Netlify's
+    // "Pretty URLs" (staat aan voor dit project) serveert /contact.html
+    // rechtstreeks op /contact, zonder redirect. Een map met index.html
+    // (dist/contact/index.html) triggert daarentegen datzelfde Pretty-URLs-
+    // mechanisme om automatisch 301 te sturen naar /contact/ — en Google
+    // raadt af om canonical te laten wijzen naar een URL die zelf redirect.
     for (const { route, html } of rendered) {
-        const outDir = route === "/" ? distDir : join(distDir, route);
-        mkdirSync(outDir, { recursive: true });
-        writeFileSync(join(outDir, "index.html"), html, "utf-8");
+        if (route === "/") {
+            writeFileSync(join(distDir, "index.html"), html, "utf-8");
+            continue;
+        }
+        const filePath = join(distDir, `${route}.html`);
+        mkdirSync(dirname(filePath), { recursive: true });
+        writeFileSync(filePath, html, "utf-8");
     }
-
-    writeRedirectRules(routes.filter((r) => r !== "/"));
 
     if (failed.length > 0) {
         console.error(`\nPrerendering klaar met ${failed.length} fout(en): ${failed.join(", ")}`);
@@ -107,34 +115,6 @@ async function main() {
     }
 
     console.log(`Prerendering klaar: ${rendered.length} pagina's weggeschreven.`);
-}
-
-// Zonder deze regels stuurt Netlify elke geprerenderde route (een echte map
-// met index.html, bv. dist/contact/index.html) automatisch met een 301 door
-// naar de trailing-slash-variant (/contact -> /contact/). Dat is op zich niet
-// kapot, maar Google raadt expliciet af om een canonical-URL te laten wijzen
-// naar een adres dat zelf weer redirect — en het kost een onnodige hop.
-// Deze 200-rewrites zorgen dat elke route zonder trailing slash (zoals overal
-// in canonical/og:url/sitemap gebruikt) direct wordt geserveerd.
-function writeRedirectRules(routes) {
-    const redirectsPath = join(distDir, "_redirects");
-    if (!existsSync(redirectsPath)) {
-        writeFileSync(redirectsPath, "", "utf-8");
-    }
-    const existing = readFileSync(redirectsPath, "utf-8");
-
-    const rules = routes.map((r) => `${r} ${r}/index.html 200`).join("\n");
-    const block = `\n# Auto-gegenereerd door scripts/prerender.mjs — voorkomt Netlify's\n# automatische 301 naar trailing-slash voor elke geprerenderde route.\n${rules}\n`;
-
-    const fallbackMarker = "# SPA fallback";
-    const idx = existing.indexOf(fallbackMarker);
-    const updated =
-        idx === -1
-            ? existing + block
-            : existing.slice(0, idx) + block.trimStart() + "\n" + existing.slice(idx);
-
-    writeFileSync(redirectsPath, updated, "utf-8");
-    console.log(`_redirects bijgewerkt met ${routes.length} rewrite-regel(s).`);
 }
 
 main().catch((err) => {
