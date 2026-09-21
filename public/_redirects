@@ -2,7 +2,7 @@
 /over-ons /verhaal 301
 
 # Korte, deelbare link naar het Google review-formulier
-/review https://search.google.com/local/writereview?placeid=ChIJD5u4jR9dxkcRXgit8eiqcxw 302
+/review https://www.google.com/search?q=Villa+Vredestein+Driebergen-Rijsenburg#lrd=0x47c65d188db8fa77:0xa508e7feff219607,3 302
 
 # SPA fallback — must be last
 /* /index.html 200
