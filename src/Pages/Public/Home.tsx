@@ -33,7 +33,6 @@ const KENMERKEN = [
 
 type Highlight = {
     to: string;
-    toState?: { cat: string };
     img?: string;
     imgPosition?: string;
     map?: boolean;
@@ -45,8 +44,7 @@ type Highlight = {
 
 const HIGHLIGHTS: Highlight[] = [
     {
-        to: "/galerij-villa",
-        toState: { cat: "De Verbouwing" },
+        to: "/galerij/de-verbouwing",
         img: ImgGlasLood2,
         label: "De Verbouwing",
         titel: "De transformatie",
@@ -208,10 +206,10 @@ const Home = () => {
                         <article
                             key={h.to}
                             className="hl-card"
-                            onClick={() => navigate(h.to, h.toState ? { state: h.toState } : undefined)}
+                            onClick={() => navigate(h.to)}
                             role="button"
                             tabIndex={0}
-                            onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && navigate(h.to, h.toState ? { state: h.toState } : undefined)}
+                            onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && navigate(h.to)}
                             aria-label={h.titel}
                         >
                             <div className="hl-img-wrap">

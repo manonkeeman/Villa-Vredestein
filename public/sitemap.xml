@@ -127,11 +127,53 @@
   <!-- Villa Galerij (hoofdnavigatie: Galerij) -->
   <url>
     <loc>https://villavredestein.com/galerij</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.com/galerij" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://villavredestein.com/galerij" />
+  </url>
+
+  <!-- Galerij categorieën -->
+  <url>
+    <loc>https://villavredestein.com/galerij/samenleven</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.com/galerij/samenleven" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://villavredestein.com/galerij/samenleven" />
+  </url>
+  <url>
+    <loc>https://villavredestein.com/galerij/ansichtkaarten</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.com/galerij/ansichtkaarten" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://villavredestein.com/galerij/ansichtkaarten" />
+  </url>
+  <url>
+    <loc>https://villavredestein.com/galerij/geschiedenis</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.com/galerij/geschiedenis" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://villavredestein.com/galerij/geschiedenis" />
+  </url>
+  <url>
+    <loc>https://villavredestein.com/galerij/plattegrond</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.com/galerij/plattegrond" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://villavredestein.com/galerij/plattegrond" />
+  </url>
+  <url>
+    <loc>https://villavredestein.com/galerij/de-verbouwing</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.com/galerij/de-verbouwing" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://villavredestein.com/galerij/de-verbouwing" />
   </url>
 
   <!-- Tijdlijn -->

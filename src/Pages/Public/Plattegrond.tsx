@@ -222,7 +222,7 @@ const Plattegrond = () => {
                                 {verd.plattegrondCaption && (
                                     <button
                                         className="pg-platt-link"
-                                        onClick={() => navigate("/galerij-villa", { state: { cat: "Plattegrond" } })}
+                                        onClick={() => navigate("/galerij/plattegrond")}
                                     >
                                         Bekijk plattegrond {verd.plattegrondCaption} →
                                     </button>

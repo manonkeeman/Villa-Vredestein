@@ -11,6 +11,7 @@ import Blog from "./Pages/Public/Blog";
 import Tijdlijn from "./Pages/Public/Tijdlijn";
 import OverOns from "./Pages/Public/OverOns";
 import GalerijVilla from "./Pages/Public/GalerijVilla";
+import GalerijCategorie from "./Pages/Public/GalerijCategorie";
 import Omgeving from "./Pages/Public/Omgeving";
 import Verblijven from "./Pages/Public/Verblijven";
 import VerblijfDetail from "./Pages/Public/VerblijfDetail";
@@ -75,6 +76,7 @@ function App() {
                 <Route path="/in-de-pers" element={<InDePers />} />
                 <Route path="/galerij" element={<GalerijVilla />} />
                 <Route path="/galerij-villa" element={<GalerijVilla />} />
+                <Route path="/galerij/:categorie" element={<GalerijCategorie />} />
                 <Route path="/omgeving" element={<Omgeving />} />
                 <Route path="/verblijven" element={<Verblijven />} />
                 <Route path="/verblijven/:id" element={<VerblijfDetail />} />
