@@ -7,6 +7,7 @@ lerna-debug.log*
 
 node_modules/
 server/node_modules/
+.netlify/
 
 dist/
 dist-ssr/
