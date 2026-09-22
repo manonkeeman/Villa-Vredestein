@@ -205,47 +205,6 @@ const Verblijven = () => {
                 </div>
             </section>
 
-            {/* Reviews */}
-            <section className="verb-reviews reveal-section" ref={addRef}>
-                <div className="verb-inner">
-                    <h2 className="verb-section-title">Wat bewoners &amp; bezoekers zeggen</h2>
-                    <div className="reviews-grid">
-                        {[
-                            {
-                                naam: "Simon",
-                                rol: "IVA Student 2024-2026",
-                                tekst: "Een super leuke en gezellige periode gehad in Villa Vredestein. Ondanks de verbouwing nam Maxim me toch in huis, wat erg gewaardeerd werd. Wat een leuke lieve mensen zijn Maxim en Manon, altijd in voor een praatje en een paar keer een hele leuke pannenkoekennavond. Midden in het 2e jaar was de verbouwing af en wat is het mooi geworden: een luxe keuken met een luxe badkamer. Ik zou het huis, Maxim en Manon een 10 geven voor de gastvrijheid. Beter kan je het niet treffen als je het vergelijkt met andere studentenhuizen!",
-                                sterren: 5,
-                            },
-                        ].map((r) => (
-                            <article key={r.naam} className="review-card">
-                                <div className="review-sterren">
-                                    {"★".repeat(r.sterren)}
-                                </div>
-                                <p className="review-tekst">&quot;{r.tekst}&quot;</p>
-                                <div className="review-auteur">
-                                    <div className="review-avatar">{r.naam.charAt(0)}</div>
-                                    <div>
-                                        <strong>{r.naam}</strong>
-                                        <span>{r.rol}</span>
-                                    </div>
-                                </div>
-                            </article>
-                        ))}
-                        <article className="review-card review-cta-card">
-                            <div className="review-cta-icon" aria-hidden="true">★★★★★</div>
-                            <h3>Zelf bij ons gewoond of gelogeerd?</h3>
-                            <p className="review-tekst">
-                                Laat een Google review achter en help andere (aankomende) bewoners op weg.
-                            </p>
-                            <a href="/review" target="_blank" rel="noreferrer" className="review-cta-btn">
-                                Schrijf een Google review →
-                            </a>
-                        </article>
-                    </div>
-                </div>
-            </section>
-
             <GoogleReviews />
 
             {/* Boekingsformulier */}

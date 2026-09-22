@@ -64,13 +64,17 @@
     margin: -1.5rem -1.5rem 1rem;
     border-radius: 14px 14px 0 0;
     overflow: hidden;
-    aspect-ratio: 16 / 9;
+    max-height: 320px;
+    background: #0c0906;
+    display: flex;
 }
 
 .tijdlijn-kaart-img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    max-height: 320px;
+    object-fit: contain;
+    margin: 0 auto;
     display: block;
     transition: transform 0.4s ease;
 }
@@ -186,6 +190,8 @@
     .tijdlijn-dot { left: 24px; position: absolute; width: 40px; height: 40px; font-size: 1rem; }
     .tijdlijn-kaart { width: 100%; }
     .tijdlijn-header h1 { font-size: 1.8rem; }
+    .tijdlijn-kaart-img-wrap,
+    .tijdlijn-kaart-img { max-height: 240px; }
 }
 
 @media (max-width: 480px) {
