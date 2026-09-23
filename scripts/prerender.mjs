@@ -21,9 +21,10 @@ function getRoutesFromSitemap() {
 }
 
 // Routes die bewust niet in de sitemap staan (noindex), maar wel hun eigen
-// statische HTML nodig hebben — anders serveert de SPA-fallback de home-HTML
-// met canonical "/" en zonder noindex.
-const EXTRA_ROUTES = ["/privacy"];
+// statische HTML nodig hebben — anders serveert de fallback de home-HTML
+// met canonical "/" en zonder noindex. "/404" rendert de NotFound-route naar
+// dist/404.html: de fallback in _redirects serveert die met status 404.
+const EXTRA_ROUTES = ["/privacy", "/404"];
 
 async function main() {
     const routes = [...getRoutesFromSitemap(), ...EXTRA_ROUTES];

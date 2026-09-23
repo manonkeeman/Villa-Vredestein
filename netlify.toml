@@ -7,11 +7,11 @@ NODE_VERSION = "20"
 NETLIFY_BUILD_IMAGE = "ubuntu-22.04"
 NPM_FLAGS = "--legacy-peer-deps"
 
-# SPA routing — alle routes terugsturen naar index.html
+# Onbekende routes → echte 404 (zie public/_redirects; die regels gaan voor)
 [[redirects]]
 from = "/*"
-to = "/index.html"
-status = 200
+to = "/404.html"
+status = 404
 
 # Netlify Forms configuratie
 [forms]
