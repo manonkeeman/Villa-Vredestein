@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet-async";
 import Button from "../../Components/Buttons/Button";
+import NotFound from "./NotFound";
 import "./Blog.css";
 
 import Villa1 from "../../Assets/Images/VillaVredestein2024.jpg";
@@ -44,16 +45,7 @@ const Blog = () => {
     const blog = Array.isArray(blogs) ? blogs.find((b) => b.slug === slug) : null;
     const image = imageMap[slug];
 
-    if (!blog) {
-        return (
-            <main className="blog-page">
-                <div className="blog-not-found">
-                    <h1>{t("about.back")}</h1>
-                    <Button text={t("about.back")} variant="primary" onClick={() => navigate(-1)} />
-                </div>
-            </main>
-        );
-    }
+    if (!blog) return <NotFound />;
 
     const langCode = i18n.language?.split("-")[0] || "nl";
     const canonicalUrl = `https://villavredestein.com/blog/${slug}`;

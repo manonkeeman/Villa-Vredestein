@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { Link, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { CATEGORIEEN, FOTOS } from "../../Data/galerijFotos";
+import NotFound from "./NotFound";
 import "./GalerijVilla.css";
 
 const GalerijCategorie = () => {
@@ -46,16 +47,7 @@ const GalerijCategorie = () => {
 
     useEffect(() => { setLightbox(null); }, [categorie]);
 
-    if (!cat) {
-        return (
-            <main className="galerij-villa-page">
-                <div className="gv-not-found">
-                    <h1>Deze galerijcategorie bestaat niet</h1>
-                    <Link to="/galerij" className="gv-not-found-link">← Bekijk alle categorieën</Link>
-                </div>
-            </main>
-        );
-    }
+    if (!cat) return <NotFound />;
 
     const foto = lightbox !== null ? fotos[lightbox] : null;
     const canonicalUrl = `https://villavredestein.com/galerij/${cat.slug}`;

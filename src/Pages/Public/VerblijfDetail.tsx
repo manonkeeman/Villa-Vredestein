@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { OPTIES } from "../../Data/verblijfOpties";
+import NotFound from "./NotFound";
 import "./VerblijfDetail.css";
 
 const VerblijfDetail = () => {
@@ -24,16 +25,7 @@ const VerblijfDetail = () => {
         return () => observer.disconnect();
     }, [optie]);
 
-    if (!optie) {
-        return (
-            <main className="vd-page">
-                <div className="vd-not-found">
-                    <h1>Deze verblijfsoptie bestaat niet (meer)</h1>
-                    <Link to="/verblijven" className="vd-cta-btn">← Bekijk alle verblijfsopties</Link>
-                </div>
-            </main>
-        );
-    }
+    if (!optie) return <NotFound />;
 
     const canonicalUrl = `https://villavredestein.com/verblijven/${optie.id}`;
     const [hero, ...rest] = optie.afbeeldingen;

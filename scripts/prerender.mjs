@@ -20,8 +20,13 @@ function getRoutesFromSitemap() {
     return matches.map((m) => new URL(m[1]).pathname);
 }
 
+// Routes die bewust niet in de sitemap staan (noindex), maar wel hun eigen
+// statische HTML nodig hebben — anders serveert de SPA-fallback de home-HTML
+// met canonical "/" en zonder noindex.
+const EXTRA_ROUTES = ["/privacy"];
+
 async function main() {
-    const routes = getRoutesFromSitemap();
+    const routes = [...getRoutesFromSitemap(), ...EXTRA_ROUTES];
     console.log(`Prerendering ${routes.length} routes...`);
 
     const server = await preview({

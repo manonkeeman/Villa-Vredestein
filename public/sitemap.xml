@@ -84,15 +84,6 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://villavredestein.com/about" />
   </url>
 
-  <!-- Villa Galerij (alias van /galerij, canonical wijst naar /galerij) -->
-  <url>
-    <loc>https://villavredestein.com/galerij-villa</loc>
-    <lastmod>2026-06-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.com/galerij-villa" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://villavredestein.com/galerij-villa" />
-  </url>
 
   <!-- De Ruimtes -->
   <url>
@@ -246,15 +237,6 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://villavredestein.com/blog/over-ons" />
   </url>
 
-  <!-- Blog: Het Boek -->
-  <url>
-    <loc>https://villavredestein.com/blog/het-boek</loc>
-    <lastmod>2024-05-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.com/blog/het-boek" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://villavredestein.com/blog/het-boek" />
-  </url>
 
   <!-- Blog: Carpe Diem Design -->
   <url>

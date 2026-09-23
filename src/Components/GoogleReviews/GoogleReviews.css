@@ -56,11 +56,48 @@
     color: #988068;
 }
 
-.gr-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
+.gr-slider {
+    position: relative;
 }
+
+.gr-track {
+    display: flex;
+    gap: 1.25rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+.gr-track::-webkit-scrollbar { display: none; }
+
+.gr-track > .gr-card {
+    flex: 0 0 calc((100% - 2 * 1.25rem) / 3);
+    scroll-snap-align: start;
+}
+
+.gr-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid #382e1e;
+    background: #120f09;
+    color: #e0d0b8;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s, opacity 0.2s;
+}
+.gr-arrow:hover:not(:disabled) { border-color: #FCBC2D; color: #FCBC2D; }
+.gr-arrow:disabled { opacity: 0; pointer-events: none; }
+.gr-arrow--prev { left: -21px; }
+.gr-arrow--next { right: -21px; }
 
 .gr-card {
     background: #120f09;
@@ -139,10 +176,13 @@
 }
 
 @media (max-width: 900px) {
-    .gr-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+    .gr-track > .gr-card { flex-basis: calc((100% - 1.25rem) / 2); }
 }
 
 @media (max-width: 600px) {
     .gr-inner { padding: 0 1.25rem; }
+    /* Volgende kaart piekt in beeld, zodat duidelijk is dat je kunt swipen */
+    .gr-track > .gr-card { flex-basis: 85%; }
+    .gr-arrow { display: none; }
     .gr-section { padding: 3rem 0; }
 }
