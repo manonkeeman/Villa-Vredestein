@@ -58,7 +58,7 @@ import ImgRhijnauwen            from "../../Assets/Images/omg-rhijnauwen.jpg";
 import ImgSlotZeist             from "../../Assets/Images/omg-slot-zeist.jpg";
 import ImgVoetveer              from "../../Assets/Images/omg-voetveer-rhenen.jpg";
 
-delete L.Icon.Default.prototype._getIconUrl;
+delete (L.Icon.Default.prototype as unknown as { _getIconUrl?: unknown })._getIconUrl;
 L.Icon.Default.mergeOptions({
     iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
     iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",

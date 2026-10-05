@@ -16,7 +16,21 @@ import ImgManonIT from "../../Assets/Images/manonit-portrait.webp";
 import ImgManonITBrand from "../../Assets/Images/manonit-og.jpg";
 import ImgManonITWebsite from "../../Assets/Images/manonit-website.png";
 
-const SECTIONS = [
+interface Section {
+    slug: string;
+    img: string;
+    imgAlt: string;
+    theme: string;
+    accent: string;
+    pullQuote: string;
+    extraImages?: { src: string; alt: string; ar: number; pos?: string }[];
+    video?: string;
+    showAll?: boolean;
+    imgContain?: boolean;
+    links?: { href: string; label?: string }[];
+}
+
+const SECTIONS: Section[] = [
     {
         slug: "over-ons",
         img: ImgChineseMuur,
@@ -109,7 +123,7 @@ const OverOns = () => {
                 entries.forEach((e) => {
                     if (e.isIntersecting) {
                         e.target.classList.add("oo-visible");
-                        setActiveSection(e.target.dataset.slug);
+                        setActiveSection((e.target as HTMLElement).dataset.slug);
                     }
                 }),
             { threshold: 0.18 }
@@ -231,9 +245,9 @@ const OverOns = () => {
                     <section
                         key={sec.slug}
                         className={`oo-section oo-section--${imgSide} oo-theme--${sec.theme} oo-reveal${sec.video ? " oo-section--video" : ""}`}
-                        ref={(el) => (sectionRefs.current[i] = el)}
+                        ref={(el) => { sectionRefs.current[i] = el; }}
                         data-slug={sec.slug}
-                        style={{ "--accent": sec.accent }}
+                        style={{ "--accent": sec.accent } as React.CSSProperties}
                     >
                         {/* Image / Video column */}
                         <div className="oo-img-col">
@@ -309,7 +323,7 @@ const OverOns = () => {
                                     <button
                                         className="oo-lees-meer-btn"
                                         onClick={() => toggleExpanded(sec.slug)}
-                                        style={{ "--btn-accent": sec.accent }}
+                                        style={{ "--btn-accent": sec.accent } as React.CSSProperties}
                                     >
                                         {expanded[sec.slug] ? "Tekst inklappen ↑" : "Tekst uitklappen ↓"}
                                     </button>
@@ -324,7 +338,7 @@ const OverOns = () => {
                                                 target="_blank"
                                                 rel="noreferrer"
                                                 className="oo-external-link"
-                                                style={{ "--btn-accent": sec.accent }}
+                                                style={{ "--btn-accent": sec.accent } as React.CSSProperties}
                                             >
                                                 {l.label || l.href}
                                             </a>

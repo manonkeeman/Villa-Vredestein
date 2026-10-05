@@ -18,7 +18,7 @@ const ContactForm = ({ onSuccess }) => {
         fetch("/", {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams(data).toString(),
+            body: new URLSearchParams(data as unknown as Record<string, string>).toString(),
         })
             .then(() => {
                 form.reset();
@@ -42,7 +42,7 @@ const ContactForm = ({ onSuccess }) => {
             {/* Netlify vereiste velden */}
             <input type="hidden" name="form-name" value="contact" />
             <input type="hidden" name="subject" value={t("footer.subject")} />
-            <input type="hidden" name="bot-field" />
+            <p style={{ display: "none" }} aria-hidden="true"><label>Niet invullen: <input type="text" name="bot-field" tabIndex={-1} autoComplete="off" /></label></p>
 
             <div className="input-icon-wrapper">
                 <label htmlFor="cf-naam" className="visually-hidden">{t("contact.form.name")}</label>

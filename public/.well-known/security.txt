@@ -1,0 +1,4 @@
+Contact: mailto:lets@manonit.com
+Expires: 2027-10-05T00:00:00.000Z
+Preferred-Languages: nl, en
+Canonical: https://villavredestein.com/.well-known/security.txt

@@ -64,7 +64,7 @@ const Verblijven = () => {
         fetch("/", {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams(data).toString(),
+            body: new URLSearchParams(data as unknown as Record<string, string>).toString(),
         })
             .then(() => {
                 setSent(true);
@@ -249,7 +249,7 @@ const Verblijven = () => {
                                 data-netlify-honeypot="bot-field"
                             >
                                 <input type="hidden" name="form-name" value="verblijven" />
-                                <input type="hidden" name="bot-field" style={{ display: "none" }} />
+                                <p style={{ display: "none" }} aria-hidden="true"><label>Niet invullen: <input type="text" name="bot-field" tabIndex={-1} autoComplete="off" /></label></p>
 
                                 <div className="form-field-select">
                                     <label htmlFor="optie">Type verblijf</label>

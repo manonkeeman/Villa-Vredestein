@@ -176,7 +176,7 @@ const InDePers = () => {
                     <article
                         key={i}
                         className="idp-article idp-reveal"
-                        ref={(el) => (cardRefs.current[i] = el)}
+                        ref={(el) => { cardRefs.current[i] = el; }}
                         onClick={() => item.imgs?.length && openViewer(item.imgs, 0)}
                         role={item.imgs?.length ? "button" : undefined}
                         tabIndex={item.imgs?.length ? 0 : undefined}
@@ -246,7 +246,7 @@ const InDePers = () => {
                         <div
                             key={idx}
                             className="idp-viewer-slide"
-                            ref={(el) => (slidesRef.current[idx] = el)}
+                            ref={(el) => { slidesRef.current[idx] = el; }}
                         >
                             <img src={src} alt={`Foto ${idx + 1}`} className="idp-viewer-img" />
                         </div>
