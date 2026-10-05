@@ -9,6 +9,7 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 
 import HeroImg from "../../Assets/Images/int-woonkamer.jpg";
+import HeroImgMobiel from "../../Assets/Images/int-woonkamer-mobiel.jpg";
 import VillaImg from "../../Assets/Images/ext-villa-voorkant.jpg";
 import VerbouwingVid from "../../Assets/Videos/home-verbouwing.mp4";
 import ImgGlasLood2 from "../../Assets/Images/rest-glas-lood-2.jpg";
@@ -73,6 +74,21 @@ const Home = () => {
     const { i18n } = useTranslation();
     const langCode = i18n.language?.split("-")[0] || "nl";
     const revealRefs = useRef([]);
+    const introVideoRef = useRef<HTMLVideoElement>(null);
+
+    // Video pas laden als hij in beeld komt, zodat hij de hero niet vertraagt
+    useEffect(() => {
+        const video = introVideoRef.current;
+        if (!video) return;
+        const io = new IntersectionObserver(([entry]) => {
+            if (!entry.isIntersecting) return;
+            video.src = VerbouwingVid;
+            video.play().catch(() => {});
+            io.disconnect();
+        }, { rootMargin: "200px" });
+        io.observe(video);
+        return () => io.disconnect();
+    }, []);
 
     const [parallaxY, setParallaxY] = useState(0);
 
@@ -106,7 +122,8 @@ const Home = () => {
                 <title>Villa Vredestein, Driebergen-Rijsenburg</title>
                 <meta name="description" content="Villa Vredestein is een historische villa uit 1906 in het hart van Driebergen-Rijsenburg. Verblijf in een bijzonder pand op de Utrechtse Heuvelrug." />
                 <link rel="canonical" href="https://villavredestein.com/" />
-                <link rel="preload" as="image" href={HeroImg} {...{ fetchpriority: "high" }} />
+                <link rel="preload" as="image" href={HeroImgMobiel} media="(max-width: 768px)" {...{ fetchpriority: "high" }} />
+                <link rel="preload" as="image" href={HeroImg} media="(min-width: 769px)" {...{ fetchpriority: "high" }} />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://villavredestein.com/" />
                 <meta property="og:title" content="Villa Vredestein, Driebergen-Rijsenburg" />
@@ -127,7 +144,7 @@ const Home = () => {
             <section className="hero-lux" aria-label="Hero">
                 <div
                     className="hero-bg"
-                    style={{ backgroundImage: `url(${HeroImg})`, transform: `translateY(${parallaxY}px)` }}
+                    style={{ "--hero-img": `url(${HeroImg})`, "--hero-img-mobiel": `url(${HeroImgMobiel})`, transform: `translateY(${parallaxY}px)` } as React.CSSProperties}
                     role="img"
                     aria-label="Woonkamer Villa Vredestein"
                 />
@@ -167,7 +184,7 @@ const Home = () => {
             <section className="intro-split reveal-section" ref={addRef}>
                 <div className="intro-img-col">
                     <video
-                        src={VerbouwingVid}
+                        ref={introVideoRef}
                         autoPlay
                         muted
                         loop

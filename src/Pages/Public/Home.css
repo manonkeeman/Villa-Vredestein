@@ -39,6 +39,7 @@
     inset: -15% 0;
     background-size: cover;
     background-position: center;
+    background-image: var(--hero-img);
     will-change: transform;
     filter: brightness(0.5) saturate(0.7);
     pointer-events: none; /* voorkom touch-event-onderschepping */
@@ -551,6 +552,7 @@
 
 @media (max-width: 768px) {
     .hero-bg {
+        background-image: var(--hero-img-mobiel); /* kleinere foto op mobiel */
         will-change: auto; /* geen compositing layer op mobiel */
         transform: none !important; /* parallax uitschakelen */
     }
