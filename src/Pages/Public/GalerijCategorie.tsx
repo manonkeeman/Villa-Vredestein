@@ -56,7 +56,7 @@ const GalerijCategorie = () => {
         <main className="galerij-villa-page">
             <Helmet>
                 <html lang={langCode} />
-                <title>{cat.label}, Galerij Villa Vredestein</title>
+                <title>{`${cat.label}, Galerij Villa Vredestein`}</title>
                 <meta name="description" content={cat.intro} />
                 <link rel="canonical" href={canonicalUrl} />
                 <meta property="og:type" content="website" />
