@@ -106,6 +106,7 @@ const Home = () => {
                 <title>Villa Vredestein, Driebergen-Rijsenburg</title>
                 <meta name="description" content="Villa Vredestein is een historische villa uit 1906 in het hart van Driebergen-Rijsenburg. Verblijf in een bijzonder pand op de Utrechtse Heuvelrug." />
                 <link rel="canonical" href="https://villavredestein.com/" />
+                <link rel="preload" as="image" href={HeroImg} {...{ fetchpriority: "high" }} />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://villavredestein.com/" />
                 <meta property="og:title" content="Villa Vredestein, Driebergen-Rijsenburg" />
