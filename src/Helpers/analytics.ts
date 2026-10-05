@@ -28,9 +28,13 @@ export function loadGoogleAnalytics() {
     document.head.appendChild(script);
 
     window.dataLayer = window.dataLayer || [];
-    window.gtag = (...args: unknown[]) => {
-        window.dataLayer.push(args);
+    // gtag.js verwerkt alleen `arguments`-objecten in de dataLayer, geen gewone arrays
+    window.gtag = function () {
+        // eslint-disable-next-line prefer-rest-params
+        window.dataLayer.push(arguments);
     };
     window.gtag("js", new Date());
-    window.gtag("config", GA_MEASUREMENT_ID, { send_page_view: false });
+    // config stuurt zelf de page_view van de huidige pagina; latere routewissels
+    // worden door TrackPageView (App.tsx) verstuurd
+    window.gtag("config", GA_MEASUREMENT_ID);
 }
