@@ -11,6 +11,7 @@ import Villa6 from "../../Assets/Images/DeOmgevingVillaVredestein.jpg";
 import Villa7 from "../../Assets/Images/PannenkoekenAvondVillaVredestein.jpg";
 import Villa8 from "../../Assets/Images/Maxim_Manon_ChevroletSuburban.jpg";
 import Villa9 from "../../Assets/Images/BezoekOnsVillaVredestein.jpg";
+import { useContent } from "../../i18n/content";
 
 const imageMap = {
     "villa-vredestein": Villa1,
@@ -23,6 +24,7 @@ const imageMap = {
 };
 
 const About = () => {
+    const tc = useContent();
     const navigate = useNavigate();
     const { t, i18n } = useTranslation();
     const langCode = i18n.language?.split("-")[0] || "nl";
@@ -36,22 +38,22 @@ const About = () => {
                 <title>{`${t("about.title")}, Villa Vredestein`}</title>
                 <meta
                     name="description"
-                    content="Ontdek de verhalen achter Villa Vredestein: de geschiedenis, restauratie, het boek van Manon Keeman, Carpe Diem Design en de mensen achter dit bijzondere woonproject in Driebergen."
+                    content={tc("Ontdek de verhalen achter Villa Vredestein: de geschiedenis, restauratie, het boek van Manon Keeman, Carpe Diem Design en de mensen achter dit bijzondere woonproject in Driebergen.")}
                 />
                 <link rel="canonical" href="https://villavredestein.com/about" />
                 <meta property="og:title" content={`${t("about.title")}, Villa Vredestein`} />
-                <meta property="og:description" content="Ontdek de verhalen achter Villa Vredestein: de geschiedenis, restauratie, het boek van Manon Keeman, Carpe Diem Design en de mensen achter dit bijzondere woonproject in Driebergen." />
+                <meta property="og:description" content={tc("Ontdek de verhalen achter Villa Vredestein: de geschiedenis, restauratie, het boek van Manon Keeman, Carpe Diem Design en de mensen achter dit bijzondere woonproject in Driebergen.")} />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://villavredestein.com/about" />
                 <meta property="og:image" content="https://villavredestein.com/og-image.jpg" />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
                 <meta property="og:image:type" content="image/jpeg" />
-                <meta property="og:image:alt" content="Villa Vredestein, historische villa in Driebergen-Rijsenburg" />
+                <meta property="og:image:alt" content={tc("Villa Vredestein, historische villa in Driebergen-Rijsenburg")} />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={`${t("about.title")}, Villa Vredestein`} />
-                <meta name="twitter:description" content="Ontdek de verhalen achter Villa Vredestein: de geschiedenis, restauratie, het boek van Manon Keeman, Carpe Diem Design en de mensen achter dit bijzondere woonproject in Driebergen." />
+                <meta name="twitter:description" content={tc("Ontdek de verhalen achter Villa Vredestein: de geschiedenis, restauratie, het boek van Manon Keeman, Carpe Diem Design en de mensen achter dit bijzondere woonproject in Driebergen.")} />
                 <meta name="twitter:image" content="https://villavredestein.com/og-image.jpg" />
             </Helmet>
 
@@ -72,7 +74,7 @@ const About = () => {
                             onClick={() => navigate(`/blog/${blog.slug}`)}
                             role="button"
                             tabIndex={0}
-                            aria-label={blog.title}
+                            aria-label={tc(blog.title)}
                             onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && navigate(`/blog/${blog.slug}`)}
                         >
                             {image && (
@@ -83,11 +85,11 @@ const About = () => {
                                 />
                             )}
                             <div className="blog-card-content">
-                                <h2>{blog.title}</h2>
-                                <p>{blog.summary}</p>
+                                <h2>{tc(blog.title)}</h2>
+                                <p>{tc(blog.summary)}</p>
                                 <div className="blog-card-meta">
-                                    <span>{blog.date}</span>
-                                    <span>{blog.readTime} {t("about.readTime")}</span>
+                                    <span>{tc(blog.date)}</span>
+                                    <span>{tc(blog.readTime)} {t("about.readTime")}</span>
                                 </div>
                                 <span className="blog-card-cta" aria-hidden="true">
                                     {t("about.readMore")} →

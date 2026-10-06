@@ -57,6 +57,7 @@ import ImgKartbaan              from "../../Assets/Images/omg-kartbaan.jpg";
 import ImgRhijnauwen            from "../../Assets/Images/omg-rhijnauwen.jpg";
 import ImgSlotZeist             from "../../Assets/Images/omg-slot-zeist.jpg";
 import ImgVoetveer              from "../../Assets/Images/omg-voetveer-rhenen.jpg";
+import { useContent } from "../../i18n/content";
 
 delete (L.Icon.Default.prototype as unknown as { _getIconUrl?: unknown })._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -241,46 +242,49 @@ const ACTIVITEITEN: BzItem[] = [
 
 
 const VenueCard = ({ v }: { v: Venue }) => {
+    const tc = useContent();
     let displayDomain = v.web;
     try { displayDomain = new URL(v.web).hostname.replace(/^www\./, ""); } catch { /* invalid URL, fall back to raw value */ }
     return (
         <a href={v.web} target="_blank" rel="noreferrer" className="venue-card">
             <div className="venue-photo">
-                <img src={v.photo} alt={v.naam} loading="lazy" />
+                <img src={v.photo} alt={tc(v.naam)} loading="lazy" />
             </div>
             <div className="venue-body">
-                <strong className="venue-naam">{v.naam}</strong>
-                <p className="venue-desc">{v.desc}</p>
-                <span className="venue-adres">{v.adres}</span>
-                <span className="venue-web">{displayDomain} →</span>
+                <strong className="venue-naam">{tc(v.naam)}</strong>
+                <p className="venue-desc">{tc(v.desc)}</p>
+                <span className="venue-adres">{tc(v.adres)}</span>
+                <span className="venue-web">{tc(displayDomain)} →</span>
             </div>
         </a>
     );
 };
 
 const BzCard = ({ b }: { b: BzItem }) => {
+    const tc = useContent();
     let displayWeb = b.web ?? "";
     try { if (b.web) displayWeb = new URL(b.web).hostname.replace(/^www\./, ""); } catch { /* invalid URL, fall back to raw value */ }
     const inner = (
         <>
             <div className="venue-photo venue-photo--bz">
-                <img src={b.photo} alt={b.naam} loading="lazy" />
-                <span className="bz-emoji-overlay" aria-hidden="true">{b.emoji}</span>
+                <img src={b.photo} alt={tc(b.naam)} loading="lazy" />
+                <span className="bz-emoji-overlay" aria-hidden="true">{tc(b.emoji)}</span>
             </div>
             <div className="venue-body">
-                <strong className="venue-naam">{b.naam}</strong>
-                <p className="venue-desc">{b.desc}</p>
-                <span className="venue-adres">{b.adres}</span>
-                {b.web && <span className="venue-web">{displayWeb} →</span>}
+                <strong className="venue-naam">{tc(b.naam)}</strong>
+                <p className="venue-desc">{tc(b.desc)}</p>
+                <span className="venue-adres">{tc(b.adres)}</span>
+                {b.web && <span className="venue-web">{tc(displayWeb)} →</span>}
             </div>
         </>
     );
     return b.web
-        ? <a href={b.web} target="_blank" rel="noreferrer" className="venue-card">{inner}</a>
-        : <div className="venue-card venue-card--nolink">{inner}</div>;
+        ? <a href={b.web} target="_blank" rel="noreferrer" className="venue-card">{tc(inner)}</a>
+        : <div className="venue-card venue-card--nolink">{tc(inner)}</div>;
 };
 
 const Omgeving = () => {
+    const tc = useContent();
     const { i18n } = useTranslation();
     const langCode = i18n.language?.split("-")[0] || "nl";
     const revealRefs = useRef<(HTMLElement | null)[]>([]);
@@ -299,37 +303,37 @@ const Omgeving = () => {
         <main className="omgeving-page">
             <Helmet>
                 <html lang={langCode} />
-                <title>Omgeving & Locatie, Villa Vredestein</title>
-                <meta name="description" content="Restaurants, boodschappen, kastelen en tips voor Driebergen-Rijsenburg. Villa Vredestein op de Utrechtse Heuvelrug, Utrecht in 15 min, Amsterdam in 40." />
+                <title>{tc("Omgeving & Locatie, Villa Vredestein")}</title>
+                <meta name="description" content={tc("Restaurants, boodschappen, kastelen en tips voor Driebergen-Rijsenburg. Villa Vredestein op de Utrechtse Heuvelrug, Utrecht in 15 min, Amsterdam in 40.")} />
                 <link rel="canonical" href="https://villavredestein.com/omgeving" />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://villavredestein.com/omgeving" />
-                <meta property="og:title" content="Omgeving & Locatie, Villa Vredestein" />
-                <meta property="og:description" content="Bos op de stoep, Utrecht in een kwartier. Villa Vredestein ligt op de Utrechtse Heuvelrug in Driebergen-Rijsenburg." />
+                <meta property="og:title" content={tc("Omgeving & Locatie, Villa Vredestein")} />
+                <meta property="og:description" content={tc("Bos op de stoep, Utrecht in een kwartier. Villa Vredestein ligt op de Utrechtse Heuvelrug in Driebergen-Rijsenburg.")} />
                 <meta property="og:image" content="https://villavredestein.com/og-image.jpg" />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
                 <meta property="og:image:type" content="image/jpeg" />
-                <meta property="og:image:alt" content="Villa Vredestein, historische villa uit 1906 in Driebergen-Rijsenburg" />
+                <meta property="og:image:alt" content={tc("Villa Vredestein, historische villa uit 1906 in Driebergen-Rijsenburg")} />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Omgeving & Locatie, Villa Vredestein" />
-                <meta name="twitter:description" content="Bos op de stoep, Utrecht in een kwartier. Villa Vredestein ligt op de Utrechtse Heuvelrug in Driebergen-Rijsenburg." />
+                <meta name="twitter:title" content={tc("Omgeving & Locatie, Villa Vredestein")} />
+                <meta name="twitter:description" content={tc("Bos op de stoep, Utrecht in een kwartier. Villa Vredestein ligt op de Utrechtse Heuvelrug in Driebergen-Rijsenburg.")} />
                 <meta name="twitter:image" content="https://villavredestein.com/og-image.jpg" />
             </Helmet>
 
             {/* Hero, kaart als header */}
-            <header className="omg-hero-map" aria-label="Locatie kaart">
+            <header className="omg-hero-map" aria-label={tc("Locatie kaart")}>
                 <div className="omg-hero-map-inner">
-                    <MapContainer center={VILLA} zoom={15} scrollWheelZoom={false} style={{ width: "100%", height: "100%" }} aria-label="Interactieve kaart van de omgeving">
+                    <MapContainer center={VILLA} zoom={15} scrollWheelZoom={false} style={{ width: "100%", height: "100%" }} aria-label={tc("Interactieve kaart van de omgeving")}>
                         <TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>' url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png" />
                         {/* Villa Vredestein — prominente marker */}
                         <Marker position={VILLA} icon={makeVillaMarker()}>
                             <Popup>
                                 <div className="map-popup">
-                                    <strong>Villa Vredestein</strong>
-                                    <span>Hoofdstraat 147, Driebergen-Rijsenburg</span>
-                                    <a href="https://www.villavredestein.com" target="_blank" rel="noreferrer" className="map-popup-link">villavredestein.com</a>
+                                    <strong>{tc("Villa Vredestein")}</strong>
+                                    <span>{tc("Hoofdstraat 147, Driebergen-Rijsenburg")}</span>
+                                    <a href="https://www.villavredestein.com" target="_blank" rel="noreferrer" className="map-popup-link">{tc("villavredestein.com")}</a>
                                 </div>
                             </Popup>
                         </Marker>
@@ -338,9 +342,9 @@ const Omgeving = () => {
                             <Marker key={poi.label} position={poi.pos} icon={makeIcon(poi.emoji, poi.color)}>
                                 <Popup>
                                     <div className="map-popup">
-                                        <strong>{poi.label}</strong>
-                                        <span>{poi.sub}</span>
-                                        <a href={poi.link} target="_blank" rel="noreferrer" className="map-popup-link">{poi.linkLabel}</a>
+                                        <strong>{tc(poi.label)}</strong>
+                                        <span>{tc(poi.sub)}</span>
+                                        <a href={poi.link} target="_blank" rel="noreferrer" className="map-popup-link">{tc(poi.linkLabel)}</a>
                                     </div>
                                 </Popup>
                             </Marker>
@@ -350,32 +354,32 @@ const Omgeving = () => {
                 </div>
                 <div className="omg-hero-map-overlay">
                     <div className="omg-hero-map-text">
-                        <span className="omg-eyebrow">Locatie</span>
-                        <h1>Midden in het groen,<br />vlak bij alles</h1>
-                        <p>Driebergen-Rijsenburg op de Utrechtse Heuvelrug. Bos op de stoep. Utrecht in een kwartier. Amsterdam in veertig minuten.</p>
+                        <span className="omg-eyebrow">{tc("Locatie")}</span>
+                        <h1>{tc("Midden in het groen,")}<br />{tc("vlak bij alles")}</h1>
+                        <p>{tc("Driebergen-Rijsenburg op de Utrechtse Heuvelrug. Bos op de stoep. Utrecht in een kwartier. Amsterdam in veertig minuten.")}</p>
                     </div>
-                    <nav className="omg-hero-quicknav" aria-label="Snelnavigatie">
-                        <a href="#eten"              className="omg-qnav-card">🍽️ <span>Eten & Drinken</span></a>
-                        <a href="#markten"           className="omg-qnav-card">🛍️ <span>Markten</span></a>
-                        <a href="#bezienswaardigheden" className="omg-qnav-card">🌿 <span>Ontdekken</span></a>
-                        <a href="#kastelen"          className="omg-qnav-card">🏰 <span>Kastelen</span></a>
-                        <a href="#activiteiten"      className="omg-qnav-card">🎭 <span>Activiteiten</span></a>
-                        <a href="#vervoer"           className="omg-qnav-card">🚂 <span>Vervoer</span></a>
+                    <nav className="omg-hero-quicknav" aria-label={tc("Snelnavigatie")}>
+                        <a href="#eten"              className="omg-qnav-card">🍽️ <span>{tc("Eten & Drinken")}</span></a>
+                        <a href="#markten"           className="omg-qnav-card">🛍️ <span>{tc("Markten")}</span></a>
+                        <a href="#bezienswaardigheden" className="omg-qnav-card">🌿 <span>{tc("Ontdekken")}</span></a>
+                        <a href="#kastelen"          className="omg-qnav-card">🏰 <span>{tc("Kastelen")}</span></a>
+                        <a href="#activiteiten"      className="omg-qnav-card">🎭 <span>{tc("Activiteiten")}</span></a>
+                        <a href="#vervoer"           className="omg-qnav-card">🚂 <span>{tc("Vervoer")}</span></a>
                     </nav>
                 </div>
             </header>
 
             {/* Afstandstabel */}
-            <section className="omg-afstanden reveal-section" ref={addRef} aria-label="Afstanden">
+            <section className="omg-afstanden reveal-section" ref={addRef} aria-label={tc("Afstanden")}>
                 <div className="omg-section-inner">
-                    <h2 className="omg-section-title">Alles binnen bereik</h2>
+                    <h2 className="omg-section-title">{tc("Alles binnen bereik")}</h2>
                     <div className="afstand-grid">
                         {AFSTANDEN.map((a) => (
                             <div key={a.label} className="afstand-card">
-                                <span className="afstand-icon" aria-hidden="true">{a.icon}</span>
+                                <span className="afstand-icon" aria-hidden="true">{tc(a.icon)}</span>
                                 <div className="afstand-info">
-                                    <strong>{a.label}</strong>
-                                    <span>{a.km} · {a.tijd}</span>
+                                    <strong>{tc(a.label)}</strong>
+                                    <span>{tc(a.km)} · {tc(a.tijd)}</span>
                                 </div>
                             </div>
                         ))}
@@ -384,49 +388,49 @@ const Omgeving = () => {
             </section>
 
             {/* Getting Around */}
-            <section id="vervoer" className="omg-transport reveal-section" ref={addRef} aria-label="Vervoer">
+            <section id="vervoer" className="omg-transport reveal-section" ref={addRef} aria-label={tc("Vervoer")}>
                 <div className="omg-section-inner">
-                    <h2 className="omg-section-title">Vervoer & Bereikbaarheid</h2>
-                    <p className="omg-section-sub">Trein, bus of fiets. Driebergen is goed bereikbaar.</p>
+                    <h2 className="omg-section-title">{tc("Vervoer & Bereikbaarheid")}</h2>
+                    <p className="omg-section-sub">{tc("Trein, bus of fiets. Driebergen is goed bereikbaar.")}</p>
                     <div className="transport-grid">
                         <div className="transport-card">
                             <span className="transport-icon">🚂</span>
-                            <h3>Trein</h3>
-                            <p className="transport-loc">Station Driebergen-Zeist</p>
+                            <h3>{tc("Trein")}</h3>
+                            <p className="transport-loc">{tc("Station Driebergen-Zeist")}</p>
                             <ul className="transport-list">
-                                <li>Intercity Nijmegen – Den Helder</li>
-                                <li>Sprinter Breukelen – Rhenen</li>
-                                <li>Sprinter Uitgeest – Driebergen-Zeist</li>
-                                <li>Intercity Utrecht CS – Nijmegen</li>
+                                <li>{tc("Intercity Nijmegen – Den Helder")}</li>
+                                <li>{tc("Sprinter Breukelen – Rhenen")}</li>
+                                <li>{tc("Sprinter Uitgeest – Driebergen-Zeist")}</li>
+                                <li>{tc("Intercity Utrecht CS – Nijmegen")}</li>
                             </ul>
                         </div>
                         <div className="transport-card">
                             <span className="transport-icon">🚌</span>
-                            <h3>Bus</h3>
-                            <p className="transport-loc">Halte NS Station Driebergen-Zeist</p>
+                            <h3>{tc("Bus")}</h3>
+                            <p className="transport-loc">{tc("Halte NS Station Driebergen-Zeist")}</p>
                             <ul className="transport-list">
-                                <li>Buslijn 50: Utrecht – Wageningen</li>
-                                <li>Buslijn 56: Driebergen – Wijk bij Duurstede</li>
-                                <li>Buslijn 71: Driebergen – Zeist</li>
+                                <li>{tc("Buslijn 50: Utrecht – Wageningen")}</li>
+                                <li>{tc("Buslijn 56: Driebergen – Wijk bij Duurstede")}</li>
+                                <li>{tc("Buslijn 71: Driebergen – Zeist")}</li>
                             </ul>
                         </div>
                         <div className="transport-card">
                             <span className="transport-icon">🚲</span>
-                            <h3>OV Fiets</h3>
-                            <p className="transport-loc">Bij het station beschikbaar</p>
+                            <h3>{tc("OV Fiets")}</h3>
+                            <p className="transport-loc">{tc("Bij het station beschikbaar")}</p>
                             <ul className="transport-list">
-                                <li>OV E-bike: €10 (eerste 24 uur)</li>
-                                <li>OV Fiets: €4,65 (na 3 dagen €9,65 p.d.)</li>
-                                <li><a href="https://www.ovfietsbeschikbaar.nl" target="_blank" rel="noreferrer" className="transport-web-item">ovfietsbeschikbaar.nl</a></li>
+                                <li>{tc("OV E-bike: €10 (eerste 24 uur)")}</li>
+                                <li>{tc("OV Fiets: €4,65 (na 3 dagen €9,65 p.d.)")}</li>
+                                <li><a href="https://www.ovfietsbeschikbaar.nl" target="_blank" rel="noreferrer" className="transport-web-item">{tc("ovfietsbeschikbaar.nl")}</a></li>
                             </ul>
                         </div>
                         <div className="transport-card">
                             <span className="transport-icon">🚗</span>
-                            <h3>Parkeren</h3>
-                            <p className="transport-loc">Terrein Villa Vredestein</p>
+                            <h3>{tc("Parkeren")}</h3>
+                            <p className="transport-loc">{tc("Terrein Villa Vredestein")}</p>
                             <ul className="transport-list">
-                                <li>3 extra op terrein achter Vredestein</li>
-                                <li>Laat ruimte voor elkaar</li>
+                                <li>{tc("3 extra op terrein achter Vredestein")}</li>
+                                <li>{tc("Laat ruimte voor elkaar")}</li>
                             </ul>
                         </div>
                     </div>
@@ -434,27 +438,27 @@ const Omgeving = () => {
             </section>
 
             {/* Eten & Drinken */}
-            <section id="eten" className="omg-eten reveal-section" ref={addRef} aria-label="Eten en drinken">
+            <section id="eten" className="omg-eten reveal-section" ref={addRef} aria-label={tc("Eten en drinken")}>
                 <div className="omg-section-inner">
-                    <h2 className="omg-section-title">Eten & drinken</h2>
-                    <p className="omg-section-sub">Proef de lokale smaken van Driebergen en omgeving.</p>
+                    <h2 className="omg-section-title">{tc("Eten & drinken")}</h2>
+                    <p className="omg-section-sub">{tc("Proef de lokale smaken van Driebergen en omgeving.")}</p>
 
                     <div className="omg-cat-block">
-                        <span className="omg-cat-label">Ontbijt & Brunch</span>
+                        <span className="omg-cat-label">{tc("Ontbijt & Brunch")}</span>
                         <div className="omg-venues-grid">
                             {ONTBIJT.map((v) => <VenueCard key={v.naam} v={v} />)}
                         </div>
                     </div>
 
                     <div className="omg-cat-block">
-                        <span className="omg-cat-label">Afhaal & Dinner</span>
+                        <span className="omg-cat-label">{tc("Afhaal & Dinner")}</span>
                         <div className="omg-venues-grid">
                             {AFHAAL_DINNER.map((v) => <VenueCard key={v.naam} v={v} />)}
                         </div>
                     </div>
 
                     <div className="omg-cat-block">
-                        <span className="omg-cat-label">Bier, Wijn & Cocktails</span>
+                        <span className="omg-cat-label">{tc("Bier, Wijn & Cocktails")}</span>
                         <div className="omg-venues-grid">
                             {CAFE.map((v) => <VenueCard key={v.naam} v={v} />)}
                         </div>
@@ -463,10 +467,10 @@ const Omgeving = () => {
             </section>
 
             {/* Markten */}
-            <section id="markten" className="omg-boodschappen reveal-section" ref={addRef} aria-label="Markten">
+            <section id="markten" className="omg-boodschappen reveal-section" ref={addRef} aria-label={tc("Markten")}>
                 <div className="omg-section-inner">
-                    <h2 className="omg-section-title">Markten</h2>
-                    <p className="omg-section-sub">Wekelijkse en seizoensmarkten in de omgeving.</p>
+                    <h2 className="omg-section-title">{tc("Markten")}</h2>
+                    <p className="omg-section-sub">{tc("Wekelijkse en seizoensmarkten in de omgeving.")}</p>
                     <div className="omg-venues-grid">
                         {MARKTEN.map((v) => <VenueCard key={v.naam} v={v} />)}
                     </div>
@@ -474,10 +478,10 @@ const Omgeving = () => {
             </section>
 
             {/* Bezienswaardigheden */}
-            <section id="bezienswaardigheden" className="omg-bz reveal-section" ref={addRef} aria-label="Bezienswaardigheden">
+            <section id="bezienswaardigheden" className="omg-bz reveal-section" ref={addRef} aria-label={tc("Bezienswaardigheden")}>
                 <div className="omg-section-inner">
-                    <h2 className="omg-section-title">Things to see</h2>
-                    <p className="omg-section-sub">Dompel jezelf onder in de schatten van de Utrechtse Heuvelrug.</p>
+                    <h2 className="omg-section-title">{tc("Things to see")}</h2>
+                    <p className="omg-section-sub">{tc("Dompel jezelf onder in de schatten van de Utrechtse Heuvelrug.")}</p>
                     <div className="omg-venues-grid">
                         {BEZIENSWAARDIGHEDEN.map((b) => <BzCard key={b.naam} b={b} />)}
                     </div>
@@ -485,10 +489,10 @@ const Omgeving = () => {
             </section>
 
             {/* Kastelen */}
-            <section id="kastelen" className="omg-kastelen reveal-section" ref={addRef} aria-label="Kastelen en landgoederen">
+            <section id="kastelen" className="omg-kastelen reveal-section" ref={addRef} aria-label={tc("Kastelen en landgoederen")}>
                 <div className="omg-section-inner">
-                    <h2 className="omg-section-title">Kastelen & Landgoederen</h2>
-                    <p className="omg-section-sub">Kastelen, landgoederen en een rijke geschiedenis op fietsafstand.</p>
+                    <h2 className="omg-section-title">{tc("Kastelen & Landgoederen")}</h2>
+                    <p className="omg-section-sub">{tc("Kastelen, landgoederen en een rijke geschiedenis op fietsafstand.")}</p>
                     <div className="omg-venues-grid">
                         {KASTELEN.map((v) => <VenueCard key={v.naam} v={v} />)}
                     </div>
@@ -496,10 +500,10 @@ const Omgeving = () => {
             </section>
 
             {/* Ontdekken */}
-            <section id="activiteiten" className="omg-ontdekken reveal-section" ref={addRef} aria-label="Activiteiten">
+            <section id="activiteiten" className="omg-ontdekken reveal-section" ref={addRef} aria-label={tc("Activiteiten")}>
                 <div className="omg-section-inner">
-                    <h2 className="omg-section-title">Ontdekken</h2>
-                    <p className="omg-section-sub">Rondom en in Driebergen.</p>
+                    <h2 className="omg-section-title">{tc("Ontdekken")}</h2>
+                    <p className="omg-section-sub">{tc("Rondom en in Driebergen.")}</p>
                     <div className="omg-venues-grid">
                         {ACTIVITEITEN.map((a) => <BzCard key={a.naam} b={a} />)}
                     </div>

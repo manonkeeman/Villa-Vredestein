@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "./Nav.css";
+import { useContent } from "../../i18n/content";
 
 const LANGUAGES = [
     { code: "nl", label: "NL" },
@@ -13,6 +14,7 @@ const LANGUAGES = [
 ];
 
 const Nav = () => {
+    const tc = useContent();
     const location = useLocation();
     const { t, i18n } = useTranslation();
 
@@ -70,13 +72,13 @@ const Nav = () => {
     const closeAll = () => { setMenuOpen(false); };
 
     return (
-        <nav className={`navigatie-container ${scrolled ? "nav-scrolled" : "nav-transparent"}`} aria-label="Hoofdnavigatie">
+        <nav className={`navigatie-container ${scrolled ? "nav-scrolled" : "nav-transparent"}`} aria-label={tc("Hoofdnavigatie")}>
             {/* Logo */}
             <div className="logo">
                 <NavLink to="/" className="logo-link" onClick={handleLogoClick}>
                     <img
                         src="/VVLogo.png"
-                        alt="Villa Vredestein Logo"
+                        alt={tc("Villa Vredestein Logo")}
                         className={`logo-img ${logoClicked ? "clicked" : ""}`}
                         width="100"
                         height="100"
@@ -90,7 +92,7 @@ const Nav = () => {
                 onClick={() => setMenuOpen(!menuOpen)}
                 aria-expanded={menuOpen}
                 aria-controls={navLinksId}
-                aria-label={menuOpen ? "Menu sluiten" : "Menu openen"}
+                aria-label={menuOpen ? tc("Menu sluiten") : tc("Menu openen")}
             >
                 <div className="bar"></div>
                 <div className="bar"></div>
@@ -143,19 +145,19 @@ const Nav = () => {
                 {/* Taalkiezer */}
                 <li className="lang-switcher-wrapper" ref={langRef}>
                     <button className="lang-btn" onClick={() => setLangOpen(!langOpen)}
-                        aria-expanded={langOpen} aria-label="Taal kiezen">
+                        aria-expanded={langOpen} aria-label={tc("Taal kiezen")}>
                         {currentLang.toUpperCase()}
                         <span className="lang-caret" aria-hidden="true">▾</span>
                     </button>
                     {langOpen && (
-                        <ul className="lang-dropdown" role="menu" aria-label="Beschikbare talen">
+                        <ul className="lang-dropdown" role="menu" aria-label={tc("Beschikbare talen")}>
                             {LANGUAGES.map((lang) => (
                                 <li key={lang.code} role="none">
                                     <button role="menuitem"
                                         className={`lang-option ${currentLang === lang.code ? "active" : ""}`}
                                         onClick={() => handleLangChange(lang.code)}
                                         lang={lang.code}>
-                                        {lang.label}
+                                        {tc(lang.label)}
                                     </button>
                                 </li>
                             ))}

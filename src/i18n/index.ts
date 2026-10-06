@@ -30,6 +30,27 @@ i18n
         interpolation: {
             escapeValue: false,
         },
+        ns: ["translation", "content"],
+        react: {
+            useSuspense: false,
+            bindI18nStore: "added",
+        },
     });
+
+// Vaste paginatekst (namespace "content") laadt per taal pas als die taal
+// gekozen is, zodat de hoofdbundel klein blijft.
+async function laadContent(taal?: string) {
+    const code = (taal || "nl").split("-")[0];
+    if (code === "nl" || i18n.hasResourceBundle(code, "content")) return;
+    try {
+        const module = await import(`./content/${code}.json`);
+        i18n.addResourceBundle(code, "content", module.default, true, true);
+    } catch {
+        // geen vertaalbestand: de Nederlandse tekst blijft staan
+    }
+}
+
+i18n.on("languageChanged", laadContent);
+laadContent(i18n.language);
 
 export default i18n;

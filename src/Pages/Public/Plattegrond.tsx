@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "./Plattegrond.css";
+import { useContent } from "../../i18n/content";
 
 
 /* ─────────────────────────────────────────────
@@ -113,6 +114,7 @@ const STATS = [
 ];
 
 const Plattegrond = () => {
+    const tc = useContent();
     const { i18n } = useTranslation();
     const langCode = i18n.language?.split("-")[0] || "nl";
     const navigate = useNavigate();
@@ -134,36 +136,35 @@ const Plattegrond = () => {
         <main className="plattegrond-page">
             <Helmet>
                 <html lang={langCode} />
-                <title>De Ruimtes, Villa Vredestein</title>
+                <title>{tc("De Ruimtes, Villa Vredestein")}</title>
                 <meta
                     name="description"
-                    content="Villa Vredestein heeft drie verdiepingen: studenten (boven), kinderen Desmond/Arwen/Medoc (midden), woonkamer + keuken (onder). Sauna en sportkamer in aanbouw."
+                    content={tc("Villa Vredestein heeft drie verdiepingen: studenten (boven), kinderen Desmond/Arwen/Medoc (midden), woonkamer + keuken (onder). Sauna en sportkamer in aanbouw.")}
                 />
                 <link rel="canonical" href="https://villavredestein.com/ruimtes" />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://villavredestein.com/ruimtes" />
-                <meta property="og:title" content="De Ruimtes, Villa Vredestein" />
-                <meta property="og:description" content="Drie verdiepingen, elk met eigen karakter. 292 m² wonen op 680 m² perceel in Driebergen-Rijsenburg." />
+                <meta property="og:title" content={tc("De Ruimtes, Villa Vredestein")} />
+                <meta property="og:description" content={tc("Drie verdiepingen, elk met eigen karakter. 292 m² wonen op 680 m² perceel in Driebergen-Rijsenburg.")} />
                 <meta property="og:image" content="https://villavredestein.com/og-image.jpg" />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
                 <meta property="og:image:type" content="image/jpeg" />
-                <meta property="og:image:alt" content="Villa Vredestein, historische villa uit 1906 in Driebergen-Rijsenburg" />
+                <meta property="og:image:alt" content={tc("Villa Vredestein, historische villa uit 1906 in Driebergen-Rijsenburg")} />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="De Ruimtes, Villa Vredestein" />
-                <meta name="twitter:description" content="Drie verdiepingen, elk met eigen karakter. 292 m² wonen op 680 m² perceel in Driebergen-Rijsenburg." />
+                <meta name="twitter:title" content={tc("De Ruimtes, Villa Vredestein")} />
+                <meta name="twitter:description" content={tc("Drie verdiepingen, elk met eigen karakter. 292 m² wonen op 680 m² perceel in Driebergen-Rijsenburg.")} />
                 <meta name="twitter:image" content="https://villavredestein.com/og-image.jpg" />
             </Helmet>
 
             {/* ── Hero ── */}
             <header className="pg-hero reveal-section" ref={addRef}>
                 <div className="pg-hero-inner">
-                    <span className="pg-eyebrow">De ruimtes</span>
-                    <h1>Drie verdiepingen. Elk met eigen leven.</h1>
+                    <span className="pg-eyebrow">{tc("De ruimtes")}</span>
+                    <h1>{tc("Drie verdiepingen. Elk met eigen leven.")}</h1>
                     <p>
-                        Studenten bovenin, de kinderen op de luxe middenverdieping,
-                        en de woonkamer als gedeeld hart onderaan. Alles in beweging.
+                        {tc("Studenten bovenin, de kinderen op de luxe middenverdieping, en de woonkamer als gedeeld hart onderaan. Alles in beweging.")}
                     </p>
                 </div>
                 <div className="pg-hero-stats">
@@ -171,9 +172,9 @@ const Plattegrond = () => {
                         <React.Fragment key={s.label}>
                             {i > 0 && <div className="pg-stat-div" />}
                             <div className="pg-stat">
-                                <strong>{s.val}</strong>
-                                <span>{s.label}</span>
-                                {s.sub && <small>{s.sub}</small>}
+                                <strong>{tc(s.val)}</strong>
+                                <span>{tc(s.label)}</span>
+                                {s.sub && <small>{tc(s.sub)}</small>}
                             </div>
                         </React.Fragment>
                     ))}
@@ -191,14 +192,14 @@ const Plattegrond = () => {
                     <div className="pg-inner">
                         <div className="pg-verd-header">
                             <div className="pg-verd-meta">
-                                <span className="pg-verd-icon" aria-hidden="true">{verd.icon}</span>
+                                <span className="pg-verd-icon" aria-hidden="true">{tc(verd.icon)}</span>
                                 <div>
-                                    <h2 className="pg-verd-titel">{verd.label}</h2>
-                                    <span className="pg-verd-bewoners">{verd.bewoners}</span>
+                                    <h2 className="pg-verd-titel">{tc(verd.label)}</h2>
+                                    <span className="pg-verd-bewoners">{tc(verd.bewoners)}</span>
                                 </div>
-                                <span className="pg-verd-badge">{verd.status}</span>
+                                <span className="pg-verd-badge">{tc(verd.status)}</span>
                             </div>
-                            <p className="pg-verd-beschr">{verd.beschrijving}</p>
+                            <p className="pg-verd-beschr">{tc(verd.beschrijving)}</p>
                         </div>
 
                         <div className="pg-ruimte-grid">
@@ -207,13 +208,13 @@ const Plattegrond = () => {
                                     key={r.naam}
                                     className={`pg-ruimte-card ${r.aanbouw ? "pg-aanbouw" : ""}`}
                                 >
-                                    <span className="pg-ruimte-icon" aria-hidden="true">{r.icon}</span>
+                                    <span className="pg-ruimte-icon" aria-hidden="true">{tc(r.icon)}</span>
                                     <div className="pg-ruimte-body">
-                                        <strong>{r.naam}</strong>
-                                        {r.afm && <span className="pg-ruimte-afm">{r.afm}</span>}
-                                        <p>{r.info}</p>
+                                        <strong>{tc(r.naam)}</strong>
+                                        {r.afm && <span className="pg-ruimte-afm">{tc(r.afm)}</span>}
+                                        <p>{tc(r.info)}</p>
                                     </div>
-                                    {r.aanbouw && <span className="pg-aanbouw-chip">In aanbouw</span>}
+                                    {r.aanbouw && <span className="pg-aanbouw-chip">{tc("In aanbouw")}</span>}
                                 </div>
                             ))}
                         </div>
@@ -224,7 +225,7 @@ const Plattegrond = () => {
                                         className="pg-platt-link"
                                         onClick={() => navigate("/galerij/plattegrond")}
                                     >
-                                        Bekijk plattegrond {verd.plattegrondCaption} →
+                                        {tc("Bekijk plattegrond")} {tc(verd.plattegrondCaption)} →
                                     </button>
                                 )}
                                 {verd.optieId && (
@@ -232,7 +233,7 @@ const Plattegrond = () => {
                                         className="pg-platt-link"
                                         onClick={() => navigate("/verblijven", { state: { optie: verd.optieId } })}
                                     >
-                                        Bekijk verblijfsopties voor deze verdieping →
+                                        {tc("Bekijk verblijfsopties voor deze verdieping →")}
                                     </button>
                                 )}
                             </div>
@@ -245,11 +246,11 @@ const Plattegrond = () => {
             <section className="pg-cta reveal-section" ref={addRef}>
                 <div className="pg-inner pg-cta-inner">
                     <div>
-                        <h2>Interesse in verblijven?</h2>
-                        <p>Studenten, korte verhuur of langdurig wonen. Vraag beschikbaarheid op.</p>
+                        <h2>{tc("Interesse in verblijven?")}</h2>
+                        <p>{tc("Studenten, korte verhuur of langdurig wonen. Vraag beschikbaarheid op.")}</p>
                     </div>
                     <button className="pg-cta-btn" onClick={() => navigate("/verblijven")}>
-                        Bekijk verblijfsopties
+                        {tc("Bekijk verblijfsopties")}
                     </button>
                 </div>
             </section>

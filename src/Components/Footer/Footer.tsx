@@ -4,8 +4,10 @@ import { useTranslation } from "react-i18next";
 import { FaInstagram, FaWhatsapp, FaStar } from "react-icons/fa";
 import { FiMapPin } from "react-icons/fi";
 import "./Footer.css";
+import { useContent } from "../../i18n/content";
 
 const Footer = () => {
+    const tc = useContent();
     const { t } = useTranslation();
     const year = new Date().getFullYear();
 
@@ -22,21 +24,21 @@ const Footer = () => {
     ];
 
     return (
-        <footer className="site-footer" aria-label="Sitefooter">
+        <footer className="site-footer" aria-label={tc("Sitefooter")}>
             <div className="footer-accent-line" aria-hidden="true" />
 
             <div className="footer-inner">
 
                 {/* Brand */}
                 <div className="footer-brand">
-                    <NavLink to="/" aria-label="Villa Vredestein – naar homepage" className="footer-brand-logo-link">
-                        <img src="/VVLogo.png" alt="Villa Vredestein logo" className="footer-logo" width="72" height="72" />
+                    <NavLink to="/" aria-label={tc("Villa Vredestein – naar homepage")} className="footer-brand-logo-link">
+                        <img src="/VVLogo.png" alt={tc("Villa Vredestein logo")} className="footer-logo" width="72" height="72" />
                     </NavLink>
                     <div className="footer-brand-text">
-                        <p className="footer-name">Villa Vredestein</p>
+                        <p className="footer-name">{tc("Villa Vredestein")}</p>
                         <p className="footer-tagline">{t("footer.tagline")}</p>
                         <p className="footer-brand-desc">
-                            Verblijf, restauratie en een open deur.
+                            {tc("Verblijf, restauratie en een open deur.")}
                         </p>
                     </div>
                 </div>
@@ -47,7 +49,7 @@ const Footer = () => {
                     <ul className="footer-links">
                         {paginas.map((link) => (
                             <li key={link.to}>
-                                <NavLink to={link.to} end={link.to === "/"}>{link.label}</NavLink>
+                                <NavLink to={link.to} end={link.to === "/"}>{tc(link.label)}</NavLink>
                             </li>
                         ))}
                     </ul>
@@ -60,8 +62,8 @@ const Footer = () => {
                         <span className="footer-address-row">
                             <FiMapPin aria-hidden="true" />
                             <span>
-                                Hoofdstraat 147<br />
-                                3975 ED Driebergen-Rijsenburg
+                                {tc("Hoofdstraat 147")}<br />
+                                {tc("3975 ED Driebergen-Rijsenburg")}
                             </span>
                         </span>
                         <a
@@ -71,7 +73,7 @@ const Footer = () => {
                             className="footer-address-row"
                         >
                             <FaInstagram aria-hidden="true" />
-                            <span>@villa.vredestein</span>
+                            <span>{tc("@villa.vredestein")}</span>
                         </a>
                         <a
                             href="https://wa.me/31625015299"
@@ -80,7 +82,7 @@ const Footer = () => {
                             className="footer-address-row"
                         >
                             <FaWhatsapp aria-hidden="true" />
-                            <span>WhatsApp</span>
+                            <span>{tc("WhatsApp")}</span>
                         </a>
                         <a
                             href="/review"
@@ -98,13 +100,13 @@ const Footer = () => {
 
             {/* Bottombar */}
             <div className="footer-bottom">
-                <p>© {year} Villa Vredestein, {t("footer.copyright")}</p>
+                <p>© {tc(year)} {tc("Villa Vredestein,")} {t("footer.copyright")}</p>
                 <p>
-                    <NavLink to="/privacy" className="footer-privacy-link">Privacybeleid</NavLink>
+                    <NavLink to="/privacy" className="footer-privacy-link">{tc("Privacybeleid")}</NavLink>
                     {" · "}
                     {t("footer.madeBy")}{" "}
                     <a href="https://www.manonit.com" target="_blank" rel="noreferrer">
-                        ManonIT
+                        {tc("ManonIT")}
                     </a>
                 </p>
             </div>

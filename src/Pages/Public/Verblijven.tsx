@@ -8,8 +8,10 @@ import "./Verblijven.css";
 
 import VillaVoorImg   from "../../Assets/Images/ext-villa-voorkant.jpg";
 import VillaBloeiImg  from "../../Assets/Images/ext-villa-bloei.jpg";
+import { useContent } from "../../i18n/content";
 
 const Verblijven = () => {
+    const tc = useContent();
     const { i18n } = useTranslation();
     const langCode = i18n.language?.split("-")[0] || "nl";
     const navigate = useNavigate();
@@ -102,22 +104,22 @@ const Verblijven = () => {
         <main className="verblijven-page">
             <Helmet>
                 <html lang={langCode} />
-                <title>Verblijven & Boeken, Villa Vredestein</title>
-                <meta name="description" content="Verblijf in Villa Vredestein in Driebergen-Rijsenburg: logeerkamer, tijdelijk verblijf voor IVA-studenten, de volledige villa, of huur als decor voor fotoproducties. Vraag beschikbaarheid op." />
+                <title>{tc("Verblijven & Boeken, Villa Vredestein")}</title>
+                <meta name="description" content={tc("Verblijf in Villa Vredestein in Driebergen-Rijsenburg: logeerkamer, tijdelijk verblijf voor IVA-studenten, de volledige villa, of huur als decor voor fotoproducties. Vraag beschikbaarheid op.")} />
                 <link rel="canonical" href="https://villavredestein.com/verblijven" />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://villavredestein.com/verblijven" />
-                <meta property="og:title" content="Verblijven in Villa Vredestein, Driebergen-Rijsenburg" />
-                <meta property="og:description" content="Logeerkamer, tijdelijk verblijf voor IVA-studenten, de volledige villa, of huur als decor voor fotoproducties. Vraag beschikbaarheid op." />
+                <meta property="og:title" content={tc("Verblijven in Villa Vredestein, Driebergen-Rijsenburg")} />
+                <meta property="og:description" content={tc("Logeerkamer, tijdelijk verblijf voor IVA-studenten, de volledige villa, of huur als decor voor fotoproducties. Vraag beschikbaarheid op.")} />
                 <meta property="og:image" content="https://villavredestein.com/og-image.jpg" />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
                 <meta property="og:image:type" content="image/jpeg" />
-                <meta property="og:image:alt" content="Villa Vredestein, historische villa uit 1906 in Driebergen-Rijsenburg" />
+                <meta property="og:image:alt" content={tc("Villa Vredestein, historische villa uit 1906 in Driebergen-Rijsenburg")} />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Verblijven in Villa Vredestein, Driebergen-Rijsenburg" />
-                <meta name="twitter:description" content="Logeerkamer, tijdelijk verblijf voor IVA-studenten, de volledige villa, of huur als decor voor fotoproducties. Vraag beschikbaarheid op." />
+                <meta name="twitter:title" content={tc("Verblijven in Villa Vredestein, Driebergen-Rijsenburg")} />
+                <meta name="twitter:description" content={tc("Logeerkamer, tijdelijk verblijf voor IVA-studenten, de volledige villa, of huur als decor voor fotoproducties. Vraag beschikbaarheid op.")} />
                 <meta name="twitter:image" content="https://villavredestein.com/og-image.jpg" />
                 <script type="application/ld+json">{verblijfSchema}</script>
             </Helmet>
@@ -127,9 +129,9 @@ const Verblijven = () => {
                 <div className="verb-hero-bg" style={{ backgroundImage: `url(${VillaBloeiImg})` }} />
                 <div className="verb-hero-overlay" />
                 <div className="verb-hero-content">
-                    <span className="verb-eyebrow">Verblijven</span>
-                    <h1>Een nacht, een maand of langer. Villa Vredestein verwelkomt je.</h1>
-                    <p>Een nacht, je studieperiode bij de IVA of een verbouwing en een tijdelijke oplossing nodig?</p>
+                    <span className="verb-eyebrow">{tc("Verblijven")}</span>
+                    <h1>{tc("Een nacht, een maand of langer. Villa Vredestein verwelkomt je.")}</h1>
+                    <p>{tc("Een nacht, je studieperiode bij de IVA of een verbouwing en een tijdelijke oplossing nodig?")}</p>
                 </div>
             </header>
 
@@ -143,8 +145,8 @@ const Verblijven = () => {
                     { num: "3", label: "Verdiepingen" },
                 ].map((s) => (
                     <div key={s.label} className="verb-stat">
-                        <strong>{s.num}</strong>
-                        <span>{s.label}</span>
+                        <strong>{tc(s.num)}</strong>
+                        <span>{tc(s.label)}</span>
                     </div>
                 ))}
             </div>
@@ -152,7 +154,7 @@ const Verblijven = () => {
             {/* Opties */}
             <section id="verblijf-opties" className="verb-opties reveal-section" ref={addRef}>
                 <div className="verb-inner">
-                    <h2 className="verb-section-title">Kies jouw verblijf</h2>
+                    <h2 className="verb-section-title">{tc("Kies jouw verblijf")}</h2>
                     <div className="opties-grid">
                         {OPTIES.map((o) => (
                             <Link
@@ -160,21 +162,21 @@ const Verblijven = () => {
                                 to={`/verblijven/${o.id}`}
                                 className={`optie-card ${o.featured ? "optie-featured" : ""} ${selectedOptie === o.id ? "optie-selected" : ""}`}
                             >
-                                {o.featured && <div className="optie-badge">Populair</div>}
-                                <div className="optie-icon">{o.icon}</div>
-                                <h3>{o.titel}</h3>
-                                <span className="optie-sub">{o.sub}</span>
-                                <p>{o.beschrijving}</p>
+                                {o.featured && <div className="optie-badge">{tc("Populair")}</div>}
+                                <div className="optie-icon">{tc(o.icon)}</div>
+                                <h3>{tc(o.titel)}</h3>
+                                <span className="optie-sub">{tc(o.sub)}</span>
+                                <p>{tc(o.beschrijving)}</p>
                                 <ul className="optie-features">
                                     {o.kenmerken.map((k) => (
                                         <li key={k}>
-                                            <span aria-hidden="true">✓</span> {k}
+                                            <span aria-hidden="true">✓</span> {tc(k)}
                                         </li>
                                     ))}
                                 </ul>
                                 <div className="optie-footer">
-                                    <span className="optie-prijs">{o.vanaf}</span>
-                                    <span className="optie-meer">Bekijk details &amp; foto&apos;s →</span>
+                                    <span className="optie-prijs">{tc(o.vanaf)}</span>
+                                    <span className="optie-meer">{tc("Bekijk details & foto's →")}</span>
                                 </div>
                             </Link>
                         ))}
@@ -185,7 +187,7 @@ const Verblijven = () => {
             {/* Altijd inbegrepen */}
             <section className="verb-inbegrepen-section reveal-section" ref={addRef}>
                 <div className="verb-inner">
-                    <h3 className="verb-inbegrepen-titel">Altijd inbegrepen</h3>
+                    <h3 className="verb-inbegrepen-titel">{tc("Altijd inbegrepen")}</h3>
                     <div className="verb-chips">
                         {[
                             { icon: "📶", label: "Snel internet" },
@@ -197,8 +199,8 @@ const Verblijven = () => {
                             { icon: "🤝", label: "Persoonlijk contact" },
                         ].map((c) => (
                             <div key={c.label} className="verb-chip">
-                                <span aria-hidden="true">{c.icon}</span>
-                                {c.label}
+                                <span aria-hidden="true">{tc(c.icon)}</span>
+                                {tc(c.label)}
                             </div>
                         ))}
                     </div>
@@ -212,19 +214,18 @@ const Verblijven = () => {
                 <div className="verb-inner verb-form-grid">
 
                     <div className="verb-form-left">
-                        <h2 className="verb-section-title">Beschikbaarheid opvragen</h2>
+                        <h2 className="verb-section-title">{tc("Beschikbaarheid opvragen")}</h2>
                         <p>
-                            Vul het formulier in en we nemen binnen 24 uur contact met je op.
-                            We vertellen je alles over de beschikbaarheid, voorwaarden en prijs.
+                            {tc("Vul het formulier in en we nemen binnen 24 uur contact met je op. We vertellen je alles over de beschikbaarheid, voorwaarden en prijs.")}
                         </p>
                         <div className="verb-form-img">
-                            <img src={VillaVoorImg} alt="Voorgevel van Villa Vredestein in Driebergen-Rijsenburg" loading="lazy" />
+                            <img src={VillaVoorImg} alt={tc("Voorgevel van Villa Vredestein in Driebergen-Rijsenburg")} loading="lazy" />
                         </div>
                         <div className="verb-garanties">
                             {["Persoonlijk antwoord binnen 24u", "Geen verborgen kosten", "Flexibele annulering bespreekbaar"].map((g) => (
                                 <div key={g} className="garantie-item">
                                     <span aria-hidden="true">✓</span>
-                                    <span>{g}</span>
+                                    <span>{tc(g)}</span>
                                 </div>
                             ))}
                         </div>
@@ -234,10 +235,10 @@ const Verblijven = () => {
                         {sent ? (
                             <div className="verb-success">
                                 <div className="verb-success-icon">✓</div>
-                                <h3>Aanvraag ontvangen!</h3>
-                                <p>We nemen zo snel mogelijk contact met je op via het opgegeven e-mailadres.</p>
+                                <h3>{tc("Aanvraag ontvangen!")}</h3>
+                                <p>{tc("We nemen zo snel mogelijk contact met je op via het opgegeven e-mailadres.")}</p>
                                 <button className="verb-btn-secondary" onClick={() => navigate("/contact")}>
-                                    Nog een vraag stellen
+                                    {tc("Nog een vraag stellen")}
                                 </button>
                             </div>
                         ) : (
@@ -249,10 +250,10 @@ const Verblijven = () => {
                                 data-netlify-honeypot="bot-field"
                             >
                                 <input type="hidden" name="form-name" value="verblijven" />
-                                <p style={{ display: "none" }} aria-hidden="true"><label>Niet invullen: <input type="text" name="bot-field" tabIndex={-1} autoComplete="off" /></label></p>
+                                <p style={{ display: "none" }} aria-hidden="true"><label>{tc("Niet invullen:")} <input type="text" name="bot-field" tabIndex={-1} autoComplete="off" /></label></p>
 
                                 <div className="form-field-select">
-                                    <label htmlFor="optie">Type verblijf</label>
+                                    <label htmlFor="optie">{tc("Type verblijf")}</label>
                                     <select
                                         id="optie"
                                         name="optie"
@@ -261,14 +262,14 @@ const Verblijven = () => {
                                         required
                                     >
                                         {OPTIES.map((o) => (
-                                            <option key={o.id} value={o.id}>{o.icon} {o.titel}</option>
+                                            <option key={o.id} value={o.id}>{tc(o.icon)} {tc(o.titel)}</option>
                                         ))}
                                     </select>
                                 </div>
 
                                 <div className="form-row">
                                     <div className="form-field">
-                                        <label htmlFor="aankomst">Aankomst</label>
+                                        <label htmlFor="aankomst">{tc("Aankomst")}</label>
                                         <input
                                             type="date"
                                             id="aankomst"
@@ -279,7 +280,7 @@ const Verblijven = () => {
                                         />
                                     </div>
                                     <div className="form-field">
-                                        <label htmlFor="vertrek">Vertrek</label>
+                                        <label htmlFor="vertrek">{tc("Vertrek")}</label>
                                         <input
                                             type="date"
                                             id="vertrek"
@@ -293,44 +294,44 @@ const Verblijven = () => {
 
                                 <div className="form-row">
                                     <div className="form-field">
-                                        <label htmlFor="naam">Naam *</label>
+                                        <label htmlFor="naam">{tc("Naam *")}</label>
                                         <input
                                             type="text"
                                             id="naam"
                                             name="naam"
                                             value={form.naam}
                                             onChange={handleChange}
-                                            placeholder="Jouw naam"
+                                            placeholder={tc("Jouw naam")}
                                             required
                                             autoComplete="name"
                                         />
                                     </div>
                                     <div className="form-field">
-                                        <label htmlFor="gasten">Aantal gasten</label>
+                                        <label htmlFor="gasten">{tc("Aantal gasten")}</label>
                                         <select id="gasten" name="gasten" value={form.gasten} onChange={handleChange}>
                                             {[1,2,3,4,5,6,7,8].map((n) => (
-                                                <option key={n} value={n}>{n} {n === 1 ? "gast" : "gasten"}</option>
+                                                <option key={n} value={n}>{tc(n)} {n === 1 ? tc("gast") : tc("gasten")}</option>
                                             ))}
                                         </select>
                                     </div>
                                 </div>
 
                                 <div className="form-field">
-                                    <label htmlFor="email">E-mailadres *</label>
+                                    <label htmlFor="email">{tc("E-mailadres *")}</label>
                                     <input
                                         type="email"
                                         id="email"
                                         name="email"
                                         value={form.email}
                                         onChange={handleChange}
-                                        placeholder="jouw@email.nl"
+                                        placeholder={tc("jouw@email.nl")}
                                         required
                                         autoComplete="email"
                                     />
                                 </div>
 
                                 <div className="form-field">
-                                    <label htmlFor="telefoon">Telefoon <span>(optioneel)</span></label>
+                                    <label htmlFor="telefoon">{tc("Telefoon")} <span>{tc("(optioneel)")}</span></label>
                                     <input
                                         type="tel"
                                         id="telefoon"
@@ -343,25 +344,25 @@ const Verblijven = () => {
                                 </div>
 
                                 <div className="form-field">
-                                    <label htmlFor="bericht">Toelichting <span>(optioneel)</span></label>
+                                    <label htmlFor="bericht">{tc("Toelichting")} <span>{tc("(optioneel)")}</span></label>
                                     <textarea
                                         id="bericht"
                                         name="bericht"
                                         value={form.bericht}
                                         onChange={handleChange}
-                                        placeholder="Vertel ons iets over jouw verblijf, wensen of vragen..."
+                                        placeholder={tc("Vertel ons iets over jouw verblijf, wensen of vragen...")}
                                         rows={4}
                                     />
                                 </div>
 
                                 <button type="submit" className="verb-submit" disabled={sending}>
-                                    {sending ? "Versturen..." : "Stuur aanvraag"}
+                                    {sending ? tc("Versturen...") : tc("Stuur aanvraag")}
                                 </button>
 
-                                {error && <p className="verb-form-error" role="alert">❌ {error}</p>}
+                                {error && <p className="verb-form-error" role="alert">❌ {tc(error)}</p>}
 
                                 <p className="form-privacy">
-                                    Je gegevens worden alleen gebruikt om contact met je op te nemen.
+                                    {tc("Je gegevens worden alleen gebruikt om contact met je op te nemen.")}
                                 </p>
                             </form>
                         )}

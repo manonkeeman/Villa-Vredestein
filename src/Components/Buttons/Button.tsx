@@ -1,5 +1,6 @@
 import "./Button.css";
 import { FaArrowRight } from "react-icons/fa";
+import { useContent } from "../../i18n/content";
 
 type ButtonVariant = "primary" | "secondary" | "link" | "round";
 
@@ -20,6 +21,7 @@ const Button = ({
     className = "",
     disabled = false,
 }: ButtonProps) => {
+    const tc = useContent();
     const getClassName = (): string => {
         switch (variant) {
             case "link":      return "btn-link";
@@ -37,7 +39,7 @@ const Button = ({
             disabled={disabled}
         >
             {variant === "secondary" ? (
-                <>{text} <FaArrowRight size={16} className="btn-arrow" /></>
+                <>{tc(text)} <FaArrowRight size={16} className="btn-arrow" /></>
             ) : variant === "round" ? "→" : text}
         </button>
     );

@@ -15,6 +15,7 @@ import ImgBezoek from "../../Assets/Images/BezoekOnsVillaVredestein.jpg";
 import ImgManonIT from "../../Assets/Images/manonit-portrait.webp";
 import ImgManonITBrand from "../../Assets/Images/manonit-og.jpg";
 import ImgManonITWebsite from "../../Assets/Images/manonit-website.png";
+import { useContent } from "../../i18n/content";
 
 interface Section {
     slug: string;
@@ -100,6 +101,7 @@ const getExtraRowHeight = (sec) => {
 };
 
 const OverOns = () => {
+    const tc = useContent();
     const { t, i18n } = useTranslation();
     const langCode = i18n.language?.split("-")[0] || "nl";
     const navigate = useNavigate();
@@ -173,26 +175,26 @@ const OverOns = () => {
         <main className="over-ons-page">
             <Helmet>
                 <html lang={langCode} />
-                <title>Over ons, Villa Vredestein</title>
+                <title>{tc("Over ons, Villa Vredestein")}</title>
                 <meta
                     name="description"
-                    content="De mensen achter Villa Vredestein. Het verhaal van Manon & Maxim, Carpe Diem Design en de open deur voor bezoekers en gelijkgestemden."
+                    content={tc("De mensen achter Villa Vredestein. Het verhaal van Manon & Maxim, Carpe Diem Design en de open deur voor bezoekers en gelijkgestemden.")}
                 />
                 <link rel="canonical" href="https://villavredestein.com/verhaal" />
                 <link rel="preload" as="image" href={LuchtballonImg} {...{ fetchpriority: "high" }} />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://villavredestein.com/verhaal" />
-                <meta property="og:title" content="Over ons, Villa Vredestein" />
-                <meta property="og:description" content="De mensen achter Villa Vredestein. Het verhaal van Manon & Maxim, Carpe Diem Design en de open deur voor bezoekers." />
+                <meta property="og:title" content={tc("Over ons, Villa Vredestein")} />
+                <meta property="og:description" content={tc("De mensen achter Villa Vredestein. Het verhaal van Manon & Maxim, Carpe Diem Design en de open deur voor bezoekers.")} />
                 <meta property="og:image" content="https://villavredestein.com/og-image.jpg" />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
                 <meta property="og:image:type" content="image/jpeg" />
-                <meta property="og:image:alt" content="Villa Vredestein, historische villa uit 1906 in Driebergen-Rijsenburg" />
+                <meta property="og:image:alt" content={tc("Villa Vredestein, historische villa uit 1906 in Driebergen-Rijsenburg")} />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Over ons, Villa Vredestein" />
-                <meta name="twitter:description" content="De mensen achter Villa Vredestein. Het verhaal van Manon & Maxim, Carpe Diem Design en de open deur voor bezoekers." />
+                <meta name="twitter:title" content={tc("Over ons, Villa Vredestein")} />
+                <meta name="twitter:description" content={tc("De mensen achter Villa Vredestein. Het verhaal van Manon & Maxim, Carpe Diem Design en de open deur voor bezoekers.")} />
                 <meta name="twitter:image" content="https://villavredestein.com/og-image.jpg" />
                 <script type="application/ld+json">{aboutSchema}</script>
             </Helmet>
@@ -203,24 +205,24 @@ const OverOns = () => {
                     className="oo-hero-bg"
                     style={{ backgroundImage: `url(${LuchtballonImg})` }}
                     role="img"
-                    aria-label="Villa Vredestein met luchtballon"
+                    aria-label={tc("Villa Vredestein met luchtballon")}
                 />
                 <div className="oo-hero-overlay" aria-hidden="true" />
                 <div className="oo-hero-inner">
-                    <span className="oo-hero-eyebrow">Veel verhalen. Één huis.</span>
-                    <h1 className="oo-hero-title">De mensen achter de villa</h1>
+                    <span className="oo-hero-eyebrow">{tc("Veel verhalen. Één huis.")}</span>
+                    <h1 className="oo-hero-title">{tc("De mensen achter de villa")}</h1>
                     <p className="oo-hero-sub">
-                        Manon & Maxim, Project Carpe Diem, ManonIT en een open deur voor iedereen die het wil zien.
+                        {tc("Manon & Maxim, Project Carpe Diem, ManonIT en een open deur voor iedereen die het wil zien.")}
                     </p>
                     <div className="oo-hero-scroll" aria-hidden="true">
-                        <span>Scroll</span>
+                        <span>{tc("Scroll")}</span>
                         <div className="oo-scroll-arrow" />
                     </div>
                 </div>
             </header>
 
             {/* Scroll-indicator dots */}
-            <nav className="oo-dot-nav" aria-label="Secties">
+            <nav className="oo-dot-nav" aria-label={tc("Secties")}>
                 {SECTIONS.map((s) => (
                     <button
                         key={s.slug}
@@ -230,7 +232,7 @@ const OverOns = () => {
                             el?.scrollIntoView({ behavior: "smooth", block: "start" });
                         }}
                         aria-label={getBlog(s.slug)?.title || s.slug}
-                        title={getBlog(s.slug)?.title}
+                        title={tc(getBlog(s.slug)?.title)}
                     />
                 ))}
             </nav>
@@ -264,12 +266,12 @@ const OverOns = () => {
                                             playsInline
                                             preload="metadata"
                                             poster={sec.img}
-                                            aria-label={sec.imgAlt}
+                                            aria-label={tc(sec.imgAlt)}
                                         />
                                     ) : (
                                         <img
                                             src={sec.img}
-                                            alt={sec.imgAlt}
+                                            alt={tc(sec.imgAlt)}
                                             loading="lazy"
                                             className="oo-img"
                                         />
@@ -287,7 +289,7 @@ const OverOns = () => {
                                             >
                                                 <img
                                                     src={extra.src}
-                                                    alt={extra.alt}
+                                                    alt={tc(extra.alt)}
                                                     loading="lazy"
                                                     style={extra.pos ? { objectPosition: extra.pos } : undefined}
                                                 />
@@ -303,10 +305,10 @@ const OverOns = () => {
                             <div className="oo-text-inner">
                                 <span className="oo-section-num">0{i + 1}</span>
 
-                                <h2 className="oo-section-title">{blog.title}</h2>
+                                <h2 className="oo-section-title">{tc(blog.title)}</h2>
 
                                 <blockquote className="oo-pull-quote">
-                                    {sec.pullQuote}
+                                    {tc(sec.pullQuote)}
                                 </blockquote>
 
                                 <div className="oo-body-text">
@@ -315,7 +317,7 @@ const OverOns = () => {
                                             ? blog.content
                                             : blog.content.slice(0, PREVIEW_PARAGRAPHS)
                                         ).map((paragraph, j) => (
-                                            <p key={j}>{paragraph}</p>
+                                            <p key={j}>{tc(paragraph)}</p>
                                         ))}
                                 </div>
 
@@ -325,7 +327,7 @@ const OverOns = () => {
                                         onClick={() => toggleExpanded(sec.slug)}
                                         style={{ "--btn-accent": sec.accent } as React.CSSProperties}
                                     >
-                                        {expanded[sec.slug] ? "Tekst inklappen ↑" : "Tekst uitklappen ↓"}
+                                        {expanded[sec.slug] ? tc("Tekst inklappen ↑") : tc("Tekst uitklappen ↓")}
                                     </button>
                                 )}
 
@@ -340,7 +342,7 @@ const OverOns = () => {
                                                 className="oo-external-link"
                                                 style={{ "--btn-accent": sec.accent } as React.CSSProperties}
                                             >
-                                                {l.label || l.href}
+                                                {tc(l.label || l.href)}
                                             </a>
                                         ))}
                                     </div>
@@ -355,18 +357,16 @@ const OverOns = () => {
             {/* Call to action */}
             <section className="oo-cta">
                 <div className="oo-cta-inner">
-                    <h2>Zin om kennis te maken?</h2>
+                    <h2>{tc("Zin om kennis te maken?")}</h2>
                     <p>
-                        Stuur een bericht, kom langs, of volg ons op Instagram. We staan
-                        altijd open voor een goed gesprek over Villa Vredestein, over wonen,
-                        over dromen en hoe je die werkelijkheid maakt.
+                        {tc("Stuur een bericht, kom langs, of volg ons op Instagram. We staan altijd open voor een goed gesprek over Villa Vredestein, over wonen, over dromen en hoe je die werkelijkheid maakt.")}
                     </p>
                     <div className="oo-cta-buttons">
                         <button className="oo-cta-primary" onClick={() => navigate("/contact")}>
-                            Neem contact op
+                            {tc("Neem contact op")}
                         </button>
                         <button className="oo-cta-secondary" onClick={() => navigate("/tijdlijn")}>
-                            Bekijk de tijdlijn
+                            {tc("Bekijk de tijdlijn")}
                         </button>
                     </div>
                 </div>

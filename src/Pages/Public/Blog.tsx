@@ -15,6 +15,7 @@ import LuchtballonImg from "../../Assets/Images/ext-luchtballon.jpg";
 import Villa9 from "../../Assets/Images/BezoekOnsVillaVredestein.jpg";
 import CarpeDiemVideo from "../../Assets/Videos/carpe-diem.mp4";
 import CafeRacer1 from "../../Assets/Images/cafe-racer-1.jpg";
+import { useContent } from "../../i18n/content";
 
 const imageMap = {
     "villa-vredestein": Villa1,
@@ -37,6 +38,7 @@ const inlineMediaMap: Record<string, { afterParagraph: number; src: string; alt:
 };
 
 const Blog = () => {
+    const tc = useContent();
     const { slug } = useParams();
     const navigate = useNavigate();
     const { t, i18n } = useTranslation();
@@ -75,21 +77,21 @@ const Blog = () => {
             <Helmet>
                 <html lang={langCode} />
                 <title>{`${blog.title}, Villa Vredestein`}</title>
-                <meta name="description" content={blog.summary} />
+                <meta name="description" content={tc(blog.summary)} />
                 <link rel="canonical" href={canonicalUrl} />
                 <meta property="og:title" content={`${blog.title}, Villa Vredestein`} />
-                <meta property="og:description" content={blog.summary} />
+                <meta property="og:description" content={tc(blog.summary)} />
                 <meta property="og:image" content={ogImage} />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
                 <meta property="og:image:type" content="image/jpeg" />
-                <meta property="og:image:alt" content="Villa Vredestein, historische villa uit 1906 in Driebergen-Rijsenburg" />
+                <meta property="og:image:alt" content={tc("Villa Vredestein, historische villa uit 1906 in Driebergen-Rijsenburg")} />
                 <meta property="og:type" content="article" />
                 <meta property="og:url" content={canonicalUrl} />
                 <meta property="article:published_time" content={blog.date} />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={`${blog.title}, Villa Vredestein`} />
-                <meta name="twitter:description" content={blog.summary} />
+                <meta name="twitter:description" content={tc(blog.summary)} />
                 <meta name="twitter:image" content={ogImage} />
                 <script type="application/ld+json">{articleSchema}</script>
             </Helmet>
@@ -103,11 +105,11 @@ const Blog = () => {
                     >
                         {t("about.back")}
                     </button>
-                    <h1 className="blog-title">{blog.title}</h1>
+                    <h1 className="blog-title">{tc(blog.title)}</h1>
                     <div className="blog-meta">
-                        <time dateTime={blog.date}>{t("about.published")} {blog.date}</time>
+                        <time dateTime={blog.date}>{t("about.published")} {tc(blog.date)}</time>
                         <span aria-hidden="true"> · </span>
-                        <span>{blog.readTime} {t("about.readTime")}</span>
+                        <span>{tc(blog.readTime)} {t("about.readTime")}</span>
                     </div>
                 </header>
 
@@ -122,22 +124,22 @@ const Blog = () => {
                             playsInline
                             preload="metadata"
                             poster={image}
-                            aria-label={blog.title}
+                            aria-label={tc(blog.title)}
                         />
                     </figure>
                 ) : image ? (
                     <figure className="blog-hero">
-                        <img src={image} alt={blog.title} className="blog-hero-img" loading="lazy" />
+                        <img src={image} alt={tc(blog.title)} className="blog-hero-img" loading="lazy" />
                     </figure>
                 ) : null}
 
                 <div className="blog-body">
                     {Array.isArray(blog.content) && blog.content.map((paragraph, i) => (
                         <React.Fragment key={i}>
-                            <p>{paragraph}</p>
+                            <p>{tc(paragraph)}</p>
                             {inlineMedia.filter((m) => m.afterParagraph === i).map((m, j) => (
                                 <figure key={j} className="blog-inline-media">
-                                    <img src={m.src} alt={m.alt} loading="lazy" />
+                                    <img src={m.src} alt={tc(m.alt)} loading="lazy" />
                                 </figure>
                             ))}
                         </React.Fragment>

@@ -26,6 +26,7 @@ import Krant1935    from "../../Assets/Images/Krant1935.jpg";
 import Krant1954    from "../../Assets/Images/Krant1954.jpg";
 import Krant1959    from "../../Assets/Images/Krant1959.jpg";
 import Krant1965    from "../../Assets/Images/Krant1965.jpg";
+import { useContent } from "../../i18n/content";
 
 const PERS_ITEMS = [
     {
@@ -71,6 +72,7 @@ const PERS_ITEMS = [
 ];
 
 const InDePers = () => {
+    const tc = useContent();
     const { i18n } = useTranslation();
     const langCode = i18n.language?.split("-")[0] || "nl";
     const navigate = useNavigate();
@@ -137,41 +139,41 @@ const InDePers = () => {
         <main className="idp-page">
             <Helmet>
                 <html lang={langCode} />
-                <title>In de Pers, Villa Vredestein</title>
+                <title>{tc("In de Pers, Villa Vredestein")}</title>
                 <meta
                     name="description"
-                    content="Villa Vredestein in het nieuws. Kranten, tijdschriften en online media over dit bijzondere historische pand in Driebergen-Rijsenburg."
+                    content={tc("Villa Vredestein in het nieuws. Kranten, tijdschriften en online media over dit bijzondere historische pand in Driebergen-Rijsenburg.")}
                 />
                 <link rel="canonical" href="https://villavredestein.com/in-de-pers" />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://villavredestein.com/in-de-pers" />
-                <meta property="og:title" content="In de Pers, Villa Vredestein" />
-                <meta property="og:description" content="Villa Vredestein in het nieuws. Artikelen in kranten en magazines over dit bijzondere historische pand in Driebergen-Rijsenburg." />
+                <meta property="og:title" content={tc("In de Pers, Villa Vredestein")} />
+                <meta property="og:description" content={tc("Villa Vredestein in het nieuws. Artikelen in kranten en magazines over dit bijzondere historische pand in Driebergen-Rijsenburg.")} />
                 <meta property="og:image" content="https://villavredestein.com/og-image.jpg" />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
                 <meta property="og:image:type" content="image/jpeg" />
-                <meta property="og:image:alt" content="Villa Vredestein, historische villa uit 1906 in Driebergen-Rijsenburg" />
+                <meta property="og:image:alt" content={tc("Villa Vredestein, historische villa uit 1906 in Driebergen-Rijsenburg")} />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="In de Pers, Villa Vredestein" />
-                <meta name="twitter:description" content="Villa Vredestein in het nieuws. Artikelen in kranten en magazines over dit bijzondere historische pand in Driebergen-Rijsenburg." />
+                <meta name="twitter:title" content={tc("In de Pers, Villa Vredestein")} />
+                <meta name="twitter:description" content={tc("Villa Vredestein in het nieuws. Artikelen in kranten en magazines over dit bijzondere historische pand in Driebergen-Rijsenburg.")} />
                 <meta name="twitter:image" content="https://villavredestein.com/og-image.jpg" />
             </Helmet>
 
             {/* Hero */}
             <header className="idp-hero">
                 <div className="idp-hero-inner">
-                    <span className="idp-eyebrow">Pers & Media</span>
-                    <h1 className="idp-title">In de pers</h1>
+                    <span className="idp-eyebrow">{tc("Pers & Media")}</span>
+                    <h1 className="idp-title">{tc("In de pers")}</h1>
                     <p className="idp-sub">
-                        Villa Vredestein in het nieuws. Een historisch pand dat verhalen aantrekt.
+                        {tc("Villa Vredestein in het nieuws. Een historisch pand dat verhalen aantrekt.")}
                     </p>
                 </div>
             </header>
 
             {/* Persartikelen */}
-            <section className="idp-articles-section" aria-label="Persberichten">
+            <section className="idp-articles-section" aria-label={tc("Persberichten")}>
                 {PERS_ITEMS.map((item, i) => (
                     <article
                         key={i}
@@ -181,7 +183,7 @@ const InDePers = () => {
                         role={item.imgs?.length ? "button" : undefined}
                         tabIndex={item.imgs?.length ? 0 : undefined}
                         onKeyDown={(e) => { if ((e.key === "Enter" || e.key === " ") && item.imgs?.length) openViewer(item.imgs, 0); }}
-                        aria-label={item.imgs?.length ? `Bekijk artikel: ${item.kop}` : undefined}
+                        aria-label={item.imgs?.length ? `${tc("Bekijk artikel")}: ${tc(item.kop)}` : undefined}
                         style={{ cursor: item.imgs?.length ? "zoom-in" : "default" }}
                     >
                         {/* Één thumbnail */}
@@ -193,13 +195,13 @@ const InDePers = () => {
                                 >
                                     <img
                                         src={item.imgs[0]}
-                                        alt={`Foto bij: ${item.kop}`}
+                                        alt={`${tc("Foto bij")}: ${tc(item.kop)}`}
                                         className="idp-thumb-img"
                                         loading="lazy"
                                     />
                                     {item.imgs.length > 1 && (
                                         <span className="idp-foto-count">
-                                            📷 {item.imgs.length} foto&apos;s
+                                            📷 {tc(item.imgs.length)} {tc("foto's")}
                                         </span>
                                     )}
                                 </div>
@@ -209,16 +211,16 @@ const InDePers = () => {
                         {/* Tekst */}
                         <div className="idp-article-body">
                             <div className="idp-meta-row">
-                                <span className="idp-tag">{item.tag}</span>
-                                {item.sectie && <span className="idp-sectie">{item.sectie}</span>}
-                                <span className="idp-datum">{item.datum}</span>
+                                <span className="idp-tag">{tc(item.tag)}</span>
+                                {item.sectie && <span className="idp-sectie">{tc(item.sectie)}</span>}
+                                <span className="idp-datum">{tc(item.datum)}</span>
                             </div>
-                            <p className="idp-medium">{item.medium}</p>
-                            <h2 className="idp-kop">{item.kop}</h2>
-                            <p className="idp-samenvatting">{item.samenvatting}</p>
+                            <p className="idp-medium">{tc(item.medium)}</p>
+                            <h2 className="idp-kop">{tc(item.kop)}</h2>
+                            <p className="idp-samenvatting">{tc(item.samenvatting)}</p>
                             {item.url && (
                                 <a href={item.url} target="_blank" rel="noreferrer" className="idp-lees-link">
-                                    Lees artikel →
+                                    {tc("Lees artikel →")}
                                 </a>
                             )}
                         </div>
@@ -233,13 +235,13 @@ const InDePers = () => {
                     ref={viewerRef}
                     role="dialog"
                     aria-modal="true"
-                    aria-label="Foto's bekijken"
+                    aria-label={tc("Foto's bekijken")}
                 >
                     <div className="idp-viewer-bar">
                         <span className="idp-viewer-counter">
-                            {activeSlide + 1} / {viewer.imgs.length}
+                            {activeSlide + 1} / {tc(viewer.imgs.length)}
                         </span>
-                        <button className="idp-viewer-close" onClick={closeViewer} aria-label="Sluiten">✕</button>
+                        <button className="idp-viewer-close" onClick={closeViewer} aria-label={tc("Sluiten")}>✕</button>
                     </div>
 
                     {viewer.imgs.map((src, idx) => (
@@ -248,21 +250,21 @@ const InDePers = () => {
                             className="idp-viewer-slide"
                             ref={(el) => { slidesRef.current[idx] = el; }}
                         >
-                            <img src={src} alt={`Foto ${idx + 1}`} className="idp-viewer-img" />
+                            <img src={src} alt={`${tc("Foto")} ${idx + 1}`} className="idp-viewer-img" />
                         </div>
                     ))}
 
                     {activeSlide > 0 && (
                         <button
                             className="idp-viewer-arrow idp-viewer-arrow--prev"
-                            aria-label="Vorige foto"
+                            aria-label={tc("Vorige foto")}
                             onClick={() => slidesRef.current[activeSlide - 1]?.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" })}
                         >‹</button>
                     )}
                     {activeSlide < viewer.imgs.length - 1 && (
                         <button
                             className="idp-viewer-arrow idp-viewer-arrow--next"
-                            aria-label="Volgende foto"
+                            aria-label={tc("Volgende foto")}
                             onClick={() => slidesRef.current[activeSlide + 1]?.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" })}
                         >›</button>
                     )}
@@ -272,15 +274,13 @@ const InDePers = () => {
             {/* CTA */}
             <section className="idp-cta">
                 <div className="idp-cta-inner">
-                    <span className="idp-cta-eyebrow">Pers & media</span>
-                    <h2>Wil je schrijven over Villa Vredestein?</h2>
+                    <span className="idp-cta-eyebrow">{tc("Pers & media")}</span>
+                    <h2>{tc("Wil je schrijven over Villa Vredestein?")}</h2>
                     <p>
-                        We staan open voor journalisten, bloggers en fotografen die het verhaal van
-                        dit bijzondere pand willen vertellen. Neem contact op voor een bezoek of
-                        meer informatie.
+                        {tc("We staan open voor journalisten, bloggers en fotografen die het verhaal van dit bijzondere pand willen vertellen. Neem contact op voor een bezoek of meer informatie.")}
                     </p>
                     <button className="idp-cta-btn" onClick={() => navigate("/contact")}>
-                        Neem contact op
+                        {tc("Neem contact op")}
                     </button>
                 </div>
             </section>

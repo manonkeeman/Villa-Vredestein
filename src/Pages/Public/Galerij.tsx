@@ -29,6 +29,7 @@ import ImgRegister1    from "../../Assets/Images/archief-register-1.jpg";
 import ImgRegister2    from "../../Assets/Images/archief-register-2.jpg";
 import ImgBouwreg1     from "../../Assets/Images/archief-bouwregister-1.jpg";
 import ImgBouwreg2     from "../../Assets/Images/archief-bouwregister-2.jpg";
+import { useContent } from "../../i18n/content";
 
 const FOTOS = [
     {
@@ -184,6 +185,7 @@ const FOTOS = [
 ];
 
 const Galerij = () => {
+    const tc = useContent();
     const { i18n } = useTranslation();
     const langCode = i18n.language?.split("-")[0] || "nl";
     const [lightbox, setLightbox] = useState(null);
@@ -232,31 +234,30 @@ const Galerij = () => {
         <main className="galerij-page">
             <Helmet>
                 <html lang={langCode} />
-                <title>Historische Galerij, Villa Vredestein</title>
+                <title>{tc("Historische Galerij, Villa Vredestein")}</title>
                 <meta
                     name="description"
-                    content="Krantenartikelen en historische foto's van Villa Vredestein van 1912 tot nu. Een visueel archief van meer dan een eeuw Hoofdstraat 147."
+                    content={tc("Krantenartikelen en historische foto's van Villa Vredestein van 1912 tot nu. Een visueel archief van meer dan een eeuw Hoofdstraat 147.")}
                 />
                 <link rel="canonical" href="https://villavredestein.com/galerij" />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://villavredestein.com/galerij" />
-                <meta property="og:title" content="Historische Galerij, Villa Vredestein" />
-                <meta property="og:description" content="Krantenartikelen en historische foto's van Villa Vredestein van 1912 tot nu." />
+                <meta property="og:title" content={tc("Historische Galerij, Villa Vredestein")} />
+                <meta property="og:description" content={tc("Krantenartikelen en historische foto's van Villa Vredestein van 1912 tot nu.")} />
                 <meta property="og:image" content="https://villavredestein.com/og-image.jpg" />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
                 <meta property="og:image:type" content="image/jpeg" />
-                <meta property="og:image:alt" content="Villa Vredestein, historische villa uit 1906 in Driebergen-Rijsenburg" />
+                <meta property="og:image:alt" content={tc("Villa Vredestein, historische villa uit 1906 in Driebergen-Rijsenburg")} />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:image" content="https://villavredestein.com/og-image.jpg" />
             </Helmet>
 
             <header className="galerij-header">
-                <h1>Historische Galerij</h1>
+                <h1>{tc("Historische Galerij")}</h1>
                 <p>
-                    Meer dan een eeuw bewaard gebleven. Krantenartikelen, advertenties en
-                    foto&apos;s die het leven op Hoofdstraat 147 vastleggen, van 1912 tot nu.
+                    {tc("Meer dan een eeuw bewaard gebleven. Krantenartikelen, advertenties en foto's die het leven op Hoofdstraat 147 vastleggen, van 1912 tot nu.")}
                 </p>
             </header>
 
@@ -269,20 +270,20 @@ const Galerij = () => {
                         onClick={() => open(i)}
                         onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && open(i)}
                         tabIndex={0}
-                        aria-label={`${foto.caption}, klik om te vergroten`}
+                        aria-label={`${tc(foto.caption)}, ${tc("klik om te vergroten")}`}
                     >
                         <div className="galerij-img-wrap">
                             <img
                                 src={foto.src}
-                                alt={foto.caption}
+                                alt={tc(foto.caption)}
                                 loading="lazy"
                                 className="galerij-img"
                                 decoding="async"
                             />
                             <div className="galerij-overlay" aria-hidden="true">
-                                <span className="galerij-jaar">{foto.jaar}</span>
-                                <p className="galerij-caption">{foto.caption}</p>
-                                <span className="galerij-zoom">⊕ Bekijk</span>
+                                <span className="galerij-jaar">{tc(foto.jaar)}</span>
+                                <p className="galerij-caption">{tc(foto.caption)}</p>
+                                <span className="galerij-zoom">{tc("⊕ Bekijk")}</span>
                             </div>
                         </div>
                     </article>
@@ -295,7 +296,7 @@ const Galerij = () => {
                     className="lb-overlay"
                     role="dialog"
                     aria-modal="true"
-                    aria-label={`Foto: ${foto.caption}`}
+                    aria-label={`${tc("Foto")}: ${tc(foto.caption)}`}
                     onClick={(e) => e.target === e.currentTarget && close()}
                 >
                     <div
@@ -304,7 +305,7 @@ const Galerij = () => {
                         tabIndex={-1}
                     >
                         {/* Close */}
-                        <button className="lb-close" onClick={close} aria-label="Sluiten">
+                        <button className="lb-close" onClick={close} aria-label={tc("Sluiten")}>
                             ✕
                         </button>
 
@@ -312,37 +313,37 @@ const Galerij = () => {
                         <div className="lb-img-wrap">
                             <img
                                 src={foto.src}
-                                alt={foto.caption}
+                                alt={tc(foto.caption)}
                                 className="lb-img"
                             />
                         </div>
 
                         {/* Caption */}
                         <div className="lb-info">
-                            <span className="lb-jaar">{foto.jaar}</span>
-                            <h2 className="lb-caption">{foto.caption}</h2>
-                            <p className="lb-beschrijving">{foto.beschrijving}</p>
+                            <span className="lb-jaar">{tc(foto.jaar)}</span>
+                            <h2 className="lb-caption">{tc(foto.caption)}</h2>
+                            <p className="lb-beschrijving">{tc(foto.beschrijving)}</p>
                         </div>
 
                         {/* Navigation */}
                         <button
                             className="lb-nav lb-prev"
                             onClick={prev}
-                            aria-label="Vorige foto"
+                            aria-label={tc("Vorige foto")}
                         >
                             ‹
                         </button>
                         <button
                             className="lb-nav lb-next"
                             onClick={next}
-                            aria-label="Volgende foto"
+                            aria-label={tc("Volgende foto")}
                         >
                             ›
                         </button>
 
                         {/* Counter */}
                         <div className="lb-counter" aria-live="polite">
-                            {lightbox + 1} / {FOTOS.length}
+                            {lightbox + 1} / {tc(FOTOS.length)}
                         </div>
                     </div>
                 </div>

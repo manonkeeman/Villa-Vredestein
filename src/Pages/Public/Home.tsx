@@ -13,6 +13,7 @@ import HeroImgMobiel from "../../Assets/Images/int-woonkamer-mobiel.jpg";
 import VillaImg from "../../Assets/Images/ext-villa-voorkant.jpg";
 import VerbouwingVid from "../../Assets/Videos/home-verbouwing.mp4";
 import ImgGlasLood2 from "../../Assets/Images/rest-glas-lood-2.jpg";
+import { useContent } from "../../i18n/content";
 
 const VILLA_POS: [number, number] = [52.0431, 5.287];
 
@@ -70,6 +71,7 @@ const HIGHLIGHTS: Highlight[] = [
 ];
 
 const Home = () => {
+    const tc = useContent();
     const navigate = useNavigate();
     const { i18n } = useTranslation();
     const langCode = i18n.language?.split("-")[0] || "nl";
@@ -119,49 +121,48 @@ const Home = () => {
         <main className="home-lux" role="main">
             <Helmet>
                 <html lang={langCode} />
-                <title>Villa Vredestein, Driebergen-Rijsenburg</title>
-                <meta name="description" content="Villa Vredestein is een historische villa uit 1906 in het hart van Driebergen-Rijsenburg. Verblijf in een bijzonder pand op de Utrechtse Heuvelrug." />
+                <title>{tc("Villa Vredestein, Driebergen-Rijsenburg")}</title>
+                <meta name="description" content={tc("Villa Vredestein is een historische villa uit 1906 in het hart van Driebergen-Rijsenburg. Verblijf in een bijzonder pand op de Utrechtse Heuvelrug.")} />
                 <link rel="canonical" href="https://villavredestein.com/" />
                 <link rel="preload" as="image" href={HeroImgMobiel} media="(max-width: 768px)" {...{ fetchpriority: "high" }} />
                 <link rel="preload" as="image" href={HeroImg} media="(min-width: 769px)" {...{ fetchpriority: "high" }} />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://villavredestein.com/" />
-                <meta property="og:title" content="Villa Vredestein, Driebergen-Rijsenburg" />
-                <meta property="og:description" content="Historische villa uit 1906 op de Utrechtse Heuvelrug. Verblijf, verhuur en restauratie in het hart van Driebergen-Rijsenburg." />
+                <meta property="og:title" content={tc("Villa Vredestein, Driebergen-Rijsenburg")} />
+                <meta property="og:description" content={tc("Historische villa uit 1906 op de Utrechtse Heuvelrug. Verblijf, verhuur en restauratie in het hart van Driebergen-Rijsenburg.")} />
                 <meta property="og:image" content="https://villavredestein.com/og-image.jpg" />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
                 <meta property="og:image:type" content="image/jpeg" />
-                <meta property="og:image:alt" content="Villa Vredestein, historische villa uit 1906 in Driebergen-Rijsenburg" />
+                <meta property="og:image:alt" content={tc("Villa Vredestein, historische villa uit 1906 in Driebergen-Rijsenburg")} />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Villa Vredestein, Driebergen-Rijsenburg" />
-                <meta name="twitter:description" content="Historische villa uit 1906. Verblijf op de Utrechtse Heuvelrug." />
+                <meta name="twitter:title" content={tc("Villa Vredestein, Driebergen-Rijsenburg")} />
+                <meta name="twitter:description" content={tc("Historische villa uit 1906. Verblijf op de Utrechtse Heuvelrug.")} />
                 <meta name="twitter:image" content="https://villavredestein.com/og-image.jpg" />
             </Helmet>
 
             {/* ── Hero met parallax ── */}
-            <section className="hero-lux" aria-label="Hero">
+            <section className="hero-lux" aria-label={tc("Hero")}>
                 <div
                     className="hero-bg"
                     style={{ "--hero-img": `url(${HeroImg})`, "--hero-img-mobiel": `url(${HeroImgMobiel})`, transform: `translateY(${parallaxY}px)` } as React.CSSProperties}
                     role="img"
-                    aria-label="Woonkamer Villa Vredestein"
+                    aria-label={tc("Woonkamer Villa Vredestein")}
                 />
                 <div className="hero-overlay" />
                 <div className="hero-content">
-                    <span className="hero-eyebrow">Driebergen-Rijsenburg · Utrechtse Heuvelrug</span>
-                    <h1 className="hero-title">Villa Vredestein</h1>
+                    <span className="hero-eyebrow">{tc("Driebergen-Rijsenburg · Utrechtse Heuvelrug")}</span>
+                    <h1 className="hero-title">{tc("Villa Vredestein")}</h1>
                     <p className="hero-sub">
-                        Een historische villa uit 1906 in het hart van Driebergen-Rijsenburg,
-                        op de Utrechtse Heuvelrug. Verblijf, restauratie en een open deur.
+                        {tc("Een historische villa uit 1906 in het hart van Driebergen-Rijsenburg, op de Utrechtse Heuvelrug. Verblijf, restauratie en een open deur.")}
                     </p>
                     <div className="hero-ctas">
                         <button className="hero-btn-primary" onClick={() => navigate("/verhaal")}>
-                            Over ons
+                            {tc("Over ons")}
                         </button>
                         <button className="hero-btn-ghost" onClick={() => navigate("/tijdlijn")}>
-                            Tijdlijn
+                            {tc("Tijdlijn")}
                         </button>
                     </div>
                 </div>
@@ -171,11 +172,11 @@ const Home = () => {
             </section>
 
             {/* ── Kenmerken ── */}
-            <section className="kenmerken-bar reveal-row" ref={addRef} aria-label="Kenmerken">
+            <section className="kenmerken-bar reveal-row" ref={addRef} aria-label={tc("Kenmerken")}>
                 {KENMERKEN.map((k) => (
                     <div key={k.label} className="kenmerk-item">
-                        <strong className="kenmerk-val">{k.label}</strong>
-                        <span className="kenmerk-sub">{k.sub}</span>
+                        <strong className="kenmerk-val">{tc(k.label)}</strong>
+                        <span className="kenmerk-sub">{tc(k.sub)}</span>
                     </div>
                 ))}
             </section>
@@ -189,35 +190,29 @@ const Home = () => {
                         muted
                         loop
                         playsInline
-                        aria-label="Verbouwing Villa Vredestein"
+                        aria-label={tc("Verbouwing Villa Vredestein")}
                     />
                 </div>
                 <div className="intro-text-col">
-                    <span className="section-eyebrow">Gebouwd in 1906</span>
-                    <h2 className="section-title">Een huis met meer dan een eeuw verhaal</h2>
+                    <span className="section-eyebrow">{tc("Gebouwd in 1906")}</span>
+                    <h2 className="section-title">{tc("Een huis met meer dan een eeuw verhaal")}</h2>
                     <p>
-                        Villa Vredestein werd gebouwd als buitenverblijf voor de burgemeester
-                        van Krimpen aan den IJssel. Sindsdien heeft het pand talloze bewoners
-                        verwelkomd. Van christelijk pension tot studentenhuis, van verbouwproject
-                        tot wat het wordt: een plek om trots op te zijn.
+                        {tc("Villa Vredestein werd gebouwd als buitenverblijf voor de burgemeester van Krimpen aan den IJssel. Sindsdien heeft het pand talloze bewoners verwelkomd. Van christelijk pension tot studentenhuis, van verbouwproject tot wat het wordt: een plek om trots op te zijn.")}
                     </p>
                     <p>
-                        Achter de originele gevel schuilen hoge plafonds, een industriële gietvloer
-                        beneden en gebrand grenenhout boven. Originele details komen stap voor stap
-                        terug: glas-in-lood ramen, openslaande deuren, houtkachels. Manon en Maxim
-                        wonen er midden in, terwijl het plan langzaam vorm krijgt.
+                        {tc("Achter de originele gevel schuilen hoge plafonds, een industriële gietvloer beneden en gebrand grenenhout boven. Originele details komen stap voor stap terug: glas-in-lood ramen, openslaande deuren, houtkachels. Manon en Maxim wonen er midden in, terwijl het plan langzaam vorm krijgt.")}
                     </p>
                     <button className="text-link-btn" onClick={() => navigate("/tijdlijn")}>
-                        Volg het verhaal op de tijdlijn →
+                        {tc("Volg het verhaal op de tijdlijn →")}
                     </button>
                 </div>
             </section>
 
             {/* ── Highlight cards ── */}
-            <section className="highlights reveal-section" ref={addRef} aria-label="Hoogtepunten">
+            <section className="highlights reveal-section" ref={addRef} aria-label={tc("Hoogtepunten")}>
                 <div className="highlights-header">
-                    <h2>Ontdek de villa</h2>
-                    <p>De verbouwing, de kamers en de omgeving.</p>
+                    <h2>{tc("Ontdek de villa")}</h2>
+                    <p>{tc("De verbouwing, de kamers en de omgeving.")}</p>
                 </div>
                 <div className="highlights-grid">
                     {HIGHLIGHTS.map((h) => (
@@ -228,7 +223,7 @@ const Home = () => {
                             role="button"
                             tabIndex={0}
                             onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && navigate(h.to)}
-                            aria-label={h.titel}
+                            aria-label={tc(h.titel)}
                         >
                             <div className="hl-img-wrap">
                                 {h.map ? (
@@ -243,24 +238,24 @@ const Home = () => {
                                         keyboard={false}
                                         style={{ width: "100%", height: "100%" }}
                                         attributionControl={false}
-                                        aria-label="Kaart omgeving Villa Vredestein"
+                                        aria-label={tc("Kaart omgeving Villa Vredestein")}
                                     >
                                         <TileLayer url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png" />
                                         <Marker position={VILLA_POS} icon={villaCardIcon} />
                                     </MapContainer>
                                 ) : (
-                                    <img src={h.img} alt={h.titel} loading="lazy" style={h.imgPosition ? { objectPosition: h.imgPosition } : undefined} />
+                                    <img src={h.img} alt={tc(h.titel)} loading="lazy" style={h.imgPosition ? { objectPosition: h.imgPosition } : undefined} />
                                 )}
                                 <div className="hl-overlay" />
                                 {h.map && (
-                                    <div className="hl-map-badge" aria-hidden="true">📍 Interactieve kaart</div>
+                                    <div className="hl-map-badge" aria-hidden="true">{tc("📍 Interactieve kaart")}</div>
                                 )}
                             </div>
                             <div className="hl-body">
-                                <span className="hl-label">{h.label}</span>
-                                <h3 className="hl-title">{h.titel}</h3>
-                                <p className="hl-sub">{h.sub}</p>
-                                <span className="hl-cta">{h.cta || "Bekijk meer →"}</span>
+                                <span className="hl-label">{tc(h.label)}</span>
+                                <h3 className="hl-title">{tc(h.titel)}</h3>
+                                <p className="hl-sub">{tc(h.sub)}</p>
+                                <span className="hl-cta">{h.cta ? tc(h.cta) : tc("Bekijk meer →")}</span>
                             </div>
                         </article>
                     ))}

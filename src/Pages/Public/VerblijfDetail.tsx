@@ -5,8 +5,10 @@ import { useTranslation } from "react-i18next";
 import { OPTIES } from "../../Data/verblijfOpties";
 import NotFound from "./NotFound";
 import "./VerblijfDetail.css";
+import { useContent } from "../../i18n/content";
 
 const VerblijfDetail = () => {
+    const tc = useContent();
     const { id } = useParams();
     const navigate = useNavigate();
     const { i18n } = useTranslation();
@@ -38,18 +40,18 @@ const VerblijfDetail = () => {
         <main className="vd-page">
             <Helmet>
                 <html lang={langCode} />
-                <title>{`${optie.titel}, Verblijven, Villa Vredestein`}</title>
-                <meta name="description" content={optie.beschrijving} />
+                <title>{`${tc(optie.titel)}, ${tc("Verblijven")}, Villa Vredestein`}</title>
+                <meta name="description" content={tc(optie.beschrijving)} />
                 <link rel="canonical" href={canonicalUrl} />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content={canonicalUrl} />
-                <meta property="og:title" content={`${optie.titel}, Villa Vredestein`} />
-                <meta property="og:description" content={optie.beschrijving} />
+                <meta property="og:title" content={`${tc(optie.titel)}, Villa Vredestein`} />
+                <meta property="og:description" content={tc(optie.beschrijving)} />
                 <meta property="og:image" content={hero.src} />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={`${optie.titel}, Villa Vredestein`} />
-                <meta name="twitter:description" content={optie.beschrijving} />
+                <meta name="twitter:title" content={`${tc(optie.titel)}, Villa Vredestein`} />
+                <meta name="twitter:description" content={tc(optie.beschrijving)} />
                 <meta name="twitter:image" content={hero.src} />
             </Helmet>
 
@@ -61,10 +63,10 @@ const VerblijfDetail = () => {
                 />
                 <div className="vd-hero-overlay" />
                 <div className="vd-hero-content">
-                    <Link to="/verblijven" className="vd-back">← Alle verblijfsopties</Link>
-                    <span className="vd-eyebrow">{optie.icon} {optie.sub}</span>
-                    <h1>{optie.titel}</h1>
-                    <p>{optie.beschrijving}</p>
+                    <Link to="/verblijven" className="vd-back">{tc("← Alle verblijfsopties")}</Link>
+                    <span className="vd-eyebrow">{tc(optie.icon)} {tc(optie.sub)}</span>
+                    <h1>{tc(optie.titel)}</h1>
+                    <p>{tc(optie.beschrijving)}</p>
                 </div>
             </header>
 
@@ -72,16 +74,16 @@ const VerblijfDetail = () => {
             <section className="vd-body reveal-section" ref={addRef}>
                 <div className="vd-inner vd-body-grid">
                     <div className="vd-tekst">
-                        <h2 className="vd-section-title">Over dit verblijf</h2>
+                        <h2 className="vd-section-title">{tc("Over dit verblijf")}</h2>
                         {optie.langeBeschrijving.map((p, i) => (
-                            <p key={i}>{p}</p>
+                            <p key={i}>{tc(p)}</p>
                         ))}
 
-                        <h3 className="vd-kenmerken-titel">Wat is inbegrepen</h3>
+                        <h3 className="vd-kenmerken-titel">{tc("Wat is inbegrepen")}</h3>
                         <ul className="vd-kenmerken">
                             {optie.kenmerken.map((k) => (
                                 <li key={k}>
-                                    <span aria-hidden="true">✓</span> {k}
+                                    <span aria-hidden="true">✓</span> {tc(k)}
                                 </li>
                             ))}
                         </ul>
@@ -89,12 +91,12 @@ const VerblijfDetail = () => {
 
                     <aside className="vd-sidebar">
                         <div className="vd-prijs-kaart">
-                            <span className="vd-prijs-label">Prijs</span>
-                            <strong className="vd-prijs-waarde">{optie.vanaf}</strong>
+                            <span className="vd-prijs-label">{tc("Prijs")}</span>
+                            <strong className="vd-prijs-waarde">{tc(optie.vanaf)}</strong>
                             <button className="vd-cta-btn" onClick={vraagBeschikbaarheid}>
-                                Vraag beschikbaarheid aan
+                                {tc("Vraag beschikbaarheid aan")}
                             </button>
-                            <p className="vd-prijs-note">Persoonlijk antwoord binnen 24 uur.</p>
+                            <p className="vd-prijs-note">{tc("Persoonlijk antwoord binnen 24 uur.")}</p>
                         </div>
                     </aside>
                 </div>
@@ -104,13 +106,13 @@ const VerblijfDetail = () => {
             {rest.length > 0 && (
                 <section className="vd-galerij reveal-section" ref={addRef}>
                     <div className="vd-inner">
-                        <h2 className="vd-section-title">Foto&apos;s</h2>
+                        <h2 className="vd-section-title">{tc("Foto's")}</h2>
                         <div className="vd-galerij-grid">
                             {rest.map((img) => (
                                 <div key={img.src} className="vd-galerij-item">
                                     <img
                                         src={img.src}
-                                        alt={img.alt}
+                                        alt={tc(img.alt)}
                                         loading="lazy"
                                         style={img.pos ? { objectPosition: img.pos } : undefined}
                                     />

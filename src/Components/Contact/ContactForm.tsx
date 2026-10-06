@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FiMail, FiUser, FiMessageCircle } from "react-icons/fi";
 import Button from "../Buttons/Button";
+import { useContent } from "../../i18n/content";
 
 const ContactForm = ({ onSuccess }) => {
+    const tc = useContent();
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const { t } = useTranslation();
@@ -42,7 +44,7 @@ const ContactForm = ({ onSuccess }) => {
             {/* Netlify vereiste velden */}
             <input type="hidden" name="form-name" value="contact" />
             <input type="hidden" name="subject" value={t("footer.subject")} />
-            <p style={{ display: "none" }} aria-hidden="true"><label>Niet invullen: <input type="text" name="bot-field" tabIndex={-1} autoComplete="off" /></label></p>
+            <p style={{ display: "none" }} aria-hidden="true"><label>{tc("Niet invullen:")} <input type="text" name="bot-field" tabIndex={-1} autoComplete="off" /></label></p>
 
             <div className="input-icon-wrapper">
                 <label htmlFor="cf-naam" className="visually-hidden">{t("contact.form.name")}</label>
@@ -89,7 +91,7 @@ const ContactForm = ({ onSuccess }) => {
                 disabled={loading}
             />
 
-            {error && <p className="error-message" role="alert">❌ {error}</p>}
+            {error && <p className="error-message" role="alert">❌ {tc(error)}</p>}
         </form>
     );
 };

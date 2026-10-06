@@ -5,8 +5,10 @@ import { useTranslation } from "react-i18next";
 import { CATEGORIEEN, FOTOS } from "../../Data/galerijFotos";
 import NotFound from "./NotFound";
 import "./GalerijVilla.css";
+import { useContent } from "../../i18n/content";
 
 const GalerijCategorie = () => {
+    const tc = useContent();
     const { i18n } = useTranslation();
     const langCode = i18n.language?.split("-")[0] || "nl";
     const { categorie } = useParams<{ categorie: string }>();
@@ -56,32 +58,32 @@ const GalerijCategorie = () => {
         <main className="galerij-villa-page">
             <Helmet>
                 <html lang={langCode} />
-                <title>{`${cat.label}, Galerij Villa Vredestein`}</title>
-                <meta name="description" content={cat.intro} />
+                <title>{`${tc(cat.label)}, ${tc("Galerij")} Villa Vredestein`}</title>
+                <meta name="description" content={tc(cat.intro)} />
                 <link rel="canonical" href={canonicalUrl} />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content={canonicalUrl} />
-                <meta property="og:title" content={`${cat.label}, Galerij Villa Vredestein`} />
-                <meta property="og:description" content={cat.intro} />
+                <meta property="og:title" content={`${tc(cat.label)}, ${tc("Galerij")} Villa Vredestein`} />
+                <meta property="og:description" content={tc(cat.intro)} />
                 <meta property="og:image" content="https://villavredestein.com/og-image.jpg" />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
                 <meta property="og:image:type" content="image/jpeg" />
-                <meta property="og:image:alt" content="Villa Vredestein, historische villa uit 1906 in Driebergen-Rijsenburg" />
+                <meta property="og:image:alt" content={tc("Villa Vredestein, historische villa uit 1906 in Driebergen-Rijsenburg")} />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={`${cat.label}, Galerij Villa Vredestein`} />
-                <meta name="twitter:description" content={cat.intro} />
+                <meta name="twitter:title" content={`${tc(cat.label)}, ${tc("Galerij")} Villa Vredestein`} />
+                <meta name="twitter:description" content={tc(cat.intro)} />
                 <meta name="twitter:image" content="https://villavredestein.com/og-image.jpg" />
             </Helmet>
 
             <header className="gv-header">
-                <Link to="/galerij" className="gv-back-link">← Alle categorieën</Link>
-                <h1>{cat.label}</h1>
-                <p>{cat.intro}</p>
+                <Link to="/galerij" className="gv-back-link">{tc("← Alle categorieën")}</Link>
+                <h1>{tc(cat.label)}</h1>
+                <p>{tc(cat.intro)}</p>
             </header>
 
-            <nav className="gv-filter" aria-label="Andere categorieën">
+            <nav className="gv-filter" aria-label={tc("Andere categorieën")}>
                 {CATEGORIEEN.map((c) => (
                     <Link
                         key={c.slug}
@@ -89,7 +91,7 @@ const GalerijCategorie = () => {
                         className={`gv-filter-btn ${c.slug === cat.slug ? "active" : ""}`}
                         aria-current={c.slug === cat.slug ? "page" : undefined}
                     >
-                        {c.label}
+                        {tc(c.label)}
                     </Link>
                 ))}
             </nav>
@@ -103,13 +105,13 @@ const GalerijCategorie = () => {
                         onClick={() => open(i)}
                         onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && open(i)}
                         tabIndex={0}
-                        aria-label={`${f.caption}, klik om te vergroten`}
+                        aria-label={`${tc(f.caption)}, ${tc("klik om te vergroten")}`}
                     >
                         <div className="gv-img-wrap">
-                            <img src={f.src} alt={f.caption} loading="lazy" decoding="async" />
+                            <img src={f.src} alt={tc(f.caption)} loading="lazy" decoding="async" />
                             <div className="gv-overlay" aria-hidden="true">
-                                <span className="gv-cat">{f.cat}</span>
-                                <p className="gv-caption">{f.caption}</p>
+                                <span className="gv-cat">{tc(f.cat)}</span>
+                                <p className="gv-caption">{tc(f.caption)}</p>
                                 <span className="gv-zoom">⊕</span>
                             </div>
                         </div>
@@ -122,24 +124,24 @@ const GalerijCategorie = () => {
                     className="gvlb-overlay"
                     role="dialog"
                     aria-modal="true"
-                    aria-label={`Foto: ${foto.caption}`}
+                    aria-label={`${tc("Foto")}: ${tc(foto.caption)}`}
                     onClick={(e) => e.target === e.currentTarget && close()}
                 >
                     <div className="gvlb-box" ref={lightboxRef} tabIndex={-1}>
-                        <button className="gvlb-close" onClick={close} aria-label="Sluiten">✕</button>
+                        <button className="gvlb-close" onClick={close} aria-label={tc("Sluiten")}>✕</button>
                         <div className="gvlb-img-wrap">
-                            <img src={foto.src} alt={foto.caption} className="gvlb-img" />
+                            <img src={foto.src} alt={tc(foto.caption)} className="gvlb-img" />
                         </div>
                         <div className="gvlb-info">
-                            <span className="gvlb-cat">{foto.cat}</span>
-                            <h2 className="gvlb-caption">{foto.caption}</h2>
-                            <p className="gvlb-sub">{foto.sub}</p>
-                            {foto.verhaal && <p className="gvlb-verhaal">{foto.verhaal}</p>}
+                            <span className="gvlb-cat">{tc(foto.cat)}</span>
+                            <h2 className="gvlb-caption">{tc(foto.caption)}</h2>
+                            <p className="gvlb-sub">{tc(foto.sub)}</p>
+                            {foto.verhaal && <p className="gvlb-verhaal">{tc(foto.verhaal)}</p>}
                         </div>
-                        <button className="gvlb-nav gvlb-prev" onClick={prev} aria-label="Vorige">‹</button>
-                        <button className="gvlb-nav gvlb-next" onClick={next} aria-label="Volgende">›</button>
+                        <button className="gvlb-nav gvlb-prev" onClick={prev} aria-label={tc("Vorige")}>‹</button>
+                        <button className="gvlb-nav gvlb-next" onClick={next} aria-label={tc("Volgende")}>›</button>
                         <div className="gvlb-counter" aria-live="polite">
-                            {(lightbox ?? 0) + 1} / {fotos.length}
+                            {(lightbox ?? 0) + 1} / {tc(fotos.length)}
                         </div>
                     </div>
                 </div>

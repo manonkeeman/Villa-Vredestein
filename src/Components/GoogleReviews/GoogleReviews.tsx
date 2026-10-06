@@ -2,11 +2,13 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { fetchPlaceDetails } from "../../Helpers/googlePlaces";
 import "./GoogleReviews.css";
+import { useContent } from "../../i18n/content";
 
 const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY as string | undefined;
 const PLACE_ID = import.meta.env.VITE_GOOGLE_PLACE_ID as string | undefined;
 
 export default function GoogleReviews() {
+    const tc = useContent();
     const [place, setPlace] = useState<GooglePlaceResult | null>(null);
     const sectionRef = useRef<HTMLElement>(null);
     const trackRef = useRef<HTMLDivElement>(null);
@@ -61,7 +63,7 @@ export default function GoogleReviews() {
         <section className="gr-section" ref={sectionRef}>
             <div className="gr-inner">
                 <div className="gr-header">
-                    <h2 className="gr-title">Google reviews</h2>
+                    <h2 className="gr-title">{tc("Google reviews")}</h2>
                     {typeof place?.rating === "number" && (
                         <div className="gr-aggregate">
                             <span className="gr-stars" aria-hidden="true">
@@ -70,7 +72,7 @@ export default function GoogleReviews() {
                             <span className="gr-score">{place.rating.toFixed(1)}</span>
                             {typeof place.user_ratings_total === "number" && (
                                 <span className="gr-count">
-                                    ({place.user_ratings_total} review{place.user_ratings_total === 1 ? "" : "s"})
+                                    ({tc(place.user_ratings_total)} {tc("review")}{place.user_ratings_total === 1 ? "" : "s"})
                                 </span>
                             )}
                         </div>
@@ -84,7 +86,7 @@ export default function GoogleReviews() {
                             className="gr-arrow gr-arrow--prev"
                             onClick={() => slide(-1)}
                             disabled={!canPrev}
-                            aria-label="Vorige review"
+                            aria-label={tc("Vorige review")}
                         >
                             <FiChevronLeft />
                         </button>
@@ -94,7 +96,7 @@ export default function GoogleReviews() {
                                     <div className="gr-card-sterren" aria-hidden="true">
                                         {"★".repeat(r.rating)}
                                     </div>
-                                    <p className="gr-card-tekst">&quot;{r.text}&quot;</p>
+                                    <p className="gr-card-tekst">&quot;{tc(r.text)}&quot;</p>
                                     <div className="gr-card-auteur">
                                         {r.profile_photo_url ? (
                                             <img
@@ -107,8 +109,8 @@ export default function GoogleReviews() {
                                             <div className="gr-avatar">{r.author_name.charAt(0)}</div>
                                         )}
                                         <div>
-                                            <strong>{r.author_name}</strong>
-                                            <span>{r.relative_time_description}</span>
+                                            <strong>{tc(r.author_name)}</strong>
+                                            <span>{tc(r.relative_time_description)}</span>
                                         </div>
                                     </div>
                                 </article>
@@ -119,7 +121,7 @@ export default function GoogleReviews() {
                             className="gr-arrow gr-arrow--next"
                             onClick={() => slide(1)}
                             disabled={!canNext}
-                            aria-label="Volgende review"
+                            aria-label={tc("Volgende review")}
                         >
                             <FiChevronRight />
                         </button>
@@ -128,11 +130,11 @@ export default function GoogleReviews() {
 
                 <div className="gr-cta">
                     <a href={writeReviewUrl} target="_blank" rel="noreferrer" className="gr-cta-btn gr-cta-btn--primary">
-                        Schrijf een review
+                        {tc("Schrijf een review")}
                     </a>
                     {place?.url && (
                         <a href={place.url} target="_blank" rel="noreferrer" className="gr-cta-btn">
-                            Bekijk alle reviews →
+                            {tc("Bekijk alle reviews →")}
                         </a>
                     )}
                 </div>

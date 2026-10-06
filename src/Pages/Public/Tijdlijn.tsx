@@ -13,6 +13,7 @@ import ImgSlopen from "../../Assets/Images/rest-slopen.jpg";
 import ImgAmelisweerd from "../../Assets/Images/omg-amelisweerd.jpg";
 import ImgKachelBouw from "../../Assets/Images/rest-kachel-bouw.jpg";
 import ImgMoestuinBloei from "../../Assets/Images/tuin-moestuin-bloei.jpg";
+import { useContent } from "../../i18n/content";
 
 const historisch = [
     {
@@ -164,6 +165,7 @@ const statusLabel = {
 };
 
 function TijdlijnItem({ item, index, globalIndex, expanded, onKlik, innerRef }) {
+    const tc = useContent();
     const isOpen = expanded === globalIndex;
 
     return (
@@ -171,30 +173,30 @@ function TijdlijnItem({ item, index, globalIndex, expanded, onKlik, innerRef }) 
             className={`tijdlijn-item ${index % 2 === 0 ? "links" : "rechts"} fade-trigger`}
             ref={innerRef}
         >
-            <div className="tijdlijn-dot"><span>{item.emoji}</span></div>
+            <div className="tijdlijn-dot"><span>{tc(item.emoji)}</span></div>
 
             <div className={`tijdlijn-kaart ${item.detail ? "kaart-expandable" : ""} ${isOpen ? "kaart-open" : ""}`}>
                 {item.afbeelding && (
                     <div className="tijdlijn-kaart-img-wrap">
                         <img
                             src={item.afbeelding}
-                            alt={item.afbeeldingAlt || item.titel}
+                            alt={tc(item.afbeeldingAlt || item.titel)}
                             loading="lazy"
                             className="tijdlijn-kaart-img"
                         />
                     </div>
                 )}
                 <div className="tijdlijn-kaart-header">
-                    <span className="tijdlijn-datum">{item.datum}</span>
-                    <span className={`tijdlijn-badge badge-${item.status}`}>{statusLabel[item.status]}</span>
+                    <span className="tijdlijn-datum">{tc(item.datum)}</span>
+                    <span className={`tijdlijn-badge badge-${item.status}`}>{tc(statusLabel[item.status])}</span>
                 </div>
-                <h3>{item.titel}</h3>
-                <p className="tijdlijn-preview">{item.tekst}</p>
+                <h3>{tc(item.titel)}</h3>
+                <p className="tijdlijn-preview">{tc(item.tekst)}</p>
 
                 {item.detail && (
                     <div className={`tijdlijn-detail ${isOpen ? "detail-open" : ""}`}>
                         <div className="tijdlijn-detail-inner">
-                            <p>{item.detail}</p>
+                            <p>{tc(item.detail)}</p>
                         </div>
                     </div>
                 )}
@@ -205,7 +207,7 @@ function TijdlijnItem({ item, index, globalIndex, expanded, onKlik, innerRef }) 
                         onClick={() => onKlik(globalIndex)}
                         aria-expanded={isOpen}
                     >
-                        {isOpen ? "Minder lezen" : "Lees meer"}
+                        {isOpen ? tc("Minder lezen") : tc("Lees meer")}
                         <span className={`lees-meer-pijl ${isOpen ? "pijl-omhoog" : ""}`} aria-hidden="true">↓</span>
                     </button>
                 )}
@@ -215,6 +217,7 @@ function TijdlijnItem({ item, index, globalIndex, expanded, onKlik, innerRef }) 
 }
 
 const Tijdlijn = () => {
+    const tc = useContent();
     const { i18n } = useTranslation();
     const langCode = i18n.language?.split("-")[0] || "nl";
     const itemsRef = useRef([]);
@@ -235,31 +238,31 @@ const Tijdlijn = () => {
         <main className="tijdlijn-page">
             <Helmet>
                 <html lang={langCode} />
-                <title>Tijdlijn, Villa Vredestein</title>
-                <meta name="description" content="Van 1906 tot nu: de volledige geschiedenis van Villa Vredestein. De bewoners, de restauratie en de plannen voor de toekomst." />
+                <title>{tc("Tijdlijn, Villa Vredestein")}</title>
+                <meta name="description" content={tc("Van 1906 tot nu: de volledige geschiedenis van Villa Vredestein. De bewoners, de restauratie en de plannen voor de toekomst.")} />
                 <link rel="canonical" href="https://villavredestein.com/tijdlijn" />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://villavredestein.com/tijdlijn" />
-                <meta property="og:title" content="Tijdlijn, Villa Vredestein" />
-                <meta property="og:description" content="Van 1906 tot nu: de volledige geschiedenis van Villa Vredestein. De bewoners, de restauratie en de plannen voor de toekomst." />
+                <meta property="og:title" content={tc("Tijdlijn, Villa Vredestein")} />
+                <meta property="og:description" content={tc("Van 1906 tot nu: de volledige geschiedenis van Villa Vredestein. De bewoners, de restauratie en de plannen voor de toekomst.")} />
                 <meta property="og:image" content="https://villavredestein.com/og-image.jpg" />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
                 <meta property="og:image:type" content="image/jpeg" />
-                <meta property="og:image:alt" content="Villa Vredestein, historische villa in Driebergen-Rijsenburg" />
+                <meta property="og:image:alt" content={tc("Villa Vredestein, historische villa in Driebergen-Rijsenburg")} />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Tijdlijn, Villa Vredestein" />
-                <meta name="twitter:description" content="Van 1906 tot nu: de volledige geschiedenis van Villa Vredestein. De bewoners, de restauratie en de plannen voor de toekomst." />
+                <meta name="twitter:title" content={tc("Tijdlijn, Villa Vredestein")} />
+                <meta name="twitter:description" content={tc("Van 1906 tot nu: de volledige geschiedenis van Villa Vredestein. De bewoners, de restauratie en de plannen voor de toekomst.")} />
                 <meta name="twitter:image" content="https://villavredestein.com/og-image.jpg" />
             </Helmet>
 
             <header className="tijdlijn-header">
-                <h1>Tijdlijn Villa Vredestein</h1>
-                <p>Van 1906 tot nu: de volledige geschiedenis van het pand, de bewoners door de jaren heen, de restauratie en de plannen voor de toekomst.</p>
+                <h1>{tc("Tijdlijn Villa Vredestein")}</h1>
+                <p>{tc("Van 1906 tot nu: de volledige geschiedenis van het pand, de bewoners door de jaren heen, de restauratie en de plannen voor de toekomst.")}</p>
             </header>
 
-            <div className="tijdlijn-sectie-label">📜 Geschiedenis</div>
+            <div className="tijdlijn-sectie-label">{tc("📜 Geschiedenis")}</div>
 
             <div className="tijdlijn-container">
                 <div className="tijdlijn-lijn tijdlijn-lijn--historisch" />
@@ -276,7 +279,7 @@ const Tijdlijn = () => {
                 ))}
             </div>
 
-            <div className="tijdlijn-sectie-label">🔨 Renovatie & toekomst</div>
+            <div className="tijdlijn-sectie-label">{tc("🔨 Renovatie & toekomst")}</div>
 
             <div className="tijdlijn-container">
                 <div className="tijdlijn-lijn" />
