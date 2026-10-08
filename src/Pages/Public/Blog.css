@@ -102,6 +102,36 @@
     border-top: 1px solid #221b12;
 }
 
+.blog-more {
+    margin-bottom: 1.5rem;
+}
+
+.blog-more h2 {
+    font-size: 1rem;
+    color: #fcbc2d;
+    margin: 0 0 0.6rem;
+}
+
+.blog-more ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.blog-more a {
+    color: #e8d8c0;
+    text-decoration: underline;
+    text-decoration-color: rgba(252, 188, 45, 0.5);
+    text-underline-offset: 3px;
+}
+
+.blog-more a:hover {
+    color: #fcbc2d;
+}
+
 .blog-not-found {
     text-align: center;
     padding: 4rem 1rem;

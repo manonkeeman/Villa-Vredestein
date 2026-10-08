@@ -24,6 +24,8 @@
 
 /* Blog card */
 .blog-card {
+    color: inherit; /* is een echte link (<a>), zodat Google de blogpagina's kan volgen */
+    text-decoration: none;
     position: relative;
     display: flex;
     flex-direction: column;

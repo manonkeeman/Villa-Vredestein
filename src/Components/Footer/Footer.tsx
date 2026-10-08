@@ -17,6 +17,7 @@ const Footer = () => {
         { to: "/galerij", label: t("nav.galerij") },
         { to: "/omgeving", label: t("nav.omgeving") },
         { to: "/verblijven", label: t("nav.verblijven") },
+        { to: "/ruimtes", label: "De ruimtes" },
         { to: "/verhaal", label: t("nav.overons") },
         { to: "/about", label: t("nav.about") },
         { to: "/in-de-pers", label: t("nav.indepers") },

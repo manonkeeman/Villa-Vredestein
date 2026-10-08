@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet-async";
 import Button from "../../Components/Buttons/Button";
@@ -147,6 +147,16 @@ const Blog = () => {
                 </div>
 
                 <footer className="blog-footer">
+                    <nav className="blog-more" aria-label={tc("Meer verhalen")}>
+                        <h2>{tc("Meer verhalen")}</h2>
+                        <ul>
+                            {Array.isArray(blogs) && blogs.filter((b) => b.slug !== slug).map((b) => (
+                                <li key={b.slug}>
+                                    <Link to={`/blog/${b.slug}`}>{tc(b.title)}</Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </nav>
                     <Button
                         text={t("about.back")}
                         variant="primary"

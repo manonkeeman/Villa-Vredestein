@@ -13,7 +13,7 @@
   <!-- Home -->
   <url>
     <loc>https://villavredestein.com/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.com/" />
@@ -23,7 +23,7 @@
   <!-- Verblijven (hoogste prioriteit na home) -->
   <url>
     <loc>https://villavredestein.com/verblijven</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
     <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.com/verblijven" />
@@ -33,7 +33,7 @@
   <!-- Verblijven detailpagina's -->
   <url>
     <loc>https://villavredestein.com/verblijven/kamer</loc>
-    <lastmod>2026-08-29</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.com/verblijven/kamer" />
@@ -41,7 +41,7 @@
   </url>
   <url>
     <loc>https://villavredestein.com/verblijven/tijdelijk</loc>
-    <lastmod>2026-08-29</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.com/verblijven/tijdelijk" />
@@ -49,7 +49,7 @@
   </url>
   <url>
     <loc>https://villavredestein.com/verblijven/villa</loc>
-    <lastmod>2026-08-29</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.com/verblijven/villa" />
@@ -57,7 +57,7 @@
   </url>
   <url>
     <loc>https://villavredestein.com/verblijven/fotoproductie</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.com/verblijven/fotoproductie" />
@@ -67,7 +67,7 @@
   <!-- Over ons (canonical slug: /verhaal) -->
   <url>
     <loc>https://villavredestein.com/verhaal</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.com/verhaal" />
@@ -77,7 +77,7 @@
   <!-- Verhalen / About overzicht -->
   <url>
     <loc>https://villavredestein.com/about</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.com/about" />
@@ -88,7 +88,7 @@
   <!-- De Ruimtes -->
   <url>
     <loc>https://villavredestein.com/ruimtes</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.com/ruimtes" />
@@ -98,7 +98,7 @@
   <!-- Omgeving & Locatie -->
   <url>
     <loc>https://villavredestein.com/omgeving</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.com/omgeving" />
@@ -108,7 +108,7 @@
   <!-- In de Pers -->
   <url>
     <loc>https://villavredestein.com/in-de-pers</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.com/in-de-pers" />
@@ -118,7 +118,7 @@
   <!-- Villa Galerij (hoofdnavigatie: Galerij) -->
   <url>
     <loc>https://villavredestein.com/galerij</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.com/galerij" />
@@ -128,7 +128,7 @@
   <!-- Galerij categorieën -->
   <url>
     <loc>https://villavredestein.com/galerij/samenleven</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.com/galerij/samenleven" />
@@ -136,7 +136,7 @@
   </url>
   <url>
     <loc>https://villavredestein.com/galerij/ansichtkaarten</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.com/galerij/ansichtkaarten" />
@@ -144,7 +144,7 @@
   </url>
   <url>
     <loc>https://villavredestein.com/galerij/geschiedenis</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.com/galerij/geschiedenis" />
@@ -152,7 +152,7 @@
   </url>
   <url>
     <loc>https://villavredestein.com/galerij/plattegrond</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.com/galerij/plattegrond" />
@@ -160,7 +160,7 @@
   </url>
   <url>
     <loc>https://villavredestein.com/galerij/de-verbouwing</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.com/galerij/de-verbouwing" />
@@ -170,7 +170,7 @@
   <!-- Tijdlijn -->
   <url>
     <loc>https://villavredestein.com/tijdlijn</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.com/tijdlijn" />
@@ -180,7 +180,7 @@
   <!-- Contact -->
   <url>
     <loc>https://villavredestein.com/contact</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.com/contact" />
@@ -190,7 +190,7 @@
   <!-- Blog: Villa Vredestein -->
   <url>
     <loc>https://villavredestein.com/blog/villa-vredestein</loc>
-    <lastmod>2024-01-01</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.com/blog/villa-vredestein" />
@@ -200,7 +200,7 @@
   <!-- Blog: Geschiedenis -->
   <url>
     <loc>https://villavredestein.com/blog/geschiedenis</loc>
-    <lastmod>2024-01-15</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.com/blog/geschiedenis" />
@@ -210,7 +210,7 @@
   <!-- Blog: Restauratie -->
   <url>
     <loc>https://villavredestein.com/blog/restauratie</loc>
-    <lastmod>2024-02-01</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.com/blog/restauratie" />
@@ -220,7 +220,7 @@
   <!-- Blog: Omgeving -->
   <url>
     <loc>https://villavredestein.com/blog/omgeving</loc>
-    <lastmod>2024-02-15</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.65</priority>
     <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.com/blog/omgeving" />
@@ -230,7 +230,7 @@
   <!-- Blog: Maxim & Manon -->
   <url>
     <loc>https://villavredestein.com/blog/over-ons</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.65</priority>
     <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.com/blog/over-ons" />
@@ -241,7 +241,7 @@
   <!-- Blog: Carpe Diem Design -->
   <url>
     <loc>https://villavredestein.com/blog/carpe-diem-design</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
     <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.com/blog/carpe-diem-design" />
@@ -251,7 +251,7 @@
   <!-- Blog: Bezoek & Inspiratie -->
   <url>
     <loc>https://villavredestein.com/blog/bezoek-inspiratie</loc>
-    <lastmod>2024-03-15</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="nl" href="https://villavredestein.com/blog/bezoek-inspiratie" />

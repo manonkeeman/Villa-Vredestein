@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet-async";
 import "./About.css";
@@ -25,7 +25,6 @@ const imageMap = {
 
 const About = () => {
     const tc = useContent();
-    const navigate = useNavigate();
     const { t, i18n } = useTranslation();
     const langCode = i18n.language?.split("-")[0] || "nl";
 
@@ -68,14 +67,11 @@ const About = () => {
                 {Array.isArray(blogs) && blogs.map((blog) => {
                     const image = imageMap[blog.slug];
                     return (
-                        <article
+                        <Link
                             key={blog.slug}
+                            to={`/blog/${blog.slug}`}
                             className="blog-card"
-                            onClick={() => navigate(`/blog/${blog.slug}`)}
-                            role="button"
-                            tabIndex={0}
                             aria-label={tc(blog.title)}
-                            onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && navigate(`/blog/${blog.slug}`)}
                         >
                             {image && (
                                 <div
@@ -95,7 +91,7 @@ const About = () => {
                                     {t("about.readMore")} →
                                 </span>
                             </div>
-                        </article>
+                        </Link>
                     );
                 })}
             </section>
