@@ -53,6 +53,9 @@ const SECTIONS: Section[] = [
         accent: "#e0853a",
         showAll: true,
         pullQuote: "Bring worlds together in one.",
+        links: [
+            { href: "https://carpediem-website.netlify.app/", label: "Bekijk Carpe Diem →" },
+        ],
         extraImages: [
             { src: ImgCarpeDiemTekening, alt: "Carpe Diem, handgetekend", ar: 3024 / 4032 },
             { src: ImgCafeRacerStaand, alt: "Maxims cafe racer", ar: 828 / 1472 },
