@@ -26,6 +26,14 @@ import Krant1935    from "../../Assets/Images/Krant1935.jpg";
 import Krant1954    from "../../Assets/Images/Krant1954.jpg";
 import Krant1959    from "../../Assets/Images/Krant1959.jpg";
 import Krant1965    from "../../Assets/Images/Krant1965.jpg";
+import Krant1912Opening   from "../../Assets/Images/krant-1912-opening-het-nieuws.jpg";
+import Krant1912Lukas     from "../../Assets/Images/krant-1912-lukas-rustoord.jpg";
+import Krant1915Lukas     from "../../Assets/Images/krant-1915-lukas-jaarverslag.jpg";
+import Krant1937          from "../../Assets/Images/krant-1937-het-nieuws.jpg";
+import Courant1930        from "../../Assets/Images/courant-1930-pension-vredestein.jpg";
+import Courant1932        from "../../Assets/Images/courant-1932-pension-vredestein.jpg";
+import Krant1940Agrippina from "../../Assets/Images/krant-1940-agrippina-de-bruin.jpg";
+import Krant1940Deutsche  from "../../Assets/Images/krant-1940-deutsche-zeitung-advertentie.jpg";
 import { useContent } from "../../i18n/content";
 
 const PERS_ITEMS = [
@@ -58,6 +66,36 @@ const PERS_ITEMS = [
         url: null,
         tag: "Historisch",
         imgs: [KrantReclame, Krant1912, Krant1913, Krant1916, Krant1918, Krant1919, Krant1921, Krant1926, Krant1927, Krant1928, Krant1930, Krant1932, Krant1934, Krant1935],
+    },
+    {
+        medium: "Regionale pers",
+        sectie: "ARCHIEF",
+        datum: "1912-1937",
+        kop: "Het Christelijk Rustoord Vredestein",
+        samenvatting: "De opening in juni 1912 stond in Het Nieuws. Een oproep aan de leden van ziekenfonds Lukas noemt Vredestein hun eerste rustoord, met plaats voor een twintigtal gasten, directeur W. Sluijter en een pensionprijs van f 1,25 per dag. In het jaarverslag van 1915 staat dat het bestuur het lidmaatschap van het rustoord zo nodig mag opzeggen, en in 1937 blikt Het Nieuws terug op 25 jaar rusthuis.",
+        url: null,
+        tag: "Historisch",
+        imgs: [Krant1912Opening, Krant1912Lukas, Krant1915Lukas, Krant1937],
+    },
+    {
+        medium: "Pension- en Woningcourant",
+        sectie: "ARCHIEF",
+        datum: "1930-1932",
+        kop: "Pension Villa Vredestein in de courant",
+        samenvatting: "In de Pension- en Woningcourant voor Driebergen-Rijsenburg-Doorn staat Pension Villa Vredestein in september 1930 als zomer- en winterpension van de Dames van den Bosch, nog aan Hoofdstraat 83. In december 1932 staat het pand er met een foto onder het nieuwe huisnummer 147.",
+        url: null,
+        tag: "Historisch",
+        imgs: [Courant1930, Courant1932],
+    },
+    {
+        medium: "Regionale pers",
+        sectie: "ARCHIEF",
+        datum: "1940",
+        kop: "Advertenties van J.H.L. de Bruin",
+        samenvatting: "In juni en juli 1940 adverteert verzekeringsagent J.H.L. de Bruin met Hoofdstraat 147 in Driebergen, telefoon 363, voor de Agrippina-verzekeringsgroep uit Keulen: eerst in het Avondblad van het Algemeen Handelsblad, daarna in de Deutsche Zeitung in den Niederlanden.",
+        url: null,
+        tag: "Historisch",
+        imgs: [Krant1940Agrippina, Krant1940Deutsche],
     },
     {
         medium: "Regionale pers",
