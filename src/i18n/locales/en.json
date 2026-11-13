@@ -12,7 +12,7 @@
   },
   "home": {
     "title": "Welcome to Villa Vredestein",
-    "p1": "Built in 1906, Villa Vredestein breathes the charm of a bygone era. High ceilings, original details and a soul you feel the moment you step inside.",
+    "p1": "Built in 1905, Villa Vredestein breathes the charm of a bygone era. High ceilings, original details and a soul you feel the moment you step inside.",
     "p2": "Yet this is not a house frozen in time. Behind the nostalgic facade lies a fresh spirit. We modernise with respect for the past, so this house not only preserves memories but also makes room for new stories.",
     "p3": "Original elements are preserved wherever possible, not out of nostalgia, but out of love for craftsmanship. This creates a harmony between old and new.",
     "p4": "Villa Vredestein carries the past with pride and looks to the future. Discover what makes this unique place so special.",
@@ -46,11 +46,11 @@
     {
       "slug": "villa-vredestein",
       "title": "Villa Vredestein: From Run-Down Student House to Restored Pride",
-      "summary": "Built in 1906, used as a student house for years, now a work in progress. The honest story of how Villa Vredestein began a second life in 2020.",
+      "summary": "Built in 1905, used as a student house for years, now a work in progress. The honest story of how Villa Vredestein began a second life in 2020.",
       "date": "January 1, 2024",
       "readTime": "4 min",
       "content": [
-        "On Hoofdstraat in Driebergen-Rijsenburg stands a property that still has its best years ahead of it. Villa Vredestein, built in 1906 as a reformed-Christian guesthouse, is currently experiencing a second life. That life began in 2020, in the middle of a global pandemic.",
+        "On Hoofdstraat in Driebergen-Rijsenburg stands a property that still has its best years ahead of it. Villa Vredestein, built in 1905 as a reformed-Christian guesthouse, is currently experiencing a second life. That life began in 2020, in the middle of a global pandemic.",
         "When we bought the property, it was far from the villa it had once been. For years it had served as a student house for seven students from IVA, the private automotive school in Driebergen. The walls had seen it, the floors had felt it, and the character of the building was buried deep under layers of neglect. But those who looked closely saw what lay beneath. We saw potential.",
         "The renovation is on a scale you only understand when you are in the middle of it. From cellar to attic, from the driveway to the large barn planned in the back garden, everything is being tackled, everything is being restored. The single-brick walls, the high ceilings, the original wooden floors: these are details you cannot replicate, you can only save them if you take the time and have the patience.",
         "And that renovation does not always go according to plan. There are disappointments, moments when you open something up and find what you would rather not have found. But there are also the most wonderful surprises: moments when the property gives something back that you did not expect. That interplay is what makes it special. It makes it honest.",
@@ -64,7 +64,7 @@
       "date": "January 15, 2024",
       "readTime": "4 min",
       "content": [
-        "In the early twentieth century, Driebergen was a popular destination for wealthy Amsterdammers and Utrechters seeking a country retreat away from the hustle and bustle of the city. Villa Vredestein was built in 1906 as exactly such a retreat, a place of rest, nature and reflection.",
+        "In the early twentieth century, Driebergen was a popular destination for wealthy Amsterdammers and Utrechters seeking a country retreat away from the hustle and bustle of the city. Villa Vredestein was built in 1905 as exactly such a retreat, a place of rest, nature and reflection.",
         "Over the years the property has been inhabited by various owners, each contributing their own story to the history of the house. From patricians to artists, from businessmen to academics. Villa Vredestein has welcomed people from all walks of life.",
         "Through the decades the property retained its character as a special place: a point of rest amid the changes happening in the world beyond. The thick walls and surrounding greenery always offered a feeling of shelter and a sense of coming home.",
         "Now, more than a century later, Manon and Maxim are bringing a new chapter to this rich story. They carry on the tradition of hospitality and build on the foundations laid by generations before them. The history of Villa Vredestein is alive and still growing."
@@ -153,7 +153,7 @@
     }
   ],
   "footer": {
-    "tagline": "A historic villa from 1906 in the heart of Driebergen-Rijsenburg.",
+    "tagline": "A historic villa from 1905 in the heart of Driebergen-Rijsenburg.",
     "links": "Navigation",
     "contactTitle": "Contact",
     "address": "Hoofdstraat 147",

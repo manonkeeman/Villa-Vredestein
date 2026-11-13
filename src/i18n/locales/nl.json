@@ -12,7 +12,7 @@
   },
   "home": {
     "title": "Welkom bij Villa Vredestein",
-    "p1": "Gebouwd in 1906. Hoge plafonds, originele details en een ziel die je voelt zodra je binnenstapt.",
+    "p1": "Gebouwd in 1905. Hoge plafonds, originele details en een ziel die je voelt zodra je binnenstapt.",
     "p2": "We restaureren met respect voor het verleden, zodat dit huis niet alleen herinneringen bewaart maar ook ruimte biedt aan nieuwe verhalen.",
     "p3": "Originele elementen blijven behouden waar mogelijk. Niet uit nostalgie, maar uit liefde voor vakmanschap.",
     "p4": "Ontdek wat Villa Vredestein zo bijzonder maakt.",
@@ -46,11 +46,11 @@
     {
       "slug": "villa-vredestein",
       "title": "Villa Vredestein: Van Studentenhuis tot Gerestaureerde Trots",
-      "summary": "Gebouwd in 1906, jarenlang studentenhuis, nu werk in uitvoering. Het eerlijke verhaal van hoe Villa Vredestein in 2020 een tweede leven begon.",
+      "summary": "Gebouwd in 1905, jarenlang studentenhuis, nu werk in uitvoering. Het eerlijke verhaal van hoe Villa Vredestein in 2020 een tweede leven begon.",
       "date": "1 januari 2024",
       "readTime": "3 min",
       "content": [
-        "Villa Vredestein, gebouwd in 1906 als hervormd-christelijk pension, begon in 2020 een tweede leven. Midden in een pandemie, met een sleutel die in het slot sloeg.",
+        "Villa Vredestein, gebouwd in 1905 als hervormd-christelijk pension, begon in 2020 een tweede leven. Midden in een pandemie, met een sleutel die in het slot sloeg.",
         "Het pand had jarenlang dienst gedaan als studentenhuis voor de IVA. De muren hadden het gezien, de vloeren hadden het gevoeld. Maar wie goed keek, zag wat eronder lag.",
         "Van kelder tot vliering pakt Manon dit pand aan. Niet om het te slopen, maar om terug te geven wat het altijd was: een plek om trots op te zijn."
       ]
@@ -62,7 +62,7 @@
       "date": "15 januari 2024",
       "readTime": "3 min",
       "content": [
-        "In 1906 liet burgemeester Baltus Koker van Krimpen aan den IJssel dit buitenhuis bouwen aan de Hoofdstraat in Driebergen. Een plek van rust, natuur en bezinning.",
+        "In 1905 liet burgemeester Baltus Koker van Krimpen aan den IJssel dit buitenhuis bouwen aan de Hoofdstraat in Driebergen. Een plek van rust, natuur en bezinning.",
         "Het pand kende tientallen bewoners: een christelijk logement, een pension, studenten. Elk tijdperk liet zijn sporen na in de muren en vloeren.",
         "Manon en Maxim schrijven nu een nieuw hoofdstuk. Ze bouwen voort op de fundamenten van meer dan een eeuw Driebergs leven."
       ]
@@ -145,7 +145,7 @@
     }
   ],
   "footer": {
-    "tagline": "Een historische villa uit 1906 in het hart van Driebergen-Rijsenburg.",
+    "tagline": "Een historische villa uit 1905 in het hart van Driebergen-Rijsenburg.",
     "links": "Navigatie",
     "contactTitle": "Contact",
     "address": "Hoofdstraat 147",

@@ -115,7 +115,7 @@ const Verblijven = () => {
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
                 <meta property="og:image:type" content="image/jpeg" />
-                <meta property="og:image:alt" content={tc("Villa Vredestein, historische villa uit 1906 in Driebergen-Rijsenburg")} />
+                <meta property="og:image:alt" content={tc("Villa Vredestein, historische villa uit 1905 in Driebergen-Rijsenburg")} />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={tc("Verblijven in Villa Vredestein, Driebergen-Rijsenburg")} />
@@ -138,7 +138,7 @@ const Verblijven = () => {
             {/* Stats strip */}
             <div className="verb-stats-strip">
                 {[
-                    { num: "1906", label: "Gebouwd" },
+                    { num: "1905", label: "Gebouwd" },
                     { num: "292 m²", label: "Woonoppervlak" },
                     { num: "6", label: "Slaapkamers" },
                     { num: "680 m²", label: "Perceel" },
@@ -194,7 +194,7 @@ const Verblijven = () => {
                             { icon: "🚗", label: "Parkeerplaats" },
                             { icon: "🌳", label: "Tuin & terras" },
                             { icon: "🌿", label: "Moestuin" },
-                            { icon: "🏛️", label: "Historisch pand (1906)" },
+                            { icon: "🏛️", label: "Historisch pand (1905)" },
                             { icon: "🔑", label: "Eigen sleutel" },
                             { icon: "🤝", label: "Persoonlijk contact" },
                         ].map((c) => (

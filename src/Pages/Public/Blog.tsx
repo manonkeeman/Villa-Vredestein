@@ -85,7 +85,7 @@ const Blog = () => {
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
                 <meta property="og:image:type" content="image/jpeg" />
-                <meta property="og:image:alt" content={tc("Villa Vredestein, historische villa uit 1906 in Driebergen-Rijsenburg")} />
+                <meta property="og:image:alt" content={tc("Villa Vredestein, historische villa uit 1905 in Driebergen-Rijsenburg")} />
                 <meta property="og:type" content="article" />
                 <meta property="og:url" content={canonicalUrl} />
                 <meta property="article:published_time" content={blog.date} />

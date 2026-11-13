@@ -53,7 +53,7 @@ const Contact = () => {
                         <FiMapPin className="ct-info-icon" aria-hidden="true" />
                         <div>
                             <h3>{tc("Bezoek ons")}</h3>
-                            <p>{tc("Hoofdstraat 147")}<br />{tc("3975 ED Driebergen-Rijsenburg")}</p>
+                            <p>{tc("Hoofdstraat 147")}<br />{tc("3971 KJ Driebergen-Rijsenburg")}</p>
                         </div>
                     </div>
                     <a

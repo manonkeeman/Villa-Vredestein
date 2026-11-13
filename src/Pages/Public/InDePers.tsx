@@ -34,7 +34,7 @@ const PERS_ITEMS = [
         sectie: "BOEK",
         datum: "2024",
         kop: "Villa Vredestein in een boek",
-        samenvatting: "Villa Vredestein heeft een plek gekregen in een publicatie. Het historische pand aan de Hoofdstraat 147 in Driebergen-Rijsenburg, gebouwd in 1906, wordt beschreven als een bijzonder voorbeeld van villabouw uit het begin van de twintigste eeuw.",
+        samenvatting: "Villa Vredestein heeft een plek gekregen in een publicatie. Het historische pand aan de Hoofdstraat 147 in Driebergen-Rijsenburg, gebouwd in 1905, wordt beschreven als een bijzonder voorbeeld van villabouw uit het begin van de twintigste eeuw.",
         url: null,
         tag: "Publicatie",
         imgs: [PersBoek],
@@ -153,7 +153,7 @@ const InDePers = () => {
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
                 <meta property="og:image:type" content="image/jpeg" />
-                <meta property="og:image:alt" content={tc("Villa Vredestein, historische villa uit 1906 in Driebergen-Rijsenburg")} />
+                <meta property="og:image:alt" content={tc("Villa Vredestein, historische villa uit 1905 in Driebergen-Rijsenburg")} />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={tc("In de Pers, Villa Vredestein")} />

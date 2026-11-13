@@ -12,7 +12,7 @@
   },
   "home": {
     "title": "Willkommen in der Villa Vredestein",
-    "p1": "Die 1906 erbaute Villa Vredestein atmet den Charme vergangener Zeiten. Hohe Decken, originale Details und eine Seele, die man spürt, sobald man eintritt.",
+    "p1": "Die 1905 erbaute Villa Vredestein atmet den Charme vergangener Zeiten. Hohe Decken, originale Details und eine Seele, die man spürt, sobald man eintritt.",
     "p2": "Dennoch ist dies kein Haus, das in der Zeit eingefroren ist. Hinter der nostalgischen Fassade steckt ein frischer Geist. Wir modernisieren mit Respekt vor der Vergangenheit, damit dieses Haus nicht nur Erinnerungen bewahrt, sondern auch Raum für neue Geschichten schafft.",
     "p3": "Die originalen Elemente werden wo immer möglich erhalten, nicht aus Nostalgie, sondern aus Liebe zum Handwerk. So entsteht eine Harmonie zwischen Alt und Neu.",
     "p4": "Die Villa Vredestein trägt die Vergangenheit mit Stolz und blickt in die Zukunft. Entdecken Sie, was diesen einzigartigen Ort so besonders macht.",
@@ -46,11 +46,11 @@
     {
       "slug": "villa-vredestein",
       "title": "Villa Vredestein: Vom Abgewohnten Studentenhaus zur Restaurierten Perle",
-      "summary": "1906 erbaut, jahrelang Studentenwohnheim, heute ein laufendes Projekt. Die ehrliche Geschichte, wie Villa Vredestein 2020 ein zweites Leben begann.",
+      "summary": "1905 erbaut, jahrelang Studentenwohnheim, heute ein laufendes Projekt. Die ehrliche Geschichte, wie Villa Vredestein 2020 ein zweites Leben begann.",
       "date": "1. Januar 2024",
       "readTime": "4 Min.",
       "content": [
-        "An der Hoofdstraat in Driebergen-Rijsenburg steht ein Gebäude, dessen beste Jahre noch vor ihm liegen. Die Villa Vredestein, 1906 als reformiert-christliches Pension erbaut, erlebt derzeit ein zweites Leben. Dieses Leben begann 2020, mitten in der Unsicherheit einer weltweiten Pandemie.",
+        "An der Hoofdstraat in Driebergen-Rijsenburg steht ein Gebäude, dessen beste Jahre noch vor ihm liegen. Die Villa Vredestein, 1905 als reformiert-christliches Pension erbaut, erlebt derzeit ein zweites Leben. Dieses Leben begann 2020, mitten in der Unsicherheit einer weltweiten Pandemie.",
         "Als wir das Gebäude kauften, war es weit entfernt von der Villa, die es einmal gewesen war. Jahrelang hatte es als Studentenwohnheim für sieben Studenten der IVA, der privaten Automobilschule in Driebergen, gedient. Die Wände hatten es gesehen, die Böden hatten es gespürt, und der Charakter des Gebäudes war tief unter Schichten von Vernachlässigung begraben. Aber wer genau hinsah, erkannte, was darunter lag. Wir sahen Potenzial.",
         "Die Renovierung ist in einem Ausmaß, das man erst versteht, wenn man mittendrin steckt. Vom Keller bis zum Dachboden, von der Einfahrt bis zur geplanten großen Scheune im Hintergarten, alles wird angegangen, alles wird wiederhergestellt. Die einschaligen Wände, die hohen Decken, die originalen Holzböden: das sind Details, die man nicht nachmachen kann, die man nur retten kann, wenn man sich die Zeit und Geduld nimmt.",
         "Und diese Renovierung läuft nicht immer nach Plan. Es gibt Enttäuschungen, Momente, in denen man etwas aufbricht und findet, was man lieber nicht gefunden hätte. Aber es gibt auch Überraschungen der schönsten Art: Momente, in denen das Gebäude einem etwas zurückgibt, das man nicht erwartet hat. Dieses Wechselspiel macht es besonders. Es macht es ehrlich.",
@@ -64,7 +64,7 @@
       "date": "15. Januar 2024",
       "readTime": "4 Min.",
       "content": [
-        "Zu Beginn des zwanzigsten Jahrhunderts war Driebergen ein beliebtes Ziel für wohlhabende Amsterdamer und Utrechter, die einen Landsitz abseits des Stadtgetümmels suchten. Die Villa Vredestein wurde 1906 als genau ein solcher Rückzugsort erbaut, ein Ort der Ruhe, der Natur und der Besinnung.",
+        "Zu Beginn des zwanzigsten Jahrhunderts war Driebergen ein beliebtes Ziel für wohlhabende Amsterdamer und Utrechter, die einen Landsitz abseits des Stadtgetümmels suchten. Die Villa Vredestein wurde 1905 als genau ein solcher Rückzugsort erbaut, ein Ort der Ruhe, der Natur und der Besinnung.",
         "Im Laufe der Jahre wurde das Gebäude von verschiedenen Eigentümern bewohnt, die jeweils ihre eigene Geschichte zur Geschichte des Hauses beitrugen. Von Patriziern bis zu Künstlern, von Geschäftsleuten bis zu Akademikern, die Villa Vredestein hat Menschen aus allen gesellschaftlichen Schichten willkommen geheißen.",
         "Im Laufe der Jahrzehnte behielt das Gebäude seinen Charakter als besonderer Ort: ein Ruhepunkt inmitten der Veränderungen in der Welt draußen. Die dicken Mauern und das umliegende Grün boten immer ein Gefühl der Geborgenheit und des Zuhause-Seins.",
         "Nun, mehr als ein Jahrhundert später, schreiben Manon und Maxim ein neues Kapitel in dieser reichen Geschichte. Sie setzen die Tradition der Gastfreundschaft fort und bauen auf den Fundamenten auf, die von Generationen vor ihnen gelegt wurden. Die Geschichte der Villa Vredestein ist lebendig und wächst weiter."
@@ -153,7 +153,7 @@
     }
   ],
   "footer": {
-    "tagline": "Eine historische Villa aus dem Jahr 1906 im Herzen von Driebergen-Rijsenburg.",
+    "tagline": "Eine historische Villa aus dem Jahr 1905 im Herzen von Driebergen-Rijsenburg.",
     "links": "Navigation",
     "contactTitle": "Kontakt",
     "address": "Hoofdstraat 147",

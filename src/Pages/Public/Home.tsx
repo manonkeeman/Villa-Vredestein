@@ -25,7 +25,7 @@ const villaCardIcon = L.divIcon({
 });
 
 const KENMERKEN = [
-    { label: "1906", sub: "Gebouwd" },
+    { label: "1905", sub: "Gebouwd" },
     { label: "6", sub: "Slaapkamers" },
     { label: "Heuvelrug", sub: "Voor de deur" },
     { label: "15 min", sub: "Utrecht Centraal" },
@@ -122,23 +122,23 @@ const Home = () => {
             <Helmet>
                 <html lang={langCode} />
                 <title>{tc("Villa Vredestein, Driebergen-Rijsenburg")}</title>
-                <meta name="description" content={tc("Villa Vredestein is een historische villa uit 1906 in het hart van Driebergen-Rijsenburg. Verblijf in een bijzonder pand op de Utrechtse Heuvelrug.")} />
+                <meta name="description" content={tc("Villa Vredestein is een historische villa uit 1905 in het hart van Driebergen-Rijsenburg. Verblijf in een bijzonder pand op de Utrechtse Heuvelrug.")} />
                 <link rel="canonical" href="https://villavredestein.com/" />
                 <link rel="preload" as="image" href={HeroImgMobiel} media="(max-width: 768px)" {...{ fetchpriority: "high" }} />
                 <link rel="preload" as="image" href={HeroImg} media="(min-width: 769px)" {...{ fetchpriority: "high" }} />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://villavredestein.com/" />
                 <meta property="og:title" content={tc("Villa Vredestein, Driebergen-Rijsenburg")} />
-                <meta property="og:description" content={tc("Historische villa uit 1906 op de Utrechtse Heuvelrug. Verblijf, verhuur en restauratie in het hart van Driebergen-Rijsenburg.")} />
+                <meta property="og:description" content={tc("Historische villa uit 1905 op de Utrechtse Heuvelrug. Verblijf, verhuur en restauratie in het hart van Driebergen-Rijsenburg.")} />
                 <meta property="og:image" content="https://villavredestein.com/og-image.jpg" />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
                 <meta property="og:image:type" content="image/jpeg" />
-                <meta property="og:image:alt" content={tc("Villa Vredestein, historische villa uit 1906 in Driebergen-Rijsenburg")} />
+                <meta property="og:image:alt" content={tc("Villa Vredestein, historische villa uit 1905 in Driebergen-Rijsenburg")} />
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={tc("Villa Vredestein, Driebergen-Rijsenburg")} />
-                <meta name="twitter:description" content={tc("Historische villa uit 1906. Verblijf op de Utrechtse Heuvelrug.")} />
+                <meta name="twitter:description" content={tc("Historische villa uit 1905. Verblijf op de Utrechtse Heuvelrug.")} />
                 <meta name="twitter:image" content="https://villavredestein.com/og-image.jpg" />
             </Helmet>
 
@@ -155,7 +155,7 @@ const Home = () => {
                     <span className="hero-eyebrow">{tc("Driebergen-Rijsenburg · Utrechtse Heuvelrug")}</span>
                     <h1 className="hero-title">{tc("Villa Vredestein")}</h1>
                     <p className="hero-sub">
-                        {tc("Een historische villa uit 1906 in het hart van Driebergen-Rijsenburg, op de Utrechtse Heuvelrug. Verblijf, restauratie en een open deur.")}
+                        {tc("Een historische villa uit 1905 in het hart van Driebergen-Rijsenburg, op de Utrechtse Heuvelrug. Verblijf, restauratie en een open deur.")}
                     </p>
                     <div className="hero-ctas">
                         <button className="hero-btn-primary" onClick={() => navigate("/verhaal")}>
@@ -194,7 +194,7 @@ const Home = () => {
                     />
                 </div>
                 <div className="intro-text-col">
-                    <span className="section-eyebrow">{tc("Gebouwd in 1906")}</span>
+                    <span className="section-eyebrow">{tc("Gebouwd in 1905")}</span>
                     <h2 className="section-title">{tc("Een huis met meer dan een eeuw verhaal")}</h2>
                     <p>
                         {tc("Villa Vredestein werd gebouwd als buitenverblijf voor de burgemeester van Krimpen aan den IJssel. Sindsdien heeft het pand talloze bewoners verwelkomd. Van christelijk pension tot studentenhuis, van verbouwproject tot wat het wordt: een plek om trots op te zijn.")}

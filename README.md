@@ -1,8 +1,10 @@
 # Villa Vredestein — website
 
-Marketing- en informatiesite voor Villa Vredestein, een historische villa uit 1906 in Driebergen-Rijsenburg. Statische React-site: geen login, geen dashboard, geen backend. De studentenverhuur-app die hier ooit aan gekoppeld was, is verwijderd en wordt losstaand verder ontwikkeld.
+Marketing- en informatiesite voor Villa Vredestein, een historische villa uit 1905 in Driebergen-Rijsenburg. Statische React-site: geen login, geen dashboard, geen backend. De studentenverhuur-app die hier ooit aan gekoppeld was, is verwijderd en wordt losstaand verder ontwikkeld.
 
-🔗 Live: [https://villavredestein.nl](https://villavredestein.nl)
+🔗 Live: [https://villavredestein.com](https://villavredestein.com)
+
+Kadaster: Driebergen, sectie B, perceel 4712 (DBG01-B-4712), 680 m². Adres: Hoofdstraat 147, 3971 KJ Driebergen-Rijsenburg.
 
 ## Stack
 
@@ -50,7 +52,7 @@ Output komt in `dist/`. `npm run preview` serveert die build lokaal.
 | `/verhaal` (alias `/over-ons`) | Over ons |
 | `/about` | Verhalen-overzicht (blogposts) |
 | `/blog/:slug` | Individuele blogpost |
-| `/tijdlijn` | Geschiedenis van het pand, 1906–nu |
+| `/tijdlijn` | Geschiedenis van het pand, 1905–nu |
 | `/galerij` | Villa Galerij (leven, ansichtkaarten, restauratie) |
 | `/galerij-villa` | Alias van `/galerij` |
 | `/omgeving` | Omgeving & locatie |

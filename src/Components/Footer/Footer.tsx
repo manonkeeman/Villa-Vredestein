@@ -64,7 +64,7 @@ const Footer = () => {
                             <FiMapPin aria-hidden="true" />
                             <span>
                                 {tc("Hoofdstraat 147")}<br />
-                                {tc("3975 ED Driebergen-Rijsenburg")}
+                                {tc("3971 KJ Driebergen-Rijsenburg")}
                             </span>
                         </span>
                         <a

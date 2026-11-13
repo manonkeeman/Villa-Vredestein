@@ -17,7 +17,14 @@ import { useContent } from "../../i18n/content";
 
 const historisch = [
     {
-        datum: "1906",
+        datum: "Vóór de villa",
+        titel: "Timmerman Fukkink",
+        emoji: "🪚",
+        status: "historisch",
+        tekst: "Voordat Vredestein er stond, woonde op deze plek een timmerman met de naam Fukkink. Meer is over hem nog niet bekend.",
+    },
+    {
+        datum: "1905",
         titel: "De villa wordt gebouwd",
         emoji: "🏛️",
         status: "historisch",
@@ -27,11 +34,12 @@ const historisch = [
         afbeeldingAlt: "Villa Vredestein circa 1910, een van de vroegste bekende foto's",
     },
     {
-        datum: "1906, 1912",
+        datum: "1905, 1933",
         titel: "Gezusters van de Bosch",
         emoji: "🏨",
         status: "historisch",
-        tekst: "De eerste bewoners zijn de Gezusters van de Bosch, die het pand inrichten als hervormd-christelijk logement. De villa opent haar deuren voor gasten die rust en bezinning zoeken in de bossen van Driebergen.",
+        tekst: "De dames Van de Bosch runnen Vredestein als logement en pension. De villa opent haar deuren voor gasten die rust en bezinning zoeken in de bossen van Driebergen.",
+        detail: "In juni 1933 adverteren ze landelijk met Pension „Villa Vredenstein”: kamers voor families, met aparte bediening en stromend water.",
         afbeelding: ImgAnsichtVredesteinP,
         afbeeldingAlt: "Ansichtkaart van Pension Villa Vredestein",
     },
@@ -46,18 +54,20 @@ const historisch = [
         afbeeldingAlt: "Krantenbericht over het pension, oktober 1912",
     },
     {
-        datum: "Tweede Wereldoorlog",
+        datum: "1939, 1945",
         titel: "Oorlogsjaren",
         emoji: "⚔️",
         status: "historisch",
-        tekst: "Over de oorlogsjaren van Vredestein is weinig gedocumenteerd. Driebergen-Rijsenburg bleef relatief gespaard, maar de bezettingsjaren lieten overal hun sporen na.",
+        tekst: "Vlak voor de oorlog gebruikt verzekeringsagent J.H.L. de Bruin het adres voor zijn advertenties. In 1941 woont J.J. Vierkant op Hoofdstraat 147 en in 1944 J.J. van der Weerd, de plaatselijke leider van het Nederlandsch Arbeidsfront in Driebergen. Het pand is dan het kantoor van deze organisatie onder Duits bewind.",
+        detail: "In 1944 houdt J.J. van der Weerd elke dinsdagavond spreekuur te zijnen huize, Hoofdstraat 147. In 1940 is er daarnaast nog gewoon een ansichtkaart van Pension Vredestein.",
     },
     {
         datum: "1945, 1963",
-        titel: "Mevrouw Elings",
+        titel: "Pension en verzorgingshuis",
         emoji: "🌺",
         status: "historisch",
-        tekst: "Na de bevrijding neemt mevrouw Elings het pand over. Bijna twee decennia lang is Vredestein onder haar hoede een vertrouwde plek. Krantenberichten uit 1959 en een vacature voor verpleegdames uit 1965 getuigen van een actief huis.",
+        tekst: "Direct na de bevrijding duikt een nieuwe bewoonster op, mevrouw Wasterval, met inwonend personeel. In de jaren vijftig is het weer Pension Vredestein en vanaf 1959 een verzorgingshuis voor ouderen. Mevrouw Elings heeft het huis in deze periode onder haar hoede.",
+        detail: "Mevrouw Wasterval zoekt in 1947 via advertenties een net meisje voor dag en nacht en een huisnaaister. In 1954 verhuurt het pension zitkamers en slaapkamers met pension, onder meer aan echtparen. In 1958 wordt een mooie kamer parterre met volledig pension aangeboden en in 1959 adverteert Verzorgingshuis Vredestein met twee vrije kamers. Een vacature voor verpleegdames uit 1965 getuigt van een actief huis.",
         afbeelding: ImgKrant1954,
         afbeeldingAlt: "Te huur-advertentie uit april 1954, tijdens het beheer van mevrouw Elings",
     },
@@ -71,19 +81,26 @@ const historisch = [
         afbeeldingAlt: "Familie Roelofsen, die opgroeide in Vredestein in de jaren zestig en zeventig",
     },
     {
-        datum: "1971, 1972",
+        datum: "1975, 1977",
         titel: "Ortholab",
         emoji: "🔬",
         status: "historisch",
-        tekst: "Ortholab betrekt de villa voor korte tijd. Een bijzondere wending in het leven van het pand: na bijna vijf decennia residentieel gebruik wordt het gebouw even iets anders.",
+        tekst: "Ortholab B.V. vestigt een orthodontisch laboratorium in de villa. Het bedrijf zoekt technici, administratief personeel en parttimers en biedt eventueel woonruimte aan.",
     },
     {
-        datum: "1973, 2019",
-        titel: "Familie Blooij",
+        datum: "1982, 1986",
+        titel: "Het pand wordt gesplitst",
+        emoji: "🚪",
+        status: "historisch",
+        tekst: "In de jaren tachtig is het pand opgesplitst: naast Hoofdstraat 147 bestaat ook 147a, dat in die jaren bewoond wordt door een Driebergs gezin.",
+    },
+    {
+        datum: "Na Ortholab, 2019",
+        titel: "Familie Blooi",
         emoji: "🎓",
         status: "historisch",
-        tekst: "Familie Blooij brengt de villa nieuw leven in. Bijna vijf decennia lang is het pand een studentenhuis voor de IVA-opleiding in Driebergen. Generaties studenten wonen, leren en leven aan de Hoofdstraat.",
-        detail: "Ruim 46 jaar lang draait Vredestein op studenten. Dhr. Blooij was loodgieter van beroep en werkte zelf veel aan het pand. In de loop van de decennia raakte het totaaloverzicht verloren. Pas bij de restauratie in 2021 kwamen gasleidingen in de tuin en andere bijzondere aansluitingen aan het licht.",
+        tekst: "Dhr. Blooi, loodgieter met een klussenbedrijf, koopt het pand na Ortholab en blijft eigenaar tot zijn overlijden. Onder zijn beheer is Vredestein ook een studentenhuis, onder meer voor de IVA-opleiding in Driebergen.",
+        detail: "Dhr. Blooi werkte zelf veel aan het pand. In de loop van de decennia raakte het totaaloverzicht verloren. Pas bij de restauratie in 2021 kwamen gasleidingen in de tuin en andere bijzondere aansluitingen aan het licht. In welke jaren precies studenten in het huis woonden, wordt nog uitgezocht.",
     },
 ];
 
@@ -104,7 +121,7 @@ const renovatie = [
         emoji: "🔨",
         status: "gedaan",
         tekst: "Van kelder tot zolder gestript en opnieuw opgebouwd. 15 cm isolatie, volledig gestuct, vloerverwarming in de betonnen gietvloer en airco's op de verdiepingen. Alle elektriciteit en leidingwerk vernieuwd. Van 11 kamers naar 7, met 3 badkamers, twee keukens, een kitchenette en een sportkamer.",
-        detail: "Elke ruimte werd teruggestript naar de basis. De wanden zijn voorzien van 15 centimeter isolatie en daarna volledig opnieuw gestuct. In de industriële betonnen gietvloer op de begane grond is vloerverwarming aangebracht. Op de tweede en derde verdieping hangen airco's: de voorkant van het huis staat recht op de zon en warmt in de zomer flink op. Vroeger plantten bewoners lindenbomen voor de deur voor schaduw. Wij kozen voor een open tuin met zicht op de straat. Alle elektriciteit is vernieuwd en aangepast aan de moderne eisen. Hetzelfde geldt voor het leidingwerk. Dhr. Blooij was loodgieter en had door de jaren heen veel zelf aan elkaar geplakt. Het totaaloverzicht was verloren gegaan: bij het uitgraven vonden we gasleidingen in de tuin en andere gevaarlijke aansluitingen. Alles is veiliggesteld en opnieuw aangelegd. Het doel blijft het huis in oude glorie terugbrengen, maar naar de moderne eisen van duurzaamheid en klimaat.",
+        detail: "Elke ruimte werd teruggestript naar de basis. De wanden zijn voorzien van 15 centimeter isolatie en daarna volledig opnieuw gestuct. In de industriële betonnen gietvloer op de begane grond is vloerverwarming aangebracht. Op de tweede en derde verdieping hangen airco's: de voorkant van het huis staat recht op de zon en warmt in de zomer flink op. Vroeger plantten bewoners lindenbomen voor de deur voor schaduw. Wij kozen voor een open tuin met zicht op de straat. Alle elektriciteit is vernieuwd en aangepast aan de moderne eisen. Hetzelfde geldt voor het leidingwerk. Dhr. Blooi was loodgieter en had door de jaren heen veel zelf aan elkaar geplakt. Het totaaloverzicht was verloren gegaan: bij het uitgraven vonden we gasleidingen in de tuin en andere gevaarlijke aansluitingen. Alles is veiliggesteld en opnieuw aangelegd. Het doel blijft het huis in oude glorie terugbrengen, maar naar de moderne eisen van duurzaamheid en klimaat.",
         afbeelding: ImgSlopen,
         afbeeldingAlt: "Slopen, het begin van de grote transformatie",
     },
@@ -239,12 +256,12 @@ const Tijdlijn = () => {
             <Helmet>
                 <html lang={langCode} />
                 <title>{tc("Tijdlijn, Villa Vredestein")}</title>
-                <meta name="description" content={tc("Van 1906 tot nu: de volledige geschiedenis van Villa Vredestein. De bewoners, de restauratie en de plannen voor de toekomst.")} />
+                <meta name="description" content={tc("Van 1905 tot nu: de volledige geschiedenis van Villa Vredestein. De bewoners, de restauratie en de plannen voor de toekomst.")} />
                 <link rel="canonical" href="https://villavredestein.com/tijdlijn" />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://villavredestein.com/tijdlijn" />
                 <meta property="og:title" content={tc("Tijdlijn, Villa Vredestein")} />
-                <meta property="og:description" content={tc("Van 1906 tot nu: de volledige geschiedenis van Villa Vredestein. De bewoners, de restauratie en de plannen voor de toekomst.")} />
+                <meta property="og:description" content={tc("Van 1905 tot nu: de volledige geschiedenis van Villa Vredestein. De bewoners, de restauratie en de plannen voor de toekomst.")} />
                 <meta property="og:image" content="https://villavredestein.com/og-image.jpg" />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
@@ -253,13 +270,13 @@ const Tijdlijn = () => {
                 <meta property="og:site_name" content="Villa Vredestein" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={tc("Tijdlijn, Villa Vredestein")} />
-                <meta name="twitter:description" content={tc("Van 1906 tot nu: de volledige geschiedenis van Villa Vredestein. De bewoners, de restauratie en de plannen voor de toekomst.")} />
+                <meta name="twitter:description" content={tc("Van 1905 tot nu: de volledige geschiedenis van Villa Vredestein. De bewoners, de restauratie en de plannen voor de toekomst.")} />
                 <meta name="twitter:image" content="https://villavredestein.com/og-image.jpg" />
             </Helmet>
 
             <header className="tijdlijn-header">
                 <h1>{tc("Tijdlijn Villa Vredestein")}</h1>
-                <p>{tc("Van 1906 tot nu: de volledige geschiedenis van het pand, de bewoners door de jaren heen, de restauratie en de plannen voor de toekomst.")}</p>
+                <p>{tc("Van 1905 tot nu: de volledige geschiedenis van het pand, de bewoners door de jaren heen, de restauratie en de plannen voor de toekomst.")}</p>
             </header>
 
             <div className="tijdlijn-sectie-label">{tc("📜 Geschiedenis")}</div>
