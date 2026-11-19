@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Nav from "./Components/Nav/Nav";
 import Footer from "./Components/Footer/Footer";
+import Experience from "./Components/Experience/Experience";
 import CookieConsent from "./Components/CookieConsent/CookieConsent";
 import Home from "./Pages/Public/Home";
 import Contact from "./Pages/Public/Contact";
@@ -17,6 +18,7 @@ import Verblijven from "./Pages/Public/Verblijven";
 import VerblijfDetail from "./Pages/Public/VerblijfDetail";
 import Plattegrond from "./Pages/Public/Plattegrond";
 import InDePers from "./Pages/Public/InDePers";
+import Boek from "./Pages/Public/Boek";
 import Privacy from "./Pages/Public/Privacy";
 
 function ScrollToTop() {
@@ -63,6 +65,7 @@ function App() {
             <ScrollToTop />
             <TrackPageView />
             <BackToTopBtn />
+            <Experience />
             <Nav />
 
             <Routes>
@@ -74,6 +77,7 @@ function App() {
                 <Route path="/over-ons" element={<OverOns />} />
                 <Route path="/verhaal" element={<OverOns />} />
                 <Route path="/in-de-pers" element={<InDePers />} />
+                <Route path="/boek" element={<Boek />} />
                 <Route path="/galerij" element={<GalerijVilla />} />
                 <Route path="/galerij-villa" element={<GalerijVilla />} />
                 <Route path="/galerij/:categorie" element={<GalerijCategorie />} />

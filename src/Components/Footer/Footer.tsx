@@ -21,6 +21,7 @@ const Footer = () => {
         { to: "/verhaal", label: t("nav.overons") },
         { to: "/about", label: t("nav.about") },
         { to: "/in-de-pers", label: t("nav.indepers") },
+        { to: "/boek", label: t("nav.boek") },
         { to: "/contact", label: t("nav.contact") },
     ];
 

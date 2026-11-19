@@ -6,6 +6,7 @@ import "./Tijdlijn.css";
 import ImgVilla1910 from "../../Assets/Images/VillaVredestein1910.jpg";
 import ImgAnsichtVredesteinP from "../../Assets/Images/hist-ansicht-vredestein-pension.jpg";
 import ImgKrant1912 from "../../Assets/Images/Krant1912.jpg";
+import ImgKrantOpening1912 from "../../Assets/Images/krant-1912-opening-het-nieuws.jpg";
 import ImgKrant1954 from "../../Assets/Images/Krant1954.jpg";
 import ImgFamilieRoelofsen from "../../Assets/Images/hist-familie-roelofsen.jpg";
 import ImgGekocht2020 from "../../Assets/Images/hist-gekocht-2020.jpg";
@@ -34,24 +35,41 @@ const historisch = [
         afbeeldingAlt: "Villa Vredestein circa 1910, een van de vroegste bekende foto's",
     },
     {
-        datum: "1905, 1933",
-        titel: "Gezusters van de Bosch",
-        emoji: "🏨",
+        datum: "Juni 1912",
+        titel: "Christelijk Rustoord Vredestein",
+        emoji: "🕊️",
         status: "historisch",
-        tekst: "De dames Van de Bosch runnen Vredestein als logement en pension. De villa opent haar deuren voor gasten die rust en bezinning zoeken in de bossen van Driebergen.",
-        detail: "In juni 1933 adverteren ze landelijk met Pension „Villa Vredenstein”: kamers voor families, met aparte bediening en stromend water.",
-        afbeelding: ImgAnsichtVredesteinP,
-        afbeeldingAlt: "Ansichtkaart van Pension Villa Vredestein",
+        tekst: "Op 3 juni 1912 opent het Christelijk Rust- en Herstellingsoord Vredestein zijn deuren, een oord der ruste voor de kleine burger. De openingsrede wordt gehouden door ds. W. Verhoef uit Zeist.",
+        detail: "In de zomer logeren er vijftien tot dertig gasten, vooral uit Rotterdam en Amsterdam, voor f 1,25 per dag (1915). In 1916 wordt een villa Vredestein aan de straatweg geveild voor f 7.400, waarschijnlijk dit pand. In 1918 is er een benefietavond voor het fonds Draagt elkanders lasten, voor rustkuren voor wie die niet kan betalen.",
+        afbeelding: ImgKrantOpening1912,
+        afbeeldingAlt: "Het Nieuws van 8 juni 1912 over de opening van het rustoord",
     },
     {
-        datum: "1912, 1935",
+        datum: "1912, 1921",
         titel: "Familie Sluijter",
         emoji: "📰",
         status: "historisch",
-        tekst: "Familie Sluijter zet de traditie voort als protestants christelijk pension. Krantenartikelen uit die periode getuigen van een druk en actief huis: vacatures voor keukenmeiden, ingezonden stukken en advertenties.",
+        tekst: "Directeur W. Sluijter en zijn gezin leiden het christelijke rustoord. Krantenartikelen uit die periode getuigen van een druk en actief huis: vacatures voor keukenmeiden, ingezonden stukken en advertenties.",
         detail: "De krantenknipsels lopen van 1912 tot diep in de jaren dertig. Vacatures, bijeenkomsten en af en toe nieuws over de inbraak in 1928 schilderen een levendig beeld van het pension in zijn bloeitijd.",
         afbeelding: ImgKrant1912,
         afbeeldingAlt: "Krantenbericht over het pension, oktober 1912",
+    },
+    {
+        datum: "1923, 1925",
+        titel: "Gezusters van der Zijden",
+        emoji: "🌿",
+        status: "historisch",
+        tekst: "Pension Villa Vredestein van de gezusters Van der Zijden: „3 groote zitkamers met serre, 7 frissche slaapkamers met balcons. Mooie tuin.”",
+    },
+    {
+        datum: "1926, 1933",
+        titel: "Gezusters van de Bosch",
+        emoji: "🏨",
+        status: "historisch",
+        tekst: "In 1926 nemen de Dames Van den Bosch het over als zomer- en winterpension tegen billijke prijzen. De villa opent haar deuren voor gasten die rust en bezinning zoeken in de bossen van Driebergen.",
+        detail: "In juni 1933 adverteren ze landelijk met Pension „Villa Vredenstein”: kamers voor families, met aparte bediening en stromend water. Na de samenvoeging van de gemeenten in 1931-1932 wordt het huisnummer Hoofdstraat 83 omgezet in 147.",
+        afbeelding: ImgAnsichtVredesteinP,
+        afbeeldingAlt: "Ansichtkaart van Pension Villa Vredestein",
     },
     {
         datum: "1939, 1945",
@@ -59,15 +77,15 @@ const historisch = [
         emoji: "⚔️",
         status: "historisch",
         tekst: "Vlak voor de oorlog gebruikt verzekeringsagent J.H.L. de Bruin het adres voor zijn advertenties. In 1941 woont J.J. Vierkant op Hoofdstraat 147 en in 1944 J.J. van der Weerd, de plaatselijke leider van het Nederlandsch Arbeidsfront in Driebergen. Het pand is dan het kantoor van deze organisatie onder Duits bewind.",
-        detail: "In 1944 houdt J.J. van der Weerd elke dinsdagavond spreekuur te zijnen huize, Hoofdstraat 147. In 1940 is er daarnaast nog gewoon een ansichtkaart van Pension Vredestein.",
+        detail: "In 1944 houdt J.J. van der Weerd elke dinsdagavond spreekuur te zijnen huize, Hoofdstraat 147. In 1940 en 1941 zit er ook Maison Daman, een zaak in betere dameskleding. Daarnaast bestaat in 1940 nog gewoon een ansichtkaart van Pension Vredestein.",
     },
     {
-        datum: "1945, 1963",
+        datum: "1945, 1969",
         titel: "Pension en verzorgingshuis",
         emoji: "🌺",
         status: "historisch",
-        tekst: "Direct na de bevrijding duikt een nieuwe bewoonster op, mevrouw Wasterval, met inwonend personeel. In de jaren vijftig is het weer Pension Vredestein en vanaf 1959 een verzorgingshuis voor ouderen. Mevrouw Elings heeft het huis in deze periode onder haar hoede.",
-        detail: "Mevrouw Wasterval zoekt in 1947 via advertenties een net meisje voor dag en nacht en een huisnaaister. In 1954 verhuurt het pension zitkamers en slaapkamers met pension, onder meer aan echtparen. In 1958 wordt een mooie kamer parterre met volledig pension aangeboden en in 1959 adverteert Verzorgingshuis Vredestein met twee vrije kamers. Een vacature voor verpleegdames uit 1965 getuigt van een actief huis.",
+        tekst: "Direct na de bevrijding exploiteert J.J. Vierkant in het pand Café-Restaurant Hotel Royal: „Kamers met stromend water. Geheel gerestaureerd.” Daarna duikt mevrouw Wasterval op, met inwonend personeel. In de jaren vijftig is het weer Pension Vredestein en vanaf 1959 een verzorgingshuis voor ouderen. Mevrouw Elings heeft het huis in deze periode onder haar hoede.",
+        detail: "Mevrouw Wasterval zoekt in 1947 via advertenties een net meisje voor dag en nacht en een huisnaaister. In 1954 verhuurt het pension zitkamers en slaapkamers met pension, onder meer aan echtparen. In 1958 wordt een mooie kamer parterre met volledig pension aangeboden en in 1959 adverteert Verzorgingshuis Vredestein met twee vrije kamers. Daarna biedt C.L. van Alderden kamers aan voor oudere echtparen met prima verzorging en is mevrouw De Vries in 1958 waarschijnlijk uitbaatster. Een vacature voor verpleegdames uit 1965 getuigt van een actief huis. Rond 1969 volgt de laatste vermelding als klein rusthuis: het einde van ruim 55 jaar rust en zorg.",
         afbeelding: ImgKrant1954,
         afbeeldingAlt: "Te huur-advertentie uit april 1954, tijdens het beheer van mevrouw Elings",
     },
@@ -99,8 +117,8 @@ const historisch = [
         titel: "Familie Blooi",
         emoji: "🎓",
         status: "historisch",
-        tekst: "Dhr. Blooi, loodgieter met een klussenbedrijf, koopt het pand na Ortholab en blijft eigenaar tot zijn overlijden. Onder zijn beheer is Vredestein ook een studentenhuis, onder meer voor de IVA-opleiding in Driebergen.",
-        detail: "Dhr. Blooi werkte zelf veel aan het pand. In de loop van de decennia raakte het totaaloverzicht verloren. Pas bij de restauratie in 2021 kwamen gasleidingen in de tuin en andere bijzondere aansluitingen aan het licht. In welke jaren precies studenten in het huis woonden, wordt nog uitgezocht.",
+        tekst: "Dhr. Blooi, van een loodgieters- en dakdekkersbedrijf, koopt het pand na Ortholab en blijft eigenaar tot zijn overlijden. Onder zijn beheer is Vredestein ook een studentenhuis, onder meer voor de IVA-opleiding in Driebergen.",
+        detail: "Dhr. Blooi werkte zelf veel aan het pand. In de loop van de decennia raakte het totaaloverzicht verloren. Pas bij de restauratie in 2021 kwamen gasleidingen in de tuin en andere bijzondere aansluitingen aan het licht. In 1982 is het pand inzamelpunt van de Polenhulpactie. In welke jaren precies studenten in het huis woonden, wordt nog uitgezocht.",
     },
 ];
 

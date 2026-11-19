@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet-async";
@@ -8,8 +8,8 @@ import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 
-import HeroImg from "../../Assets/Images/int-woonkamer.jpg";
-import HeroImgMobiel from "../../Assets/Images/int-woonkamer-mobiel.jpg";
+import HeroImg from "../../Assets/Images/ext-villa-voorkant.jpg";
+import CinematicHero from "../../Components/Experience/CinematicHero";
 import VillaImg from "../../Assets/Images/ext-villa-voorkant.jpg";
 import VerbouwingVid from "../../Assets/Videos/home-verbouwing.mp4";
 import ImgGlasLood2 from "../../Assets/Images/rest-glas-lood-2.jpg";
@@ -92,18 +92,6 @@ const Home = () => {
         return () => io.disconnect();
     }, []);
 
-    const [parallaxY, setParallaxY] = useState(0);
-
-    useEffect(() => {
-        // Parallax uitgeschakeld op mobiel (voorkomt re-render jank en scroll-problemen)
-        if (window.matchMedia("(max-width: 768px)").matches) return;
-        const onScroll = () => {
-            setParallaxY(window.scrollY * 0.3);
-        };
-        window.addEventListener("scroll", onScroll, { passive: true });
-        return () => window.removeEventListener("scroll", onScroll);
-    }, []);
-
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add("in-view")),
@@ -124,8 +112,7 @@ const Home = () => {
                 <title>{tc("Villa Vredestein, Driebergen-Rijsenburg")}</title>
                 <meta name="description" content={tc("Villa Vredestein is een historische villa uit 1905 in het hart van Driebergen-Rijsenburg. Verblijf in een bijzonder pand op de Utrechtse Heuvelrug.")} />
                 <link rel="canonical" href="https://villavredestein.com/" />
-                <link rel="preload" as="image" href={HeroImgMobiel} media="(max-width: 768px)" {...{ fetchpriority: "high" }} />
-                <link rel="preload" as="image" href={HeroImg} media="(min-width: 769px)" {...{ fetchpriority: "high" }} />
+                <link rel="preload" as="image" href={HeroImg} {...{ fetchpriority: "high" }} />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://villavredestein.com/" />
                 <meta property="og:title" content={tc("Villa Vredestein, Driebergen-Rijsenburg")} />
@@ -142,34 +129,8 @@ const Home = () => {
                 <meta name="twitter:image" content="https://villavredestein.com/og-image.jpg" />
             </Helmet>
 
-            {/* ── Hero met parallax ── */}
-            <section className="hero-lux" aria-label={tc("Hero")}>
-                <div
-                    className="hero-bg"
-                    style={{ "--hero-img": `url(${HeroImg})`, "--hero-img-mobiel": `url(${HeroImgMobiel})`, transform: `translateY(${parallaxY}px)` } as React.CSSProperties}
-                    role="img"
-                    aria-label={tc("Woonkamer Villa Vredestein")}
-                />
-                <div className="hero-overlay" />
-                <div className="hero-content">
-                    <span className="hero-eyebrow">{tc("Driebergen-Rijsenburg · Utrechtse Heuvelrug")}</span>
-                    <h1 className="hero-title">{tc("Villa Vredestein")}</h1>
-                    <p className="hero-sub">
-                        {tc("Een historische villa uit 1905 in het hart van Driebergen-Rijsenburg, op de Utrechtse Heuvelrug. Verblijf, restauratie en een open deur.")}
-                    </p>
-                    <div className="hero-ctas">
-                        <button className="hero-btn-primary" onClick={() => navigate("/verhaal")}>
-                            {tc("Over ons")}
-                        </button>
-                        <button className="hero-btn-ghost" onClick={() => navigate("/tijdlijn")}>
-                            {tc("Tijdlijn")}
-                        </button>
-                    </div>
-                </div>
-                <div className="hero-scroll-hint" aria-hidden="true">
-                    <span />
-                </div>
-            </section>
+            {/* ── Cinematische hero: de gevel gaat open ── */}
+            <CinematicHero />
 
             {/* ── Kenmerken ── */}
             <section className="kenmerken-bar reveal-row" ref={addRef} aria-label={tc("Kenmerken")}>
