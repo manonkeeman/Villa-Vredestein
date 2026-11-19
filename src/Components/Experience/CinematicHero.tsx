@@ -21,14 +21,13 @@ function CinematicHero() {
     useEffect(() => {
         const el = rootRef.current;
         if (!el) return;
-        const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         let raf = 0;
 
         const update = () => {
             raf = 0;
             const rect = el.getBoundingClientRect();
             const total = rect.height - window.innerHeight;
-            const p = reduce ? 0 : clamp(-rect.top / Math.max(total, 1));
+            const p = clamp(-rect.top / Math.max(total, 1));
             const o = 0.012 + ramp(p, 0.12, 0.7) * 0.988;                  // deur: 0 → open
             const a = 1 - ramp(p, 0.2, 0.38);                               // intro-tekst weg
             const b = ramp(p, 0.5, 0.64) * (1 - ramp(p, 0.88, 0.99));       // tweede tekst
