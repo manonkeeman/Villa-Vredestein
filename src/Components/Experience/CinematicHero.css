@@ -1,6 +1,6 @@
 /* Scrollgestuurde hero: de gevel gaat open als een deur en toont het interieur */
-.vv-cine { position: relative; margin-top: -72px; height: 210vh; --p: 0; --o: .012; --a: 1; --b: 0; background: #0a0908; }
-.vv-cine-stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; isolation: isolate; }
+.vv-cine { position: relative; margin-top: -72px; height: 100vh; height: 100svh; --p: 0; --o: .012; --a: 1; --b: 0; background: #0a0908; }
+.vv-cine-stage { position: relative; height: 100vh; height: 100svh; overflow: hidden; isolation: isolate; }
 .vv-cine-stage > * { position: absolute; }
 .vv-cine-ext, .vv-cine-int, .vv-cine-seam { will-change: transform, clip-path, opacity; }
 
@@ -49,7 +49,7 @@
 @keyframes vv-scroll { 0% { transform: scaleY(0); } 50% { transform: scaleY(1); } 100% { transform: scaleY(1); opacity: 0; } }
 
 @media (max-width: 768px) {
-    .vv-cine { height: 190vh; }
+    .vv-cine { height: 100svh; }
     .vv-cine-int { background-image: var(--img-int-m); }
     .vv-cine-title { letter-spacing: calc(.02em + var(--p) * .2em); }
 }

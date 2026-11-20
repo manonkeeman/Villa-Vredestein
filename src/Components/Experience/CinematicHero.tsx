@@ -7,7 +7,7 @@ import Gevel from "../../Assets/Images/ext-villa-voorkant.jpg";
 import Woonkamer from "../../Assets/Images/int-woonkamer.jpg";
 import WoonkamerMobiel from "../../Assets/Images/int-woonkamer-mobiel.jpg";
 
-// Scrollgestuurde opening: de scène blijft staan terwijl je scrolt. De gevel van de villa
+// Scrollgestuurde opening: de hero scrolt gewoon mee omhoog en de gevel van de villa
 // gaat open als een deur en onthult het interieur. --p (0 → 1) stuurt alles aan.
 // Scrollwaarden gaan direct op het element (geen React-render per scrollstap).
 const clamp = (v: number, a = 0, b = 1) => Math.min(b, Math.max(a, v));
@@ -26,11 +26,10 @@ function CinematicHero() {
         const update = () => {
             raf = 0;
             const rect = el.getBoundingClientRect();
-            const total = rect.height - window.innerHeight;
-            const p = clamp(-rect.top / Math.max(total, 1));
-            const o = 0.012 + ramp(p, 0.05, 0.55) * 0.988;                  // deur: 0 → open
-            const a = 1 - ramp(p, 0.1, 0.26);                               // intro-tekst weg
-            const b = ramp(p, 0.55, 0.68) * (1 - ramp(p, 0.92, 1));       // tweede tekst
+            const p = clamp(-rect.top / Math.max(rect.height, 1));
+            const o = 0.012 + ramp(p, 0.02, 0.6) * 0.988;                  // deur: 0 → open
+            const a = 1 - ramp(p, 0.04, 0.22);                               // intro-tekst weg
+            const b = ramp(p, 0.4, 0.55) * (1 - ramp(p, 0.85, 1));       // tweede tekst
             const s = el.style;
             s.setProperty("--p", p.toFixed(4));
             s.setProperty("--o", o.toFixed(4));
