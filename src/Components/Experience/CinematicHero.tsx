@@ -28,9 +28,9 @@ function CinematicHero() {
             const rect = el.getBoundingClientRect();
             const total = rect.height - window.innerHeight;
             const p = clamp(-rect.top / Math.max(total, 1));
-            const o = 0.012 + ramp(p, 0.12, 0.7) * 0.988;                  // deur: 0 → open
-            const a = 1 - ramp(p, 0.2, 0.38);                               // intro-tekst weg
-            const b = ramp(p, 0.5, 0.64) * (1 - ramp(p, 0.88, 0.99));       // tweede tekst
+            const o = 0.012 + ramp(p, 0.05, 0.55) * 0.988;                  // deur: 0 → open
+            const a = 1 - ramp(p, 0.1, 0.26);                               // intro-tekst weg
+            const b = ramp(p, 0.55, 0.68) * (1 - ramp(p, 0.92, 1));       // tweede tekst
             const s = el.style;
             s.setProperty("--p", p.toFixed(4));
             s.setProperty("--o", o.toFixed(4));
