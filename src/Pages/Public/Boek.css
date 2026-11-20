@@ -21,14 +21,6 @@
 .boek-cover img { display: block; width: 100%; max-width: 440px; height: auto; margin: 0 auto; border-radius: 4px; box-shadow: 0 30px 80px rgba(0, 0, 0, .7), 0 0 60px rgba(252, 188, 45, .12); transform: rotate(-1.5deg); transition: transform .6s cubic-bezier(.2, .7, .2, 1); }
 .boek-cover img:hover { transform: rotate(0) scale(1.02); }
 
-/* Inhoud */
-.boek-inhoud { margin: 6rem 0; }
-.boek-toc { display: grid; grid-template-columns: 1fr 1.3fr; gap: 3rem; }
-.boek-toc-list { list-style: none; padding: 0; margin: 0; }
-.boek-toc-list li { display: grid; grid-template-columns: 2.6rem 1fr auto; align-items: baseline; gap: .5rem; padding: .45rem 0; border-bottom: 1px dotted rgba(244, 239, 230, .18); color: #f4efe6; }
-.boek-toc-nr { color: #c0563c; font-family: Georgia, serif; }
-.boek-toc-p { color: rgba(244, 239, 230, .5); font-variant-numeric: tabular-nums; font-size: .85rem; }
-
 /* Blader */
 .boek-blader { margin: 6rem 0; }
 .boek-pages { display: grid; grid-template-columns: minmax(0, 360px); gap: 2.5rem; justify-content: center; }
@@ -42,7 +34,6 @@
     .boek-hero { grid-template-columns: 1fr; gap: 2rem; min-height: 0; }
     .boek-cover { order: -1; }
     .boek-cover img { max-width: 300px; }
-    .boek-toc { grid-template-columns: 1fr; gap: 0; }
     .boek-pages { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) { .boek-cover img { transition: none; } }

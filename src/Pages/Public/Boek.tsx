@@ -7,27 +7,6 @@ import Omslag from "../../Assets/Images/boek-omslag.jpg";
 import Inhoud from "../../Assets/Images/boek-inhoud.jpg";
 import Qr from "../../Assets/Images/boek-qr.jpg";
 
-// Titels van het boek zelf: blijven Nederlands in alle talen.
-const VOORAF = [{ titel: "Over dit boek", p: 5 }];
-const GESCHIEDENIS = [
-    { nr: "I", titel: "Een huis aan de straatweg", p: 7 },
-    { nr: "II", titel: "Het Kokerpark", p: 13 },
-    { nr: "III", titel: "Rustoord voor den burgerstand", p: 18 },
-    { nr: "IV", titel: "Kantoor, oorlog en een café", p: 32 },
-    { nr: "V", titel: "Pension, rusthuis, verzorgingshuis", p: 35 },
-    { nr: "VI", titel: "Tandtechniek en studenten", p: 40 },
-    { nr: "VII", titel: "Terug naar 1900", p: 43 },
-    { nr: "VIII", titel: "Eigenaren en gebruikers", p: 54 },
-    { nr: "IX", titel: "Wat dit boek niet weet", p: 57 },
-];
-const NASLAG = [
-    { titel: "Tijdlijn", p: 61 },
-    { titel: "Het huis in het kort", p: 65 },
-    { titel: "De grond in 1832", p: 67 },
-    { titel: "Het weer sinds de bouw", p: 69 },
-    { titel: "Bronnen", p: 70 },
-];
-
 const Boek = () => {
     const tc = useContent();
     const { i18n } = useTranslation();
@@ -64,37 +43,6 @@ const Boek = () => {
                 <figure className="boek-cover" data-no-reveal>
                     <img src={Omslag} alt={tc("Omslag van het boek Hoofdstraat 147 met een tekening van Villa Vredestein")} width="1116" height="1612" fetchPriority="high" />
                 </figure>
-            </section>
-
-            {/* ── Inhoud ── */}
-            <section className="boek-inhoud" aria-labelledby="boek-inhoud-kop">
-                <p className="boek-eyebrow">{tc("Inhoud")}</p>
-                <h2 id="boek-inhoud-kop">{tc("Negen hoofdstukken, één adres")}</h2>
-
-                <div className="boek-toc">
-                    <div>
-                        <h3>{tc("Vooraf")}</h3>
-                        <ol className="boek-toc-list">
-                            {VOORAF.map((r) => (
-                                <li key={r.titel}><span className="boek-toc-nr" /><span className="boek-toc-t">{r.titel}</span><span className="boek-toc-p">{r.p}</span></li>
-                            ))}
-                        </ol>
-                        <h3>{tc("Naslag")}</h3>
-                        <ol className="boek-toc-list">
-                            {NASLAG.map((r) => (
-                                <li key={r.titel}><span className="boek-toc-nr" /><span className="boek-toc-t">{r.titel}</span><span className="boek-toc-p">{r.p}</span></li>
-                            ))}
-                        </ol>
-                    </div>
-                    <div>
-                        <h3>{tc("De geschiedenis")}</h3>
-                        <ol className="boek-toc-list">
-                            {GESCHIEDENIS.map((r) => (
-                                <li key={r.nr}><span className="boek-toc-nr">{r.nr}</span><span className="boek-toc-t">{r.titel}</span><span className="boek-toc-p">{r.p}</span></li>
-                            ))}
-                        </ol>
-                    </div>
-                </div>
             </section>
 
             {/* ── Blader door het boek ── */}
