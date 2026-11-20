@@ -20,7 +20,10 @@ function Preloader() {
     const [pct, setPct] = useState(0);
 
     useLayoutEffect(() => {
-        if (pathname !== "/" || typeof window === "undefined") return;
+        if (typeof window === "undefined") return;
+        // Haal een overgebleven scrollblokkade weg (bijv. uit oude geprerenderde HTML).
+        document.documentElement.style.overflow = "";
+        if (pathname !== "/") return;
         let seen = false;
         try { seen = sessionStorage.getItem(KEY) === "1"; } catch { /* privémodus */ }
         if (seen || reduceMotion()) return;

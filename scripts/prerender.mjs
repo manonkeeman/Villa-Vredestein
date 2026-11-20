@@ -50,6 +50,8 @@ async function main() {
         const p = await browser.newPage();
         await p.evaluateOnNewDocument(() => {
             localStorage.setItem("i18nextLng", "nl");
+            // Geen laadscherm (en dus geen overflow:hidden) in de geprerenderde HTML.
+            sessionStorage.setItem("vv-preloader-seen", "1");
         });
         return p;
     }
