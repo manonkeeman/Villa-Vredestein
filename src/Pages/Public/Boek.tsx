@@ -5,7 +5,7 @@ import "./Boek.css";
 
 import Omslag from "../../Assets/Images/boek-omslag.jpg";
 import Inhoud from "../../Assets/Images/boek-inhoud.jpg";
-import Bestellen from "../../Assets/Images/boek-bestellen.jpg";
+import Qr from "../../Assets/Images/boek-qr.jpg";
 
 // Titels van het boek zelf: blijven Nederlands in alle talen.
 const VOORAF = [{ titel: "Over dit boek", p: 5 }];
@@ -60,7 +60,6 @@ const Boek = () => {
                     <p className="boek-lead">
                         {tc("Een huisbiografie over Villa Vredestein: negen hoofdstukken over wie hier woonden, werkten en logeerden, van het bouwjaar 1905 tot nu. Met tijdlijn, kaarten en bronnen.")}
                     </p>
-                    <a className="boek-btn" href="#bestellen">{tc("Zelf ook een huisbiografie?")}</a>
                 </div>
                 <figure className="boek-cover" data-no-reveal>
                     <img src={Omslag} alt={tc("Omslag van het boek Hoofdstraat 147 met een tekening van Villa Vredestein")} width="1116" height="1612" fetchPriority="high" />
@@ -107,26 +106,15 @@ const Boek = () => {
                         <img src={Inhoud} alt={tc("Inhoudsopgave van het boek Hoofdstraat 147")} loading="lazy" width="1006" height="1430" />
                         <figcaption>{tc("De inhoudsopgave")}</figcaption>
                     </figure>
-                    <figure data-no-reveal>
-                        <img src={Bestellen} alt={tc("Slotpagina van het boek met een QR-code naar huisbiografie.nl")} loading="lazy" width="988" height="1406" />
-                        <figcaption>{tc("De slotpagina")}</figcaption>
-                    </figure>
                 </div>
             </section>
 
-            {/* ── Bestellen ── */}
+            {/* ── Bestellen: alleen de QR-code ── */}
             <section className="boek-bestel" id="bestellen" aria-labelledby="boek-bestel-kop">
-                <p className="boek-eyebrow">{tc("Ook een huisbiografie?")}</p>
-                <h2 id="boek-bestel-kop">{tc("Dit boek bestaat één keer.")}</h2>
-                <p className="boek-bestel-p">
-                    {tc("Geef het cadeau: een boek over het huis van je ouders, een vriend of de buren.")}
-                </p>
-                <a className="boek-btn" href="https://huisbiografie.nl" target="_blank" rel="noopener noreferrer">
-                    huisbiografie.nl ↗
-                </a>
-                <p className="boek-code">
-                    {tc("Met kortingscode")} <code>BOEK98GJAC</code> {tc("krijg je € 10 korting.")}
-                </p>
+                <h2 id="boek-bestel-kop">{tc("Bestel het boek")}</h2>
+                <img className="boek-qr" src={Qr} alt={tc("QR-code om het boek te bestellen")} width="250" height="250" loading="lazy" />
+                <p className="boek-bestel-p">{tc("Scan de code om het boek te bestellen.")}</p>
+                <p className="boek-code">{tc("Met kortingscode")} <code>BOEK98GJAC</code> {tc("krijg je € 10 korting.")}</p>
             </section>
         </main>
     );

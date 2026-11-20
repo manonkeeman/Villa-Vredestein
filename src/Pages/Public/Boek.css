@@ -31,17 +31,11 @@
 
 /* Blader */
 .boek-blader { margin: 6rem 0; }
-.boek-pages { display: grid; grid-template-columns: repeat(2, minmax(0, 360px)); gap: 2.5rem; justify-content: center; }
+.boek-pages { display: grid; grid-template-columns: minmax(0, 360px); gap: 2.5rem; justify-content: center; }
 .boek-pages figure { margin: 0; }
 .boek-pages img { width: 100%; height: auto; border-radius: 3px; box-shadow: 0 24px 60px rgba(0, 0, 0, .6); }
 .boek-pages figcaption { margin-top: .8rem; text-align: center; font-size: .72rem; letter-spacing: .25em; text-transform: uppercase; color: rgba(244, 239, 230, .55); }
 
-/* Bestellen */
-.boek-bestel { text-align: center; padding: 5rem 1rem; border-top: 1px solid rgba(252, 188, 45, .25); }
-.boek-bestel h2 { font-weight: 300; }
-.boek-bestel-p { max-width: 520px; margin: 0 auto 2rem; color: rgba(244, 239, 230, .8); }
-.boek-code { margin-top: 1.5rem; color: rgba(244, 239, 230, .75); }
-.boek-code code { font-family: ui-monospace, Menlo, monospace; letter-spacing: .15em; color: #fcbc2d; }
 
 @media (max-width: 860px) {
     .boek { padding-top: 90px; padding-left: 1rem; padding-right: 1rem; }
@@ -52,3 +46,11 @@
     .boek-pages { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) { .boek-cover img { transition: none; } }
+
+/* Bestellen: QR-code */
+.boek-bestel { text-align: center; padding: 4rem 1rem; border-top: 1px solid rgba(252, 188, 45, .25); }
+.boek-bestel h2 { font-weight: 300; margin-bottom: 1.5rem; }
+.boek-qr { display: block; width: 190px; height: auto; margin: 0 auto 1.2rem; border-radius: 6px; }
+.boek-bestel-p { color: rgba(244, 239, 230, .75); }
+.boek-code { margin-top: 1rem; color: rgba(244, 239, 230, .75); }
+.boek-code code { font-family: ui-monospace, Menlo, monospace; letter-spacing: .15em; color: #fcbc2d; }
