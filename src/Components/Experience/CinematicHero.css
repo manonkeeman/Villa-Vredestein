@@ -1,6 +1,6 @@
 /* Scrollgestuurde hero: de gevel gaat open als een deur en toont het interieur */
-.vv-cine { position: relative; margin-top: -72px; height: 100vh; height: 100svh; --p: 0; --o: .012; --a: 1; --b: 0; background: #0a0908; }
-.vv-cine-stage { position: relative; height: 100vh; height: 100svh; overflow: hidden; isolation: isolate; }
+.vv-cine { position: relative; margin-top: -72px; height: 260vh; --p: 0; --o: .012; --a: 1; --b: 0; background: #0a0908; }
+.vv-cine-stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; isolation: isolate; }
 .vv-cine-stage > * { position: absolute; }
 .vv-cine-ext, .vv-cine-int, .vv-cine-seam { will-change: transform, clip-path, opacity; }
 
@@ -16,7 +16,7 @@
 .vv-cine-seam {
     left: 50%; top: 0; bottom: 0; width: calc(3px + var(--o) * 8vw); transform: translateX(-50%);
     background: linear-gradient(180deg, rgba(255, 214, 150, 0), #ffe2ae 22%, #fff4dc 50%, #fcbc2d 80%, rgba(252, 188, 45, 0));
-    opacity: calc(1 - var(--p) * 1.15);
+    opacity: calc(1 - var(--o) * 1.1);
 }
 .vv-cine-dim { inset: 0; background: #0a0908; opacity: calc(.42 + var(--p) * .12); pointer-events: none; }
 .vv-cine-vignette {
@@ -49,7 +49,7 @@
 @keyframes vv-scroll { 0% { transform: scaleY(0); } 50% { transform: scaleY(1); } 100% { transform: scaleY(1); opacity: 0; } }
 
 @media (max-width: 768px) {
-    .vv-cine { height: 100svh; }
+    .vv-cine { height: 240vh; }
     .vv-cine-int { background-image: var(--img-int-m); }
     .vv-cine-title { letter-spacing: calc(.02em + var(--p) * .2em); }
 }
