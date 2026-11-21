@@ -31,7 +31,7 @@ const GalerijVilla = () => {
                 <title>{tc("Galerij & Historisch Archief, Villa Vredestein")}</title>
                 <meta
                     name="description"
-                    content={tc("Fotogalerij en historisch archief van Villa Vredestein: samenleven, ansichtkaarten, geschiedenis, plattegrond en de verbouwing.")}
+                    content={tc("Fotogalerij en historisch archief van Villa Vredestein: ansichtkaarten, geschiedenis, plattegrond en de verbouwing.")}
                 />
                 <link rel="canonical" href="https://villavredestein.com/galerij" />
                 <meta property="og:type" content="website" />

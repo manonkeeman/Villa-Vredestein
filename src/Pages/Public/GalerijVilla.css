@@ -16,15 +16,19 @@
 }
 .gv-back-link:hover { color: #FCBC2D; }
 
-/* Categorie-overzicht */
+/* Categorie-overzicht: 4 kaarten op één rij */
 .gv-overzicht {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem 2rem;
 }
+
+.gv-cat-tile { grid-column: span 2; }
+.gv-overzicht > .gv-cat-tile:nth-child(n+4) { grid-column: span 3; }
+.gv-overzicht > .gv-cat-tile:nth-child(n+4) .gv-cat-tile-img-wrap { aspect-ratio: 16 / 9; }
 
 .gv-cat-tile {
     display: flex;
@@ -74,8 +78,19 @@
 .gv-not-found-link { color: #FCBC2D; font-weight: 600; text-decoration: none; }
 .gv-not-found-link:hover { text-decoration: underline; }
 
-@media (max-width: 480px) {
-    .gv-overzicht { grid-template-columns: 1fr; padding: 0 1.25rem 1.5rem; gap: 1.1rem; }
+/* Tablet: 2 x 2 */
+@media (max-width: 900px) {
+    .gv-overzicht { grid-template-columns: repeat(2, 1fr); gap: 1.1rem; }
+}
+
+/* Mobiel: één zijwaarts scrollende rij die op een kaart blijft staan */
+@media (max-width: 560px) {
+    .gv-overzicht {
+        display: flex; gap: 1rem; padding: 0 1.25rem 1.5rem;
+        overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+        scroll-padding: 0 1.25rem; scrollbar-width: thin; scrollbar-color: #4a3e2e transparent;
+    }
+    .gv-overzicht > .gv-cat-tile { flex: 0 0 82%; scroll-snap-align: start; }
 }
 
 /* Filter */

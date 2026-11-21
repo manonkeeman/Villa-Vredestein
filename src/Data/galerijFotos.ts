@@ -1,17 +1,7 @@
-// Samenleven
+// Verbouwing (levensfoto's)
 import ImgRommertBram       from "../Assets/Images/life-rommert-bram.jpg";
-import ImgPannenkoeken2025  from "../Assets/Images/life-pannenkoeken-2025.jpg";
 import ImgKoken             from "../Assets/Images/life-koken.jpg";
-import ImgEtenOekrainers    from "../Assets/Images/life-eten-oekrainers.jpg";
-import ImgEtenBuren         from "../Assets/Images/life-eten-buren.jpg";
-import ImgKLM               from "../Assets/Images/life-klm.jpg";
 import ImgFeestje           from "../Assets/Images/life-feestje.jpg";
-import ImgImg1070           from "../Assets/Images/life-img1070.jpeg";
-import ImgKattensporenbeton from "../Assets/Images/life-kattensporenbeton.jpeg";
-import ImgMaximCarpediem    from "../Assets/Images/life-maxim-carpediem.jpg";
-import ImgMotorrijden       from "../Assets/Images/life-motorrijden.jpg";
-import ImgTanteMaximBloemen from "../Assets/Images/life-tante-maxim-bloemen.jpg";
-import ImgAvondsfeer        from "../Assets/Images/life-avondsfeer.jpg";
 
 // Ansichtkaarten
 import ImgAnsichtPension         from "../Assets/Images/hist-ansichtkaart-pension.jpg";
@@ -23,7 +13,6 @@ import ImgAnsichtVredesteinDrb   from "../Assets/Images/hist-ansicht-vredestein-
 import ImgAnsichtRustoord        from "../Assets/Images/hist-ansicht-rustoord.jpg";
 
 // Geschiedenis, familie
-import ImgFamilieRoelofsen  from "../Assets/Images/hist-familie-roelofsen.jpg";
 import ImgZustersPension    from "../Assets/Images/hist-zusters-pension.jpg";
 import ImgTuinVroeger       from "../Assets/Images/hist-tuin-vroeger.jpg";
 import ImgVerhuiskaart      from "../Assets/Images/hist-verhuiskaart.jpg";
@@ -68,7 +57,6 @@ export type GalerijCategorie = {
 
 // Volgorde bepaalt zowel het overzicht als de vorige/volgende-navigatie op /galerij.
 export const CATEGORIEEN: GalerijCategorie[] = [
-    { slug: "samenleven",     label: "Samenleven",     cover: ImgPannenkoeken2025, intro: "Het dagelijks leven in Villa Vredestein: etentjes, feestjes en de mensen die er wonen en langskomen." },
     { slug: "ansichtkaarten", label: "Ansichtkaarten", cover: ImgAnsichtVredesteinP, intro: "Ansichtkaarten van de villa en Driebergen uit het begin van de twintigste eeuw." },
     { slug: "geschiedenis",   label: "Geschiedenis",   cover: ImgVilla1910, intro: "Foto's, archiefstukken en kadasterdocumenten die het verhaal van het pand door de decennia heen vertellen." },
     { slug: "plattegrond",    label: "Plattegrond",    cover: ImgPlattBG, intro: "De indeling van de villa per verdieping, zoals die was bij aankoop in 2020." },
@@ -84,35 +72,12 @@ export type GalerijFoto = {
 };
 
 export const FOTOS: GalerijFoto[] = [
-    // ── Samenleven ────────────────────────────────────────────────────────
-    { src: ImgFamilieRoelofsen,  cat: "Samenleven", caption: "Familie Roelofsen",          sub: "De familie die opgroeide in Vredestein, jaren zestig en zeventig",
-      verhaal: "De familie Roelofsen groeide op in Vredestein, in de jaren zestig en zeventig. Op dit portret zijn ze gewoon en vertrouwd, midden in een huis dat nu zo anders aanvoelt en toch hetzelfde is.\n\nWe kwamen in contact toen ik op zoek was naar informatie van vroeger. Wat volgde was een familiereünie, bij ons in Vredestein. Ik maakte appeltaart en zij deelden hun verhalen en jeugdfoto's. We hebben nog steeds contact en ze volgen de verbouwing op de voet.\n\nZo blijft Villa Vredestein leven, door de mensen die er ooit thuis waren." },
-    { src: ImgRommertBram,       cat: "Samenleven", caption: "Rommert & Bram",             sub: "Onze allereerste studenten van de IVA",
+    { src: ImgRommertBram,       cat: "De Verbouwing", caption: "Rommert & Bram",             sub: "Onze allereerste studenten van de IVA",
       verhaal: "Rommert en Bram waren onze allereerste studenten van de IVA, boven op de bovenste verdieping. Ze woonden middenin de verbouwing en hadden er lol in. Wij ook, met hen. Toen ze al lang en breed een mooie baan hadden, nodigden we ze nog eens uit. Rommert is trouwens de neef van Maxim." },
-    { src: ImgPannenkoeken2025,  cat: "Samenleven", caption: "Pannenkoekenavaond",         sub: "Een traditie die vanzelf is ontstaan",
-      verhaal: "Eens in de zoveel tijd organiseren we een pannenkoekenavaond. Iedereen mag een introducé meenemen. Hier staan IVA-studenten Simon en Lucas, en Manon en Maxim met dochter Arwen. Niemand telt hoeveel pannenkoeken er opgestapeld worden. Het is een van die tradities die vanzelf zijn ontstaan." },
-    { src: ImgKoken,             cat: "Samenleven", caption: "Koken in Vredestein",         sub: "De Bruynzeel-keuken die binnenkort verdwijnt",
+    { src: ImgKoken,             cat: "De Verbouwing", caption: "Koken in Vredestein",         sub: "De Bruynzeel-keuken die binnenkort verdwijnt",
       verhaal: "Onze oude Bruynzeel-keuken bewijst zich op de drukke dagen, wanneer iedereen hard aan het werk is en Manon voor veel monden tegelijk kookt. Sinds 1905 is dit altijd de keuken geweest, ooit nog op kolen. Binnenkort verandert die geschiedenis: deze ruimte wordt een slaapkamer.\n\nVoor nu kun je nog gewoon aanschuiven voor een lekkere maaltijd." },
-    { src: ImgEtenBuren,         cat: "Samenleven", caption: "Eten met de buren",           sub: "De deur staat altijd open in Villa Vredestein",
-      verhaal: "Bij Villa Vredestein staat de deur letterlijk open. De buren weten dat. Soms is het toeval, soms is het gepland, maar een tafel vol mensen is hier nooit een uitzondering." },
-    { src: ImgEtenOekrainers,    cat: "Samenleven", caption: "Oekraïense gasten",           sub: "Gastvrij onthaal van Oekraïense vluchtelingen",
-      verhaal: "Na het uitbreken van de oorlog in Oekraïne opende Villa Vredestein zijn deuren voor vluchtelingen. Samen eten, samen verhalen delen. De taal was soms een barrière, gastvrijheid nooit." },
-    { src: ImgKLM,               cat: "Samenleven", caption: "Fotoshoot in Vredestein",     sub: "Villa Vredestein als decor voor een fotoshoot",
-      verhaal: "De fotograaf koos Villa Vredestein als decor voor een fotoshoot. De hoge plafonds, de kroonluchters, de sfeer: het paste precies bij wat ze zochten. Een bijzondere dag in de lange geschiedenis van dit pand." },
-    { src: ImgFeestje,           cat: "Samenleven", caption: "Feestje Vredestein",           sub: "Maxims verjaardag in een huis dat tegen een stootje kan",
+    { src: ImgFeestje,           cat: "De Verbouwing", caption: "Feestje Vredestein",           sub: "Maxims verjaardag in een huis dat tegen een stootje kan",
       verhaal: "Dit was nog voor het feest. Maxims verjaardag, in een huis dat tegen een stootje kan. Een avond die vanzelf uitliep op een feest. Zo is Villa Vredestein op zijn best: mensen die samenkomen, de woonkamer zo leeg als een grote danszaal, en buiten staat de tijd even stil." },
-    { src: ImgImg1070,           cat: "Samenleven", caption: "BBQ Party",                   sub: "Afsluiting van het IVA-schooljaar",
-      verhaal: "Het schooljaar zit erop, en dat vieren we zoals het hoort: met de grill aan, ijskoude drankjes en iedereen samen op het terrein. Vega of glutenvrij, onze BBQ-master draait er zijn hand niet voor om. Een avond die altijd langer duurt dan gepland." },
-    { src: ImgKattensporenbeton, cat: "Samenleven", caption: "Kattensporenbeton",           sub: "Er woont ook nog een kat bij ons",
-      verhaal: "Er woont ook nog een kat bij ons. Na het storten van het beton bleek hij ook even gekeken te hebben wat we aan het doen waren. En zo liet ook hij zijn sporen na in Villa Vredestein." },
-    { src: ImgMaximCarpediem,    cat: "Samenleven", caption: "Maxim & Carpe Diem",          sub: "Pannenkoeken bakken als Carpe Diem",
-      verhaal: "Maxim in zijn element. Handen vuil, hoofd helder, bezig met iets wat pas klaar is als het klaar is. Al was het deze keer gewoon pannenkoeken bakken. Carpe Diem is geen spreuk meer, het is een manier van werken." },
-    { src: ImgMotorrijden,       cat: "Samenleven", caption: "Samen motorrijden",            sub: "Maxim & Manon delen een passie voor twee wielen",
-      verhaal: "Naast het verbouwen houden we van die andere vrijheid: de weg open, de motor onder ons. Want het leven is er niet alleen om aan te werken, maar ook om van te genieten." },
-    { src: ImgTanteMaximBloemen, cat: "Samenleven", caption: "Maxims tante & bloemen",      sub: "Altijd fijn als zij langskomt",
-      verhaal: "Bloemen op tafel, tante op bezoek. Altijd fijn als zij langskomt, en altijd laat ze haar bloemensporen achter." },
-    { src: ImgAvondsfeer,        cat: "Samenleven", caption: "Avondsfeer op het erf",        sub: "Verlichte ramen, het haardhout klaar voor de winter",
-      verhaal: "Aan het einde van de dag, als het licht binnen aangaat en het haardhout voor de winter alvast op de kar staat. Fietsen tegen de schuur, de motoren op de oprit: gewoon een avond thuis in Villa Vredestein." },
 
     // ── Ansichtkaarten ────────────────────────────────────────────────────
     { src: ImgAnsichtPension,      cat: "Ansichtkaarten", caption: "Pension Villa Vredestein",            sub: "Het pension zoals het begin 1900 werd geadverteerd",
