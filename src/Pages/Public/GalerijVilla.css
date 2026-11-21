@@ -16,19 +16,25 @@
 }
 .gv-back-link:hover { color: #FCBC2D; }
 
-/* Categorie-overzicht: 4 kaarten op één rij */
+/* Categorie-overzicht: één zijwaarts scrollende rij met scrollbalk */
 .gv-overzicht {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
     gap: 1.5rem;
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto;
-    padding: 0 2rem 2rem;
+    padding: 0 2rem 1.5rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 2rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #FCBC2D #1a140c;
 }
+.gv-overzicht::-webkit-scrollbar { height: 8px; }
+.gv-overzicht::-webkit-scrollbar-track { background: #1a140c; border-radius: 8px; }
+.gv-overzicht::-webkit-scrollbar-thumb { background: #FCBC2D; border-radius: 8px; }
+.gv-overzicht > .gv-cat-tile { flex: 0 0 min(320px, 80%); scroll-snap-align: start; }
 
-.gv-cat-tile { grid-column: span 2; }
-.gv-overzicht > .gv-cat-tile:nth-child(n+4) { grid-column: span 3; }
-.gv-overzicht > .gv-cat-tile:nth-child(n+4) .gv-cat-tile-img-wrap { aspect-ratio: 16 / 9; }
 
 .gv-cat-tile {
     display: flex;
@@ -77,21 +83,6 @@
 .gv-not-found h1 { font-size: 1.6rem; color: #fff; margin: 0 0 1.25rem; }
 .gv-not-found-link { color: #FCBC2D; font-weight: 600; text-decoration: none; }
 .gv-not-found-link:hover { text-decoration: underline; }
-
-/* Tablet: 2 x 2 */
-@media (max-width: 900px) {
-    .gv-overzicht { grid-template-columns: repeat(2, 1fr); gap: 1.1rem; }
-}
-
-/* Mobiel: één zijwaarts scrollende rij die op een kaart blijft staan */
-@media (max-width: 560px) {
-    .gv-overzicht {
-        display: flex; gap: 1rem; padding: 0 1.25rem 1.5rem;
-        overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
-        scroll-padding: 0 1.25rem; scrollbar-width: thin; scrollbar-color: #4a3e2e transparent;
-    }
-    .gv-overzicht > .gv-cat-tile { flex: 0 0 82%; scroll-snap-align: start; }
-}
 
 /* Filter */
 .gv-filter {

@@ -40,7 +40,6 @@ import ImgPlattE2   from "../Assets/Images/plattegrond-tweede-verd.jpg";
 import ImgWijnkamer         from "../Assets/Images/int-wijnkamer.jpg";
 import ImgGlasLood2         from "../Assets/Images/rest-glas-lood-2.jpg";
 import ImgVerbouwen         from "../Assets/Images/life-verbouwen-samen.jpg";
-import ImgSlopen            from "../Assets/Images/rest-slopen.jpg";
 import ImgIsoleren          from "../Assets/Images/rest-isoleren.jpg";
 import ImgKachelBouw        from "../Assets/Images/rest-kachel-bouw.jpg";
 import ImgSchatvondsten     from "../Assets/Images/rest-schatvondsten.jpg";
@@ -60,7 +59,7 @@ export const CATEGORIEEN: GalerijCategorie[] = [
     { slug: "ansichtkaarten", label: "Ansichtkaarten", cover: ImgAnsichtVredesteinP, intro: "Ansichtkaarten van de villa en Driebergen uit het begin van de twintigste eeuw." },
     { slug: "geschiedenis",   label: "Geschiedenis",   cover: ImgVilla1910, intro: "Foto's, archiefstukken en kadasterdocumenten die het verhaal van het pand door de decennia heen vertellen." },
     { slug: "plattegrond",    label: "Plattegrond",    cover: ImgPlattBG, intro: "De indeling van de villa per verdieping, zoals die was bij aankoop in 2020." },
-    { slug: "de-verbouwing",  label: "De Verbouwing",  cover: ImgSlopen, intro: "Van sloop tot restauratie: de transformatie van Villa Vredestein, stap voor stap." },
+    { slug: "de-verbouwing",  label: "De Verbouwing",  cover: ImgGlasLood2, intro: "Van sloop tot restauratie: de transformatie van Villa Vredestein, stap voor stap." },
 ];
 
 export type GalerijFoto = {
@@ -138,8 +137,6 @@ export const FOTOS: GalerijFoto[] = [
     // ── Restauratie ────────────────────────────────────────────────────────
     { src: ImgWijnkamer,         cat: "De Verbouwing", caption: "Vóór de restauratie",         sub: "De woonkamer zoals die er uitzag vóór de werkzaamheden",
       verhaal: "Zo zag de woonkamer eruit voordat Manon & Maxim de handen uit de mouwen staken. Verouderde afwerking, gedateerde kleuren, maar onder dat alles: dezelfde ruimte, dezelfde proporties, dezelfde magie." },
-    { src: ImgSlopen,            cat: "De Verbouwing", caption: "Slopen",                      sub: "Het begin van de grote transformatie in 2020",
-      verhaal: "Het begin was radicaal: alles eruit wat niet kon blijven. Slopen is een daad van vertrouwen, je vernietigt iets in de hoop dat wat eronder zit beter is. Dat bleek inderdaad zo te zijn." },
     { src: ImgIsoleren,          cat: "De Verbouwing", caption: "Isoleren",                    sub: "Maanden isolatiewerk voor een energiezuinig pand",
       verhaal: "Maanden van isolatiewerk. Muren, vloeren, daken, alles werd gelaagd en gedicht. Het is het onzichtbare werk dat je later nooit ziet, maar altijd voelt op een koude winteravond." },
     { src: ImgGlasLood2,         cat: "De Verbouwing", caption: "Glas-in-lood werkzaamheden",  sub: "Het herstelwerk aan de historische ramen",
