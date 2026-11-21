@@ -1,3 +1,4 @@
+import { useState, type FormEvent } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -6,7 +7,6 @@ import "./Boek.css";
 
 import Omslag from "../../Assets/Images/boek-omslag.jpg";
 import Inhoud from "../../Assets/Images/boek-inhoud.jpg";
-import Qr from "../../Assets/Images/boek-qr.jpg";
 
 // Titels van het boek zelf blijven Nederlands in alle talen; de toelichting wordt vertaald.
 const THEMAS = [
@@ -23,6 +23,16 @@ const NASLAG = ["Tijdlijn", "Het huis in het kort", "De grond in 1832", "Het wee
 
 const Boek = () => {
     const tc = useContent();
+    const [status, setStatus] = useState<"idle" | "bezig" | "ok" | "fout">("idle");
+    const verstuur = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setStatus("bezig");
+        try {
+            const data = new URLSearchParams(new FormData(e.currentTarget) as unknown as Record<string, string>);
+            const res = await fetch("/bestel-form.html", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: data.toString() });
+            setStatus(res.ok ? "ok" : "fout");
+        } catch { setStatus("fout"); }
+    };
     const { i18n } = useTranslation();
     const langCode = i18n.language?.split("-")[0] || "nl";
     const titel = tc("Hoofdstraat 147, het boek | Villa Vredestein");
@@ -134,9 +144,22 @@ const Boek = () => {
             {/* ── Bestellen ── */}
             <section className="boek-bestel" id="bestellen" aria-labelledby="boek-bestel-kop">
                 <h2 id="boek-bestel-kop">{tc("Bestel het boek")}</h2>
-                <img className="boek-qr" src={Qr} alt={tc("QR-code om het boek te bestellen")} width="250" height="250" loading="lazy" />
-                <p className="boek-bestel-p">{tc("Scan de code om het boek te bestellen.")}</p>
-                <p className="boek-code">{tc("Met kortingscode")} <code>BOEK98GJAC</code> {tc("krijg je € 10 korting.")}</p>
+                <p className="boek-bestel-p">{tc("Laat je gegevens achter en we nemen contact met je op over je exemplaar van het boek.")}</p>
+                {status === "ok" ? (
+                    <p className="boek-form-ok" role="status">{tc("Bedankt! Je bestelaanvraag is ontvangen. We nemen snel contact met je op.")}</p>
+                ) : (
+                    <form className="boek-form" name="boek-bestelling" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={verstuur}>
+                        <input type="hidden" name="form-name" value="boek-bestelling" />
+                        <p className="boek-hp" aria-hidden="true"><label>Niet invullen <input name="bot-field" tabIndex={-1} autoComplete="off" /></label></p>
+                        <label>{tc("Naam")}<input name="naam" required autoComplete="name" /></label>
+                        <label>{tc("E-mailadres")}<input name="email" type="email" required autoComplete="email" /></label>
+                        <label>{tc("Aantal exemplaren")}<input name="aantal" type="number" min={1} max={20} defaultValue={1} required /></label>
+                        <label>{tc("Adres (optioneel)")}<input name="adres" autoComplete="street-address" /></label>
+                        <label>{tc("Opmerking (optioneel)")}<textarea name="opmerking" rows={3} /></label>
+                        <button className="boek-btn boek-btn--solid" type="submit" disabled={status === "bezig"}>{tc("Verstuur bestelaanvraag")}</button>
+                        {status === "fout" && <p className="boek-form-err" role="alert">{tc("Versturen is niet gelukt. Probeer het later opnieuw of neem contact met ons op.")}</p>}
+                    </form>
+                )}
             </section>
 
             {/* ── Verder ── */}

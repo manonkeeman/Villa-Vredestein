@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="nl"><head><meta charset="utf-8"><title>Bestelformulier</title><meta name="robots" content="noindex"></head>
+<body>
+<!-- Verborgen formulier zodat Netlify Forms het bestelformulier van /boek herkent -->
+<form name="boek-bestelling" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input name="bot-field" />
+  <input name="naam" />
+  <input name="email" />
+  <input name="aantal" />
+  <input name="adres" />
+  <textarea name="opmerking"></textarea>
+</form>
+</body></html>
