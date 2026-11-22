@@ -628,3 +628,6 @@
 
 .kenmerk-val { font-variant-numeric: tabular-nums; }
 .intro-img-col { overflow: hidden; border-radius: 12px; }
+
+/* Foto's met eigen afgeronde hoeken, ook als er balken omheen staan */
+.hl-img-wrap img, .sfeer-item img { border-radius: 10px; }

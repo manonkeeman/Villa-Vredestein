@@ -136,3 +136,6 @@
 /* Foto's altijd volledig in beeld */
 .vd-galerij-item { background: #0e0b08; }
 .vd-galerij-item img { object-fit: contain; }
+
+/* Foto's met eigen afgeronde hoeken, ook als er balken omheen staan */
+.vd-galerij-item img { border-radius: 10px; }

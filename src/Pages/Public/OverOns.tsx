@@ -6,7 +6,7 @@ import "./OverOns.css";
 
 import ImgChineseMuur from "../../Assets/Images/life-chinese-muur.jpg";
 import ImgKLMStraalmotor from "../../Assets/Images/life-klm-straalmotor.jpg";
-import ImgPortretGarage from "../../Assets/Images/life-portret-garage.jpg";
+import ImgWaterval from "../../Assets/Images/life-waterval.jpg";
 import ImgSuburban from "../../Assets/Images/Maxim_Manon_ChevroletSuburban.jpg";
 import CarpeDiemVideo from "../../Assets/Videos/carpe-diem.mp4";
 import ImgCafeRacerStaand from "../../Assets/Images/life-carpediem-cafe-racer.jpg";
@@ -39,7 +39,7 @@ const SECTIONS: Section[] = [
         accent: "#FCBC2D",
         pullQuote: "Verre horizonten en een stevige basis. Dat is wat ze samen bouwen.",
         extraImages: [
-            { src: ImgPortretGarage, alt: "Manon & Maxim bij de garagedeur van Villa Vredestein", ar: 2 / 3, pos: "50% 30%" },
+            { src: ImgWaterval, alt: "Manon & Maxim lachend bij een waterval", ar: 4 / 3 },
             { src: ImgKLMStraalmotor, alt: "Manon & Maxim in KLM-uniform voor een straalmotor", ar: 1273 / 1592 },
             { src: ImgSuburban, alt: "Manon & Maxim bij hun Chevrolet Suburban", ar: 1, pos: "50% 45%" },
         ],

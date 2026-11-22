@@ -166,3 +166,6 @@
 
 /* Foto's altijd volledig in beeld */
 .blog-hero-img { object-fit: contain; background: #0e0b08; }
+
+/* Foto's met eigen afgeronde hoeken, ook als er balken omheen staan */
+.blog-hero-img { border-radius: 12px; }

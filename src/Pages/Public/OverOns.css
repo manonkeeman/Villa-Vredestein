@@ -79,3 +79,6 @@
     .oo-panel, .oo-stage img, .oo-stage video, .oo-lightbox { animation: none; }
     .oo-tab, .oo-thumb { transition: none; }
 }
+
+/* Foto's met eigen afgeronde hoeken, ook als er balken omheen staan */
+.oo-stage img { border-radius: 14px; }

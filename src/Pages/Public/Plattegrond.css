@@ -342,3 +342,6 @@
 /* Foto's en archiefstukken altijd volledig in beeld */
 .pg-archief-item img { object-fit: contain; background: #0e0b08; }
 .pg-fotos-grid img { object-fit: contain; background: #0e0b08; }
+
+/* Foto's met eigen afgeronde hoeken, ook als er balken omheen staan */
+.pg-archief-item img, .pg-fotos-grid img { border-radius: 10px; }

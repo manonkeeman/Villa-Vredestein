@@ -421,3 +421,6 @@
 .venue-photo img { object-fit: contain; }
 .venue-photo { height: 230px; }
 @media (max-width: 900px) { .venue-photo { height: 210px; } }
+
+/* Foto's met eigen afgeronde hoeken, ook als er balken omheen staan */
+.venue-photo img { border-radius: 10px; }
