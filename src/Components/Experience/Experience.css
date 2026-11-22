@@ -51,3 +51,7 @@ main h1, main h2 { font-weight: 300; letter-spacing: -.01em; }
     main { animation: none; }
     .xp-rv { opacity: 1; translate: 0 0; transition: none; }
 }
+
+/* Parallax voor grote foto's */
+.xp-par { scale: 1.07; translate: 0 var(--py, 0px); will-change: translate; }
+@media (prefers-reduced-motion: reduce) { .xp-par { scale: 1; translate: 0 0; } }

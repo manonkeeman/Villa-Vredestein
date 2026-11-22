@@ -133,8 +133,46 @@ function useReveal() {
     }, [pathname]);
 }
 
+// Parallax: grote foto's bewegen iets trager dan de pagina (alleen foto's met speelruimte in hun kader)
+const PARALLAX = ".oo-section:not(.oo-section--video) .oo-img-wrap:not(.oo-img-wrap--contain) img.oo-img, .intro-img-col img";
+
+function useParallax() {
+    const { pathname } = useLocation();
+    useEffect(() => {
+        if (reduceMotion()) return;
+        let els: HTMLElement[] = [];
+        let raf = 0;
+        const update = () => {
+            raf = 0;
+            const vh = window.innerHeight;
+            els.forEach((el) => {
+                const r = el.getBoundingClientRect();
+                if (r.bottom < -120 || r.top > vh + 120) return;
+                const k = (r.top + r.height / 2 - vh / 2) / vh; // -1 … 1
+                el.style.setProperty("--py", `${(-k * 26).toFixed(1)}px`);
+            });
+        };
+        const onScroll = () => { if (!raf) raf = requestAnimationFrame(update); };
+        const t = setTimeout(() => {
+            els = Array.from(document.querySelectorAll<HTMLElement>(PARALLAX));
+            els.forEach((el) => el.classList.add("xp-par"));
+            update();
+        }, 120);
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", onScroll);
+        return () => {
+            clearTimeout(t);
+            window.removeEventListener("scroll", onScroll);
+            window.removeEventListener("resize", onScroll);
+            if (raf) cancelAnimationFrame(raf);
+            els.forEach((el) => { el.classList.remove("xp-par"); el.style.removeProperty("--py"); });
+        };
+    }, [pathname]);
+}
+
 export default function Experience() {
     useReveal();
+    useParallax();
     return (
         <>
             <Preloader />

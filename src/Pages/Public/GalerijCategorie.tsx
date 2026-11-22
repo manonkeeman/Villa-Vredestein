@@ -3,6 +3,9 @@ import { Helmet } from "react-helmet-async";
 import { Link, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { CATEGORIEEN, FOTOS } from "../../Data/galerijFotos";
+import BeforeAfter from "../../Components/BeforeAfter/BeforeAfter";
+import ImgWoonkamerSlopen from "../../Assets/Images/rest-woonkamer-vloer-slopen.jpg";
+import ImgWoonkamerNu from "../../Assets/Images/int-woonkamer.jpg";
 import NotFound from "./NotFound";
 import "./GalerijVilla.css";
 import { useContent } from "../../i18n/content";
@@ -95,6 +98,18 @@ const GalerijCategorie = () => {
                     </Link>
                 ))}
             </nav>
+
+            {cat.slug === "de-verbouwing" && (
+                <BeforeAfter
+                    before={ImgWoonkamerSlopen}
+                    after={ImgWoonkamerNu}
+                    beforeLabel={tc("Tijdens het slopen")}
+                    afterLabel={tc("Nu")}
+                    alt={tc("De woonkamer van Villa Vredestein, afgewerkt")}
+                    hint={tc("Schuif om te vergelijken")}
+                    caption={tc("De woonkamer: van gesloopte vloer tot een plek om te zitten")}
+                />
+            )}
 
             <div className="gv-grid" role="list">
                 {fotos.map((f, i) => (

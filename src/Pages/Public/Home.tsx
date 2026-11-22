@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet-async";
@@ -23,6 +23,36 @@ const villaCardIcon = L.divIcon({
     iconSize: [22, 22],
     iconAnchor: [11, 11],
 });
+
+// Telt het getal in een kenmerk (bijv. "680 m²") op zodra het in beeld komt.
+function CountUp({ text }: { text: string }) {
+    const ref = useRef<HTMLElement>(null);
+    const [shown, setShown] = useState(text);
+    useEffect(() => {
+        const m = text.match(/^(\d+)(.*)$/);
+        const el = ref.current;
+        if (!m || !el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) { setShown(text); return; }
+        const target = Number(m[1]);
+        const rest = m[2];
+        const from = target > 1000 ? target - 120 : 0; // jaartallen tellen niet vanaf nul
+        setShown(`${from}${rest}`);
+        let raf = 0;
+        const io = new IntersectionObserver(([e]) => {
+            if (!e.isIntersecting) return;
+            io.disconnect();
+            const t0 = performance.now();
+            const tick = (now: number) => {
+                const k = Math.min(1, (now - t0) / 1400);
+                setShown(`${Math.round(from + (target - from) * (1 - Math.pow(1 - k, 3)))}${rest}`);
+                if (k < 1) raf = requestAnimationFrame(tick);
+            };
+            raf = requestAnimationFrame(tick);
+        }, { threshold: 0.6 });
+        io.observe(el);
+        return () => { io.disconnect(); cancelAnimationFrame(raf); };
+    }, [text]);
+    return <strong ref={ref} className="kenmerk-val">{shown}</strong>;
+}
 
 const KENMERKEN = [
     { label: "1905", sub: "Gebouwd" },
@@ -136,7 +166,7 @@ const Home = () => {
             <section className="kenmerken-bar reveal-row" ref={addRef} aria-label={tc("Kenmerken")}>
                 {KENMERKEN.map((k) => (
                     <div key={k.label} className="kenmerk-item">
-                        <strong className="kenmerk-val">{tc(k.label)}</strong>
+                        <CountUp text={tc(k.label)} />
                         <span className="kenmerk-sub">{tc(k.sub)}</span>
                     </div>
                 ))}

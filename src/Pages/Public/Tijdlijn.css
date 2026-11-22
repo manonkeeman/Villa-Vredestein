@@ -198,3 +198,10 @@
     .tijdlijn-header h1 { font-size: clamp(1.3rem, 6vw, 1.6rem); }
     .tijdlijn-page { padding: 2rem 1rem 4rem; }
 }
+
+/* Lijn die zich opbouwt tijdens het scrollen (alleen actief als JS de klasse zet) */
+.tijdlijn-tekent .tijdlijn-lijn { background: #2a2016; }
+.tijdlijn-tekent .tijdlijn-lijn::after { content: ""; position: absolute; left: 0; top: 0; width: 100%; height: calc(var(--prog, 0) * 100%); background: linear-gradient(to bottom, #FCBC2D, #c8a46e); box-shadow: 0 0 12px rgba(252, 188, 45, .45); }
+.tijdlijn-tekent .tijdlijn-lijn--historisch::after { background: linear-gradient(to bottom, #c8a46e, #a8844e); box-shadow: 0 0 12px rgba(200, 164, 110, .4); }
+.tijdlijn-tekent .tijdlijn-dot { transform: translateX(-50%) scale(.7); opacity: .45; transition: transform .5s ease, opacity .5s ease, background-color .3s; }
+.tijdlijn-tekent .tijdlijn-item.visible .tijdlijn-dot { transform: translateX(-50%) scale(1); opacity: 1; }
