@@ -494,3 +494,6 @@
         padding: 3rem 1rem;
     }
 }
+
+/* Krantenknipsels altijd volledig in beeld */
+.idp-thumb-img { object-fit: contain; object-position: center; background: #0e0b08; }

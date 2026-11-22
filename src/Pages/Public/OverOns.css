@@ -520,6 +520,9 @@
     .oo-extra-images {
         height: 90px !important;
     }
+    .oo-extra-images--tall {
+        height: 260px !important;
+    }
 
     .oo-img-block {
         max-width: 100%;
@@ -575,3 +578,7 @@
         font-size: 1.6rem;
     }
 }
+
+/* Foto's altijd volledig in beeld: eigen beeldverhouding in plaats van bijsnijden */
+.oo-section:not(.oo-section--video) .oo-img-wrap:not(.oo-img-wrap--contain) { aspect-ratio: auto; background: #0e0b08; }
+.oo-section:not(.oo-section--video) .oo-img-wrap:not(.oo-img-wrap--contain) .oo-img { height: auto; object-fit: contain; display: block; }

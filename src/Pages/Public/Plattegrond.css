@@ -338,3 +338,7 @@
     .pg-cta-inner { flex-direction: column; }
     .pg-inner { padding: 0 1.25rem; }
 }
+
+/* Foto's en archiefstukken altijd volledig in beeld */
+.pg-archief-item img { object-fit: contain; background: #0e0b08; }
+.pg-fotos-grid img { object-fit: contain; background: #0e0b08; }

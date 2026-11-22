@@ -47,11 +47,6 @@
 .boek-chips li { padding: .55rem 1.2rem; border: 1px solid rgba(252, 188, 45, .4); border-radius: 999px; color: #f4efe6; font-size: .85rem; letter-spacing: .04em; }
 
 /* Blader */
-.boek-blader { margin-bottom: 6rem; }
-.boek-pages { display: grid; grid-template-columns: minmax(0, 360px); gap: 2.5rem; justify-content: center; }
-.boek-pages figure { margin: 0; }
-.boek-pages img { width: 100%; height: auto; border-radius: 3px; box-shadow: 0 24px 60px rgba(0, 0, 0, .6); }
-.boek-pages figcaption { margin-top: .8rem; text-align: center; font-size: .72rem; letter-spacing: .25em; text-transform: uppercase; color: rgba(244, 239, 230, .55); }
 
 /* Bestellen */
 .boek-bestel { text-align: center; padding: 4rem 1rem; margin-bottom: 5rem; border: 1px solid rgba(252, 188, 45, .3); border-radius: 14px; background: radial-gradient(ellipse at top, rgba(252, 188, 45, .08), transparent 70%); }
@@ -75,7 +70,6 @@
     .boek-cover img { max-width: 300px; }
     .boek-intro { grid-template-columns: 1fr; gap: 1rem; }
     .boek-facts { margin-bottom: 4rem; }
-    .boek-pages { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) { .boek-cover img, .boek-card, .boek-links a { transition: none; } }
 

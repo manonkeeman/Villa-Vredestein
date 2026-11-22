@@ -10,7 +10,7 @@ import ImgKrantOpening1912 from "../../Assets/Images/krant-1912-opening-het-nieu
 import ImgKrant1954 from "../../Assets/Images/Krant1954.jpg";
 import ImgFamilieRoelofsen from "../../Assets/Images/hist-familie-roelofsen.jpg";
 import ImgGekocht2020 from "../../Assets/Images/hist-gekocht-2020.jpg";
-import ImgSlopen from "../../Assets/Images/rest-slopen.jpg";
+import ImgGlasLood from "../../Assets/Images/rest-glas-lood-2.jpg";
 import ImgAmelisweerd from "../../Assets/Images/omg-amelisweerd.jpg";
 import ImgKachelBouw from "../../Assets/Images/rest-kachel-bouw.jpg";
 import ImgMoestuinBloei from "../../Assets/Images/tuin-moestuin-bloei.jpg";
@@ -140,8 +140,8 @@ const renovatie = [
         status: "gedaan",
         tekst: "Van kelder tot zolder gestript en opnieuw opgebouwd. 15 cm isolatie, volledig gestuct, vloerverwarming in de betonnen gietvloer en airco's op de verdiepingen. Alle elektriciteit en leidingwerk vernieuwd. Van 11 kamers naar 7, met 3 badkamers, twee keukens, een kitchenette en een sportkamer.",
         detail: "Elke ruimte werd teruggestript naar de basis. De wanden zijn voorzien van 15 centimeter isolatie en daarna volledig opnieuw gestuct. In de industriële betonnen gietvloer op de begane grond is vloerverwarming aangebracht. Op de tweede en derde verdieping hangen airco's: de voorkant van het huis staat recht op de zon en warmt in de zomer flink op. Vroeger plantten bewoners lindenbomen voor de deur voor schaduw. Wij kozen voor een open tuin met zicht op de straat. Alle elektriciteit is vernieuwd en aangepast aan de moderne eisen. Hetzelfde geldt voor het leidingwerk. Dhr. Blooi was loodgieter en had door de jaren heen veel zelf aan elkaar geplakt. Het totaaloverzicht was verloren gegaan: bij het uitgraven vonden we gasleidingen in de tuin en andere gevaarlijke aansluitingen. Alles is veiliggesteld en opnieuw aangelegd. Het doel blijft het huis in oude glorie terugbrengen, maar naar de moderne eisen van duurzaamheid en klimaat.",
-        afbeelding: ImgSlopen,
-        afbeeldingAlt: "Slopen, het begin van de grote transformatie",
+        afbeelding: ImgGlasLood,
+        afbeeldingAlt: "Het gestripte trappenhuis met het glas-in-loodraam tijdens de restauratie",
     },
     {
         datum: "2023",
@@ -265,6 +265,36 @@ const Tijdlijn = () => {
         );
         itemsRef.current.forEach((el) => el && observer.observe(el));
         return () => observer.disconnect();
+    }, []);
+
+    // De lijn tekent zich terwijl je scrolt: --prog (0 → 1) per tijdlijnblok
+    useEffect(() => {
+        const blocks = Array.from(document.querySelectorAll<HTMLElement>(".tijdlijn-container"));
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            blocks.forEach((b) => b.style.setProperty("--prog", "1"));
+            return;
+        }
+        let raf = 0;
+        const update = () => {
+            raf = 0;
+            const vh = window.innerHeight;
+            blocks.forEach((b) => {
+                const r = b.getBoundingClientRect();
+                const p = Math.min(1, Math.max(0, (vh * 0.65 - r.top) / Math.max(r.height, 1)));
+                b.style.setProperty("--prog", p.toFixed(4));
+            });
+        };
+        const onScroll = () => { if (!raf) raf = requestAnimationFrame(update); };
+        blocks.forEach((b) => b.classList.add("tijdlijn-tekent"));
+        update();
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", onScroll);
+        return () => {
+            window.removeEventListener("scroll", onScroll);
+            window.removeEventListener("resize", onScroll);
+            if (raf) cancelAnimationFrame(raf);
+            blocks.forEach((b) => b.classList.remove("tijdlijn-tekent"));
+        };
     }, []);
 
     const handleKlik = (i) => setExpanded(expanded === i ? null : i);

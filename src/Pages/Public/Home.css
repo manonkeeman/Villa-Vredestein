@@ -618,3 +618,13 @@
     .sfeer-grid { grid-template-columns: repeat(2, 1fr); gap: 0.35rem; }
     .hl-img-wrap { height: 200px; }
 }
+
+/* Foto's altijd volledig in beeld */
+.intro-img-col img, .intro-img-col video { height: auto; max-height: 560px; object-fit: contain; background: #0e0b08; }
+.hl-img-wrap { background: #0e0b08; }
+.hl-img-wrap img { object-fit: contain; }
+.sfeer-item { background: #0e0b08; }
+.sfeer-item img { object-fit: contain; }
+
+.kenmerk-val { font-variant-numeric: tabular-nums; }
+.intro-img-col { overflow: hidden; border-radius: 12px; }

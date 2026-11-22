@@ -1,9 +1,11 @@
 // Verbouwing (levensfoto's)
-import ImgRommertBram       from "../Assets/Images/life-rommert-bram.jpg";
 import ImgKoken             from "../Assets/Images/life-koken.jpg";
-import ImgFeestje           from "../Assets/Images/life-feestje.jpg";
 
 // Ansichtkaarten
+import ImgKrant1937 from "../Assets/Images/hist-krant-1937-rusthuis.jpg";
+import ImgKrant1941 from "../Assets/Images/hist-krant-1941-sloop-hoofdstraat.jpg";
+import ImgOverzichtBewoners from "../Assets/Images/hist-overzicht-bewoners.jpg";
+import ImgAnsicht1940 from "../Assets/Images/hist-ansichtkaart-pension-1940.jpg";
 import ImgAnsichtPension         from "../Assets/Images/hist-ansichtkaart-pension.jpg";
 import ImgAnsichtHfdstr          from "../Assets/Images/hist-ansichtkaart-hfdstr.jpg";
 import ImgAnsichtDorpsstraat     from "../Assets/Images/hist-ansicht-dorpsstraat.jpg";
@@ -71,16 +73,14 @@ export type GalerijFoto = {
 };
 
 export const FOTOS: GalerijFoto[] = [
-    { src: ImgRommertBram,       cat: "De Verbouwing", caption: "Rommert & Bram",             sub: "Onze allereerste studenten van de IVA",
-      verhaal: "Rommert en Bram waren onze allereerste studenten van de IVA, boven op de bovenste verdieping. Ze woonden middenin de verbouwing en hadden er lol in. Wij ook, met hen. Toen ze al lang en breed een mooie baan hadden, nodigden we ze nog eens uit. Rommert is trouwens de neef van Maxim." },
     { src: ImgKoken,             cat: "De Verbouwing", caption: "Koken in Vredestein",         sub: "De Bruynzeel-keuken die binnenkort verdwijnt",
       verhaal: "Onze oude Bruynzeel-keuken bewijst zich op de drukke dagen, wanneer iedereen hard aan het werk is en Manon voor veel monden tegelijk kookt. Sinds 1905 is dit altijd de keuken geweest, ooit nog op kolen. Binnenkort verandert die geschiedenis: deze ruimte wordt een slaapkamer.\n\nVoor nu kun je nog gewoon aanschuiven voor een lekkere maaltijd." },
-    { src: ImgFeestje,           cat: "De Verbouwing", caption: "Feestje Vredestein",           sub: "Maxims verjaardag in een huis dat tegen een stootje kan",
-      verhaal: "Dit was nog voor het feest. Maxims verjaardag, in een huis dat tegen een stootje kan. Een avond die vanzelf uitliep op een feest. Zo is Villa Vredestein op zijn best: mensen die samenkomen, de woonkamer zo leeg als een grote danszaal, en buiten staat de tijd even stil." },
 
     // ── Ansichtkaarten ────────────────────────────────────────────────────
     { src: ImgAnsichtPension,      cat: "Ansichtkaarten", caption: "Pension Villa Vredestein",            sub: "Het pension zoals het begin 1900 werd geadverteerd",
       verhaal: "Een ansichtkaart uit het begin van de twintigste eeuw, waarop Vredestein als pension werd aangeprezen. 'Rustig gelegen, christelijk pension', dat was de boodschap. Toeristen kwamen van ver voor de lucht van de Heuvelrug." },
+    { src: ImgAnsicht1940, cat: "Ansichtkaarten", caption: "Pension Villa Vredestein, rond 1940", sub: "Ansichtkaart met gasten in de tuin voor de gevel",
+      verhaal: "Ansichtkaart uit het boek, rond 1940: gasten in de tuin voor het huis en het bord Pension aan het hek." },
     { src: ImgAnsichtHfdstr,       cat: "Ansichtkaarten", caption: "Ansichtkaart Hoofdstraat",            sub: "Historische ansichtkaart van de Hoofdstraat in Driebergen",
       verhaal: "De Hoofdstraat van Driebergen zoals hij er rond 1910 uitzag. Minder auto's, meer rust. Villa Vredestein staat rechts in beeld, herkenbaar aan het karakteristieke dak en de erker." },
     { src: ImgAnsichtDorpsstraat,  cat: "Ansichtkaarten", caption: "Driebergen Dorpstraat",              sub: "De Dorpsstraat van Driebergen, begin twintigste eeuw",
@@ -123,6 +123,12 @@ export const FOTOS: GalerijFoto[] = [
       verhaal: "Het officiële bouwregister uit de archieven. Hier staat wanneer de villa is gebouwd, wie de eigenaar was en wat de bouwdata zijn. Het begin van het verhaal in drie regels zwarte inkt." },
     { src: ImgBouwreg2,          cat: "Geschiedenis", caption: "Bouwregister Hfdstr. 147 (II)", sub: "Vervolg van het bouwregister, historische indeling",
       verhaal: "Het vervolg van het bouwregister, aanvullingen, correcties, aantekeningen. Dit soort documenten zijn de ruggengraat van de geschiedenis van Villa Vredestein." },
+    { src: ImgKrant1937, cat: "Geschiedenis", caption: "Het Nieuws, 18 juni 1937", sub: "Krantenpagina uit het jaar van 25 jaar rusthuis Vredestein",
+      verhaal: "Krantenpagina uit juni 1937, bewaard als bron bij het 25-jarig bestaan van rusthuis Vredestein, dat in 1912 werd geopend." },
+    { src: ImgKrant1941, cat: "Geschiedenis", caption: "Het Nieuws, 21 maart 1941", sub: "Over het andere Villa Vredestein, dat voor de rijksweg werd gesloopt",
+      verhaal: "Let op: dit gaat niet over Hoofdstraat 147. In maart 1941 werd het andere Villa Vredestein, aan de Hoofdstraat naast café De Kip, gesloopt voor de nieuwe rijksweg Utrecht–Arnhem. Een bron uit het boek, vaak met deze villa verward." },
+    { src: ImgOverzichtBewoners, cat: "Geschiedenis", caption: "Bewoners en functies, 1912 tot heden", sub: "Het overzicht uit het boek: van rustoord tot woonhuis",
+      verhaal: "De wisselende bestemmingen van het pand op een rij: rustoord, pension, kantoor en café, tehuis voor ouderen, bedrijfspand en woonhuis. Samengesteld uit krantenarchieven en pensioncouranten." },
 
     // ── Plattegrond ────────────────────────────────────────────────────────
     { src: ImgPlattBG,  cat: "Plattegrond", caption: "Begane grond",               sub: "Zo zag het eruitzag toen we kochten, 2020",

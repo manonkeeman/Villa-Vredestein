@@ -132,3 +132,7 @@
 @media (max-width: 560px) {
     .vd-galerij-grid { grid-template-columns: 1fr; }
 }
+
+/* Foto's altijd volledig in beeld */
+.vd-galerij-item { background: #0e0b08; }
+.vd-galerij-item img { object-fit: contain; }

@@ -163,3 +163,6 @@
         line-height: 1.75;
     }
 }
+
+/* Foto's altijd volledig in beeld */
+.blog-hero-img { object-fit: contain; background: #0e0b08; }

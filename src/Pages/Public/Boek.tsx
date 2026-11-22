@@ -6,7 +6,6 @@ import { useContent } from "../../i18n/content";
 import "./Boek.css";
 
 import Omslag from "../../Assets/Images/boek-omslag.jpg";
-import Inhoud from "../../Assets/Images/boek-inhoud.jpg";
 
 // Titels van het boek zelf blijven Nederlands in alle talen; de toelichting wordt vertaald.
 const THEMAS = [
@@ -127,18 +126,6 @@ const Boek = () => {
                 <ul className="boek-chips">
                     {NASLAG.map((n) => <li key={n}>{n}</li>)}
                 </ul>
-            </section>
-
-            {/* ── Blader door het boek ── */}
-            <section className="boek-blader" aria-labelledby="boek-blader-kop">
-                <p className="boek-eyebrow">{tc("Een kijkje")}</p>
-                <h2 id="boek-blader-kop">{tc("Blader door het boek")}</h2>
-                <div className="boek-pages">
-                    <figure data-no-reveal>
-                        <img src={Inhoud} alt={tc("Inhoudsopgave van het boek Hoofdstraat 147")} loading="lazy" width="1006" height="1430" />
-                        <figcaption>{tc("De inhoudsopgave")}</figcaption>
-                    </figure>
-                </div>
             </section>
 
             {/* ── Bestellen ── */}

@@ -415,3 +415,9 @@
 @media (max-width: 420px) {
     .omg-venues-grid { grid-template-columns: 1fr; }
 }
+
+/* Foto's altijd volledig in beeld */
+.venue-photo { background: #0e0b08; }
+.venue-photo img { object-fit: contain; }
+.venue-photo { height: 230px; }
+@media (max-width: 900px) { .venue-photo { height: 210px; } }

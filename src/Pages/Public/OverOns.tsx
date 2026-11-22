@@ -5,16 +5,15 @@ import { useNavigate } from "react-router-dom";
 import "./OverOns.css";
 
 import ImgChineseMuur from "../../Assets/Images/life-chinese-muur.jpg";
-import ImgKLMCockpit from "../../Assets/Images/life-klm-cockpit.jpg";
-import ImgRoadtrip from "../../Assets/Images/life-roadtrip-auto.jpg";
+import ImgKLMStraalmotor from "../../Assets/Images/life-klm-straalmotor.jpg";
+import ImgPortretGarage from "../../Assets/Images/life-portret-garage.jpg";
+import ImgSuburban from "../../Assets/Images/Maxim_Manon_ChevroletSuburban.jpg";
 import LuchtballonImg from "../../Assets/Images/ext-luchtballon.jpg";
 import CarpeDiemVideo from "../../Assets/Videos/carpe-diem.mp4";
 import ImgCafeRacerStaand from "../../Assets/Images/life-carpediem-cafe-racer.jpg";
 import ImgCarpeDiemTekening from "../../Assets/Images/life-carpediem-tekening.jpg";
 import ImgBezoek from "../../Assets/Images/BezoekOnsVillaVredestein.jpg";
 import ImgManonIT from "../../Assets/Images/manonit-portrait.webp";
-import ImgManonITBrand from "../../Assets/Images/manonit-og.jpg";
-import ImgManonITWebsite from "../../Assets/Images/manonit-website.png";
 import { useContent } from "../../i18n/content";
 
 interface Section {
@@ -27,6 +26,7 @@ interface Section {
     extraImages?: { src: string; alt: string; ar: number; pos?: string }[];
     video?: string;
     showAll?: boolean;
+    tallExtras?: boolean;
     imgContain?: boolean;
     links?: { href: string; label?: string }[];
 }
@@ -40,8 +40,9 @@ const SECTIONS: Section[] = [
         accent: "#FCBC2D",
         pullQuote: "Verre horizonten en een stevige basis. Dat is wat ze samen bouwen.",
         extraImages: [
-            { src: ImgRoadtrip, alt: "Manon & Maxim onderweg tijdens een roadtrip", ar: 4032 / 3024 },
-            { src: ImgKLMCockpit, alt: "Manon & Maxim aan het werk bij KLM, in de cockpit", ar: 1600 / 1200 },
+            { src: ImgPortretGarage, alt: "Manon & Maxim bij de garagedeur van Villa Vredestein", ar: 2 / 3, pos: "50% 30%" },
+            { src: ImgKLMStraalmotor, alt: "Manon & Maxim in KLM-uniform voor een straalmotor", ar: 1273 / 1592 },
+            { src: ImgSuburban, alt: "Manon & Maxim bij hun Chevrolet Suburban", ar: 1, pos: "50% 45%" },
         ],
     },
     {
@@ -52,13 +53,14 @@ const SECTIONS: Section[] = [
         theme: "dark",
         accent: "#e0853a",
         showAll: true,
+        tallExtras: true,
         pullQuote: "Bring worlds together in one.",
         links: [
             { href: "https://carpediem-website.netlify.app/", label: "Bekijk Carpe Diem →" },
         ],
         extraImages: [
-            { src: ImgCarpeDiemTekening, alt: "Carpe Diem, handgetekend", ar: 3024 / 4032 },
-            { src: ImgCafeRacerStaand, alt: "Maxims cafe racer", ar: 828 / 1472 },
+            { src: ImgCarpeDiemTekening, alt: "Carpe Diem, handgetekend", ar: 3024 / 4032, pos: "center" },
+            { src: ImgCafeRacerStaand, alt: "Maxims cafe racer", ar: 828 / 1472, pos: "center" },
         ],
     },
     {
@@ -72,10 +74,6 @@ const SECTIONS: Section[] = [
         links: [
             { href: "https://www.manonit.com", label: "Bekijk ManonIT →" },
             { href: "https://www.casacrew.nl", label: "Bekijk CasaCrew →" },
-        ],
-        extraImages: [
-            { src: ImgManonITBrand, alt: "ManonIT, ik bouw mooie websites", ar: 1200 / 630 },
-            { src: ImgManonITWebsite, alt: "De website van ManonIT", ar: 1600 / 878 },
         ],
     },
     {
@@ -100,7 +98,8 @@ const getExtraRowHeight = (sec) => {
     const rowWidth = sec.video ? 480 : 460;
     const arSum = extras.reduce((sum, e) => sum + (e.ar || 1.33), 0);
     const ideal = (rowWidth - EXTRA_ROW_GAP * (extras.length - 1)) / arSum;
-    return Math.round(Math.min(EXTRA_ROW_MAX_HEIGHT, Math.max(EXTRA_ROW_MIN_HEIGHT, ideal)));
+    const max = sec.tallExtras ? 380 : EXTRA_ROW_MAX_HEIGHT;
+    return Math.round(Math.min(max, Math.max(EXTRA_ROW_MIN_HEIGHT, ideal)));
 };
 
 const OverOns = () => {
@@ -283,7 +282,7 @@ const OverOns = () => {
                                 </figure>
 
                                 {Array.isArray(sec.extraImages) && sec.extraImages.length > 0 && (
-                                    <div className="oo-extra-images" style={{ height: getExtraRowHeight(sec) }}>
+                                    <div className={`oo-extra-images${sec.tallExtras ? " oo-extra-images--tall" : ""}`} style={{ height: getExtraRowHeight(sec) }}>
                                         {sec.extraImages.map((extra) => (
                                             <div
                                                 key={extra.src}
