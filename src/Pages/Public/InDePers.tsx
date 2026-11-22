@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "./InDePers.css";
 
-import PersBoek    from "../../Assets/Images/pers-vredestein-in-boek.jpg";
 import PersAdVilla1 from "../../Assets/Images/pers-ad-villa-1.jpeg";
 import PersAdVilla2 from "../../Assets/Images/pers-ad-villa-2.jpeg";
 import PersAdVilla3 from "../../Assets/Images/pers-ad-villa-3.jpeg";
@@ -37,16 +36,6 @@ import Krant1940Deutsche  from "../../Assets/Images/krant-1940-deutsche-zeitung-
 import { useContent } from "../../i18n/content";
 
 const PERS_ITEMS = [
-    {
-        medium: "Publicatie",
-        sectie: "BOEK",
-        datum: "2024",
-        kop: "Villa Vredestein in een boek",
-        samenvatting: "Villa Vredestein heeft een plek gekregen in een publicatie. Het historische pand aan de Hoofdstraat 147 in Driebergen-Rijsenburg, gebouwd in 1905, wordt beschreven als een bijzonder voorbeeld van villabouw uit het begin van de twintigste eeuw.",
-        url: null,
-        tag: "Publicatie",
-        imgs: [PersBoek],
-    },
     {
         medium: "Algemeen Dagblad",
         sectie: "GELD",
