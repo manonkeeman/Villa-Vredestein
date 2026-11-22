@@ -80,3 +80,8 @@ status = 404
   for = "/robots.txt"
   [headers.values]
     Cache-Control = "public, max-age=86400"
+
+# Serverless functions (bevestigingsmail bij het bestelformulier)
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"

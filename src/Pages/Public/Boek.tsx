@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -23,11 +23,14 @@ const NASLAG = ["Tijdlijn", "Het huis in het kort", "De grond in 1832", "Het wee
 const Boek = () => {
     const tc = useContent();
     const [status, setStatus] = useState<"idle" | "bezig" | "ok" | "fout">("idle");
+    const geopend = useRef(Date.now()); // spamfilter: hoe lang het formulier open stond
     const verstuur = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        const form = new FormData(e.currentTarget);
+        if (form.get("bot-field")) { setStatus("ok"); return; } // bot: doen alsof het gelukt is
         setStatus("bezig");
         try {
-            const data = new URLSearchParams(new FormData(e.currentTarget) as unknown as Record<string, string>);
+            const data = new URLSearchParams(form as unknown as Record<string, string>);
             const res = await fetch("/bestel-form.html", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: data.toString() });
             setStatus(res.ok ? "ok" : "fout");
         } catch { setStatus("fout"); }
@@ -133,10 +136,12 @@ const Boek = () => {
                 <h2 id="boek-bestel-kop">{tc("Bestel het boek")}</h2>
                 <p className="boek-bestel-p">{tc("Laat je gegevens achter en we nemen contact met je op over je exemplaar van het boek.")}</p>
                 {status === "ok" ? (
-                    <p className="boek-form-ok" role="status">{tc("Bedankt! Je bestelaanvraag is ontvangen. We nemen snel contact met je op.")}</p>
+                    <p className="boek-form-ok" role="status">{tc("Bedankt! Je bestelaanvraag is ontvangen. Je krijgt een bevestiging per e-mail en we nemen snel contact met je op.")}</p>
                 ) : (
                     <form className="boek-form" name="boek-bestelling" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={verstuur}>
                         <input type="hidden" name="form-name" value="boek-bestelling" />
+                        <input type="hidden" name="_t" value={geopend.current} />
+                        <input type="hidden" name="taal" value={langCode} />
                         <p className="boek-hp" aria-hidden="true"><label>Niet invullen <input name="bot-field" tabIndex={-1} autoComplete="off" /></label></p>
                         <label>{tc("Naam")}<input name="naam" required autoComplete="name" /></label>
                         <label>{tc("E-mailadres")}<input name="email" type="email" required autoComplete="email" /></label>
