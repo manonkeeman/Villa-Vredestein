@@ -19,6 +19,7 @@ import VerblijfDetail from "./Pages/Public/VerblijfDetail";
 import Plattegrond from "./Pages/Public/Plattegrond";
 import InDePers from "./Pages/Public/InDePers";
 import Boek from "./Pages/Public/Boek";
+import BoekLezen from "./Pages/Public/BoekLezen";
 import Privacy from "./Pages/Public/Privacy";
 
 function ScrollToTop() {
@@ -78,6 +79,7 @@ function App() {
                 <Route path="/verhaal" element={<OverOns />} />
                 <Route path="/in-de-pers" element={<InDePers />} />
                 <Route path="/boek" element={<Boek />} />
+                <Route path="/boek/lezen" element={<BoekLezen />} />
                 <Route path="/galerij" element={<GalerijVilla />} />
                 <Route path="/galerij-villa" element={<GalerijVilla />} />
                 <Route path="/galerij/:categorie" element={<GalerijCategorie />} />
