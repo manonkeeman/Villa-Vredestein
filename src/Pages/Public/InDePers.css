@@ -497,3 +497,35 @@
 
 /* Krantenknipsels altijd volledig in beeld */
 .idp-thumb-img { object-fit: contain; object-position: center; background: #0e0b08; }
+
+/* ── Artikelen als zijwaarts scrollende rij met scrollbalk ── */
+.idp-articles-section {
+    flex-direction: row;
+    align-items: stretch;
+    max-width: 1300px;
+    gap: 1.5rem;
+    padding: 3rem 2rem 2rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 2rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #FCBC2D #1a140c;
+}
+.idp-articles-section::-webkit-scrollbar { height: 8px; }
+.idp-articles-section::-webkit-scrollbar-track { background: #1a140c; border-radius: 8px; }
+.idp-articles-section::-webkit-scrollbar-thumb { background: #FCBC2D; border-radius: 8px; }
+.idp-articles-section .idp-article {
+    flex: 0 0 min(380px, 82%);
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    scroll-snap-align: start;
+}
+.idp-articles-section .idp-reveal { opacity: 1; transform: none; }
+.idp-articles-section .idp-thumb-col { height: 340px; }
+.idp-articles-section .idp-thumb-btn { min-height: 0; height: 100%; }
+@media (max-width: 600px) {
+    .idp-articles-section { padding: 2rem 1.25rem 1.5rem; scroll-padding: 0 1.25rem; }
+    .idp-articles-section .idp-thumb-col { height: 280px; }
+}
+.idp-articles-section .idp-article-body { justify-content: flex-start; padding: 1.5rem 1.5rem 2rem; }

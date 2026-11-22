@@ -18,11 +18,12 @@ import { useContent } from "../../i18n/content";
 
 const historisch = [
     {
-        datum: "Vóór de villa",
+        datum: "1832",
         titel: "Timmerman Fukkink",
         emoji: "🪚",
         status: "historisch",
-        tekst: "Voordat Vredestein er stond, woonde op deze plek een timmerman met de naam Fukkink. Meer is over hem nog niet bekend.",
+        tekst: "Op het oudste kadastrale plan, dat van 1832, staat op deze plek een ‘huis, schuur en erf’ van timmerman Gerrit Fukkink. Hij overlijdt in 1834, zijn weduwe in 1843.",
+        detail: "Het eigenarenregister noemt het perceel een huis met schuur en erf van ongeveer zevenhonderdvijftig vierkante meter: een timmermanshuis met een werkplaats erachter, aan een weg die toen nog een rij dorpshuizen was. Wat er met het huis gebeurde, zeggen de bronnen niet; vermoedelijk is het gesloopt om plaats te maken voor de villa. Bron: Kadaster 1832, eigenarenregister Driebergen, sectie B, perceel 205.",
     },
     {
         datum: "1905",
@@ -55,6 +56,22 @@ const historisch = [
         afbeeldingAlt: "Krantenbericht over het pension, oktober 1912",
     },
     {
+        datum: "1914, 1915",
+        titel: "Het rustoord in oorlogstijd",
+        emoji: "🕯️",
+        status: "historisch",
+        tekst: "In december 1914 overlijdt Gerritje Spruijt, de vrouw van directeur Sluijter, in Vredestein. In januari 1915 laat de oorlog het rustoord ‘bijna ontvolkt’ achter en vraagt het bestuur elke lezer van de krant om één gulden.",
+        detail: "Bronnen: De Stichtsche courant, 7 december 1914; De Standaard, 16 januari 1915; Het Utrechts Archief via Open Archieven.",
+    },
+    {
+        datum: "1916",
+        titel: "Het Kokerpark wordt geveild",
+        emoji: "🔨",
+        status: "historisch",
+        tekst: "In 1916 wordt het ‘Kokerpark’ geveild: Vredestein, Irma en de herenhuizen aan de Lindelaan. Vredestein brengt 7.400 gulden op.",
+        detail: "Bronnen: Algemeen Handelsblad, 31 augustus 1916; Het Nieuws, 30 september 1916.",
+    },
+    {
         datum: "1923, 1925",
         titel: "Gezusters van der Zijden",
         emoji: "🌿",
@@ -70,6 +87,14 @@ const historisch = [
         detail: "In juni 1933 adverteren ze landelijk met Pension „Villa Vredenstein”: kamers voor families, met aparte bediening en stromend water. Na de samenvoeging van de gemeenten in 1931-1932 wordt het huisnummer Hoofdstraat 83 omgezet in 147.",
         afbeelding: ImgAnsichtVredesteinP,
         afbeeldingAlt: "Ansichtkaart van Pension Villa Vredestein",
+    },
+    {
+        datum: "1926, 1934",
+        titel: "Twee Vredesteins naast elkaar",
+        emoji: "🏘️",
+        status: "historisch",
+        tekst: "In 1926 drijven de zusters Van den Bosch ‘Pension Villa Vredestein’ op nummer 83, terwijl het rustoord van Sluijter op nummer 85 zit. Na de samenvoeging van Driebergen en Rijsenburg in 1931 wordt 83 nummer 147 en 85 nummer 149.",
+        detail: "In 1934 adverteert het pension als ‘Pension Villa Vredestein, Dames v.d. Bosch, Hoofdstr. 147’, en waarschuwt Sluijter: ‘men lette op het juiste adres, Hoofdweg 149’. Wie in oude kranten zoekt, moet dus goed opletten welk Vredestein bedoeld wordt. Bronnen: De Maasbode, 1 mei 1926; De Nederlander, 28 augustus 1926; Het Nieuws, 24 juli 1931 en 22 april 1932; De Telegraaf, 17 maart 1934.",
     },
     {
         datum: "1939, 1945",
@@ -99,6 +124,14 @@ const historisch = [
         afbeeldingAlt: "Familie Roelofsen, die opgroeide in Vredestein in de jaren zestig en zeventig",
     },
     {
+        datum: "1967",
+        titel: "Een garage bij het huis",
+        emoji: "🚗",
+        status: "historisch",
+        tekst: "In 1967 wordt een bouwaanvraag voor een garage ingediend. In datzelfde jaar staat het pand voor het eerst in het gebouwenregister.",
+        detail: "Bronnen: Regionaal Archief Zuid-Utrecht; Kadaster.",
+    },
+    {
         datum: "1975, 1977",
         titel: "Ortholab",
         emoji: "🔬",
@@ -118,7 +151,7 @@ const historisch = [
         emoji: "🎓",
         status: "historisch",
         tekst: "Dhr. Blooi, van een loodgieters- en dakdekkersbedrijf, koopt het pand na Ortholab en blijft eigenaar tot zijn overlijden. Onder zijn beheer is Vredestein ook een studentenhuis, onder meer voor de IVA-opleiding in Driebergen.",
-        detail: "Dhr. Blooi werkte zelf veel aan het pand. In de loop van de decennia raakte het totaaloverzicht verloren. Pas bij de restauratie in 2021 kwamen gasleidingen in de tuin en andere bijzondere aansluitingen aan het licht. In 1982 is het pand inzamelpunt van de Polenhulpactie. In welke jaren precies studenten in het huis woonden, wordt nog uitgezocht.",
+        detail: "Dhr. Blooi werkte zelf veel aan het pand. In de loop van de decennia raakte het totaaloverzicht verloren. Pas bij de restauratie in 2021 kwamen gasleidingen in de tuin en andere bijzondere aansluitingen aan het licht. In 1982 is het pand inzamelpunt van de Polenhulpactie. In welke jaren precies studenten in het huis woonden, wordt nog uitgezocht. Volgens de bewoners wordt Blooi in 1973 eigenaar; het Regionaal Archief Zuid-Utrecht kent verbouwingen in 1976, 1977, 1978 en 1980.",
     },
 ];
 
