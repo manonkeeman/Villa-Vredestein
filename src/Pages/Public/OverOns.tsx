@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
@@ -8,7 +8,6 @@ import ImgChineseMuur from "../../Assets/Images/life-chinese-muur.jpg";
 import ImgKLMStraalmotor from "../../Assets/Images/life-klm-straalmotor.jpg";
 import ImgPortretGarage from "../../Assets/Images/life-portret-garage.jpg";
 import ImgSuburban from "../../Assets/Images/Maxim_Manon_ChevroletSuburban.jpg";
-import LuchtballonImg from "../../Assets/Images/ext-luchtballon.jpg";
 import CarpeDiemVideo from "../../Assets/Videos/carpe-diem.mp4";
 import ImgCafeRacerStaand from "../../Assets/Images/life-carpediem-cafe-racer.jpg";
 import ImgCarpeDiemTekening from "../../Assets/Images/life-carpediem-tekening.jpg";
@@ -87,19 +86,17 @@ const SECTIONS: Section[] = [
 ];
 
 const PREVIEW_PARAGRAPHS = 2;
-const EXTRA_ROW_GAP = 13.6;
 
-const EXTRA_ROW_MIN_HEIGHT = 140;
-const EXTRA_ROW_MAX_HEIGHT = 200;
+type Media = { kind: "img" | "video"; src: string; alt: string; poster?: string };
 
-const getExtraRowHeight = (sec) => {
-    const extras = sec.extraImages;
-    if (!Array.isArray(extras) || extras.length === 0) return undefined;
-    const rowWidth = sec.video ? 480 : 460;
-    const arSum = extras.reduce((sum, e) => sum + (e.ar || 1.33), 0);
-    const ideal = (rowWidth - EXTRA_ROW_GAP * (extras.length - 1)) / arSum;
-    const max = sec.tallExtras ? 380 : EXTRA_ROW_MAX_HEIGHT;
-    return Math.round(Math.min(max, Math.max(EXTRA_ROW_MIN_HEIGHT, ideal)));
+const mediaFor = (sec: Section): Media[] => {
+    const list: Media[] = [];
+    if (sec.video) list.push({ kind: "video", src: sec.video, alt: sec.imgAlt, poster: sec.img });
+    else list.push({ kind: "img", src: sec.img, alt: sec.imgAlt });
+    (sec.extraImages || []).forEach((e) => {
+        if (e.src !== sec.img && !list.some((m) => m.src === e.src)) list.push({ kind: "img", src: e.src, alt: e.alt });
+    });
+    return list;
 };
 
 const OverOns = () => {
@@ -108,34 +105,45 @@ const OverOns = () => {
     const langCode = i18n.language?.split("-")[0] || "nl";
     const navigate = useNavigate();
     const blogs = t("blogs", { returnObjects: true });
-    const sectionRefs = useRef([]);
-    const heroRef = useRef(null);
-    const [activeSection, setActiveSection] = useState(null);
-    const [expanded, setExpanded] = useState({});
     const [reduceMotion] = useState(
         () => typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
     );
+    const [active, setActive] = useState<string>(SECTIONS[0].slug);
+    const [photo, setPhoto] = useState<Record<string, number>>({});
+    const [expanded, setExpanded] = useState<Record<string, boolean>>({});
+    const [zoom, setZoom] = useState<Media | null>(null);
 
-    const toggleExpanded = (slug) =>
-        setExpanded((prev) => ({ ...prev, [slug]: !prev[slug] }));
+    const getBlog = (slug: string) => (Array.isArray(blogs) ? blogs.find((b) => b.slug === slug) : null);
 
-    const getBlog = (slug) => Array.isArray(blogs) ? blogs.find((b) => b.slug === slug) : null;
+    // Tab volgt de URL-hash, zodat een tab te delen is (bijv. /verhaal#manonit)
+    useEffect(() => {
+        const fromHash = () => {
+            const h = window.location.hash.replace("#", "");
+            if (SECTIONS.some((x) => x.slug === h)) setActive(h);
+        };
+        fromHash();
+        window.addEventListener("hashchange", fromHash);
+        return () => window.removeEventListener("hashchange", fromHash);
+    }, []);
 
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) =>
-                entries.forEach((e) => {
-                    if (e.isIntersecting) {
-                        e.target.classList.add("oo-visible");
-                        setActiveSection((e.target as HTMLElement).dataset.slug);
-                    }
-                }),
-            { threshold: 0.18 }
-        );
-        if (heroRef.current) observer.observe(heroRef.current);
-        sectionRefs.current.forEach((el) => el && observer.observe(el));
-        return () => observer.disconnect();
-    }, []);
+        if (!zoom) return;
+        const onKey = (e: KeyboardEvent) => e.key === "Escape" && setZoom(null);
+        window.addEventListener("keydown", onKey);
+        return () => window.removeEventListener("keydown", onKey);
+    }, [zoom]);
+
+    const select = (slug: string) => {
+        setActive(slug);
+        try { window.history.replaceState(null, "", `#${slug}`); } catch { /* ignore */ }
+    };
+    const onTabKey = (e: React.KeyboardEvent, i: number) => {
+        if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+        e.preventDefault();
+        const n = (i + (e.key === "ArrowRight" ? 1 : -1) + SECTIONS.length) % SECTIONS.length;
+        select(SECTIONS[n].slug);
+        document.getElementById(`oo-tab-${SECTIONS[n].slug}`)?.focus();
+    };
 
     const aboutSchema = JSON.stringify({
         "@context": "https://schema.org",
@@ -183,7 +191,6 @@ const OverOns = () => {
                     content={tc("De mensen achter Villa Vredestein. Het verhaal van Manon & Maxim, Carpe Diem Design en de open deur voor bezoekers en gelijkgestemden.")}
                 />
                 <link rel="canonical" href="https://villavredestein.com/verhaal" />
-                <link rel="preload" as="image" href={LuchtballonImg} {...{ fetchpriority: "high" }} />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://villavredestein.com/verhaal" />
                 <meta property="og:title" content={tc("Over ons, Villa Vredestein")} />
@@ -201,176 +208,137 @@ const OverOns = () => {
                 <script type="application/ld+json">{aboutSchema}</script>
             </Helmet>
 
-            {/* Hero */}
-            <header className="oo-hero oo-reveal" ref={heroRef}>
-                <div
-                    className="oo-hero-bg"
-                    style={{ backgroundImage: `url(${LuchtballonImg})` }}
-                    role="img"
-                    aria-label={tc("Villa Vredestein met luchtballon")}
-                />
-                <div className="oo-hero-overlay" aria-hidden="true" />
-                <div className="oo-hero-inner">
-                    <span className="oo-hero-eyebrow">{tc("Veel verhalen. Één huis.")}</span>
-                    <h1 className="oo-hero-title">{tc("De mensen achter de villa")}</h1>
-                    <p className="oo-hero-sub">
-                        {tc("Manon & Maxim, Project Carpe Diem, ManonIT en een open deur voor iedereen die het wil zien.")}
-                    </p>
-                    <div className="oo-hero-scroll" aria-hidden="true">
-                        <span>{tc("Scroll")}</span>
-                        <div className="oo-scroll-arrow" />
-                    </div>
+            <h1 className="oo-sr">{tc("De mensen achter de villa")}</h1>
+
+            {/* Tabs */}
+            <div className="oo-tabs-wrap">
+                <div className="oo-tabs" role="tablist" aria-label={tc("Secties")}>
+                    {SECTIONS.map((sec, i) => {
+                        const blog = getBlog(sec.slug);
+                        return (
+                            <button
+                                key={sec.slug}
+                                id={`oo-tab-${sec.slug}`}
+                                role="tab"
+                                aria-selected={active === sec.slug}
+                                aria-controls={`oo-panel-${sec.slug}`}
+                                tabIndex={active === sec.slug ? 0 : -1}
+                                className={`oo-tab${active === sec.slug ? " is-active" : ""}`}
+                                style={{ "--accent": sec.accent } as React.CSSProperties}
+                                onClick={() => select(sec.slug)}
+                                onKeyDown={(e) => onTabKey(e, i)}
+                            >
+                                <img src={sec.img} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+                                <span>{tc(blog?.title || sec.slug)}</span>
+                            </button>
+                        );
+                    })}
                 </div>
-            </header>
+            </div>
 
-            {/* Scroll-indicator dots */}
-            <nav className="oo-dot-nav" aria-label={tc("Secties")}>
-                {SECTIONS.map((s) => (
-                    <button
-                        key={s.slug}
-                        className={`oo-dot ${activeSection === s.slug ? "active" : ""}`}
-                        onClick={() => {
-                            const el = sectionRefs.current[SECTIONS.indexOf(s)];
-                            el?.scrollIntoView({ behavior: "smooth", block: "start" });
-                        }}
-                        aria-label={getBlog(s.slug)?.title || s.slug}
-                        title={tc(getBlog(s.slug)?.title)}
-                    />
-                ))}
-            </nav>
-
-            {/* Story sections */}
-            {SECTIONS.map((sec, i) => {
-                const blog = getBlog(sec.slug);
-                if (!blog) return null;
-                const imgSide = i % 2 === 0 ? "right" : "left";
-
-                return (
-                    <section
-                        key={sec.slug}
-                        className={`oo-section oo-section--${imgSide} oo-theme--${sec.theme} oo-reveal${sec.video ? " oo-section--video" : ""}`}
-                        ref={(el) => { sectionRefs.current[i] = el; }}
-                        data-slug={sec.slug}
-                        style={{ "--accent": sec.accent } as React.CSSProperties}
-                    >
-                        {/* Image / Video column */}
-                        <div className="oo-img-col">
-                            <div className="oo-img-block">
-                                <figure className={`oo-img-wrap${sec.imgContain ? " oo-img-wrap--contain" : ""}`}>
-                                    {sec.video ? (
+            {/* Panelen: alleen het actieve is zichtbaar; alle tekst blijft voor zoekmachines in de pagina */}
+            <div className="oo-panels">
+                {SECTIONS.map((sec, i) => {
+                    const blog = getBlog(sec.slug);
+                    if (!blog) return null;
+                    const media = mediaFor(sec);
+                    const cur = Math.min(photo[sec.slug] ?? 0, media.length - 1);
+                    const m = media[cur];
+                    const paragraphs: string[] = Array.isArray(blog.content) ? blog.content : [];
+                    const open = expanded[sec.slug];
+                    const shown = open ? paragraphs : paragraphs.slice(0, PREVIEW_PARAGRAPHS);
+                    const next = SECTIONS[(i + 1) % SECTIONS.length];
+                    const nextBlog = getBlog(next.slug);
+                    return (
+                        <section
+                            key={sec.slug}
+                            id={`oo-panel-${sec.slug}`}
+                            role="tabpanel"
+                            aria-labelledby={`oo-tab-${sec.slug}`}
+                            hidden={active !== sec.slug}
+                            className="oo-panel"
+                            style={{ "--accent": sec.accent } as React.CSSProperties}
+                        >
+                            <div className="oo-media">
+                                <div className="oo-stage">
+                                    {m.kind === "video" ? (
                                         <video
-                                            src={sec.video}
-                                            className="oo-img"
+                                            key={m.src}
+                                            src={m.src}
                                             autoPlay={!reduceMotion}
                                             controls={reduceMotion}
                                             muted
                                             loop
                                             playsInline
                                             preload="metadata"
-                                            poster={sec.img}
-                                            aria-label={tc(sec.imgAlt)}
+                                            poster={m.poster}
+                                            aria-label={tc(m.alt)}
                                         />
                                     ) : (
-                                        <img
-                                            src={sec.img}
-                                            alt={tc(sec.imgAlt)}
-                                            loading="lazy"
-                                            className="oo-img"
-                                        />
+                                        <button className="oo-zoom" onClick={() => setZoom(m)} aria-label={`${tc("Vergroot foto")}: ${tc(m.alt)}`}>
+                                            <img key={m.src} src={m.src} alt={tc(m.alt)} />
+                                            <span className="oo-zoom-icon" aria-hidden="true">⤢</span>
+                                        </button>
                                     )}
-                                    <div className="oo-img-overlay" aria-hidden="true" />
-                                </figure>
-
-                                {Array.isArray(sec.extraImages) && sec.extraImages.length > 0 && (
-                                    <div className={`oo-extra-images${sec.tallExtras ? " oo-extra-images--tall" : ""}`} style={{ height: getExtraRowHeight(sec) }}>
-                                        {sec.extraImages.map((extra) => (
-                                            <div
-                                                key={extra.src}
-                                                className="oo-extra-img-wrap"
-                                                style={{ flexGrow: extra.ar || 1.33 }}
+                                </div>
+                                {media.length > 1 && (
+                                    <div className="oo-thumbs" role="group" aria-label={tc("Foto's")}>
+                                        {media.map((x, k) => (
+                                            <button
+                                                key={x.src}
+                                                className={`oo-thumb${k === cur ? " is-active" : ""}`}
+                                                onClick={() => setPhoto((p) => ({ ...p, [sec.slug]: k }))}
+                                                aria-label={tc(x.alt)}
+                                                aria-pressed={k === cur}
                                             >
-                                                <img
-                                                    src={extra.src}
-                                                    alt={tc(extra.alt)}
-                                                    loading="lazy"
-                                                    style={extra.pos ? { objectPosition: extra.pos } : undefined}
-                                                />
-                                            </div>
+                                                <img src={x.kind === "video" ? x.poster : x.src} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+                                                {x.kind === "video" && <span className="oo-thumb-play" aria-hidden="true">▶</span>}
+                                            </button>
                                         ))}
                                     </div>
                                 )}
                             </div>
-                        </div>
 
-                        {/* Text column */}
-                        <div className="oo-text-col">
-                            <div className="oo-text-inner">
-                                <span className="oo-section-num">0{i + 1}</span>
-
-                                <h2 className="oo-section-title">{tc(blog.title)}</h2>
-
-                                <blockquote className="oo-pull-quote">
-                                    {tc(sec.pullQuote)}
-                                </blockquote>
-
-                                <div className="oo-body-text">
-                                    {Array.isArray(blog.content) &&
-                                        (sec.showAll || expanded[sec.slug]
-                                            ? blog.content
-                                            : blog.content.slice(0, PREVIEW_PARAGRAPHS)
-                                        ).map((paragraph, j) => (
-                                            <p key={j}>{tc(paragraph)}</p>
-                                        ))}
+                            <div className="oo-copy">
+                                <h2>{tc(blog.title)}</h2>
+                                <blockquote className="oo-quote">{tc(sec.pullQuote)}</blockquote>
+                                <div className="oo-text">
+                                    {shown.map((paragraph, j) => <p key={j}>{tc(paragraph)}</p>)}
                                 </div>
-
-                                {!sec.showAll && Array.isArray(blog.content) && blog.content.length > PREVIEW_PARAGRAPHS && (
-                                    <button
-                                        className="oo-lees-meer-btn"
-                                        onClick={() => toggleExpanded(sec.slug)}
-                                        style={{ "--btn-accent": sec.accent } as React.CSSProperties}
-                                    >
-                                        {expanded[sec.slug] ? tc("Tekst inklappen ↑") : tc("Tekst uitklappen ↓")}
+                                {paragraphs.length > PREVIEW_PARAGRAPHS && !sec.showAll && (
+                                    <button className="oo-more" onClick={() => setExpanded((e) => ({ ...e, [sec.slug]: !e[sec.slug] }))} aria-expanded={!!open}>
+                                        {open ? tc("Tekst inklappen ↑") : tc("Tekst uitklappen ↓")}
                                     </button>
                                 )}
-
                                 {Array.isArray(sec.links) && sec.links.length > 0 && (
-                                    <div className="oo-links-row">
+                                    <div className="oo-links">
                                         {sec.links.map((l) => (
-                                            <a
-                                                key={l.href}
-                                                href={l.href}
-                                                target="_blank"
-                                                rel="noreferrer"
-                                                className="oo-external-link"
-                                                style={{ "--btn-accent": sec.accent } as React.CSSProperties}
-                                            >
-                                                {tc(l.label || l.href)}
-                                            </a>
+                                            <a key={l.href} href={l.href} target="_blank" rel="noreferrer">{tc(l.label || l.href)}</a>
                                         ))}
                                     </div>
                                 )}
-
+                                <button className="oo-next" onClick={() => select(next.slug)}>
+                                    {tc("Volgende")}: {tc(nextBlog?.title || next.slug)} →
+                                </button>
                             </div>
-                        </div>
-                    </section>
-                );
-            })}
+                        </section>
+                    );
+                })}
+            </div>
 
-            {/* Call to action */}
+            {zoom && zoom.kind === "img" && (
+                <div className="oo-lightbox" role="dialog" aria-modal="true" aria-label={tc(zoom.alt)} onClick={() => setZoom(null)}>
+                    <button className="oo-lightbox-close" onClick={() => setZoom(null)} aria-label={tc("Sluiten")}>✕</button>
+                    <img src={zoom.src} alt={tc(zoom.alt)} onClick={(e) => e.stopPropagation()} />
+                </div>
+            )}
+
+            {/* Compacte afsluiting */}
             <section className="oo-cta">
-                <div className="oo-cta-inner">
-                    <h2>{tc("Zin om kennis te maken?")}</h2>
-                    <p>
-                        {tc("Stuur een bericht, kom langs, of volg ons op Instagram. We staan altijd open voor een goed gesprek over Villa Vredestein, over wonen, over dromen en hoe je die werkelijkheid maakt.")}
-                    </p>
-                    <div className="oo-cta-buttons">
-                        <button className="oo-cta-primary" onClick={() => navigate("/contact")}>
-                            {tc("Neem contact op")}
-                        </button>
-                        <button className="oo-cta-secondary" onClick={() => navigate("/tijdlijn")}>
-                            {tc("Bekijk de tijdlijn")}
-                        </button>
-                    </div>
+                <h2>{tc("Zin om kennis te maken?")}</h2>
+                <div className="oo-cta-buttons">
+                    <button className="oo-cta-primary" onClick={() => navigate("/contact")}>{tc("Neem contact op")}</button>
+                    <button className="oo-cta-secondary" onClick={() => navigate("/tijdlijn")}>{tc("Bekijk de tijdlijn")}</button>
                 </div>
             </section>
         </main>

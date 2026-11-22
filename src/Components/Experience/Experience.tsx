@@ -134,7 +134,7 @@ function useReveal() {
 }
 
 // Parallax: grote foto's bewegen iets trager dan de pagina (alleen foto's met speelruimte in hun kader)
-const PARALLAX = ".oo-section:not(.oo-section--video) .oo-img-wrap:not(.oo-img-wrap--contain) img.oo-img, .intro-img-col img";
+const PARALLAX = ".intro-img-col img";
 
 function useParallax() {
     const { pathname } = useLocation();
