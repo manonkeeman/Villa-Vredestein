@@ -529,3 +529,32 @@
     .idp-articles-section .idp-thumb-col { height: 280px; }
 }
 .idp-articles-section .idp-article-body { justify-content: flex-start; padding: 1.5rem 1.5rem 2rem; }
+
+/* ── Zelfde ontwerp als de galerij ── */
+.idp-page { background: #0c0a07; min-height: 100vh; }
+.idp-hero { min-height: 0; display: block; padding: 4rem 2rem 2.5rem; background: none; border-bottom: none; }
+.idp-hero::after { display: none; }
+.idp-hero-inner { max-width: 560px; margin: 0 auto; }
+.idp-title { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; margin: 0 0 .75rem; line-height: 1.2; }
+.idp-sub { font-size: .95rem; color: #786050; line-height: 1.6; margin: 0; }
+
+.idp-articles-section { max-width: 1300px; padding: 0 2rem 1.5rem; gap: 1.5rem; margin-top: 0; }
+.idp-articles-section .idp-article {
+    flex: 0 0 min(320px, 80%);
+    background: #120f09;
+    border: 1px solid #221b12;
+    border-radius: 14px;
+    transition: border-color .25s, transform .25s;
+}
+.idp-articles-section .idp-article:hover { border-color: #4a3e2e; transform: translateY(-3px); }
+.idp-articles-section .idp-thumb-col { height: auto; aspect-ratio: 4 / 3; background: #140e08; }
+.idp-articles-section .idp-thumb-btn { height: 100%; }
+.idp-articles-section .idp-article-body { padding: 1.25rem 1.4rem 1.5rem; gap: .4rem; }
+.idp-articles-section .idp-meta-row { gap: .5rem; margin-bottom: .1rem; }
+.idp-articles-section .idp-tag, .idp-articles-section .idp-sectie { padding: 0; background: none; font-size: .72rem; letter-spacing: .08em; }
+.idp-articles-section .idp-datum { margin-left: 0; font-size: .72rem; }
+.idp-articles-section .idp-medium { font-size: .72rem; letter-spacing: .08em; margin: 0; }
+.idp-articles-section .idp-kop { font-size: 1.15rem; font-weight: 700; line-height: 1.3; }
+.idp-articles-section .idp-samenvatting { font-size: .85rem; line-height: 1.6; margin: .3rem 0 0; }
+.idp-articles-section .idp-lees-link { margin-top: .4rem; }
+@media (max-width: 600px) { .idp-articles-section { padding: 0 1.25rem 1.5rem; } .idp-hero { padding: 2.5rem 1.25rem 1.5rem; } }

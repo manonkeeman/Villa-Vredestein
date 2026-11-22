@@ -224,6 +224,17 @@ const renovatie = [
     },
 ];
 
+// Perioden voor het overzicht bovenaan (breedte volgt het aantal jaren)
+const FASEN = [
+    { label: "De bouw", van: 1905, tot: 1912, naar: "De villa wordt gebouwd" },
+    { label: "Rustoord", van: 1912, tot: 1923, naar: "Christelijk Rustoord Vredestein" },
+    { label: "Pension", van: 1923, tot: 1938, naar: "Gezusters van der Zijden" },
+    { label: "Oorlog en bevrijding", van: 1938, tot: 1950, naar: "Oorlogsjaren" },
+    { label: "Pension en zorg", van: 1950, tot: 1972, naar: "Pension en verzorgingshuis" },
+    { label: "Bedrijf en studenten", van: 1972, tot: 2020, naar: "Ortholab" },
+    { label: "Restauratie", van: 2020, tot: 2026, naar: "De restauratie begint" },
+];
+
 const statusLabel = {
     historisch: "Geschiedenis",
     gedaan: "Afgerond",
@@ -238,6 +249,7 @@ function TijdlijnItem({ item, index, globalIndex, expanded, onKlik, innerRef }) 
 
     return (
         <div
+            id={`tl-${globalIndex}`}
             className={`tijdlijn-item ${index % 2 === 0 ? "links" : "rechts"} fade-trigger`}
             ref={innerRef}
         >
@@ -281,6 +293,47 @@ function TijdlijnItem({ item, index, globalIndex, expanded, onKlik, innerRef }) 
                 )}
             </div>
         </div>
+    );
+}
+
+function Overzicht() {
+    const tc = useContent();
+    const alle = [...historisch, ...renovatie];
+    const idx = (titel: string) => Math.max(0, alle.findIndex((x) => x.titel === titel));
+    return (
+        <section className="tl-overzicht" aria-label={tc("Overzicht")}>
+            <div className="tl-ov-top">
+                <h2>{tc("Overzicht")}</h2>
+                <p>{alle.length} {tc("momenten")} · 1832 – {tc("Nu").toLowerCase()}</p>
+            </div>
+            <ol className="tl-bar">
+                {FASEN.map((f) => (
+                    <li key={f.label} style={{ flexGrow: f.tot - f.van }}>
+                        <a href={`#tl-${idx(f.naar)}`} title={`${tc(f.label)}, ${f.van} – ${f.tot}`}>
+                            <span>{tc(f.label)}</span>
+                            <small>{f.van}</small>
+                        </a>
+                    </li>
+                ))}
+            </ol>
+            <details className="tl-ov-details">
+                <summary>{tc("Toon alle momenten")}</summary>
+            <div className="tl-ov-lists">
+                {[{ kop: "📜 Geschiedenis", items: historisch, offset: 0 }, { kop: "🔨 Renovatie & toekomst", items: renovatie, offset: historisch.length }].map((g) => (
+                    <div key={g.kop}>
+                        <h3>{tc(g.kop)}</h3>
+                        <ol>
+                            {g.items.map((it, i) => (
+                                <li key={it.titel}>
+                                    <a href={`#tl-${g.offset + i}`}><span className="tl-ov-jaar">{tc(it.datum)}</span><span>{tc(it.titel)}</span></a>
+                                </li>
+                            ))}
+                        </ol>
+                    </div>
+                ))}
+            </div>
+            </details>
+        </section>
     );
 }
 
@@ -359,6 +412,8 @@ const Tijdlijn = () => {
                 <h1>{tc("Tijdlijn Villa Vredestein")}</h1>
                 <p>{tc("Van 1905 tot nu: de volledige geschiedenis van het pand, de bewoners door de jaren heen, de restauratie en de plannen voor de toekomst.")}</p>
             </header>
+
+            <Overzicht />
 
             <div className="tijdlijn-sectie-label">{tc("📜 Geschiedenis")}</div>
 

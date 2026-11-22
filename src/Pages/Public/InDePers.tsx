@@ -202,7 +202,6 @@ const InDePers = () => {
             {/* Hero */}
             <header className="idp-hero">
                 <div className="idp-hero-inner">
-                    <span className="idp-eyebrow">{tc("Pers & Media")}</span>
                     <h1 className="idp-title">{tc("In de pers")}</h1>
                     <p className="idp-sub">
                         {tc("Villa Vredestein in het nieuws. Een historisch pand dat verhalen aantrekt.")}

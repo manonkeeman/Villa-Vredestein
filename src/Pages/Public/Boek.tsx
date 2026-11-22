@@ -76,8 +76,7 @@ const Boek = () => {
                     </p>
                     <div className="boek-ctas">
                         <a className="boek-btn boek-btn--solid" href="#bestellen">{tc("Bestel het boek")}</a>
-                        <Link className="boek-btn" to="/boek/lezen">{tc("Lees het boek")}</Link>
-                        <Link className="boek-btn" to="/verhaal">{tc("Lees het verhaal van het huis")}</Link>
+                        <Link className="boek-btn" to="/boek/lezen">{tc("Lees het boek online")}</Link>
                     </div>
                 </div>
                 <figure className="boek-cover" data-no-reveal>
