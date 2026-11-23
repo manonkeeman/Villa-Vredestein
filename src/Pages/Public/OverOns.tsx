@@ -13,6 +13,9 @@ import ImgCafeRacerStaand from "../../Assets/Images/life-carpediem-cafe-racer.jp
 import ImgCarpeDiemTekening from "../../Assets/Images/life-carpediem-tekening.jpg";
 import ImgBezoek from "../../Assets/Images/BezoekOnsVillaVredestein.jpg";
 import ImgManonIT from "../../Assets/Images/manonit-portrait.webp";
+import ImgManonITSite from "../../Assets/Images/manonit-website-hero.jpg";
+import ImgBoekOmslag from "../../Assets/Images/boek-omslag.jpg";
+import ImgCarpeDiemBord from "../../Assets/Images/life-carpediem-bord.jpg";
 import { useContent } from "../../i18n/content";
 
 interface Section {
@@ -59,6 +62,7 @@ const SECTIONS: Section[] = [
         ],
         extraImages: [
             { src: ImgCarpeDiemTekening, alt: "Carpe Diem, handgetekend", ar: 3024 / 4032, pos: "center" },
+            { src: ImgCarpeDiemBord, alt: "Carpe Diem-bord in de tuin van Villa Vredestein", ar: 1, pos: "center" },
             { src: ImgCafeRacerStaand, alt: "Maxims cafe racer", ar: 828 / 1472, pos: "center" },
         ],
     },
@@ -70,9 +74,14 @@ const SECTIONS: Section[] = [
         accent: "#FCBC2D",
         showAll: true,
         pullQuote: "Geen twee rechterhanden, maar wel een verhaal te vertellen.",
+        extraImages: [
+            { src: ImgManonITSite, alt: "De website van ManonIT", ar: 1.6 },
+            { src: ImgBoekOmslag, alt: "Omslag van het boek Hoofdstraat 147", ar: 0.7 },
+        ],
         links: [
             { href: "https://www.manonit.com", label: "Bekijk ManonIT →" },
             { href: "https://www.casacrew.nl", label: "Bekijk CasaCrew →" },
+            { href: "/boek", label: "Bekijk het boek →" },
         ],
     },
     {
@@ -85,16 +94,14 @@ const SECTIONS: Section[] = [
     },
 ];
 
-const PREVIEW_PARAGRAPHS = 2;
-
 type Media = { kind: "img" | "video"; src: string; alt: string; poster?: string };
 
 const mediaFor = (sec: Section): Media[] => {
     const list: Media[] = [];
     if (sec.video) list.push({ kind: "video", src: sec.video, alt: sec.imgAlt, poster: sec.img });
-    else list.push({ kind: "img", src: sec.img, alt: sec.imgAlt });
+    list.push({ kind: "img", src: sec.img, alt: sec.imgAlt });
     (sec.extraImages || []).forEach((e) => {
-        if (e.src !== sec.img && !list.some((m) => m.src === e.src)) list.push({ kind: "img", src: e.src, alt: e.alt });
+        if (!list.some((m) => m.src === e.src)) list.push({ kind: "img", src: e.src, alt: e.alt });
     });
     return list;
 };
@@ -110,7 +117,6 @@ const OverOns = () => {
     );
     const [active, setActive] = useState<string>(SECTIONS[0].slug);
     const [photo, setPhoto] = useState<Record<string, number>>({});
-    const [expanded, setExpanded] = useState<Record<string, boolean>>({});
     const [zoom, setZoom] = useState<Media | null>(null);
 
     const getBlog = (slug: string) => (Array.isArray(blogs) ? blogs.find((b) => b.slug === slug) : null);
@@ -208,7 +214,11 @@ const OverOns = () => {
                 <script type="application/ld+json">{aboutSchema}</script>
             </Helmet>
 
-            <h1 className="oo-sr">{tc("De mensen achter de villa")}</h1>
+            <header className="oo-intro">
+                <span className="oo-intro-eyebrow">{tc("Veel verhalen. Één huis.")}</span>
+                <h1>{tc("De mensen achter de villa")}</h1>
+                <p>{tc("Manon & Maxim, Project Carpe Diem, ManonIT en een open deur voor iedereen die het wil zien.")}</p>
+            </header>
 
             {/* Tabs */}
             <div className="oo-tabs-wrap">
@@ -245,8 +255,7 @@ const OverOns = () => {
                     const cur = Math.min(photo[sec.slug] ?? 0, media.length - 1);
                     const m = media[cur];
                     const paragraphs: string[] = Array.isArray(blog.content) ? blog.content : [];
-                    const open = expanded[sec.slug];
-                    const shown = open ? paragraphs : paragraphs.slice(0, PREVIEW_PARAGRAPHS);
+                    const shown = paragraphs;
                     const next = SECTIONS[(i + 1) % SECTIONS.length];
                     const nextBlog = getBlog(next.slug);
                     return (
@@ -305,14 +314,11 @@ const OverOns = () => {
                                 <div className="oo-text">
                                     {shown.map((paragraph, j) => <p key={j}>{tc(paragraph)}</p>)}
                                 </div>
-                                {paragraphs.length > PREVIEW_PARAGRAPHS && !sec.showAll && (
-                                    <button className="oo-more" onClick={() => setExpanded((e) => ({ ...e, [sec.slug]: !e[sec.slug] }))} aria-expanded={!!open}>
-                                        {open ? tc("Tekst inklappen ↑") : tc("Tekst uitklappen ↓")}
-                                    </button>
-                                )}
                                 {Array.isArray(sec.links) && sec.links.length > 0 && (
                                     <div className="oo-links">
-                                        {sec.links.map((l) => (
+                                        {sec.links.map((l) => l.href.startsWith("/") ? (
+                                            <a key={l.href} href={l.href} onClick={(e) => { e.preventDefault(); navigate(l.href); }}>{tc(l.label || l.href)}</a>
+                                        ) : (
                                             <a key={l.href} href={l.href} target="_blank" rel="noreferrer">{tc(l.label || l.href)}</a>
                                         ))}
                                     </div>
@@ -336,6 +342,7 @@ const OverOns = () => {
             {/* Compacte afsluiting */}
             <section className="oo-cta">
                 <h2>{tc("Zin om kennis te maken?")}</h2>
+                <p>{tc("Stuur een bericht, kom langs, of volg ons op Instagram. We staan altijd open voor een goed gesprek over Villa Vredestein, over wonen, over dromen en hoe je die werkelijkheid maakt.")}</p>
                 <div className="oo-cta-buttons">
                     <button className="oo-cta-primary" onClick={() => navigate("/contact")}>{tc("Neem contact op")}</button>
                     <button className="oo-cta-secondary" onClick={() => navigate("/tijdlijn")}>{tc("Bekijk de tijdlijn")}</button>
